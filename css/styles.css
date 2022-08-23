@@ -84,6 +84,10 @@ body {margin:0}
   font-size: 18px;
 }
 
+.img {
+	border-radius: 50%;
+}
+
 button {
   border: none;
   outline: 0;
