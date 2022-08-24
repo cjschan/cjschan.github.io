@@ -111,3 +111,11 @@ a {
 button:hover, a:hover {
   opacity: 0.7;
 }
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
