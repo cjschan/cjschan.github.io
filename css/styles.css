@@ -118,4 +118,6 @@ button:hover, a:hover {
 
 .column {
   flex: 50%;
+	width: 80%;
+	margin: 50px;
 }
