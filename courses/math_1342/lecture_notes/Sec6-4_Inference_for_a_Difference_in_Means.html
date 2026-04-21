@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 6.4: Inference for a Difference in Means</title>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)'], ['$', '$']],
+      displayMath: [['\\[', '\\]']]
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --accent: #38bdf8;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    padding: 48px 64px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-number {
+    position: fixed;
+    bottom: 20px;
+    right: 32px;
+    font-size: 14px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    z-index: 100;
+  }
+  .nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 32px;
+    font-size: 13px;
+    color: var(--border);
+    z-index: 100;
+  }
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+    z-index: 200;
+  }
+  h1 {
+    font-size: 60px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.08;
+    margin-bottom: 14px;
+  }
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 20px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-bottom: 28px;
+    max-width: 980px;
+  }
+  .title-slide {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    flex: 1;
+    align-items: start;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+    flex: 1;
+    align-items: start;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .card-accent { border-left: 3px solid var(--accent); }
+  .card-accent2 { border-left: 3px solid var(--accent2); }
+  .card-accent3 { border-left: 3px solid var(--accent3); }
+  .card-green { border-left: 3px solid var(--green); }
+  .card-amber { border-left: 3px solid var(--amber); }
+  .card-rose { border-left: 3px solid var(--rose); }
+  ul { list-style: none; padding: 0; }
+  ul li {
+    padding: 6px 0 6px 20px;
+    font-size: 18px;
+    line-height: 1.45;
+    position: relative;
+  }
+  ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .small li {
+    font-size: 15px;
+    padding: 4px 0 4px 18px;
+  }
+  .small li::before { top: 11px; width: 5px; height: 5px; }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
+  .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); }
+  .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); }
+  .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); }
+  .big-number {
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1.45;
+  }
+  .formula-box {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 22px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+  }
+  .callout {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .step-note {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .table-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  .table-card th, .table-card td {
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .table-card th {
+    color: var(--muted);
+    font-weight: 700;
+    background: rgba(15, 23, 42, 0.35);
+  }
+  .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  @media (max-width: 900px) {
+    .slide { padding: 28px 24px 56px; overflow-y: auto; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    h1 { font-size: 42px; }
+    h2 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Arrow keys or click to navigate</div>
+<div class="deck" id="deck">
+
+<div class="slide title-slide">
+  <h1>Inference for a Difference in Means</h1>
+  <p class="subtitle">Confidence intervals and hypothesis tests for comparing two population means from separate samples.</p>
+  <div class="formula-box" style="max-width: 860px;">
+    \[
+      (\bar{x}_1-\bar{x}_2)\pm t^* \cdot SE
+    \]
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Standard Error and Degrees of Freedom</h2>
+  <p class="subtitle">For two-sample means, estimate each population standard deviation with its sample standard deviation.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Standard Error</h3>
+      <div class="formula-box">
+        \[
+          SE(\bar{x}_1-\bar{x}_2)=\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}
+        \]
+      </div>
+      <div class="step-note">We do not know \(\sigma_1\) or \(\sigma_2\), so we use \(s_1\) and \(s_2\).</div>
+    </div>
+    <div class="card card-amber">
+      <h3>t Distribution</h3>
+      <div class="formula-box">
+        \[
+          df=\min(n_1-1,\ n_2-1)
+        \]
+      </div>
+      <ul>
+        <li>Use the smaller sample size to set the degrees of freedom.</li>
+        <li>Need each sample to be large, or each population distribution to be approximately normal.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Confidence Interval for \(\mu_1-\mu_2\)</h2>
+  <p class="subtitle">The two-sample confidence interval has the same structure as before, but the SE now includes both samples.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="formula-box">
+        \[
+          (\bar{x}_1-\bar{x}_2)\pm t^* \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}
+        \]
+      </div>
+      <ul>
+        <li>\(t^*\) comes from a t-distribution with \(df=\min(n_1-1,n_2-1)\).</li>
+        <li>The sign depends on the order of Group 1 and Group 2.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Conditions</h3>
+      <ul>
+        <li>Both samples should come from random assignment or random sampling.</li>
+        <li>Use t procedures when both samples are large, or when both distributions are reasonably normal.</li>
+        <li>Smaller samples require more caution if the data are skewed.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Video Games and GPA Setup</h2>
+  <p class="subtitle">Students were randomly assigned roommates to study whether a roommate bringing a video game system affects GPA.</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <h3>Group Summary</h3>
+      <table>
+        <tr><th>Group</th><th>\(n\)</th><th>Mean GPA</th><th>SD</th></tr>
+        <tr><td>Roommate brought system</td><td>78</td><td>2.84</td><td>0.669</td></tr>
+        <tr><td>Roommate did not bring system</td><td>132</td><td>3.105</td><td>0.625</td></tr>
+      </table>
+    </div>
+    <div class="card card-green">
+      <h3>Question</h3>
+      <ul>
+        <li>Let Group 1 = videogame system and Group 2 = no videogame system.</li>
+        <li>We want a \(90\%\) confidence interval for \(\mu_1-\mu_2\).</li>
+        <li>If the interval is negative, GPA is lower in the videogame-roommate group.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Video Games and GPA Confidence Interval</h2>
+  <p class="subtitle">Work through the two-sample t interval step by step.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">Step 1</div>
+      <div class="formula-box">
+        \[
+          df=\min(78-1,\ 132-1)=77
+        \]
+      </div>
+      <div class="tag tag-purple">Step 2</div>
+      <div class="formula-box">
+        \[
+          t^* \approx 1.665 \text{ for a } 90\% \text{ CI}
+        \]
+      </div>
+      <div class="tag tag-green">Step 3</div>
+      <div class="formula-box">
+        \[
+          \bar{x}_1-\bar{x}_2=2.84-3.105=-0.265
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-amber">Step 4</div>
+      <div class="formula-box">
+        \[
+          SE=\sqrt{\frac{0.669^2}{78}+\frac{0.625^2}{132}}\approx 0.093
+        \]
+      </div>
+      <div class="tag tag-blue">Step 5</div>
+      <div class="formula-box">
+        \[
+          -0.265 \pm 1.665(0.093)= -0.265 \pm 0.155
+        \]
+      </div>
+      <div class="formula-box">
+        \[
+          (-0.420,\ -0.110)
+        \]
+      </div>
+      <div class="callout">
+        <strong>Interpretation:</strong> We are \(90\%\) confident that having a roommate who brings a videogame system lowers first-semester GPA by about \(0.11\) to \(0.42\) points on average.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Two-Sample t Test</h2>
+  <p class="subtitle">Hypothesis testing compares the observed difference in sample means to the null value of \(0\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Test Statistic</h3>
+      <div class="formula-box">
+        \[
+          t=\frac{(\bar{x}_1-\bar{x}_2)-0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}
+        \]
+      </div>
+      <div class="step-note">Use a t-distribution with \(df=\min(n_1-1,n_2-1)\).</div>
+    </div>
+    <div class="card card-rose">
+      <h3>Hypotheses</h3>
+      <div class="formula-box">
+        \[
+          H_0:\mu_1-\mu_2=0
+          \qquad
+          H_a:\mu_1-\mu_2 \neq 0
+        \]
+      </div>
+      <ul>
+        <li>Tail direction depends on the research question.</li>
+        <li>The p-value is the area beyond the observed \(t\) in the t distribution.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Pygmalion Effect Example</h2>
+  <p class="subtitle">Teachers were told some randomly selected students were “growth spurters.” The response was change in IQ over one year.</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <table>
+        <tr><th>Group</th><th>\(n\)</th><th>Mean change</th><th>SD</th></tr>
+        <tr><td>Growth spurters</td><td>65</td><td>12.22</td><td>13.3</td></tr>
+        <tr><td>Control students</td><td>255</td><td>8.42</td><td>12.0</td></tr>
+      </table>
+      <div class="callout">
+        Research question: does expecting a child to do well actually <strong>cause</strong> the child to do better?
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-blue">Hypotheses</div>
+      <div class="formula-box">
+        \[
+          H_0:\mu_1-\mu_2=0
+          \qquad
+          H_a:\mu_1-\mu_2>0
+        \]
+      </div>
+      <div class="tag tag-purple">Computation</div>
+      <div class="formula-box">
+        \[
+          SE=\sqrt{\frac{13.3^2}{65}+\frac{12.0^2}{255}}\approx 1.813
+        \]
+      </div>
+      <div class="formula-box">
+        \[
+          t=\frac{12.22-8.42}{1.813}\approx 2.10
+        \]
+      </div>
+      <div class="callout">
+        With \(df=64\), the right-tail p-value is about \(0.020\). That gives statistically significant evidence that the expected “growth spurters” improved more on average.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>What to Remember</h2>
+  <p class="subtitle">Difference-in-means inference extends the one-mean t methods to two separate samples.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Confidence Interval</h3>
+      <div class="formula-box">
+        \[
+          (\bar{x}_1-\bar{x}_2)\pm t^* \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}
+        \]
+      </div>
+      <ul>
+        <li>Use separate sample standard deviations.</li>
+        <li>Interpret the interval as a plausible range for \(\mu_1-\mu_2\).</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Hypothesis Test</h3>
+      <div class="formula-box">
+        \[
+          t=\frac{(\bar{x}_1-\bar{x}_2)-0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}
+        \]
+      </div>
+      <ul>
+        <li>Use \(df=\min(n_1-1,n_2-1)\).</li>
+        <li>Need large samples or approximately normal data in both groups.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
+  });
+  document.addEventListener('click', () => renderSlide(current + 1));
+  renderSlide(0);
+</script>
+</body>
+</html>

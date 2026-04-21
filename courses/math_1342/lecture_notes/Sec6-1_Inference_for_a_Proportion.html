@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 6.1: Inference for a Proportion</title>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)'], ['$', '$']],
+      displayMath: [['\\[', '\\]']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --card: #334155;
+    --accent: #38bdf8;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .deck {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    padding: 48px 64px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .slide.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .slide-number {
+    position: fixed;
+    bottom: 20px;
+    right: 32px;
+    font-size: 14px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    z-index: 100;
+  }
+
+  h1 {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.08;
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-bottom: 28px;
+    max-width: 920px;
+  }
+
+  .accent { color: var(--accent); }
+  .accent2 { color: var(--accent2); }
+  .accent3 { color: var(--accent3); }
+  .green { color: var(--green); }
+  .amber { color: var(--amber); }
+  .rose { color: var(--rose); }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    flex: 1;
+    align-items: start;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+    flex: 1;
+    align-items: start;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+  }
+
+  .card-accent { border-left: 3px solid var(--accent); }
+  .card-accent2 { border-left: 3px solid var(--accent2); }
+  .card-accent3 { border-left: 3px solid var(--accent3); }
+  .card-green { border-left: 3px solid var(--green); }
+  .card-amber { border-left: 3px solid var(--amber); }
+  .card-rose { border-left: 3px solid var(--rose); }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    padding: 6px 0 6px 20px;
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--text);
+    position: relative;
+  }
+
+  ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .small li {
+    font-size: 15px;
+    padding: 4px 0 4px 18px;
+  }
+
+  .small li::before {
+    top: 11px;
+    width: 5px;
+    height: 5px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
+  .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); }
+  .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); }
+  .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); }
+  .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+
+  .big-number {
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 28px 14px;
+  }
+
+  .nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 32px;
+    font-size: 13px;
+    color: var(--border);
+    z-index: 100;
+  }
+
+  .title-slide {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .title-slide h1 {
+    font-size: 60px;
+    margin-bottom: 14px;
+  }
+
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+    z-index: 200;
+  }
+
+  .formula-box {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 22px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+  }
+
+  .callout {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .step-block {
+    margin-top: 10px;
+  }
+
+  .curve-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .curve-frame {
+    background: rgba(15, 23, 42, 0.38);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .curve-frame svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .curve-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .axis-label {
+    font-size: 12px;
+    fill: var(--muted);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .curve-axis {
+    stroke: rgba(148, 163, 184, 0.65);
+    stroke-width: 1.75;
+  }
+
+  .curve-tick {
+    stroke: rgba(148, 163, 184, 0.7);
+    stroke-width: 1.5;
+  }
+
+  .curve-boundary {
+    stroke: rgba(251, 191, 36, 0.95);
+    stroke-width: 2;
+    stroke-dasharray: 5 5;
+  }
+
+  .curve-label {
+    font-size: 13px;
+    fill: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+
+  .curve-tail-label {
+    font-size: 11px;
+    fill: var(--muted);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .tight p, .tight div, .tight li {
+    line-height: 1.45;
+  }
+
+  .step-note {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .spacer-8 { height: 8px; }
+
+  @media (max-width: 900px) {
+    .slide {
+      padding: 28px 24px 56px;
+      overflow-y: auto;
+    }
+
+    .grid-2,
+    .grid-3 {
+      grid-template-columns: 1fr;
+    }
+
+    h1 { font-size: 40px; }
+    h2 { font-size: 24px; }
+    .title-slide h1 { font-size: 42px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Arrow keys or click to navigate</div>
+
+<div class="deck" id="deck">
+
+<div class="slide title-slide">
+  <h1>Inference for a Proportion</h1>
+  <p class="subtitle">Confidence intervals first, then one-proportion z tests.</p>
+  <div class="formula-box" style="max-width: 760px;">
+    \[
+      \text{sample statistic} \pm z^* \cdot SE
+    \]
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Confidence Intervals First</h2>
+  <p class="subtitle">Start with the same logic from the randomization approach, then switch to the normal model.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <ul>
+        <li>Earlier, we used a randomization plot to build a confidence interval.</li>
+        <li>We could read the <span class="accent">standard error</span> from the spread of that plot.</li>
+        <li>For a 95% confidence interval, we were essentially using <span class="accent">\(z^* \approx 2\)</span>.</li>
+        <li>For other confidence levels, we used percentiles from the randomization distribution.</li>
+      </ul>
+    </div>
+    <div class="card card-accent2 curve-card">
+      <div>
+        <div class="big-number accent2">95% CI</div>
+        <div class="stat-label">Same idea as before. The shortcut now is the normal distribution.</div>
+      </div>
+      <div class="curve-frame" aria-hidden="true">
+        <img src="images/normal_ci.png" alt="Normal distribution showing the central 95 percent confidence interval between -1.96 and 1.96">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Normal Model for Confidence Intervals</h2>
+  <p class="subtitle">With large samples, we use the standard normal distribution instead of simulated cutoffs.</p>
+  <div class="grid-2">
+    <div class="card card-accent tight">
+      <h3>General Form</h3>
+      <div class="formula-box">
+        \[
+          \text{Confidence interval} = \text{sample statistic} \pm z^* \cdot SE
+        \]
+      </div>
+      <div class="step-note">\(z^*\) changes with the confidence level.</div>
+      <ul class="small">
+        <li>\(90\%\): about \(1.645\)</li>
+        <li>\(95\%\): about \(1.96\)</li>
+        <li>\(99\%\): about \(2.576\)</li>
+      </ul>
+    </div>
+    <div class="card card-green tight">
+      <h3>What Changes?</h3>
+      <ul>
+        <li>\(z^*\) comes from the normal distribution.</li>
+        <li>The standard error formula depends on the statistic.</li>
+        <li>For a proportion, the SE formula differs from the one for a mean.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Confidence Interval for One Proportion</h2>
+  <p class="subtitle">For a confidence interval, use the sample proportion in the SE formula.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Formula</h3>
+      <div class="formula-box">
+        \[
+          SE(\hat{p})=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+        \]
+      </div>
+      <div class="callout">
+        For a confidence interval, use the sample value \(\hat{p}\) because it is our best estimate of the true population proportion.
+      </div>
+    </div>
+    <div class="card card-amber">
+      <h3>Conditions</h3>
+      <ul>
+        <li>Need a large enough sample.</li>
+        <li>Check that counts in both categories are at least 10.</li>
+        <li>Then the sampling distribution of \(\hat{p}\) is approximately normal.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Confidence Interval Example</h2>
+  <p class="subtitle">In a sample of \(200\) students, \(124\) say they prefer online notes.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">Step 1</div>
+      <div class="step-note">Compute the sample proportion. This gives the sample estimate of the population proportion.</div>
+      <div class="formula-box">
+        \[
+          \hat{p}=\frac{124}{200}=0.62
+        \]
+      </div>
+      <div class="tag tag-purple">Step 2</div>
+      <div class="step-note">Compute the standard error. This measures typical sample-to-sample variation in \(\hat{p}\).</div>
+      <div class="formula-box">
+        \[
+          SE=\sqrt{\frac{0.62(1-0.62)}{200}}\approx 0.034
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-green">Step 3</div>
+      <div class="step-note">Use \(z^*=1.96\) for a \(95\%\) confidence interval and compute the margin of error.</div>
+      <div class="formula-box">
+        \[
+          0.62 \pm 1.96(0.034)=0.62 \pm 0.067
+        \]
+      </div>
+      <div class="tag tag-amber">Step 4</div>
+      <div class="step-note">Add and subtract the margin of error from the sample proportion.</div>
+      <div class="formula-box">
+        \[
+          (0.553,\ 0.687)
+        \]
+      </div>
+      <div class="callout">
+        <strong>Interpretation:</strong> We are \(95\%\) confident that the true proportion of students who prefer online notes is between \(55.3\%\) and \(68.7\%\).
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Hypothesis Testing Uses a z Score</h2>
+  <p class="subtitle">A z test compares the sample result to the null value in standard error units.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>General z Statistic</h3>
+      <div class="formula-box">
+        \[
+          z=\frac{\text{sample statistic}-\text{null value}}{SE}
+        \]
+      </div>
+      <div class="callout">
+        The z score tells us whether the sample result would be unusual if the null hypothesis were true.
+      </div>
+    </div>
+    <div class="card card-rose">
+      <h3>One-Proportion Test</h3>
+      <div class="formula-box">
+        \[
+          z=\frac{\hat{p}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
+        \]
+      </div>
+      <ul>
+        <li>State \(H_0\) and \(H_a\).</li>
+        <li>Use the null value \(p_0\) in the SE formula.</li>
+        <li>Find the p-value from the normal curve.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Hypothesis Test Example</h2>
+  <p class="subtitle">In a random sample of \(500\) US citizens, \(280\) plan to vote.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">Step 1</div>
+      <div class="step-note">Set up the hypotheses. We want evidence that more than half plan to vote, so this is right-tailed.</div>
+      <div class="formula-box">
+        \[
+          H_0:p=0.50 \qquad H_a:p>0.50
+        \]
+      </div>
+      <div class="tag tag-purple">Step 2</div>
+      <div class="step-note">Compute the sample proportion and the standard error using the null value \(p_0=0.50\).</div>
+      <div class="formula-box">
+        \[
+          \hat{p}=\frac{280}{500}=0.56
+        \]
+      </div>
+      <div class="formula-box">
+        \[
+          SE=\sqrt{\frac{0.50(1-0.50)}{500}}\approx 0.0224
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-green">Step 3</div>
+      <div class="step-note">Compute the z statistic. This measures how many standard errors the sample is above the null value.</div>
+      <div class="formula-box">
+        \[
+          z=\frac{0.56-0.50}{0.0224}\approx 2.68
+        \]
+      </div>
+      <div class="tag tag-amber">Step 4</div>
+      <div class="step-note">Find the right-tail p-value and make the decision.</div>
+      <div class="formula-box">
+        \[
+          \text{p-value}\approx 0.0036
+        \]
+      </div>
+      <div class="callout">
+        <strong>Conclusion:</strong> Reject \(H_0\). There is strong evidence that more than half of US citizens plan to vote.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>How to Read the p-Value</h2>
+  <p class="subtitle">The p-value is the tail area beyond the observed z score in the standard normal distribution.</p>
+  <div class="grid-2">
+    <div class="card card-accent2">
+      <ul>
+        <li>Measure how far \(\hat{p}\) is from \(p_0\) in standard errors.</li>
+        <li>That distance is the z score.</li>
+        <li>The p-value is the tail area beyond that z score.</li>
+        <li>A small p-value gives evidence against \(H_0\).</li>
+      </ul>
+    </div>
+    <div class="card stat-card">
+      <div class="big-number accent">\(z\)</div>
+      <div class="stat-label">Right-tailed, left-tailed, or two-tailed depends on the alternative hypothesis.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>What to Remember</h2>
+  <p class="subtitle">Confidence intervals and hypothesis tests use similar ingredients, but not the same SE input.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Confidence Interval</h3>
+      <div class="formula-box">
+        \[
+          SE(\hat{p})=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+        \]
+      </div>
+      <ul>
+        <li>Use \(\text{sample statistic} \pm z^* \cdot SE\).</li>
+        <li>For a proportion CI, use \(\hat{p}\) in the SE formula.</li>
+        <li>\(z^*\) comes from the confidence level.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Hypothesis Test</h3>
+      <div class="formula-box">
+        \[
+          SE(\hat{p})=\sqrt{\frac{p_0(1-p_0)}{n}}
+        \]
+      </div>
+      <ul>
+        <li>Use a z score to compare the sample to the null value.</li>
+        <li>For a proportion test, use \(p_0\) in the SE formula.</li>
+        <li>The p-value is the tail area beyond the z score.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) {
+      window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+    }
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
+      event.preventDefault();
+      renderSlide(current + 1);
+    }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+      event.preventDefault();
+      renderSlide(current - 1);
+    }
+  });
+
+  document.addEventListener('click', () => renderSlide(current + 1));
+  renderSlide(0);
+</script>
+
+</body>
+</html>

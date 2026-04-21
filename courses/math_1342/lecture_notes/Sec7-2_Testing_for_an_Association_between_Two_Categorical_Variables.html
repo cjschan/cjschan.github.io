@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 7.2: Testing for an Association Between Two Categorical Variables</title>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)'], ['$', '$']],
+      displayMath: [['\\[', '\\]']]
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --accent: #38bdf8;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    padding: 48px 64px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-number {
+    position: fixed;
+    bottom: 20px;
+    right: 32px;
+    font-size: 14px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    z-index: 100;
+  }
+  .nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 32px;
+    font-size: 13px;
+    color: var(--border);
+    z-index: 100;
+  }
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+    z-index: 200;
+  }
+  h1 {
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.08;
+    margin-bottom: 14px;
+  }
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 20px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-bottom: 28px;
+    max-width: 980px;
+  }
+  .title-slide {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    flex: 1;
+    align-items: start;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+    flex: 1;
+    align-items: start;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .card-accent { border-left: 3px solid var(--accent); }
+  .card-accent2 { border-left: 3px solid var(--accent2); }
+  .card-accent3 { border-left: 3px solid var(--accent3); }
+  .card-green { border-left: 3px solid var(--green); }
+  .card-amber { border-left: 3px solid var(--amber); }
+  .card-rose { border-left: 3px solid var(--rose); }
+  ul { list-style: none; padding: 0; }
+  ul li {
+    padding: 6px 0 6px 20px;
+    font-size: 18px;
+    line-height: 1.45;
+    position: relative;
+  }
+  ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .small li {
+    font-size: 15px;
+    padding: 4px 0 4px 18px;
+  }
+  .small li::before { top: 11px; width: 5px; height: 5px; }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
+  .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); }
+  .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); }
+  .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); }
+  .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+  .big-number {
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1.45;
+  }
+  .formula-box {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 22px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+  }
+  .callout {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .step-note {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .table-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+  .table-card th, .table-card td {
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .table-card th {
+    color: var(--muted);
+    font-weight: 700;
+    background: rgba(15, 23, 42, 0.35);
+  }
+  .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  @media (max-width: 900px) {
+    .slide { padding: 28px 24px 56px; overflow-y: auto; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    h1 { font-size: 42px; }
+    h2 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Arrow keys or click to navigate</div>
+<div class="deck" id="deck">
+
+<div class="slide title-slide">
+  <h1>Testing for an Association Between Two Categorical Variables</h1>
+  <p class="subtitle">Use a chi-square test of association to decide whether two categorical variables are related in the population.</p>
+  <div class="formula-box" style="max-width: 900px;">
+    \[
+      \chi^2 = \sum \frac{(Observed - Expected)^2}{Expected}
+    \]
+  </div>
+</div>
+
+<div class="slide">
+  <h2>What This Test Does</h2>
+  <p class="subtitle">We compare the observed two-way table to what we would expect if the variables were not associated.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>When to Use It</h3>
+      <ul>
+        <li>Both variables are categorical.</li>
+        <li>Data are summarized in a two-way table.</li>
+        <li>Goal is to test for association, not causation.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Null and Alternative</h3>
+      <div class="formula-box">
+        \[
+          H_0:\text{the variables are not associated}
+        \]
+      </div>
+      <div class="formula-box">
+        \[
+          H_a:\text{the variables are associated}
+        \]
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Observed Counts Example</h2>
+  <p class="subtitle">The StudentSurvey data compare award preference and which SAT score is higher.</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <h3>Observed Table</h3>
+      <table>
+        <tr><th>Higher SAT</th><th>Academy</th><th>Nobel</th><th>Olympic</th><th>Total</th></tr>
+        <tr><td>Math</td><td>21</td><td>68</td><td>116</td><td>205</td></tr>
+        <tr><td>Verbal</td><td>10</td><td>45</td><td>95</td><td>150</td></tr>
+        <tr><td>Total</td><td>31</td><td>113</td><td>211</td><td>355</td></tr>
+      </table>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-blue">Question</div>
+      <div class="step-note">Does preferred award appear related to whether a student has the higher Math or Verbal SAT score?</div>
+      <div class="tag tag-purple">Idea Under \(H_0\)</div>
+      <div class="callout">
+        If there is no association, then each award-preference column should have about the same Math/Verbal proportions as the overall sample.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Expected Counts</h2>
+  <p class="subtitle">Expected counts come from row total times column total divided by the grand total.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>General Formula</h3>
+      <div class="formula-box">
+        \[
+          Expected = \frac{(\text{row total})(\text{column total})}{\text{grand total}}
+        \]
+      </div>
+      <div class="step-note">This uses the assumption that the row and column variables are unrelated under the null hypothesis.</div>
+    </div>
+    <div class="card card-green">
+      <h3>Example Cell</h3>
+      <div class="step-note">Expected count for Academy and Math:</div>
+      <div class="formula-box">
+        \[
+          \frac{205 \cdot 31}{355} \approx 17.90
+        \]
+      </div>
+      <div class="callout">
+        The observed count is \(21\), so this cell contributes some evidence against \(H_0\).
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Expected Table for the Example</h2>
+  <p class="subtitle">Compute an expected count for every cell before finding the chi-square statistic.</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <table>
+        <tr><th>Higher SAT</th><th>Academy</th><th>Nobel</th><th>Olympic</th></tr>
+        <tr><td>Math</td><td>17.90</td><td>65.25</td><td>121.85</td></tr>
+        <tr><td>Verbal</td><td>13.10</td><td>47.75</td><td>89.15</td></tr>
+      </table>
+    </div>
+    <div class="card card-amber">
+      <h3>Condition</h3>
+      <ul>
+        <li>All expected counts should be at least 5.</li>
+        <li>Counts, not percentages, must go in the table.</li>
+        <li>Randomization or independent sampling still matters.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Chi-Square Statistic</h2>
+  <p class="subtitle">Each cell contributes a nonnegative amount. Large total contributions suggest association.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Cell Contribution</h3>
+      <div class="formula-box">
+        \[
+          \frac{(O-E)^2}{E}
+        \]
+      </div>
+      <div class="step-note">Example for the Academy/Math cell:</div>
+      <div class="formula-box">
+        \[
+          \frac{(21-17.90)^2}{17.90}\approx 0.54
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <h3>Total Statistic</h3>
+      <div class="formula-box">
+        \[
+          \chi^2 \approx 2.10
+        \]
+      </div>
+      <div class="step-note">This is found by adding all six cell contributions in the table.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Degrees of Freedom and p-Value</h2>
+  <p class="subtitle">For a two-way table, the degrees of freedom depend on the number of rows and columns.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Degrees of Freedom</h3>
+      <div class="formula-box">
+        \[
+          df=(r-1)(c-1)
+        \]
+      </div>
+      <div class="step-note">For a \(2\times 3\) table:</div>
+      <div class="formula-box">
+        \[
+          df=(2-1)(3-1)=2
+        \]
+      </div>
+    </div>
+    <div class="card card-rose">
+      <h3>p-Value</h3>
+      <div class="callout">
+        A chi-square statistic of about \(2.10\) with \(df=2\) gives a p-value much larger than \(0.05\), so this example does not show strong evidence of association.
+      </div>
+      <div class="step-note">The p-value is always a right-tail area because larger chi-square values mean a bigger departure from \(H_0\).</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Faculty Rank and Gender Example</h2>
+  <p class="subtitle">A second two-way-table example compares faculty rank and gender.</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <table>
+        <tr><th></th><th>aP</th><th>AP</th><th>P</th><th>Total</th></tr>
+        <tr><td>M</td><td>20</td><td>30</td><td>33</td><td>83</td></tr>
+        <tr><td>F</td><td>20</td><td>45</td><td>9</td><td>74</td></tr>
+        <tr><td>Total</td><td>40</td><td>75</td><td>42</td><td>157</td></tr>
+      </table>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-blue">Compute</div>
+      <ul class="small">
+        <li>Find all expected counts.</li>
+        <li>Compute each \((O-E)^2/E\) contribution.</li>
+        <li>Add them for the chi-square statistic.</li>
+        <li>Use \(df=(2-1)(3-1)=2\).</li>
+      </ul>
+      <div class="callout">
+        This table shows a much larger departure from independence than the SAT example, so it produces a much smaller p-value.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Special Case: \(2\times 2\) Tables</h2>
+  <p class="subtitle">When each variable has two categories, a chi-square test and a two-proportion z test are closely related ways to analyze the same table.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Same Question</h3>
+      <ul>
+        <li>Both methods test whether the two categorical variables are related.</li>
+        <li>Both use the same observed \(2\times 2\) table.</li>
+        <li>For the same data, they lead to the same two-sided conclusion.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Interpretation</h3>
+      <ul>
+        <li>The z test is often introduced first for two proportions.</li>
+        <li>The chi-square method is more general because it extends beyond two categories.</li>
+        <li>For larger tables, use chi-square rather than a z test.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>What You Can and Cannot Conclude</h2>
+  <p class="subtitle">A significant result shows association, but it does not automatically show causation.</p>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <div class="big-number">Association</div>
+      <div class="stat-label">The variables appear related in the population.</div>
+    </div>
+    <div class="card card-amber">
+      <div class="big-number">Not Direction</div>
+      <div class="stat-label">The test does not tell you which variable explains the other.</div>
+    </div>
+    <div class="card card-rose">
+      <div class="big-number">Not Causation</div>
+      <div class="stat-label">Without random assignment, a relationship may be due to confounding.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>What to Remember</h2>
+  <p class="subtitle">A chi-square test of association compares observed counts to expected counts from independence.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Core Steps</h3>
+      <ul>
+        <li>State \(H_0\) and \(H_a\).</li>
+        <li>Find each expected count.</li>
+        <li>Compute \(\chi^2=\sum (O-E)^2/E\).</li>
+        <li>Use \(df=(r-1)(c-1)\).</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Conditions</h3>
+      <ul>
+        <li>Two categorical variables.</li>
+        <li>Independent observations or randomization.</li>
+        <li>All expected counts at least 5.</li>
+        <li>Conclusion is about association, not causation.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
+  });
+  document.addEventListener('click', () => renderSlide(current + 1));
+  renderSlide(0);
+</script>
+</body>
+</html>

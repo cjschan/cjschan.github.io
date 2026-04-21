@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 6.2: Inference for a Mean</title>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)'], ['$', '$']],
+      displayMath: [['\\[', '\\]']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --card: #334155;
+    --accent: #38bdf8;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .deck {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    padding: 48px 64px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .slide.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .slide-number {
+    position: fixed;
+    bottom: 20px;
+    right: 32px;
+    font-size: 14px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    z-index: 100;
+  }
+
+  h1 {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.08;
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-bottom: 28px;
+    max-width: 960px;
+  }
+
+  .accent { color: var(--accent); }
+  .accent2 { color: var(--accent2); }
+  .accent3 { color: var(--accent3); }
+  .green { color: var(--green); }
+  .amber { color: var(--amber); }
+  .rose { color: var(--rose); }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    flex: 1;
+    align-items: start;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+    flex: 1;
+    align-items: start;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+  }
+
+  .card-accent { border-left: 3px solid var(--accent); }
+  .card-accent2 { border-left: 3px solid var(--accent2); }
+  .card-accent3 { border-left: 3px solid var(--accent3); }
+  .card-green { border-left: 3px solid var(--green); }
+  .card-amber { border-left: 3px solid var(--amber); }
+  .card-rose { border-left: 3px solid var(--rose); }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    padding: 6px 0 6px 20px;
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--text);
+    position: relative;
+  }
+
+  ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .small li {
+    font-size: 15px;
+    padding: 4px 0 4px 18px;
+  }
+
+  .small li::before {
+    top: 11px;
+    width: 5px;
+    height: 5px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
+  .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); }
+  .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); }
+  .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); }
+  .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+
+  .big-number {
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 28px 14px;
+  }
+
+  .nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 32px;
+    font-size: 13px;
+    color: var(--border);
+    z-index: 100;
+  }
+
+  .title-slide {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .title-slide h1 {
+    font-size: 60px;
+    margin-bottom: 14px;
+  }
+
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+    z-index: 200;
+  }
+
+  .formula-box {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 22px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+  }
+
+  .callout {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .curve-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .curve-frame {
+    background: rgba(15, 23, 42, 0.38);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .curve-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .curve-frame.compact img {
+    width: auto;
+    max-width: 100%;
+    max-height: 240px;
+    margin: 0 auto;
+  }
+
+  .step-note {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 900px) {
+    .slide {
+      padding: 28px 24px 56px;
+      overflow-y: auto;
+    }
+
+    .grid-2,
+    .grid-3 {
+      grid-template-columns: 1fr;
+    }
+
+    h1 { font-size: 40px; }
+    h2 { font-size: 24px; }
+    .title-slide h1 { font-size: 42px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Arrow keys or click to navigate</div>
+
+<div class="deck" id="deck">
+
+<div class="slide title-slide">
+  <h1>Inference for a Mean</h1>
+  <p class="subtitle">Confidence intervals and hypothesis tests for one population mean.</p>
+  <div class="formula-box" style="max-width: 760px;">
+    \[
+      \text{sample statistic} \pm t^* \cdot SE
+    \]
+  </div>
+</div>
+
+<div class="slide">
+  <h2>From z to t</h2>
+  <p class="subtitle">For means, the main new issue is that the population standard deviation is usually unknown.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>If the Statistic Is Normal</h3>
+      <ul>
+        <li>A confidence interval still has the form statistic \(\pm\) critical value \(\cdot SE\).</li>
+        <li>A test statistic still compares the sample to the null in standard error units.</li>
+        <li>If we knew \(\sigma\), we could use the standard normal distribution.</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <div class="big-number accent2">\(t\)</div>
+      <div class="stat-label">Because \(\sigma\) is unknown, we replace it with \(s\). That changes the reference distribution from \(z\) to \(t\).</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Standard Error for a Mean</h2>
+  <p class="subtitle">The standard error measures how much sample means vary from sample to sample.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Population Formula</h3>
+      <div class="formula-box">
+        \[
+          SE(\bar{x})=\frac{\sigma}{\sqrt{n}}
+        \]
+      </div>
+      <div class="step-note">This is the true standard error, but it requires the population standard deviation \(\sigma\).</div>
+    </div>
+    <div class="card card-green">
+      <h3>What We Actually Use</h3>
+      <div class="formula-box">
+        \[
+          SE(\bar{x})=\frac{s}{\sqrt{n}}
+        \]
+      </div>
+      <div class="callout">
+        Replacing \(\sigma\) with \(s\) adds uncertainty, so we use a <strong>t-distribution</strong> instead of a normal distribution.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>When Can We Use t?</h2>
+  <p class="subtitle">The t procedures work when the sample is large, or when the data are approximately normal.</p>
+  <div class="curve-card">
+    <div class="grid-3">
+      <div class="card card-accent">
+        <div class="big-number accent">\(n \ge 30\)</div>
+        <div class="stat-label">For large samples, the CLT makes the sampling distribution of \(\bar{x}\) approximately normal.</div>
+      </div>
+      <div class="card card-amber">
+        <div class="big-number amber">\(df=n-1\)</div>
+        <div class="stat-label">The t-distribution depends on degrees of freedom. Higher \(df\) makes \(t\) closer to normal.</div>
+      </div>
+      <div class="card card-rose">
+        <div class="big-number rose">Small \(n\)</div>
+        <div class="stat-label">If the sample is small, only use t when the data look reasonably symmetric with no extreme outliers.</div>
+      </div>
+    </div>
+    <div class="card card-accent2">
+      <div class="tag tag-purple">t vs z</div>
+      <div class="stat-label">As the degrees of freedom increase, the \(t\)-distribution gets closer to the standard normal distribution.</div>
+      <div class="curve-frame compact" style="margin-top: 12px;">
+        <img src="images/t_vs_z.png" alt="Comparison of t-distributions and the standard normal distribution, showing that the t-distribution approaches z as sample size increases">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Confidence Interval for a Mean</h2>
+  <p class="subtitle">For a one-sample mean, use the sample mean, a t critical value, and the standard error based on \(s\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="formula-box">
+        \[
+          \bar{x} \pm t^* \cdot \frac{s}{\sqrt{n}}
+        \]
+      </div>
+      <ul>
+        <li>\(t^*\) comes from a t-distribution with \(df=n-1\).</li>
+        <li>Use this when the sample is large or the data are approximately normal.</li>
+        <li>The margin of error is \(t^* \cdot \frac{s}{\sqrt{n}}\).</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Gribbles Example Setup</h3>
+      <ul>
+        <li>Sample size: \(n=50\)</li>
+        <li>Sample mean: \(\bar{x}=3.1\) mm</li>
+        <li>Sample standard deviation: \(s=0.72\) mm</li>
+        <li>Goal: a \(90\%\) confidence interval for the average gribble length</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Confidence Interval Example</h2>
+  <p class="subtitle">A sample of \(50\) gribbles has average length \(3.1\) mm with standard deviation \(0.72\) mm.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">Step 1</div>
+      <div class="step-note">Find the degrees of freedom and the t critical value for a \(90\%\) confidence interval.</div>
+      <div class="formula-box">
+        \[
+          df=50-1=49,\qquad t^* \approx 1.677
+        \]
+      </div>
+      <div class="tag tag-purple">Step 2</div>
+      <div class="step-note">Compute the standard error.</div>
+      <div class="formula-box">
+        \[
+          SE=\frac{0.72}{\sqrt{50}} \approx 0.102
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-green">Step 3</div>
+      <div class="step-note">Compute the margin of error.</div>
+      <div class="formula-box">
+        \[
+          ME=1.677(0.102)\approx 0.171
+        \]
+      </div>
+      <div class="tag tag-amber">Step 4</div>
+      <div class="step-note">Build the interval around the sample mean.</div>
+      <div class="formula-box">
+        \[
+          3.1 \pm 0.171=(2.929,\ 3.271)
+        \]
+      </div>
+      <div class="callout">
+        <strong>Interpretation:</strong> We are \(90\%\) confident that the average length of gribbles is between \(2.929\) mm and \(3.271\) mm.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Hypothesis Testing for a Mean</h2>
+  <p class="subtitle">For a mean, the test statistic uses a t-distribution with \(df=n-1\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Test Statistic</h3>
+      <div class="formula-box">
+        \[
+          t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+        \]
+      </div>
+      <div class="step-note">The numerator compares the sample mean to the null mean \(\mu_0\).</div>
+    </div>
+    <div class="card card-rose">
+      <h3>p-Value</h3>
+      <ul>
+        <li>The p-value is the area in the tail(s) beyond the observed \(t\).</li>
+        <li>Use a t-distribution with \(df=n-1\).</li>
+        <li>The tail direction comes from the alternative hypothesis.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Hypothesis Test Example</h2>
+  <p class="subtitle">Chips Ahoy! advertised at least \(1000\) chocolate chips per bag. A sample of \(42\) bags was counted.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">Step 1</div>
+      <div class="step-note">Set up the hypotheses for checking whether the average number of chips is greater than \(1000\).</div>
+      <div class="formula-box">
+        \[
+          H_0:\mu=1000 \qquad H_a:\mu>1000
+        \]
+      </div>
+      <div class="tag tag-purple">Step 2</div>
+      <div class="step-note">Check conditions and record the sample statistics: \(n=42\), \(\bar{x}=1261.6\), and \(s=117.6\).</div>
+      <div class="callout">
+        With \(n=42\), the sample size is large, so the t test is appropriate.
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-green">Step 3</div>
+      <div class="step-note">Compute the t statistic.</div>
+      <div class="formula-box">
+        \[
+          t=\frac{1261.6-1000}{117.6/\sqrt{42}} \approx 14.42
+        \]
+      </div>
+      <div class="tag tag-amber">Steps 4-5</div>
+      <div class="step-note">Find the right-tail p-value and interpret in context.</div>
+      <div class="callout">
+        <strong>Conclusion:</strong> We reject the null hypothesis \(H_0\). We have statistically significant evidence that the average number of chocolate chips per bag is greater than \(1000\).
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>What to Remember</h2>
+  <p class="subtitle">For means, the big difference is replacing \(\sigma\) with \(s\), which leads to the t-distribution.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Confidence Interval</h3>
+      <div class="formula-box">
+        \[
+          \bar{x} \pm t^* \cdot \frac{s}{\sqrt{n}}
+        \]
+      </div>
+      <ul>
+        <li>Use \(df=n-1\).</li>
+        <li>Need a large sample or approximately normal data.</li>
+        <li>Interpret the interval as a plausible range for the population mean.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Hypothesis Test</h3>
+      <div class="formula-box">
+        \[
+          t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+        \]
+      </div>
+      <ul>
+        <li>Use a t-distribution with \(df=n-1\).</li>
+        <li>The p-value is the tail area beyond the observed \(t\).</li>
+        <li>Small p-values give evidence against \(H_0\).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) {
+      window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+    }
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
+      event.preventDefault();
+      renderSlide(current + 1);
+    }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+      event.preventDefault();
+      renderSlide(current - 1);
+    }
+  });
+
+  document.addEventListener('click', () => renderSlide(current + 1));
+  renderSlide(0);
+</script>
+
+</body>
+</html>
