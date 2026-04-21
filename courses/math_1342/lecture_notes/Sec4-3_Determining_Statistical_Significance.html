@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sec 4.3 Determining Statistical Significance</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
+  .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
+  h1 { font-size: 56px; font-weight: 800; letter-spacing: -1px; line-height: 1.08; margin-bottom: 14px; }
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 18px; }
+  h3 { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+  .subtitle { font-size: 20px; color: var(--muted); font-weight: 400; margin-bottom: 28px; max-width: 980px; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; align-items: start; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; align-items: start; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .card-accent { border-left: 3px solid var(--accent); }
+  .card-accent2 { border-left: 3px solid var(--accent2); }
+  .card-accent3 { border-left: 3px solid var(--accent3); }
+  .card-green { border-left: 3px solid var(--green); }
+  .card-amber { border-left: 3px solid var(--amber); }
+  .card-rose { border-left: 3px solid var(--rose); }
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 6px 0 6px 20px; font-size: 18px; line-height: 1.45; position: relative; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .small li { font-size: 15px; padding: 4px 0 4px 18px; }
+  .small li::before { top: 11px; width: 5px; height: 5px; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
+  .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); }
+  .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); }
+  .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); }
+  .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+  .big-number { font-size: 54px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
+  .formula-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; font-size: 22px; margin-top: 12px; margin-bottom: 10px; }
+  .callout { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 18px 22px; margin-top: 16px; font-size: 16px; line-height: 1.55; }
+  .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  .table-card table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15px; }
+  .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
+  .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
+  .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Arrow keys or click to navigate</div>
+<div class="deck" id="deck">
+
+<!-- Slide 1: Title -->
+<div class="slide title-slide">
+  <span class="tag tag-green">Section 4.3</span>
+  <h1>Determining Statistical<br>Significance</h1>
+  <p class="subtitle">Using p-values to make formal decisions about hypotheses</p>
+</div>
+
+<!-- Slide 2: Strength of Evidence -->
+<div class="slide">
+  <h2>Strength of Evidence</h2>
+  <p class="subtitle">Smaller p-values provide stronger evidence against \(H_0\)</p>
+  <div class="card card-accent table-card" style="max-width: 860px; margin-bottom: 18px;">
+    <h3>Informal Guidelines for p-value Strength</h3>
+    <table>
+      <tr><th>p-value</th><th>Strength of Evidence Against \(H_0\)</th></tr>
+      <tr><td>Greater than 0.1</td><td>Not enough evidence</td></tr>
+      <tr><td>0.05 to 0.1</td><td>Some evidence</td></tr>
+      <tr><td>0.01 to 0.05</td><td>Moderate evidence</td></tr>
+      <tr><td>Less than 0.01</td><td>Strong evidence</td></tr>
+    </table>
+  </div>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>Small p-value</h3>
+      <ul class="small">
+        <li>The observed result is unlikely under \(H_0\)</li>
+        <li>The data are surprising if \(H_0\) is true</li>
+        <li>We have evidence against \(H_0\)</li>
+      </ul>
+    </div>
+    <div class="card card-rose">
+      <h3>Large p-value</h3>
+      <ul class="small">
+        <li>The observed result is plausible under \(H_0\)</li>
+        <li>The data are not surprising if \(H_0\) is true</li>
+        <li>We do not have evidence against \(H_0\)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 3: Significance Level -->
+<div class="slide">
+  <h2>The Significance Level \(\alpha\)</h2>
+  <p class="subtitle">Setting a threshold for "small enough"</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Definition</h3>
+      <ul>
+        <li>The <strong>significance level</strong> \(\alpha\) (alpha) is a pre-chosen threshold for the p-value</li>
+        <li>It is the boundary between "convincing" and "not convincing" evidence</li>
+        <li>The most common choice is \(\alpha = 0.05\)</li>
+        <li>Other common values: \(\alpha = 0.01\) or \(\alpha = 0.10\)</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>Why 0.05?</h3>
+      <ul>
+        <li>Convention established by R.A. Fisher in the early 1900s</li>
+        <li>Means we accept a <strong>5% risk</strong> of rejecting \(H_0\) when it is actually true</li>
+        <li>Balances being too lenient vs. too strict</li>
+        <li>The choice of \(\alpha\) should be made <strong>before</strong> looking at data</li>
+      </ul>
+    </div>
+  </div>
+  <div class="formula-box">
+    The significance level \(\alpha\) is the threshold: if the p-value falls below \(\alpha\), we consider the evidence strong enough to reject \(H_0\).
+  </div>
+</div>
+
+<!-- Slide 4: Making Formal Decisions -->
+<div class="slide">
+  <h2>Making Formal Decisions</h2>
+  <p class="subtitle">The two possible outcomes of a hypothesis test</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>If p-value \(< \alpha\)</h3>
+      <div class="big-number" style="color: var(--green);">Reject \(H_0\)</div>
+      <ul>
+        <li>The results are <strong>statistically significant</strong></li>
+        <li>We have enough evidence to conclude \(H_a\)</li>
+        <li>The observed result is unlikely to have occurred by random chance alone</li>
+      </ul>
+    </div>
+    <div class="card card-rose">
+      <h3>If p-value \(\geq \alpha\)</h3>
+      <div class="big-number" style="color: var(--rose);">Do Not Reject \(H_0\)</div>
+      <ul>
+        <li>The results are <strong>not statistically significant</strong></li>
+        <li>We do not have enough evidence to conclude \(H_a\)</li>
+        <li>The observed result is plausible under random chance</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Remember:</strong> We always set \(\alpha\) before collecting data, not after. Choosing \(\alpha\) after seeing the p-value would be cheating!
+  </div>
+</div>
+
+<!-- Slide 5: Statistical Significance -->
+<div class="slide">
+  <h2>Statistical Significance</h2>
+  <p class="subtitle">Applying the decision rule to real examples</p>
+  <div class="card card-accent" style="max-width: 900px; margin-bottom: 18px;">
+    <h3>Definition</h3>
+    <div class="formula-box">
+      A result is <strong>statistically significant</strong> if the p-value is less than the significance level \(\alpha\).
+    </div>
+  </div>
+  <div class="grid-3">
+    <div class="card card-green">
+      <span class="tag tag-green">Example 1</span>
+      <h3>Resveratrol Study A</h3>
+      <p class="step-note">p-value = 0.04, \(\alpha = 0.05\)</p>
+      <p class="step-note">Since \(0.04 < 0.05\):</p>
+      <p style="font-size: 17px; font-weight: 700; color: var(--green);">Reject \(H_0\) -- Significant</p>
+    </div>
+    <div class="card card-amber">
+      <span class="tag tag-amber">Example 2</span>
+      <h3>Resveratrol Study B</h3>
+      <p class="step-note">p-value = 0.12, \(\alpha = 0.05\)</p>
+      <p class="step-note">Since \(0.12 \geq 0.05\):</p>
+      <p style="font-size: 17px; font-weight: 700; color: var(--amber);">Do not reject \(H_0\) -- Not significant</p>
+    </div>
+    <div class="card card-accent2">
+      <span class="tag tag-purple">Example 3</span>
+      <h3>Resveratrol Study C</h3>
+      <p class="step-note">p-value = 0.0003, \(\alpha = 0.05\)</p>
+      <p class="step-note">Since \(0.0003 < 0.05\):</p>
+      <p style="font-size: 17px; font-weight: 700; color: var(--green);">Reject \(H_0\) -- Highly significant</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Never "Accept" H0 -->
+<div class="slide">
+  <h2>Never "Accept" \(H_0\)</h2>
+  <p class="subtitle">An important distinction in hypothesis testing language</p>
+  <div class="grid-2">
+    <div class="card card-rose">
+      <h3>Common Mistake</h3>
+      <div class="formula-box" style="font-size: 20px; border-left-color: var(--rose);">
+        WRONG: "We accept \(H_0\)"
+      </div>
+      <ul>
+        <li>Failing to reject \(H_0\) does <strong>not</strong> mean \(H_0\) is true</li>
+        <li>It only means we did not find enough evidence against it</li>
+        <li>Like a jury verdict of "not guilty" -- it does not mean "innocent"</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Correct Language</h3>
+      <div class="formula-box" style="font-size: 20px; border-left-color: var(--green);">
+        CORRECT: "We do not reject \(H_0\)"
+      </div>
+      <ul>
+        <li>Lack of evidence against \(H_0\) is <strong>not the same</strong> as evidence for \(H_0\)</li>
+        <li>"We do not have sufficient evidence to conclude \(H_a\)"</li>
+        <li>The study may lack power (e.g., sample too small) to detect a real effect</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Analogy:</strong> "Absence of evidence is not evidence of absence." Just because we cannot prove something, it does not mean it is false.
+  </div>
+</div>
+
+<!-- Slide 7: Conclusions in Context -->
+<div class="slide">
+  <h2>Conclusions in Context</h2>
+  <p class="subtitle">How to write a proper conclusion for a hypothesis test</p>
+  <div class="card card-accent" style="max-width: 900px; margin-bottom: 16px;">
+    <h3>Conclusion Template</h3>
+    <div class="formula-box" style="font-size: 18px;">
+      <strong>Step 1:</strong> State the decision (reject or do not reject \(H_0\)).<br>
+      <strong>Step 2:</strong> State the conclusion in context about \(H_a\).
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>When We Reject \(H_0\)</h3>
+      <p class="step-note"><strong>Example:</strong> Testing whether resveratrol helps with weight loss. p-value = 0.04, \(\alpha = 0.05\).</p>
+      <p style="font-size: 16px; line-height: 1.5;">"We reject \(H_0\). There is sufficient evidence that resveratrol is associated with weight loss."</p>
+    </div>
+    <div class="card card-amber">
+      <h3>When We Do Not Reject \(H_0\)</h3>
+      <p class="step-note"><strong>Example:</strong> Testing whether a coin is unfair. p-value = 0.35, \(\alpha = 0.05\).</p>
+      <p style="font-size: 16px; line-height: 1.5;">"We do not reject \(H_0\). There is not sufficient evidence that the coin is unfair."</p>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Always</strong> write conclusions in the context of the original problem. Avoid generic statements like "reject \(H_0\)" without connecting back to the real-world question.
+  </div>
+</div>
+
+<!-- Slide 8: Summary -->
+<div class="slide">
+  <h2>Summary: Determining Statistical Significance</h2>
+  <p class="subtitle">Key takeaways from Section 4.3</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Decision Framework</h3>
+      <ul>
+        <li>The <strong>significance level</strong> \(\alpha\) is the cutoff (commonly 0.05)</li>
+        <li>p-value \(< \alpha\) &rarr; <strong>Reject</strong> \(H_0\) (statistically significant)</li>
+        <li>p-value \(\geq \alpha\) &rarr; <strong>Do not reject</strong> \(H_0\) (not significant)</li>
+        <li>Smaller p-value = stronger evidence against \(H_0\)</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Important Reminders</h3>
+      <ul>
+        <li><strong>Never</strong> say "accept \(H_0\)" -- only "do not reject"</li>
+        <li>Lack of evidence against \(H_0 \neq\) evidence for \(H_0\)</li>
+        <li>Always state conclusions <strong>in context</strong></li>
+        <li>The informal scale (0.1, 0.05, 0.01) provides useful guidance beyond strict cutoffs</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>The big picture:</strong> Hypothesis testing gives us a principled framework for using data to assess claims. The p-value quantifies evidence, and the significance level \(\alpha\) provides a decision boundary.
+  </div>
+</div>
+
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
+  });
+  document.addEventListener('click', () => renderSlide(current + 1));
+  renderSlide(0);
+</script>
+</body>
+</html>

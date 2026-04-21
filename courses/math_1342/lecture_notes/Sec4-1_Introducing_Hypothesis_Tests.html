@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sec 4.1 Introducing Hypothesis Tests</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
+  .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
+  h1 { font-size: 56px; font-weight: 800; letter-spacing: -1px; line-height: 1.08; margin-bottom: 14px; }
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 18px; }
+  h3 { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+  .subtitle { font-size: 20px; color: var(--muted); font-weight: 400; margin-bottom: 28px; max-width: 980px; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; align-items: start; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; align-items: start; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .card-accent { border-left: 3px solid var(--accent); }
+  .card-accent2 { border-left: 3px solid var(--accent2); }
+  .card-accent3 { border-left: 3px solid var(--accent3); }
+  .card-green { border-left: 3px solid var(--green); }
+  .card-amber { border-left: 3px solid var(--amber); }
+  .card-rose { border-left: 3px solid var(--rose); }
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 6px 0 6px 20px; font-size: 18px; line-height: 1.45; position: relative; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .small li { font-size: 15px; padding: 4px 0 4px 18px; }
+  .small li::before { top: 11px; width: 5px; height: 5px; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
+  .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); }
+  .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); }
+  .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); }
+  .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+  .big-number { font-size: 54px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
+  .formula-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; font-size: 22px; margin-top: 12px; margin-bottom: 10px; }
+  .callout { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 18px 22px; margin-top: 16px; font-size: 16px; line-height: 1.55; }
+  .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  .table-card table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15px; }
+  .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
+  .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
+  .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Arrow keys or click to navigate</div>
+<div class="deck" id="deck">
+
+<!-- Slide 1: Title -->
+<div class="slide title-slide">
+  <span class="tag tag-blue">Section 4.1</span>
+  <h1>Introducing Hypothesis Tests</h1>
+  <p class="subtitle">Using sample data to assess claims about a population</p>
+</div>
+
+<!-- Slide 2: What Is a Statistical Test? -->
+<div class="slide">
+  <h2>What Is a Statistical Test?</h2>
+  <p class="subtitle">The core idea behind hypothesis testing</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Definition</h3>
+      <ul>
+        <li>A <strong>statistical test</strong> uses data from a sample to assess a claim about a population</li>
+        <li>We collect evidence (data) and evaluate whether it supports or contradicts a specific claim</li>
+        <li>Similar to a courtroom trial: we start by assuming innocence and look for evidence of guilt</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>Key Ingredients</h3>
+      <ul>
+        <li><strong>A claim</strong> about a population parameter</li>
+        <li><strong>Sample data</strong> that can be compared to the claim</li>
+        <li><strong>A method</strong> to measure how well data support or refute the claim</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    The goal of a statistical test is to determine whether the sample data provide enough evidence to refute a claim about a population.
+  </div>
+</div>
+
+<!-- Slide 3: ESP Example with Zener Cards -->
+<div class="slide">
+  <h2>Example: Testing for ESP</h2>
+  <p class="subtitle">Can a person use extrasensory perception to identify hidden cards?</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Zener Card Experiment</h3>
+      <ul>
+        <li>A deck of <strong>Zener cards</strong> has 5 different symbols</li>
+        <li>A card is randomly selected and hidden from the subject</li>
+        <li>The subject guesses which symbol is on the card</li>
+        <li>This is repeated many times</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>What Would We Expect?</h3>
+      <ul>
+        <li>With 5 symbols, pure guessing gives a \(\frac{1}{5} = 0.20\) chance of being correct</li>
+        <li>If the subject has ESP, they should do <strong>better</strong> than 1 out of 5</li>
+        <li>The population parameter of interest is \(p\) = proportion of correct guesses</li>
+      </ul>
+    </div>
+  </div>
+  <div class="formula-box">
+    If no ESP: \(p = \frac{1}{5} = 0.20\) &nbsp;&nbsp;&nbsp; If ESP exists: \(p > 0.20\)
+  </div>
+</div>
+
+<!-- Slide 4: Null and Alternative Hypotheses -->
+<div class="slide">
+  <h2>Null and Alternative Hypotheses</h2>
+  <p class="subtitle">The two competing statements in every hypothesis test</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Null Hypothesis \(H_0\)</h3>
+      <ul>
+        <li>A statement that there is <strong>no effect</strong> or <strong>no difference</strong></li>
+        <li>Represents the "status quo" or default position</li>
+        <li>Usually contains an equality sign: \(=\)</li>
+        <li>We assume \(H_0\) is true and look for evidence against it</li>
+      </ul>
+    </div>
+    <div class="card card-rose">
+      <h3>Alternative Hypothesis \(H_a\)</h3>
+      <ul>
+        <li>The claim we are seeking <strong>evidence for</strong></li>
+        <li>Represents a new effect or a difference from the status quo</li>
+        <li>Usually contains an inequality: \(>\), \(<\), or \(\neq\)</li>
+        <li>We need convincing evidence to support \(H_a\)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Key point:</strong> The null hypothesis is the "default" that we assume true. The alternative hypothesis is what we hope to find evidence for. A hypothesis test asks: "Is the data surprising enough to reject \(H_0\)?"
+  </div>
+</div>
+
+<!-- Slide 5: Writing Hypotheses -->
+<div class="slide">
+  <h2>Writing Hypotheses</h2>
+  <p class="subtitle">How to set up the null and alternative for a given scenario</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>ESP Example</h3>
+      <p class="step-note">Claim: A person can correctly identify Zener cards more often than random guessing.</p>
+      <div class="formula-box">
+        \(H_0: p = 0.20\)<br>
+        \(H_a: p > 0.20\)
+      </div>
+      <p class="step-note">Here \(p\) = the true proportion of correct guesses for this person.</p>
+    </div>
+    <div class="card card-amber">
+      <h3>Tips for Writing Hypotheses</h3>
+      <ul>
+        <li>Hypotheses are always about <strong>population parameters</strong> (not sample statistics)</li>
+        <li>Use notation like \(p\), \(\mu\), \(\mu_1 - \mu_2\), etc.</li>
+        <li>\(H_0\) always includes the "=" case</li>
+        <li>\(H_a\) is determined by the research question</li>
+        <li>Set up hypotheses <strong>before</strong> collecting data</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Sleep vs Caffeine Example -->
+<div class="slide">
+  <h2>Example: Sleep vs. Caffeine</h2>
+  <p class="subtitle">Does sleep or caffeine have a different effect on memory performance?</p>
+  <div class="grid-2">
+    <div class="card card-accent2">
+      <h3>The Study</h3>
+      <ul>
+        <li>Researchers randomly assign subjects to either take a <strong>nap</strong> or drink <strong>caffeine</strong></li>
+        <li>Later, both groups complete a memory task</li>
+        <li>We want to know if there is a <strong>difference</strong> in mean scores between the two groups</li>
+      </ul>
+    </div>
+    <div class="card card-accent3">
+      <h3>Setting Up Hypotheses</h3>
+      <p class="step-note">Let \(\mu_s\) = mean score for the sleep group<br>Let \(\mu_c\) = mean score for the caffeine group</p>
+      <div class="formula-box">
+        \(H_0: \mu_s = \mu_c\)<br>
+        \(H_a: \mu_s \neq \mu_c\)
+      </div>
+      <p class="step-note">This is a <strong>two-sided</strong> test because we are looking for any difference, not a specific direction.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 7: Types of Hypotheses -->
+<div class="slide">
+  <h2>One-Sided vs. Two-Sided Tests</h2>
+  <p class="subtitle">The direction of the alternative hypothesis matters</p>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <h3>Right-Tailed (Upper)</h3>
+      <div class="formula-box" style="font-size:18px;">
+        \(H_0: \text{parameter} = \text{value}\)<br>
+        \(H_a: \text{parameter} > \text{value}\)
+      </div>
+      <p class="step-note">Evidence that the parameter is <strong>greater than</strong> the claimed value.</p>
+      <p class="step-note"><em>Example: ESP test</em></p>
+    </div>
+    <div class="card card-accent2">
+      <h3>Left-Tailed (Lower)</h3>
+      <div class="formula-box" style="font-size:18px;">
+        \(H_0: \text{parameter} = \text{value}\)<br>
+        \(H_a: \text{parameter} < \text{value}\)
+      </div>
+      <p class="step-note">Evidence that the parameter is <strong>less than</strong> the claimed value.</p>
+      <p class="step-note"><em>Example: Drug lowers blood pressure</em></p>
+    </div>
+    <div class="card card-rose">
+      <h3>Two-Tailed</h3>
+      <div class="formula-box" style="font-size:18px;">
+        \(H_0: \text{parameter} = \text{value}\)<br>
+        \(H_a: \text{parameter} \neq \text{value}\)
+      </div>
+      <p class="step-note">Evidence that the parameter <strong>differs</strong> from the claimed value in either direction.</p>
+      <p class="step-note"><em>Example: Sleep vs. Caffeine</em></p>
+    </div>
+  </div>
+  <div class="callout">
+    One-sided tests look for evidence in a specific direction. Two-sided tests look for evidence of any difference from the null value.
+  </div>
+</div>
+
+<!-- Slide 8: Summary -->
+<div class="slide">
+  <h2>Summary: Introducing Hypothesis Tests</h2>
+  <p class="subtitle">Key takeaways from Section 4.1</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Core Concepts</h3>
+      <ul>
+        <li>A <strong>statistical test</strong> uses sample data to assess a claim about a population</li>
+        <li>The <strong>null hypothesis</strong> \(H_0\) states "no effect" or "no difference"</li>
+        <li>The <strong>alternative hypothesis</strong> \(H_a\) is the claim we seek evidence for</li>
+        <li>Hypotheses are always about <strong>population parameters</strong></li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Important Details</h3>
+      <ul>
+        <li>\(H_0\) always includes \(=\); \(H_a\) uses \(>\), \(<\), or \(\neq\)</li>
+        <li>The alternative can be <strong>one-sided</strong> (\(>\) or \(<\)) or <strong>two-sided</strong> (\(\neq\))</li>
+        <li>We assume \(H_0\) is true and look for evidence against it</li>
+        <li>The <strong>goal</strong> is to determine if data provide enough evidence to reject \(H_0\) in favor of \(H_a\)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Coming up next:</strong> In Section 4.2, we will learn how to measure the strength of evidence against \(H_0\) using <em>p</em>-values.
+  </div>
+</div>
+
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
+  });
+  document.addEventListener('click', () => renderSlide(current + 1));
+  renderSlide(0);
+</script>
+</body>
+</html>

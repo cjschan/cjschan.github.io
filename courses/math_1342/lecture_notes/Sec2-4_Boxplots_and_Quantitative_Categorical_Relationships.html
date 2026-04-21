@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 2.4: Boxplots and Quantitative/Categorical Relationships</title>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
+  .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
+  h1 { font-size: 56px; font-weight: 800; letter-spacing: -1px; line-height: 1.08; margin-bottom: 14px; }
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 18px; }
+  h3 { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+  .subtitle { font-size: 20px; color: var(--muted); font-weight: 400; margin-bottom: 28px; max-width: 980px; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; align-items: start; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; align-items: start; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .card-accent { border-left: 3px solid var(--accent); } .card-accent2 { border-left: 3px solid var(--accent2); } .card-accent3 { border-left: 3px solid var(--accent3); } .card-green { border-left: 3px solid var(--green); } .card-amber { border-left: 3px solid var(--amber); } .card-rose { border-left: 3px solid var(--rose); }
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 6px 0 6px 20px; font-size: 18px; line-height: 1.45; position: relative; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .small li { font-size: 15px; padding: 4px 0 4px 18px; } .small li::before { top: 11px; width: 5px; height: 5px; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); } .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); } .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); } .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); } .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+  .big-number { font-size: 54px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
+  .formula-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; font-size: 22px; margin-top: 12px; margin-bottom: 10px; }
+  .callout { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 18px 22px; margin-top: 16px; font-size: 16px; line-height: 1.55; }
+  .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  .table-card table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15px; }
+  .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
+  .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
+  .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Arrow keys or click to navigate</div>
+<div class="deck" id="deck">
+
+<div class="slide title-slide">
+  <span class="tag tag-blue">Section 2.4</span>
+  <h1>Boxplots and Quantitative/Categorical Relationships</h1>
+  <p class="subtitle">Identifying outliers, constructing boxplots, and comparing quantitative data across groups.</p>
+</div>
+
+<div class="slide">
+  <h2>Identifying Outliers</h2>
+  <p class="subtitle">A rule of thumb uses the IQR to flag unusual values.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Outlier Rule</h3>
+      <div class="step-note">A data value is an outlier if it is:</div>
+      <div class="formula-box">
+        \[
+          \text{smaller than } Q_1 - 1.5 \times \text{IQR}
+        \]
+      </div>
+      <div class="formula-box">
+        \[
+          \text{or larger than } Q_3 + 1.5 \times \text{IQR}
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <h3>Example</h3>
+      <div class="step-note">Five number summary: (2, 15, 46, 149, 536)</div>
+      <ul class="small">
+        <li>IQR = 149 - 15 = 134</li>
+        <li>Lower fence: 15 - 1.5(134) = -186</li>
+        <li>Upper fence: 149 + 1.5(134) = 350</li>
+        <li>Values above 350 are outliers: 402, 447, 511, 536</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Constructing a Boxplot</h2>
+  <p class="subtitle">A boxplot displays the five number summary and flags outliers.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Steps</h3>
+      <ul>
+        <li>Draw a box from \(Q_1\) to \(Q_3\).</li>
+        <li>Draw a line inside the box at the median.</li>
+        <li>Extend whiskers to the most extreme non-outlier values.</li>
+        <li>Plot each outlier individually with a dot or asterisk.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>What You Can Read</h3>
+      <ul>
+        <li>Center: the median line.</li>
+        <li>Spread: width of the box (IQR).</li>
+        <li>Shape: compare whisker lengths for skewness.</li>
+        <li>Outliers: individual points beyond whiskers.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Quantitative and Categorical Relationships</h2>
+  <p class="subtitle">Break down a quantitative variable by categorical groups to compare distributions.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Side-by-Side Boxplots</h3>
+      <ul>
+        <li>One boxplot for each category on the same scale.</li>
+        <li>Compare centers, spreads, and outliers across groups.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Difference in Means</h3>
+      <div class="formula-box">
+        \[
+          \bar{x}_1 - \bar{x}_2
+        \]
+      </div>
+      <div class="step-note">The summary statistic for comparing a quantitative response across two groups.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>What to Remember</h2>
+  <p class="subtitle">Boxplots and side-by-side comparisons complete the descriptive statistics toolkit.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>One Quantitative Variable</h3>
+      <ul>
+        <li>Visualizations: dotplot, histogram, boxplot</li>
+        <li>Center: mean, median</li>
+        <li>Spread: SD, range, IQR</li>
+        <li>Outliers: 1.5 &times; IQR rule</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Quantitative + Categorical</h3>
+      <ul>
+        <li>Visualization: side-by-side boxplots</li>
+        <li>Statistics by group</li>
+        <li>Summary: difference in means</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
+  });
+  document.addEventListener('click', () => renderSlide(current + 1));
+  renderSlide(0);
+</script>
+</body>
+</html>

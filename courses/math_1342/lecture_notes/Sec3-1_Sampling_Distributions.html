@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 3.1 – Sampling Distributions</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
+  .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
+  h1 { font-size: 56px; font-weight: 800; letter-spacing: -1px; line-height: 1.08; margin-bottom: 14px; }
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 18px; }
+  h3 { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+  .subtitle { font-size: 20px; color: var(--muted); font-weight: 400; margin-bottom: 28px; max-width: 980px; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; align-items: start; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; align-items: start; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .card-accent { border-left: 3px solid var(--accent); }
+  .card-accent2 { border-left: 3px solid var(--accent2); }
+  .card-accent3 { border-left: 3px solid var(--accent3); }
+  .card-green { border-left: 3px solid var(--green); }
+  .card-amber { border-left: 3px solid var(--amber); }
+  .card-rose { border-left: 3px solid var(--rose); }
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 6px 0 6px 20px; font-size: 18px; line-height: 1.45; position: relative; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .small li { font-size: 15px; padding: 4px 0 4px 18px; }
+  .small li::before { top: 11px; width: 5px; height: 5px; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
+  .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); }
+  .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); }
+  .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); }
+  .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+  .big-number { font-size: 54px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
+  .formula-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; font-size: 22px; margin-top: 12px; margin-bottom: 10px; }
+  .callout { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 18px 22px; margin-top: 16px; font-size: 16px; line-height: 1.55; }
+  .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  .table-card table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15px; }
+  .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
+  .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
+  .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Arrow keys or click to navigate</div>
+<div class="deck" id="deck">
+
+<!-- Slide 1: Title -->
+<div class="slide title-slide">
+  <span class="tag tag-blue">Section 3.1</span>
+  <h1>Sampling Distributions</h1>
+  <p class="subtitle">Understanding how sample statistics behave across repeated sampling</p>
+</div>
+
+<!-- Slide 2: Statistical Inference -->
+<div class="slide">
+  <span class="tag tag-blue">Big Picture</span>
+  <h2>Statistical Inference</h2>
+  <p class="subtitle">The core goal of statistics: learn about populations from samples.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>The Problem</h3>
+      <ul>
+        <li>We want to know about an entire <strong>population</strong></li>
+        <li>It is usually impossible or impractical to measure everyone</li>
+        <li>So we collect a <strong>sample</strong> and use it to draw conclusions</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>Statistical Inference</h3>
+      <ul>
+        <li>Drawing conclusions about a <strong>population</strong> based on information from a <strong>sample</strong></li>
+        <li>We use sample data to estimate, predict, and make decisions about the population</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Key idea:</strong> We never know the true population values exactly — we use samples to get our best estimates.
+  </div>
+</div>
+
+<!-- Slide 3: Parameter vs Statistic -->
+<div class="slide">
+  <span class="tag tag-purple">Definitions</span>
+  <h2>Parameter vs Statistic</h2>
+  <p class="subtitle">Two categories of numerical summaries — one for populations, one for samples.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Parameter (Population)</h3>
+      <p class="step-note">A number that describes the <strong>population</strong>. Usually unknown.</p>
+      <div class="formula-box">
+        \(\mu\) = population mean<br>
+        \(\sigma\) = population std dev<br>
+        \(p\) = population proportion<br>
+        \(\rho\) = population correlation
+      </div>
+    </div>
+    <div class="card card-accent2">
+      <h3>Statistic (Sample)</h3>
+      <p class="step-note">A number computed from a <strong>sample</strong>. Known and calculable.</p>
+      <div class="formula-box">
+        \(\bar{x}\) = sample mean<br>
+        \(s\) = sample std dev<br>
+        \(\hat{p}\) = sample proportion<br>
+        \(r\) = sample correlation
+      </div>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Remember:</strong> Parameters are fixed but unknown. Statistics are known but vary from sample to sample.
+  </div>
+</div>
+
+<!-- Slide 4: Point Estimates -->
+<div class="slide">
+  <span class="tag tag-green">Estimation</span>
+  <h2>Point Estimates</h2>
+  <p class="subtitle">Using a single sample statistic to estimate a population parameter.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>What Is a Point Estimate?</h3>
+      <ul>
+        <li>A <strong>point estimate</strong> is the value of a sample statistic used to estimate a population parameter</li>
+        <li>It is our single "best guess" for the parameter</li>
+        <li>Example: Use \(\bar{x}\) to estimate \(\mu\)</li>
+        <li>Example: Use \(\hat{p}\) to estimate \(p\)</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>The Catch</h3>
+      <ul>
+        <li>A point estimate is almost certainly <strong>not exactly equal</strong> to the parameter</li>
+        <li>Different samples give <strong>different statistics</strong></li>
+        <li>Sample statistics <strong>vary</strong> from sample to sample</li>
+        <li>This natural variability is called <strong>sampling variability</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Question:</strong> If every sample gives a slightly different answer, how do we know how close our estimate is to the truth?
+  </div>
+</div>
+
+<!-- Slide 5: Sampling Distribution -->
+<div class="slide">
+  <span class="tag tag-blue">Key Concept</span>
+  <h2>Sampling Distribution</h2>
+  <p class="subtitle">What happens when we look at statistics from many, many samples?</p>
+  <div class="card card-accent" style="margin-bottom: 18px;">
+    <h3>Definition</h3>
+    <ul>
+      <li>A <strong>sampling distribution</strong> is the distribution of a sample statistic computed from many different samples of the <strong>same size</strong> drawn from the <strong>same population</strong></li>
+    </ul>
+  </div>
+  <div class="grid-3">
+    <div class="card card-accent2">
+      <h3>Step 1</h3>
+      <p class="step-note">Take a random sample of size \(n\) from the population</p>
+    </div>
+    <div class="card card-accent2">
+      <h3>Step 2</h3>
+      <p class="step-note">Compute the statistic (e.g., \(\bar{x}\) or \(\hat{p}\))</p>
+    </div>
+    <div class="card card-accent2">
+      <h3>Step 3</h3>
+      <p class="step-note">Repeat many times and look at the distribution of all those statistics</p>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Think of it this way:</strong> The sampling distribution tells us how much a statistic <em>tends to vary</em> across different samples.
+  </div>
+</div>
+
+<!-- Slide 6: Center and Shape -->
+<div class="slide">
+  <span class="tag tag-purple">Properties</span>
+  <h2>Center and Shape of the Sampling Distribution</h2>
+  <p class="subtitle">Two important features that emerge when we use random samples.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Center</h3>
+      <ul>
+        <li>If we take <strong>random samples</strong>, the sampling distribution is <strong>centered around the population parameter</strong></li>
+        <li>The mean of all sample means \(= \mu\)</li>
+        <li>The mean of all sample proportions \(= p\)</li>
+        <li>This means sample statistics are <strong>unbiased estimators</strong> of the parameter</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>Shape</h3>
+      <ul>
+        <li>For large enough sample size \(n\), the sampling distribution is approximately <strong>symmetric and bell-shaped</strong></li>
+        <li>This holds regardless of the shape of the original population</li>
+        <li>This remarkable result is connected to the <strong>Central Limit Theorem</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Key takeaway:</strong> Random sampling guarantees the sampling distribution is centered at the truth, and large samples make it bell-shaped.
+  </div>
+</div>
+
+<!-- Slide 7: Standard Error -->
+<div class="slide">
+  <span class="tag tag-green">Spread</span>
+  <h2>Standard Error (SE)</h2>
+  <p class="subtitle">Measuring how much a sample statistic varies from sample to sample.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>Definition</h3>
+      <ul>
+        <li>The <strong>standard error (SE)</strong> is the standard deviation of the sampling distribution</li>
+        <li>It measures the <strong>typical distance</strong> between a sample statistic and the population parameter</li>
+      </ul>
+      <div class="formula-box">
+        \[\text{SE} = \text{Std Dev of Sampling Distribution}\]
+      </div>
+    </div>
+    <div class="card card-amber">
+      <h3>Why It Matters</h3>
+      <ul>
+        <li>Small SE means statistics cluster tightly around the parameter — <strong>more precise</strong></li>
+        <li>Large SE means statistics spread widely — <strong>less precise</strong></li>
+        <li>SE tells us how much "error" we typically expect in our estimate</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Note:</strong> Standard error is NOT the same as standard deviation. SD describes variability in individual data values; SE describes variability in a <em>statistic</em>.
+  </div>
+</div>
+
+<!-- Slide 8: Sample Size Effect -->
+<div class="slide">
+  <span class="tag tag-amber">Important Relationship</span>
+  <h2>Sample Size and Standard Error</h2>
+  <p class="subtitle">How does increasing \(n\) affect the precision of our estimates?</p>
+  <div class="grid-3">
+    <div class="card card-rose">
+      <h3>Small \(n\)</h3>
+      <div class="big-number" style="color: var(--rose);">Large SE</div>
+      <p class="stat-label">Statistics vary a lot from sample to sample. Estimates are less precise.</p>
+    </div>
+    <div class="card card-amber">
+      <h3>Medium \(n\)</h3>
+      <div class="big-number" style="color: var(--amber);">Medium SE</div>
+      <p class="stat-label">Moderate variability. Estimates are reasonably precise.</p>
+    </div>
+    <div class="card card-green">
+      <h3>Large \(n\)</h3>
+      <div class="big-number" style="color: var(--green);">Small SE</div>
+      <p class="stat-label">Statistics cluster tightly around the parameter. Estimates are very precise.</p>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>The rule:</strong> Larger sample size \(\Rightarrow\) smaller standard error \(\Rightarrow\) less variability \(\Rightarrow\) more precise estimates.
+  </div>
+</div>
+
+<!-- Slide 9: Summary -->
+<div class="slide">
+  <span class="tag tag-blue">Recap</span>
+  <h2>Section 3.1 Summary</h2>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Core Concepts</h3>
+      <ul>
+        <li><strong>Statistical inference</strong> uses sample data to draw conclusions about populations</li>
+        <li><strong>Parameters</strong> describe populations; <strong>statistics</strong> describe samples</li>
+        <li>A <strong>point estimate</strong> is a sample statistic used to estimate a parameter</li>
+        <li>Sample statistics <strong>vary</strong> from sample to sample</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>Sampling Distribution</h3>
+      <ul>
+        <li>The distribution of a statistic from many samples of the same size</li>
+        <li><strong>Center:</strong> at the population parameter (for random samples)</li>
+        <li><strong>Shape:</strong> symmetric and bell-shaped for large \(n\)</li>
+        <li><strong>Spread:</strong> measured by the standard error (SE)</li>
+        <li>Larger \(n\) gives smaller SE and more precise estimates</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Coming up next:</strong> Section 3.2 — How do we use the sampling distribution to build a range of plausible values for the parameter?
+  </div>
+</div>
+
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
+  });
+  document.addEventListener('click', () => renderSlide(current + 1));
+  renderSlide(0);
+</script>
+</body>
+</html>

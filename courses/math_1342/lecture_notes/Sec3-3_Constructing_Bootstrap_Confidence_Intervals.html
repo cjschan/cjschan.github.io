@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 3.3 – Constructing Bootstrap Confidence Intervals</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
+  .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
+  h1 { font-size: 56px; font-weight: 800; letter-spacing: -1px; line-height: 1.08; margin-bottom: 14px; }
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 18px; }
+  h3 { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+  .subtitle { font-size: 20px; color: var(--muted); font-weight: 400; margin-bottom: 28px; max-width: 980px; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; align-items: start; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; align-items: start; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .card-accent { border-left: 3px solid var(--accent); }
+  .card-accent2 { border-left: 3px solid var(--accent2); }
+  .card-accent3 { border-left: 3px solid var(--accent3); }
+  .card-green { border-left: 3px solid var(--green); }
+  .card-amber { border-left: 3px solid var(--amber); }
+  .card-rose { border-left: 3px solid var(--rose); }
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 6px 0 6px 20px; font-size: 18px; line-height: 1.45; position: relative; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .small li { font-size: 15px; padding: 4px 0 4px 18px; }
+  .small li::before { top: 11px; width: 5px; height: 5px; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
+  .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); }
+  .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); }
+  .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); }
+  .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+  .big-number { font-size: 54px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
+  .formula-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; font-size: 22px; margin-top: 12px; margin-bottom: 10px; }
+  .callout { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 18px 22px; margin-top: 16px; font-size: 16px; line-height: 1.55; }
+  .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  .table-card table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15px; }
+  .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
+  .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
+  .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Arrow keys or click to navigate</div>
+<div class="deck" id="deck">
+
+<!-- Slide 1: Title -->
+<div class="slide title-slide">
+  <span class="tag tag-green">Section 3.3</span>
+  <h1>Constructing Bootstrap<br>Confidence Intervals</h1>
+  <p class="subtitle">Using resampling to estimate the standard error when we only have one sample</p>
+</div>
+
+<!-- Slide 2: The Problem -->
+<div class="slide">
+  <span class="tag tag-rose">The Problem</span>
+  <h2>We Only Have One Sample</h2>
+  <p class="subtitle">To build a confidence interval, we need the SE. But how do we get it?</p>
+  <div class="grid-2">
+    <div class="card card-rose">
+      <h3>What We Need</h3>
+      <ul>
+        <li>A 95% CI requires: Statistic \(\pm\; 2 \times \text{SE}\)</li>
+        <li>SE = standard deviation of the <strong>sampling distribution</strong></li>
+        <li>The sampling distribution comes from taking <strong>many samples</strong> from the population</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>What We Have</h3>
+      <ul>
+        <li>In practice, we only have <strong>one sample</strong></li>
+        <li>We cannot go back to the population to take more samples</li>
+        <li>So we cannot directly compute the sampling distribution or the SE</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>The question:</strong> How can we estimate the variability of a statistic if we only have a single sample? The answer: the <strong>bootstrap</strong>.
+  </div>
+</div>
+
+<!-- Slide 3: Bootstrap Idea -->
+<div class="slide">
+  <span class="tag tag-green">Key Idea</span>
+  <h2>The Bootstrap Idea</h2>
+  <p class="subtitle">Pretend our sample IS the population, then sample from it repeatedly.</p>
+  <div class="card card-green" style="margin-bottom: 18px;">
+    <h3>Core Insight</h3>
+    <ul>
+      <li>If our sample is representative of the population, then the <strong>distribution of the sample</strong> should resemble the <strong>distribution of the population</strong></li>
+      <li>Imagine the population is <strong>many, many copies</strong> of the original sample</li>
+      <li>We can simulate taking new samples by resampling from our original sample</li>
+    </ul>
+  </div>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <h3>Step 1</h3>
+      <p class="step-note">Start with your original sample of size \(n\)</p>
+    </div>
+    <div class="card card-accent2">
+      <h3>Step 2</h3>
+      <p class="step-note">Draw a new sample of size \(n\) <strong>with replacement</strong> from the original</p>
+    </div>
+    <div class="card card-accent3">
+      <h3>Step 3</h3>
+      <p class="step-note">Compute the statistic on this new sample. Repeat many times.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: Bootstrap Sample Definition -->
+<div class="slide">
+  <span class="tag tag-purple">Definitions</span>
+  <h2>Bootstrap Samples and Statistics</h2>
+  <p class="subtitle">Precise definitions of the key bootstrap terms.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Bootstrap Sample</h3>
+      <ul>
+        <li>A random sample drawn <strong>with replacement</strong> from the original sample</li>
+        <li>Must be the <strong>same size</strong> (\(n\)) as the original sample</li>
+        <li>Some original values will appear more than once; others may not appear at all</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>Bootstrap Statistic</h3>
+      <ul>
+        <li>The statistic (mean, proportion, median, etc.) computed from a <strong>bootstrap sample</strong></li>
+        <li>Each bootstrap sample gives one bootstrap statistic</li>
+        <li>Example: \(\bar{x}^*\) = mean of a bootstrap sample</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>"With replacement"</strong> is essential. It means after drawing an observation, we put it back so it can be drawn again. This is what creates variability between bootstrap samples.
+  </div>
+</div>
+
+<!-- Slide 5: Bootstrap Distribution -->
+<div class="slide">
+  <span class="tag tag-blue">Distribution</span>
+  <h2>The Bootstrap Distribution</h2>
+  <p class="subtitle">Collecting many bootstrap statistics to see how much they vary.</p>
+  <div class="card card-accent" style="margin-bottom: 18px;">
+    <h3>Definition</h3>
+    <ul>
+      <li>The <strong>bootstrap distribution</strong> is the distribution of many bootstrap statistics, each computed from a different bootstrap sample</li>
+    </ul>
+  </div>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>How to Build It</h3>
+      <ul class="small">
+        <li>Take a bootstrap sample (size \(n\), with replacement)</li>
+        <li>Compute the bootstrap statistic</li>
+        <li>Repeat this process many times (e.g., 1000+ times)</li>
+        <li>Plot the distribution of all bootstrap statistics</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>What It Tells Us</h3>
+      <ul class="small">
+        <li>Shows the <strong>shape</strong> of the sampling distribution</li>
+        <li>Shows the <strong>spread</strong> (variability) of the statistic</li>
+        <li>Allows us to <strong>estimate the SE</strong></li>
+        <li>All from just a single original sample</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Golden Rule -->
+<div class="slide">
+  <span class="tag tag-amber">Golden Rule</span>
+  <h2>The Golden Rule of Bootstrapping</h2>
+  <p class="subtitle">The key analogy that makes the bootstrap work.</p>
+  <div class="card card-amber" style="margin-bottom: 22px;">
+    <h3>The Analogy</h3>
+    <div class="formula-box" style="font-size: 20px; text-align: center;">
+      Bootstrap statistics are to the sample statistic<br>
+      <strong>as</strong><br>
+      sample statistics are to the population parameter
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Real World</h3>
+      <ul class="small">
+        <li>Population \(\xrightarrow{\text{sample}}\) Sample statistic</li>
+        <li>The sampling distribution is centered at the <strong>population parameter</strong></li>
+        <li>The spread of the sampling distribution = SE</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>Bootstrap World</h3>
+      <ul class="small">
+        <li>Original sample \(\xrightarrow{\text{resample}}\) Bootstrap statistic</li>
+        <li>The bootstrap distribution is centered at the <strong>sample statistic</strong></li>
+        <li>The spread of the bootstrap distribution estimates SE</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Important:</strong> The bootstrap distribution is centered around the <strong>sample statistic</strong>, not the population parameter. But its <em>spread</em> estimates the true SE.
+  </div>
+</div>
+
+<!-- Slide 7: Estimating Standard Error -->
+<div class="slide">
+  <span class="tag tag-green">Estimation</span>
+  <h2>Estimating the Standard Error</h2>
+  <p class="subtitle">The SD of the bootstrap distribution gives us the SE we need.</p>
+  <div class="card card-green" style="margin-bottom: 18px;">
+    <h3>The Key Result</h3>
+    <div class="formula-box" style="font-size: 22px; text-align: center;">
+      \[\text{SE} \approx \text{SD of bootstrap distribution}\]
+    </div>
+    <p class="step-note" style="margin-top: 10px;">Compute the standard deviation of all your bootstrap statistics — that is your estimated standard error.</p>
+  </div>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Why This Works</h3>
+      <ul class="small">
+        <li>The bootstrap distribution mimics the shape and spread of the true sampling distribution</li>
+        <li>The variability among bootstrap statistics estimates the variability among sample statistics</li>
+        <li>More bootstrap samples = better estimate of SE</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>Works for ANY Statistic</h3>
+      <ul class="small">
+        <li>Mean, proportion, median, standard deviation, correlation, difference in means...</li>
+        <li>The bootstrap doesn't need a formula for the SE</li>
+        <li>Just resample, compute, and look at the spread</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 8: Computing the 95% CI -->
+<div class="slide">
+  <span class="tag tag-blue">Computation</span>
+  <h2>Bootstrap 95% Confidence Interval (SE Method)</h2>
+  <p class="subtitle">Plugging the bootstrap SE into our familiar formula.</p>
+  <div class="card card-accent" style="margin-bottom: 16px;">
+    <h3>The Formula</h3>
+    <div class="formula-box" style="font-size: 26px; text-align: center;">
+      \[\text{95% CI} = \text{Statistic} \pm 2 \times \text{SE}_{\text{bootstrap}}\]
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card card-accent2">
+      <h3>Step-by-Step</h3>
+      <ul class="small">
+        <li><strong>1.</strong> Start with your original sample and compute the statistic</li>
+        <li><strong>2.</strong> Generate many bootstrap samples (with replacement, same size \(n\))</li>
+        <li><strong>3.</strong> Compute the bootstrap statistic for each</li>
+        <li><strong>4.</strong> Find the SD of all bootstrap statistics = SE</li>
+        <li><strong>5.</strong> 95% CI = Statistic \(\pm\; 2 \times\) SE</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Example</h3>
+      <p class="step-note">Original sample mean: \(\bar{x} = 25.3\)</p>
+      <p class="step-note">SD of 1000 bootstrap means: 1.8</p>
+      <div class="formula-box" style="font-size: 18px;">
+        \(\text{SE} \approx 1.8\)<br><br>
+        \(95\%\;\text{CI} = 25.3 \pm 2(1.8)\)<br>
+        \(= (21.7,\; 28.9)\)
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 9: Summary -->
+<div class="slide">
+  <span class="tag tag-blue">Recap</span>
+  <h2>Section 3.3 Summary</h2>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>The Bootstrap Process</h3>
+      <ul class="small">
+        <li>We only have one sample, so we <strong>resample with replacement</strong> from it</li>
+        <li>Each resample is the same size \(n\) as the original</li>
+        <li>Compute a statistic on each resample = <strong>bootstrap statistic</strong></li>
+        <li>The collection of bootstrap statistics = <strong>bootstrap distribution</strong></li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>Key Results</h3>
+      <ul class="small">
+        <li>Bootstrap distribution is centered at the <strong>sample statistic</strong></li>
+        <li>SD of bootstrap distribution estimates the <strong>SE</strong></li>
+        <li><strong>95% CI</strong> = Statistic \(\pm\; 2 \times\) SE</li>
+        <li>Works for <strong>any statistic</strong> — no formula needed</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Golden Rule:</strong> Bootstrap statistics are to the sample statistic as sample statistics are to the population parameter. The bootstrap distribution's spread estimates how much the statistic varies.
+  </div>
+  <div class="callout" style="margin-top: 10px;">
+    <strong>Coming up next:</strong> Section 3.4 — An alternative way to build bootstrap CIs using percentiles, especially useful for non-95% confidence levels.
+  </div>
+</div>
+
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
+  });
+  document.addEventListener('click', () => renderSlide(current + 1));
+  renderSlide(0);
+</script>
+</body>
+</html>

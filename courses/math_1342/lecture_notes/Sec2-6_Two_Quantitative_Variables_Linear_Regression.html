@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 2.6: Two Quantitative Variables &mdash; Linear Regression</title>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
+  .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
+  h1 { font-size: 56px; font-weight: 800; letter-spacing: -1px; line-height: 1.08; margin-bottom: 14px; }
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 18px; }
+  h3 { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+  .subtitle { font-size: 20px; color: var(--muted); font-weight: 400; margin-bottom: 28px; max-width: 980px; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; align-items: start; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; align-items: start; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .card-accent { border-left: 3px solid var(--accent); } .card-accent2 { border-left: 3px solid var(--accent2); } .card-accent3 { border-left: 3px solid var(--accent3); } .card-green { border-left: 3px solid var(--green); } .card-amber { border-left: 3px solid var(--amber); } .card-rose { border-left: 3px solid var(--rose); }
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 6px 0 6px 20px; font-size: 18px; line-height: 1.45; position: relative; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .small li { font-size: 15px; padding: 4px 0 4px 18px; } .small li::before { top: 11px; width: 5px; height: 5px; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); } .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); } .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); } .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); } .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+  .big-number { font-size: 54px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
+  .formula-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; font-size: 22px; margin-top: 12px; margin-bottom: 10px; }
+  .callout { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 18px 22px; margin-top: 16px; font-size: 16px; line-height: 1.55; }
+  .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  .table-card table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15px; }
+  .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
+  .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
+  .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Arrow keys or click to navigate</div>
+<div class="deck" id="deck">
+
+<div class="slide title-slide">
+  <span class="tag tag-blue">Section 2.6</span>
+  <h1>Linear Regression</h1>
+  <p class="subtitle">Fitting a line to predict one quantitative variable from another.</p>
+  <div class="formula-box" style="max-width: 520px;">
+    \[
+      \hat{y} = b_0 + b_1 x
+    \]
+  </div>
+</div>
+
+<div class="slide">
+  <h2>What Is Regression?</h2>
+  <p class="subtitle">Linear regression finds the straight line that best fits data in a scatterplot.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Goal</h3>
+      <ul>
+        <li>Find a line to predict the response variable \(y\) from the explanatory variable \(x\).</li>
+        <li>The line of best fit is called the <span class="accent">regression line</span>.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Example: Crickets and Temperature</h3>
+      <div class="step-note">Can you estimate the temperature by listening to crickets chirp?</div>
+      <div class="formula-box">
+        \[
+          \widehat{\text{Temp}} = 37.7 + 0.23 \times \text{Chirps}
+        \]
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Slope and Intercept</h2>
+  <p class="subtitle">The two numbers that define the regression line.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Slope \(b_1\)</h3>
+      <ul>
+        <li>The increase in predicted \(y\) for every one-unit increase in \(x\).</li>
+        <li>Example: temperature goes up by about \(0.23^\circ\text{F}\) for each additional chirp per minute.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Intercept \(b_0\)</h3>
+      <ul>
+        <li>The predicted \(y\) value when \(x = 0\).</li>
+        <li>Often not meaningful if \(x = 0\) is far outside the data range.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Making Predictions</h2>
+  <p class="subtitle">Plug an x-value into the equation to get a predicted y-value.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">Example</div>
+      <div class="step-note">If crickets chirp 140 times per minute:</div>
+      <div class="formula-box">
+        \[
+          \hat{y} = 37.7 + 0.23(140) = 69.9^\circ\text{F}
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-green">Another</div>
+      <div class="step-note">If crickets chirp 180 times per minute:</div>
+      <div class="formula-box">
+        \[
+          \hat{y} = 37.7 + 0.23(180) = 79.1^\circ\text{F}
+        \]
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Residuals</h2>
+  <p class="subtitle">A residual measures how far the observed value is from the predicted value.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Definition</h3>
+      <div class="formula-box">
+        \[
+          \text{Residual} = y - \hat{y} = \text{observed} - \text{predicted}
+        \]
+      </div>
+      <div class="step-note">Geometrically, it is the vertical distance from the point to the line.</div>
+    </div>
+    <div class="card card-green">
+      <h3>Least Squares Line</h3>
+      <ul>
+        <li>The regression line minimizes the <span class="accent">sum of squared residuals</span>.</li>
+        <li>This is why it is called the least squares line.</li>
+        <li>We rely on technology to find it.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Regression Cautions</h2>
+  <p class="subtitle">Four important warnings when using regression.</p>
+  <div class="grid-2">
+    <div class="card card-rose">
+      <h3>Do Not Extrapolate</h3>
+      <ul>
+        <li>Do not predict far beyond the range of your data.</li>
+        <li>If \(x = 0\) is not near your data, the intercept is meaningless.</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Check Your Assumptions</h3>
+      <ul>
+        <li>Only use the line if the relationship is approximately linear.</li>
+        <li>Outliers can be very influential on the regression line.</li>
+        <li>It matters which variable is explanatory and which is response.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Always plot your data!</strong> Technology will compute a regression line for any two quantitative variables, even if the relationship is not linear.
+  </div>
+</div>
+
+<div class="slide">
+  <h2>What to Remember</h2>
+  <p class="subtitle">Regression gives a prediction equation; use it wisely.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Core Ideas</h3>
+      <ul>
+        <li>\(\hat{y} = b_0 + b_1 x\)</li>
+        <li>Slope: change in \(\hat{y}\) per unit change in \(x\)</li>
+        <li>Residual: \(y - \hat{y}\)</li>
+        <li>Least squares minimizes \(\sum (\text{residuals})^2\)</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Cautions</h3>
+      <ul>
+        <li>Do not extrapolate.</li>
+        <li>Always plot your data.</li>
+        <li>Watch for influential outliers.</li>
+        <li>Correlation and regression do not prove causation.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
+  });
+  document.addEventListener('click', () => renderSlide(current + 1));
+  renderSlide(0);
+</script>
+</body>
+</html>

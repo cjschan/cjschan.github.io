@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 1.2: Sampling from a Population</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
+  .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
+  h1 { font-size: 56px; font-weight: 800; letter-spacing: -1px; line-height: 1.08; margin-bottom: 14px; }
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 18px; }
+  h3 { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+  .subtitle { font-size: 20px; color: var(--muted); font-weight: 400; margin-bottom: 28px; max-width: 980px; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; align-items: start; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; align-items: start; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .card-accent { border-left: 3px solid var(--accent); }
+  .card-accent2 { border-left: 3px solid var(--accent2); }
+  .card-green { border-left: 3px solid var(--green); }
+  .card-amber { border-left: 3px solid var(--amber); }
+  .card-rose { border-left: 3px solid var(--rose); }
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 6px 0 6px 20px; font-size: 18px; line-height: 1.45; position: relative; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .small li { font-size: 15px; padding: 4px 0 4px 18px; }
+  .small li::before { top: 11px; width: 5px; height: 5px; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
+  .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); }
+  .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); }
+  .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); }
+  .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+  .big-number { font-size: 54px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
+  .formula-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; font-size: 22px; margin-top: 12px; margin-bottom: 10px; }
+  .callout { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 18px 22px; margin-top: 16px; font-size: 16px; line-height: 1.55; }
+  .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Arrow keys or click to navigate</div>
+<div class="deck" id="deck">
+
+<div class="slide title-slide">
+  <span class="tag tag-blue">Section 1.2</span>
+  <h1>Sampling from a Population</h1>
+  <p class="subtitle">How we select a sample determines whether we can trust our conclusions about the population.</p>
+</div>
+
+<div class="slide">
+  <h2>Sample vs. Population</h2>
+  <p class="subtitle">We collect data on a sample and use it to make inferences about the larger population.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Population</h3>
+      <ul>
+        <li>Includes <span class="accent">all</span> individuals or objects of interest.</li>
+        <li>Usually too large to study completely.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Sample</h3>
+      <ul>
+        <li>A <span class="green">subset</span> of the population.</li>
+        <li>The cases on which we actually collect data.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Statistical inference</strong> is the process of using data from a sample to gain information about the population.
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Sampling Bias</h2>
+  <p class="subtitle">When the sampling method causes the sample to differ from the population in a relevant way.</p>
+  <div class="grid-2">
+    <div class="card card-rose">
+      <h3>What Goes Wrong</h3>
+      <ul>
+        <li>The sample does not resemble the population.</li>
+        <li>Generalizations from the sample to the population cannot be trusted.</li>
+        <li>Even large samples can be biased.</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Dewey Defeats Truman</h3>
+      <div class="step-note">In 1948, a large telephone poll predicted Dewey would win the election. Truman actually won.</div>
+      <div class="callout">
+        The poll was biased because in 1948 phone ownership skewed toward wealthier voters who favored Dewey.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Random Sampling</h2>
+  <p class="subtitle">The best way to avoid sampling bias is to take a random sample.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Simple Random Sample</h3>
+      <ul>
+        <li>Each unit in the population has the <span class="accent">same chance</span> of being selected.</li>
+        <li>Selection of one unit does not affect selection of another.</li>
+        <li>Like drawing names from a hat.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Why It Works</h3>
+      <ul>
+        <li>Random samples have statistics centered around the correct population value.</li>
+        <li>Non-random samples may suffer from bias.</li>
+        <li>Only random samples can truly be trusted for generalizations.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Bad Sampling Methods</h2>
+  <p class="subtitle">These common approaches introduce bias and should be avoided.</p>
+  <div class="grid-3">
+    <div class="card card-rose">
+      <div class="big-number rose">Convenience</div>
+      <div class="stat-label">Sampling only people who are easy to reach, like students in the library when asking about study habits.</div>
+    </div>
+    <div class="card card-amber">
+      <div class="big-number amber">Volunteer</div>
+      <div class="stat-label">Letting people choose to participate. Those who respond are probably not representative.</div>
+    </div>
+    <div class="card card-accent2">
+      <div class="big-number accent2">Related</div>
+      <div class="stat-label">Sampling based on something obviously related to what you are studying.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Other Forms of Bias</h2>
+  <p class="subtitle">Even with a random sample, data can still be biased.</p>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <h3>Question Wording</h3>
+      <div class="step-note">How a question is phrased can dramatically change the results.</div>
+      <ul class="small">
+        <li>"Tax cut vs. new programs": 60% chose tax cut</li>
+        <li>"Tax cut vs. education, health, defense": 22% chose tax cut</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Context</h3>
+      <div class="step-note">Surrounding information influences responses.</div>
+      <ul class="small">
+        <li>Ann Landers asked "Would you have children again?"</li>
+        <li>After a negative letter: 30% yes</li>
+        <li>After a concerned response: 95% yes</li>
+      </ul>
+    </div>
+    <div class="card card-rose">
+      <h3>Inaccurate Responses</h3>
+      <div class="step-note">People may not answer truthfully, especially on sensitive topics.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>What to Remember</h2>
+  <p class="subtitle">Always think critically about how data were collected.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Key Ideas</h3>
+      <ul>
+        <li>We use sample data to make inferences about a population.</li>
+        <li><span class="accent">Sampling bias</span> occurs when the sample does not resemble the population.</li>
+        <li><span class="accent">Random sampling</span> avoids sampling bias.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Watch Out For</h3>
+      <ul>
+        <li>Convenience and volunteer samples.</li>
+        <li>Biased question wording or context.</li>
+        <li>Not all data collection leads to valid inferences.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
+  });
+  document.addEventListener('click', () => renderSlide(current + 1));
+  renderSlide(0);
+</script>
+</body>
+</html>

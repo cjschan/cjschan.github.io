@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 2.5: Two Quantitative Variables &mdash; Scatterplot and Correlation</title>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
+  .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
+  h1 { font-size: 56px; font-weight: 800; letter-spacing: -1px; line-height: 1.08; margin-bottom: 14px; }
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 18px; }
+  h3 { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+  .subtitle { font-size: 20px; color: var(--muted); font-weight: 400; margin-bottom: 28px; max-width: 980px; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; align-items: start; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; align-items: start; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .card-accent { border-left: 3px solid var(--accent); } .card-accent2 { border-left: 3px solid var(--accent2); } .card-accent3 { border-left: 3px solid var(--accent3); } .card-green { border-left: 3px solid var(--green); } .card-amber { border-left: 3px solid var(--amber); } .card-rose { border-left: 3px solid var(--rose); }
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 6px 0 6px 20px; font-size: 18px; line-height: 1.45; position: relative; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .small li { font-size: 15px; padding: 4px 0 4px 18px; } .small li::before { top: 11px; width: 5px; height: 5px; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); } .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); } .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); } .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); } .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+  .big-number { font-size: 54px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
+  .formula-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; font-size: 22px; margin-top: 12px; margin-bottom: 10px; }
+  .callout { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 18px 22px; margin-top: 16px; font-size: 16px; line-height: 1.55; }
+  .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  .table-card table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15px; }
+  .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
+  .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
+  .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Arrow keys or click to navigate</div>
+<div class="deck" id="deck">
+
+<div class="slide title-slide">
+  <span class="tag tag-blue">Section 2.5</span>
+  <h1>Scatterplot and Correlation</h1>
+  <p class="subtitle">Visualizing and measuring the strength and direction of a linear relationship between two quantitative variables.</p>
+</div>
+
+<div class="slide">
+  <h2>Scatterplots</h2>
+  <p class="subtitle">A scatterplot shows the relationship between two quantitative variables.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>How to Read One</h3>
+      <ul>
+        <li>Each point represents one case.</li>
+        <li>The explanatory variable is on the x-axis.</li>
+        <li>The response variable is on the y-axis.</li>
+        <li>Look for direction, form, and strength.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Direction of Association</h3>
+      <ul>
+        <li><span class="green">Positive:</span> both variables increase together.</li>
+        <li><span class="rose">Negative:</span> one goes up as the other goes down.</li>
+        <li><span class="muted">None:</span> knowing one tells you nothing about the other.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Correlation Coefficient</h2>
+  <p class="subtitle">A single number that measures the strength and direction of a linear relationship.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Notation</h3>
+      <ul>
+        <li>Sample correlation: \(r\)</li>
+        <li>Population correlation: \(\rho\) (rho)</li>
+      </ul>
+      <div class="formula-box">
+        \[
+          -1 \le r \le 1
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <h3>Properties</h3>
+      <ul>
+        <li>\(r > 0\): positive association</li>
+        <li>\(r < 0\): negative association</li>
+        <li>\(r \approx 0\): no linear association</li>
+        <li>Closer to \(\pm 1\) means stronger linear relationship</li>
+        <li>Unitless; same regardless of which variable is X or Y</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Interpreting Correlation</h2>
+  <p class="subtitle">Rough guidelines for the strength of a linear relationship.</p>
+  <div class="grid-3">
+    <div class="card card-green">
+      <div class="big-number green">Strong</div>
+      <div class="stat-label">\(|r|\) close to 1. Points cluster tightly around a line.</div>
+    </div>
+    <div class="card card-amber">
+      <div class="big-number amber">Moderate</div>
+      <div class="stat-label">\(|r|\) around 0.5. A clear trend with noticeable scatter.</div>
+    </div>
+    <div class="card card-rose">
+      <div class="big-number rose">Weak</div>
+      <div class="stat-label">\(|r|\) close to 0. Little or no linear pattern.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Correlation Cautions</h2>
+  <p class="subtitle">Three important warnings when using correlation.</p>
+  <div class="grid-3">
+    <div class="card card-rose">
+      <h3>Outliers</h3>
+      <div class="stat-label">Outliers can heavily influence \(r\). Always plot your data first.</div>
+    </div>
+    <div class="card card-amber">
+      <h3>Nonlinear</h3>
+      <div class="stat-label">\(r = 0\) means no <em>linear</em> association. The variables could still be related in a curved pattern.</div>
+    </div>
+    <div class="card card-accent">
+      <h3>Not Causation</h3>
+      <div class="stat-label">Correlation does not imply causation. A strong \(r\) does not mean one variable causes the other.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>What to Remember</h2>
+  <p class="subtitle">Two quantitative variables: visualize with a scatterplot, summarize with correlation.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Scatterplot</h3>
+      <ul>
+        <li>Shows direction, form, and strength.</li>
+        <li>Always plot your data.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Correlation \(r\)</h3>
+      <ul>
+        <li>Between -1 and 1.</li>
+        <li>Measures strength and direction of <em>linear</em> association only.</li>
+        <li>Not affected by units, not causation.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
+  });
+  document.addEventListener('click', () => renderSlide(current + 1));
+  renderSlide(0);
+</script>
+</body>
+</html>
