@@ -91,91 +91,103 @@ const StatKey = (() => {
     return NaN;
   }
 
-  // ── Histogram ───────────────────────────────────────────────────────
-  function drawHistogram(svgHost, samples, opts) {
+  // ── Dot plot ────────────────────────────────────────────────────────
+  function drawDotplot(svgHost, samples, opts) {
     if (!samples.length) {
       svgHost.innerHTML = '<div style="color:#94a3b8; font-size:13px; padding:18px; text-align:center;">No simulations yet. Click <b>Generate One</b> or <b>Run 1000</b> to begin.</div>';
       return;
     }
-    const W = 460, H = 220;
-    const PL = 38, PR = 12, PT = 10, PB = 28;
+    const W = 460, H = 240;
+    const PL = 38, PR = 12, PT = 14, PB = 28;
     const plotW = W - PL - PR;
     const plotH = H - PT - PB;
 
-    // Determine bins
+    // Choose bin width that gives a reasonable number of stacks.
     const min = Math.min(...samples);
     const max = Math.max(...samples);
     const span = Math.max(max - min, 1e-9);
-    const desired = Math.min(40, Math.max(8, Math.round(Math.sqrt(samples.length))));
-    const binWidth = span / desired || 0.01;
+    const targetBins = Math.min(50, Math.max(12, Math.round(Math.sqrt(samples.length))));
+    const binWidth = span / targetBins || 0.01;
     const xMin = min - binWidth / 2;
     const xMax = max + binWidth / 2;
-    const numBins = Math.ceil((xMax - xMin) / binWidth);
-    const bins = new Array(numBins).fill(0);
+    const numBins = Math.max(1, Math.ceil((xMax - xMin) / binWidth));
+
+    // Bin each sample.
+    const bins = new Array(numBins);
+    for (let i = 0; i < numBins; i++) bins[i] = [];
     for (const v of samples) {
       let i = Math.floor((v - xMin) / binWidth);
       if (i >= numBins) i = numBins - 1;
       if (i < 0) i = 0;
-      bins[i]++;
+      bins[i].push(v);
     }
-    const maxCount = Math.max(...bins);
+    const maxCount = Math.max(...bins.map(b => b.length));
 
     const sx = (x) => PL + ((x - xMin) / (xMax - xMin)) * plotW;
-    const sy = (y) => PT + plotH - (y / maxCount) * plotH;
 
-    const svg = el('svg', {
-      xmlns: SVG_NS, viewBox: `0 0 ${W} ${H}`, width: W, height: H,
-      style: 'background:#0f172a; border-radius:6px; max-width:100%;',
-    });
+    // Dot diameter: scale so the tallest stack fits in plotH with a tiny margin.
+    // Each dot spaced by `dotPitch`. We let pitch shrink so the stack always fits.
+    const dotPitch = Math.max(2.5, Math.min(8, plotH / Math.max(maxCount, 8)));
+    const dotR = Math.max(1.5, dotPitch * 0.45);
 
-    // Axis line
-    svg.appendChild(el('line', {
-      x1: PL, y1: PT + plotH, x2: PL + plotW, y2: PT + plotH,
-      stroke: '#94a3b8', 'stroke-width': 1,
-    }));
-
-    // Bars: highlight bars beyond observed (for p-value visualization)
     const obs = opts.observed;
     const dir = opts.direction || 'two-tailed';
     const obsAbsDist = obs !== undefined ? Math.abs(obs - opts.center) : null;
-    for (let i = 0; i < numBins; i++) {
-      const v = xMin + (i + 0.5) * binWidth;
-      let highlighted = false;
-      if (obs !== undefined) {
-        if (dir === 'right') highlighted = v >= obs;
-        else if (dir === 'left') highlighted = v <= obs;
-        else if (dir === 'two-tailed') highlighted = Math.abs(v - opts.center) >= obsAbsDist - 1e-9;
-      }
-      const x = sx(xMin + i * binWidth);
-      const w = sx(xMin + (i + 1) * binWidth) - x - 1;
-      const y = sy(bins[i]);
-      const h = PT + plotH - y;
-      svg.appendChild(el('rect', {
-        x: x, y: y, width: Math.max(w, 1), height: h,
-        fill: highlighted ? '#fb7185' : '#38bdf8',
-        opacity: 0.85,
-      }));
+    function isHighlighted(v) {
+      if (obs === undefined) return false;
+      if (dir === 'right') return v >= obs - 1e-12;
+      if (dir === 'left') return v <= obs + 1e-12;
+      return Math.abs(v - opts.center) >= obsAbsDist - 1e-12;
     }
 
-    // Tick labels (just min, mid, max)
+    const svg = el('svg', {
+      xmlns: SVG_NS, viewBox: `0 0 ${W} ${H}`, width: W, height: H,
+      style: 'background:#0f172a; border-radius:6px; max-width:100%; display:block;',
+    });
+
+    // Axis line
+    const axisY = PT + plotH;
+    svg.appendChild(el('line', {
+      x1: PL, y1: axisY, x2: PL + plotW, y2: axisY,
+      stroke: '#94a3b8', 'stroke-width': 1,
+    }));
+
+    // Plot dots: stack from the axis upward.
+    for (let i = 0; i < numBins; i++) {
+      const cx = sx(xMin + (i + 0.5) * binWidth);
+      const stack = bins[i];
+      // Sort the stack so highlighted-vs-not are interleaved deterministically.
+      for (let k = 0; k < stack.length; k++) {
+        const v = stack[k];
+        const cy = axisY - dotPitch * (k + 0.5);
+        if (cy < PT) break; // overflow safety
+        svg.appendChild(el('circle', {
+          cx, cy, r: dotR,
+          fill: isHighlighted(v) ? '#fb7185' : '#38bdf8',
+          opacity: 0.92,
+        }));
+      }
+    }
+
+    // Tick labels
     const ticks = [xMin, (xMin + xMax) / 2, xMax];
     for (const t of ticks) {
       svg.appendChild(el('text', {
-        x: sx(t), y: PT + plotH + 16,
+        x: sx(t), y: axisY + 16,
         fill: '#cbd5e1', 'font-size': 11, 'text-anchor': 'middle',
         'font-family': 'Work Sans, sans-serif',
       }, [String(Math.round(t * 1000) / 1000)]));
     }
 
-    // Observed marker (gold vertical line)
+    // Observed marker: gold dashed vertical line + label
     if (obs !== undefined && obs >= xMin && obs <= xMax) {
       const xObs = sx(obs);
       svg.appendChild(el('line', {
-        x1: xObs, y1: PT, x2: xObs, y2: PT + plotH,
+        x1: xObs, y1: PT, x2: xObs, y2: axisY,
         stroke: '#fbbf24', 'stroke-width': 2, 'stroke-dasharray': '4 3',
       }));
       svg.appendChild(el('text', {
-        x: xObs, y: PT + 14,
+        x: xObs, y: PT + 10,
         fill: '#fbbf24', 'font-size': 11, 'text-anchor': 'middle',
         'font-family': 'Work Sans, sans-serif',
       }, ['observed']));
@@ -296,10 +308,14 @@ const StatKey = (() => {
     host.innerHTML = '';
     host.appendChild(card);
 
+    // Stop clicks/keys inside the simulator from triggering slide navigation.
+    card.addEventListener('click', (e) => e.stopPropagation());
+    card.addEventListener('keydown', (e) => e.stopPropagation());
+
     function refresh() {
       const observed = meta.observed(opts);
       const center = meta.center(opts);
-      drawHistogram(histDiv, samples, {
+      drawDotplot(histDiv, samples, {
         observed, center, direction: opts.direction || 'two-tailed',
       });
       const lines = [];
