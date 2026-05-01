@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1314 - College Algebra</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent: #fbbf24;
+    --accent-light: #fde68a;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .syllabus {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 36px 48px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.6;
+  }
+  .syllabus h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 32px;
+    font-weight: 700;
+  }
+  .syllabus h2 {
+    color: var(--primary);
+    margin-top: 36px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--primary);
+    padding-left: 14px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .syllabus h3 {
+    color: var(--accent);
+    margin-top: 22px;
+    margin-bottom: 6px;
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .syllabus p { margin: 0.6em 0; }
+  .syllabus ul { padding-left: 22px; margin: 0.4em 0 0.8em; }
+  .syllabus ul li { margin-bottom: 6px; }
+  .syllabus ul li::marker { color: var(--accent); }
+  .syllabus a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+    transition: color 200ms ease, border-color 200ms ease;
+    font-size: inherit;
+  }
+  .syllabus a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    opacity: 1;
+  }
+  .syllabus dl.meta { margin: 0.5em 0 1em; }
+  .syllabus dl.meta dt {
+    font-weight: 600;
+    color: var(--muted);
+    float: left;
+    clear: left;
+    min-width: 12em;
+  }
+  .syllabus dl.meta dd { margin: 0 0 0.4em 0; }
+  .syllabus table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0.8em 0 1.2em;
+    font-size: 15px;
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .syllabus th, .syllabus td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .syllabus th {
+    background: rgba(56, 189, 248, 0.10);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+  .syllabus tr:nth-child(even) td { background: rgba(15, 23, 42, 0.5); }
+  .syllabus .week-cell {
+    color: var(--muted);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .syllabus .section-cell { font-weight: 600; }
+  .syllabus .section-cell .nolink { color: var(--muted); font-weight: 400; }
+  @media (max-width: 900px) {
+    .syllabus { margin: 16px; padding: 24px 20px; }
+    .syllabus h1 { font-size: 26px; }
+    .syllabus h2 { font-size: 19px; }
+    .syllabus dl.meta dt { float: none; min-width: 0; }
+    .syllabus table { font-size: 14px; }
+    .syllabus th, .syllabus td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="syllabus">
+
+<h1>Math 1314 &mdash; College Algebra</h1>
+<p>An in-depth study and applications of polynomial, rational, radical, exponential, and logarithmic functions, and systems of equations using matrices.</p>
+
+<h2>What is Algebra?</h2>
+<p>Algebra is all about working with numbers and symbols to solve problems and understand relationships. Instead of performing calculations, algebra helps you see patterns and think logically, which can be really useful in everyday life. Whether you&rsquo;re figuring out your budget or looking at a graph in a news article, algebra gives you the tools to meet these challenges. It&rsquo;s a way to develop problem-solving skills that can make many aspects of life easier and more manageable.</p>
+
+<h2>About Your Instructor</h2>
+<dl class="meta">
+  <dt>Name</dt><dd>Chris Chan</dd>
+  <dt>Email</dt><dd>chris.chan@austincc.edu</dd>
+</dl>
+
+<h2>About Your Course</h2>
+<p>Instructional Methodology: DLS &mdash; Synchronous Virtual Class Meetings. Instruction is fully online with required online meetings during scheduled days and times.</p>
+<dl class="meta">
+  <dt>Prerequisites</dt><dd>MATD 0414, MATD 0424, MATD 0444, NCBM 0214, NCBM 0224, or NCBM 0244 with a grade of C or higher; or a satisfactory score on the TSI Mathematics Assessment or completion of TSI requirements in mathematics.</dd>
+</dl>
+<p style="font-size: 14px; color: var(--muted);">Students who are TSI Complete in Math based on completion of NCBM 0185, NCBM 0142, MATD 0385, MATD 0342, or MATD 0485 are NOT eligible for College Algebra.</p>
+
+<h2>Required Materials</h2>
+<p>This is a First Day&trade; class. The cost of required course materials, including an online version of the textbook and software access, has been added to your tuition and fees bill.</p>
+<p><b>Textbook:</b> <i>College Algebra with Modeling &amp; Visualization</i>, 6th Edition by Rockswold. Pearson Publishing (MyLab software). ISBN: 9780134763828</p>
+<p><b>Calculator:</b> A scientific or business calculator with a log/ln key is required. Calculators are available for checkout from the library if needed. Graphing calculators are not required, but you will use graphing technology in most sections of the book; TI calculators are highly recommended. Your instructor will determine the extent of calculator use in your class section.</p>
+<p><b>Other Technology:</b> Access to a webcam and microphone is required for this course. Eligible students can check out required technology at <a href="https://www.austincc.edu/students/student-technology-services" target="_blank">austincc.edu/students/student-technology-services</a>.</p>
+
+<h2>General Policies</h2>
+
+<h3>Attendance and Participation</h3>
+<p>Please plan to attend each live Zoom session and participate in discussions and activities. If an absence is expected, please email ahead of time. When a session is missed, review any posted materials and notes as soon as possible to stay on track. Please join the Zoom meeting on time, with course materials ready, and remain attentive throughout class.</p>
+
+<h3>Academic Integrity</h3>
+<p>Honesty is important in our class. Although I encourage you to work in groups, please make sure your work is your own. If you&rsquo;re unsure about what&rsquo;s okay, just ask. We&rsquo;re here to learn together!</p>
+
+<h3>Communication</h3>
+<p>Feel free to reach out if you have questions or need help. I&rsquo;m here to support you! I&rsquo;ll do my best to respond to emails within 24 hours on weekdays. For more in-depth conversations, please attend office hours or set up an appointment.</p>
+
+<h3>Electronic Devices</h3>
+<p>Please silence notifications during class so everyone can stay focused. Laptops and tablets are welcome for notes and class activities, but please keep them on task during our Zoom sessions.</p>
+
+<h3>Classroom Environment</h3>
+<p>Let&rsquo;s work together to make our Zoom classroom respectful, friendly, and engaging. Please be thoughtful during discussions and in the chat, and give classmates space to participate. During class, please avoid eating, vaping, or sleeping so we can all stay focused and make the most of our time together.</p>
+
+<h2>Course Calendar</h2>
+<p>Schedule changes may occur during the semester. Any changes will be announced in class and posted as a Blackboard Announcement.</p>
+<table>
+  <thead>
+    <tr><th>Week</th><th>Section</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="week-cell" rowspan="2">Week 1</td><td class="section-cell">1.3</td><td>Functions and Their Representations</td></tr>
+    <tr><td class="section-cell">1.4</td><td>Types of Functions and Their Rates of Change</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 2</td><td class="section-cell">2.1</td><td>Equations of Lines</td></tr>
+    <tr><td class="section-cell">2.2, 2.3</td><td>Linear Equations; Linear Inequalities</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 3</td><td class="section-cell">2.4, 3.1</td><td>More Modeling with Functions; Quadratic Functions and Models</td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Test 1: Sections 1.3&ndash;2.3</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 4</td><td class="section-cell">3.2</td><td>Quadratic Functions and Models</td></tr>
+    <tr><td class="section-cell">3.3</td><td>Complex Solutions of Quadratic Equations</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 5</td><td class="section-cell">3.4</td><td>Quadratic Inequalities</td></tr>
+    <tr><td class="section-cell">3.5</td><td>Transformation of Graphs</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 6</td><td class="section-cell">4.1</td><td>More Nonlinear Functions and Their Graphs</td></tr>
+    <tr><td class="section-cell">4.2</td><td>Polynomial Functions and Models</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 7</td><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Test 2: Sections 2.4&ndash;4.1</td></tr>
+    <tr><td class="section-cell">4.4</td><td>Real Zeros of Polynomial Functions</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 8</td><td class="section-cell">4.6</td><td>Rational Functions and Models</td></tr>
+    <tr><td class="section-cell">4.6</td><td>Rational Functions and Models (continued)</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 9</td><td class="section-cell">4.7</td><td>More Equations and Inequalities</td></tr>
+    <tr><td class="section-cell">5.1</td><td>Combining Functions</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 10</td><td class="section-cell">5.2</td><td>Inverse Functions and Their Representations</td></tr>
+    <tr><td class="section-cell">5.3</td><td>Exponential Functions and Models</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 11</td><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Test 3: Sections 4.2&ndash;5.3</td></tr>
+    <tr><td class="section-cell">5.4</td><td>Logarithmic Functions and Models</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 12</td><td class="section-cell">5.4</td><td>Logarithmic Functions and Models (continued)</td></tr>
+    <tr><td class="section-cell">6.1</td><td>Systems of Linear Equations in Two Variables</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 13</td><td class="section-cell">6.2</td><td>Systems of Inequalities in Two Variables</td></tr>
+    <tr><td class="section-cell">6.3</td><td>Systems of Linear Equations in Three Variables</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 14</td><td class="section-cell">6.4</td><td>Solutions to Linear Systems Using Matrices</td></tr>
+    <tr><td class="section-cell">6.5</td><td>Properties and Applications of Matrices</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 15</td><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Final Exam, Part 1</td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Final Exam, Part 2</td></tr>
+  </tbody>
+</table>
+
+<h2>Making Time to Learn</h2>
+<p>We learn math by thinking about and working on mathematical problems, which takes time. Practice is crucial in a math course. To ensure that you have adequate time, set aside 8&ndash;12 hours per week outside of class time to practice and study for this course. Ask for help immediately when something isn&rsquo;t clear.</p>
+
+<h2>Getting Help</h2>
+<p>ACC provides several free resources for students who need help.</p>
+<ul>
+  <li><b>Office hours:</b> Another name for office hours is &ldquo;student hours.&rdquo; This is the time your instructor has set aside to answer student questions, so feel free to drop by if you have questions.</li>
+  <li><b>Instructional Associates:</b> Course-specific tutoring. To make an appointment, go to <a href="https://sites.google.com/a/austincc.edu/math-students/meet/list" target="_blank">the math students meet list</a> and click on your course.</li>
+  <li><b>Learning Labs:</b> The ACC Learning Labs provide tutoring in math and other subjects. To schedule an appointment, go to <a href="https://www.austincc.edu/students/learning-lab" target="_blank">austincc.edu/students/learning-lab</a>.</li>
+  <li><b>Academic Coaching:</b> Academic coaches offer extra support to students with study strategies. Visit <a href="https://www.austincc.edu/students/academic-coaching" target="_blank">austincc.edu/students/academic-coaching</a>.</li>
+  <li><b>ACC Student Services:</b> Services in many areas including academic, financial, personal, and technology support. Visit <a href="https://www.austincc.edu/student-support" target="_blank">austincc.edu/student-support</a>.</li>
+</ul>
+
+<h2>Grades</h2>
+
+<h3>Grade Components</h3>
+<table>
+  <tbody>
+    <tr><td>Tests</td><td>60%</td></tr>
+    <tr><td>Homework</td><td>10%</td></tr>
+    <tr><td>Quizzes</td><td>10%</td></tr>
+    <tr><td>Final Exam</td><td>20%</td></tr>
+  </tbody>
+</table>
+
+<h3>Grading Scale</h3>
+<table>
+  <tbody>
+    <tr><td>A</td><td>90 &ndash; 100</td></tr>
+    <tr><td>B</td><td>80 &ndash; 89</td></tr>
+    <tr><td>C</td><td>70 &ndash; 79</td></tr>
+    <tr><td>D</td><td>60 &ndash; 69</td></tr>
+    <tr><td>F</td><td>&lt; 60</td></tr>
+  </tbody>
+</table>
+<p>Grades will be posted on Blackboard.</p>
+
+<h2>What Will We Do in This Class?</h2>
+
+<h3>Tests</h3>
+<p>We will have three tests during the semester. I know that one test might not fully reflect what you know or how you&rsquo;re doing in the course. To support your learning:</p>
+<ul>
+  <li>If your final exam score is higher than your lowest test score, I will replace that lowest test score with your final exam score. For example, if your test scores are 50%, 75%, and 80%, and you earn 90% on the final, the 50% will be replaced with the 90%.</li>
+  <li>If you miss a test, your final exam score will count in its place.</li>
+</ul>
+<p>Because of this policy, make-up tests will not be offered. This approach gives everyone a fair opportunity to recover from a tough test or a missed date. If you have questions or run into challenges, please feel free to reach out.</p>
+
+<h3>Final Exam</h3>
+<p>The final exam has two parts. The first part covers all material up to and including Test 3, and the second part covers everything afterwards. The final exam is designed to give you a chance to show what you&rsquo;ve learned across the semester. Generally, the final cannot be rescheduled, except in specific circumstances outlined by ACC policy.</p>
+
+<h3>Take-Home Quizzes</h3>
+<p>There will be twelve take-home quizzes throughout the semester, due on Tuesdays at 10pm online. These are a great opportunity to practice writing clear and correct mathematical statements, which is an important part of this course and will help you feel more confident for the tests and final exam. You are encouraged to begin working on quizzes early, and you may use your notes and online resources while completing them. Late submissions are not accepted; reach out in advance if challenges arise that may affect timely submission.</p>
+
+<h3>Online Homework</h3>
+<p>You will complete online homework using Pearson MyLab. Homework assignments are due on Sundays at 10pm based on the material we cover in class. Access MyLab through Blackboard, where you will find your assignments, the electronic textbook, and other helpful resources. You can attempt problems as many times as you like, and MyLab will keep your best score for each assignment when calculating your average. It is a good idea to keep a notebook of your work to support studying and review, but you do not need to turn it in. MyLab automatically handles the grading. If you anticipate needing more time, please contact me ahead of the deadline.</p>
+
+<h2>What Happens If I Miss Something?</h2>
+
+<h3>Dropped Grade Policy</h3>
+<p>To support your success and reduce stress around one tough week, a missed quiz, or a difficult test, the lowest test score and the lowest quiz scores will each be dropped:</p>
+<ul>
+  <li>Your lowest test score will be replaced with your final exam score, as long as the final exam score is higher. If you miss one test, the final exam score will automatically take its place.</li>
+  <li>Your two lowest quiz scores will be dropped entirely when calculating your quiz average.</li>
+</ul>
+<p>This means you do not need to worry about make-up quizzes or tests. This policy is designed to give everyone a fair opportunity to recover from a missed or challenging week.</p>
+
+<h3>Late Work Policy</h3>
+<p>For online homework in MyLab, it is important to complete assignments on time, as they build directly on class content. If you believe you may need more time on an assignment, please reach out before the deadline. I am happy to work with you and offer an extension when needed. For take-home quizzes, late submissions are not accepted, so plan ahead and use the time available to your advantage.</p>
+
+<h3>Missed Exam Policy</h3>
+<p>If you are unable to take one of the three scheduled tests, you do not need to worry. Your final exam score will automatically replace the missed test. Because of this built-in flexibility, make-up tests are not offered. If you have questions or concerns about a test date, please let me know as soon as possible.</p>
+
+<h3>Attendance / Class Participation Expectations and Policy</h3>
+<p>Regular and punctual attendance in both class and lab is expected. Being present helps you stay connected to the material, your classmates, and the support available to you. If attendance or participation becomes unsatisfactory or if course expectations are not being met, students may be withdrawn from the class based on ACC policies.</p>
+
+<h2>What AI Resources Are Allowed?</h2>
+<p><b>Generative Artificial Intelligence (GAI) Policy:</b> Generative AI (GAI) is a useful tool for exploration and learning. Use of GAI on un-proctored work such as homework and independent learning is permitted, but caution is advised as not to become dependent on it. The purpose of assessments is to demonstrate what students are able to do independently. In this course, GAI includes Computer Algebra Systems (CAS) and any electronic tools that solve problems for students. Violations to GAI use policies are considered scholastic dishonesty and will be handled according to established departmental and college procedures. GAI may not be used on major assessments other than in cases where permissions are explicitly stated.</p>
+
+<h2>Course Content</h2>
+
+<h3>Course Description</h3>
+<p>Credit Hours: 3. Contact Hours: 3.</p>
+<p><b>MATH 1314 College Algebra (3-3-0).</b> A course designed for students who need College Algebra but do not need to take Precalculus (MATH 2412) or Calculus (MATH 2413). In-depth study and applications of polynomial, rational, radical, exponential and logarithmic functions, and systems of equations using matrices. This course does not meet the prerequisite for Precalculus (MATH 2412).</p>
+
+<h3>Course Rationale</h3>
+<p>This course is designed to teach students the functional approach to mathematical relationships that they will need for a business calculus sequence. Other courses, such as MATH 1332 or MATH 1342, are more appropriate to meet a general mathematics requirement. Check with your degree plan as to what math course your college requires.</p>
+
+<h3>Common Course Objectives</h3>
+<p><b>Functions:</b></p>
+<ul>
+  <li>Use and interpret function notation.</li>
+  <li>Find the domain of polynomial, rational, radical, exponential, and logarithmic functions.</li>
+  <li>Find a symbolic representation of the sum, difference, product, quotient, and composition of two functions.</li>
+  <li>Evaluate the sum, difference, product, quotient, and composition of two functions at a given value of the respective domain for functions represented symbolically, graphically, and numerically.</li>
+  <li>Find the inverse of a function represented symbolically, graphically, or numerically.</li>
+  <li>Interpret the graphs of functions.</li>
+</ul>
+<p><b>Graphing functions:</b></p>
+<ul>
+  <li>Sketch the graphs of the following functions: lines, x<sup>2</sup>, a<sup>x</sup>, and log<sub>a</sub>x.</li>
+  <li>Identify and sketch transformations of the graphs of the following functions: x<sup>2</sup>, x<sup>3</sup>, x<sup>1/2</sup>, 1/x, 1/x<sup>2</sup>, |x|.</li>
+  <li>Describe the end behavior of polynomial functions.</li>
+  <li>Approximate the zeros of a function from its graph.</li>
+  <li>Solve an inequality involving a function from its graph.</li>
+  <li>Graph a piecewise-defined function.</li>
+</ul>
+<p><b>Symbolic Adeptness:</b></p>
+<ul>
+  <li>Solve polynomial, rational, exponential, and logarithmic equations symbolically.</li>
+  <li>Use the Fundamental Theorem of Algebra.</li>
+  <li>Find the vertex of a parabola written in standard form by using the formula <i>h = &minus;b/2a</i>.</li>
+  <li>Convert an exponential equation to logarithmic form, and a logarithmic equation to exponential form.</li>
+  <li>Evaluate exponential and logarithmic functions using the change of base formula and a calculator.</li>
+  <li>Use the properties of logarithms to expand a logarithmic expression, and to write an expanded logarithmic expression as a single logarithm.</li>
+  <li>Solve a system of linear equations using Gaussian elimination.</li>
+  <li>Evaluate the sum, difference, and scalar multiplication of matrices.</li>
+</ul>
+<p><b>Applications:</b></p>
+<ul>
+  <li>Recognize and use applications of linear functions.</li>
+  <li>Recognize and use applications of quadratic functions, including falling object problems and extrema problems.</li>
+  <li>Recognize and use applications of rational functions.</li>
+  <li>Recognize and use applications of exponential and logarithmic functions, including exponential growth and decay, doubling time, and half-life problems.</li>
+  <li>Recognize and use applications of systems of linear equations.</li>
+</ul>
+
+<h3>Student Learning Outcomes</h3>
+<p>Upon successful completion of the course, a student should be able to:</p>
+<ul>
+  <li>Demonstrate understanding and knowledge of properties of functions, which include domain and range, operations, compositions, and inverses.</li>
+  <li>Recognize and apply polynomial, rational, exponential, and logarithmic functions and solve related equations.</li>
+  <li>Apply graphical, symbolic, and numeric techniques.</li>
+  <li>Evaluate all roots of higher-degree polynomial and rational functions.</li>
+  <li>Recognize, solve, and apply systems of linear equations using matrices.</li>
+</ul>
+
+<h3>General Education Competencies</h3>
+<ul>
+  <li><b>Communication Skills:</b> Develop, interpret, and express ideas and information through written, oral, and visual communication that is adapted to purpose, structure, audience, and medium.</li>
+  <li><b>Critical Thinking:</b> Gather, analyze, synthesize, evaluate, and apply information for the purposes of innovation, inquiry, and creative thinking.</li>
+  <li><b>Empirical and Quantitative Skills:</b> Apply mathematical, logical, and scientific principles and methods through the manipulation and analysis of numerical data or observable facts resulting in informed conclusions.</li>
+</ul>
+
+<h2>The Details</h2>
+
+<h3>First Day Access</h3>
+<p>To enhance your learning experience and provide affordable access to the right course material, this course is part of an inclusive access model called First Day&trade;. You can easily access the required materials for this course through Blackboard, at a discounted price, and benefit from single sign-on access. Austin Community College includes the discounted price as a course fee in your registration fees for this course.</p>
+<p>It is NOT recommended that you Opt Out, as these materials are required to complete the course. You can choose to Opt Out on the first day of class, but you will be responsible for purchasing your course materials at the full retail price and access to your materials may be suspended. See your course in Blackboard for details.</p>
+
+<h3>Withdrawal Policy</h3>
+<p>It is the responsibility of each student to ensure that his or her name is removed from the roll should he or she decide to withdraw from the class. The instructor does, however, reserve the right to drop a student should he or she feel it is necessary. If a student decides to withdraw, he or she should also verify that the withdrawal is submitted before the Final Withdrawal Date. The student is also strongly encouraged to retain their copy of the withdrawal form for their records.</p>
+<p>Students who enroll for the third or subsequent time in a course taken since Fall 2002 may be charged a higher tuition rate for that course. State law permits students to withdraw from no more than six courses during their entire undergraduate career at Texas public colleges or universities. With certain exceptions, all course withdrawals automatically count towards this limit. Details regarding this policy can be found in the ACC college catalog.</p>
+
+<h3>Reinstatement Policy</h3>
+<p>Students who withdrew or were withdrawn will not be reinstated unless they have completed all coursework, projects, and exams necessary to place them at the same level of course completion as the rest of the class. Reinstatement is up to the instructor&rsquo;s approval.</p>
+
+<h3>Incomplete Grade Policy</h3>
+<p>Incomplete grades (I) will be given only in very rare circumstances. Generally, to receive a grade of &ldquo;I&rdquo;, a student must be up to date on coursework and have a passing grade, and after the last date to withdraw, have a legitimate reason that prevents course completion. An incomplete grade cannot be carried beyond the established date in the following semester. The completion date is determined by the instructor but may not be later than the final deadline for withdrawal in the subsequent semester.</p>
+
+<h3>Communication with Your Instructor</h3>
+<p>All e-mail communication to students will be sent solely to the student&rsquo;s ACCmail account or math software if applicable, with the expectation that such communications will be read in a timely fashion. Likewise, students should use their ACCmail account or math software when communicating with instructors. Instructors will respond to student emails within 3 business days; if no response has been received by the student at the end of that time, then the student should send a reminder to the instructor.</p>
+
+<h3>Name Change Information</h3>
+<p>If you want to change how your name appears online at ACC, go to <a href="https://www.austincc.edu/admissions/update-student-information/chosen-name" target="_blank">austincc.edu/admissions/update-student-information/chosen-name</a>.</p>
+
+<h3>General College Policies</h3>
+<p>Policies that apply to all courses at ACC can be found at <a href="https://www.austincc.edu/offices/academic-outcomes-assessment/master-syllabi/college-policies" target="_blank">austincc.edu/offices/academic-outcomes-assessment/master-syllabi/college-policies</a>.</p>
+
+</div>
+</body>
+</html>
