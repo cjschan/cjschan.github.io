@@ -203,7 +203,10 @@ const StatGraphs = (() => {
   }
 
   function boxplots(target, datasets, labels, opts = {}) {
-    const fr = frame(Object.assign({ height: 220 }, opts));
+    // Reserve enough left padding for the longest label.
+    const longest = (labels || []).reduce((m, s) => Math.max(m, (s || '').length), 0);
+    const autoPadLeft = Math.max(40, longest * 7 + 14);
+    const fr = frame(Object.assign({ height: 220, padLeft: autoPadLeft }, opts));
     const allFlat = datasets.flat();
     const min = opts.min !== undefined ? opts.min : Math.min(...allFlat);
     const max = opts.max !== undefined ? opts.max : Math.max(...allFlat);
