@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700');
 
 :root {
-	--primary: #a83232;
-	--primary-dark: #6f1f1f;
-	--primary-light: #c75a4a;
-	--accent: #e8a23a;
-	--accent-light: #f3c969;
-	--bg: #fbf5ea;
-	--card-bg: #ffffff;
-	--text: #3a2418;
-	--muted: #8a6f5c;
-	--border: #ead9c2;
+	--primary: #38bdf8;
+	--primary-dark: #0284c7;
+	--primary-light: #7dd3fc;
+	--accent: #fbbf24;
+	--accent-light: #fde68a;
+	--bg: #0f172a;
+	--card-bg: #1e293b;
+	--text: #f1f5f9;
+	--muted: #94a3b8;
+	--border: #475569;
 }
 
 body {
@@ -27,8 +27,9 @@ body {
 }
 
 header {
-	background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-	box-shadow: 0 2px 12px rgba(111, 31, 31, 0.20);
+	background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.40);
+	border-bottom: 1px solid var(--border);
 }
 
 header::after {
@@ -104,19 +105,20 @@ nav a:hover::before {
 	background: var(--card-bg);
 	border-radius: 16px;
 	padding: 32px 24px;
-	box-shadow: 0 6px 24px rgba(111, 31, 31, 0.10);
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+	border: 1px solid var(--border);
 	border-top: 5px solid var(--accent);
 	position: sticky;
 	top: 30px;
 }
 
 .card h1 {
-	color: var(--primary-dark);
+	color: var(--text);
 	margin-bottom: 4px;
 }
 
 .title {
-	color: var(--accent);
+	color: var(--primary);
 	font-size: 16px;
 	font-weight: 500;
 	margin-top: 4px;
@@ -125,8 +127,8 @@ nav a:hover::before {
 
 .img {
 	border-radius: 50%;
-	border: 4px solid var(--accent-light);
-	box-shadow: 0 4px 12px rgba(232, 162, 58, 0.30);
+	border: 4px solid var(--primary);
+	box-shadow: 0 4px 16px rgba(56, 189, 248, 0.25);
 }
 
 .card a {
@@ -150,12 +152,13 @@ nav a:hover::before {
 	background: var(--card-bg);
 	border-radius: 16px;
 	padding: 36px 48px;
-	box-shadow: 0 6px 24px rgba(111, 31, 31, 0.10);
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+	border: 1px solid var(--border);
 }
 
 .column h1 {
-	color: var(--primary-dark);
-	border-bottom: 3px solid var(--accent);
+	color: var(--text);
+	border-bottom: 3px solid var(--primary);
 	padding-bottom: 10px;
 	display: inline-block;
 	margin-top: 8px;
@@ -164,12 +167,12 @@ nav a:hover::before {
 .column h2 {
 	color: var(--primary);
 	margin-top: 36px;
-	border-left: 4px solid var(--accent);
+	border-left: 4px solid var(--primary);
 	padding-left: 14px;
 }
 
 .column h3 {
-	color: var(--primary-dark);
+	color: var(--text);
 	margin-bottom: 4px;
 	margin-top: 24px;
 }
@@ -205,8 +208,9 @@ nav a:hover::before {
 }
 
 blockquote {
-	background: linear-gradient(135deg, #fcecd1 0%, #f7dcd0 100%);
-	border-left: 4px solid var(--accent);
+	background: rgba(56, 189, 248, 0.06);
+	border: 1px solid rgba(56, 189, 248, 0.20);
+	border-left: 4px solid var(--primary);
 	margin: 20px 0;
 	padding: 18px 24px;
 	border-radius: 0 10px 10px 0;
