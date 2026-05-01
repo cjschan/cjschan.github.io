@@ -240,7 +240,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h2>Visualizing a Piecewise Function</h2>
 <p>Graph of the function from Example 4:</p>
 <div class="plot" id="plot-2-4-piecewise"></div>
-<script>Lvplot.draw("#plot-2-4-piecewise", {width: 460, height: 320, xMin: -4, xMax: 7, yMin: -8, yMax: 12, curves: [{fn: 2*x + 1, from: -4, to: -0.001, color: "#38bdf8"}, {fn: x*x, from: 0, to: 3, color: "#fbbf24"}, {fn: -x + 12, from: 3.001, to: 7, color: "#34d399"}]});</script>
+<script>Lvplot.draw("#plot-2-4-piecewise", {width: 460, height: 320, xMin: -4, xMax: 7, yMin: -8, yMax: 12, curves: [{fn: x => (2*x + 1), from: -4, to: -0.001, color: "#38bdf8"}, {fn: x => (x*x), from: 0, to: 3, color: "#fbbf24"}, {fn: x => (-x + 12), from: 3.001, to: 7, color: "#34d399"}]});</script>
 </div>
 </body>
 </html>

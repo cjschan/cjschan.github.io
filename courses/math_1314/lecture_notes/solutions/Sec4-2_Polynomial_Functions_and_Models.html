@@ -232,7 +232,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Sketching from features</h3>
 <p>Sketch the polynomial \(f(x) = x^3 - 4x\). Identify zeros, end behavior, and turning points.</p>
 <div class="plot" id="plot-4-2-ex4"></div>
-<script>Lvplot.draw("#plot-4-2-ex4", {width: 460, height: 320, xMin: -3, xMax: 3, yMin: -4, yMax: 4, curves: [{fn: x*x*x - 4*x}], points: [{x: -2, y: 0, label: "(-2, 0)", dx: -42, dy: 14}, {x: 0, y: 0, label: "(0, 0)", dx: -36, dy: 14}, {x: 2, y: 0, label: "(2, 0)", dx: 6, dy: 14}]});</script>
+<script>Lvplot.draw("#plot-4-2-ex4", {width: 460, height: 320, xMin: -3, xMax: 3, yMin: -4, yMax: 4, curves: [{fn: x => (x*x*x - 4*x)}], points: [{x: -2, y: 0, label: "(-2, 0)", dx: -42, dy: 14}, {x: 0, y: 0, label: "(0, 0)", dx: -36, dy: 14}, {x: 2, y: 0, label: "(2, 0)", dx: 6, dy: 14}]});</script>
 <div class="solution"><p>Factor: \(x(x^2 - 4) = x(x - 2)(x + 2)\). Zeros: \(x = -2, 0, 2\), each multiplicity 1, so the graph crosses at each.</p><p>Odd degree, positive leading coefficient: down on the left, up on the right.</p><p>Two turning points (a local max between \(x = -2\) and \(0\), a local min between \(0\) and \(2\)).</p></div>
 </div>
 <h2>Polynomial Models</h2>

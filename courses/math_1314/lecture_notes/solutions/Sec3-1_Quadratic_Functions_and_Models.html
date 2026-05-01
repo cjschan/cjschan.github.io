@@ -231,7 +231,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Sketching a parabola</h3>
 <p>Sketch \(f(x) = x^2 - 4x + 3\). Identify the vertex, axis of symmetry, and \(y\)- and \(x\)-intercepts.</p>
 <div class="plot" id="plot-3-1-ex4"></div>
-<script>Lvplot.draw("#plot-3-1-ex4", {width: 420, height: 320, xMin: -1, xMax: 5, yMin: -2, yMax: 6, curves: [{fn: x*x - 4*x + 3}], points: [{x: 2, y: -1, label: "vertex (2, -1)", color: "#fbbf24", dx: 8, dy: 4}, {x: 1, y: 0, label: "(1, 0)", dx: -36, dy: -8}, {x: 3, y: 0, label: "(3, 0)", dx: 6, dy: -8}, {x: 0, y: 3, label: "(0, 3)", dx: 6, dy: 0}]});</script>
+<script>Lvplot.draw("#plot-3-1-ex4", {width: 420, height: 320, xMin: -1, xMax: 5, yMin: -2, yMax: 6, curves: [{fn: x => (x*x - 4*x + 3)}], points: [{x: 2, y: -1, label: "vertex (2, -1)", color: "#fbbf24", dx: 8, dy: 4}, {x: 1, y: 0, label: "(1, 0)", dx: -36, dy: -8}, {x: 3, y: 0, label: "(3, 0)", dx: 6, dy: -8}, {x: 0, y: 3, label: "(0, 3)", dx: 6, dy: 0}]});</script>
 <div class="solution"><p>Vertex: \(h = -\dfrac{-4}{2} = 2\); \(k = f(2) = 4 - 8 + 3 = -1\). Vertex \((2, -1)\), axis \(x = 2\).</p><p>\(y\)-intercept: \(f(0) = 3\), so \((0, 3)\).</p><p>\(x\)-intercepts: solve \(x^2 - 4x + 3 = 0\). Factor: \((x - 1)(x - 3) = 0\), so \(x = 1\) or \(x = 3\).</p></div>
 </div>
 <h2>Maximum and Minimum Applications</h2>

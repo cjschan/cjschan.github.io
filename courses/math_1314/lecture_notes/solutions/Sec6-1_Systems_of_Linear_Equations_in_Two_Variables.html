@@ -234,7 +234,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h2>Graphical View</h2>
 <p>The lines from Example 1 cross at \((2, 4)\):</p>
 <div class="plot" id="plot-6-1-graph"></div>
-<script>Lvplot.draw("#plot-6-1-graph", {width: 460, height: 340, xMin: -2, xMax: 6, yMin: -3, yMax: 8, curves: [{fn: 3*x - 2, color: "#38bdf8"}, {fn: 8 - 2*x, color: "#fbbf24"}], points: [{x: 2, y: 4, label: "(2, 4)", color: "#fb7185", dx: 8, dy: -4}]});</script>
+<script>Lvplot.draw("#plot-6-1-graph", {width: 460, height: 340, xMin: -2, xMax: 6, yMin: -3, yMax: 8, curves: [{fn: x => (3*x - 2), color: "#38bdf8"}, {fn: x => (8 - 2*x), color: "#fbbf24"}], points: [{x: 2, y: 4, label: "(2, 4)", color: "#fb7185", dx: 8, dy: -4}]});</script>
 <h2>Word Problems</h2>
 <div class="example">
 <span class="label">Example 5</span>

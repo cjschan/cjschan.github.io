@@ -231,7 +231,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Sketching with transformations</h3>
 <p>Sketch \(g(x) = -|x - 3| + 4\) by transforming the graph of \(f(x) = |x|\). Identify the vertex.</p>
 <div class="plot" id="plot-3-5-ex4"></div>
-<script>Lvplot.draw("#plot-3-5-ex4", {width: 420, height: 300, xMin: -2, xMax: 8, yMin: -2, yMax: 6, curves: [{fn: Math.abs(x), color: "#94a3b8", dashed: true}, {fn: -Math.abs(x - 3) + 4}], points: [{x: 3, y: 4, label: "vertex (3, 4)", color: "#fbbf24", dx: 8, dy: -2}]});</script>
+<script>Lvplot.draw("#plot-3-5-ex4", {width: 420, height: 300, xMin: -2, xMax: 8, yMin: -2, yMax: 6, curves: [{fn: x => (Math.abs(x)), color: "#94a3b8", dashed: true}, {fn: x => (-Math.abs(x - 3) + 4)}], points: [{x: 3, y: 4, label: "vertex (3, 4)", color: "#fbbf24", dx: 8, dy: -2}]});</script>
 <div class="solution"><p>Start with \(y = |x|\) (V-shape, vertex at origin). Shift right 3 to get \(|x - 3|\). Reflect across the \(x\)-axis to get \(-|x - 3|\) (V flipped to ∧). Shift up 4 to get the final graph. Vertex: \((3, 4)\); the graph opens downward.</p></div>
 </div>
 <h2>Order Matters</h2>

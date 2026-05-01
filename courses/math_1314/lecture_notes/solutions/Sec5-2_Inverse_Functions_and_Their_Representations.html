@@ -232,7 +232,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Reflection across \(y = x\)</h3>
 <p>Let \(f(x) = 2x + 1\). Find \(f^{-1}\) and graph both functions on the same axes.</p>
 <div class="plot" id="plot-5-2-ex4"></div>
-<script>Lvplot.draw("#plot-5-2-ex4", {width: 460, height: 360, xMin: -4, xMax: 6, yMin: -4, yMax: 6, curves: [{fn: x, color: "#94a3b8", dashed: true}, {fn: 2*x + 1, color: "#38bdf8"}, {fn: (x - 1)/2, color: "#fbbf24"}]});</script>
+<script>Lvplot.draw("#plot-5-2-ex4", {width: 460, height: 360, xMin: -4, xMax: 6, yMin: -4, yMax: 6, curves: [{fn: x => (x), color: "#94a3b8", dashed: true}, {fn: x => (2*x + 1), color: "#38bdf8"}, {fn: x => ((x - 1)/2), color: "#fbbf24"}]});</script>
 <div class="solution"><p>Setting \(y = 2x + 1\) and swapping: \(x = 2y + 1\), so \(y = \dfrac{x - 1}{2}\). Hence \(f^{-1}(x) = \dfrac{x - 1}{2}\).</p><p>The two graphs are reflections of each other across the line \(y = x\) (shown dashed).</p></div>
 </div>
 <h2>Inverses from Tables</h2>

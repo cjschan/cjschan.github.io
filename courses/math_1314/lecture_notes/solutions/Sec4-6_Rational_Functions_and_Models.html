@@ -230,7 +230,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Full sketch</h3>
 <p>Sketch \(f(x) = \dfrac{x + 1}{x - 2}\). Identify all intercepts and asymptotes.</p>
 <div class="plot" id="plot-4-6-ex4"></div>
-<script>Lvplot.draw("#plot-4-6-ex4", {width: 460, height: 340, xMin: -6, xMax: 8, yMin: -6, yMax: 8, curves: [{fn: (x + 1)/(x - 2)}], asymptotes: [{x: 2, color: "#fb7185"}, {y: 1, color: "#fb7185"}], points: [{x: -1, y: 0, label: "(-1, 0)", dx: -42, dy: -8}, {x: 0, y: -0.5, label: "(0, -1/2)", dx: 8, dy: 0}]});</script>
+<script>Lvplot.draw("#plot-4-6-ex4", {width: 460, height: 340, xMin: -6, xMax: 8, yMin: -6, yMax: 8, curves: [{fn: x => ((x + 1)/(x - 2))}], asymptotes: [{x: 2, color: "#fb7185"}, {y: 1, color: "#fb7185"}], points: [{x: -1, y: 0, label: "(-1, 0)", dx: -42, dy: -8}, {x: 0, y: -0.5, label: "(0, -1/2)", dx: 8, dy: 0}]});</script>
 <div class="solution"><p>VA: \(x = 2\) (denominator zero, doesn&rsquo;t cancel).</p><p>HA: equal degrees, leading coefficients both 1, so \(y = 1\).</p><p>\(y\)-intercept: \(f(0) = -\tfrac{1}{2}\).</p><p>\(x\)-intercept: \(f(x) = 0\) when numerator zero, so \(x = -1\). Point \((-1, 0)\).</p><p>The graph has two branches separated by \(x = 2\).</p></div>
 </div>
 <div class="example">

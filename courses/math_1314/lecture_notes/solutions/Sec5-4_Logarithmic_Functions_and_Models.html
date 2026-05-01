@@ -259,7 +259,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h2>Graphs of Logarithms</h2>
 <p>The natural log \(y = \ln x\) is the inverse of \(y = e^x\); the two graphs are mirror images across \(y = x\):</p>
 <div class="plot" id="plot-5-4-graphs"></div>
-<script>Lvplot.draw("#plot-5-4-graphs", {width: 460, height: 340, xMin: -3, xMax: 5, yMin: -3, yMax: 5, curves: [{fn: x, color: "#94a3b8", dashed: true}, {fn: Math.exp(x), color: "#38bdf8"}, {fn: Math.log(x), from: 0.05, to: 5, color: "#fbbf24"}]});</script>
+<script>Lvplot.draw("#plot-5-4-graphs", {width: 460, height: 340, xMin: -3, xMax: 5, yMin: -3, yMax: 5, curves: [{fn: x => (x), color: "#94a3b8", dashed: true}, {fn: x => (Math.exp(x)), color: "#38bdf8"}, {fn: x => (Math.log(x)), from: 0.05, to: 5, color: "#fbbf24"}]});</script>
 </div>
 </body>
 </html>

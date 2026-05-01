@@ -250,7 +250,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h2>Behavior Near Zeros</h2>
 <p>The polynomial from Example 4 has zeros that all happen to be simple (multiplicity 1), so the graph crosses the \(x\)-axis at each one:</p>
 <div class="plot" id="plot-4-4-summary"></div>
-<script>Lvplot.draw("#plot-4-4-summary", {width: 460, height: 320, xMin: -3, xMax: 3, yMin: -8, yMax: 8, curves: [{fn: 2*x*x*x - x*x - 8*x + 4}], points: [{x: -2, y: 0}, {x: 0.5, y: 0}, {x: 2, y: 0}]});</script>
+<script>Lvplot.draw("#plot-4-4-summary", {width: 460, height: 320, xMin: -3, xMax: 3, yMin: -8, yMax: 8, curves: [{fn: x => (2*x*x*x - x*x - 8*x + 4)}], points: [{x: -2, y: 0}, {x: 0.5, y: 0}, {x: 2, y: 0}]});</script>
 </div>
 </body>
 </html>

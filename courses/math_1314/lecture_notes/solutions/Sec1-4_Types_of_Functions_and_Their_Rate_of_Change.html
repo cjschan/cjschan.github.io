@@ -231,7 +231,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Average rate of change of a parabola</h3>
 <p>Let \(f(x) = x^2\).</p><ol type='a'><li>Find the average rate of change from \(x = 1\) to \(x = 3\).</li><li>Find the average rate of change from \(x = -2\) to \(x = 0\).</li><li>Why are the two answers different?</li></ol>
 <div class="plot" id="plot-1-4-ex4"></div>
-<script>Lvplot.draw("#plot-1-4-ex4", {width: 380, height: 280, xMin: -3, xMax: 4, yMin: -1, yMax: 10, curves: [{fn: x*x}], points: [{x: 1, y: 1}, {x: 3, y: 9}, {x: -2, y: 4}, {x: 0, y: 0}]});</script>
+<script>Lvplot.draw("#plot-1-4-ex4", {width: 380, height: 280, xMin: -3, xMax: 4, yMin: -1, yMax: 10, curves: [{fn: x => (x*x)}], points: [{x: 1, y: 1}, {x: 3, y: 9}, {x: -2, y: 4}, {x: 0, y: 0}]});</script>
 <div class="solution"><p>(a) \(\dfrac{f(3) - f(1)}{3 - 1} = \dfrac{9 - 1}{2} = 4\).</p><p>(b) \(\dfrac{f(0) - f(-2)}{0 - (-2)} = \dfrac{0 - 4}{2} = -2\).</p><p>(c) The graph of \(f(x) = x^2\) is curved, so the rate of change isn&rsquo;t constant. Different intervals on the curve have different secant slopes.</p></div>
 </div>
 <h2>Increasing, Decreasing, and Constant</h2>
@@ -241,7 +241,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Reading behavior from a graph</h3>
 <p>The graph of \(f(x) = x^3 - 3x\) is shown. State the intervals where \(f\) is increasing and where it is decreasing.</p>
 <div class="plot" id="plot-1-4-ex5"></div>
-<script>Lvplot.draw("#plot-1-4-ex5", {width: 420, height: 300, xMin: -3, xMax: 3, yMin: -4, yMax: 4, curves: [{fn: x*x*x - 3*x}], points: [{x: -1, y: 2, label: "(-1, 2)", dx: -56, dy: -6}, {x: 1, y: -2, label: "(1, -2)", dx: 8, dy: 16}]});</script>
+<script>Lvplot.draw("#plot-1-4-ex5", {width: 420, height: 300, xMin: -3, xMax: 3, yMin: -4, yMax: 4, curves: [{fn: x => (x*x*x - 3*x)}], points: [{x: -1, y: 2, label: "(-1, 2)", dx: -56, dy: -6}, {x: 1, y: -2, label: "(1, -2)", dx: 8, dy: 16}]});</script>
 <div class="solution"><p>The local maximum is at \(x = -1\) and the local minimum at \(x = 1\). So</p><ul><li>Increasing on \((-\infty, -1)\) and on \((1, \infty)\).</li><li>Decreasing on \((-1, 1)\).</li></ul></div>
 </div>
 </div>

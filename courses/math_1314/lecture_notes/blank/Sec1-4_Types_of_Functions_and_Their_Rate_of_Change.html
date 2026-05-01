@@ -228,7 +228,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Average rate of change of a parabola</h3>
 <p>Let \(f(x) = x^2\).</p><ol type='a'><li>Find the average rate of change from \(x = 1\) to \(x = 3\).</li><li>Find the average rate of change from \(x = -2\) to \(x = 0\).</li><li>Why are the two answers different?</li></ol>
 <div class="plot" id="plot-1-4-ex4"></div>
-<script>Lvplot.draw("#plot-1-4-ex4", {width: 380, height: 280, xMin: -3, xMax: 4, yMin: -1, yMax: 10, curves: [{fn: x*x}], points: [{x: 1, y: 1}, {x: 3, y: 9}, {x: -2, y: 4}, {x: 0, y: 0}]});</script>
+<script>Lvplot.draw("#plot-1-4-ex4", {width: 380, height: 280, xMin: -3, xMax: 4, yMin: -1, yMax: 10, curves: [{fn: x => (x*x)}], points: [{x: 1, y: 1}, {x: 3, y: 9}, {x: -2, y: 4}, {x: 0, y: 0}]});</script>
 </div>
 <h2>Increasing, Decreasing, and Constant</h2>
 <div class="box definition"><span class="label">Behavior on an Interval</span><p>On an interval \(I\), a function \(f\) is</p><ul><li><b>increasing</b> if \(f(x_1) < f(x_2)\) whenever \(x_1 < x_2\) in \(I\),</li><li><b>decreasing</b> if \(f(x_1) > f(x_2)\) whenever \(x_1 < x_2\) in \(I\),</li><li><b>constant</b> if \(f(x_1) = f(x_2)\) for all \(x_1, x_2\) in \(I\).</li></ul><p>For a smooth function, increasing intervals correspond to positive average rates of change, decreasing to negative.</p></div>
@@ -237,7 +237,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Reading behavior from a graph</h3>
 <p>The graph of \(f(x) = x^3 - 3x\) is shown. State the intervals where \(f\) is increasing and where it is decreasing.</p>
 <div class="plot" id="plot-1-4-ex5"></div>
-<script>Lvplot.draw("#plot-1-4-ex5", {width: 420, height: 300, xMin: -3, xMax: 3, yMin: -4, yMax: 4, curves: [{fn: x*x*x - 3*x}], points: [{x: -1, y: 2, label: "(-1, 2)", dx: -56, dy: -6}, {x: 1, y: -2, label: "(1, -2)", dx: 8, dy: 16}]});</script>
+<script>Lvplot.draw("#plot-1-4-ex5", {width: 420, height: 300, xMin: -3, xMax: 3, yMin: -4, yMax: 4, curves: [{fn: x => (x*x*x - 3*x)}], points: [{x: -1, y: 2, label: "(-1, 2)", dx: -56, dy: -6}, {x: 1, y: -2, label: "(1, -2)", dx: 8, dy: 16}]});</script>
 </div>
 </div>
 </body>

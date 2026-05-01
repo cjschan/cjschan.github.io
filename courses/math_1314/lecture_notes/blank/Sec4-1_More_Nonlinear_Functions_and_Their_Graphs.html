@@ -205,7 +205,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Reading extrema from a graph</h3>
 <p>The graph of \(f(x) = x^3 - 3x\) is shown. Identify the local maximum, local minimum, and discuss whether \(f\) has any absolute extrema.</p>
 <div class="plot" id="plot-4-1-ex1"></div>
-<script>Lvplot.draw("#plot-4-1-ex1", {width: 420, height: 300, xMin: -3, xMax: 3, yMin: -4, yMax: 4, curves: [{fn: x*x*x - 3*x}], points: [{x: -1, y: 2, label: "local max (-1, 2)", color: "#fbbf24", dx: -120, dy: -6}, {x: 1, y: -2, label: "local min (1, -2)", color: "#fbbf24", dx: 8, dy: 16}]});</script>
+<script>Lvplot.draw("#plot-4-1-ex1", {width: 420, height: 300, xMin: -3, xMax: 3, yMin: -4, yMax: 4, curves: [{fn: x => (x*x*x - 3*x)}], points: [{x: -1, y: 2, label: "local max (-1, 2)", color: "#fbbf24", dx: -120, dy: -6}, {x: 1, y: -2, label: "local min (1, -2)", color: "#fbbf24", dx: 8, dy: 16}]});</script>
 </div>
 <h2>Increasing and Decreasing</h2>
 <div class="box property"><span class="label">Reading Behavior</span><p>On any interval where the graph is rising left-to-right, the function is <b>increasing</b>. Falling means <b>decreasing</b>. Constant means flat. Use open intervals when reading from a graph.</p></div>
@@ -237,7 +237,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Reading every feature</h3>
 <p>Use the graph of \(f(x) = -x^4 + 4x^2\) to answer each question.</p><ol type='a'><li>Find the absolute maximum value of \(f\).</li><li>Find the local minimum.</li><li>State the increasing and decreasing intervals.</li><li>Is \(f\) even, odd, or neither?</li></ol>
 <div class="plot" id="plot-4-1-ex5"></div>
-<script>Lvplot.draw("#plot-4-1-ex5", {width: 460, height: 320, xMin: -3, xMax: 3, yMin: -4, yMax: 5, curves: [{fn: -x*x*x*x + 4*x*x}], points: [{x: -1.414, y: 4, label: "max", color: "#fbbf24", dx: -32, dy: -2}, {x: 1.414, y: 4, label: "max", color: "#fbbf24", dx: 6, dy: -2}, {x: 0, y: 0, label: "local min (0, 0)", color: "#f0abfc", dx: 8, dy: 16}]});</script>
+<script>Lvplot.draw("#plot-4-1-ex5", {width: 460, height: 320, xMin: -3, xMax: 3, yMin: -4, yMax: 5, curves: [{fn: x => (-x*x*x*x + 4*x*x)}], points: [{x: -1.414, y: 4, label: "max", color: "#fbbf24", dx: -32, dy: -2}, {x: 1.414, y: 4, label: "max", color: "#fbbf24", dx: 6, dy: -2}, {x: 0, y: 0, label: "local min (0, 0)", color: "#f0abfc", dx: 8, dy: 16}]});</script>
 </div>
 </div>
 </body>

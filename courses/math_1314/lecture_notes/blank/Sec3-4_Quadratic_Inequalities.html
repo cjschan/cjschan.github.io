@@ -204,7 +204,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Solving by graph</h3>
 <p>Use the graph of \(f(x) = x^2 - 4x + 3\) to solve each inequality.</p><ol type='a'><li>\(x^2 - 4x + 3 < 0\)</li><li>\(x^2 - 4x + 3 \geq 0\)</li></ol>
 <div class="plot" id="plot-3-4-ex1"></div>
-<script>Lvplot.draw("#plot-3-4-ex1", {width: 420, height: 300, xMin: -1, xMax: 5, yMin: -2, yMax: 6, curves: [{fn: x*x - 4*x + 3}], points: [{x: 1, y: 0, label: "(1, 0)", dx: -36, dy: -8}, {x: 3, y: 0, label: "(3, 0)", dx: 6, dy: -8}]});</script>
+<script>Lvplot.draw("#plot-3-4-ex1", {width: 420, height: 300, xMin: -1, xMax: 5, yMin: -2, yMax: 6, curves: [{fn: x => (x*x - 4*x + 3)}], points: [{x: 1, y: 0, label: "(1, 0)", dx: -36, dy: -8}, {x: 3, y: 0, label: "(3, 0)", dx: 6, dy: -8}]});</script>
 </div>
 <h2>Sign-Chart Method</h2>
 <div class="box property"><span class="label">Sign-Chart Strategy</span><ol><li>Solve \(ax^2 + bx + c = 0\) to find the boundary values.</li><li>Mark them on a number line, dividing it into open intervals.</li><li>Pick one test value from each interval and plug it into \(ax^2 + bx + c\). Record the resulting sign.</li><li>The solution is the union of intervals where the sign matches the inequality.</li></ol></div>

@@ -205,7 +205,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Reading extrema from a graph</h3>
 <p>The graph of \(f(x) = x^3 - 3x\) is shown. Identify the local maximum, local minimum, and discuss whether \(f\) has any absolute extrema.</p>
 <div class="plot" id="plot-4-1-ex1"></div>
-<script>Lvplot.draw("#plot-4-1-ex1", {width: 420, height: 300, xMin: -3, xMax: 3, yMin: -4, yMax: 4, curves: [{fn: x*x*x - 3*x}], points: [{x: -1, y: 2, label: "local max (-1, 2)", color: "#fbbf24", dx: -120, dy: -6}, {x: 1, y: -2, label: "local min (1, -2)", color: "#fbbf24", dx: 8, dy: 16}]});</script>
+<script>Lvplot.draw("#plot-4-1-ex1", {width: 420, height: 300, xMin: -3, xMax: 3, yMin: -4, yMax: 4, curves: [{fn: x => (x*x*x - 3*x)}], points: [{x: -1, y: 2, label: "local max (-1, 2)", color: "#fbbf24", dx: -120, dy: -6}, {x: 1, y: -2, label: "local min (1, -2)", color: "#fbbf24", dx: 8, dy: 16}]});</script>
 <div class="solution"><p>Local max value of \(2\) at \(x = -1\). Local min value of \(-2\) at \(x = 1\).</p><p>The graph extends without bound up and down (\(f(x) \to \infty\) as \(x \to \infty\) and \(f(x) \to -\infty\) as \(x \to -\infty\)), so \(f\) has <b>no absolute extrema</b>.</p></div>
 </div>
 <h2>Increasing and Decreasing</h2>
@@ -241,7 +241,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <h3>Reading every feature</h3>
 <p>Use the graph of \(f(x) = -x^4 + 4x^2\) to answer each question.</p><ol type='a'><li>Find the absolute maximum value of \(f\).</li><li>Find the local minimum.</li><li>State the increasing and decreasing intervals.</li><li>Is \(f\) even, odd, or neither?</li></ol>
 <div class="plot" id="plot-4-1-ex5"></div>
-<script>Lvplot.draw("#plot-4-1-ex5", {width: 460, height: 320, xMin: -3, xMax: 3, yMin: -4, yMax: 5, curves: [{fn: -x*x*x*x + 4*x*x}], points: [{x: -1.414, y: 4, label: "max", color: "#fbbf24", dx: -32, dy: -2}, {x: 1.414, y: 4, label: "max", color: "#fbbf24", dx: 6, dy: -2}, {x: 0, y: 0, label: "local min (0, 0)", color: "#f0abfc", dx: 8, dy: 16}]});</script>
+<script>Lvplot.draw("#plot-4-1-ex5", {width: 460, height: 320, xMin: -3, xMax: 3, yMin: -4, yMax: 5, curves: [{fn: x => (-x*x*x*x + 4*x*x)}], points: [{x: -1.414, y: 4, label: "max", color: "#fbbf24", dx: -32, dy: -2}, {x: 1.414, y: 4, label: "max", color: "#fbbf24", dx: 6, dy: -2}, {x: 0, y: 0, label: "local min (0, 0)", color: "#f0abfc", dx: 8, dy: 16}]});</script>
 <div class="solution"><p>(a) Absolute max value 4, attained at \(x = \pm\sqrt{2}\).</p><p>(b) Local min value 0 at \(x = 0\).</p><p>(c) Increasing on \((-\infty, -\sqrt{2})\) and on \((0, \sqrt{2})\); decreasing on \((-\sqrt{2}, 0)\) and on \((\sqrt{2}, \infty)\).</p><p>(d) \(f(-x) = -(-x)^4 + 4(-x)^2 = -x^4 + 4x^2 = f(x)\). <b>Even.</b></p></div>
 </div>
 </div>
