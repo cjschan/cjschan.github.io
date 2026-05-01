@@ -62,7 +62,7 @@
 <body>
 <div class="progress-bar" id="progress"></div>
 <div class="slide-number" id="slideNum"></div>
-<div class="nav-hint">Arrow keys or click to navigate</div>
+<div class="nav-hint">Use arrow keys to navigate</div>
 <div class="deck" id="deck">
 
 <!-- Slide 1: Title -->
@@ -355,7 +355,6 @@
     if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
     if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
   });
-  document.addEventListener('click', () => renderSlide(current + 1));
   renderSlide(0);
 </script>
 </body>
