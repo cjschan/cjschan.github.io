@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.4 Logarithmic Functions and Models</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--muted);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 5.4</span>
+<h1>Logarithmic Functions and Models</h1>
+<p class="version-tag">Student Notes</p>
+
+<p>The logarithm is the inverse of an exponential. Today we define logarithms, switch fluently between exponential and log form, use the basic properties to evaluate and rewrite expressions, and solve simple exponential and log equations.</p>
+<h2>What Is a Logarithm?</h2>
+<div class="box definition"><span class="label">Logarithm</span><p>For \(a > 0\), \(a \neq 1\) and \(y > 0\), \[ \log_a y = x \quad \text{means} \quad a^x = y. \] In words, \(\log_a y\) is the exponent to which \(a\) must be raised to give \(y\). The base \(a\) cannot be 1, and the argument must be positive.</p></div>
+<div class="box property"><span class="label">Common Bases</span><ul><li><b>Common log:</b> \(\log x = \log_{10} x\) (base 10).</li><li><b>Natural log:</b> \(\ln x = \log_e x\) (base \(e\)).</li></ul></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>Switching between forms</h3>
+<p>Rewrite each in the other form.</p><ol type='a'><li>\(2^5 = 32\)</li><li>\(\log_3 81 = 4\)</li><li>\(e^x = 7\)</li><li>\(\log y = 2.5\)</li></ol>
+
+</div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>Evaluating logs by inspection</h3>
+<p>Evaluate without a calculator.</p><ol type='a'><li>\(\log_2 16\)</li><li>\(\log_5 \dfrac{1}{25}\)</li><li>\(\log_8 2\)</li><li>\(\log 1000\)</li><li>\(\ln 1\)</li></ol>
+
+</div>
+<h2>Properties of Logarithms</h2>
+<div class="box property"><span class="label">Log Rules</span><p>For positive \(M\), \(N\), real \(p\), and base \(a > 0\), \(a \neq 1\):</p><ul><li><b>Product:</b> \(\log_a (MN) = \log_a M + \log_a N\).</li><li><b>Quotient:</b> \(\log_a \dfrac{M}{N} = \log_a M - \log_a N\).</li><li><b>Power:</b> \(\log_a M^p = p \log_a M\).</li><li><b>Identity values:</b> \(\log_a a = 1\), \(\log_a 1 = 0\).</li><li><b>Inverse:</b> \(\log_a a^x = x\) and \(a^{\log_a x} = x\).</li></ul></div>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>Expanding and combining</h3>
+<p>Expand or combine as a single logarithm.</p><ol type='a'><li>Expand \(\log\dfrac{x^2 \sqrt{y}}{z^3}\).</li><li>Combine \(2 \ln x - 3 \ln y + \ln z\) as a single \(\ln\).</li></ol>
+
+</div>
+<h2>Change of Base</h2>
+<div class="box theorem"><span class="label">Change-of-Base Formula</span><p>For any positive \(M\), \[ \log_a M = \dfrac{\log_b M}{\log_b a} \] for any valid base \(b\). Calculators have buttons for base 10 (\(\log\)) and base \(e\) (\(\ln\)); use either one.</p></div>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Computing with change of base</h3>
+<p>Use a calculator to evaluate \(\log_3 50\) to four decimals.</p>
+
+</div>
+<h2>Solving Exponential and Logarithmic Equations</h2>
+<div class="box property"><span class="label">Strategy</span><ul><li><b>Exponential equation:</b> isolate the exponential, then take \(\ln\) (or \(\log\)) of both sides.</li><li><b>Logarithmic equation:</b> combine into a single log on one side, rewrite in exponential form, then solve.</li><li>Always check candidates against the original equation; logs of non-positive numbers are excluded.</li></ul></div>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>Solving an exponential equation</h3>
+<p>Solve \(3 \cdot 2^{x+1} = 96\). Round to three decimals if necessary.</p>
+
+</div>
+<div class="example">
+<span class="label">Example 6</span>
+<h3>Solving a log equation</h3>
+<p>Solve \(\log_2 (x + 1) + \log_2 (x - 1) = 3\).</p>
+
+</div>
+<h2>Logarithmic Models</h2>
+<div class="example">
+<span class="label">Example 7</span>
+<h3>Doubling time</h3>
+<p>An investment grows continuously at 4.5% per year. How long does it take to double?</p>
+
+</div>
+<h2>Graphs of Logarithms</h2>
+<p>The natural log \(y = \ln x\) is the inverse of \(y = e^x\); the two graphs are mirror images across \(y = x\):</p>
+<div class="plot" id="plot-5-4-graphs"></div>
+<script>Lvplot.draw("#plot-5-4-graphs", {width: 460, height: 340, xMin: -3, xMax: 5, yMin: -3, yMax: 5, curves: [{fn: x, color: "#94a3b8", dashed: true}, {fn: Math.exp(x), color: "#38bdf8"}, {fn: Math.log(x), from: 0.05, to: 5, color: "#fbbf24"}]});</script>
+</div>
+</body>
+</html>

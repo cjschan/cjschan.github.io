@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.2 Quadratic Equations and Problem Solving — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 3.2</span>
+<h1>Quadratic Equations and Problem Solving</h1>
+<p class="version-tag">Worked Solutions</p>
+
+<p>A quadratic equation has the form \(ax^2 + bx + c = 0\). Today we solve quadratic equations four ways &mdash; factoring, the square-root property, completing the square, and the quadratic formula &mdash; and use them in word problems.</p>
+<h2>Solving by Factoring</h2>
+<div class="box property"><span class="label">Zero-Product Property</span><p>If \(AB = 0\), then \(A = 0\) or \(B = 0\) (or both). To solve a factored quadratic, set each factor equal to zero and solve.</p></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>Factor and solve</h3>
+<p>Solve.</p><ol type='a'><li>\(x^2 - x - 12 = 0\)</li><li>\(2x^2 + 7x = 4\)</li><li>\(9x^2 = 25\)</li></ol>
+
+<div class="solution"><p>(a) Factor: \((x - 4)(x + 3) = 0\). \(x = 4\) or \(x = -3\).</p><p>(b) Move everything to one side: \(2x^2 + 7x - 4 = 0\). Factor: \((2x - 1)(x + 4) = 0\). \(x = \tfrac{1}{2}\) or \(x = -4\).</p><p>(c) Rewrite as \(9x^2 - 25 = 0\), a difference of squares: \((3x - 5)(3x + 5) = 0\). \(x = \tfrac{5}{3}\) or \(x = -\tfrac{5}{3}\).</p></div>
+</div>
+<h2>The Square-Root Property</h2>
+<div class="box theorem"><span class="label">Square-Root Property</span><p>If \(X^2 = c\) with \(c \geq 0\), then \(X = \sqrt{c}\) or \(X = -\sqrt{c}\), often written \(X = \pm\sqrt{c}\).</p></div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>Square-root method</h3>
+<p>Solve.</p><ol type='a'><li>\((x - 4)^2 = 49\)</li><li>\(2(x + 1)^2 - 18 = 0\)</li></ol>
+
+<div class="solution"><p>(a) \(x - 4 = \pm 7\). So \(x = 11\) or \(x = -3\).</p><p>(b) \((x + 1)^2 = 9\), so \(x + 1 = \pm 3\). \(x = 2\) or \(x = -4\).</p></div>
+</div>
+<h2>Completing the Square</h2>
+<div class="box property"><span class="label">Completing the Square</span><p>To solve \(x^2 + bx + c = 0\) by completing the square: move \(c\) to the other side, then add \(\left(\dfrac{b}{2}\right)^2\) to both sides so the left side becomes a perfect square \(\left(x + \dfrac{b}{2}\right)^2\). Then apply the square-root property.</p></div>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>Complete the square</h3>
+<p>Solve \(x^2 + 6x - 5 = 0\) by completing the square.</p>
+
+<div class="solution"><p>Move the constant: \(x^2 + 6x = 5\). Half of 6 is 3; \(3^2 = 9\). Add 9: \(x^2 + 6x + 9 = 14\), i.e. \((x + 3)^2 = 14\). Square-root: \(x + 3 = \pm\sqrt{14}\), so \(x = -3 \pm \sqrt{14}\).</p></div>
+</div>
+<h2>The Quadratic Formula</h2>
+<div class="box theorem"><span class="label">Quadratic Formula</span><p>The solutions of \(ax^2 + bx + c = 0\) (with \(a \neq 0\)) are \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}. \] The expression \(D = b^2 - 4ac\) under the radical is the <b>discriminant</b>.</p><ul><li>\(D > 0\): two distinct real solutions.</li><li>\(D = 0\): one repeated real solution.</li><li>\(D < 0\): no real solutions (two complex solutions).</li></ul></div>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Using the quadratic formula</h3>
+<p>Solve.</p><ol type='a'><li>\(2x^2 - 5x - 3 = 0\)</li><li>\(x^2 + 4x + 5 = 0\)</li><li>\(3x^2 - 12x + 12 = 0\)</li></ol>
+
+<div class="solution"><p>(a) \(a = 2, b = -5, c = -3\). \(D = 25 + 24 = 49\). \(x = \dfrac{5 \pm 7}{4}\). So \(x = 3\) or \(x = -\tfrac{1}{2}\).</p><p>(b) \(D = 16 - 20 = -4 < 0\). No real solution.</p><p>(c) \(D = 144 - 144 = 0\). \(x = \dfrac{12}{6} = 2\), one (repeated) solution.</p></div>
+</div>
+<h2>Word Problems</h2>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>Area of a rectangle</h3>
+<p>A rectangular garden is 3 ft longer than it is wide and has area 70 ft². Find its dimensions.</p>
+
+<div class="solution"><p>Let the width be \(w\). Then the length is \(w + 3\) and \(w(w + 3) = 70\). Expand: \(w^2 + 3w - 70 = 0\). Factor: \((w + 10)(w - 7) = 0\). Since width is positive, \(w = 7\) ft and length \(= 10\) ft.</p></div>
+</div>
+<div class="example">
+<span class="label">Example 6</span>
+<h3>Falling object</h3>
+<p>An object dropped from 144 ft has height \(h(t) = -16 t^2 + 144\) feet at time \(t\) seconds. When does it hit the ground?</p>
+
+<div class="solution"><p>Set \(h(t) = 0\): \(-16 t^2 + 144 = 0\), so \(t^2 = 9\), \(t = \pm 3\). Time is non-negative, so \(t = 3\) seconds.</p></div>
+</div>
+</div>
+</body>
+</html>

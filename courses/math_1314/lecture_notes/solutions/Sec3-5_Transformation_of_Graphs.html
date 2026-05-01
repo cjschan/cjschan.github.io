@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.5 Transformation of Graphs — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 3.5</span>
+<h1>Transformation of Graphs</h1>
+<p class="version-tag">Worked Solutions</p>
+
+<p>You can build complicated graphs from a few <em>parent functions</em> using rigid shifts, reflections, and stretches. Recognizing transformations lets you sketch a graph quickly without plotting points.</p>
+<h2>Parent Functions</h2>
+<div class="box definition"><span class="label">Common Parent Functions</span><ul><li>Linear: \(y = x\)</li><li>Quadratic: \(y = x^2\)</li><li>Cubic: \(y = x^3\)</li><li>Square root: \(y = \sqrt{x}\)</li><li>Reciprocal: \(y = \dfrac{1}{x}\)</li><li>Reciprocal square: \(y = \dfrac{1}{x^2}\)</li><li>Absolute value: \(y = |x|\)</li></ul></div>
+<h2>Vertical and Horizontal Shifts</h2>
+<div class="box property"><span class="label">Shifts</span><p>Let \(c > 0\). Compared to \(y = f(x)\):</p><ul><li>\(y = f(x) + c\) shifts the graph <b>up</b> by \(c\).</li><li>\(y = f(x) - c\) shifts the graph <b>down</b> by \(c\).</li><li>\(y = f(x - c)\) shifts the graph <b>right</b> by \(c\).</li><li>\(y = f(x + c)\) shifts the graph <b>left</b> by \(c\).</li></ul><p>Horizontal shifts go in the <em>opposite</em> direction of the sign you see &mdash; \(f(x - 3)\) shifts right.</p></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>Identifying shifts</h3>
+<p>Describe each as a transformation of the parent graph \(y = x^2\).</p><ol type='a'><li>\(y = x^2 + 4\)</li><li>\(y = (x - 5)^2\)</li><li>\(y = (x + 2)^2 - 3\)</li></ol>
+
+<div class="solution"><p>(a) Shift up 4.</p><p>(b) Shift right 5.</p><p>(c) Shift left 2 and down 3. Vertex at \((-2, -3)\).</p></div>
+</div>
+<h2>Reflections</h2>
+<div class="box property"><span class="label">Reflections</span><ul><li>\(y = -f(x)\) reflects across the <b>\(x\)-axis</b> (flip top-to-bottom).</li><li>\(y = f(-x)\) reflects across the <b>\(y\)-axis</b> (flip left-to-right).</li></ul></div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>Reflections</h3>
+<p>Describe how to obtain each graph from \(y = \sqrt{x}\).</p><ol type='a'><li>\(y = -\sqrt{x}\)</li><li>\(y = \sqrt{-x}\)</li><li>\(y = -\sqrt{-x}\)</li></ol>
+
+<div class="solution"><p>(a) Reflect \(\sqrt{x}\) across the \(x\)-axis. The graph lies in the fourth quadrant.</p><p>(b) Reflect across the \(y\)-axis. The graph lies in the second quadrant (domain becomes \(x \leq 0\)).</p><p>(c) Reflect across both axes. The graph lies in the third quadrant.</p></div>
+</div>
+<h2>Vertical and Horizontal Stretches/Compressions</h2>
+<div class="box property"><span class="label">Stretches and Compressions</span><p>Let \(a > 0\).</p><ul><li>\(y = a f(x)\) is a <b>vertical stretch</b> by factor \(a\) (taller) if \(a > 1\), or a <b>vertical compression</b> if \(0 < a < 1\).</li><li>\(y = f(ax)\) is a <b>horizontal compression</b> by factor \(a\) if \(a > 1\), or a <b>horizontal stretch</b> if \(0 < a < 1\).</li></ul></div>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>Combined transformations</h3>
+<p>Describe the transformations from \(y = x^2\) to \(y = -2(x + 1)^2 + 5\), in order.</p>
+
+<div class="solution"><p>Read the formula in the order (i) horizontal shift, (ii) horizontal stretch/compression, (iii) reflection, (iv) vertical stretch/compression, (v) vertical shift.</p><ol><li>Shift left 1: \(y = (x + 1)^2\).</li><li>Vertical stretch by factor 2: \(y = 2(x + 1)^2\).</li><li>Reflect across the \(x\)-axis: \(y = -2(x + 1)^2\).</li><li>Shift up 5: \(y = -2(x + 1)^2 + 5\).</li></ol><p>Vertex at \((-1, 5)\), opens down, narrower than \(x^2\).</p></div>
+</div>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Sketching with transformations</h3>
+<p>Sketch \(g(x) = -|x - 3| + 4\) by transforming the graph of \(f(x) = |x|\). Identify the vertex.</p>
+<div class="plot" id="plot-3-5-ex4"></div>
+<script>Lvplot.draw("#plot-3-5-ex4", {width: 420, height: 300, xMin: -2, xMax: 8, yMin: -2, yMax: 6, curves: [{fn: Math.abs(x), color: "#94a3b8", dashed: true}, {fn: -Math.abs(x - 3) + 4}], points: [{x: 3, y: 4, label: "vertex (3, 4)", color: "#fbbf24", dx: 8, dy: -2}]});</script>
+<div class="solution"><p>Start with \(y = |x|\) (V-shape, vertex at origin). Shift right 3 to get \(|x - 3|\). Reflect across the \(x\)-axis to get \(-|x - 3|\) (V flipped to ∧). Shift up 4 to get the final graph. Vertex: \((3, 4)\); the graph opens downward.</p></div>
+</div>
+<h2>Order Matters</h2>
+<div class="box property"><span class="label">Suggested Order</span><p>When several transformations are applied, perform horizontal changes (shift, stretch, reflect about the \(y\)-axis) <em>inside</em> the function, then vertical changes outside, in this order:</p><ol><li>Horizontal shift</li><li>Horizontal stretch/compression</li><li>Reflection across the \(y\)-axis</li><li>Vertical stretch/compression</li><li>Reflection across the \(x\)-axis</li><li>Vertical shift</li></ol></div>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>Find the formula</h3>
+<p>The graph of \(y = \sqrt{x}\) is shifted right 4 units, reflected across the \(x\)-axis, vertically stretched by a factor of 3, then shifted up 2 units. Write a formula for the resulting function.</p>
+
+<div class="solution"><p>Step by step: \(\sqrt{x} \to \sqrt{x - 4} \to -\sqrt{x - 4} \to -3\sqrt{x - 4} \to -3\sqrt{x - 4} + 2\).</p><p>Final formula: \(y = -3\sqrt{x - 4} + 2\).</p></div>
+</div>
+</div>
+</body>
+</html>

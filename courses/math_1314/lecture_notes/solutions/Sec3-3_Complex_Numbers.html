@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.3 Complex Numbers — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 3.3</span>
+<h1>Complex Numbers</h1>
+<p class="version-tag">Worked Solutions</p>
+
+<p>The equation \(x^2 = -1\) has no real solution because real squares are never negative. Mathematicians invented a number \(i\) with \(i^2 = -1\). This extension &mdash; the <b>complex numbers</b> &mdash; lets every quadratic have a solution.</p>
+<h2>The Imaginary Unit and Complex Numbers</h2>
+<div class="box definition"><span class="label">The Imaginary Unit</span><p>The <b>imaginary unit</b> \(i\) is defined by \(i^2 = -1\). For any positive real \(b\), \[ \sqrt{-b} = i\sqrt{b}. \]</p></div>
+<div class="box definition"><span class="label">Complex Number</span><p>A <b>complex number</b> is one of the form \(a + bi\), where \(a\) and \(b\) are real numbers. The <b>real part</b> is \(a\) and the <b>imaginary part</b> is \(b\). When \(b = 0\) we have a real number; when \(a = 0\) and \(b \neq 0\) we have a <b>pure imaginary</b>.</p></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>Square roots of negatives</h3>
+<p>Simplify.</p><ol type='a'><li>\(\sqrt{-25}\)</li><li>\(\sqrt{-72}\)</li><li>\(-\sqrt{-9}\)</li></ol>
+
+<div class="solution"><p>(a) \(\sqrt{-25} = i\sqrt{25} = 5i\).</p><p>(b) \(\sqrt{-72} = i\sqrt{72} = i\sqrt{36 \cdot 2} = 6i\sqrt{2}\).</p><p>(c) \(-\sqrt{-9} = -3i\).</p></div>
+</div>
+<h2>Arithmetic of Complex Numbers</h2>
+<div class="box property"><span class="label">Adding, Subtracting, Multiplying</span><p>Treat \(i\) as a variable, then replace \(i^2\) with \(-1\).</p><ul><li>\((a + bi) + (c + di) = (a + c) + (b + d)i\)</li><li>\((a + bi) - (c + di) = (a - c) + (b - d)i\)</li><li>\((a + bi)(c + di) = ac + adi + bci + bdi^2 = (ac - bd) + (ad + bc)i\)</li></ul></div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>Add, subtract, multiply</h3>
+<p>Simplify.</p><ol type='a'><li>\((3 + 2i) + (4 - 5i)\)</li><li>\((6 - i) - (2 + 4i)\)</li><li>\((3 + 2i)(4 - i)\)</li><li>\((1 + 3i)^2\)</li></ol>
+
+<div class="solution"><p>(a) \((3 + 4) + (2 - 5)i = 7 - 3i\).</p><p>(b) \((6 - 2) + (-1 - 4)i = 4 - 5i\).</p><p>(c) \(12 - 3i + 8i - 2i^2 = 12 + 5i + 2 = 14 + 5i\).</p><p>(d) \((1 + 3i)^2 = 1 + 6i + 9i^2 = 1 + 6i - 9 = -8 + 6i\).</p></div>
+</div>
+<h2>Complex Conjugates and Division</h2>
+<div class="box definition"><span class="label">Complex Conjugate</span><p>The <b>complex conjugate</b> of \(a + bi\) is \(\overline{a + bi} = a - bi\). Conjugates multiply to a real number: \((a + bi)(a - bi) = a^2 + b^2\).</p></div>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>Dividing complex numbers</h3>
+<p>Write each quotient in the form \(a + bi\).</p><ol type='a'><li>\(\dfrac{3 + i}{2 - i}\)</li><li>\(\dfrac{5}{1 + 2i}\)</li></ol>
+
+<div class="solution"><p>(a) Multiply top and bottom by \(2 + i\): \(\dfrac{(3+i)(2+i)}{(2-i)(2+i)} = \dfrac{6 + 3i + 2i + i^2}{4 + 1} = \dfrac{5 + 5i}{5} = 1 + i\).</p><p>(b) Multiply by \(1 - 2i\): \(\dfrac{5(1 - 2i)}{(1+2i)(1-2i)} = \dfrac{5 - 10i}{1 + 4} = \dfrac{5 - 10i}{5} = 1 - 2i\).</p></div>
+</div>
+<h2>Quadratic Equations with Complex Solutions</h2>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Negative discriminant</h3>
+<p>Solve.</p><ol type='a'><li>\(x^2 + 16 = 0\)</li><li>\(x^2 - 4x + 13 = 0\)</li><li>\(2x^2 + 3x + 5 = 0\)</li></ol>
+
+<div class="solution"><p>(a) \(x^2 = -16\), so \(x = \pm 4i\).</p><p>(b) Quadratic formula: \(x = \dfrac{4 \pm \sqrt{16 - 52}}{2} = \dfrac{4 \pm \sqrt{-36}}{2} = \dfrac{4 \pm 6i}{2} = 2 \pm 3i\).</p><p>(c) \(D = 9 - 40 = -31\). \(x = \dfrac{-3 \pm \sqrt{-31}}{4} = -\dfrac{3}{4} \pm \dfrac{\sqrt{31}}{4} i\).</p></div>
+</div>
+<h2>Powers of \(i\)</h2>
+<div class="box property"><span class="label">Cycle of Powers</span><p>Powers of \(i\) repeat in a cycle of 4: \[ i^1 = i, \quad i^2 = -1, \quad i^3 = -i, \quad i^4 = 1, \quad i^5 = i, \ldots \] To compute \(i^n\), divide \(n\) by 4 and use the remainder.</p></div>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>High powers of \(i\)</h3>
+<p>Simplify.</p><ol type='a'><li>\(i^{17}\)</li><li>\(i^{30}\)</li><li>\(i^{-3}\)</li></ol>
+
+<div class="solution"><p>(a) \(17 \div 4\) gives remainder 1, so \(i^{17} = i\).</p><p>(b) \(30 \div 4\) gives remainder 2, so \(i^{30} = -1\).</p><p>(c) \(i^{-3} = \dfrac{1}{i^3} = \dfrac{1}{-i} = \dfrac{1}{-i} \cdot \dfrac{i}{i} = \dfrac{i}{-i^2} = \dfrac{i}{1} = i\).</p></div>
+</div>
+</div>
+</body>
+</html>

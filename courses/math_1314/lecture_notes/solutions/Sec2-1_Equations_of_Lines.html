@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.1 Equations of Lines — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 2.1</span>
+<h1>Equations of Lines</h1>
+<p class="version-tag">Worked Solutions</p>
+
+<p>We turn the geometric picture of a line into algebra. We&rsquo;ll see three forms of the equation of a line and use them to write equations through given points and to test whether two lines are parallel or perpendicular.</p>
+<h2>Slope-Intercept Form</h2>
+<div class="box definition"><span class="label">Slope-Intercept Form</span><p>The <b>slope-intercept form</b> of a non-vertical line is \[ y = mx + b, \] where \(m\) is the slope and \((0, b)\) is the \(y\)-intercept.</p></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>Reading slope and intercept</h3>
+<p>For each line, identify the slope and the \(y\)-intercept.</p><ol type='a'><li>\(y = 3x - 5\)</li><li>\(y = -\tfrac{1}{2} x\)</li><li>\(2x + 3y = 12\)</li></ol>
+
+<div class="solution"><p>(a) Slope \(3\), intercept \((0, -5)\).</p><p>(b) Slope \(-\tfrac{1}{2}\), intercept \((0, 0)\).</p><p>(c) Solve for \(y\): \(3y = -2x + 12\), so \(y = -\tfrac{2}{3} x + 4\). Slope \(-\tfrac{2}{3}\), intercept \((0, 4)\).</p></div>
+</div>
+<h2>Point-Slope Form</h2>
+<div class="box definition"><span class="label">Point-Slope Form</span><p>The line with slope \(m\) passing through the point \((x_1, y_1)\) has equation \[ y - y_1 = m(x - x_1). \] This is the <b>point-slope form</b>. It is the easiest form to use when you know a point and the slope.</p></div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>From a point and a slope</h3>
+<p>Write the equation of the line in slope-intercept form.</p><ol type='a'><li>Slope \(4\), passes through \((2, -1)\).</li><li>Slope \(-\tfrac{2}{3}\), passes through \((6, 5)\).</li></ol>
+
+<div class="solution"><p>(a) Point-slope: \(y - (-1) = 4(x - 2)\), i.e. \(y + 1 = 4x - 8\). Solve: \(y = 4x - 9\).</p><p>(b) \(y - 5 = -\tfrac{2}{3}(x - 6)\) gives \(y = -\tfrac{2}{3}x + 4 + 5 = -\tfrac{2}{3}x + 9\).</p></div>
+</div>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>From two points</h3>
+<p>Find an equation for the line through \((-2, 7)\) and \((4, -5)\). Give your answer in slope-intercept form.</p>
+
+<div class="solution"><p>Compute the slope: \(m = \dfrac{-5 - 7}{4 - (-2)} = \dfrac{-12}{6} = -2\).</p><p>Use point-slope with \((4, -5)\): \(y + 5 = -2(x - 4)\). Distribute and solve: \(y = -2x + 8 - 5 = -2x + 3\).</p></div>
+</div>
+<h2>Standard Form, Horizontal, and Vertical Lines</h2>
+<div class="box notation"><span class="label">Standard Form</span><p>Any line can be written as \(Ax + By = C\) for constants \(A\), \(B\), \(C\) (with \(A\) and \(B\) not both zero). This is called the <b>standard form</b> of a linear equation.</p></div>
+<div class="box property"><span class="label">Horizontal and Vertical Lines</span><ul><li>The <b>horizontal line</b> through \((a, b)\) is \(y = b\) (slope 0).</li><li>The <b>vertical line</b> through \((a, b)\) is \(x = a\) (slope undefined). It is not the graph of a function.</li></ul></div>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Horizontal and vertical</h3>
+<p>Write equations for:</p><ol type='a'><li>The horizontal line through \((-3, 5)\).</li><li>The vertical line through \((-3, 5)\).</li><li>The line with \(y\)-intercept \(2\) that is parallel to the \(x\)-axis.</li></ol>
+
+<div class="solution"><p>(a) \(y = 5\).</p><p>(b) \(x = -3\).</p><p>(c) Parallel to the \(x\)-axis means horizontal, so \(y = 2\).</p></div>
+</div>
+<h2>Parallel and Perpendicular Lines</h2>
+<div class="box theorem"><span class="label">Theorem — Parallel and Perpendicular Slopes</span><p>Let \(L_1\) have slope \(m_1\) and \(L_2\) have slope \(m_2\) (both non-vertical).</p><ul><li>\(L_1\) and \(L_2\) are <b>parallel</b> iff \(m_1 = m_2\).</li><li>\(L_1\) and \(L_2\) are <b>perpendicular</b> iff \(m_1 m_2 = -1\), i.e. \(m_2 = -\dfrac{1}{m_1}\).</li></ul><p>Vertical and horizontal lines are perpendicular.</p></div>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>Parallel and perpendicular</h3>
+<p>Find the equation of each line.</p><ol type='a'><li>Through \((1, 4)\), parallel to \(y = -3x + 2\).</li><li>Through \((1, 4)\), perpendicular to \(y = -3x + 2\).</li><li>Through \((-2, -1)\), parallel to the line \(2x + 5y = 10\).</li></ol>
+
+<div class="solution"><p>(a) Same slope \(-3\). Point-slope: \(y - 4 = -3(x - 1)\), so \(y = -3x + 7\).</p><p>(b) Perpendicular slope is \(\tfrac{1}{3}\) (negative reciprocal). Point-slope: \(y - 4 = \tfrac{1}{3}(x - 1)\), so \(y = \tfrac{1}{3}x + \tfrac{11}{3}\).</p><p>(c) Solve for slope: \(5y = -2x + 10\), \(y = -\tfrac{2}{5}x + 2\). Slope is \(-\tfrac{2}{5}\). Point-slope: \(y - (-1) = -\tfrac{2}{5}(x - (-2))\) gives \(y = -\tfrac{2}{5}x - \tfrac{4}{5} - 1 = -\tfrac{2}{5}x - \tfrac{9}{5}\).</p></div>
+</div>
+<h2>A Visual Summary</h2>
+<p>The lines from Examples 5(a) and 5(b) both pass through \((1,4)\) but with very different slopes:</p>
+<div class="plot" id="plot-2-1-summary"></div>
+<script>Lvplot.draw("#plot-2-1-summary", {width: 460, height: 320, xMin: -4, xMax: 6, yMin: -4, yMax: 8, curves: [{fn: -3*x + 2, color: "#94a3b8", dashed: true}, {fn: -3*x + 7}, {fn: (1/3)*x + 11/3, color: "#fbbf24"}], points: [{x: 1, y: 4, label: "(1, 4)", dx: 8, dy: -8}]});</script>
+</div>
+</body>
+</html>

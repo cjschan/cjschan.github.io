@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.1 Combining Functions — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 5.1</span>
+<h1>Combining Functions</h1>
+<p class="version-tag">Worked Solutions</p>
+
+<p>Functions can be added, subtracted, multiplied, and divided just like numbers, and they can also be <em>composed</em> &mdash; using the output of one function as the input of another. Each operation has its own domain rules.</p>
+<h2>Arithmetic Combinations</h2>
+<div class="box definition"><span class="label">Sum, Difference, Product, Quotient</span><p>For functions \(f\) and \(g\):</p><ul><li>\((f + g)(x) = f(x) + g(x)\)</li><li>\((f - g)(x) = f(x) - g(x)\)</li><li>\((fg)(x) = f(x) \, g(x)\)</li><li>\(\left(\dfrac{f}{g}\right)(x) = \dfrac{f(x)}{g(x)}\), provided \(g(x) \neq 0\)</li></ul><p>The domain of each combination is the intersection of the domains of \(f\) and \(g\), excluding values where the denominator is zero (for the quotient).</p></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>Computing combinations</h3>
+<p>Let \(f(x) = x^2 - 4\) and \(g(x) = x + 2\).</p><ol type='a'><li>Find \((f + g)(3)\).</li><li>Find \((fg)(x)\) and simplify.</li><li>Find \(\left(\dfrac{f}{g}\right)(x)\) and simplify, stating any domain restrictions.</li></ol>
+
+<div class="solution"><p>(a) \(f(3) = 5\), \(g(3) = 5\). \((f + g)(3) = 10\).</p><p>(b) \((fg)(x) = (x^2 - 4)(x + 2) = (x - 2)(x + 2)(x + 2) = (x - 2)(x + 2)^2\).</p><p>(c) \(\dfrac{f(x)}{g(x)} = \dfrac{x^2 - 4}{x + 2} = \dfrac{(x - 2)(x + 2)}{x + 2} = x - 2\), with \(x \neq -2\).</p></div>
+</div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>Domain of a quotient</h3>
+<p>Let \(f(x) = \sqrt{x + 1}\) and \(g(x) = x - 3\). Find the domain of \(\dfrac{f}{g}\).</p>
+
+<div class="solution"><p>Domain of \(f\): \(x + 1 \geq 0\), i.e. \(x \geq -1\). Domain of \(g\): all reals.</p><p>For the quotient, also exclude \(x = 3\) (where \(g\) is zero). Domain: \([-1, 3) \cup (3, \infty)\).</p></div>
+</div>
+<h2>Composition of Functions</h2>
+<div class="box definition"><span class="label">Composition</span><p>The <b>composition</b> of \(f\) and \(g\) is \((f \circ g)(x) = f(g(x))\) &mdash; first apply \(g\), then feed the result into \(f\). The domain of \(f \circ g\) consists of those \(x\) in the domain of \(g\) such that \(g(x)\) lies in the domain of \(f\).</p></div>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>Compute compositions</h3>
+<p>Let \(f(x) = 2x - 5\) and \(g(x) = x^2 + 1\). Find each.</p><ol type='a'><li>\((f \circ g)(3)\)</li><li>\((g \circ f)(3)\)</li><li>\((f \circ g)(x)\)</li><li>\((g \circ f)(x)\)</li></ol>
+
+<div class="solution"><p>(a) \(g(3) = 10\); \(f(10) = 15\).</p><p>(b) \(f(3) = 1\); \(g(1) = 2\).</p><p>(c) \(f(g(x)) = 2(x^2 + 1) - 5 = 2x^2 - 3\).</p><p>(d) \(g(f(x)) = (2x - 5)^2 + 1 = 4x^2 - 20x + 26\).</p></div>
+</div>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Domain of a composition</h3>
+<p>Let \(f(x) = \sqrt{x}\) and \(g(x) = x - 4\). Find \((f \circ g)(x)\) and its domain.</p>
+
+<div class="solution"><p>\((f \circ g)(x) = f(x - 4) = \sqrt{x - 4}\). Need \(x - 4 \geq 0\), so the domain is \([4, \infty)\).</p></div>
+</div>
+<h2>Decomposing Functions</h2>
+<div class="box property"><span class="label">Decomposition</span><p>To express \(h\) as a composition \(f \circ g\), look for an &ldquo;inner&rdquo; function (often the expression inside parentheses, under a radical, or in an exponent) and an &ldquo;outer&rdquo; function (everything done to that inner expression).</p></div>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>Inside and outside</h3>
+<p>Express each function as a composition \(f(g(x))\).</p><ol type='a'><li>\(h(x) = (3x + 1)^7\)</li><li>\(h(x) = \sqrt{x^2 + 5}\)</li><li>\(h(x) = \dfrac{1}{(2x - 3)^2}\)</li></ol>
+
+<div class="solution"><p>(a) Inner \(g(x) = 3x + 1\), outer \(f(u) = u^7\).</p><p>(b) Inner \(g(x) = x^2 + 5\), outer \(f(u) = \sqrt{u}\).</p><p>(c) Inner \(g(x) = 2x - 3\), outer \(f(u) = \dfrac{1}{u^2}\).</p></div>
+</div>
+<h2>An Application</h2>
+<div class="example">
+<span class="label">Example 6</span>
+<h3>Two functions chained</h3>
+<p>A factory&rsquo;s daily revenue (in thousands of dollars) when \(x\) hundred items are sold is \(R(x) = 4x\). The number of items sold depends on the price \(p\) (dollars) by \(x(p) = 50 - 2p\). Find revenue as a function of price and use it to find the price that produces revenue of \$120{,}000\).</p>
+
+<div class="solution"><p>Compose: \(R(x(p)) = 4(50 - 2p) = 200 - 8p\) (thousand dollars).</p><p>Solve \(200 - 8p = 120\): \(8p = 80\), so \(p = \$10\).</p></div>
+</div>
+</div>
+</body>
+</html>

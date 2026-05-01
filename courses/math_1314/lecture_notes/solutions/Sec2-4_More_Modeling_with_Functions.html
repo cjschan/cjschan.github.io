@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.4 More Modeling with Functions — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 2.4</span>
+<h1>More Modeling with Functions</h1>
+<p class="version-tag">Worked Solutions</p>
+
+<p>Many real-world relationships can be modeled by linear functions or by simple proportions called <em>direct variation</em>. Today we set up function models from word problems and learn to read piecewise-defined functions.</p>
+<h2>Direct Variation</h2>
+<div class="box definition"><span class="label">Direct Variation</span><p>The variable \(y\) <b>varies directly</b> with \(x\) (or is <b>directly proportional</b> to \(x\)) if there is a constant \(k\) such that \(y = kx\). The number \(k\) is the <b>constant of variation</b>.</p></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>Setting up a direct variation</h3>
+<p>The cost of beef varies directly with weight. If 3 pounds cost $13.50, find the constant of variation and the cost of 5.5 pounds.</p>
+
+<div class="solution"><p>Let \(C = kw\). Plug in \(C = 13.50\) and \(w = 3\): \(13.50 = 3k\), so \(k = 4.50\) dollars per pound. For 5.5 pounds, \(C = 4.50(5.5) = \$24.75\).</p></div>
+</div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>Hooke&rsquo;s law</h3>
+<p>The distance a spring stretches is directly proportional to the weight hung from it. A 12-lb weight stretches the spring 9 in.</p><ol type='a'><li>Find the constant of variation.</li><li>How far will the spring stretch under a 20-lb weight?</li></ol>
+
+<div class="solution"><p>(a) Let \(d = kw\). Then \(9 = k(12)\), so \(k = \tfrac{9}{12} = 0.75\) in/lb.</p><p>(b) \(d = 0.75(20) = 15\) in.</p></div>
+</div>
+<h2>Linear Models from Two Data Points</h2>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>From data to a model</h3>
+<p>A printing service charges a fixed setup fee plus a per-page price. 50 pages cost $40, and 200 pages cost $115.</p><ol type='a'><li>Find a linear model \(C(p)\) for the cost of printing \(p\) pages.</li><li>What is the setup fee?</li><li>What is the cost per page?</li><li>What is the cost for 350 pages?</li></ol>
+
+<div class="solution"><p>(a) Slope: \(m = \dfrac{115 - 40}{200 - 50} = \dfrac{75}{150} = 0.5\). Use \((50, 40)\): \(40 = 0.5(50) + b\), so \(b = 15\). Model: \(C(p) = 0.5 p + 15\).</p><p>(b) Setup fee: \(C(0) = \$15\).</p><p>(c) Cost per page: \$0.50.</p><p>(d) \(C(350) = 0.5(350) + 15 = \$190\).</p></div>
+</div>
+<h2>Piecewise-Defined Functions</h2>
+<div class="box definition"><span class="label">Piecewise-Defined Function</span><p>A <b>piecewise-defined function</b> uses different formulas on different parts of its domain. To evaluate or graph it, first decide which piece applies to the input.</p></div>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Evaluating a piecewise function</h3>
+<p>Let \(\displaystyle f(x) = \begin{cases} 2x + 1 & \text{if } x < 0 \\ x^2 & \text{if } 0 \leq x \leq 3 \\ -x + 12 & \text{if } x > 3 \end{cases}\)</p><p>Evaluate \(f(-2)\), \(f(0)\), \(f(2)\), \(f(3)\), and \(f(5)\).</p>
+
+<div class="solution"><p>\(f(-2)\): \(-2 < 0\), use \(2x + 1\). \(f(-2) = 2(-2) + 1 = -3\).</p><p>\(f(0)\): \(0\) satisfies \(0 \leq x \leq 3\), use \(x^2\). \(f(0) = 0\).</p><p>\(f(2)\): use \(x^2\). \(f(2) = 4\).</p><p>\(f(3)\): use \(x^2\). \(f(3) = 9\).</p><p>\(f(5)\): \(5 > 3\), use \(-x + 12\). \(f(5) = 7\).</p></div>
+</div>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>Cell-phone overage</h3>
+<p>A cell-phone plan includes 4 GB of data for $35 per month. Each additional GB beyond 4 costs $10. Write a piecewise function \(C(g)\) for the monthly cost, where \(g \geq 0\) is the gigabytes used in the month. Then compute \(C(2)\) and \(C(7)\).</p>
+
+<div class="solution"><p>If \(0 \leq g \leq 4\), the cost is just \$35. If \(g > 4\), the user pays \$35 plus \$10 for each GB beyond 4: \(35 + 10(g - 4)\).</p><p>\(\displaystyle C(g) = \begin{cases} 35 & \text{if } 0 \leq g \leq 4 \\ 35 + 10(g - 4) & \text{if } g > 4 \end{cases}\)</p><p>\(C(2) = \$35\). \(C(7) = 35 + 10(3) = \$65\).</p></div>
+</div>
+<h2>Visualizing a Piecewise Function</h2>
+<p>Graph of the function from Example 4:</p>
+<div class="plot" id="plot-2-4-piecewise"></div>
+<script>Lvplot.draw("#plot-2-4-piecewise", {width: 460, height: 320, xMin: -4, xMax: 7, yMin: -8, yMax: 12, curves: [{fn: 2*x + 1, from: -4, to: -0.001, color: "#38bdf8"}, {fn: x*x, from: 0, to: 3, color: "#fbbf24"}, {fn: -x + 12, from: 3.001, to: 7, color: "#34d399"}]});</script>
+</div>
+</body>
+</html>

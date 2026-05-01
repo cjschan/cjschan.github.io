@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.3 Linear Inequalities — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 2.3</span>
+<h1>Linear Inequalities</h1>
+<p class="version-tag">Worked Solutions</p>
+
+<p>A linear inequality is solved much like a linear equation, with one important new rule: when you multiply or divide by a negative number, the inequality direction flips. We&rsquo;ll also handle compound inequalities and express solutions in interval notation.</p>
+<h2>Solving Linear Inequalities</h2>
+<div class="box property"><span class="label">Properties of Inequality</span><p>Let \(a\), \(b\), \(c\) be real numbers.</p><ul><li><b>Add or subtract</b> the same number on both sides &mdash; direction unchanged.</li><li><b>Multiply or divide by a positive</b> number &mdash; direction unchanged.</li><li><b>Multiply or divide by a negative</b> number &mdash; <b>direction flips</b>.</li></ul></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>Basic linear inequalities</h3>
+<p>Solve and write the solution in interval notation.</p><ol type='a'><li>\(3x - 5 \leq 7\)</li><li>\(2 - 4x > 14\)</li><li>\(\dfrac{x}{2} - 1 \geq \dfrac{x}{3} + 2\)</li></ol>
+
+<div class="solution"><p>(a) Add 5: \(3x \leq 12\). Divide by 3: \(x \leq 4\). Solution: \((-\infty, 4]\).</p><p>(b) Subtract 2: \(-4x > 12\). Divide by \(-4\) (flip!): \(x < -3\). Solution: \((-\infty, -3)\).</p><p>(c) Multiply by 6: \(3x - 6 \geq 2x + 12\). Subtract \(2x\): \(x - 6 \geq 12\), so \(x \geq 18\). Solution: \([18, \infty)\).</p></div>
+</div>
+<h2>Compound Inequalities</h2>
+<div class="box definition"><span class="label">Compound Inequality</span><p>A <b>compound inequality</b> joins two inequalities with the word <b>and</b> (intersection) or <b>or</b> (union). The shorthand \(a < x < b\) means \(a < x\) <em>and</em> \(x < b\).</p></div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>Three-part inequality</h3>
+<p>Solve \(-3 < 2x + 1 \leq 7\). Write the solution in interval notation.</p>
+
+<div class="solution"><p>Subtract 1 from each part: \(-4 < 2x \leq 6\). Divide by 2: \(-2 < x \leq 3\). Solution: \((-2, 3]\).</p></div>
+</div>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>&ldquo;And&rdquo; vs. &ldquo;or&rdquo;</h3>
+<p>Solve and graph each.</p><ol type='a'><li>\(2x + 3 < 11\) <b>and</b> \(x - 1 \geq -4\)</li><li>\(x + 2 \leq -1\) <b>or</b> \(2x - 3 > 5\)</li></ol>
+
+<div class="solution"><p>(a) Solve each: \(x < 4\) and \(x \geq -3\). Intersect: \([-3, 4)\).</p><p>(b) Solve each: \(x \leq -3\) or \(x > 4\). Union: \((-\infty, -3] \cup (4, \infty)\).</p></div>
+</div>
+<h2>Linear Inequalities in Applications</h2>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Test scores</h3>
+<p>Linda&rsquo;s exam scores are 78, 85, and 81. The final exam counts as one test grade. To finish with an average of at least 82, what is the minimum score she needs on the final?</p>
+
+<div class="solution"><p>Let \(f\) be the final exam score. We need \(\dfrac{78 + 85 + 81 + f}{4} \geq 82\). Multiply by 4: \(244 + f \geq 328\), so \(f \geq 84\). She needs at least an 84.</p></div>
+</div>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>Phone plan comparison</h3>
+<p>Plan A costs $30 per month plus $0.10 per text. Plan B costs $20 per month plus $0.20 per text. For how many texts \(t\) per month is Plan A cheaper than Plan B?</p>
+
+<div class="solution"><p>We need \(30 + 0.10 t < 20 + 0.20 t\). Subtract \(0.10 t\) and \(20\): \(10 < 0.10 t\), so \(t > 100\). Plan A is cheaper when you send more than 100 texts per month.</p></div>
+</div>
+<h2>Intervals on a Number Line</h2>
+<p>Visual summary of the most common interval types:</p>
+<div class="plot" id="plot-2-3-intervals"></div>
+<script>Lvplot.draw("#plot-2-3-intervals", {width: 520, height: 90, xMin: -6, xMax: 6, yMin: -1, yMax: 1, showGrid: false, showAxes: false, curves: [{points: [[-3, 0], [4, 0]]}], points: [{x: -3, y: 0, label: "[-3", dx: -16, dy: -10}, {x: 4, y: 0, label: "4)", dx: 4, dy: -10}]});</script>
+<p style="text-align:center; color: var(--muted); font-size: 13px;">The interval \([-3, 4)\) on the number line.</p>
+</div>
+</body>
+</html>

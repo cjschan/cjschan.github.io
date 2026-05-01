@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.6 Rational Functions and Models — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 4.6</span>
+<h1>Rational Functions and Models</h1>
+<p class="version-tag">Worked Solutions</p>
+
+<p>A rational function is a quotient of two polynomials. Its graph can have vertical asymptotes (where the denominator is zero), horizontal asymptotes (controlling end behavior), and removable holes. We&rsquo;ll find these features and use them to sketch.</p>
+<h2>Rational Functions</h2>
+<div class="box definition"><span class="label">Rational Function</span><p>A <b>rational function</b> is a function of the form \(f(x) = \dfrac{p(x)}{q(x)}\), where \(p\) and \(q\) are polynomials and \(q\) is not the zero polynomial. The <b>domain</b> consists of all real \(x\) with \(q(x) \neq 0\).</p></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>Domain</h3>
+<p>Find the domain of each rational function.</p><ol type='a'><li>\(f(x) = \dfrac{x + 1}{x - 4}\)</li><li>\(g(x) = \dfrac{x}{x^2 - 9}\)</li><li>\(h(x) = \dfrac{2x}{x^2 + 1}\)</li></ol>
+
+<div class="solution"><p>(a) Exclude \(x = 4\). Domain: \((-\infty, 4) \cup (4, \infty)\).</p><p>(b) \(x^2 - 9 = 0\) at \(x = \pm 3\). Domain: \((-\infty, -3) \cup (-3, 3) \cup (3, \infty)\).</p><p>(c) \(x^2 + 1 > 0\) always, so domain is all real numbers.</p></div>
+</div>
+<h2>Vertical Asymptotes and Holes</h2>
+<div class="box property"><span class="label">Vertical Asymptotes vs. Holes</span><p>Suppose \(f(x) = \dfrac{p(x)}{q(x)}\) and \(q(c) = 0\).</p><ul><li>If the factor \((x - c)\) cancels in lowest terms, the graph has a <b>hole</b> at \(x = c\).</li><li>If it does not cancel, the line \(x = c\) is a <b>vertical asymptote</b>.</li></ul></div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>Asymptote or hole?</h3>
+<p>Find the vertical asymptotes and holes of each.</p><ol type='a'><li>\(f(x) = \dfrac{x + 2}{x^2 - 4}\)</li><li>\(g(x) = \dfrac{x^2 - 1}{x^2 - 5x + 4}\)</li></ol>
+
+<div class="solution"><p>(a) \(\dfrac{x+2}{(x-2)(x+2)} = \dfrac{1}{x - 2}\) (with \(x \neq -2\)). VA at \(x = 2\); hole at \(x = -2\). The hole is at \(\left(-2, -\tfrac{1}{4}\right)\) since the simplified function gives that value.</p><p>(b) \(\dfrac{(x-1)(x+1)}{(x-1)(x-4)} = \dfrac{x + 1}{x - 4}\) (with \(x \neq 1\)). VA at \(x = 4\); hole at \(x = 1\) (simplified value \(-\tfrac{2}{3}\)).</p></div>
+</div>
+<h2>Horizontal Asymptotes</h2>
+<div class="box theorem"><span class="label">Horizontal Asymptote Rule</span><p>Compare the degrees of the numerator (\(n\)) and denominator (\(m\)).</p><ul><li>\(n < m\): horizontal asymptote \(y = 0\).</li><li>\(n = m\): horizontal asymptote \(y = \dfrac{a_n}{b_m}\) (ratio of leading coefficients).</li><li>\(n > m\): no horizontal asymptote (end behavior follows the polynomial division).</li></ul></div>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>Horizontal asymptotes</h3>
+<p>Find any horizontal asymptotes.</p><ol type='a'><li>\(f(x) = \dfrac{2}{x + 5}\)</li><li>\(g(x) = \dfrac{3x^2 - 1}{x^2 + 4}\)</li><li>\(h(x) = \dfrac{x^3}{x^2 - 1}\)</li></ol>
+
+<div class="solution"><p>(a) \(n < m\): \(y = 0\).</p><p>(b) Equal degrees, leading coefficients 3 and 1: \(y = 3\).</p><p>(c) Numerator higher degree: no horizontal asymptote.</p></div>
+</div>
+<h2>Sketching a Rational Function</h2>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Full sketch</h3>
+<p>Sketch \(f(x) = \dfrac{x + 1}{x - 2}\). Identify all intercepts and asymptotes.</p>
+<div class="plot" id="plot-4-6-ex4"></div>
+<script>Lvplot.draw("#plot-4-6-ex4", {width: 460, height: 340, xMin: -6, xMax: 8, yMin: -6, yMax: 8, curves: [{fn: (x + 1)/(x - 2)}], asymptotes: [{x: 2, color: "#fb7185"}, {y: 1, color: "#fb7185"}], points: [{x: -1, y: 0, label: "(-1, 0)", dx: -42, dy: -8}, {x: 0, y: -0.5, label: "(0, -1/2)", dx: 8, dy: 0}]});</script>
+<div class="solution"><p>VA: \(x = 2\) (denominator zero, doesn&rsquo;t cancel).</p><p>HA: equal degrees, leading coefficients both 1, so \(y = 1\).</p><p>\(y\)-intercept: \(f(0) = -\tfrac{1}{2}\).</p><p>\(x\)-intercept: \(f(x) = 0\) when numerator zero, so \(x = -1\). Point \((-1, 0)\).</p><p>The graph has two branches separated by \(x = 2\).</p></div>
+</div>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>Hole at \(x = -3\)</h3>
+<p>Sketch \(g(x) = \dfrac{x^2 + 5x + 6}{x + 3}\). Identify holes, asymptotes, and intercepts.</p>
+
+<div class="solution"><p>Factor: \(\dfrac{(x + 2)(x + 3)}{x + 3} = x + 2\) for \(x \neq -3\).</p><p>The graph is the line \(y = x + 2\) with a hole at \(x = -3\) (where \(y = -1\)). \(x\)-intercept \((-2, 0)\), \(y\)-intercept \((0, 2)\).</p></div>
+</div>
+<h2>Rational Models</h2>
+<div class="example">
+<span class="label">Example 6</span>
+<h3>Average cost</h3>
+<p>A small printer&rsquo;s daily fixed costs are $300, and producing each book costs $4. The <b>average cost</b> per book when \(x\) books are produced is</p><p>\[ A(x) = \frac{300 + 4x}{x}, \quad x > 0. \]</p><ol type='a'><li>What is the horizontal asymptote? Interpret it.</li><li>Compute \(A(50)\) and \(A(500)\).</li><li>Why is there no vertical asymptote in the realistic domain?</li></ol>
+
+<div class="solution"><p>(a) Equal degrees, leading coefficients \(4\) and \(1\): HA \(y = 4\). As production grows large, the average cost approaches \$4 per book &mdash; the variable cost.</p><p>(b) \(A(50) = \dfrac{300 + 200}{50} = \dfrac{500}{50} = 10\) dollars per book. \(A(500) = \dfrac{300 + 2000}{500} = \dfrac{2300}{500} = 4.60\) dollars.</p><p>(c) The denominator \(x = 0\) is excluded because it doesn&rsquo;t represent any real production level. There would be a VA at \(x = 0\) mathematically, but the model&rsquo;s domain is \(x > 0\).</p></div>
+</div>
+</div>
+</body>
+</html>

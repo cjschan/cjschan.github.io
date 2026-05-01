@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.1 Quadratic Functions and Models</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--muted);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 3.1</span>
+<h1>Quadratic Functions and Models</h1>
+<p class="version-tag">Student Notes</p>
+
+<p>A quadratic function has a degree-2 polynomial as its formula. Its graph is a parabola. Today we identify the vertex, axis of symmetry, and \(x\)-intercepts, switch between standard and vertex form, and use the vertex to solve maximum/minimum problems.</p>
+<h2>Quadratic Functions</h2>
+<div class="box definition"><span class="label">Quadratic Function</span><p>A <b>quadratic function</b> can be written in <b>standard form</b> \[ f(x) = ax^2 + bx + c, \] with \(a \neq 0\). Its graph is a <b>parabola</b> that opens upward when \(a > 0\) and downward when \(a < 0\).</p></div>
+<div class="box property"><span class="label">Key Features of a Parabola</span><ul><li><b>Vertex:</b> the lowest point if the parabola opens up, the highest if it opens down.</li><li><b>Axis of symmetry:</b> the vertical line through the vertex.</li><li><b>\(y\)-intercept:</b> \((0, c)\) (set \(x = 0\)).</li><li><b>\(x\)-intercepts:</b> the solutions of \(ax^2 + bx + c = 0\), if any.</li></ul></div>
+<h2>Vertex Form</h2>
+<div class="box definition"><span class="label">Vertex Form</span><p>A quadratic in <b>vertex form</b> is \[ f(x) = a(x - h)^2 + k. \] The vertex is \((h, k)\) and the axis of symmetry is \(x = h\).</p></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>Reading off the vertex</h3>
+<p>For each function, identify \(a\), the vertex, the axis of symmetry, and whether the parabola opens up or down.</p><ol type='a'><li>\(f(x) = 2(x - 3)^2 - 5\)</li><li>\(g(x) = -\tfrac{1}{2}(x + 1)^2 + 4\)</li><li>\(h(x) = (x + 6)^2\)</li></ol>
+
+</div>
+<h2>Vertex from Standard Form</h2>
+<div class="box theorem"><span class="label">Vertex Formula</span><p>For \(f(x) = ax^2 + bx + c\), the \(x\)-coordinate of the vertex is \[ h = -\frac{b}{2a}, \] and the \(y\)-coordinate is \(k = f(h)\). The axis of symmetry is \(x = h\).</p></div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>Vertex from standard form</h3>
+<p>Find the vertex of each parabola.</p><ol type='a'><li>\(f(x) = x^2 - 6x + 5\)</li><li>\(g(x) = -2x^2 - 8x + 1\)</li></ol>
+
+</div>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>Standard form to vertex form</h3>
+<p>Write \(f(x) = x^2 - 6x + 5\) in vertex form by completing the square.</p>
+
+</div>
+<h2>Graphs and Intercepts</h2>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Sketching a parabola</h3>
+<p>Sketch \(f(x) = x^2 - 4x + 3\). Identify the vertex, axis of symmetry, and \(y\)- and \(x\)-intercepts.</p>
+<div class="plot" id="plot-3-1-ex4"></div>
+<script>Lvplot.draw("#plot-3-1-ex4", {width: 420, height: 320, xMin: -1, xMax: 5, yMin: -2, yMax: 6, curves: [{fn: x*x - 4*x + 3}], points: [{x: 2, y: -1, label: "vertex (2, -1)", color: "#fbbf24", dx: 8, dy: 4}, {x: 1, y: 0, label: "(1, 0)", dx: -36, dy: -8}, {x: 3, y: 0, label: "(3, 0)", dx: 6, dy: -8}, {x: 0, y: 3, label: "(0, 3)", dx: 6, dy: 0}]});</script>
+</div>
+<h2>Maximum and Minimum Applications</h2>
+<div class="box property"><span class="label">Max/Min from the Vertex</span><ul><li>If \(a > 0\), the parabola opens up and \(k\) is the <b>minimum</b> output.</li><li>If \(a < 0\), the parabola opens down and \(k\) is the <b>maximum</b> output.</li><li>The optimum is achieved at \(x = h\).</li></ul></div>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>Maximum revenue</h3>
+<p>A small theater finds that ticket revenue is modeled by \(R(p) = -50 p^2 + 600 p\), where \(p\) is the ticket price (dollars). What price maximizes revenue, and what is the maximum revenue?</p>
+
+</div>
+<div class="example">
+<span class="label">Example 6</span>
+<h3>Maximum height of a projectile</h3>
+<p>A ball is thrown upward from a 96-ft cliff with initial velocity 80 ft/s. Its height in feet after \(t\) seconds is \(h(t) = -16 t^2 + 80 t + 96\).</p><ol type='a'><li>How many seconds until the ball reaches maximum height?</li><li>What is that maximum height?</li></ol>
+
+</div>
+</div>
+</body>
+</html>

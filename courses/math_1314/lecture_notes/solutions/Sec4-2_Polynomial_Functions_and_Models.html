@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.2 Polynomial Functions and Models — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 4.2</span>
+<h1>Polynomial Functions and Models</h1>
+<p class="version-tag">Worked Solutions</p>
+
+<p>Polynomials extend lines and parabolas to functions with three or more turning behaviors. Today we identify degree, leading coefficient, end behavior, and the number of \(x\)-intercepts (zeros) a polynomial can have.</p>
+<h2>Polynomial Functions</h2>
+<div class="box definition"><span class="label">Polynomial Function</span><p>A <b>polynomial function</b> of degree \(n\) is one of the form \[ f(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0, \] where \(n\) is a non-negative integer and the coefficients \(a_i\) are real numbers with \(a_n \neq 0\). The number \(a_n\) is the <b>leading coefficient</b>; \(a_0\) is the constant term.</p></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>Identify degree and leading coefficient</h3>
+<p>For each polynomial, give the degree, leading coefficient, and constant term.</p><ol type='a'><li>\(f(x) = 4x^3 - 2x + 7\)</li><li>\(g(x) = -3x^5 + x^2 - x\)</li><li>\(h(x) = (2x - 1)(x + 4)\)</li></ol>
+
+<div class="solution"><p>(a) Degree 3, leading coefficient 4, constant term 7.</p><p>(b) Degree 5, leading coefficient \(-3\), constant term 0.</p><p>(c) Expand: \(2x^2 + 7x - 4\). Degree 2, leading coefficient 2, constant term \(-4\).</p></div>
+</div>
+<h2>End Behavior</h2>
+<div class="box theorem"><span class="label">End-Behavior Rule</span><p>The end behavior of a polynomial of degree \(n\) with leading coefficient \(a_n\) is determined by the <em>leading term</em> alone:</p><ul><li><b>Even \(n\), \(a_n > 0\)</b>: both ends rise to \(+\infty\) (like \(x^2\)).</li><li><b>Even \(n\), \(a_n < 0\)</b>: both ends fall to \(-\infty\) (like \(-x^2\)).</li><li><b>Odd \(n\), \(a_n > 0\)</b>: down on the left, up on the right (like \(x^3\)).</li><li><b>Odd \(n\), \(a_n < 0\)</b>: up on the left, down on the right (like \(-x^3\)).</li></ul></div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>End behavior</h3>
+<p>Describe the end behavior of each polynomial in words (no graph).</p><ol type='a'><li>\(f(x) = -x^4 + 3x^2\)</li><li>\(g(x) = 2x^5 - x^3 + x\)</li><li>\(h(x) = -3x^3 + 5x\)</li></ol>
+
+<div class="solution"><p>(a) Even degree, negative leading coefficient: both ends fall to \(-\infty\).</p><p>(b) Odd degree, positive leading coefficient: down on the left, up on the right.</p><p>(c) Odd degree, negative leading coefficient: up on the left, down on the right.</p></div>
+</div>
+<h2>Zeros and Multiplicities</h2>
+<div class="box definition"><span class="label">Zero of a Polynomial</span><p>A <b>zero</b> (or <b>root</b>) of \(f\) is a value \(c\) with \(f(c) = 0\). Real zeros correspond to \(x\)-intercepts of the graph.</p></div>
+<div class="box definition"><span class="label">Multiplicity</span><p>If a factor \((x - c)\) appears \(k\) times in the factorization of \(f\), we say \(c\) is a zero of <b>multiplicity</b> \(k\).</p><ul><li><b>Odd</b> multiplicity: the graph <em>crosses</em> the \(x\)-axis at \(c\).</li><li><b>Even</b> multiplicity: the graph <em>touches</em> and turns around at \(c\).</li></ul></div>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>Zeros from a factored form</h3>
+<p>Find the zeros and their multiplicities for \(f(x) = (x - 2)^3 (x + 1)^2 (x - 5)\).</p>
+
+<div class="solution"><p>Zeros: \(x = 2\) (multiplicity 3, graph crosses), \(x = -1\) (multiplicity 2, graph touches), \(x = 5\) (multiplicity 1, graph crosses). Total degree \(3 + 2 + 1 = 6\).</p></div>
+</div>
+<h2>How Many Real Zeros and Turning Points?</h2>
+<div class="box property"><span class="label">Useful Bounds</span><p>A polynomial of degree \(n\) has</p><ul><li>at most \(n\) real zeros,</li><li>at most \(n - 1\) <b>turning points</b> (places where it changes from increasing to decreasing or vice versa).</li></ul></div>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Sketching from features</h3>
+<p>Sketch the polynomial \(f(x) = x^3 - 4x\). Identify zeros, end behavior, and turning points.</p>
+<div class="plot" id="plot-4-2-ex4"></div>
+<script>Lvplot.draw("#plot-4-2-ex4", {width: 460, height: 320, xMin: -3, xMax: 3, yMin: -4, yMax: 4, curves: [{fn: x*x*x - 4*x}], points: [{x: -2, y: 0, label: "(-2, 0)", dx: -42, dy: 14}, {x: 0, y: 0, label: "(0, 0)", dx: -36, dy: 14}, {x: 2, y: 0, label: "(2, 0)", dx: 6, dy: 14}]});</script>
+<div class="solution"><p>Factor: \(x(x^2 - 4) = x(x - 2)(x + 2)\). Zeros: \(x = -2, 0, 2\), each multiplicity 1, so the graph crosses at each.</p><p>Odd degree, positive leading coefficient: down on the left, up on the right.</p><p>Two turning points (a local max between \(x = -2\) and \(0\), a local min between \(0\) and \(2\)).</p></div>
+</div>
+<h2>Polynomial Models</h2>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>Volume of a box</h3>
+<p>From a 12 in. by 18 in. piece of cardboard, squares of side \(x\) inches are cut from each corner and the sides are folded up to form an open-top box.</p><ol type='a'><li>Write the volume \(V\) as a polynomial in \(x\).</li><li>What are the realistic values of \(x\)?</li></ol>
+
+<div class="solution"><p>(a) After cutting, the base measures \((12 - 2x)\) by \((18 - 2x)\) and the height is \(x\). \[ V(x) = x(12 - 2x)(18 - 2x). \]</p><p>(b) Each side length must be positive: \(x > 0\), \(12 - 2x > 0\), \(18 - 2x > 0\). The binding condition is \(x < 6\). Domain: \(0 < x < 6\).</p></div>
+</div>
+</div>
+</body>
+</html>

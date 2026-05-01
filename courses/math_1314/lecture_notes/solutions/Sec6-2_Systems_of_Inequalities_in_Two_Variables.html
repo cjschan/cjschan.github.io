@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.2 Systems of Inequalities in Two Variables — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 6.2</span>
+<h1>Systems of Inequalities in Two Variables</h1>
+<p class="version-tag">Worked Solutions</p>
+
+<p>A linear inequality in two variables describes a half-plane. A system of such inequalities describes the intersection &mdash; a region of the plane &mdash; whose points satisfy every inequality. Today we graph these regions and use them in simple optimization.</p>
+<h2>Graphing a Single Linear Inequality</h2>
+<div class="box property"><span class="label">Strategy</span><ol><li>Replace the inequality with equality and graph the boundary line.</li><li>Use a <b>solid</b> line for \(\leq\) or \(\geq\) (line is included). Use a <b>dashed</b> line for \(<\) or \(>\) (line excluded).</li><li>Pick a test point not on the line (such as \((0, 0)\) when possible) and check whether it satisfies the original inequality. If yes, shade the side of the line containing the test point; otherwise shade the other side.</li></ol></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>A single inequality</h3>
+<p>Graph \(2x - y \leq 4\).</p>
+
+<div class="solution"><p>Boundary: \(2x - y = 4\), i.e. \(y = 2x - 4\) &mdash; solid line through \((0, -4)\) and \((2, 0)\). Test \((0, 0)\): \(2(0) - 0 = 0 \leq 4\) ✓. Shade the side of the line containing the origin (above the line).</p></div>
+</div>
+<h2>Systems of Inequalities</h2>
+<div class="box definition"><span class="label">Solution of a System</span><p>The solution of a system of inequalities in two variables is the set of points \((x, y)\) that satisfy <b>every</b> inequality. It is the intersection of the individual solution regions.</p></div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>Two-inequality system</h3>
+<p>Graph the solution.</p><p>\(\begin{cases} y \geq -x + 2 \\ y < 2x - 1 \end{cases}\)</p>
+
+<div class="solution"><p>Solid line \(y = -x + 2\); shade above (test \((3, 0)\): \(0 \geq -1\) ✓).</p><p>Dashed line \(y = 2x - 1\); shade below (test \((0, 0)\): \(0 < -1\) ✗, so shade the opposite side, which is below the line for points like \((3, 0)\): \(0 < 5\) ✓).</p><p>The solution is the wedge above the first line and below the second &mdash; an unbounded region.</p></div>
+</div>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>Bounded region</h3>
+<p>Graph the solution.</p><p>\(\begin{cases} x + y \leq 6 \\ x \geq 0 \\ y \geq 0 \end{cases}\)</p>
+
+<div class="solution"><p>The first inequality cuts off the half-plane below the line \(x + y = 6\). The other two restrict to the first quadrant. The intersection is a triangle with vertices \((0, 0)\), \((6, 0)\), and \((0, 6)\), including the boundary.</p></div>
+</div>
+<h2>Reading Vertices (Corner Points)</h2>
+<div class="box property"><span class="label">Corner Points</span><p>The corner points of a feasible region are the intersections of the boundary lines that lie within the region. They are crucial in linear programming and other optimization tasks.</p></div>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Identify corners</h3>
+<p>Find the corner points of the region defined by \(\begin{cases} 2x + y \leq 8 \\ x + 2y \leq 10 \\ x \geq 0 \\ y \geq 0 \end{cases}\).</p>
+
+<div class="solution"><p>Solve pairwise intersections:</p><ul><li>\(x = 0, y = 0 \Rightarrow (0, 0)\) ✓</li><li>\(y = 0\) and \(2x + y = 8 \Rightarrow (4, 0)\) ✓</li><li>\(x = 0\) and \(x + 2y = 10 \Rightarrow (0, 5)\) ✓</li><li>\(2x + y = 8\) and \(x + 2y = 10\): multiply the first by 2 and subtract: \(4x + 2y - x - 2y = 16 - 10\), \(3x = 6\), \(x = 2\). Then \(y = 4\). Corner \((2, 4)\) ✓</li></ul><p>Corners: \((0, 0)\), \((4, 0)\), \((2, 4)\), \((0, 5)\).</p></div>
+</div>
+<h2>An Application: Optimization</h2>
+<div class="box theorem"><span class="label">Linear Programming Theorem</span><p>If a linear function (the objective) attains a maximum or minimum on a closed bounded region defined by linear inequalities, that optimum occurs at a <b>corner point</b> of the region.</p></div>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>Maximize a linear objective</h3>
+<p>Using the region from Example 4, find the maximum and minimum values of \(P = 3x + 5y\) on the region.</p>
+
+<div class="solution"><p>Evaluate \(P\) at each corner.</p><ul><li>\((0, 0)\): \(P = 0\)</li><li>\((4, 0)\): \(P = 12\)</li><li>\((2, 4)\): \(P = 6 + 20 = 26\) ← max</li><li>\((0, 5)\): \(P = 25\)</li></ul><p>Maximum 26 at \((2, 4)\); minimum 0 at \((0, 0)\).</p></div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.1 More Nonlinear Functions and Their Graphs — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 4.1</span>
+<h1>More Nonlinear Functions and Their Graphs</h1>
+<p class="version-tag">Worked Solutions</p>
+
+<p>We zoom out from quadratics to broader features of nonlinear graphs: increasing/decreasing intervals, local extrema, absolute extrema, and even/odd symmetry. These ideas apply to <em>any</em> function and become essential vocabulary for the rest of the course.</p>
+<h2>Local and Absolute Extrema</h2>
+<div class="box definition"><span class="label">Local Extrema</span><p>A function \(f\) has a <b>local maximum</b> at \(x = c\) if \(f(c) \geq f(x)\) for all \(x\) in some open interval around \(c\). Similarly for a <b>local minimum</b> with \(\leq\). The output \(f(c)\) is the local max/min <em>value</em>.</p></div>
+<div class="box definition"><span class="label">Absolute (Global) Extrema</span><p>An <b>absolute maximum</b> is the largest output \(f\) attains anywhere in its domain. An <b>absolute minimum</b> is the smallest. A function may have neither (e.g., a line).</p></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>Reading extrema from a graph</h3>
+<p>The graph of \(f(x) = x^3 - 3x\) is shown. Identify the local maximum, local minimum, and discuss whether \(f\) has any absolute extrema.</p>
+<div class="plot" id="plot-4-1-ex1"></div>
+<script>Lvplot.draw("#plot-4-1-ex1", {width: 420, height: 300, xMin: -3, xMax: 3, yMin: -4, yMax: 4, curves: [{fn: x*x*x - 3*x}], points: [{x: -1, y: 2, label: "local max (-1, 2)", color: "#fbbf24", dx: -120, dy: -6}, {x: 1, y: -2, label: "local min (1, -2)", color: "#fbbf24", dx: 8, dy: 16}]});</script>
+<div class="solution"><p>Local max value of \(2\) at \(x = -1\). Local min value of \(-2\) at \(x = 1\).</p><p>The graph extends without bound up and down (\(f(x) \to \infty\) as \(x \to \infty\) and \(f(x) \to -\infty\) as \(x \to -\infty\)), so \(f\) has <b>no absolute extrema</b>.</p></div>
+</div>
+<h2>Increasing and Decreasing</h2>
+<div class="box property"><span class="label">Reading Behavior</span><p>On any interval where the graph is rising left-to-right, the function is <b>increasing</b>. Falling means <b>decreasing</b>. Constant means flat. Use open intervals when reading from a graph.</p></div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>Increasing/decreasing intervals</h3>
+<p>For the function in Example 1, on what intervals is \(f\) increasing? Decreasing?</p>
+
+<div class="solution"><p>From the local max at \(x = -1\) and local min at \(x = 1\):</p><ul><li>Increasing on \((-\infty, -1)\) and on \((1, \infty)\).</li><li>Decreasing on \((-1, 1)\).</li></ul></div>
+</div>
+<h2>Symmetry: Even and Odd Functions</h2>
+<div class="box definition"><span class="label">Even and Odd Functions</span><p>A function \(f\) is</p><ul><li><b>Even</b> if \(f(-x) = f(x)\) for every \(x\) in the domain. Its graph is symmetric across the \(y\)-axis.</li><li><b>Odd</b> if \(f(-x) = -f(x)\) for every \(x\). Its graph is symmetric about the origin (180° rotational).</li></ul><p>Most functions are neither even nor odd.</p></div>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>Testing for symmetry</h3>
+<p>Determine whether each function is even, odd, or neither.</p><ol type='a'><li>\(f(x) = x^4 - 3x^2\)</li><li>\(g(x) = x^3 - x\)</li><li>\(h(x) = x^2 + x\)</li><li>\(k(x) = \dfrac{1}{x}\)</li></ol>
+
+<div class="solution"><p>(a) \(f(-x) = (-x)^4 - 3(-x)^2 = x^4 - 3x^2 = f(x)\). <b>Even.</b></p><p>(b) \(g(-x) = -x^3 + x = -(x^3 - x) = -g(x)\). <b>Odd.</b></p><p>(c) \(h(-x) = x^2 - x\); not equal to \(h(x)\) or \(-h(x)\). <b>Neither.</b></p><p>(d) \(k(-x) = -\dfrac{1}{x} = -k(x)\). <b>Odd.</b></p></div>
+</div>
+<h2>Continuity at a Glance</h2>
+<div class="box definition"><span class="label">Continuous Function</span><p>Informally, a function is <b>continuous</b> on an interval if its graph can be drawn over that interval without lifting the pencil. Functions with breaks, jumps, holes, or vertical asymptotes are <b>discontinuous</b> there.</p></div>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Identifying discontinuities</h3>
+<p>For each rule, identify any \(x\)-values where the function is discontinuous and state why.</p><ol type='a'><li>\(f(x) = \dfrac{1}{x - 2}\)</li><li>\(g(x) = \dfrac{x^2 - 9}{x - 3}\)</li><li>\(p(x) = \begin{cases} x + 1 & x < 0 \\ x - 1 & x \geq 0 \end{cases}\)</li></ol>
+
+<div class="solution"><p>(a) \(x = 2\) is excluded from the domain &mdash; vertical asymptote.</p><p>(b) \(x = 3\) is excluded; the formula simplifies to \(x + 3\) but the original has a hole at \((3, 6)\).</p><p>(c) Discontinuous at \(x = 0\): the left piece approaches \(1\) and the right piece starts at \(-1\) &mdash; a jump.</p></div>
+</div>
+<h2>Putting It Together</h2>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>Reading every feature</h3>
+<p>Use the graph of \(f(x) = -x^4 + 4x^2\) to answer each question.</p><ol type='a'><li>Find the absolute maximum value of \(f\).</li><li>Find the local minimum.</li><li>State the increasing and decreasing intervals.</li><li>Is \(f\) even, odd, or neither?</li></ol>
+<div class="plot" id="plot-4-1-ex5"></div>
+<script>Lvplot.draw("#plot-4-1-ex5", {width: 460, height: 320, xMin: -3, xMax: 3, yMin: -4, yMax: 5, curves: [{fn: -x*x*x*x + 4*x*x}], points: [{x: -1.414, y: 4, label: "max", color: "#fbbf24", dx: -32, dy: -2}, {x: 1.414, y: 4, label: "max", color: "#fbbf24", dx: 6, dy: -2}, {x: 0, y: 0, label: "local min (0, 0)", color: "#f0abfc", dx: 8, dy: 16}]});</script>
+<div class="solution"><p>(a) Absolute max value 4, attained at \(x = \pm\sqrt{2}\).</p><p>(b) Local min value 0 at \(x = 0\).</p><p>(c) Increasing on \((-\infty, -\sqrt{2})\) and on \((0, \sqrt{2})\); decreasing on \((-\sqrt{2}, 0)\) and on \((\sqrt{2}, \infty)\).</p><p>(d) \(f(-x) = -(-x)^4 + 4(-x)^2 = -x^4 + 4x^2 = f(x)\). <b>Even.</b></p></div>
+</div>
+</div>
+</body>
+</html>

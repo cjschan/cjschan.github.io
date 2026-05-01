@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.5 Properties and Applications of Matrices — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+    font-weight: 600;
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 32px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
+  }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px 36px; }
+    .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 6.5</span>
+<h1>Properties and Applications of Matrices</h1>
+<p class="version-tag">Worked Solutions</p>
+
+<p>Matrices aren&rsquo;t just for solving systems. Today we develop the algebra of matrices: addition, scalar multiplication, and multiplication, and use matrices to encode and manipulate data and equations.</p>
+<h2>Matrix Notation</h2>
+<div class="box definition"><span class="label">Matrix</span><p>A <b>matrix</b> is a rectangular array of numbers organized into rows and columns. A matrix with \(m\) rows and \(n\) columns has <b>dimension</b> \(m \times n\). The entry in row \(i\), column \(j\) is denoted \(a_{ij}\).</p><p>A matrix with the same number of rows as columns is <b>square</b>.</p></div>
+<h2>Addition and Scalar Multiplication</h2>
+<div class="box property"><span class="label">Rules</span><ul><li>Two matrices can be <b>added</b> only if they have the same dimension. Add component-by-component.</li><li>To <b>multiply by a scalar</b>, multiply every entry by the scalar.</li><li>The <b>zero matrix</b> \(\mathbf{0}\) is the additive identity: \(A + \mathbf{0} = A\).</li></ul></div>
+<div class="example">
+<span class="label">Example 1</span>
+<h3>Add and scale</h3>
+<p>Let \(A = \begin{bmatrix} 2 & -1 \\ 0 & 4 \end{bmatrix}\) and \(B = \begin{bmatrix} 5 & 3 \\ -2 & 1 \end{bmatrix}\). Compute.</p><ol type='a'><li>\(A + B\)</li><li>\(3A\)</li><li>\(2A - B\)</li></ol>
+
+<div class="solution"><p>(a) \(A + B = \begin{bmatrix} 7 & 2 \\ -2 & 5 \end{bmatrix}\).</p><p>(b) \(3A = \begin{bmatrix} 6 & -3 \\ 0 & 12 \end{bmatrix}\).</p><p>(c) \(2A - B = \begin{bmatrix} 4 & -2 \\ 0 & 8 \end{bmatrix} - \begin{bmatrix} 5 & 3 \\ -2 & 1 \end{bmatrix} = \begin{bmatrix} -1 & -5 \\ 2 & 7 \end{bmatrix}\).</p></div>
+</div>
+<h2>Matrix Multiplication</h2>
+<div class="box definition"><span class="label">Matrix Product</span><p>If \(A\) is \(m \times n\) and \(B\) is \(n \times p\), the product \(AB\) is \(m \times p\). The entry in row \(i\), column \(j\) of \(AB\) is the dot product of row \(i\) of \(A\) with column \(j\) of \(B\):</p><p>\((AB)_{ij} = \sum_{k=1}^{n} a_{ik} b_{kj}\).</p><p><b>Caution:</b> Matrix multiplication is generally <em>not</em> commutative: usually \(AB \neq BA\).</p></div>
+<div class="example">
+<span class="label">Example 2</span>
+<h3>Multiply two matrices</h3>
+<p>Compute \(AB\) where \(A = \begin{bmatrix} 2 & 1 \\ 3 & -1 \end{bmatrix}\) and \(B = \begin{bmatrix} 4 & 0 \\ -2 & 5 \end{bmatrix}\).</p>
+
+<div class="solution"><p>Each entry of \(AB\) is row-of-\(A\) dotted with column-of-\(B\):</p><ul><li>(1, 1): \(2(4) + 1(-2) = 6\)</li><li>(1, 2): \(2(0) + 1(5) = 5\)</li><li>(2, 1): \(3(4) + (-1)(-2) = 14\)</li><li>(2, 2): \(3(0) + (-1)(5) = -5\)</li></ul><p>\(AB = \begin{bmatrix} 6 & 5 \\ 14 & -5 \end{bmatrix}\).</p></div>
+</div>
+<div class="example">
+<span class="label">Example 3</span>
+<h3>Dimensions matter</h3>
+<p>Let \(C\) be a \(2 \times 3\) matrix and \(D\) be a \(3 \times 4\) matrix. Which products are defined?</p><ol type='a'><li>\(CD\)</li><li>\(DC\)</li><li>\(CC\)</li></ol>
+
+<div class="solution"><p>(a) \(CD\) is defined: inner dimensions match (3 and 3). Result is \(2 \times 4\).</p><p>(b) \(DC\) is undefined: inner dimensions \(4\) and \(2\) don&rsquo;t match.</p><p>(c) \(CC\) is undefined: \(2 \times 3\) and \(2 \times 3\) don&rsquo;t match.</p></div>
+</div>
+<h2>The Identity and Inverse Matrices</h2>
+<div class="box definition"><span class="label">Identity Matrix</span><p>The \(n \times n\) <b>identity matrix</b> \(I_n\) has 1&rsquo;s on the main diagonal and 0&rsquo;s elsewhere. For any \(n \times n\) matrix \(A\), \(AI_n = I_n A = A\).</p></div>
+<div class="box definition"><span class="label">Inverse</span><p>An \(n \times n\) matrix \(A\) is <b>invertible</b> if there exists \(A^{-1}\) with \(A A^{-1} = A^{-1} A = I_n\). For a \(2 \times 2\) matrix \(A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}\) with \(\det A = ad - bc \neq 0\), \[ A^{-1} = \dfrac{1}{ad - bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}. \]</p></div>
+<div class="example">
+<span class="label">Example 4</span>
+<h3>Inverse of a 2×2 matrix</h3>
+<p>Find \(A^{-1}\) for \(A = \begin{bmatrix} 4 & 7 \\ 1 & 2 \end{bmatrix}\).</p>
+
+<div class="solution"><p>\(\det A = (4)(2) - (7)(1) = 1\). \(A^{-1} = \dfrac{1}{1}\begin{bmatrix} 2 & -7 \\ -1 & 4 \end{bmatrix} = \begin{bmatrix} 2 & -7 \\ -1 & 4 \end{bmatrix}\).</p><p>Check: \(A A^{-1} = \begin{bmatrix} 4 & 7 \\ 1 & 2 \end{bmatrix}\begin{bmatrix} 2 & -7 \\ -1 & 4 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}\) ✓.</p></div>
+</div>
+<h2>Solving Systems with Inverses</h2>
+<div class="box property"><span class="label">Matrix Equation</span><p>A linear system \(A\mathbf{x} = \mathbf{b}\) (with \(A\) the coefficient matrix and \(\mathbf{x}\), \(\mathbf{b}\) column vectors) has solution \(\mathbf{x} = A^{-1}\mathbf{b}\), provided \(A\) is invertible.</p></div>
+<div class="example">
+<span class="label">Example 5</span>
+<h3>Using the inverse</h3>
+<p>Use the inverse from Example 4 to solve \(\begin{cases} 4x + 7y = 11 \\ x + 2y = 3 \end{cases}\).</p>
+
+<div class="solution"><p>\(\mathbf{x} = A^{-1}\mathbf{b} = \begin{bmatrix} 2 & -7 \\ -1 & 4 \end{bmatrix}\begin{bmatrix} 11 \\ 3 \end{bmatrix} = \begin{bmatrix} 22 - 21 \\ -11 + 12 \end{bmatrix} = \begin{bmatrix} 1 \\ 1 \end{bmatrix}\).</p><p>Solution: \((x, y) = (1, 1)\).</p></div>
+</div>
+<h2>An Application: Encoded Data</h2>
+<div class="example">
+<span class="label">Example 6</span>
+<h3>Inventory by store</h3>
+<p>A coffee chain has three stores. The matrix \(N\) gives the number of bags of each of two roasts (R1, R2) sold this month at each store, and the column vector \(\mathbf{p}\) gives the price of each roast. Compute the monthly revenue per store.</p><p>\(N = \begin{bmatrix} 80 & 60 \\ 50 & 90 \\ 100 & 70 \end{bmatrix}, \quad \mathbf{p} = \begin{bmatrix} 12 \\ 15 \end{bmatrix}\)</p>
+
+<div class="solution"><p>Each row of \(N\) is one store, each column is one roast. Revenue per store is \(N\mathbf{p}\).</p><p>Store 1: \(80(12) + 60(15) = 960 + 900 = 1860\).</p><p>Store 2: \(50(12) + 90(15) = 600 + 1350 = 1950\).</p><p>Store 3: \(100(12) + 70(15) = 1200 + 1050 = 2250\).</p><p>\(N\mathbf{p} = \begin{bmatrix} 1860 \\ 1950 \\ 2250 \end{bmatrix}\) dollars.</p></div>
+</div>
+</div>
+</body>
+</html>
