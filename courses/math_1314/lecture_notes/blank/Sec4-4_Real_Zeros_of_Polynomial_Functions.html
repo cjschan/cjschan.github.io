@@ -196,55 +196,53 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <h1>Real Zeros of Polynomial Functions</h1>
 <p class="version-tag">Student Notes</p>
 
-<p>How do we actually <em>find</em> the zeros of a higher-degree polynomial? We&rsquo;ll use the rational zeros theorem to generate a finite list of candidates, then synthetic or long division to confirm zeros and reduce the polynomial to a quadratic we can solve.</p>
-<h2>Polynomial Division</h2>
-<div class="box property"><span class="label">Division Algorithm</span><p>If \(f(x)\) is divided by a non-zero polynomial \(d(x)\), there exist a unique quotient \(q(x)\) and remainder \(r(x)\) with \(f(x) = d(x) q(x) + r(x)\), where \(\deg r < \deg d\). Long division and synthetic division both implement this.</p></div>
+<p>How do we actually <em>find</em> the zeros of a higher-degree polynomial? We&rsquo;ll use the factor theorem, factoring techniques (including grouping and substitution), and graphs to identify zeros and factor polynomials.</p>
+<h2>Polynomial Long Division</h2>
+<div class="box property"><span class="label">Division Algorithm</span><p>If \(f(x)\) is divided by a non-zero polynomial \(d(x)\), there exist a unique quotient \(q(x)\) and remainder \(r(x)\) with \(f(x) = d(x) q(x) + r(x)\), where \(\deg r < \deg d\). Polynomial long division works just like long division of numbers: divide the leading terms, multiply, subtract, bring down, repeat.</p></div>
 <div class="example">
 <span class="label">Example 1</span>
-<h3>Synthetic division</h3>
-<p>Use synthetic division to compute \((2x^3 - 5x^2 + 3x - 4) \div (x - 2)\).</p>
+<h3>Long division</h3>
+<p>Use long division to compute \((2x^3 - 5x^2 + 3x - 4) \div (x - 2)\).</p>
 
 </div>
 <h2>Remainder and Factor Theorems</h2>
 <div class="box theorem"><span class="label">Remainder Theorem</span><p>When \(f(x)\) is divided by \((x - c)\), the remainder equals \(f(c)\).</p></div>
-<div class="box theorem"><span class="label">Factor Theorem</span><p>\((x - c)\) is a factor of \(f(x)\) if and only if \(f(c) = 0\).</p></div>
+<div class="box theorem"><span class="label">Factor Theorem</span><p>\((x - c)\) is a factor of \(f(x)\) if and only if \(f(c) = 0\). Conversely, every factor \((x - c)\) of \(f\) gives a zero \(x = c\).</p></div>
 <div class="example">
 <span class="label">Example 2</span>
-<h3>Verifying a zero</h3>
-<p>Show that \(x = 3\) is a zero of \(f(x) = x^3 - 4x^2 + x + 6\) and use it to factor \(f\) completely.</p>
+<h3>Verifying a zero and factoring</h3>
+<p>Show that \(x = 3\) is a zero of \(f(x) = x^3 - 4x^2 + x + 6\). Then use long division to factor \(f\) completely and find all zeros.</p>
 
 </div>
-<h2>The Rational Zeros Theorem</h2>
-<div class="box theorem"><span class="label">Rational Zeros Theorem</span><p>If a polynomial \(f\) with integer coefficients has a rational zero \(\dfrac{p}{q}\) (in lowest terms), then \(p\) divides the constant term \(a_0\) and \(q\) divides the leading coefficient \(a_n\).</p></div>
+<h2>Zeros by Factoring</h2>
+<div class="box property"><span class="label">Useful Factoring Techniques</span><ul><li><b>Common factor:</b> pull out any GCF first.</li><li><b>Grouping:</b> for four-term polynomials, group two pairs and factor each pair to expose a common binomial factor.</li><li><b>Substitution:</b> for polynomials of the form \(ax^4 + bx^2 + c\) (or other &ldquo;quadratic in disguise&rdquo;), let \(u = x^2\) and solve the resulting quadratic.</li><li><b>Special forms:</b> difference of squares \(a^2 - b^2 = (a-b)(a+b)\); difference/sum of cubes \(a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)\).</li></ul></div>
 <div class="example">
 <span class="label">Example 3</span>
-<h3>Listing rational candidates</h3>
-<p>List the possible rational zeros of \(f(x) = 2x^3 - x^2 - 8x + 4\).</p>
+<h3>Factoring by grouping</h3>
+<p>Find all real zeros of \(f(x) = x^3 + 2x^2 - 9x - 18\).</p>
 
 </div>
-<h2>Putting It All Together</h2>
 <div class="example">
 <span class="label">Example 4</span>
-<h3>Find all real zeros</h3>
-<p>Find all real zeros of \(f(x) = 2x^3 - x^2 - 8x + 4\).</p>
-
-</div>
-<div class="example">
-<span class="label">Example 5</span>
-<h3>Higher-degree polynomial</h3>
+<h3>Substitution</h3>
 <p>Find all real zeros of \(f(x) = x^4 - 5x^2 + 4\).</p>
 
 </div>
 <div class="example">
-<span class="label">Example 6</span>
-<h3>When candidates fail</h3>
-<p>Find all real zeros of \(f(x) = x^3 + x + 1\).</p>
+<span class="label">Example 5</span>
+<h3>Common factor + difference of cubes</h3>
+<p>Find all real zeros of \(f(x) = 2x^4 - 16x\).</p>
 
 </div>
-<h2>Behavior Near Zeros</h2>
-<p>The polynomial from Example 4 has zeros that all happen to be simple (multiplicity 1), so the graph crosses the \(x\)-axis at each one:</p>
-<div class="plot" id="plot-4-4-summary"></div>
-<script>Lvplot.draw("#plot-4-4-summary", {width: 460, height: 320, xMin: -3, xMax: 3, yMin: -8, yMax: 8, curves: [{fn: x => (2*x*x*x - x*x - 8*x + 4)}], points: [{x: -2, y: 0}, {x: 0.5, y: 0}, {x: 2, y: 0}]});</script>
+<h2>Approximating Zeros from a Graph</h2>
+<div class="box property"><span class="label">When Algebra Doesn&rsquo;t Factor Cleanly</span><p>Not every polynomial factors over the integers. When it doesn&rsquo;t, you can still:</p><ul><li>Sketch the graph and look for sign changes &mdash; each sign change locates a real zero between consecutive integers.</li><li>Use a graphing calculator&rsquo;s <em>zero</em> or <em>root</em> tool to approximate the value.</li></ul></div>
+<div class="example">
+<span class="label">Example 6</span>
+<h3>Reading a zero from a graph</h3>
+<p>The graph of \(f(x) = x^3 + x + 1\) is shown. How many real zeros does \(f\) have? Estimate each from the graph.</p>
+<div class="plot" id="plot-4-4-ex6"></div>
+<script>Lvplot.draw("#plot-4-4-ex6", {width: 420, height: 300, xMin: -2, xMax: 2, yMin: -3, yMax: 5, curves: [{fn: x => (x*x*x + x + 1)}]});</script>
+</div>
 </div>
 </body>
 </html>
