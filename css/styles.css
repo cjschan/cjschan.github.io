@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700');
 
 :root {
-	--primary: #2c5f8d;
-	--primary-dark: #1e4060;
-	--primary-light: #5e8bb5;
-	--accent: #e76f51;
-	--accent-light: #f4a261;
-	--bg: #f5f8fc;
+	--primary: #a83232;
+	--primary-dark: #6f1f1f;
+	--primary-light: #c75a4a;
+	--accent: #e8a23a;
+	--accent-light: #f3c969;
+	--bg: #fbf5ea;
 	--card-bg: #ffffff;
-	--text: #2d3748;
-	--muted: #718096;
-	--border: #e2e8f0;
+	--text: #3a2418;
+	--muted: #8a6f5c;
+	--border: #ead9c2;
 }
 
 body {
@@ -28,7 +28,7 @@ body {
 
 header {
 	background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-	box-shadow: 0 2px 12px rgba(30, 64, 96, 0.15);
+	box-shadow: 0 2px 12px rgba(111, 31, 31, 0.20);
 }
 
 header::after {
@@ -104,7 +104,7 @@ nav a:hover::before {
 	background: var(--card-bg);
 	border-radius: 16px;
 	padding: 32px 24px;
-	box-shadow: 0 6px 24px rgba(44, 95, 141, 0.10);
+	box-shadow: 0 6px 24px rgba(111, 31, 31, 0.10);
 	border-top: 5px solid var(--accent);
 	position: sticky;
 	top: 30px;
@@ -126,7 +126,7 @@ nav a:hover::before {
 .img {
 	border-radius: 50%;
 	border: 4px solid var(--accent-light);
-	box-shadow: 0 4px 12px rgba(231, 111, 81, 0.20);
+	box-shadow: 0 4px 12px rgba(232, 162, 58, 0.30);
 }
 
 .card a {
@@ -150,7 +150,7 @@ nav a:hover::before {
 	background: var(--card-bg);
 	border-radius: 16px;
 	padding: 36px 48px;
-	box-shadow: 0 6px 24px rgba(44, 95, 141, 0.10);
+	box-shadow: 0 6px 24px rgba(111, 31, 31, 0.10);
 }
 
 .column h1 {
@@ -205,7 +205,7 @@ nav a:hover::before {
 }
 
 blockquote {
-	background: linear-gradient(135deg, #eaf2fb 0%, #fdf1ea 100%);
+	background: linear-gradient(135deg, #fcecd1 0%, #f7dcd0 100%);
 	border-left: 4px solid var(--accent);
 	margin: 20px 0;
 	padding: 18px 24px;
