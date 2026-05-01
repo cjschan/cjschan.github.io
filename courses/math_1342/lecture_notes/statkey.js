@@ -102,24 +102,54 @@ const StatKey = (() => {
     const plotW = W - PL - PR;
     const plotH = H - PT - PB;
 
-    // Choose bin width that gives a reasonable number of stacks.
-    const min = Math.min(...samples);
-    const max = Math.max(...samples);
-    const span = Math.max(max - min, 1e-9);
-    const targetBins = Math.min(50, Math.max(12, Math.round(Math.sqrt(samples.length))));
-    const binWidth = span / targetBins || 0.01;
-    const xMin = min - binWidth / 2;
-    const xMax = max + binWidth / 2;
-    const numBins = Math.max(1, Math.ceil((xMax - xMin) / binWidth));
+    // Identify the distinct sample values (rounded to dampen float noise).
+    // If there aren't too many, use one column per distinct value (good for
+    // discrete statistics like sample proportions). Otherwise fall back to
+    // equal-width bins.
+    const round = (v) => Math.round(v * 1e10) / 1e10;
+    const uniqueSet = new Set(samples.map(round));
+    const uniqueValues = [...uniqueSet].sort((a, b) => a - b);
 
-    // Bin each sample.
-    const bins = new Array(numBins);
-    for (let i = 0; i < numBins; i++) bins[i] = [];
-    for (const v of samples) {
-      let i = Math.floor((v - xMin) / binWidth);
-      if (i >= numBins) i = numBins - 1;
-      if (i < 0) i = 0;
-      bins[i].push(v);
+    let centers, bins, binWidth, xMin, xMax;
+    if (uniqueValues.length <= 60) {
+      // Discrete mode: one bin per distinct value.
+      centers = uniqueValues;
+      // Smallest gap between consecutive values (used for x-axis padding only).
+      let minGap = Infinity;
+      for (let i = 1; i < centers.length; i++) {
+        const g = centers[i] - centers[i - 1];
+        if (g > 0 && g < minGap) minGap = g;
+      }
+      if (!isFinite(minGap)) minGap = 1;
+      binWidth = minGap;
+      const idx = new Map();
+      centers.forEach((c, i) => idx.set(round(c), i));
+      bins = centers.map(() => []);
+      for (const v of samples) bins[idx.get(round(v))].push(v);
+      xMin = centers[0] - binWidth;
+      xMax = centers[centers.length - 1] + binWidth;
+    } else {
+      // Continuous mode: equal-width bins via sqrt rule.
+      const min = Math.min(...samples);
+      const max = Math.max(...samples);
+      const span = Math.max(max - min, 1e-9);
+      const targetBins = Math.min(50, Math.max(12, Math.round(Math.sqrt(samples.length))));
+      binWidth = span / targetBins || 0.01;
+      xMin = min - binWidth / 2;
+      xMax = max + binWidth / 2;
+      const numBins = Math.max(1, Math.ceil((xMax - xMin) / binWidth));
+      bins = new Array(numBins);
+      centers = new Array(numBins);
+      for (let i = 0; i < numBins; i++) {
+        bins[i] = [];
+        centers[i] = xMin + (i + 0.5) * binWidth;
+      }
+      for (const v of samples) {
+        let i = Math.floor((v - xMin) / binWidth);
+        if (i >= numBins) i = numBins - 1;
+        if (i < 0) i = 0;
+        bins[i].push(v);
+      }
     }
     const maxCount = Math.max(...bins.map(b => b.length));
 
@@ -152,11 +182,10 @@ const StatKey = (() => {
       stroke: '#94a3b8', 'stroke-width': 1,
     }));
 
-    // Plot dots: stack from the axis upward.
-    for (let i = 0; i < numBins; i++) {
-      const cx = sx(xMin + (i + 0.5) * binWidth);
+    // Plot dots: stack from the axis upward at each bin's center.
+    for (let i = 0; i < bins.length; i++) {
+      const cx = sx(centers[i]);
       const stack = bins[i];
-      // Sort the stack so highlighted-vs-not are interleaved deterministically.
       for (let k = 0; k < stack.length; k++) {
         const v = stack[k];
         const cy = axisY - dotPitch * (k + 0.5);
