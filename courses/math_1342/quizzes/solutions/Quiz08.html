@@ -49,9 +49,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 
 <div class="quiz">
 <span class="badge">Quiz 8</span>
-<h1>Paired Differences, Chi-Square, and ANOVA</h1>
+<h1>Paired Differences in Means</h1>
 <p class="version-tag">Worked Solutions</p>
-<p class="covers">Covers Sections 6.5, 7.2, 8.1</p>
+<p class="covers">Covers Sections 6.5</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
@@ -59,28 +59,23 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
 <h3>Problem 1 <span class="pts">[2 pts]</span></h3>
-<p>For each design, decide whether you should use a <b>paired</b> or an <b>independent two-sample</b> approach. <i>(1 pt each)</i></p><ol type='a'><li>Measure 30 patients' blood pressure before and after a treatment.</li><li>Compare cholesterol levels in 30 patients on Drug A and 30 different patients on Drug B.</li></ol>
-<div class="solution"><p>(a) Paired (each patient is measured twice; differences cancel patient-level variation).</p><p>(b) Independent two-sample (different patients in each group).</p></div>
+<p>For each design, decide whether you should use a <b>paired</b> or an <b>independent two-sample</b> approach. <i>(1 pt each)</i></p><ol type='a'><li>30 patients' blood pressure measured before and after a treatment.</li><li>Cholesterol levels of 30 patients on Drug A vs 30 different patients on Drug B.</li></ol>
+<div class="solution"><p>(a) <b>Paired.</b> Each subject is measured twice — the before/after pairs naturally line up.</p><p>(b) <b>Independent two-sample.</b> Different subjects in each group, so we compare two separate samples.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 2 <span class="pts">[2 pts]</span></h3>
-<p>A weight-loss program enrolls 10 participants. Each is weighed at the start and after 8 weeks. The differences (start − end, in lbs) for the 10 participants have mean \(\bar{d} = 5\) and \(s_d = 4\). Construct an approximate 95% CI for the mean weight loss using \(\bar{d} \pm 2 \cdot s_d/\sqrt{n}\). <i>(2 pts)</i></p>
-<div class="solution"><p>\(SE = 4/\sqrt{10} \approx 1.265\). CI: \(5 \pm 2(1.265) = 5 \pm 2.53\), or approximately \((2.47,\ 7.53)\) lbs.</p></div>
+<p>How does inference for a <b>paired</b> difference in means differ from inference for the <b>difference of two independent means</b>? Address both the <b>data structure</b> (1 pt) and the <b>statistic / standard error</b> you compute (1 pt).</p>
+<div class="solution"><p><b>Data structure:</b> A paired design produces one set of <em>differences</em> (one per pair), so the analysis reduces to a one-sample procedure on those differences. An independent two-sample design has two separate samples and we work with two means \(\bar{x}_1\) and \(\bar{x}_2\).</p><p><b>Statistic / SE:</b> Paired uses \(\bar{d}\) with \(SE = s_d/\sqrt{n}\) (one sample of differences). Two-sample uses \(\bar{x}_1 - \bar{x}_2\) with \(SE = \sqrt{s_1^2/n_1 + s_2^2/n_2}\). Pairing typically gives a smaller SE because subject-to-subject variability cancels out — that's the whole reason to pair when you can.</p></div>
 </div>
 <div class="problem">
-<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
-<p>A 2 × 3 contingency table has overall total 200, row totals 80 and 120, and column totals 60, 80, 60. Compute the expected count in row 1, column 1 under independence using \(E = (\text{row total} \cdot \text{col total}) / N\). <i>(2 pts)</i></p>
-<div class="solution"><p>\(E_{11} = (80 \cdot 60) / 200 = 4800/200 = 24\).</p></div>
+<h3>Problem 3 <span class="pts">[3 pts]</span></h3>
+<p>Eight runners try a new training program for 6 weeks. Their 5K times (in minutes) before and after are below. Compute the differences \(d_i = \text{before} - \text{after}\), then find \(\bar{d}\) and \(s_d\). <i>(0.5 pt diffs, 1 pt mean, 1.5 pts SD)</i></p><table style="margin: 8px 0; border-collapse: collapse; font-size: 14px;"><tr><th style='border:1px solid #475569; padding:6px 10px;'>Runner</th><td style='border:1px solid #475569; padding:6px 10px;'>1</td><td style='border:1px solid #475569; padding:6px 10px;'>2</td><td style='border:1px solid #475569; padding:6px 10px;'>3</td><td style='border:1px solid #475569; padding:6px 10px;'>4</td><td style='border:1px solid #475569; padding:6px 10px;'>5</td><td style='border:1px solid #475569; padding:6px 10px;'>6</td><td style='border:1px solid #475569; padding:6px 10px;'>7</td><td style='border:1px solid #475569; padding:6px 10px;'>8</td></tr><tr><th style='border:1px solid #475569; padding:6px 10px;'>Before</th><td style='border:1px solid #475569; padding:6px 10px;'>22.0</td><td style='border:1px solid #475569; padding:6px 10px;'>20.4</td><td style='border:1px solid #475569; padding:6px 10px;'>23.1</td><td style='border:1px solid #475569; padding:6px 10px;'>21.5</td><td style='border:1px solid #475569; padding:6px 10px;'>19.8</td><td style='border:1px solid #475569; padding:6px 10px;'>24.2</td><td style='border:1px solid #475569; padding:6px 10px;'>22.7</td><td style='border:1px solid #475569; padding:6px 10px;'>21.0</td></tr><tr><th style='border:1px solid #475569; padding:6px 10px;'>After</th><td style='border:1px solid #475569; padding:6px 10px;'>21.2</td><td style='border:1px solid #475569; padding:6px 10px;'>19.8</td><td style='border:1px solid #475569; padding:6px 10px;'>22.0</td><td style='border:1px solid #475569; padding:6px 10px;'>21.0</td><td style='border:1px solid #475569; padding:6px 10px;'>19.5</td><td style='border:1px solid #475569; padding:6px 10px;'>23.0</td><td style='border:1px solid #475569; padding:6px 10px;'>21.5</td><td style='border:1px solid #475569; padding:6px 10px;'>20.4</td></tr></table>
+<div class="solution"><p>Differences (before − after): \(0.8,\ 0.6,\ 1.1,\ 0.5,\ 0.3,\ 1.2,\ 1.2,\ 0.6\).</p><p>Mean: \(\bar{d} = (0.8+0.6+1.1+0.5+0.3+1.2+1.2+0.6)/8 = 6.3/8 = 0.7875\) min.</p><p>Squared deviations from \(\bar{d}\): about \(0.0001,\ 0.0353,\ 0.0976,\ 0.0827,\ 0.2376,\ 0.1701,\ 0.1701,\ 0.0353\). Sum \(\approx 0.829\). Sample variance \(s_d^2 \approx 0.829/7 \approx 0.1184\). \(s_d \approx 0.344\) min.</p></div>
 </div>
 <div class="problem">
-<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
-<p>A chi-square test of independence on the table from Problem 3 yields \(\chi^2 = 12.4\) with df = 2 and p-value ≈ 0.002. State the conclusion at \(\alpha = 0.05\) and interpret it in context (assume rows = political party, columns = favorite news source). <i>(1 + 1)</i></p>
-<div class="solution"><p>Reject \(H_0\). There is significant evidence that political party and news source preference are <b>not independent</b> (i.e., they are associated).</p></div>
-</div>
-<div class="problem">
-<h3>Problem 5 <span class="pts">[2 pts]</span></h3>
-<p>An ANOVA comparing three teaching methods produces the partial table below. Fill in MSG and MSE, then compute the F statistic. <i>(0.5 pt each + 0.5 pt F)</i></p><table style="width:auto; margin: 8px 0; border-collapse: collapse; font-size: 14px;"><tr><th style='border:1px solid #475569; padding: 6px 12px;'>Source</th><th style='border:1px solid #475569; padding:6px 12px;'>SS</th><th style='border:1px solid #475569; padding:6px 12px;'>df</th><th style='border:1px solid #475569; padding:6px 12px;'>MS</th></tr><tr><td style='border:1px solid #475569; padding:6px 12px;'>Groups</td><td style='border:1px solid #475569; padding:6px 12px;'>120</td><td style='border:1px solid #475569; padding:6px 12px;'>2</td><td style='border:1px solid #475569; padding:6px 12px;'>?</td></tr><tr><td style='border:1px solid #475569; padding:6px 12px;'>Error</td><td style='border:1px solid #475569; padding:6px 12px;'>270</td><td style='border:1px solid #475569; padding:6px 12px;'>27</td><td style='border:1px solid #475569; padding:6px 12px;'>?</td></tr></table><p>Then briefly interpret the meaning of a large F.</p>
-<div class="solution"><p>MSG = 120/2 = 60. MSE = 270/27 = 10. F = 60/10 = 6.</p><p>A large F means the variability between group means is much greater than the variability within groups, providing evidence that at least one population mean differs.</p></div>
+<h3>Problem 4 <span class="pts">[3 pts]</span></h3>
+<p>Using the values from Problem 3 (\(n = 8\), \(\bar{d} \approx 0.79\), \(s_d \approx 0.34\)):</p><ol type='a'><li>Construct an approximate 95% confidence interval for the mean improvement using \(\bar{d} \pm 2 \cdot s_d / \sqrt{n}\). <i>(1.5 pts)</i></li><li>Test \(H_0: \mu_d = 0\) vs \(H_a: \mu_d &gt; 0\) by computing the test statistic \(t = \bar{d}/(s_d/\sqrt{n})\) and stating the conclusion at \(\alpha = 0.05\) (treat the rough critical value as \(t \approx 1.9\)). <i>(1.5 pts)</i></li></ol>
+<div class="solution"><p>(a) \(SE = 0.34 / \sqrt{8} \approx 0.120\). CI: \(0.79 \pm 2(0.120) = 0.79 \pm 0.24\), or approximately \((0.55,\ 1.03)\) min.</p><p>Since 0 is not in the interval, the data show a statistically meaningful improvement.</p><p>(b) \(t = 0.79/0.120 \approx 6.6\). Far beyond 1.9, so reject \(H_0\). Strong evidence that the program reduces 5K times on average.</p></div>
 </div>
 
 </div>

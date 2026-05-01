@@ -49,9 +49,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 
 <div class="quiz">
 <span class="badge">Quiz 8</span>
-<h1>Paired Differences, Chi-Square, and ANOVA</h1>
+<h1>Paired Differences in Means</h1>
 <p class="version-tag">Student Version</p>
-<p class="covers">Covers Sections 6.5, 7.2, 8.1</p>
+<p class="covers">Covers Sections 6.5</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
@@ -59,23 +59,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
 <h3>Problem 1 <span class="pts">[2 pts]</span></h3>
-<p>For each design, decide whether you should use a <b>paired</b> or an <b>independent two-sample</b> approach. <i>(1 pt each)</i></p><ol type='a'><li>Measure 30 patients' blood pressure before and after a treatment.</li><li>Compare cholesterol levels in 30 patients on Drug A and 30 different patients on Drug B.</li></ol>
+<p>For each design, decide whether you should use a <b>paired</b> or an <b>independent two-sample</b> approach. <i>(1 pt each)</i></p><ol type='a'><li>30 patients' blood pressure measured before and after a treatment.</li><li>Cholesterol levels of 30 patients on Drug A vs 30 different patients on Drug B.</li></ol>
 </div>
 <div class="problem">
 <h3>Problem 2 <span class="pts">[2 pts]</span></h3>
-<p>A weight-loss program enrolls 10 participants. Each is weighed at the start and after 8 weeks. The differences (start − end, in lbs) for the 10 participants have mean \(\bar{d} = 5\) and \(s_d = 4\). Construct an approximate 95% CI for the mean weight loss using \(\bar{d} \pm 2 \cdot s_d/\sqrt{n}\). <i>(2 pts)</i></p>
+<p>How does inference for a <b>paired</b> difference in means differ from inference for the <b>difference of two independent means</b>? Address both the <b>data structure</b> (1 pt) and the <b>statistic / standard error</b> you compute (1 pt).</p>
 </div>
 <div class="problem">
-<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
-<p>A 2 × 3 contingency table has overall total 200, row totals 80 and 120, and column totals 60, 80, 60. Compute the expected count in row 1, column 1 under independence using \(E = (\text{row total} \cdot \text{col total}) / N\). <i>(2 pts)</i></p>
+<h3>Problem 3 <span class="pts">[3 pts]</span></h3>
+<p>Eight runners try a new training program for 6 weeks. Their 5K times (in minutes) before and after are below. Compute the differences \(d_i = \text{before} - \text{after}\), then find \(\bar{d}\) and \(s_d\). <i>(0.5 pt diffs, 1 pt mean, 1.5 pts SD)</i></p><table style="margin: 8px 0; border-collapse: collapse; font-size: 14px;"><tr><th style='border:1px solid #475569; padding:6px 10px;'>Runner</th><td style='border:1px solid #475569; padding:6px 10px;'>1</td><td style='border:1px solid #475569; padding:6px 10px;'>2</td><td style='border:1px solid #475569; padding:6px 10px;'>3</td><td style='border:1px solid #475569; padding:6px 10px;'>4</td><td style='border:1px solid #475569; padding:6px 10px;'>5</td><td style='border:1px solid #475569; padding:6px 10px;'>6</td><td style='border:1px solid #475569; padding:6px 10px;'>7</td><td style='border:1px solid #475569; padding:6px 10px;'>8</td></tr><tr><th style='border:1px solid #475569; padding:6px 10px;'>Before</th><td style='border:1px solid #475569; padding:6px 10px;'>22.0</td><td style='border:1px solid #475569; padding:6px 10px;'>20.4</td><td style='border:1px solid #475569; padding:6px 10px;'>23.1</td><td style='border:1px solid #475569; padding:6px 10px;'>21.5</td><td style='border:1px solid #475569; padding:6px 10px;'>19.8</td><td style='border:1px solid #475569; padding:6px 10px;'>24.2</td><td style='border:1px solid #475569; padding:6px 10px;'>22.7</td><td style='border:1px solid #475569; padding:6px 10px;'>21.0</td></tr><tr><th style='border:1px solid #475569; padding:6px 10px;'>After</th><td style='border:1px solid #475569; padding:6px 10px;'>21.2</td><td style='border:1px solid #475569; padding:6px 10px;'>19.8</td><td style='border:1px solid #475569; padding:6px 10px;'>22.0</td><td style='border:1px solid #475569; padding:6px 10px;'>21.0</td><td style='border:1px solid #475569; padding:6px 10px;'>19.5</td><td style='border:1px solid #475569; padding:6px 10px;'>23.0</td><td style='border:1px solid #475569; padding:6px 10px;'>21.5</td><td style='border:1px solid #475569; padding:6px 10px;'>20.4</td></tr></table>
 </div>
 <div class="problem">
-<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
-<p>A chi-square test of independence on the table from Problem 3 yields \(\chi^2 = 12.4\) with df = 2 and p-value ≈ 0.002. State the conclusion at \(\alpha = 0.05\) and interpret it in context (assume rows = political party, columns = favorite news source). <i>(1 + 1)</i></p>
-</div>
-<div class="problem">
-<h3>Problem 5 <span class="pts">[2 pts]</span></h3>
-<p>An ANOVA comparing three teaching methods produces the partial table below. Fill in MSG and MSE, then compute the F statistic. <i>(0.5 pt each + 0.5 pt F)</i></p><table style="width:auto; margin: 8px 0; border-collapse: collapse; font-size: 14px;"><tr><th style='border:1px solid #475569; padding: 6px 12px;'>Source</th><th style='border:1px solid #475569; padding:6px 12px;'>SS</th><th style='border:1px solid #475569; padding:6px 12px;'>df</th><th style='border:1px solid #475569; padding:6px 12px;'>MS</th></tr><tr><td style='border:1px solid #475569; padding:6px 12px;'>Groups</td><td style='border:1px solid #475569; padding:6px 12px;'>120</td><td style='border:1px solid #475569; padding:6px 12px;'>2</td><td style='border:1px solid #475569; padding:6px 12px;'>?</td></tr><tr><td style='border:1px solid #475569; padding:6px 12px;'>Error</td><td style='border:1px solid #475569; padding:6px 12px;'>270</td><td style='border:1px solid #475569; padding:6px 12px;'>27</td><td style='border:1px solid #475569; padding:6px 12px;'>?</td></tr></table><p>Then briefly interpret the meaning of a large F.</p>
+<h3>Problem 4 <span class="pts">[3 pts]</span></h3>
+<p>Using the values from Problem 3 (\(n = 8\), \(\bar{d} \approx 0.79\), \(s_d \approx 0.34\)):</p><ol type='a'><li>Construct an approximate 95% confidence interval for the mean improvement using \(\bar{d} \pm 2 \cdot s_d / \sqrt{n}\). <i>(1.5 pts)</i></li><li>Test \(H_0: \mu_d = 0\) vs \(H_a: \mu_d &gt; 0\) by computing the test statistic \(t = \bar{d}/(s_d/\sqrt{n})\) and stating the conclusion at \(\alpha = 0.05\) (treat the rough critical value as \(t \approx 1.9\)). <i>(1.5 pts)</i></li></ol>
 </div>
 
 </div>
