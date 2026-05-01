@@ -12,137 +12,115 @@
     --primary: #38bdf8;
     --primary-dark: #0284c7;
     --primary-light: #7dd3fc;
-    --accent2: #818cf8;
-    --accent3: #a78bfa;
-    --green: #34d399;
-    --amber: #fbbf24;
-    --rose: #fb7185;
+    --accent: #fbbf24;
+    --accent-light: #fde68a;
     --bg: #0f172a;
     --card-bg: #1e293b;
-    --surface: #1e293b;
     --text: #f1f5f9;
     --muted: #94a3b8;
     --border: #475569;
   }
   .syllabus {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 40px auto;
-    padding: 0 32px 60px;
+    padding: 36px 48px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
     color: var(--text);
     font-family: 'Work Sans', sans-serif;
-    line-height: 1.55;
+    line-height: 1.6;
   }
   .syllabus h1 {
     color: var(--text);
     border-bottom: 3px solid var(--primary);
     padding-bottom: 10px;
     display: inline-block;
-    margin-top: 24px;
+    margin-top: 8px;
     font-size: 32px;
     font-weight: 700;
   }
-  .syllabus .lead {
-    color: var(--muted);
-    font-size: 17px;
-    max-width: 820px;
-    margin: 0.4em 0 1.2em;
-  }
   .syllabus h2 {
     color: var(--primary);
-    margin-top: 44px;
-    margin-bottom: 16px;
+    margin-top: 36px;
+    margin-bottom: 12px;
     border-left: 4px solid var(--primary);
     padding-left: 14px;
     font-size: 22px;
     font-weight: 600;
   }
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch; }
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; align-items: stretch; }
-  .grid-full { display: grid; grid-template-columns: 1fr; gap: 18px; }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px 20px;
+  .syllabus h3 {
+    color: var(--accent);
+    margin-top: 22px;
+    margin-bottom: 6px;
+    font-size: 17px;
+    font-weight: 600;
   }
-  .card-accent  { border-left: 3px solid var(--primary); }
-  .card-accent2 { border-left: 3px solid var(--accent2); }
-  .card-accent3 { border-left: 3px solid var(--accent3); }
-  .card-green   { border-left: 3px solid var(--green); }
-  .card-amber   { border-left: 3px solid var(--amber); }
-  .card-rose    { border-left: 3px solid var(--rose); }
-  .card h3 {
-    font-size: 16px;
-    font-weight: 700;
-    margin: 0 0 10px;
-    color: var(--text);
-    letter-spacing: 0.2px;
-  }
-  .card-accent  h3 { color: var(--primary); }
-  .card-accent2 h3 { color: var(--accent2); }
-  .card-accent3 h3 { color: var(--accent3); }
-  .card-green   h3 { color: var(--green); }
-  .card-amber   h3 { color: var(--amber); }
-  .card-rose    h3 { color: var(--rose); }
-  .card p { margin: 0.5em 0; font-size: 15px; }
-  .card p:first-child { margin-top: 0; }
-  .card p:last-child { margin-bottom: 0; }
-  .card ul { padding-left: 20px; margin: 0.4em 0; }
-  .card ul li { margin-bottom: 5px; font-size: 15px; }
-  .card ul li::marker { color: var(--primary); }
+  .syllabus p { margin: 0.6em 0; }
+  .syllabus ul { padding-left: 22px; margin: 0.4em 0 0.8em; }
+  .syllabus ul li { margin-bottom: 6px; }
+  .syllabus ul li::marker { color: var(--accent); }
   .syllabus a {
     color: var(--primary);
     text-decoration: none;
     border-bottom: 1px dotted var(--primary-light);
+    transition: color 200ms ease, border-color 200ms ease;
     font-size: inherit;
   }
-  .syllabus a:hover { color: var(--amber); border-bottom-color: var(--amber); opacity: 1; }
-  .meta-list { margin: 0; padding: 0; list-style: none; }
-  .meta-list li { display: flex; padding: 4px 0; font-size: 15px; }
-  .meta-list .label { color: var(--muted); min-width: 7em; font-weight: 500; }
-  table.cal {
+  .syllabus a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    opacity: 1;
+  }
+  .syllabus dl.meta { margin: 0.5em 0 1em; }
+  .syllabus dl.meta dt {
+    font-weight: 600;
+    color: var(--muted);
+    float: left;
+    clear: left;
+    min-width: 12em;
+  }
+  .syllabus dl.meta dd { margin: 0 0 0.4em 0; }
+  .syllabus table {
     border-collapse: collapse;
     width: 100%;
-    font-size: 14px;
-    margin-top: 4px;
+    margin: 0.8em 0 1.2em;
+    font-size: 15px;
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 8px;
+    overflow: hidden;
   }
-  table.cal th, table.cal td {
+  .syllabus th, .syllabus td {
     border: 1px solid var(--border);
-    padding: 9px 12px;
+    padding: 10px 14px;
     text-align: left;
     vertical-align: top;
   }
-  table.cal th {
+  .syllabus th {
     background: rgba(56, 189, 248, 0.10);
     color: var(--primary);
     font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.5px;
+    font-size: 13px;
+    letter-spacing: 0.4px;
     text-transform: uppercase;
   }
-  table.cal tr:nth-child(even) td { background: rgba(15, 23, 42, 0.5); }
-  .week-cell { color: var(--muted); font-weight: 600; white-space: nowrap; }
-  .section-cell { font-weight: 600; }
-  .section-cell .nolink { color: var(--muted); font-weight: 400; }
-  table.grade {
-    border-collapse: collapse;
-    width: 100%;
-    font-size: 14px;
+  .syllabus tr:nth-child(even) td { background: rgba(15, 23, 42, 0.5); }
+  .syllabus .week-cell {
+    color: var(--muted);
+    font-weight: 600;
+    white-space: nowrap;
   }
-  table.grade th, table.grade td {
-    border: 1px solid var(--border);
-    padding: 8px 12px;
-    text-align: left;
-  }
-  table.grade th { color: var(--primary); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .scale-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
-  .scale-row:last-child { border-bottom: 0; }
-  .scale-row .grade { font-weight: 700; color: var(--primary); }
+  .syllabus .section-cell { font-weight: 600; }
+  .syllabus .section-cell .nolink { color: var(--muted); font-weight: 400; }
+  .syllabus .grade-table td { vertical-align: top; }
   @media (max-width: 900px) {
-    .syllabus { padding: 0 16px 40px; }
-    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .syllabus { margin: 16px; padding: 24px 20px; }
     .syllabus h1 { font-size: 26px; }
     .syllabus h2 { font-size: 19px; }
+    .syllabus dl.meta dt { float: none; min-width: 0; }
+    .syllabus table { font-size: 14px; }
+    .syllabus th, .syllabus td { padding: 8px 10px; }
   }
 </style>
 </head>
@@ -163,327 +141,251 @@
 <div class="syllabus">
 
 <h1>Math 1342 / NCBM 0142 &mdash; Elementary Statistics with Support</h1>
-<p class="lead">A first course in statistics covering descriptive statistics, probability, sampling distributions, confidence intervals, hypothesis testing, regression, and ANOVA.</p>
+<p>A first course in statistics covering descriptive statistics, probability, sampling distributions, confidence intervals, hypothesis testing, regression, and ANOVA.</p>
 
-<h2>About</h2>
-<div class="grid-2">
-  <div class="card card-accent">
-    <h3>Your Instructor</h3>
-    <ul class="meta-list">
-      <li><span class="label">Name</span><span>Chris Chan</span></li>
-      <li><span class="label">Email</span><span>chris.chan@austincc.edu</span></li>
-    </ul>
-  </div>
-  <div class="card card-accent2">
-    <h3>Your Course</h3>
-    <p>Classroom section taught primarily as a lecture/discussion course.</p>
-    <ul class="meta-list">
-      <li><span class="label">Prerequisite</span><span>Appropriate score on the TSI Mathematics Assessment</span></li>
-      <li><span class="label">Corequisite</span><span>MATH 1342</span></li>
-    </ul>
-    <p style="font-size: 14px; color: var(--muted); margin-top: 10px;"><b>Paired Course Policy:</b> Students who withdraw from NCBM 0142 will automatically be withdrawn from MATH 1342.</p>
-  </div>
-</div>
+<h2>About Your Instructor</h2>
+<dl class="meta">
+  <dt>Name</dt><dd>Chris Chan</dd>
+  <dt>Email</dt><dd>chris.chan@austincc.edu</dd>
+</dl>
+
+<h2>About Your Course</h2>
+<p>Instructional Methodology: Classroom Section. This course is taught in the classroom primarily as a lecture/discussion course.</p>
+<dl class="meta">
+  <dt>Prerequisites</dt><dd>Appropriate score on the TSI Mathematics Assessment.</dd>
+  <dt>Corequisite</dt><dd>MATH 1342.</dd>
+</dl>
+<p><b>Paired Course Policy:</b> This is a paired course. Students who withdraw from NCBM 0142 will automatically be withdrawn from MATH 1342.</p>
 
 <h2>Required Materials</h2>
-<div class="grid-2">
-  <div class="card card-green">
-    <h3>Textbook</h3>
-    <p><i>Statistics: Unlocking the Power of Data</i>, 3rd Edition by Lock, Lock, Lock Morgan, Lock, Lock. Wiley (WileyPlus software).</p>
-    <p style="color: var(--muted); font-size: 14px;">ISBN: 9781119682288</p>
-  </div>
-  <div class="card card-amber">
-    <h3>Required Technology</h3>
-    <ul>
-      <li>Scientific calculator</li>
-      <li>Internet access for StatKey, the Visualize applets, and WileyPlus</li>
-    </ul>
-    <p style="font-size: 14px; color: var(--muted); margin-top: 10px;">This is a First Day&trade; class &mdash; required materials are bundled into your tuition and fees.</p>
-  </div>
-</div>
+<p>This is a First Day&trade; class. The cost of required course materials, including an online version of the textbook and software access, has been added to your tuition and fees bill.</p>
+<p><b>Textbook:</b> <i>Statistics: Unlocking the Power of Data</i>, 3rd Edition by Lock, Lock, Lock Morgan, Lock, Lock. Wiley (WileyPlus software). ISBN: 9781119682288</p>
+<p><b>Required Technology:</b></p>
+<ul>
+  <li>Scientific calculator</li>
+  <li>Internet access to use the statistical software StatKey, the Visualize applets, and the material in WileyPlus.</li>
+</ul>
 
 <h2>General Policies</h2>
-<div class="grid-3">
-  <div class="card card-accent">
-    <h3>Attendance &amp; Participation</h3>
-    <p>Attend every class and join the discussions and activities. If you must miss a class, let me know in advance and catch up as soon as you can. If you&rsquo;re running late, slip in quietly.</p>
-  </div>
-  <div class="card card-rose">
-    <h3>Academic Integrity</h3>
-    <p>Honesty matters. I encourage group work, but the work you submit should be your own. If you&rsquo;re unsure what&rsquo;s okay, just ask.</p>
-  </div>
-  <div class="card card-green">
-    <h3>Communication</h3>
-    <p>Reach out anytime. I respond to emails within 24 hours on weekdays. For longer conversations, drop by during office hours or set up an appointment.</p>
-  </div>
-  <div class="card card-amber">
-    <h3>Electronic Devices</h3>
-    <p>Silence your phone and other devices during class. Laptops and tablets are welcome for class activities &mdash; please keep them on task.</p>
-  </div>
-  <div class="card card-accent2">
-    <h3>Classroom Environment</h3>
-    <p>Be respectful of your classmates and the space. Please do not eat, vape, or sleep in class.</p>
-  </div>
-</div>
+
+<h3>Attendance and Participation</h3>
+<p>I encourage you to attend every class and join in the discussions and activities. If you need to miss a class, please let me know in advance. If you miss a class, try to catch up as soon as you can. Try to arrive on time and be ready for class. If you&rsquo;re running late, just slip in quietly so as not to disturb the class.</p>
+
+<h3>Academic Integrity</h3>
+<p>Honesty is important in our class. Although I encourage you to work in groups, please make sure your work is your own. If you&rsquo;re unsure about what&rsquo;s okay, just ask. We&rsquo;re here to learn together!</p>
+
+<h3>Communication</h3>
+<p>Feel free to reach out if you have questions or need help. I&rsquo;m here to support you! I&rsquo;ll do my best to respond to emails within 24 hours on weekdays. For more in-depth conversations, please visit me during office hours or set up an appointment.</p>
+
+<h3>Electronic Devices</h3>
+<p>Please silence your phones and other devices during class to help keep everyone focused. Laptops and tablets are welcome for class activities, but let&rsquo;s keep them on task.</p>
+
+<h3>Classroom Environment</h3>
+<p>Let&rsquo;s keep our classroom a friendly and engaging place by being respectful of your classmates and the space we&rsquo;re using. Please do not eat, vape, or sleep in class.</p>
 
 <h2>Course Calendar</h2>
-<p class="lead">Click any section number to open the lecture notes. Schedule changes will be announced in class and posted as a Blackboard Announcement.</p>
-<div class="card card-accent">
-  <table class="cal">
-    <thead>
-      <tr><th>Week</th><th>Section</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <tr><td class="week-cell">Week 1</td><td class="section-cell"><a href="lecture_notes/Sec1-1_The_Structure_of_Data.html">1.1</a></td><td>The Structure of Data</td></tr>
-      <tr><td class="week-cell">Week 2</td><td class="section-cell"><a href="lecture_notes/Sec1-2_Sampling_From_a_Population.html">1.2</a></td><td>Sampling from a Population</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 3</td><td class="section-cell"><a href="lecture_notes/Sec1-3_Experiments.html">1.3</a>, <a href="lecture_notes/Sec2-1_Categorical_Variables.html">2.1</a></td><td>Experiments and Observational Studies; Categorical Variables</td></tr>
-      <tr><td class="section-cell"><a href="lecture_notes/Sec2-2_One_Quantitative_Variable_Shape_and_Center.html">2.2</a></td><td>One Quantitative Variable: Shape and Center</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 4</td><td class="section-cell"><a href="lecture_notes/Sec2-3_One_Quantitative_Variable_Measures_of_Spread.html">2.3</a></td><td>One Quantitative Variable: Measures of Spread</td></tr>
-      <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Test 1</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 5</td><td class="section-cell"><a href="lecture_notes/Sec2-4_Boxplots_and_Quantitative_Categorical_Relationships.html">2.4</a></td><td>Boxplots and Quantitative/Categorical Relationships</td></tr>
-      <tr><td class="section-cell"><a href="lecture_notes/Sec2-5_Two_Quantitative_Variables_Scatterplot_and_Correlation.html">2.5</a></td><td>Two Quantitative Variables: Scatterplot and Correlation</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 6</td><td class="section-cell"><a href="lecture_notes/Sec2-6_Two_Quantitative_Variables_Linear_Regression.html">2.6</a></td><td>Two Quantitative Variables: Linear Regression</td></tr>
-      <tr><td class="section-cell"><span class="nolink">Unit A</span></td><td>Essential Synthesis</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 7</td><td class="section-cell"><a href="lecture_notes/SecP-1_Probability.html">P.1</a></td><td>Probability Rules</td></tr>
-      <tr><td class="section-cell"><a href="lecture_notes/Sec3-1_Sampling_Distributions.html">3.1</a>, <a href="lecture_notes/Sec3-2_Understanding_and_Interpreting_Confidence_Intervals.html">3.2</a></td><td>Sampling Distributions; Understanding and Interpreting Confidence Intervals</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 8</td><td class="section-cell"><a href="lecture_notes/Sec3-3_Constructing_Bootstrap_Confidence_Intervals.html">3.3</a>, <a href="lecture_notes/Sec3-4_Bootstrap_Confidence_Intervals_Using_Percentiles.html">3.4</a></td><td>Constructing Bootstrap Confidence Intervals Using Standard Error and Percentiles</td></tr>
-      <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Test 2</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 9</td><td class="section-cell"><a href="lecture_notes/Sec4-1_Introducing_Hypothesis_Tests.html">4.1</a></td><td>Introducing Hypothesis Tests</td></tr>
-      <tr><td class="section-cell"><a href="lecture_notes/Sec4-2_Measuring_Evidence_with_P_values.html">4.2</a></td><td>Measuring Evidence with p-values</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 10</td><td class="section-cell"><a href="lecture_notes/Sec4-3_Determining_Statistical_Significance.html">4.3</a></td><td>Determining Statistical Significance</td></tr>
-      <tr><td class="section-cell"><a href="lecture_notes/Sec4-4_A_Closer_Look_at_Testing.html">4.4(a)</a>, <a href="lecture_notes/Sec4-5_Making_Connections.html">4.5</a></td><td>A Closer Look at Testing; Making Connections</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 11</td><td class="section-cell"><span class="nolink">Unit B</span>, <a href="lecture_notes/Sec5-1_Hypothesis_Tests_Using_Normal_Distributions.html">5.1</a></td><td>Essential Synthesis; Hypothesis Testing Using Normal Distributions</td></tr>
-      <tr><td class="section-cell"><a href="lecture_notes/Sec6-1_Inference_for_a_Proportion.html">6.1</a></td><td>Inference for a Proportion (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 12</td><td class="section-cell"><a href="lecture_notes/Sec6-3_Inference_for_a_Difference_in_Proportions.html">6.3</a></td><td>Inference for a Difference in Proportions (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
-      <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Test 3</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 13</td><td class="section-cell"><a href="lecture_notes/Sec6-2_Inference_for_a_Mean.html">6.2</a></td><td>Inference for a Mean (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
-      <tr><td class="section-cell"><a href="lecture_notes/Sec6-4_Inference_for_a_Difference_in_Means.html">6.4</a></td><td>Inference for a Difference in Means (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 14</td><td class="section-cell"><a href="lecture_notes/Sec6-5_Paired_Difference_in_Means.html">6.5</a></td><td>Paired Difference in Means</td></tr>
-      <tr><td class="section-cell"><span class="nolink">Unit C</span></td><td>Essential Synthesis</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 15</td><td class="section-cell"><a href="lecture_notes/Sec7-2_Testing_for_an_Association_between_Two_Categorical_Variables.html">7.2</a></td><td>Testing for an Association Between Two Categorical Variables</td></tr>
-      <tr><td class="section-cell"><a href="lecture_notes/Sec8-1_Analysis_of_Variance.html">8.1</a></td><td>Analysis of Variance</td></tr>
-      <tr><td class="week-cell" rowspan="2">Week 16</td><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Review</td></tr>
-      <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Final Exam</td></tr>
-    </tbody>
-  </table>
-</div>
+<p>Schedule changes may occur during the semester. Any changes will be announced in class and posted as a Blackboard Announcement. Click any section number to open the lecture notes.</p>
+<table>
+  <thead>
+    <tr><th>Week</th><th>Section</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="week-cell">Week 1</td><td class="section-cell"><a href="lecture_notes/Sec1-1_The_Structure_of_Data.html">1.1</a></td><td>The Structure of Data</td></tr>
+    <tr><td class="week-cell">Week 2</td><td class="section-cell"><a href="lecture_notes/Sec1-2_Sampling_From_a_Population.html">1.2</a></td><td>Sampling from a Population</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 3</td><td class="section-cell"><a href="lecture_notes/Sec1-3_Experiments.html">1.3</a>, <a href="lecture_notes/Sec2-1_Categorical_Variables.html">2.1</a></td><td>Experiments and Observational Studies; Categorical Variables</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec2-2_One_Quantitative_Variable_Shape_and_Center.html">2.2</a></td><td>One Quantitative Variable: Shape and Center</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 4</td><td class="section-cell"><a href="lecture_notes/Sec2-3_One_Quantitative_Variable_Measures_of_Spread.html">2.3</a></td><td>One Quantitative Variable: Measures of Spread</td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Test 1</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 5</td><td class="section-cell"><a href="lecture_notes/Sec2-4_Boxplots_and_Quantitative_Categorical_Relationships.html">2.4</a></td><td>Boxplots and Quantitative/Categorical Relationships</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec2-5_Two_Quantitative_Variables_Scatterplot_and_Correlation.html">2.5</a></td><td>Two Quantitative Variables: Scatterplot and Correlation</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 6</td><td class="section-cell"><a href="lecture_notes/Sec2-6_Two_Quantitative_Variables_Linear_Regression.html">2.6</a></td><td>Two Quantitative Variables: Linear Regression</td></tr>
+    <tr><td class="section-cell"><span class="nolink">Unit A</span></td><td>Essential Synthesis</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 7</td><td class="section-cell"><a href="lecture_notes/SecP-1_Probability.html">P.1</a></td><td>Probability Rules</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec3-1_Sampling_Distributions.html">3.1</a>, <a href="lecture_notes/Sec3-2_Understanding_and_Interpreting_Confidence_Intervals.html">3.2</a></td><td>Sampling Distributions; Understanding and Interpreting Confidence Intervals</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 8</td><td class="section-cell"><a href="lecture_notes/Sec3-3_Constructing_Bootstrap_Confidence_Intervals.html">3.3</a>, <a href="lecture_notes/Sec3-4_Bootstrap_Confidence_Intervals_Using_Percentiles.html">3.4</a></td><td>Constructing Bootstrap Confidence Intervals Using Standard Error and Percentiles</td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Test 2</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 9</td><td class="section-cell"><a href="lecture_notes/Sec4-1_Introducing_Hypothesis_Tests.html">4.1</a></td><td>Introducing Hypothesis Tests</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec4-2_Measuring_Evidence_with_P_values.html">4.2</a></td><td>Measuring Evidence with p-values</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 10</td><td class="section-cell"><a href="lecture_notes/Sec4-3_Determining_Statistical_Significance.html">4.3</a></td><td>Determining Statistical Significance</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec4-4_A_Closer_Look_at_Testing.html">4.4(a)</a>, <a href="lecture_notes/Sec4-5_Making_Connections.html">4.5</a></td><td>A Closer Look at Testing; Making Connections</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 11</td><td class="section-cell"><span class="nolink">Unit B</span>, <a href="lecture_notes/Sec5-1_Hypothesis_Tests_Using_Normal_Distributions.html">5.1</a></td><td>Essential Synthesis; Hypothesis Testing Using Normal Distributions</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec6-1_Inference_for_a_Proportion.html">6.1</a></td><td>Inference for a Proportion (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 12</td><td class="section-cell"><a href="lecture_notes/Sec6-3_Inference_for_a_Difference_in_Proportions.html">6.3</a></td><td>Inference for a Difference in Proportions (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Test 3</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 13</td><td class="section-cell"><a href="lecture_notes/Sec6-2_Inference_for_a_Mean.html">6.2</a></td><td>Inference for a Mean (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec6-4_Inference_for_a_Difference_in_Means.html">6.4</a></td><td>Inference for a Difference in Means (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 14</td><td class="section-cell"><a href="lecture_notes/Sec6-5_Paired_Difference_in_Means.html">6.5</a></td><td>Paired Difference in Means</td></tr>
+    <tr><td class="section-cell"><span class="nolink">Unit C</span></td><td>Essential Synthesis</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 15</td><td class="section-cell"><a href="lecture_notes/Sec7-2_Testing_for_an_Association_between_Two_Categorical_Variables.html">7.2</a></td><td>Testing for an Association Between Two Categorical Variables</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec8-1_Analysis_of_Variance.html">8.1</a></td><td>Analysis of Variance</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 16</td><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Review</td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Final Exam</td></tr>
+  </tbody>
+</table>
 
-<h2>How to Succeed</h2>
-<div class="grid-2">
-  <div class="card card-green">
-    <h3>Making Time to Learn</h3>
-    <p>Practice is crucial in a math course. Set aside <b>8&ndash;12 hours per week</b> outside of class to practice and study. Ask for help immediately when something isn&rsquo;t clear.</p>
-  </div>
-  <div class="card card-accent">
-    <h3>Getting Help</h3>
-    <ul>
-      <li><b>Office hours</b> &mdash; drop by with questions</li>
-      <li><b>Instructional Associates</b> &mdash; <a href="https://sites.google.com/a/austincc.edu/math-students/meet/list" target="_blank">course-specific tutoring</a></li>
-      <li><b>Learning Labs</b> &mdash; <a href="https://www.austincc.edu/students/learning-lab" target="_blank">in-person and virtual tutoring</a></li>
-      <li><b>Academic Coaching</b> &mdash; <a href="https://www.austincc.edu/students/academic-coaching" target="_blank">help with study strategies</a></li>
-      <li><b>Student Services</b> &mdash; <a href="https://www.austincc.edu/student-support" target="_blank">academic, financial, personal, and tech support</a></li>
-    </ul>
-  </div>
-</div>
+<h2>Making Time to Learn</h2>
+<p>We learn math by thinking about and working on mathematical problems, which takes time. Practice is crucial in a math course. To ensure that you have adequate time, set aside 8&ndash;12 hours per week outside of class time to practice and study for this course. Ask for help immediately when something isn&rsquo;t clear.</p>
+
+<h2>Getting Help</h2>
+<p>ACC provides several free resources for students who need help.</p>
+<ul>
+  <li><b>Office hours:</b> Another name for office hours is &ldquo;student hours.&rdquo; This is the time your instructor has set aside to answer student questions, so feel free to drop by if you have questions.</li>
+  <li><b>Instructional Associates:</b> Course-specific tutoring. To make an appointment, go to <a href="https://sites.google.com/a/austincc.edu/math-students/meet/list" target="_blank">the math students meet list</a> and click on your course.</li>
+  <li><b>Learning Labs:</b> The ACC Learning Labs provide tutoring in math and other subjects. To schedule an appointment, go to <a href="https://www.austincc.edu/students/learning-lab" target="_blank">austincc.edu/students/learning-lab</a>.</li>
+  <li><b>Academic Coaching:</b> Academic coaches offer extra support to students with study strategies. Visit <a href="https://www.austincc.edu/students/academic-coaching" target="_blank">austincc.edu/students/academic-coaching</a>.</li>
+  <li><b>ACC Student Services:</b> Services in many areas including academic, financial, personal, and technology support. Visit <a href="https://www.austincc.edu/student-support" target="_blank">austincc.edu/student-support</a>.</li>
+</ul>
 
 <h2>Grades</h2>
-<div class="grid-2">
-  <div class="card card-accent">
-    <h3>Grade Components</h3>
-    <table class="grade">
-      <thead><tr><th>NCBM 0142</th><th>MATH 1342</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>MATH 1342 Grade: 60%<br>Group Activities: 40%</td>
-          <td>Tests: 60%<br>Quizzes: 10%<br>Homework: 10%<br>Final Exam: 20%</td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="font-size: 14px; color: var(--muted); margin-top: 10px;">Grades are posted on Blackboard.</p>
-  </div>
-  <div class="card card-amber">
-    <h3>Grading Scale</h3>
-    <div class="scale-row"><span class="grade">A</span><span>90 &ndash; 100</span></div>
-    <div class="scale-row"><span class="grade">B</span><span>80 &ndash; 89</span></div>
-    <div class="scale-row"><span class="grade">C</span><span>70 &ndash; 79</span></div>
-    <div class="scale-row"><span class="grade">D</span><span>60 &ndash; 69</span></div>
-    <div class="scale-row"><span class="grade">F</span><span>&lt; 60</span></div>
-  </div>
-</div>
+
+<h3>Grade Components</h3>
+<table class="grade-table">
+  <thead>
+    <tr><th>NCBM 0142</th><th>MATH 1342</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MATH 1342 Grade: 60%<br>Group Activities: 40%</td>
+      <td>Tests: 60%<br>Quizzes: 10%<br>Homework: 10%<br>Final Exam: 20%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Grading Scale</h3>
+<table>
+  <tbody>
+    <tr><td>A</td><td>90 &ndash; 100</td></tr>
+    <tr><td>B</td><td>80 &ndash; 89</td></tr>
+    <tr><td>C</td><td>70 &ndash; 79</td></tr>
+    <tr><td>D</td><td>60 &ndash; 69</td></tr>
+    <tr><td>F</td><td>&lt; 60</td></tr>
+  </tbody>
+</table>
+<p>Grades will be posted on Blackboard.</p>
 
 <h2>What Will We Do in This Class?</h2>
-<div class="grid-3">
-  <div class="card card-accent">
-    <h3>Tests</h3>
-    <p>3 tests during the semester. Your lowest test score is replaced by your final exam score if the final is higher. A missed test is replaced by your final score, so no make-ups are offered.</p>
-  </div>
-  <div class="card card-accent2">
-    <h3>Final Exam</h3>
-    <p>The final exam covers everything we&rsquo;ve covered in class. It generally cannot be rescheduled, except for special cases under ACC policy.</p>
-  </div>
-  <div class="card card-green">
-    <h3>Quizzes</h3>
-    <p>6 quizzes throughout the semester. You may use your lecture notes when taking them. Refer to the course schedule for due dates.</p>
-  </div>
-  <div class="card card-amber">
-    <h3>Online Homework</h3>
-    <p>Through WileyPlus, due Sundays at 10pm. Unlimited attempts &mdash; I take your best score. Register through Blackboard. Reach out before the deadline if you need an extension.</p>
-  </div>
-  <div class="card card-rose">
-    <h3>Group Activities</h3>
-    <p>Regular in-class activities reinforcing that learning is a community process. You&rsquo;ll collect data, build visualizations, and analyze real-world information. <b>40% of your NCBM 0142 grade.</b></p>
-  </div>
-</div>
+
+<h3>Tests</h3>
+<p>We&rsquo;ll have 3 tests during the semester. If you score higher on the final exam than on your lowest test, I&rsquo;ll replace that lowest test score with your final exam score. For example, if you score 50%, 75%, and 80% on the tests and get 90% on the final, I&rsquo;ll replace the 50% with your 90%. If you miss one of the tests, your final exam score will substitute for that missing test. Because of this policy, no make-up tests will be offered.</p>
+
+<h3>Final Exam</h3>
+<p>The final exam will include everything we&rsquo;ve covered in class. Generally, the final can&rsquo;t be rescheduled, except for special cases outlined by ACC policy.</p>
+
+<h3>Quizzes</h3>
+<p>There will be 6 quizzes throughout the semester. You may use your lecture notes when you take the quizzes. Please refer to the course schedule for the due dates.</p>
+
+<h3>Online Homework</h3>
+<p>Online homework will be given through WileyPlus. Sections covered in the week are due on Sunday at 10pm. Be sure to register through Blackboard to access your WileyPlus assignments, the electronic textbook, and other resources. You can try as many questions and complete as many attempts as you need for each WileyPlus assignment. I&rsquo;ll take your best score for each assignment and use it to calculate your average. While it&rsquo;s a good idea to keep a notebook for your WileyPlus work, you don&rsquo;t need to turn it in to me, because the WileyPlus system will automatically take care of grading. It is important to complete the assignments on time. If you anticipate being late, please inform me in advance, and I can arrange an extension if necessary.</p>
+
+<h3>Group Activities</h3>
+<p>We&rsquo;ll regularly work on group activities during class. These activities are designed to help you get to know your classmates and to reinforce the idea that learning is a community process. Communicating and working with others will enhance your understanding of the material. During group activities, you&rsquo;ll practice statistical concepts by collecting data, creating visualizations, and analyzing real-world information, since statistics is a practical tool for understanding the world around us. Group activities account for 40% of your NCBM 0142 grade, with the remaining 60% coming from your MATH 1342 grade.</p>
 
 <h2>What Happens If I Miss Something?</h2>
-<div class="grid-3">
-  <div class="card card-amber">
-    <h3>Late Work</h3>
-    <p>Reach out before the deadline if you need more time on homework &mdash; I&rsquo;m happy to offer extensions. Late quizzes are not accepted; your lowest quiz is dropped to cover emergencies.</p>
-  </div>
-  <div class="card card-rose">
-    <h3>Missed Test</h3>
-    <p>Your lowest test score is automatically dropped, so make-ups are not offered. If you have concerns about a test date, let me know as soon as possible.</p>
-  </div>
-  <div class="card card-accent">
-    <h3>Attendance</h3>
-    <p>Regular and punctual attendance in class and lab is expected. Students may be withdrawn for unsatisfactory attendance per ACC policy. Reach out early if challenges affect your engagement.</p>
-  </div>
-</div>
 
-<h2>AI Resources</h2>
-<div class="card card-amber">
-  <h3>Generative AI Policy</h3>
-  <p>Generative AI (GAI) is a useful tool for exploration and learning. Use of GAI on un-proctored work such as homework and independent learning is permitted, but caution is advised so as not to become dependent on it. The purpose of assessments is to demonstrate what students are able to do independently.</p>
-  <p>In this course, GAI includes Computer Algebra Systems (CAS) and any electronic tools that solve problems for students. Violations to GAI use policies are considered scholastic dishonesty and will be handled according to established departmental and college procedures. <b>GAI may not be used on major assessments other than in cases where permissions are explicitly stated.</b></p>
-</div>
+<h3>Late Work Policy</h3>
+<p>For online homework in WileyPlus, it is important to complete assignments on time, as they build directly on class content. If you believe you may need more time on an assignment, please reach out before the deadline. I am happy to work with you and offer an extension when needed. For quizzes, late submissions are not accepted, so plan ahead and use the time available to your advantage. If you are facing a challenge, talk to me early so we can find a way forward. To account for unexpected situations or emergencies, your lowest quiz will be dropped from your final grade.</p>
+
+<h3>Missed Test Policy</h3>
+<p>If you are unable to take one of the three scheduled tests, you do not need to worry. Your lowest test score will be dropped from your final grade. Because of this built-in flexibility, make-up tests are not offered. If you have questions or concerns about a test date, please let me know as soon as possible so we can talk about it.</p>
+
+<h3>Attendance / Class Participation Expectations and Policy</h3>
+<p>Regular and punctual attendance in both class and lab is expected. Being present helps you stay connected to the material, your classmates, and the support available to you. If attendance or participation becomes unsatisfactory or if course expectations are not being met, students may be withdrawn from the class based on ACC policies. If you are experiencing challenges that affect your attendance or engagement, please reach out so we can find a way to support you.</p>
+
+<h2>What AI Resources Are Allowed?</h2>
+<p><b>Generative Artificial Intelligence (GAI) Policy:</b> Generative AI (GAI) is a useful tool for exploration and learning. Use of GAI on un-proctored work such as homework and independent learning is permitted, but caution is advised as not to become dependent on it. The purpose of assessments is to demonstrate what students are able to do independently. In this course, GAI includes Computer Algebra Systems (CAS) and any electronic tools that solve problems for students. Violations to GAI use policies are considered scholastic dishonesty and will be handled according to established departmental and college procedures. GAI may not be used on major assessments other than in cases where permissions are explicitly stated.</p>
 
 <h2>Course Content</h2>
-<div class="grid-2">
-  <div class="card card-accent">
-    <h3>MATH 1342 &mdash; Elementary Statistics</h3>
-    <p style="font-size: 14px; color: var(--muted);">Credit Hours: 4 &middot; Contact Hours: 4 &middot; (3-3-0)</p>
-    <p>A first course in statistics for students in business; nursing; allied health; or the social, physical, or behavioral sciences. Topics include frequency distributions, graphing, measures of location and variation, the binomial and normal distributions, z-scores, t-test, chi-square test, F-test, hypothesis testing, analysis of variance, regression, and correlation.</p>
-  </div>
-  <div class="card card-accent2">
-    <h3>NCBM 0142 &mdash; Support for Elementary Statistics</h3>
-    <p style="font-size: 14px; color: var(--muted);">(1-1-0) &middot; Not for college level credit</p>
-    <p>Designed to support students concurrently enrolled in MATH 1342 by providing additional focus on MATH 1342 topics and just-in-time review of prerequisite topics, as needed.</p>
-  </div>
-</div>
 
-<div class="grid-2" style="margin-top: 18px;">
-  <div class="card card-green">
-    <h3>MATH 1342 Course Rationale</h3>
-    <p>Students will learn to:</p>
-    <ul>
-      <li>Determine the aspects of a question for which statistics can provide relevant information.</li>
-      <li>Analyze statistical studies, particularly regarding sampling and experimental design.</li>
-      <li>Select and use appropriate statistical analyses to get useful information from data.</li>
-      <li>Communicate knowledge using standard statistical language and interpret it in non-technical language.</li>
-    </ul>
-    <p style="font-size: 14px; color: var(--muted); margin-top: 8px;">Meets the Core Curriculum requirement in mathematics and the introductory statistics requirement for many majors.</p>
-  </div>
-  <div class="card card-amber">
-    <h3>NCBM 0142 Outcomes</h3>
-    <ul>
-      <li>Increase / improve statistical literacy.</li>
-      <li>Communicate mathematical ideas in a small group setting.</li>
-      <li>Just-in-time review of prerequisite arithmetic and algebra topics.</li>
-    </ul>
-  </div>
-</div>
+<h3>Course Description</h3>
+<p>Credit Hours: 4. Contact Hours: 4.</p>
+<p><b>MATH 1342 &mdash; Elementary Statistics (3-3-0).</b> A first course in statistics for students in business; nursing; allied health; or the social, physical, or behavioral sciences; or for any student requiring knowledge of the fundamental procedures for data organization and analysis. Topics include frequency distributions, graphing, measures of location and variation, the binomial and normal distributions, z-scores, t-test, chi-square test, F-test, hypothesis testing, analysis of variance, regression, and correlation.</p>
+<p><b>NCBM 0142 &mdash; Support for Elementary Statistics (1-1-0).</b> This course is designed to support students concurrently enrolled in MATH 1342 by providing additional focus on MATH 1342 topics and just-in-time review of prerequisite topics, as needed. This course is not for college level credit.</p>
 
-<div class="grid-2" style="margin-top: 18px;">
-  <div class="card card-accent">
-    <h3>MATH 1342 Course Objectives</h3>
-    <ul>
-      <li>Interpret population vs. sample, random variables, and descriptive statistics (frequency distributions, histograms, boxplots, scatterplots).</li>
-      <li>Calculate and interpret measures of central tendency and dispersion (mean, median, standard deviation, quartiles).</li>
-      <li>Use empirical probabilities in bootstrap and randomization distributions for confidence intervals and hypothesis tests.</li>
-      <li>Use theoretical probabilities from normal, t, chi-squared, and F distributions; apply the 95% rule.</li>
-      <li>Analyze relationships between two quantitative variables using correlation and linear regression.</li>
-      <li>Analyze two-way tables for relationships between categorical variables.</li>
-      <li>Apply sampling techniques and experimental design to data production.</li>
-      <li>Use sampling distributions of sample proportions and means.</li>
-      <li>Estimate single and difference of means/proportions with confidence intervals.</li>
-      <li>Hypothesis test for means and proportions, single and two-population.</li>
-      <li>Hypothesis test using chi-squared tests.</li>
-      <li>Inference for regression and ANOVA.</li>
-    </ul>
-    <p style="font-size: 14px; color: var(--muted); margin-top: 8px;">Students use statistical applets for computations and graphical displays, with some calculations done by hand on a scientific calculator.</p>
-  </div>
-  <div class="card card-accent2">
-    <h3>MATH 1342 Student Learning Outcomes</h3>
-    <p>Upon successful completion, a student should be able to:</p>
-    <ul>
-      <li>Explain the use of data collection and statistics as tools to reach reasonable conclusions.</li>
-      <li>Recognize, examine, and interpret the basic principles of describing and presenting data.</li>
-      <li>Compute and interpret empirical and theoretical probabilities using probability rules and combinatorics.</li>
-      <li>Explain the role of probability in statistics.</li>
-      <li>Examine, analyze, and compare sampling distributions for discrete and continuous random variables.</li>
-      <li>Describe and compute confidence intervals.</li>
-      <li>Solve linear regression and correlation problems.</li>
-      <li>Perform hypothesis testing using statistical methods.</li>
-    </ul>
-  </div>
-</div>
+<h3>Course Rationale</h3>
+<p>MATH 1342: Students will learn to</p>
+<ul>
+  <li>Determine the aspects of a question, if any, for which statistics can provide relevant information.</li>
+  <li>Analyze statistical studies, particularly regarding appropriate sampling and experimental design.</li>
+  <li>Select and use appropriate statistical analyses to get useful information from data.</li>
+  <li>Communicate knowledge using standard statistical language and also interpret it in non-technical language.</li>
+</ul>
+<p>This course meets the Core Curriculum requirement in mathematics. It meets the requirement for an introductory statistics course for students in many majors such as business, health sciences, and social sciences.</p>
+<p>NCBM 0142: This course is intended to provide support to students who are taking MATH 1342 Elementary Statistics. It must be taken along with the paired section of MATH 1342.</p>
 
-<div class="card card-green" style="margin-top: 18px;">
-  <h3>General Education Competencies</h3>
-  <div class="grid-3">
-    <div>
-      <p><b style="color: var(--green);">Communication Skills</b><br>Develop, interpret, and express ideas through written, oral, and visual communication adapted to purpose, structure, audience, and medium.</p>
-    </div>
-    <div>
-      <p><b style="color: var(--green);">Critical Thinking</b><br>Gather, analyze, synthesize, evaluate, and apply information for innovation, inquiry, and creative thinking.</p>
-    </div>
-    <div>
-      <p><b style="color: var(--green);">Empirical &amp; Quantitative Skills</b><br>Apply mathematical, logical, and scientific principles through manipulation and analysis of numerical data resulting in informed conclusions.</p>
-    </div>
-  </div>
-</div>
+<h3>MATH 1342 Common Course Objectives</h3>
+<ul>
+  <li>Interpret ideas of population versus sample, random variables, and techniques of descriptive statistics including frequency distributions, histograms, boxplots, and scatterplots.</li>
+  <li>Calculate and interpret measures of central tendency and dispersion, including mean, median, standard deviation, and quartiles.</li>
+  <li>Find and use empirical probabilities in bootstrap distributions to find confidence intervals and in randomization distributions to test hypotheses.</li>
+  <li>Find and use theoretical probabilities from normal, t, chi-squared and F distributions to form confidence intervals and test hypotheses. Apply the 95% rule to normal and to approximately normal distributions.</li>
+  <li>Analyze relationships between two quantitative variables using correlation and linear regression.</li>
+  <li>Analyze data presented in two-way tables to provide information about relationships between categorical variables.</li>
+  <li>Apply ideas of appropriate sampling techniques and experimental design to data production.</li>
+  <li>Use the sampling distributions of sample proportions and sample means to answer appropriate questions.</li>
+  <li>Estimate single means, difference of two means, single proportions and difference of two proportions using confidence intervals. Interpret the results.</li>
+  <li>Demonstrate skills in hypothesis testing for means and proportions, for single populations and comparison of two populations.</li>
+  <li>Demonstrate skills in hypothesis testing using chi-squared tests.</li>
+  <li>Demonstrate skills in inference for regression and ANOVA techniques.</li>
+</ul>
+<p>Throughout the course, students will use statistical applets to do computations and produce graphical displays needed to analyze data. Students will do some statistical calculations by hand with a scientific calculator.</p>
+
+<h3>MATH 1342 Student Learning Outcomes</h3>
+<p>Upon successful completion of the course, a student should be able to:</p>
+<ul>
+  <li>Explain the use of data collection and statistics as tools to reach reasonable conclusions.</li>
+  <li>Recognize, examine, and interpret the basic principles of describing and presenting data.</li>
+  <li>Compute and interpret empirical and theoretical probabilities using the rules of probabilities and combinatorics.</li>
+  <li>Explain the role of probability in statistics.</li>
+  <li>Examine, analyze, and compare various sampling distributions for both discrete and continuous random variables.</li>
+  <li>Describe and compute confidence intervals.</li>
+  <li>Solve linear regression and correlation problems.</li>
+  <li>Perform hypothesis testing using statistical methods.</li>
+</ul>
+
+<h3>NCBM 0142 Course Objectives / Student Learning Outcomes</h3>
+<ul>
+  <li>Provide an opportunity to increase/improve statistical literacy.</li>
+  <li>Provide an opportunity to communicate mathematical ideas in a small group setting.</li>
+  <li>Provide just-in-time review of prerequisite arithmetic and algebra topics.</li>
+</ul>
+
+<h3>General Education Competencies</h3>
+<ul>
+  <li><b>Communication Skills:</b> Develop, interpret, and express ideas and information through written, oral, and visual communication that is adapted to purpose, structure, audience, and medium.</li>
+  <li><b>Critical Thinking:</b> Gather, analyze, synthesize, evaluate, and apply information for the purposes of innovation, inquiry, and creative thinking.</li>
+  <li><b>Empirical and Quantitative Skills:</b> Apply mathematical, logical, and scientific principles and methods through the manipulation and analysis of numerical data or observable facts resulting in informed conclusions.</li>
+</ul>
 
 <h2>The Details</h2>
-<div class="grid-3">
-  <div class="card card-accent">
-    <h3>First Day Access</h3>
-    <p>Required materials are bundled into your tuition under the First Day&trade; inclusive access model, accessible through Blackboard with single sign-on.</p>
-    <p style="font-size: 14px; color: var(--muted);">Opting out is not recommended &mdash; you would pay full retail price and access may be suspended. See Blackboard for details.</p>
-  </div>
-  <div class="card card-amber">
-    <h3>Developmental Requirements</h3>
-    <p>Completing developmental and TSI requirements is the first priority for students who need them. ACC may intervene with holds, required lab classes, or instructional associate work for students not progressing.</p>
-  </div>
-  <div class="card card-rose">
-    <h3>Withdrawal</h3>
-    <p>You are responsible for removing your name from the roll if you withdraw. Verify the withdrawal is submitted before the Final Withdrawal Date. Texas state law caps lifetime undergraduate withdrawals at six.</p>
-  </div>
-  <div class="card card-accent2">
-    <h3>Reinstatement</h3>
-    <p>Withdrawn students will not be reinstated unless they have completed all coursework, projects, and exams to match the rest of the class. Reinstatement is at the instructor&rsquo;s discretion.</p>
-  </div>
-  <div class="card card-green">
-    <h3>Incomplete Grade</h3>
-    <p>Given only in rare circumstances. Generally requires being up to date on coursework with a passing grade and a legitimate reason after the last withdrawal date. The completion deadline is set by the instructor and cannot exceed the next semester&rsquo;s withdrawal deadline.</p>
-  </div>
-  <div class="card card-accent3">
-    <h3>In-Progress (NCBM 0142 only)</h3>
-    <p>Students attending regularly and completing all work but not earning a C or higher may receive an IP grade. IP doesn&rsquo;t count toward GPA but may be treated like a W for financial aid. Maximum 2 IPs per course.</p>
-  </div>
-  <div class="card card-accent">
-    <h3>Instructor Communication</h3>
-    <p>Instructors respond to student emails within 3 business days. Use your ACCmail account or course math software when reaching out. Send a reminder if you don&rsquo;t hear back.</p>
-  </div>
-  <div class="card card-amber">
-    <h3>Name Change</h3>
-    <p>To change how your name appears online at ACC, visit <a href="https://www.austincc.edu/admissions/update-student-information/chosen-name" target="_blank">the chosen name update page</a>.</p>
-  </div>
-  <div class="card card-rose">
-    <h3>General College Policies</h3>
-    <p>Policies that apply to all courses at ACC are at the <a href="https://www.austincc.edu/offices/academic-outcomes-assessment/master-syllabi/college-policies" target="_blank">ACC master syllabi page</a>.</p>
-  </div>
-</div>
+
+<h3>First Day Access</h3>
+<p>To enhance your learning experience and provide affordable access to the right course material, this course is part of an inclusive access model called First Day&trade;. You can easily access the required materials for this course through Blackboard, at a discounted price, and benefit from single sign-on access. Austin Community College includes the discounted price as a course fee in your registration fees for this course.</p>
+<p>It is NOT recommended that you Opt Out, as these materials are required to complete the course. You can choose to Opt Out on the first day of class, but you will be responsible for purchasing your course materials at the full retail price and access to your materials may be suspended. See your course in Blackboard for details.</p>
+
+<h3>Importance of Completing Developmental Course Requirements</h3>
+<p>The first steps to achieving any college academic goal are completing developmental course requirements and TSI requirements. The first priority for students who are required to take developmental courses must be the developmental courses. TSI rules state that students are allowed to take college credit courses, if they are fulfilling their developmental requirements. Because successful completion of developmental courses is so important, ACC will intervene with any student who is not successfully completing developmental requirements. This intervention can mean a hold on records, requiring developmental lab classes, working with the Instructional Associate, and monitoring during the semester.</p>
+
+<h3>Withdrawal Policy</h3>
+<p>It is the responsibility of each student to ensure that his or her name is removed from the roll should he or she decide to withdraw from the class. The instructor does, however, reserve the right to drop a student should he or she feel it is necessary. If a student decides to withdraw, he or she should also verify that the withdrawal is submitted before the Final Withdrawal Date. The student is also strongly encouraged to retain their copy of the withdrawal form for their records.</p>
+<p>Students who enroll for the third or subsequent time in a course taken since Fall 2002 may be charged a higher tuition rate for that course. State law permits students to withdraw from no more than six courses during their entire undergraduate career at Texas public colleges or universities. With certain exceptions, all course withdrawals automatically count towards this limit. Details regarding this policy can be found in the ACC college catalog.</p>
+
+<h3>Reinstatement Policy</h3>
+<p>Students who withdrew or were withdrawn will not be reinstated unless they have completed all coursework, projects, and exams necessary to place them at the same level of course completion as the rest of the class. Reinstatement is up to the instructor&rsquo;s approval.</p>
+
+<h3>Incomplete Grade Policy</h3>
+<p>Incomplete grades (I) will be given only in very rare circumstances. Generally, to receive a grade of &ldquo;I&rdquo;, a student must be up to date on coursework and have a passing grade, and after the last date to withdraw, have a legitimate reason that prevents course completion. An incomplete grade cannot be carried beyond the established date in the following semester. The completion date is determined by the instructor but may not be later than the final deadline for withdrawal in the subsequent semester.</p>
+
+<h3>In-Progress Grade (NCBM 0142 only)</h3>
+<p>A student who is regularly attending, doing all assigned work but is still not earning a grade of C or higher, might be eligible for the IP (in progress) grade. An IP is a neutral grade with respect to the student&rsquo;s GPA (it is not counted), but it might be treated like a W (non-completion) for the purposes of financial aid. Students who receive an IP grade are expected to retake (register and pay for) the course in the next semester they are enrolled at ACC. Students may not receive more than 2 IPs in this course (or in any given developmental course.)</p>
+
+<h3>Communication with Your Instructor</h3>
+<p>All e-mail communication to students will be sent solely to the student&rsquo;s ACCmail account or math software if applicable, with the expectation that such communications will be read in a timely fashion. Likewise, students should use their ACCmail account or math software when communicating with instructors. Instructors will respond to student emails within 3 business days; if no response has been received by the student at the end of that time, then the student should send a reminder to the instructor.</p>
+
+<h3>Name Change Information</h3>
+<p>If you want to change how your name appears online at ACC, go to <a href="https://www.austincc.edu/admissions/update-student-information/chosen-name" target="_blank">austincc.edu/admissions/update-student-information/chosen-name</a>.</p>
+
+<h3>General College Policies</h3>
+<p>Policies that apply to all courses at ACC can be found at <a href="https://www.austincc.edu/offices/academic-outcomes-assessment/master-syllabi/college-policies" target="_blank">austincc.edu/offices/academic-outcomes-assessment/master-syllabi/college-policies</a>.</p>
 
 </div>
 </body>
