@@ -49,9 +49,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 
 <div class="quiz">
 <span class="badge">Quiz 5</span>
-<h1>Bootstrap CIs and Hypothesis Tests</h1>
+<h1>Hypothesis Tests, P-Values, and Significance</h1>
 <p class="version-tag">Student Version</p>
-<p class="covers">Covers Sections 3.3, 3.4, 4.1, 4.2</p>
+<p class="covers">Covers Sections 4.1, 4.2, 4.3</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
@@ -59,23 +59,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
 <h3>Problem 1 <span class="pts">[2 pts]</span></h3>
-<p>Briefly describe how to construct one bootstrap sample from a sample of size \(n = 50\), and explain why bootstrapping is useful when we want a confidence interval but only have one sample. <i>(1 pt each)</i></p>
+<p>State an appropriate \(H_0\) and \(H_a\) for each scenario. <i>(1 pt each)</i></p><ol type='a'><li>Researchers want evidence that more than 50% of voters in a city support a measure.</li><li>A new drug should change average blood pressure (in either direction) compared with the current drug, where the current drug&rsquo;s average drop is 7 mmHg.</li></ol>
 </div>
 <div class="problem">
 <h3>Problem 2 <span class="pts">[2 pts]</span></h3>
-<p>A bootstrap distribution of the sample mean has standard error \(SE = 1.4\). The original sample mean is \(\bar{x} = 24.6\). Construct an approximate 95% confidence interval using the SE method (\(\bar{x} \pm 2 \, SE\)). <i>(2 pts)</i></p>
+<p>A researcher runs a one-sided test (\(H_0: p = 0.5\), \(H_a: p > 0.5\)) and finds a p-value of 0.012. Interpret this p-value in context.</p>
 </div>
 <div class="problem">
-<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
-<p>1000 bootstrap means have 2.5th percentile \(= 21.6\) and 97.5th percentile \(= 27.5\). Give the percentile-method 95% CI. Briefly compare to the SE-method CI from Problem 2. <i>(1 + 1)</i></p>
+<h3>Problem 3 <span class="pts">[3 pts]</span></h3>
+<p>For each p-value, decide whether to reject \(H_0\) at the given significance level. <i>(0.75 pt each)</i></p><ol type='a'><li>p = 0.001, \(\alpha = 0.05\)</li><li>p = 0.07, \(\alpha = 0.05\)</li><li>p = 0.04, \(\alpha = 0.01\)</li><li>p = 0.20, \(\alpha = 0.10\)</li></ol>
 </div>
 <div class="problem">
-<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
-<p>State an appropriate \(H_0\) and \(H_a\) for each scenario. <i>(1 pt each)</i></p><ol type='a'><li>Researchers want evidence that more than 50% of voters in a city support a measure.</li><li>A new drug should change average blood pressure (in either direction) compared with the current drug, where the current drug's average drop is 7 mmHg.</li></ol>
-</div>
-<div class="problem">
-<h3>Problem 5 <span class="pts">[2 pts]</span></h3>
-<p>A researcher runs a one-sided test and finds a p-value of 0.012.</p><ol type='a'><li>Interpret this p-value in context (assume \(H_0\) says \(p = 0.5\) and the alternative is \(p &gt; 0.5\)). <i>(1 pt)</i></li><li>Using \(\alpha = 0.05\), what is the conclusion? Using \(\alpha = 0.01\)? <i>(0.5 pt each)</i></li></ol>
+<h3>Problem 4 <span class="pts">[3 pts]</span></h3>
+<p>A two-sided test compares two diet programs. The p-value is 0.018, and the chosen significance level is \(\alpha = 0.05\).</p><ol type='a'><li>State the conclusion. <i>(1 pt)</i></li><li>Write a one-sentence conclusion in plain English (assume the two means measure average weight loss). <i>(1 pt)</i></li><li>Would your decision change if \(\alpha = 0.01\)? Explain. <i>(1 pt)</i></li></ol>
 </div>
 
 </div>

@@ -49,9 +49,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 
 <div class="quiz">
 <span class="badge">Quiz 4</span>
-<h1>Regression, Probability, and Sampling Distributions</h1>
+<h1>Sampling Distributions and Bootstrap CIs</h1>
 <p class="version-tag">Worked Solutions</p>
-<p class="covers">Covers Sections 2.6, P.1, 3.1, 3.2</p>
+<p class="covers">Covers Sections 3.1, 3.2, 3.3, 3.4</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
@@ -59,29 +59,28 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
 <h3>Problem 1 <span class="pts">[2 pts]</span></h3>
-<p>A least-squares regression of exam score on hours studied gives \(\hat{y} = 50 + 4x\), where \(x\) = hours studied. <i>(1 pt each)</i></p><ol type='a'><li>Interpret the slope in context.</li><li>Predict the exam score for a student who studies 6 hours. Should you use this line to predict the score for a student who studies 40 hours? Explain.</li></ol>
-<div class="solution"><p>(a) For each additional hour studied, the predicted exam score increases by 4 points.</p><p>(b) \(\hat{y} = 50 + 4(6) = 74\). Predicting at 40 hours would be extrapolation far outside the data — unreliable.</p></div>
+<p>The proportion of left-handed students in a population is \(p = 0.1\). For samples of size \(n = 100\):</p><ol type='a'><li>What is the center of the sampling distribution of \(\hat{p}\)? <i>(0.5 pt)</i></li><li>What is its standard error? Use \(SE = \sqrt{\frac{p(1-p)}{n}}\). <i>(1 pt)</i></li><li>Roughly what range of \(\hat{p}\) values would we expect (using ±2 SE)? <i>(0.5 pt)</i></li></ol>
+<div class="solution"><p>(a) \(p = 0.10\). (b) \(SE = \sqrt{\frac{0.10 \cdot 0.90}{100}} = \sqrt{0.0009} = 0.030\). (c) Roughly \(0.10 \pm 0.06\) → between 0.04 and 0.16.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 2 <span class="pts">[2 pts]</span></h3>
-<p>A jar holds 10 red, 6 blue, and 4 green marbles. Drawing one at random, find:</p><ol type='a'><li>\(P(\text{red})\)</li><li>\(P(\text{red or green})\)</li><li>If two marbles are drawn <b>without replacement</b>, find \(P(\text{both blue})\).</li></ol>
-<div class="solution"><p>Total = 20. (a) \(10/20 = 0.5\).</p><p>(b) Disjoint events: \(10/20 + 4/20 = 14/20 = 0.7\).</p><p>(c) \(\dfrac{6}{20} \cdot \dfrac{5}{19} = \dfrac{30}{380} = \dfrac{3}{38} \approx 0.079\).</p></div>
+<p>A 95% confidence interval for the mean nightly sleep time of college students is \((6.4, 7.2)\) hours. <i>(1 pt each)</i></p><ol type='a'><li>Interpret this interval in plain language.</li><li>True or false: there is a 95% chance the population mean lies between 6.4 and 7.2. Briefly explain.</li></ol>
+<div class="solution"><p>(a) We are 95% confident that the population mean nightly sleep time for college students is between 6.4 and 7.2 hours.</p><p>(b) <b>False.</b> The interval either does or doesn&rsquo;t contain the (fixed) parameter; the 95% refers to the long-run reliability of the procedure.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 3 <span class="pts">[2 pts]</span></h3>
-<p>The proportion of left-handed students in a population is \(p = 0.1\). For samples of size \(n = 100\):</p><ol type='a'><li>What is the center of the sampling distribution of \(\hat{p}\)? <i>(0.5 pt)</i></li><li>What is its standard error? Use \(SE = \sqrt{\frac{p(1-p)}{n}}\). <i>(1 pt)</i></li><li>Roughly what range of \(\hat{p}\) values would we expect (using ±2 SE)? <i>(0.5 pt)</i></li></ol>
-<div class="solution"><p>(a) \(p = 0.10\).</p><p>(b) \(SE = \sqrt{0.10 \cdot 0.90 / 100} = \sqrt{0.0009} = 0.030\).</p><p>(c) Roughly \(0.10 \pm 0.06\) → between 0.04 and 0.16.</p></div>
+<p>Briefly describe how to construct one bootstrap sample from a sample of size \(n = 50\), and explain why bootstrapping is useful when we want a confidence interval but only have one sample. <i>(1 pt each)</i></p>
+<div class="solution"><p>To make one bootstrap sample, draw \(n = 50\) values <b>with replacement</b> from the original sample. Compute the statistic on the bootstrap sample.</p><p>Repeating this thousands of times produces a bootstrap distribution that approximates the sampling variability we&rsquo;d see from repeated samples — without needing a formula for the standard error.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 4 <span class="pts">[2 pts]</span></h3>
-<p>A 95% confidence interval for the mean nightly sleep time of college students is \((6.4, 7.2)\) hours.</p><ol type='a'><li>Interpret this interval in plain language. <i>(1 pt)</i></li><li>True or false: there is a 95% chance the population mean lies between 6.4 and 7.2. Briefly explain. <i>(1 pt)</i></li></ol>
-<div class="solution"><p>(a) We are 95% confident that the population mean nightly sleep time for college students is between 6.4 and 7.2 hours.</p><p>(b) <b>False.</b> The interval either does or doesn't contain the (fixed) parameter; the 95% refers to the long-run reliability of the procedure — 95% of all such intervals from repeated sampling capture the true mean.</p></div>
+<p>A bootstrap distribution of the sample mean has standard error \(SE = 1.4\). The original sample mean is \(\bar{x} = 24.6\). Construct an approximate 95% confidence interval using the SE method (\(\bar{x} \pm 2 \, SE\)).</p>
+<div class="solution"><p>\(24.6 \pm 2(1.4) = 24.6 \pm 2.8\). Interval: \((21.8,\ 27.4)\).</p></div>
 </div>
 <div class="problem">
 <h3>Problem 5 <span class="pts">[2 pts]</span></h3>
-<p>Below is a sampling distribution of \(\hat{p}\) from 1000 samples of size 50, drawn from a population with \(p = 0.6\). Use the dotplot to estimate the standard error of \(\hat{p}\). Compare it to the formula value \(\sqrt{0.6 \cdot 0.4 / 50}\). <i>(1 pt each)</i></p>
-<div class='chart'><div id='q4-samp'></div></div><script>(function(){const phats=[];for(let s=0;s<1000;s++){let k=0;for(let i=0;i<50;i++)if(Math.random()<0.6)k++;phats.push(k/50);}StatGraphs.dotplot('#q4-samp',phats,{width:560,height:200,xLabel:'p̂'});})();</script>
-<div class="solution"><p>The bulk of the dots lies between roughly 0.50 and 0.70 (so the SD is about \((0.70-0.50)/4 \approx 0.05\) using a 4-SD width approximation, or read off the spread directly).</p><p>Formula: \(\sqrt{(0.6)(0.4)/50} = \sqrt{0.0048} \approx 0.0693\). The simulated SE should be close.</p></div>
+<p>1000 bootstrap means have 2.5th percentile \(= 21.6\) and 97.5th percentile \(= 27.5\). Give the percentile-method 95% CI. Briefly compare to the SE-method CI from Problem 4. <i>(1 + 1)</i></p>
+<div class="solution"><p>Percentile CI: \((21.6,\ 27.5)\). It is very close to the SE-method CI \((21.8,\ 27.4)\) — both methods give similar answers when the bootstrap distribution is roughly symmetric.</p></div>
 </div>
 
 </div>

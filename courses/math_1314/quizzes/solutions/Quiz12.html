@@ -161,9 +161,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 
 <div class="quiz">
 <span class="badge">Quiz 12</span>
-<h1>Matrix Methods</h1>
+<h1>Three-Variable Systems and Matrix Solutions</h1>
 <p class="version-tag">Worked Solutions</p>
-<p class="covers">Covers Sections 6.4, 6.5</p>
+<p class="covers">Covers Sections 6.3, 6.4</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
@@ -171,23 +171,23 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
 <h3>Problem 1 <span class="pts">[3 pts]</span></h3>
+<p>Solve the system by elimination.</p><p>\(\begin{cases} x + y + z = 6 \\ 2x - y + z = 3 \\ x + 2y - z = 5 \end{cases}\)</p>
+<div class="solution"><p>eq2 − eq1: \(x - 2y = -3\). eq1 + eq3: \(2x + 3y = 11\). From the first relation \(x = 2y - 3\); substitute: \(2(2y - 3) + 3y = 11\), \(7y = 17\), \(y = \tfrac{17}{7}\). Then \(x = \tfrac{13}{7}\) and \(z = 6 - x - y = \tfrac{12}{7}\). Solution: \(\left(\tfrac{13}{7}, \tfrac{17}{7}, \tfrac{12}{7}\right)\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2 <span class="pts">[3 pts]</span></h3>
 <p>Use Gaussian elimination on the augmented matrix to solve.</p><p>\(\begin{cases} x + 2y - z = 3 \\ 2x - y + z = 5 \\ x + y + z = 6 \end{cases}\)</p>
 <div class="solution"><p>Augmented: \(\left[\begin{array}{ccc|c} 1 &amp; 2 &amp; -1 &amp; 3 \\ 2 &amp; -1 &amp; 1 &amp; 5 \\ 1 &amp; 1 &amp; 1 &amp; 6 \end{array}\right]\). R2 ← R2 − 2R1, R3 ← R3 − R1, then continue to row echelon form. Back-substitute to obtain</p><p>\(\left(x, y, z\right) = \left(\tfrac{15}{7}, \tfrac{11}{7}, \tfrac{16}{7}\right)\).</p></div>
 </div>
 <div class="problem">
-<h3>Problem 2 <span class="pts">[3 pts]</span></h3>
-<p>Let \(A = \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; -1 \end{bmatrix}\), \(B = \begin{bmatrix} 4 &amp; -2 \\ 0 &amp; 5 \end{bmatrix}\). Compute. <i>(1 pt each)</i></p><ol type='a'><li>\(A + B\)</li><li>\(2A - B\)</li><li>\(AB\)</li></ol>
-<div class="solution"><p>(a) \(\begin{bmatrix} 5 &amp; 0 \\ 3 &amp; 4 \end{bmatrix}\).</p><p>(b) \(\begin{bmatrix} -2 &amp; 6 \\ 6 &amp; -7 \end{bmatrix}\).</p><p>(c) \(AB = \begin{bmatrix} 4 &amp; 8 \\ 12 &amp; -11 \end{bmatrix}\).</p></div>
-</div>
-<div class="problem">
 <h3>Problem 3 <span class="pts">[2 pts]</span></h3>
-<p>Find \(A^{-1}\) for \(A = \begin{bmatrix} 3 &amp; 5 \\ 1 &amp; 2 \end{bmatrix}\).</p>
-<div class="solution"><p>\(\det A = 6 - 5 = 1\). \(A^{-1} = \begin{bmatrix} 2 &amp; -5 \\ -1 &amp; 3 \end{bmatrix}\).</p></div>
+<p>After row-reducing an augmented matrix, the bottom row becomes \([0\ \ 0\ \ 0 \,|\, 5]\). What does this say about the original system, and how many solutions does it have?</p>
+<div class="solution"><p>The row represents the equation \(0 = 5\), which is never true. The system is <b>inconsistent</b> — there are <b>no solutions</b>.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 4 <span class="pts">[2 pts]</span></h3>
-<p>Use the inverse from Problem 3 to solve \(\begin{cases} 3x + 5y = 11 \\ x + 2y = 4 \end{cases}\).</p>
-<div class="solution"><p>\(\mathbf{x} = A^{-1}\mathbf{b} = \begin{bmatrix} 2 &amp; -5 \\ -1 &amp; 3 \end{bmatrix}\begin{bmatrix} 11 \\ 4 \end{bmatrix} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}\). Solution: \((2, 1)\).</p></div>
+<p>A snack stand sells popcorn, candy, and soda. On a busy day they sold 80 items totaling \$200. Popcorn is \$3, candy is \$2, and soda is \$2.50. Twice as many popcorns were sold as candy. Set up a 3-variable system to model this — you do not need to solve it.</p>
+<div class="solution"><p>Let \(p, c, s\) be the numbers of popcorns, candies, sodas.</p><p>Total items: \(p + c + s = 80\).</p><p>Total revenue: \(3p + 2c + 2.5s = 200\).</p><p>Twice as many popcorns as candy: \(p = 2c\), or \(p - 2c = 0\).</p><p>System: \(\begin{cases} p + c + s = 80 \\ 3p + 2c + 2.5s = 200 \\ p - 2c = 0 \end{cases}\)</p></div>
 </div>
 
 </div>

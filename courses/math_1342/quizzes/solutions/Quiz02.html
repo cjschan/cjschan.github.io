@@ -49,9 +49,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 
 <div class="quiz">
 <span class="badge">Quiz 2</span>
-<h1>Experiments and Descriptive Statistics</h1>
+<h1>Descriptive Statistics for Quantitative Data</h1>
 <p class="version-tag">Worked Solutions</p>
-<p class="covers">Covers Sections 1.3, 2.1, 2.2</p>
+<p class="covers">Covers Sections 2.2, 2.3, 2.4</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
@@ -59,29 +59,30 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
 <h3>Problem 1 <span class="pts">[2 pts]</span></h3>
-<p>A researcher runs an experiment to test whether a new fertilizer increases tomato yield. Each plot is randomly assigned either the new fertilizer or the standard one. Identify the explanatory variable, the response variable, and what makes this an experiment (rather than an observational study). <i>(0.5 + 0.5 + 1)</i></p>
-<div class="solution"><p>Explanatory: type of fertilizer (categorical). Response: tomato yield (quantitative). It is an experiment because the researcher <b>randomly assigns</b> the treatments rather than just observing what each plot already received.</p></div>
+<p>Find the mean and the median of \(4, 7, 7, 8, 9, 11, 14, 20\). Which is more affected if we replace 20 by 200? <i>(1 mean, 0.5 median, 0.5 explain)</i></p>
+<div class="solution"><p>Mean = \(\frac{80}{8} = 10\). Median = average of 4th and 5th values = \(\frac{8+9}{2} = 8.5\).</p><p>Replacing 20 with 200 changes the mean to \(\frac{260}{8} = 32.5\) but leaves the median at 8.5. The mean is far more affected by the outlier.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 2 <span class="pts">[2 pts]</span></h3>
-<p>Among 250 surveyed customers, 90 chose vanilla, 120 chose chocolate, and 40 chose strawberry. Compute the proportion that chose each flavor. <i>(0.5 pt each + 0.5 pt setup)</i></p>
-<div class="solution"><p>Total = 250. Vanilla: \(90/250 = 0.36\). Chocolate: \(120/250 = 0.48\). Strawberry: \(40/250 = 0.16\). (Sum = 1.00 ✓.)</p></div>
+<p>Use the histogram below — body-mass index (BMI) of 80 patients — to estimate the median and describe the shape. <i>(1 pt each)</i></p>
+<div class='chart'><div id='q2-hist'></div></div><script>(function(){const data=[19,20,20,21,21,22,22,22,23,23,23,23,24,24,24,24,25,25,25,25,25,26,26,26,26,26,27,27,27,27,27,28,28,28,28,29,29,29,30,30,30,31,31,32,32,33,33,34,34,35,35,36,36,37,38,38,39,40,42,45];StatGraphs.histogram('#q2-hist',data,{xLabel:'BMI',width:560,height:200});})();</script>
+<div class="solution"><p>Peak around 25-27, upper tail stretches to high 30s and 40s, lower tail short — <b>right-skewed</b>. Median appears to be around 27.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 3 <span class="pts">[2 pts]</span></h3>
-<p>Find the mean and the median of the data set: \(4, 7, 7, 8, 9, 11, 14, 20\). Which is more affected if we replace 20 by 200? <i>(1 pt mean, 0.5 pt median, 0.5 pt explain)</i></p>
-<div class="solution"><p>Mean = \(80/8 = 10\). Median = average of 4th and 5th values = \((8+9)/2 = 8.5\).</p><p>Replacing 20 with 200 changes the mean to \(260/8 = 32.5\) but leaves the median unchanged at 8.5. The mean is far more affected by the outlier.</p></div>
+<p>For \(4, 6, 7, 9, 10, 14\), compute the standard deviation by hand. Show your steps.</p>
+<div class="solution"><p>Mean = \(\frac{50}{6} \approx 8.33\). Squared deviations: \(18.78,\; 5.44,\; 1.78,\; 0.45,\; 2.78,\; 32.11\). Sum ≈ 61.34. Sample variance \(s^2 = \frac{61.34}{5} = 12.27\). \(s \approx \sqrt{12.27} \approx 3.50\).</p></div>
 </div>
 <div class="problem">
 <h3>Problem 4 <span class="pts">[2 pts]</span></h3>
-<p>Describe the shape of each distribution from its histogram features.</p><ol type='a'><li>Mean = 12, median = 12, dotplot is roughly mirror-image about 12.</li><li>Annual incomes — long upper tail with a few very high values.</li><li>Test scores where most students did very well and a small group struggled.</li></ol>
-<div class="solution"><p>(a) Approximately symmetric.</p><p>(b) Right-skewed (long tail to the right).</p><p>(c) Left-skewed (long tail to the left, toward the lower scores).</p></div>
+<p>Find the five-number summary for \(2, 5, 6, 8, 9, 10, 11, 12, 14, 18\). Then compute the IQR. <i>(1.5 + 0.5)</i></p>
+<div class="solution"><p>Sorted as given. Min 2, Max 18. Median = \(\frac{9 + 10}{2} = 9.5\). Lower half: \(2, 5, 6, 8, 9\); Q1 = 6. Upper half: \(10, 11, 12, 14, 18\); Q3 = 12. IQR = \(12 - 6 = 6\).</p></div>
 </div>
 <div class="problem">
 <h3>Problem 5 <span class="pts">[2 pts]</span></h3>
-<p>Use the histogram below — the body-mass index (BMI) of 80 adult patients — to estimate the median and describe the shape. <i>(1 pt each)</i></p>
-<div class='chart'><div id='q2-hist'></div></div><script>(function(){const data=[19,20,20,21,21,22,22,22,23,23,23,23,24,24,24,24,25,25,25,25,25,26,26,26,26,26,27,27,27,27,27,28,28,28,28,29,29,29,30,30,30,31,31,32,32,33,33,34,34,35,35,36,36,37,38,38,39,40,42,45];StatGraphs.histogram('#q2-hist',data,{xLabel:'BMI',width:560,height:200});})();</script>
-<div class="solution"><p>The peak is around 25-27, the upper tail stretches to the high 30s/40s, and the lower tail is short — <b>right-skewed</b>. The median appears to be around 27.</p></div>
+<p>The side-by-side boxplots below compare test scores between two sections. Briefly compare center, spread, and identify which group has the larger IQR.</p>
+<div class='chart'><div id='q2-bx'></div></div><script>(function(){const A=[55,60,62,65,68,70,72,75,78,80,82,85,88,90];const B=[40,45,55,60,65,68,70,72,75,78,80,82,90,95];StatGraphs.boxplots('#q2-bx',[A,B],['Section A','Section B'],{width:540,height:200,xLabel:'score'});})();</script>
+<div class="solution"><p>Section B has a slightly lower median than Section A and a larger IQR (longer box and wider whiskers). Section A is more tightly clustered around its median.</p></div>
 </div>
 
 </div>
