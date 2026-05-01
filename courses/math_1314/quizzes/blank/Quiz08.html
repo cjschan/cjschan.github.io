@@ -91,6 +91,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     letter-spacing: 0.4px;
     text-transform: uppercase;
   }
+  .quiz .problem h3 .pts {
+    color: var(--amber);
+    margin-left: 8px;
+    font-size: 13px;
+  }
+  .quiz .total-pts {
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
   .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
   .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
   .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
@@ -148,24 +161,25 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
 
+<p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1</h3>
-<p>Find the domain of each function.</p><ol type='a'><li>\(f(x) = \dfrac{2x}{x^2 - 16}\)</li><li>\(g(x) = \dfrac{x + 1}{x^2 + 9}\)</li></ol>
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>Find the domain of \(f(x) = \dfrac{2x}{x^2 - 16}\). Express your answer in interval notation.</p>
 </div>
 <div class="problem">
-<h3>Problem 2</h3>
-<p>Find any vertical asymptotes, holes, and the horizontal asymptote of each.</p><ol type='a'><li>\(f(x) = \dfrac{x - 3}{x^2 - 9}\)</li><li>\(g(x) = \dfrac{2x^2 - 5}{x^2 + 1}\)</li></ol>
+<h3>Problem 2 <span class="pts">[3 pts]</span></h3>
+<p>Find any vertical asymptotes, holes, and the horizontal asymptote of \(f(x) = \dfrac{x - 3}{x^2 - 9}\). <i>(1 pt VA, 1 pt hole, 1 pt HA)</i></p>
 </div>
 <div class="problem">
-<h3>Problem 3</h3>
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
 <p>Solve \(\dfrac{3}{x - 2} - \dfrac{1}{x} = 1\). Check for extraneous solutions.</p>
 </div>
 <div class="problem">
-<h3>Problem 4</h3>
-<p>Solve \(\sqrt{2x + 9} = x + 3\).</p>
+<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
+<p>Solve \(\sqrt{2x + 9} = x + 3\). Check for extraneous solutions.</p>
 </div>
 <div class="problem">
-<h3>Problem 5</h3>
+<h3>Problem 5 <span class="pts">[1 pt]</span></h3>
 <p>Solve \(\dfrac{x + 4}{x - 2} \geq 0\). Write the answer in interval notation.</p>
 </div>
 

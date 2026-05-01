@@ -91,6 +91,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     letter-spacing: 0.4px;
     text-transform: uppercase;
   }
+  .quiz .problem h3 .pts {
+    color: var(--amber);
+    margin-left: 8px;
+    font-size: 13px;
+  }
+  .quiz .total-pts {
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
   .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
   .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
   .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
@@ -148,25 +161,26 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
 
+<p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1</h3>
-<p>Evaluate without a calculator.</p><ol type='a'><li>\(\log_2 64\)</li><li>\(\log_5 \dfrac{1}{125}\)</li><li>\(\log_9 3\)</li><li>\(\ln e^7\)</li></ol>
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>Evaluate without a calculator. <i>(1 pt each)</i></p><ol type='a'><li>\(\log_2 64\)</li><li>\(\log_5 \dfrac{1}{125}\)</li></ol>
 </div>
 <div class="problem">
-<h3>Problem 2</h3>
-<p>Use the laws of logarithms.</p><ol type='a'><li>Expand \(\log\dfrac{x^3 \sqrt{y}}{z^2}\).</li><li>Combine \(3 \ln x + \tfrac{1}{2} \ln y - 2 \ln z\) as a single \(\ln\).</li></ol>
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
+<p>Combine as a single logarithm: \(3 \ln x + \tfrac{1}{2} \ln y - 2 \ln z\).</p>
 </div>
 <div class="problem">
-<h3>Problem 3</h3>
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
 <p>An investment of \$2,500 grows at 5% annual interest, compounded continuously. How long until it doubles? Round to two decimals.</p>
 </div>
 <div class="problem">
-<h3>Problem 4</h3>
-<p>Solve.</p><ol type='a'><li>\(5^{x + 1} = 125\)</li><li>\(2 e^{3x} = 30\) (round to three decimals)</li></ol>
+<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
+<p>Solve \(2 e^{3x} = 30\). Round to three decimals.</p>
 </div>
 <div class="problem">
-<h3>Problem 5</h3>
-<p>Solve.</p><ol type='a'><li>\(\log_3 (x - 4) = 2\)</li><li>\(\log (x + 1) + \log (x - 2) = 1\)</li></ol>
+<h3>Problem 5 <span class="pts">[2 pts]</span></h3>
+<p>Solve \(\log (x + 1) + \log (x - 2) = 1\). Watch for extraneous solutions.</p>
 </div>
 
 </div>

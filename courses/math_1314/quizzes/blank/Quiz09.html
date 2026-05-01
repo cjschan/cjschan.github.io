@@ -91,6 +91,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     letter-spacing: 0.4px;
     text-transform: uppercase;
   }
+  .quiz .problem h3 .pts {
+    color: var(--amber);
+    margin-left: 8px;
+    font-size: 13px;
+  }
+  .quiz .total-pts {
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
   .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
   .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
   .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
@@ -148,21 +161,22 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
 
+<p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1</h3>
-<p>Let \(f(x) = x^2 - 4\) and \(g(x) = x + 5\). Find each.</p><ol type='a'><li>\((f + g)(2)\)</li><li>\((fg)(x)\) (do not need to expand)</li><li>\(\left(\dfrac{g}{f}\right)(x)\), stating any domain restrictions.</li></ol>
+<h3>Problem 1 <span class="pts">[3 pts]</span></h3>
+<p>Let \(f(x) = x^2 - 4\) and \(g(x) = x + 5\). Find each. <i>(1 pt each)</i></p><ol type='a'><li>\((f + g)(2)\)</li><li>\((fg)(x)\) (factored form is fine)</li><li>\(\left(\dfrac{g}{f}\right)(x)\), stating any domain restrictions</li></ol>
 </div>
 <div class="problem">
-<h3>Problem 2</h3>
-<p>Let \(f(x) = 3x - 1\) and \(g(x) = x^2 + 2\). Find</p><ol type='a'><li>\((f \circ g)(x)\)</li><li>\((g \circ f)(x)\)</li><li>\((f \circ g)(2)\)</li></ol>
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
+<p>Let \(f(x) = 3x - 1\) and \(g(x) = x^2 + 2\). Find \((f \circ g)(x)\) and \((g \circ f)(2)\). <i>(1 pt each)</i></p>
 </div>
 <div class="problem">
-<h3>Problem 3</h3>
-<p>Decide whether each is one-to-one. Justify briefly.</p><ol type='a'><li>\(f(x) = 2x - 7\)</li><li>\(g(x) = x^2 + 1\)</li><li>\(h(x) = \sqrt{x}\) on \([0, \infty)\)</li></ol>
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
+<p>Decide whether each is one-to-one. Justify briefly. <i>(1 pt each)</i></p><ol type='a'><li>\(f(x) = 2x - 7\)</li><li>\(g(x) = x^2 + 1\)</li></ol>
 </div>
 <div class="problem">
-<h3>Problem 4</h3>
-<p>Find the inverse of \(f(x) = \dfrac{4x - 3}{2}\). Verify by composition.</p>
+<h3>Problem 4 <span class="pts">[3 pts]</span></h3>
+<p>Find the inverse of \(f(x) = \dfrac{4x - 3}{2}\) and verify by composition. <i>(2 pts inverse, 1 pt verification)</i></p>
 </div>
 
 </div>

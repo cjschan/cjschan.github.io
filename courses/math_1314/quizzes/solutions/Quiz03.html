@@ -91,6 +91,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     letter-spacing: 0.4px;
     text-transform: uppercase;
   }
+  .quiz .problem h3 .pts {
+    color: var(--amber);
+    margin-left: 8px;
+    font-size: 13px;
+  }
+  .quiz .total-pts {
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
   .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
   .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
   .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
@@ -148,35 +161,31 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
 
+<p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1</h3>
-<p>Solve and write the answer in interval notation.</p><ol type='a'><li>\(2x - 7 \leq 5\)</li><li>\(3 - 4x &gt; 19\)</li></ol>
-<div class="solution"><p>(a) \(2x \leq 12\), so \(x \leq 6\). Solution: \((-\infty, 6]\).</p><p>(b) \(-4x &gt; 16\). Divide by \(-4\) (flip): \(x &lt; -4\). Solution: \((-\infty, -4)\).</p></div>
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>Solve and write the answer in interval notation. <i>(1 pt each)</i></p><ol type='a'><li>\(2x - 7 \leq 5\)</li><li>\(3 - 4x &gt; 19\)</li></ol>
+<div class="solution"><p>(a) \(x \leq 6\). Solution: \((-\infty, 6]\).</p><p>(b) \(-4x &gt; 16\); divide by \(-4\) (flip): \(x &lt; -4\). Solution: \((-\infty, -4)\).</p></div>
 </div>
 <div class="problem">
-<h3>Problem 2</h3>
-<p>Solve the three-part inequality \(-5 \leq 3x + 1 &lt; 7\). Write the answer in interval notation.</p>
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
+<p>Solve the three-part inequality and write the answer in interval notation: \(-5 \leq 3x + 1 &lt; 7\).</p>
 <div class="solution"><p>Subtract 1: \(-6 \leq 3x &lt; 6\). Divide by 3: \(-2 \leq x &lt; 2\). Solution: \([-2, 2)\).</p></div>
 </div>
 <div class="problem">
-<h3>Problem 3</h3>
-<p>Solve and graph each on a number line.</p><ol type='a'><li>\(x - 4 &lt; -1\) <b>and</b> \(2x + 3 \geq 1\)</li><li>\(3x &gt; 6\) <b>or</b> \(x + 5 \leq 4\)</li></ol>
-<div class="solution"><p>(a) \(x &lt; 3\) and \(x \geq -1\). Intersection: \([-1, 3)\).</p><p>(b) \(x &gt; 2\) or \(x \leq -1\). Union: \((-\infty, -1] \cup (2, \infty)\).</p></div>
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
+<p>The pressure \(P\) (atm) of a gas sample varies directly with depth \(d\) (ft) below the lake&rsquo;s surface. At 33 ft the pressure is 2 atm.</p><ol type='a'><li>Find the constant of variation. <i>(1 pt)</i></li><li>What is the pressure at 99 ft? <i>(1 pt)</i></li></ol>
+<div class="solution"><p>(a) \(P = kd\). \(2 = 33k\), so \(k = \tfrac{2}{33}\) atm/ft.</p><p>(b) \(P = \tfrac{2}{33}(99) = 6\) atm.</p></div>
 </div>
 <div class="problem">
-<h3>Problem 4</h3>
-<p>The pressure \(P\) (in atm) of a sample of gas at constant temperature varies directly with the depth \(d\) (in feet) below the surface of a lake. At 33 ft the pressure is 2 atm.</p><ol type='a'><li>Find the constant of variation.</li><li>What is the pressure at 99 ft?</li></ol>
-<div class="solution"><p>(a) \(P = kd\). \(2 = k(33)\), so \(k = \tfrac{2}{33}\) atm/ft.</p><p>(b) \(P = \tfrac{2}{33}(99) = 6\) atm.</p></div>
+<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
+<p>A printing service charges a fixed setup fee plus a per-page price. 50 pages cost \$40, and 200 pages cost \$115. Find a linear model \(C(p)\) for the total cost of \(p\) pages.</p>
+<div class="solution"><p>Slope: \(m = \dfrac{115 - 40}{200 - 50} = 0.5\). Using \((50, 40)\): \(40 = 0.5(50) + b\), so \(b = 15\). Model: \(C(p) = 0.5 p + 15\).</p></div>
 </div>
 <div class="problem">
-<h3>Problem 5</h3>
-<p>A rideshare company charges a \$3 base fare plus \$1.50 per mile. After 5 miles you owed \$10.50, after 10 miles you owed \$18.</p><ol type='a'><li>Verify that a linear model fits this rate structure.</li><li>Write a linear function \(C(m)\) for the cost.</li><li>If the bill was \$24, how many miles did you ride?</li></ol>
-<div class="solution"><p>(a) Slope between data points: \(\dfrac{18 - 10.50}{10 - 5} = 1.50\) ✓ matches the per-mile charge.</p><p>(b) \(C(m) = 3 + 1.50 m\).</p><p>(c) \(3 + 1.50 m = 24\) gives \(m = 14\) miles.</p></div>
-</div>
-<div class="problem">
-<h3>Problem 6</h3>
-<p>Let \(\displaystyle f(x) = \begin{cases} 3 - x &amp; \text{if } x &lt; 0 \\ x^2 + 1 &amp; \text{if } 0 \leq x \leq 3 \\ 2x &amp; \text{if } x &gt; 3 \end{cases}\). Evaluate \(f(-2),\; f(0),\; f(2),\; f(3),\; f(4)\).</p>
-<div class="solution"><p>\(f(-2) = 5\); \(f(0) = 1\); \(f(2) = 5\); \(f(3) = 10\); \(f(4) = 8\).</p></div>
+<h3>Problem 5 <span class="pts">[2 pts]</span></h3>
+<p>Let \(\displaystyle f(x) = \begin{cases} 3 - x &amp; \text{if } x &lt; 0 \\ x^2 + 1 &amp; \text{if } 0 \leq x \leq 3 \\ 2x &amp; \text{if } x &gt; 3 \end{cases}\). Evaluate \(f(-2)\) and \(f(4)\). <i>(1 pt each)</i></p>
+<div class="solution"><p>\(f(-2) = 5\) (use first piece). \(f(4) = 8\) (use third piece).</p></div>
 </div>
 
 </div>

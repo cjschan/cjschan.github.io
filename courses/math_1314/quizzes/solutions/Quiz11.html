@@ -91,6 +91,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     letter-spacing: 0.4px;
     text-transform: uppercase;
   }
+  .quiz .problem h3 .pts {
+    color: var(--amber);
+    margin-left: 8px;
+    font-size: 13px;
+  }
+  .quiz .total-pts {
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
   .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
   .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
   .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
@@ -148,25 +161,26 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
 
+<p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1</h3>
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
 <p>Solve by substitution.</p><p>\(\begin{cases} y = -2x + 7 \\ 4x + 3y = 9 \end{cases}\)</p>
-<div class="solution"><p>Substitute: \(4x + 3(-2x + 7) = 9\), so \(4x - 6x + 21 = 9\), \(-2x = -12\), \(x = 6\). Then \(y = -5\). Solution: \((6, -5)\).</p></div>
+<div class="solution"><p>Substitute: \(4x + 3(-2x + 7) = 9\), so \(-2x + 21 = 9\), \(x = 6\). Then \(y = -5\). Solution: \((6, -5)\).</p></div>
 </div>
 <div class="problem">
-<h3>Problem 2</h3>
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
 <p>Solve by elimination.</p><p>\(\begin{cases} 3x + 4y = 10 \\ 5x - 2y = 8 \end{cases}\)</p>
 <div class="solution"><p>Multiply the second by 2: \(10x - 4y = 16\). Add to the first: \(13x = 26\), so \(x = 2\). From \(3(2) + 4y = 10\): \(y = 1\). Solution: \((2, 1)\).</p></div>
 </div>
 <div class="problem">
-<h3>Problem 3</h3>
-<p>Identify the corner points of the region defined by</p><p>\(\begin{cases} x + 2y \leq 12 \\ 3x + y \leq 12 \\ x \geq 0,\; y \geq 0 \end{cases}\)</p><p>and find the maximum value of \(P = 2x + 5y\) on the region.</p>
-<div class="solution"><p>Corners: solve pairwise.</p><ul><li>\((0, 0)\)</li><li>\(y = 0\) and \(3x + y = 12\): \((4, 0)\)</li><li>\(x = 0\) and \(x + 2y = 12\): \((0, 6)\)</li><li>\(x + 2y = 12\) and \(3x + y = 12\): multiply second by 2 and subtract: \(x + 2y - 6x - 2y = 12 - 24\), \(-5x = -12\), \(x = \tfrac{12}{5}\). Then \(y = 12 - 3 \cdot \tfrac{12}{5} = \tfrac{24}{5}\). Corner \(\left(\tfrac{12}{5}, \tfrac{24}{5}\right)\).</li></ul><p>Evaluate \(P\): at \((0, 0)\): 0; at \((4, 0)\): 8; at \((0, 6)\): 30; at \(\left(\tfrac{12}{5}, \tfrac{24}{5}\right)\): \(P = 2 \cdot \tfrac{12}{5} + 5 \cdot \tfrac{24}{5} = \tfrac{24}{5} + 24 = \tfrac{144}{5} = 28.8\). <b>Max is 30</b> at \((0, 6)\).</p></div>
+<h3>Problem 3 <span class="pts">[3 pts]</span></h3>
+<p>Identify the corner points of the region defined by</p><p>\(\begin{cases} x + 2y \leq 12 \\ 3x + y \leq 12 \\ x \geq 0,\; y \geq 0 \end{cases}\)</p><p>and find the maximum value of \(P = 2x + 5y\) on the region. <i>(2 pts corners, 1 pt max value)</i></p>
+<div class="solution"><p>Corners: \((0, 0)\), \((4, 0)\), \((0, 6)\), and \(\left(\tfrac{12}{5}, \tfrac{24}{5}\right)\) (intersection of the two slanted lines).</p><p>Evaluate \(P\) at each: 0, 8, 30, \(\tfrac{144}{5} = 28.8\). <b>Max is 30 at \((0, 6)\).</b></p></div>
 </div>
 <div class="problem">
-<h3>Problem 4</h3>
+<h3>Problem 4 <span class="pts">[3 pts]</span></h3>
 <p>Solve the system.</p><p>\(\begin{cases} x + y + z = 6 \\ 2x - y + z = 3 \\ x + 2y - z = 5 \end{cases}\)</p>
-<div class="solution"><p>Subtract eq1 from eq2: \(x - 2y = -3\). Add eq1 and eq3: \(2x + 3y = 11\). From the first relation, \(x = 2y - 3\). Substitute: \(2(2y - 3) + 3y = 11\), \(7y = 17\), \(y = \tfrac{17}{7}\). Then \(x = \tfrac{34}{7} - 3 = \tfrac{13}{7}\). From eq1: \(z = 6 - x - y = 6 - \tfrac{30}{7} = \tfrac{12}{7}\).</p><p>Solution: \(\left(\tfrac{13}{7}, \tfrac{17}{7}, \tfrac{12}{7}\right)\).</p></div>
+<div class="solution"><p>eq2 − eq1: \(x - 2y = -3\). eq1 + eq3: \(2x + 3y = 11\). From the first relation \(x = 2y - 3\); substitute: \(2(2y - 3) + 3y = 11\), \(7y = 17\), \(y = \tfrac{17}{7}\). Then \(x = \tfrac{13}{7}\) and \(z = 6 - x - y = \tfrac{12}{7}\). Solution: \(\left(\tfrac{13}{7}, \tfrac{17}{7}, \tfrac{12}{7}\right)\).</p></div>
 </div>
 
 </div>

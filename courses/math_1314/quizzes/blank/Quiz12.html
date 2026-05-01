@@ -91,6 +91,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     letter-spacing: 0.4px;
     text-transform: uppercase;
   }
+  .quiz .problem h3 .pts {
+    color: var(--amber);
+    margin-left: 8px;
+    font-size: 13px;
+  }
+  .quiz .total-pts {
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
   .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
   .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
   .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
@@ -148,21 +161,22 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
 
+<p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1</h3>
+<h3>Problem 1 <span class="pts">[3 pts]</span></h3>
 <p>Use Gaussian elimination on the augmented matrix to solve.</p><p>\(\begin{cases} x + 2y - z = 3 \\ 2x - y + z = 5 \\ x + y + z = 6 \end{cases}\)</p>
 </div>
 <div class="problem">
-<h3>Problem 2</h3>
-<p>Let \(A = \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; -1 \end{bmatrix}\), \(B = \begin{bmatrix} 4 &amp; -2 \\ 0 &amp; 5 \end{bmatrix}\). Compute.</p><ol type='a'><li>\(A + B\)</li><li>\(2A - B\)</li><li>\(AB\)</li></ol>
+<h3>Problem 2 <span class="pts">[3 pts]</span></h3>
+<p>Let \(A = \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; -1 \end{bmatrix}\), \(B = \begin{bmatrix} 4 &amp; -2 \\ 0 &amp; 5 \end{bmatrix}\). Compute. <i>(1 pt each)</i></p><ol type='a'><li>\(A + B\)</li><li>\(2A - B\)</li><li>\(AB\)</li></ol>
 </div>
 <div class="problem">
-<h3>Problem 3</h3>
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
 <p>Find \(A^{-1}\) for \(A = \begin{bmatrix} 3 &amp; 5 \\ 1 &amp; 2 \end{bmatrix}\).</p>
 </div>
 <div class="problem">
-<h3>Problem 4</h3>
-<p>Use the inverse from Problem 3 to solve the system \(\begin{cases} 3x + 5y = 11 \\ x + 2y = 4 \end{cases}\).</p>
+<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
+<p>Use the inverse from Problem 3 to solve \(\begin{cases} 3x + 5y = 11 \\ x + 2y = 4 \end{cases}\).</p>
 </div>
 
 </div>

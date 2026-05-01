@@ -91,6 +91,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     letter-spacing: 0.4px;
     text-transform: uppercase;
   }
+  .quiz .problem h3 .pts {
+    color: var(--amber);
+    margin-left: 8px;
+    font-size: 13px;
+  }
+  .quiz .total-pts {
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
   .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
   .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
   .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
@@ -148,25 +161,26 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
 
+<p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1</h3>
-<p>Simplify.</p><ol type='a'><li>\(\sqrt{-49}\)</li><li>\(\sqrt{-50}\)</li><li>\(i^{23}\)</li><li>\(i^{40}\)</li></ol>
-<div class="solution"><p>(a) \(7i\). (b) \(\sqrt{-50} = i\sqrt{50} = 5i\sqrt{2}\). (c) \(23 \div 4\) has remainder 3, so \(i^{23} = -i\). (d) Remainder 0, so \(i^{40} = 1\).</p></div>
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>Simplify. <i>(1 pt each)</i></p><ol type='a'><li>\(\sqrt{-50}\)</li><li>\(i^{23}\)</li></ol>
+<div class="solution"><p>(a) \(\sqrt{-50} = 5i\sqrt{2}\).</p><p>(b) \(23 \div 4\) has remainder 3, so \(i^{23} = i^3 = -i\).</p></div>
 </div>
 <div class="problem">
-<h3>Problem 2</h3>
-<p>Compute and write each in the form \(a + bi\).</p><ol type='a'><li>\((4 - 3i) + (1 + 7i)\)</li><li>\((2 + 5i)(3 - i)\)</li><li>\(\dfrac{6}{2 + i}\)</li></ol>
-<div class="solution"><p>(a) \(5 + 4i\).</p><p>(b) \(6 - 2i + 15i - 5i^2 = 6 + 13i + 5 = 11 + 13i\).</p><p>(c) Multiply by conjugate: \(\dfrac{6(2 - i)}{(2+i)(2-i)} = \dfrac{12 - 6i}{4 + 1} = \dfrac{12 - 6i}{5} = \dfrac{12}{5} - \dfrac{6}{5} i\).</p></div>
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
+<p>Compute and write in the form \(a + bi\). <i>(1 pt each)</i></p><ol type='a'><li>\((2 + 5i)(3 - i)\)</li><li>\(\dfrac{6}{2 + i}\)</li></ol>
+<div class="solution"><p>(a) \(6 - 2i + 15i - 5i^2 = 11 + 13i\).</p><p>(b) \(\dfrac{6(2 - i)}{4 + 1} = \dfrac{12 - 6i}{5} = \tfrac{12}{5} - \tfrac{6}{5} i\).</p></div>
 </div>
 <div class="problem">
-<h3>Problem 3</h3>
-<p>Solve. Express complex solutions in the form \(a + bi\).</p><ol type='a'><li>\(x^2 + 25 = 0\)</li><li>\(x^2 - 6x + 13 = 0\)</li></ol>
-<div class="solution"><p>(a) \(x = \pm 5i\).</p><p>(b) Quadratic formula: \(x = \dfrac{6 \pm \sqrt{36 - 52}}{2} = \dfrac{6 \pm \sqrt{-16}}{2} = 3 \pm 2i\).</p></div>
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
+<p>Solve \(x^2 - 6x + 13 = 0\). Express complex solutions in the form \(a + bi\).</p>
+<div class="solution"><p>\(x = \dfrac{6 \pm \sqrt{36 - 52}}{2} = \dfrac{6 \pm \sqrt{-16}}{2} = 3 \pm 2i\).</p></div>
 </div>
 <div class="problem">
-<h3>Problem 4</h3>
-<p>Solve and write the answer in interval notation.</p><ol type='a'><li>\(x^2 - x - 12 \geq 0\)</li><li>\(x^2 + 4x &lt; 0\)</li></ol>
-<div class="solution"><p>(a) Factor: \((x - 4)(x + 3) = 0\) at \(x = -3, 4\). Parabola opens up, so the expression is non-negative outside the roots: \((-\infty, -3] \cup [4, \infty)\).</p><p>(b) Factor: \(x(x + 4) &lt; 0\) at \(x = -4, 0\). Negative between the roots: \((-4, 0)\).</p></div>
+<h3>Problem 4 <span class="pts">[4 pts]</span></h3>
+<p>Solve and write the answer in interval notation. <i>(2 pts each)</i></p><ol type='a'><li>\(x^2 - x - 12 \geq 0\)</li><li>\(x^2 + 4x &lt; 0\)</li></ol>
+<div class="solution"><p>(a) Factor: \((x - 4)(x + 3) = 0\) at \(x = -3, 4\); parabola opens up. Non-negative outside the roots: \((-\infty, -3] \cup [4, \infty)\).</p><p>(b) Factor: \(x(x + 4) = 0\) at \(x = -4, 0\). Negative between the roots: \((-4, 0)\).</p></div>
 </div>
 
 </div>

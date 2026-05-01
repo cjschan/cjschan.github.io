@@ -91,6 +91,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     letter-spacing: 0.4px;
     text-transform: uppercase;
   }
+  .quiz .problem h3 .pts {
+    color: var(--amber);
+    margin-left: 8px;
+    font-size: 13px;
+  }
+  .quiz .total-pts {
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
   .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
   .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
   .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
@@ -148,20 +161,21 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
 
+<p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1</h3>
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
 <p>Solve by substitution.</p><p>\(\begin{cases} y = -2x + 7 \\ 4x + 3y = 9 \end{cases}\)</p>
 </div>
 <div class="problem">
-<h3>Problem 2</h3>
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
 <p>Solve by elimination.</p><p>\(\begin{cases} 3x + 4y = 10 \\ 5x - 2y = 8 \end{cases}\)</p>
 </div>
 <div class="problem">
-<h3>Problem 3</h3>
-<p>Identify the corner points of the region defined by</p><p>\(\begin{cases} x + 2y \leq 12 \\ 3x + y \leq 12 \\ x \geq 0,\; y \geq 0 \end{cases}\)</p><p>and find the maximum value of \(P = 2x + 5y\) on the region.</p>
+<h3>Problem 3 <span class="pts">[3 pts]</span></h3>
+<p>Identify the corner points of the region defined by</p><p>\(\begin{cases} x + 2y \leq 12 \\ 3x + y \leq 12 \\ x \geq 0,\; y \geq 0 \end{cases}\)</p><p>and find the maximum value of \(P = 2x + 5y\) on the region. <i>(2 pts corners, 1 pt max value)</i></p>
 </div>
 <div class="problem">
-<h3>Problem 4</h3>
+<h3>Problem 4 <span class="pts">[3 pts]</span></h3>
 <p>Solve the system.</p><p>\(\begin{cases} x + y + z = 6 \\ 2x - y + z = 3 \\ x + 2y - z = 5 \end{cases}\)</p>
 </div>
 

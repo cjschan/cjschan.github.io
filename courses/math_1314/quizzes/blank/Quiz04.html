@@ -91,6 +91,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     letter-spacing: 0.4px;
     text-transform: uppercase;
   }
+  .quiz .problem h3 .pts {
+    color: var(--amber);
+    margin-left: 8px;
+    font-size: 13px;
+  }
+  .quiz .total-pts {
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
   .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
   .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
   .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
@@ -148,25 +161,26 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
 
+<p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1</h3>
-<p>Find the vertex and axis of symmetry. State whether the parabola opens up or down.</p><ol type='a'><li>\(f(x) = -3(x + 2)^2 + 5\)</li><li>\(g(x) = x^2 + 6x - 1\)</li></ol>
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>Find the vertex and axis of symmetry of \(g(x) = x^2 + 6x - 1\). State whether the parabola opens up or down. <i>(1 pt vertex/axis, 1 pt direction)</i></p>
 </div>
 <div class="problem">
-<h3>Problem 2</h3>
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
 <p>Write \(f(x) = x^2 - 8x + 11\) in vertex form by completing the square.</p>
 </div>
 <div class="problem">
-<h3>Problem 3</h3>
-<p>Solve by factoring.</p><ol type='a'><li>\(x^2 - 7x + 12 = 0\)</li><li>\(3x^2 + 5x - 2 = 0\)</li></ol>
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
+<p>Solve by factoring: \(3x^2 + 5x - 2 = 0\).</p>
 </div>
 <div class="problem">
-<h3>Problem 4</h3>
-<p>Solve by the quadratic formula.</p><ol type='a'><li>\(x^2 - 4x - 1 = 0\)</li><li>\(2x^2 + 3x - 4 = 0\)</li></ol>
+<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
+<p>Solve using the quadratic formula: \(2x^2 + 3x - 4 = 0\). Leave answer in exact form.</p>
 </div>
 <div class="problem">
-<h3>Problem 5</h3>
-<p>A small farm&rsquo;s daily revenue (in hundreds of dollars) for selling \(p\)-dollar baskets is modeled by \(R(p) = -2 p^2 + 24 p\).</p><ol type='a'><li>What price maximizes revenue?</li><li>What is the maximum daily revenue?</li></ol>
+<h3>Problem 5 <span class="pts">[2 pts]</span></h3>
+<p>A small farm&rsquo;s daily revenue (in hundreds of dollars) for selling \(p\)-dollar baskets is modeled by \(R(p) = -2 p^2 + 24 p\). What price maximizes revenue, and what is the maximum revenue? <i>(1 pt each)</i></p>
 </div>
 
 </div>

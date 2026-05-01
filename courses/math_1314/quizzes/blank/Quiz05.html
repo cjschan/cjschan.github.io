@@ -91,6 +91,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     letter-spacing: 0.4px;
     text-transform: uppercase;
   }
+  .quiz .problem h3 .pts {
+    color: var(--amber);
+    margin-left: 8px;
+    font-size: 13px;
+  }
+  .quiz .total-pts {
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
   .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
   .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
   .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
@@ -148,21 +161,22 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
 
+<p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1</h3>
-<p>Simplify.</p><ol type='a'><li>\(\sqrt{-49}\)</li><li>\(\sqrt{-50}\)</li><li>\(i^{23}\)</li><li>\(i^{40}\)</li></ol>
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>Simplify. <i>(1 pt each)</i></p><ol type='a'><li>\(\sqrt{-50}\)</li><li>\(i^{23}\)</li></ol>
 </div>
 <div class="problem">
-<h3>Problem 2</h3>
-<p>Compute and write each in the form \(a + bi\).</p><ol type='a'><li>\((4 - 3i) + (1 + 7i)\)</li><li>\((2 + 5i)(3 - i)\)</li><li>\(\dfrac{6}{2 + i}\)</li></ol>
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
+<p>Compute and write in the form \(a + bi\). <i>(1 pt each)</i></p><ol type='a'><li>\((2 + 5i)(3 - i)\)</li><li>\(\dfrac{6}{2 + i}\)</li></ol>
 </div>
 <div class="problem">
-<h3>Problem 3</h3>
-<p>Solve. Express complex solutions in the form \(a + bi\).</p><ol type='a'><li>\(x^2 + 25 = 0\)</li><li>\(x^2 - 6x + 13 = 0\)</li></ol>
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
+<p>Solve \(x^2 - 6x + 13 = 0\). Express complex solutions in the form \(a + bi\).</p>
 </div>
 <div class="problem">
-<h3>Problem 4</h3>
-<p>Solve and write the answer in interval notation.</p><ol type='a'><li>\(x^2 - x - 12 \geq 0\)</li><li>\(x^2 + 4x &lt; 0\)</li></ol>
+<h3>Problem 4 <span class="pts">[4 pts]</span></h3>
+<p>Solve and write the answer in interval notation. <i>(2 pts each)</i></p><ol type='a'><li>\(x^2 - x - 12 \geq 0\)</li><li>\(x^2 + 4x &lt; 0\)</li></ol>
 </div>
 
 </div>

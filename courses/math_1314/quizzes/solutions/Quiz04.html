@@ -91,6 +91,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     letter-spacing: 0.4px;
     text-transform: uppercase;
   }
+  .quiz .problem h3 .pts {
+    color: var(--amber);
+    margin-left: 8px;
+    font-size: 13px;
+  }
+  .quiz .total-pts {
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
   .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
   .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
   .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
@@ -148,30 +161,31 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
 
+<p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1</h3>
-<p>Find the vertex and axis of symmetry. State whether the parabola opens up or down.</p><ol type='a'><li>\(f(x) = -3(x + 2)^2 + 5\)</li><li>\(g(x) = x^2 + 6x - 1\)</li></ol>
-<div class="solution"><p>(a) Vertex \((-2, 5)\); axis \(x = -2\); opens down (\(a = -3\)).</p><p>(b) \(h = -\dfrac{6}{2} = -3\); \(k = g(-3) = 9 - 18 - 1 = -10\). Vertex \((-3, -10)\); axis \(x = -3\); opens up.</p></div>
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>Find the vertex and axis of symmetry of \(g(x) = x^2 + 6x - 1\). State whether the parabola opens up or down. <i>(1 pt vertex/axis, 1 pt direction)</i></p>
+<div class="solution"><p>\(h = -\tfrac{6}{2} = -3\); \(k = g(-3) = 9 - 18 - 1 = -10\). Vertex \((-3, -10)\); axis \(x = -3\); opens up.</p></div>
 </div>
 <div class="problem">
-<h3>Problem 2</h3>
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
 <p>Write \(f(x) = x^2 - 8x + 11\) in vertex form by completing the square.</p>
 <div class="solution"><p>Half of \(-8\) is \(-4\); \((-4)^2 = 16\). \(f(x) = (x^2 - 8x + 16) - 16 + 11 = (x - 4)^2 - 5\).</p></div>
 </div>
 <div class="problem">
-<h3>Problem 3</h3>
-<p>Solve by factoring.</p><ol type='a'><li>\(x^2 - 7x + 12 = 0\)</li><li>\(3x^2 + 5x - 2 = 0\)</li></ol>
-<div class="solution"><p>(a) \((x - 3)(x - 4) = 0\). \(x = 3, 4\).</p><p>(b) \((3x - 1)(x + 2) = 0\). \(x = \tfrac{1}{3}, -2\).</p></div>
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
+<p>Solve by factoring: \(3x^2 + 5x - 2 = 0\).</p>
+<div class="solution"><p>\((3x - 1)(x + 2) = 0\). \(x = \tfrac{1}{3}\) or \(x = -2\).</p></div>
 </div>
 <div class="problem">
-<h3>Problem 4</h3>
-<p>Solve by the quadratic formula.</p><ol type='a'><li>\(x^2 - 4x - 1 = 0\)</li><li>\(2x^2 + 3x - 4 = 0\)</li></ol>
-<div class="solution"><p>(a) \(x = \dfrac{4 \pm \sqrt{16 + 4}}{2} = \dfrac{4 \pm 2\sqrt{5}}{2} = 2 \pm \sqrt{5}\).</p><p>(b) \(x = \dfrac{-3 \pm \sqrt{9 + 32}}{4} = \dfrac{-3 \pm \sqrt{41}}{4}\).</p></div>
+<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
+<p>Solve using the quadratic formula: \(2x^2 + 3x - 4 = 0\). Leave answer in exact form.</p>
+<div class="solution"><p>\(x = \dfrac{-3 \pm \sqrt{9 + 32}}{4} = \dfrac{-3 \pm \sqrt{41}}{4}\).</p></div>
 </div>
 <div class="problem">
-<h3>Problem 5</h3>
-<p>A small farm&rsquo;s daily revenue (in hundreds of dollars) for selling \(p\)-dollar baskets is modeled by \(R(p) = -2 p^2 + 24 p\).</p><ol type='a'><li>What price maximizes revenue?</li><li>What is the maximum daily revenue?</li></ol>
-<div class="solution"><p>(a) \(p = -\dfrac{24}{2(-2)} = 6\) dollars per basket.</p><p>(b) \(R(6) = -72 + 144 = 72\) (hundred dollars), i.e. \$7,200.</p></div>
+<h3>Problem 5 <span class="pts">[2 pts]</span></h3>
+<p>A small farm&rsquo;s daily revenue (in hundreds of dollars) for selling \(p\)-dollar baskets is modeled by \(R(p) = -2 p^2 + 24 p\). What price maximizes revenue, and what is the maximum revenue? <i>(1 pt each)</i></p>
+<div class="solution"><p>\(p = -\dfrac{24}{2(-2)} = 6\) dollars per basket. \(R(6) = -72 + 144 = 72\) (hundred dollars), i.e. \$7,200.</p></div>
 </div>
 
 </div>
