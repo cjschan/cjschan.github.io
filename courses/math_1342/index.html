@@ -1,45 +1,163 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Math 1342 - Elementary Statistics</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
 <style>
-  body { font-family: monospace; margin: 2em auto; max-width: 1100px; padding: 0 1.5em; line-height: 1.55; color: #222; }
-  h1 { font-size: 1.4em; margin-bottom: 0.2em; }
-  h2 { font-size: 1.15em; margin-top: 2.2em; border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
-  h3 { font-size: 1em; margin-top: 1.4em; margin-bottom: 0.3em; }
-  p { margin: 0.6em 0; }
-  ul { padding-left: 1.5em; }
-  ul.lecture-list { list-style: none; padding: 0; }
-  ul.lecture-list li { padding: 0.3em 0; }
-  a { text-decoration: none; color: #0366d6; }
-  a:hover { text-decoration: underline; }
-  table { border-collapse: collapse; width: 100%; margin: 0.8em 0 1.2em; font-size: 0.95em; }
-  th, td { border: 1px solid #ccc; padding: 0.5em 0.7em; text-align: left; vertical-align: top; }
-  th { background: #f5f5f5; }
-  .meta { color: #555; }
-  .meta dt { font-weight: bold; float: left; clear: left; min-width: 11em; }
-  .meta dd { margin: 0 0 0.3em 0; }
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent: #fbbf24;
+    --accent-light: #fde68a;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .syllabus {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 36px 48px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.6;
+  }
+  .syllabus h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 32px;
+    font-weight: 700;
+  }
+  .syllabus h2 {
+    color: var(--primary);
+    margin-top: 36px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--primary);
+    padding-left: 14px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .syllabus h3 {
+    color: var(--accent);
+    margin-top: 22px;
+    margin-bottom: 6px;
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .syllabus p { margin: 0.6em 0; }
+  .syllabus ul { padding-left: 22px; margin: 0.4em 0 0.8em; }
+  .syllabus ul li { margin-bottom: 6px; }
+  .syllabus ul li::marker { color: var(--accent); }
+  .syllabus a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+    transition: color 200ms ease, border-color 200ms ease;
+    font-size: inherit;
+  }
+  .syllabus a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    opacity: 1;
+  }
+  .syllabus dl.meta { margin: 0.5em 0 1em; }
+  .syllabus dl.meta dt {
+    font-weight: 600;
+    color: var(--muted);
+    float: left;
+    clear: left;
+    min-width: 12em;
+  }
+  .syllabus dl.meta dd { margin: 0 0 0.4em 0; }
+  .syllabus table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0.8em 0 1.2em;
+    font-size: 15px;
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .syllabus th, .syllabus td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .syllabus th {
+    background: rgba(56, 189, 248, 0.10);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+  .syllabus tr:nth-child(even) td { background: rgba(15, 23, 42, 0.5); }
+  .syllabus .week-cell {
+    color: var(--muted);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .syllabus .section-cell { font-weight: 600; }
+  .syllabus .section-cell .nolink { color: var(--muted); font-weight: 400; }
+  .syllabus .grade-table td { vertical-align: top; }
+  @media (max-width: 900px) {
+    .syllabus { margin: 16px; padding: 24px 20px; }
+    .syllabus h1 { font-size: 26px; }
+    .syllabus h2 { font-size: 19px; }
+    .syllabus dl.meta dt { float: none; min-width: 0; }
+    .syllabus table { font-size: 14px; }
+    .syllabus th, .syllabus td { padding: 8px 10px; }
+  }
 </style>
 </head>
 <body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="syllabus">
+
 <h1>Math 1342 / NCBM 0142 &mdash; Elementary Statistics with Support</h1>
-<p class="meta">A first course in statistics covering descriptive statistics, probability, sampling distributions, confidence intervals, hypothesis testing, regression, and ANOVA.</p>
+<p>A first course in statistics covering descriptive statistics, probability, sampling distributions, confidence intervals, hypothesis testing, regression, and ANOVA.</p>
 
 <h2>About Your Instructor</h2>
 <dl class="meta">
-  <dt>Name:</dt><dd>Chris Chan</dd>
-  <dt>Email:</dt><dd>chris.chan@austincc.edu</dd>
-  <dt>Office:</dt><dd>NRG2 2245</dd>
-  <dt>Office hours:</dt><dd>MW 8:30am&ndash;9:00am</dd>
+  <dt>Name</dt><dd>Chris Chan</dd>
+  <dt>Email</dt><dd>chris.chan@austincc.edu</dd>
+  <dt>Office</dt><dd>NRG2 2245</dd>
+  <dt>Office hours</dt><dd>MW 8:30am&ndash;9:00am</dd>
 </dl>
 
 <h2>About Your Course</h2>
 <p>Instructional Methodology: Classroom Section. This course is taught in the classroom primarily as a lecture/discussion course.</p>
 <dl class="meta">
-  <dt>Meeting location:</dt><dd>NRG2 2245</dd>
-  <dt>Meeting times:</dt><dd>MW 9:00am&ndash;10:55am</dd>
-  <dt>Prerequisites:</dt><dd>Appropriate score on the TSI Mathematics Assessment.</dd>
-  <dt>Corequisite:</dt><dd>MATH 1342.</dd>
+  <dt>Meeting location</dt><dd>NRG2 2245</dd>
+  <dt>Meeting times</dt><dd>MW 9:00am&ndash;10:55am</dd>
+  <dt>Prerequisites</dt><dd>Appropriate score on the TSI Mathematics Assessment.</dd>
+  <dt>Corequisite</dt><dd>MATH 1342.</dd>
 </dl>
 <p><b>Paired Course Policy:</b> This is a paired course. Students who withdraw from NCBM 0142 will automatically be withdrawn from MATH 1342.</p>
 
@@ -70,42 +188,42 @@
 <p>Let&rsquo;s keep our classroom a friendly and engaging place by being respectful of your classmates and the space we&rsquo;re using. Please do not eat, vape, or sleep in class.</p>
 
 <h2>Course Calendar</h2>
-<p>Schedule changes may occur during the semester. Any changes will be announced in class and posted as a Blackboard Announcement.</p>
+<p>Schedule changes may occur during the semester. Any changes will be announced in class and posted as a Blackboard Announcement. Click any section number to open the lecture notes.</p>
 <table>
   <thead>
     <tr><th>Week</th><th>Section</th><th>Description</th></tr>
   </thead>
   <tbody>
-    <tr><td>Week 1</td><td>1.1</td><td>The Structure of Data</td></tr>
-    <tr><td>Week 2</td><td>1.2</td><td>Sampling from a Population</td></tr>
-    <tr><td rowspan="2">Week 3</td><td>1.3, 2.1</td><td>Experiments and Observational Studies; Categorical Variables</td></tr>
-    <tr><td>2.2</td><td>One Quantitative Variable: Shape and Center</td></tr>
-    <tr><td rowspan="2">Week 4</td><td>2.3</td><td>One Quantitative Variable: Measures of Spread</td></tr>
-    <tr><td>&mdash;</td><td>Test 1</td></tr>
-    <tr><td rowspan="2">Week 5</td><td>2.4</td><td>Boxplots and Quantitative/Categorical Relationships</td></tr>
-    <tr><td>2.5</td><td>Two Quantitative Variables: Scatterplot and Correlation</td></tr>
-    <tr><td rowspan="2">Week 6</td><td>2.6</td><td>Two Quantitative Variables: Linear Regression</td></tr>
-    <tr><td>Unit A</td><td>Essential Synthesis</td></tr>
-    <tr><td rowspan="2">Week 7</td><td>P.1</td><td>Probability Rules</td></tr>
-    <tr><td>3.1, 3.2</td><td>Sampling Distributions; Understanding and Interpreting Confidence Intervals</td></tr>
-    <tr><td rowspan="2">Week 8</td><td>3.3, 3.4</td><td>Constructing Bootstrap Confidence Intervals Using Standard Error and Percentiles</td></tr>
-    <tr><td>&mdash;</td><td>Test 2</td></tr>
-    <tr><td rowspan="2">Week 9</td><td>4.1</td><td>Introducing Hypothesis Tests</td></tr>
-    <tr><td>4.2</td><td>Measuring Evidence with p-values</td></tr>
-    <tr><td rowspan="2">Week 10</td><td>4.3</td><td>Determining Statistical Significance</td></tr>
-    <tr><td>4.4(a), 4.5</td><td>A Closer Look at Testing; Making Connections</td></tr>
-    <tr><td rowspan="2">Week 11</td><td>Unit B, 5.1</td><td>Essential Synthesis; Hypothesis Testing Using Normal Distributions</td></tr>
-    <tr><td>6.1</td><td>Inference for a Proportion (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
-    <tr><td rowspan="2">Week 12</td><td>6.3</td><td>Inference for a Difference in Proportions (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
-    <tr><td>&mdash;</td><td>Test 3</td></tr>
-    <tr><td rowspan="2">Week 13</td><td>6.2</td><td>Inference for a Mean (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
-    <tr><td>6.4</td><td>Inference for a Difference in Means (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
-    <tr><td rowspan="2">Week 14</td><td>6.5</td><td>Paired Difference in Means</td></tr>
-    <tr><td>Unit C</td><td>Essential Synthesis</td></tr>
-    <tr><td rowspan="2">Week 15</td><td>7.2</td><td>Testing for an Association Between Two Categorical Variables</td></tr>
-    <tr><td>8.1</td><td>Analysis of Variance</td></tr>
-    <tr><td rowspan="2">Week 16</td><td>&mdash;</td><td>Review</td></tr>
-    <tr><td>&mdash;</td><td>Final Exam</td></tr>
+    <tr><td class="week-cell">Week 1</td><td class="section-cell"><a href="lecture_notes/Sec1-1_The_Structure_of_Data.html">1.1</a></td><td>The Structure of Data</td></tr>
+    <tr><td class="week-cell">Week 2</td><td class="section-cell"><a href="lecture_notes/Sec1-2_Sampling_From_a_Population.html">1.2</a></td><td>Sampling from a Population</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 3</td><td class="section-cell"><a href="lecture_notes/Sec1-3_Experiments.html">1.3</a>, <a href="lecture_notes/Sec2-1_Categorical_Variables.html">2.1</a></td><td>Experiments and Observational Studies; Categorical Variables</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec2-2_One_Quantitative_Variable_Shape_and_Center.html">2.2</a></td><td>One Quantitative Variable: Shape and Center</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 4</td><td class="section-cell"><a href="lecture_notes/Sec2-3_One_Quantitative_Variable_Measures_of_Spread.html">2.3</a></td><td>One Quantitative Variable: Measures of Spread</td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Test 1</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 5</td><td class="section-cell"><a href="lecture_notes/Sec2-4_Boxplots_and_Quantitative_Categorical_Relationships.html">2.4</a></td><td>Boxplots and Quantitative/Categorical Relationships</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec2-5_Two_Quantitative_Variables_Scatterplot_and_Correlation.html">2.5</a></td><td>Two Quantitative Variables: Scatterplot and Correlation</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 6</td><td class="section-cell"><a href="lecture_notes/Sec2-6_Two_Quantitative_Variables_Linear_Regression.html">2.6</a></td><td>Two Quantitative Variables: Linear Regression</td></tr>
+    <tr><td class="section-cell"><span class="nolink">Unit A</span></td><td>Essential Synthesis</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 7</td><td class="section-cell"><a href="lecture_notes/SecP-1_Probability.html">P.1</a></td><td>Probability Rules</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec3-1_Sampling_Distributions.html">3.1</a>, <a href="lecture_notes/Sec3-2_Understanding_and_Interpreting_Confidence_Intervals.html">3.2</a></td><td>Sampling Distributions; Understanding and Interpreting Confidence Intervals</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 8</td><td class="section-cell"><a href="lecture_notes/Sec3-3_Constructing_Bootstrap_Confidence_Intervals.html">3.3</a>, <a href="lecture_notes/Sec3-4_Bootstrap_Confidence_Intervals_Using_Percentiles.html">3.4</a></td><td>Constructing Bootstrap Confidence Intervals Using Standard Error and Percentiles</td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Test 2</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 9</td><td class="section-cell"><a href="lecture_notes/Sec4-1_Introducing_Hypothesis_Tests.html">4.1</a></td><td>Introducing Hypothesis Tests</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec4-2_Measuring_Evidence_with_P_values.html">4.2</a></td><td>Measuring Evidence with p-values</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 10</td><td class="section-cell"><a href="lecture_notes/Sec4-3_Determining_Statistical_Significance.html">4.3</a></td><td>Determining Statistical Significance</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec4-4_A_Closer_Look_at_Testing.html">4.4(a)</a>, <a href="lecture_notes/Sec4-5_Making_Connections.html">4.5</a></td><td>A Closer Look at Testing; Making Connections</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 11</td><td class="section-cell"><span class="nolink">Unit B</span>, <a href="lecture_notes/Sec5-1_Hypothesis_Tests_Using_Normal_Distributions.html">5.1</a></td><td>Essential Synthesis; Hypothesis Testing Using Normal Distributions</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec6-1_Inference_for_a_Proportion.html">6.1</a></td><td>Inference for a Proportion (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 12</td><td class="section-cell"><a href="lecture_notes/Sec6-3_Inference_for_a_Difference_in_Proportions.html">6.3</a></td><td>Inference for a Difference in Proportions (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Test 3</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 13</td><td class="section-cell"><a href="lecture_notes/Sec6-2_Inference_for_a_Mean.html">6.2</a></td><td>Inference for a Mean (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec6-4_Inference_for_a_Difference_in_Means.html">6.4</a></td><td>Inference for a Difference in Means (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 14</td><td class="section-cell"><a href="lecture_notes/Sec6-5_Paired_Difference_in_Means.html">6.5</a></td><td>Paired Difference in Means</td></tr>
+    <tr><td class="section-cell"><span class="nolink">Unit C</span></td><td>Essential Synthesis</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 15</td><td class="section-cell"><a href="lecture_notes/Sec7-2_Testing_for_an_Association_between_Two_Categorical_Variables.html">7.2</a></td><td>Testing for an Association Between Two Categorical Variables</td></tr>
+    <tr><td class="section-cell"><a href="lecture_notes/Sec8-1_Analysis_of_Variance.html">8.1</a></td><td>Analysis of Variance</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 16</td><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Review</td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Final Exam</td></tr>
   </tbody>
 </table>
 
@@ -125,7 +243,7 @@
 <h2>Grades</h2>
 
 <h3>Grade Components</h3>
-<table>
+<table class="grade-table">
   <thead>
     <tr><th>NCBM 0142</th><th>MATH 1342</th></tr>
   </thead>
@@ -273,35 +391,6 @@
 <h3>General College Policies</h3>
 <p>Policies that apply to all courses at ACC can be found at <a href="https://www.austincc.edu/offices/academic-outcomes-assessment/master-syllabi/college-policies" target="_blank">austincc.edu/offices/academic-outcomes-assessment/master-syllabi/college-policies</a>.</p>
 
-<h2>Lecture Notes</h2>
-<ul class="lecture-list">
-  <li><a href="lecture_notes/Sec1-1_The_Structure_of_Data.html">Section 1.1: The Structure of Data</a></li>
-  <li><a href="lecture_notes/Sec1-2_Sampling_From_a_Population.html">Section 1.2: Sampling from a Population</a></li>
-  <li><a href="lecture_notes/Sec1-3_Experiments.html">Section 1.3: Experiments</a></li>
-  <li><a href="lecture_notes/Sec2-1_Categorical_Variables.html">Section 2.1: Categorical Variables</a></li>
-  <li><a href="lecture_notes/Sec2-2_One_Quantitative_Variable_Shape_and_Center.html">Section 2.2: One Quantitative Variable &mdash; Shape and Center</a></li>
-  <li><a href="lecture_notes/Sec2-3_One_Quantitative_Variable_Measures_of_Spread.html">Section 2.3: One Quantitative Variable &mdash; Measures of Spread</a></li>
-  <li><a href="lecture_notes/Sec2-4_Boxplots_and_Quantitative_Categorical_Relationships.html">Section 2.4: Boxplots and Quantitative/Categorical Relationships</a></li>
-  <li><a href="lecture_notes/Sec2-5_Two_Quantitative_Variables_Scatterplot_and_Correlation.html">Section 2.5: Two Quantitative Variables &mdash; Scatterplot and Correlation</a></li>
-  <li><a href="lecture_notes/Sec2-6_Two_Quantitative_Variables_Linear_Regression.html">Section 2.6: Two Quantitative Variables &mdash; Linear Regression</a></li>
-  <li><a href="lecture_notes/Sec3-1_Sampling_Distributions.html">Section 3.1: Sampling Distributions</a></li>
-  <li><a href="lecture_notes/Sec3-2_Understanding_and_Interpreting_Confidence_Intervals.html">Section 3.2: Understanding and Interpreting Confidence Intervals</a></li>
-  <li><a href="lecture_notes/Sec3-3_Constructing_Bootstrap_Confidence_Intervals.html">Section 3.3: Constructing Bootstrap Confidence Intervals</a></li>
-  <li><a href="lecture_notes/Sec3-4_Bootstrap_Confidence_Intervals_Using_Percentiles.html">Section 3.4: Bootstrap Confidence Intervals Using Percentiles</a></li>
-  <li><a href="lecture_notes/Sec4-1_Introducing_Hypothesis_Tests.html">Section 4.1: Introducing Hypothesis Tests</a></li>
-  <li><a href="lecture_notes/Sec4-2_Measuring_Evidence_with_P_values.html">Section 4.2: Measuring Evidence with P-values</a></li>
-  <li><a href="lecture_notes/Sec4-3_Determining_Statistical_Significance.html">Section 4.3: Determining Statistical Significance</a></li>
-  <li><a href="lecture_notes/Sec4-4_A_Closer_Look_at_Testing.html">Section 4.4: A Closer Look at Testing</a></li>
-  <li><a href="lecture_notes/Sec4-5_Making_Connections.html">Section 4.5: Making Connections</a></li>
-  <li><a href="lecture_notes/Sec5-1_Hypothesis_Tests_Using_Normal_Distributions.html">Section 5.1: Hypothesis Tests Using Normal Distributions</a></li>
-  <li><a href="lecture_notes/Sec6-1_Inference_for_a_Proportion.html">Section 6.1: Inference for a Proportion</a></li>
-  <li><a href="lecture_notes/Sec6-2_Inference_for_a_Mean.html">Section 6.2: Inference for a Mean</a></li>
-  <li><a href="lecture_notes/Sec6-3_Inference_for_a_Difference_in_Proportions.html">Section 6.3: Inference for a Difference in Proportions</a></li>
-  <li><a href="lecture_notes/Sec6-4_Inference_for_a_Difference_in_Means.html">Section 6.4: Inference for a Difference in Means</a></li>
-  <li><a href="lecture_notes/Sec6-5_Paired_Difference_in_Means.html">Section 6.5: Paired Difference in Means</a></li>
-  <li><a href="lecture_notes/Sec7-2_Testing_for_an_Association_between_Two_Categorical_Variables.html">Section 7.2: Testing for an Association between Two Categorical Variables</a></li>
-  <li><a href="lecture_notes/Sec8-1_Analysis_of_Variance.html">Section 8.1: Analysis of Variance</a></li>
-  <li><a href="lecture_notes/SecP-1_Probability.html">Section P.1: Probability Rules</a></li>
-</ul>
+</div>
 </body>
 </html>
