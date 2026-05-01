@@ -11,6 +11,7 @@
 window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../../lecture_notes/graph.js"></script>
 <style>
   :root {
     --primary: #38bdf8;
@@ -132,6 +133,12 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     border-bottom: 1px dotted var(--primary-light);
   }
   .quiz a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .quiz .plot { display: flex; justify-content: center; margin: 12px 0; }
+  .quiz .plot svg { max-width: 100%; height: auto; }
+  .quiz .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+  .quiz .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .quiz .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .quiz .plot-cap { font-size: 12px; color: var(--muted); text-align: center; margin-top: 4px; }
   @media (max-width: 760px) {
     .quiz { margin: 16px; padding: 22px 18px 36px; }
     .quiz h1 { font-size: 24px; }
@@ -181,6 +188,12 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <h3>Problem 4 <span class="pts">[4 pts]</span></h3>
 <p>Solve and write the answer in interval notation. <i>(2 pts each)</i></p><ol type='a'><li>\(x^2 - x - 12 \geq 0\)</li><li>\(x^2 + 4x &lt; 0\)</li></ol>
 <div class="solution"><p>(a) Factor: \((x - 4)(x + 3) = 0\) at \(x = -3, 4\); parabola opens up. Non-negative outside the roots: \((-\infty, -3] \cup [4, \infty)\).</p><p>(b) Factor: \(x(x + 4) = 0\) at \(x = -4, 0\). Negative between the roots: \((-4, 0)\).</p></div>
+<div class="plot-grid">
+<div class="plot-cell"><div id="q05-p4-sol-0"></div><div class="plot-cap">(a) \(y = x^2 - x - 12\), need \(y \geq 0\)</div></div>
+<div class="plot-cell"><div id="q05-p4-sol-1"></div><div class="plot-cap">(b) \(y = x^2 + 4x\), need \(y < 0\)</div></div>
+</div>
+<script>Lvplot.draw("#q05-p4-sol-0", {width: 320, height: 240, xMin: -5, xMax: 6, yMin: -16, yMax: 8, yStep: 4, curves: [{fn: x => (x*x - x - 12)}], points: [{x: -3, y: 0, color: "#fbbf24"}, {x: 4, y: 0, color: "#fbbf24"}]});
+Lvplot.draw("#q05-p4-sol-1", {width: 320, height: 240, xMin: -6, xMax: 3, yMin: -6, yMax: 6, curves: [{fn: x => (x*x + 4*x)}], points: [{x: -4, y: 0, color: "#fbbf24"}, {x: 0, y: 0, color: "#fbbf24"}]});</script>
 </div>
 
 </div>

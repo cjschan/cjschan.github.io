@@ -11,6 +11,7 @@
 window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../../lecture_notes/graph.js"></script>
 <style>
   :root {
     --primary: #38bdf8;
@@ -132,6 +133,12 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     border-bottom: 1px dotted var(--primary-light);
   }
   .quiz a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .quiz .plot { display: flex; justify-content: center; margin: 12px 0; }
+  .quiz .plot svg { max-width: 100%; height: auto; }
+  .quiz .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+  .quiz .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .quiz .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .quiz .plot-cap { font-size: 12px; color: var(--muted); text-align: center; margin-top: 4px; }
   @media (max-width: 760px) {
     .quiz { margin: 16px; padding: 22px 18px 36px; }
     .quiz h1 { font-size: 24px; }
@@ -186,6 +193,8 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <h3>Problem 5 <span class="pts">[2 pts]</span></h3>
 <p>Let \(\displaystyle f(x) = \begin{cases} 3 - x &amp; \text{if } x &lt; 0 \\ x^2 + 1 &amp; \text{if } 0 \leq x \leq 3 \\ 2x &amp; \text{if } x &gt; 3 \end{cases}\). Evaluate \(f(-2)\) and \(f(4)\). <i>(1 pt each)</i></p>
 <div class="solution"><p>\(f(-2) = 5\) (use first piece). \(f(4) = 8\) (use third piece).</p></div>
+<div class="plot" id="q03-p5-sol"></div>
+<script>Lvplot.draw("#q03-p5-sol", {width: 420, height: 300, xMin: -4, xMax: 6, yMin: -2, yMax: 12, curves: [{fn: x => (3 - x), from: -4, to: -0.001, color: "#38bdf8"}, {fn: x => (x*x + 1), from: 0, to: 3, color: "#fbbf24"}, {fn: x => (2*x), from: 3.001, to: 6, color: "#34d399"}], points: [{x: -2, y: 5, label: "f(-2) = 5", dx: 6, dy: -6}, {x: 4, y: 8, label: "f(4) = 8", dx: 6, dy: -6}]});</script>
 </div>
 
 </div>

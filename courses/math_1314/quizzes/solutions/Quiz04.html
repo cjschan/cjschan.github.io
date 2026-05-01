@@ -11,6 +11,7 @@
 window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../../lecture_notes/graph.js"></script>
 <style>
   :root {
     --primary: #38bdf8;
@@ -132,6 +133,12 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     border-bottom: 1px dotted var(--primary-light);
   }
   .quiz a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .quiz .plot { display: flex; justify-content: center; margin: 12px 0; }
+  .quiz .plot svg { max-width: 100%; height: auto; }
+  .quiz .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+  .quiz .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .quiz .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .quiz .plot-cap { font-size: 12px; color: var(--muted); text-align: center; margin-top: 4px; }
   @media (max-width: 760px) {
     .quiz { margin: 16px; padding: 22px 18px 36px; }
     .quiz h1 { font-size: 24px; }
@@ -166,6 +173,8 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <h3>Problem 1 <span class="pts">[2 pts]</span></h3>
 <p>Find the vertex and axis of symmetry of \(g(x) = x^2 + 6x - 1\). State whether the parabola opens up or down. <i>(1 pt vertex/axis, 1 pt direction)</i></p>
 <div class="solution"><p>\(h = -\tfrac{6}{2} = -3\); \(k = g(-3) = 9 - 18 - 1 = -10\). Vertex \((-3, -10)\); axis \(x = -3\); opens up.</p></div>
+<div class="plot" id="q04-p1-sol"></div>
+<script>Lvplot.draw("#q04-p1-sol", {width: 420, height: 320, xMin: -8, xMax: 2, yMin: -12, yMax: 8, curves: [{fn: x => (x*x + 6*x - 1)}], asymptotes: [{x: -3, color: "#94a3b8", dashed: true}], points: [{x: -3, y: -10, label: "(-3, -10)", color: "#fbbf24", dx: 6, dy: 14}]});</script>
 </div>
 <div class="problem">
 <h3>Problem 2 <span class="pts">[2 pts]</span></h3>
@@ -186,6 +195,8 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <h3>Problem 5 <span class="pts">[2 pts]</span></h3>
 <p>A small farm&rsquo;s daily revenue (in hundreds of dollars) for selling \(p\)-dollar baskets is modeled by \(R(p) = -2 p^2 + 24 p\). What price maximizes revenue, and what is the maximum revenue? <i>(1 pt each)</i></p>
 <div class="solution"><p>\(p = -\dfrac{24}{2(-2)} = 6\) dollars per basket. \(R(6) = -72 + 144 = 72\) (hundred dollars), i.e. \$7,200.</p></div>
+<div class="plot" id="q04-p5-sol"></div>
+<script>Lvplot.draw("#q04-p5-sol", {width: 420, height: 300, xMin: 0, xMax: 14, yMin: 0, yMax: 80, yStep: 10, xLabel: "p ($)", yLabel: "R (\u00d7$100)", curves: [{fn: x => (-2*x*x + 24*x), from: 0, to: 12}], points: [{x: 6, y: 72, label: "max (6, 72)", color: "#fbbf24", dx: 6, dy: -6}]});</script>
 </div>
 
 </div>

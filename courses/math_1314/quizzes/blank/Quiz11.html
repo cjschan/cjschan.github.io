@@ -11,6 +11,7 @@
 window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../../lecture_notes/graph.js"></script>
 <style>
   :root {
     --primary: #38bdf8;
@@ -132,6 +133,12 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     border-bottom: 1px dotted var(--primary-light);
   }
   .quiz a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .quiz .plot { display: flex; justify-content: center; margin: 12px 0; }
+  .quiz .plot svg { max-width: 100%; height: auto; }
+  .quiz .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+  .quiz .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .quiz .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .quiz .plot-cap { font-size: 12px; color: var(--muted); text-align: center; margin-top: 4px; }
   @media (max-width: 760px) {
     .quiz { margin: 16px; padding: 22px 18px 36px; }
     .quiz h1 { font-size: 24px; }
@@ -172,7 +179,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 </div>
 <div class="problem">
 <h3>Problem 3 <span class="pts">[3 pts]</span></h3>
-<p>Identify the corner points of the region defined by</p><p>\(\begin{cases} x + 2y \leq 12 \\ 3x + y \leq 12 \\ x \geq 0,\; y \geq 0 \end{cases}\)</p><p>and find the maximum value of \(P = 2x + 5y\) on the region. <i>(2 pts corners, 1 pt max value)</i></p>
+<p>The shaded region below is defined by</p><p>\(\begin{cases} x + 2y \leq 12 \\ 3x + y \leq 12 \\ x \geq 0,\; y \geq 0 \end{cases}\)</p><p>Identify the corner points of the region and find the maximum value of \(P = 2x + 5y\) on the region. <i>(2 pts corners, 1 pt max value)</i></p>
+<div class="plot" id="q11-p3-prob"></div>
+<script>Lvplot.draw("#q11-p3-prob", {width: 420, height: 320, xMin: -1, xMax: 8, yMin: -1, yMax: 8, curves: [{fn: x => ((12 - x)/2), from: 0, to: 6, color: "#38bdf8"}, {fn: x => (12 - 3*x), from: 0, to: 4, color: "#fbbf24"}]});</script>
 </div>
 <div class="problem">
 <h3>Problem 4 <span class="pts">[3 pts]</span></h3>

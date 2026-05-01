@@ -11,6 +11,7 @@
 window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../../lecture_notes/graph.js"></script>
 <style>
   :root {
     --primary: #38bdf8;
@@ -132,6 +133,12 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
     border-bottom: 1px dotted var(--primary-light);
   }
   .quiz a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .quiz .plot { display: flex; justify-content: center; margin: 12px 0; }
+  .quiz .plot svg { max-width: 100%; height: auto; }
+  .quiz .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+  .quiz .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .quiz .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .quiz .plot-cap { font-size: 12px; color: var(--muted); text-align: center; margin-top: 4px; }
   @media (max-width: 760px) {
     .quiz { margin: 16px; padding: 22px 18px 36px; }
     .quiz h1 { font-size: 24px; }
@@ -171,6 +178,8 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <h3>Problem 2 <span class="pts">[3 pts]</span></h3>
 <p>Find any vertical asymptotes, holes, and the horizontal asymptote of \(f(x) = \dfrac{x - 3}{x^2 - 9}\). <i>(1 pt VA, 1 pt hole, 1 pt HA)</i></p>
 <div class="solution"><p>\(\dfrac{x - 3}{(x - 3)(x + 3)} = \dfrac{1}{x + 3}\) for \(x \neq 3\). VA at \(x = -3\); hole at \(x = 3\); HA \(y = 0\).</p></div>
+<div class="plot" id="q08-p2-sol"></div>
+<script>Lvplot.draw("#q08-p2-sol", {width: 420, height: 300, xMin: -8, xMax: 8, yMin: -4, yMax: 4, curves: [{fn: x => (1/(x + 3))}], asymptotes: [{x: -3}, {y: 0}], points: [{x: 3, y: 0.16666666666666666, label: "hole", color: "#fbbf24", dx: 6, dy: -6}]});</script>
 </div>
 <div class="problem">
 <h3>Problem 3 <span class="pts">[2 pts]</span></h3>
