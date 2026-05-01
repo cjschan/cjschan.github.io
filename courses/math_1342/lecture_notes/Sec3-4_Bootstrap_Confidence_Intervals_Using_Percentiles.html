@@ -267,6 +267,41 @@
   </div>
 </div>
 
+
+<!-- Inserted: chart slide -->
+<div class="slide">
+  <h2>The Percentile Method Visualized</h2>
+  <p class="subtitle">1000 bootstrap means with the 2.5th and 97.5th percentiles marked — the middle 95% gives the CI.</p>
+  <div id="boot-pct" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:8px auto; max-width:640px;"></div>
+<script>
+(function(){
+  const data=[2.1,2.4,2.5,2.6,2.7,2.8,2.9,3.0,3.0,3.1,3.1,3.2,3.2,3.3,3.4,3.5,3.7,3.8,4.0,4.2,2.5,2.8,3.0,3.1,3.3,3.5,2.9,3.2,3.4,3.6];
+  const sample=()=>{ let s=0; for(let i=0;i<data.length;i++) s+=data[Math.floor(Math.random()*data.length)]; return s/data.length; };
+  const boots=[]; for(let i=0;i<1000;i++) boots.push(sample());
+  const sorted=[...boots].sort((a,b)=>a-b);
+  const lo=sorted[Math.floor(0.025*sorted.length)], hi=sorted[Math.floor(0.975*sorted.length)];
+  StatGraphs.dotplot('#boot-pct', boots, {width:600,height:240,xLabel:'bootstrap mean'});
+  // Overlay percentile markers
+  const svg=document.querySelector('#boot-pct svg');
+  const min=Math.min(...boots), max=Math.max(...boots);
+  const sx=v=>38+((v-min)/(max-min))*(600-38-14);
+  for(const [v,lab] of [[lo,'2.5%'],[hi,'97.5%']]){
+    const ln=document.createElementNS('http://www.w3.org/2000/svg','line');
+    ln.setAttribute('x1',sx(v)); ln.setAttribute('x2',sx(v));
+    ln.setAttribute('y1',14); ln.setAttribute('y2',240-28);
+    ln.setAttribute('stroke','#fbbf24'); ln.setAttribute('stroke-width',2); ln.setAttribute('stroke-dasharray','4 3');
+    svg.appendChild(ln);
+    const txt=document.createElementNS('http://www.w3.org/2000/svg','text');
+    txt.setAttribute('x',sx(v)); txt.setAttribute('y',24);
+    txt.setAttribute('fill','#fbbf24'); txt.setAttribute('font-size',11);
+    txt.setAttribute('text-anchor','middle'); txt.setAttribute('font-family','Work Sans, sans-serif');
+    txt.textContent=lab+' = '+v.toFixed(2);
+    svg.appendChild(txt);
+  }
+})();
+</script>
+</div>
+
 <!-- Slide 8: Summary -->
 <div class="slide">
   <span class="tag tag-blue">Recap</span>

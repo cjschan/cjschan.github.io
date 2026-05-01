@@ -415,6 +415,35 @@
   </div>
 </div>
 
+
+<!-- Inserted: chart slide -->
+<div class="slide">
+  <h2>Distribution of Paired Differences</h2>
+  <p class="subtitle">20 patients' systolic blood pressure dropped (or rose) after a treatment. The dotplot shows individual differences; the gold line marks zero.</p>
+  <div id="paired-diff" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:14px; margin:8px auto; max-width:640px;"></div>
+<script>
+(function(){
+  const diffs=[8,5,12,3,-2,7,11,9,4,15,6,2,10,1,-3,8,5,7,9,4];
+  StatGraphs.dotplot('#paired-diff', diffs, {width:600,height:200,xLabel:'difference (before − after, mmHg)'});
+  // Add a zero marker
+  const svg=document.querySelector('#paired-diff svg');
+  const minV=Math.min(...diffs), maxV=Math.max(...diffs);
+  const sx=v=>38+((v-minV)/(maxV-minV))*(600-38-14);
+  const ln=document.createElementNS('http://www.w3.org/2000/svg','line');
+  ln.setAttribute('x1',sx(0)); ln.setAttribute('x2',sx(0));
+  ln.setAttribute('y1',14); ln.setAttribute('y2',200-28);
+  ln.setAttribute('stroke','#fbbf24'); ln.setAttribute('stroke-width',2); ln.setAttribute('stroke-dasharray','4 3');
+  svg.appendChild(ln);
+  const t=document.createElementNS('http://www.w3.org/2000/svg','text');
+  t.setAttribute('x',sx(0)); t.setAttribute('y',24);
+  t.setAttribute('fill','#fbbf24'); t.setAttribute('font-size',11);
+  t.setAttribute('text-anchor','middle'); t.setAttribute('font-family','Work Sans, sans-serif');
+  t.textContent='no change';
+  svg.appendChild(t);
+})();
+</script>
+</div>
+
 <div class="slide">
   <h2>What to Remember</h2>
   <p class="subtitle">Paired-data inference is really one-sample mean inference applied to the differences.</p>

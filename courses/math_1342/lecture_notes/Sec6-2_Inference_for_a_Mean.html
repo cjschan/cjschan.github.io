@@ -533,6 +533,47 @@
   </div>
 </div>
 
+
+<!-- Inserted: chart slide -->
+<div class="slide">
+  <h2>The t-Distribution</h2>
+  <p class="subtitle">When the population SD is unknown, we use the <b>t-distribution</b> with \(n-1\) degrees of freedom. It has slightly heavier tails than the standard normal; for large \(n\) the two are almost identical.</p>
+  <div id="t-curve" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:14px; margin:8px auto; max-width:640px;"></div>
+<script>
+(function(){
+  // Normal pdf
+  const npdf=x=>Math.exp(-x*x/2)/Math.sqrt(2*Math.PI);
+  // t pdf for given df (using approximation for visual comparison)
+  function tpdf(x,df){
+    function logG(x){const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];let y=x,tmp=x+5.5;tmp-=(x+0.5)*Math.log(tmp);let ser=1.000000000190015;for(let j=0;j<6;j++)ser+=c[j]/++y;return -tmp+Math.log(2.5066282746310005*ser/x);}
+    const lp=logG((df+1)/2)-0.5*Math.log(df*Math.PI)-logG(df/2)-((df+1)/2)*Math.log(1+x*x/df);
+    return Math.exp(lp);
+  }
+  const xs=[];
+  for(let x=-4;x<=4.001;x+=0.05) xs.push(x);
+  const norm = xs.map(x=>[x,npdf(x)]);
+  const t5 = xs.map(x=>[x,tpdf(x,5)]);
+  const t30 = xs.map(x=>[x,tpdf(x,30)]);
+  const yMax=Math.max(...norm.map(p=>p[1]),...t5.map(p=>p[1]))*1.1;
+  StatGraphs.lineChart('#t-curve',{
+    width:600,height:260,xMin:-4,xMax:4,yMin:0,yMax,
+    xLabel:'value',yLabel:'density',
+    curves:[
+      {points:norm,color:'#94a3b8',dashed:true},
+      {points:t5,color:'#fb7185'},
+      {points:t30,color:'#38bdf8'},
+    ],
+  });
+  // Annotate via text overlay (legend approximation)
+  const svg=document.querySelector('#t-curve svg');
+  function addLabel(x,y,text,color){const t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',x);t.setAttribute('y',y);t.setAttribute('fill',color);t.setAttribute('font-size',11);t.setAttribute('font-family','Work Sans, sans-serif');t.textContent=text;svg.appendChild(t);}
+  addLabel(500,30,'standard normal','#94a3b8');
+  addLabel(500,46,'t (df = 30)','#38bdf8');
+  addLabel(500,62,'t (df = 5)','#fb7185');
+})();
+</script>
+</div>
+
 <div class="slide">
   <h2>What to Remember</h2>
   <p class="subtitle">For means, the big difference is replacing \(\sigma\) with \(s\), which leads to the t-distribution.</p>

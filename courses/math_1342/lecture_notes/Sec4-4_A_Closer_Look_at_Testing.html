@@ -164,6 +164,72 @@
   </div>
 </div>
 
+
+<!-- Inserted: chart slide -->
+<div class="slide">
+  <h2>Type I and Type II Errors Visualized</h2>
+  <p class="subtitle">Top curve: distribution under \(H_0\). Bottom curve: under a true alternative \(H_a\). The amber tail is α (Type I); the rose region is β (Type II).</p>
+  <div id="errors-curve" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:14px; margin:8px auto; max-width:640px;"></div>
+<script>
+(function(){
+  const W=600,H=300,PL=38,PR=14,PT=12,PB=30;
+  const SVG='http://www.w3.org/2000/svg';
+  const svg=document.createElementNS(SVG,'svg');
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.setAttribute('width',W); svg.setAttribute('height',H);
+  svg.style.cssText='background:#0f172a; border-radius:6px; max-width:100%; display:block;';
+  const xMin=-4,xMax=8;
+  const pdf=(x,m=0,s=1)=>Math.exp(-((x-m)*(x-m))/(2*s*s))/(s*Math.sqrt(2*Math.PI));
+  const yMax=pdf(0)*1.1;
+  const sx=v=>PL+((v-xMin)/(xMax-xMin))*(W-PL-PR);
+  const sy=v=>PT+(H-PT-PB)-(v/yMax)*(H-PT-PB);
+  // Critical value at 1.96 for alpha=0.05 right tail
+  const crit=1.96;
+  // Type I (alpha): right tail of H0 curve
+  let a='M '+sx(crit)+' '+sy(0);
+  for(let i=0;i<=40;i++){const x=crit+(xMax-crit)*i/40; a+=' L '+sx(x)+' '+sy(pdf(x));}
+  a+=' L '+sx(xMax)+' '+sy(0)+' Z';
+  const aPath=document.createElementNS(SVG,'path'); aPath.setAttribute('d',a);
+  aPath.setAttribute('fill','#fbbf24'); aPath.setAttribute('opacity','0.4');
+  svg.appendChild(aPath);
+  // Type II (beta): area under Ha curve to the LEFT of crit
+  let b='M '+sx(xMin)+' '+sy(0);
+  for(let i=0;i<=60;i++){const x=xMin+(crit-xMin)*i/60; b+=' L '+sx(x)+' '+sy(pdf(x,3,1));}
+  b+=' L '+sx(crit)+' '+sy(0)+' Z';
+  const bPath=document.createElementNS(SVG,'path'); bPath.setAttribute('d',b);
+  bPath.setAttribute('fill','#fb7185'); bPath.setAttribute('opacity','0.4');
+  svg.appendChild(bPath);
+  // H0 curve
+  let h0=''; for(let i=0;i<=200;i++){const x=xMin+(xMax-xMin)*i/200; h0+=(i===0?'M':' L')+sx(x)+','+sy(pdf(x));}
+  const h0p=document.createElementNS(SVG,'path'); h0p.setAttribute('d',h0);
+  h0p.setAttribute('fill','none'); h0p.setAttribute('stroke','#38bdf8'); h0p.setAttribute('stroke-width',2);
+  svg.appendChild(h0p);
+  // Ha curve (mean shifted to 3)
+  let ha=''; for(let i=0;i<=200;i++){const x=xMin+(xMax-xMin)*i/200; ha+=(i===0?'M':' L')+sx(x)+','+sy(pdf(x,3,1));}
+  const hap=document.createElementNS(SVG,'path'); hap.setAttribute('d',ha);
+  hap.setAttribute('fill','none'); hap.setAttribute('stroke','#a78bfa'); hap.setAttribute('stroke-width',2);
+  svg.appendChild(hap);
+  // Critical line
+  const crLn=document.createElementNS(SVG,'line');
+  crLn.setAttribute('x1',sx(crit)); crLn.setAttribute('x2',sx(crit));
+  crLn.setAttribute('y1',PT); crLn.setAttribute('y2',H-PB);
+  crLn.setAttribute('stroke','#94a3b8'); crLn.setAttribute('stroke-dasharray','4 3'); crLn.setAttribute('stroke-width',1.5);
+  svg.appendChild(crLn);
+  // Labels
+  function txt(x,y,t,color='#cbd5e1'){const e=document.createElementNS(SVG,'text');e.setAttribute('x',x);e.setAttribute('y',y);e.setAttribute('fill',color);e.setAttribute('font-size',12);e.setAttribute('font-family','Work Sans, sans-serif');e.textContent=t;return e;}
+  svg.appendChild(txt(sx(0),PT+12,'H₀','#38bdf8'));
+  svg.appendChild(txt(sx(3),PT+12,'Hₐ','#a78bfa'));
+  svg.appendChild(txt(sx(crit+0.4),sy(pdf(crit))-30,'α (Type I)','#fbbf24'));
+  svg.appendChild(txt(sx(0.6),sy(pdf(2,3,1))+10,'β (Type II)','#fb7185'));
+  // Axis
+  const axL=document.createElementNS(SVG,'line');
+  axL.setAttribute('x1',PL); axL.setAttribute('x2',W-PR); axL.setAttribute('y1',H-PB); axL.setAttribute('y2',H-PB);
+  axL.setAttribute('stroke','#94a3b8'); axL.setAttribute('stroke-width',1);
+  svg.appendChild(axL);
+  document.getElementById('errors-curve').appendChild(svg);
+})();
+</script>
+</div>
+
 <div class="slide">
   <h2>What to Remember</h2>
   <p class="subtitle">Testing has limitations. Stay aware of them.</p>

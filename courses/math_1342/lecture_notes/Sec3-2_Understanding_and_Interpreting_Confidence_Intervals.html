@@ -252,6 +252,78 @@
   </div>
 </div>
 
+
+<!-- Inserted: chart slide -->
+<div class="slide">
+  <h2>Visualizing Many CIs</h2>
+  <p class="subtitle">20 simulated 95% confidence intervals for the same population mean (true value shown as gold dashed line). About 95% should capture the truth.</p>
+  <div id="ci-stack" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:8px auto; max-width:640px;"></div>
+<script>
+(function(){
+  const W=600,H=300,PL=40,PR=14,PT=14,PB=30;
+  const trueMu=50, sigma=10, n=25, z=1.96;
+  const xMin=40, xMax=60;
+  const sx = v => PL + ((v-xMin)/(xMax-xMin))*(W-PL-PR);
+  const SVG='http://www.w3.org/2000/svg';
+  const svg=document.createElementNS(SVG,'svg');
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.setAttribute('width',W); svg.setAttribute('height',H);
+  svg.style.cssText='background:#0f172a; border-radius:6px; max-width:100%; display:block;';
+  // True mu line
+  const trueLine=document.createElementNS(SVG,'line');
+  trueLine.setAttribute('x1',sx(trueMu)); trueLine.setAttribute('x2',sx(trueMu));
+  trueLine.setAttribute('y1',PT); trueLine.setAttribute('y2',H-PB);
+  trueLine.setAttribute('stroke','#fbbf24'); trueLine.setAttribute('stroke-width',2); trueLine.setAttribute('stroke-dasharray','5 4');
+  svg.appendChild(trueLine);
+  for(let i=0;i<20;i++){
+    let xs=0; for(let j=0;j<n;j++) xs += trueMu + sigma*((Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()-3));
+    const xb = xs/n;
+    const SE = sigma/Math.sqrt(n);
+    const lo = xb - z*SE, hi = xb + z*SE;
+    const y = PT + 8 + i*((H-PT-PB-16)/19);
+    const captures = lo <= trueMu && trueMu <= hi;
+    const color = captures ? '#34d399' : '#fb7185';
+    const line=document.createElementNS(SVG,'line');
+    line.setAttribute('x1',sx(lo)); line.setAttribute('x2',sx(hi));
+    line.setAttribute('y1',y); line.setAttribute('y2',y);
+    line.setAttribute('stroke',color); line.setAttribute('stroke-width',2.5);
+    svg.appendChild(line);
+    for(const x of [lo,hi]){
+      const cap=document.createElementNS(SVG,'line');
+      cap.setAttribute('x1',sx(x)); cap.setAttribute('x2',sx(x));
+      cap.setAttribute('y1',y-3); cap.setAttribute('y2',y+3);
+      cap.setAttribute('stroke',color); cap.setAttribute('stroke-width',2);
+      svg.appendChild(cap);
+    }
+    const dot=document.createElementNS(SVG,'circle');
+    dot.setAttribute('cx',sx(xb)); dot.setAttribute('cy',y); dot.setAttribute('r',2.5);
+    dot.setAttribute('fill',color);
+    svg.appendChild(dot);
+  }
+  // x axis
+  const ax=document.createElementNS(SVG,'line');
+  ax.setAttribute('x1',PL); ax.setAttribute('x2',W-PR); ax.setAttribute('y1',H-PB); ax.setAttribute('y2',H-PB);
+  ax.setAttribute('stroke','#94a3b8'); ax.setAttribute('stroke-width',1);
+  svg.appendChild(ax);
+  for(const t of [40,45,50,55,60]){
+    const txt=document.createElementNS(SVG,'text');
+    txt.setAttribute('x',sx(t)); txt.setAttribute('y',H-PB+16);
+    txt.setAttribute('fill','#cbd5e1'); txt.setAttribute('font-size',11);
+    txt.setAttribute('text-anchor','middle'); txt.setAttribute('font-family','Work Sans, sans-serif');
+    txt.textContent=t;
+    svg.appendChild(txt);
+  }
+  // Label for true mu
+  const muLabel=document.createElementNS(SVG,'text');
+  muLabel.setAttribute('x',sx(trueMu)); muLabel.setAttribute('y',PT-2);
+  muLabel.setAttribute('fill','#fbbf24'); muLabel.setAttribute('font-size',11);
+  muLabel.setAttribute('text-anchor','middle'); muLabel.setAttribute('font-family','Work Sans, sans-serif');
+  muLabel.textContent='true µ = 50';
+  svg.appendChild(muLabel);
+  document.getElementById('ci-stack').appendChild(svg);
+})();
+</script>
+</div>
+
 <!-- Slide 8: Summary -->
 <div class="slide">
   <span class="tag tag-blue">Recap</span>

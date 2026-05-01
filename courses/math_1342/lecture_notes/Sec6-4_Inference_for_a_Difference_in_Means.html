@@ -441,6 +441,22 @@
   </div>
 </div>
 
+
+<!-- Inserted: chart slide -->
+<div class="slide">
+  <h2>Side-by-Side Distributions</h2>
+  <p class="subtitle">Two independent groups whose mean response we'd like to compare. The difference \(\bar{x}_1 - \bar{x}_2\) summarizes the contrast.</p>
+  <div id="two-mean" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:14px; margin:8px auto; max-width:640px;"></div>
+<script>
+(function(){
+  function genNorm(n,mean,sd){const out=[];for(let i=0;i<n;i++){let s=0;for(let j=0;j<6;j++) s+=Math.random();out.push(mean+sd*((s-3)*1.225));}return out;}
+  const A = genNorm(60,72,8);
+  const B = genNorm(60,80,9);
+  StatGraphs.boxplots('#two-mean',[A,B],['Group A','Group B'],{width:600,height:200,xLabel:'response'});
+})();
+</script>
+</div>
+
 <div class="slide">
   <h2>What to Remember</h2>
   <p class="subtitle">Difference-in-means inference extends the one-mean t methods to two separate samples.</p>

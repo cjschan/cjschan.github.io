@@ -246,6 +246,21 @@
   </div>
 </div>
 
+
+<!-- Inserted: chart slide -->
+<div class="slide">
+  <h2>What Does a Randomization Distribution Look Like?</h2>
+  <p class="subtitle">Suppose we test \(H_0: p = 0.5\) with 40 trials. Below: 1000 simulated sample proportions assuming \(H_0\) is true.</p>
+  <div id="rand4-1" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:8px auto; max-width:640px;"></div>
+<script>
+(function(){
+  const samples=[];
+  for(let s=0;s<1000;s++){let k=0;for(let i=0;i<40;i++)if(Math.random()<0.5)k++;samples.push(k/40);}
+  StatGraphs.dotplot('#rand4-1', samples, {width:600,height:220,xLabel:'p̂ (under H₀: p=0.5)'});
+})();
+</script>
+</div>
+
 <!-- Slide 8: Summary -->
 <div class="slide">
   <h2>Summary: Introducing Hypothesis Tests</h2>

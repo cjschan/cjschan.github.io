@@ -240,6 +240,21 @@
   </div>
 </div>
 
+
+<!-- Inserted: chart slide -->
+<div class="slide">
+  <h2>Probability Distribution: Rolling a Fair Six-Sided Die</h2>
+  <p class="subtitle">Each of six outcomes is equally likely, so each probability is \(1/6 \approx 0.167\). Observed counts in 600 simulated rolls.</p>
+  <div id="prob-die" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:14px; margin:8px auto; max-width:520px;"></div>
+<script>
+(function(){
+  const counts=[0,0,0,0,0,0];
+  for(let i=0;i<600;i++) counts[Math.floor(Math.random()*6)]++;
+  StatGraphs.barChart('#prob-die',['1','2','3','4','5','6'],counts,{width:480,height:220,yLabel:'count'});
+})();
+</script>
+</div>
+
 <div class="slide">
   <h2>What to Remember</h2>
   <p class="subtitle">The core probability rules.</p>

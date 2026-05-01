@@ -260,6 +260,21 @@
   </div>
 </div>
 
+
+<!-- Inserted: chart slide -->
+<div class="slide">
+  <h2>The Decision Rule Visualized</h2>
+  <p class="subtitle">Two-tailed test at \(\alpha = 0.05\). The shaded tails are the rejection region — total area 5%.</p>
+  <div id="alpha-curve" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:14px; margin:8px auto; max-width:640px;"></div>
+<script>
+StatGraphs.normalCurve('#alpha-curve',{
+  mean:0,sd:1,xMin:-4,xMax:4,width:600,height:240,xLabel:'standardized statistic',
+  shade:[{from:-4,to:-1.96,color:'#fb7185'},{from:1.96,to:4,color:'#fb7185'}],
+  markers:[{x:-1.96,label:'-1.96'},{x:1.96,label:'1.96'}],
+});
+</script>
+</div>
+
 <!-- Slide 8: Summary -->
 <div class="slide">
   <h2>Summary: Determining Statistical Significance</h2>

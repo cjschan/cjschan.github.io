@@ -148,6 +148,33 @@
   </div>
 </div>
 
+
+<!-- Inserted: chart slide -->
+<div class="slide">
+  <h2>Two Distributions, Same Data</h2>
+  <p class="subtitle">Same sample of 50 yes/no responses (28 yes). Left: <b>bootstrap</b> distribution centered at \(\hat{p} = 0.56\) (for CIs). Right: <b>randomization</b> distribution centered at \(p_0 = 0.5\) (for hypothesis tests).</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin: 8px auto; max-width: 720px;">
+  <div style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:10px;">
+    <div style="font-size:12px; color:#94a3b8; margin-bottom:4px;">Bootstrap (centered at p̂)</div>
+    <div id="comp-boot"></div>
+  </div>
+  <div style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:10px;">
+    <div style="font-size:12px; color:#94a3b8; margin-bottom:4px;">Randomization (centered at p₀ = 0.5)</div>
+    <div id="comp-rand"></div>
+  </div>
+</div>
+<script>
+(function(){
+  const n=50, x=28;
+  const phat=x/n;
+  const boot=[]; for(let s=0;s<1000;s++){let k=0;for(let i=0;i<n;i++)if(Math.random()<phat)k++;boot.push(k/n);}
+  const rand=[]; for(let s=0;s<1000;s++){let k=0;for(let i=0;i<n;i++)if(Math.random()<0.5)k++;rand.push(k/n);}
+  StatGraphs.dotplot('#comp-boot', boot, {width:340,height:200,xLabel:'p̂*'});
+  StatGraphs.dotplot('#comp-rand', rand, {width:340,height:200,xLabel:'p̂ under H₀',color:'#fbbf24'});
+})();
+</script>
+</div>
+
 <div class="slide">
   <h2>What to Remember</h2>
   <p class="subtitle">Everything connects.</p>
