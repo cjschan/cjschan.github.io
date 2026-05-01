@@ -8,6 +8,7 @@
   window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="statgraphs.js?v=1"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -102,6 +103,23 @@
       <div class="step-note">Compare the observed statistic to this distribution to find the p-value.</div>
     </div>
   </div>
+</div>
+
+<div class="slide">
+  <h2>The Normal Curve in Action</h2>
+  <p class="subtitle">A test statistic of \(z = -0.131 / 0.056 \approx -2.34\). Shaded tails show the two-tailed p-value.</p>
+  <div id="chart-5-1-norm" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:18px; max-width:640px; margin:8px auto;"></div>
+  <script>
+    StatGraphs.normalCurve('#chart-5-1-norm', {
+      mean: 0, sd: 1, xMin: -4, xMax: 4, width: 600, height: 240,
+      xLabel: 'z',
+      shade: [
+        { from: -4, to: -2.34, color: '#fb7185' },
+        { from: 2.34, to: 4, color: '#fb7185' },
+      ],
+      markers: [{ x: -2.34, label: 'observed z = -2.34' }],
+    });
+  </script>
 </div>
 
 <div class="slide">

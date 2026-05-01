@@ -8,6 +8,7 @@
   window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="statgraphs.js?v=1"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -134,6 +135,19 @@
       <div class="step-note">The summary statistic for comparing a quantitative response across two groups.</div>
     </div>
   </div>
+</div>
+
+<div class="slide">
+  <h2>Example: Side-by-Side Boxplots</h2>
+  <p class="subtitle">Hours of sleep per night reported by students by class year.</p>
+  <div id="chart-2-4-box" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:18px; max-width:620px; margin:8px auto;"></div>
+  <script>
+    const fr = [4, 5, 5, 6, 6, 6.5, 7, 7, 7.5, 7.5, 8, 8, 8, 8.5, 9, 9, 9.5, 10, 10.5, 11];
+    const so = [4, 5, 5.5, 6, 6, 6.5, 7, 7, 7, 7.5, 7.5, 8, 8, 8, 8.5, 9, 9.5, 10];
+    const ju = [3.5, 4, 5, 5.5, 6, 6, 6.5, 7, 7, 7.5, 7.5, 8, 8, 8.5, 9];
+    const sr = [3, 4, 4.5, 5, 5, 5.5, 6, 6, 6.5, 7, 7, 7.5, 8, 8, 9];
+    StatGraphs.boxplots('#chart-2-4-box', [fr, so, ju, sr], ['Freshmen', 'Sophomores', 'Juniors', 'Seniors'], { width: 580, height: 240, xLabel: 'hours of sleep' });
+  </script>
 </div>
 
 <div class="slide">

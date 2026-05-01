@@ -8,6 +8,7 @@
   window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="statgraphs.js?v=1"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -100,6 +101,26 @@
       <div class="stat-label">Long tail stretches to the right (toward larger values).</div>
     </div>
   </div>
+</div>
+
+<div class="slide">
+  <h2>Example: Histogram and Dot Plot</h2>
+  <p class="subtitle">Final-exam scores for 60 students. The histogram shows shape; the dotplot shows individual values.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Histogram</h3>
+      <div id="chart-2-2-hist"></div>
+    </div>
+    <div class="card card-accent2">
+      <h3>Dotplot</h3>
+      <div id="chart-2-2-dot"></div>
+    </div>
+  </div>
+  <script>
+    const exam = [62, 65, 70, 72, 73, 74, 74, 75, 76, 76, 77, 77, 78, 78, 79, 79, 80, 80, 81, 81, 82, 82, 82, 83, 83, 84, 84, 84, 85, 85, 85, 86, 86, 86, 87, 87, 88, 88, 88, 89, 89, 90, 90, 90, 91, 91, 92, 92, 93, 93, 94, 94, 95, 96, 96, 97, 97, 98, 98, 100];
+    StatGraphs.histogram('#chart-2-2-hist', exam, { xLabel: 'score', width: 380, height: 220 });
+    StatGraphs.dotplot('#chart-2-2-dot', exam, { xLabel: 'score', width: 380, height: 220 });
+  </script>
 </div>
 
 <div class="slide">

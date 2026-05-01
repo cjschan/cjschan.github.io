@@ -8,6 +8,7 @@
   window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="statgraphs.js?v=1"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -146,6 +147,43 @@
       <div class="stat-label">Correlation does not imply causation. A strong \(r\) does not mean one variable causes the other.</div>
     </div>
   </div>
+</div>
+
+<div class="slide">
+  <h2>Example: Three Scatterplots</h2>
+  <p class="subtitle">Visually identify direction, form, and strength.</p>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <h3>Strong positive linear</h3>
+      <div id="chart-2-5-pos"></div>
+    </div>
+    <div class="card card-amber">
+      <h3>Moderate negative linear</h3>
+      <div id="chart-2-5-neg"></div>
+    </div>
+    <div class="card card-rose">
+      <h3>No clear pattern</h3>
+      <div id="chart-2-5-none"></div>
+    </div>
+  </div>
+  <script>
+    function genLinear(n, slope, noise, x0=0, x1=10) {
+      const xs = [], ys = [];
+      for (let i = 0; i < n; i++) {
+        const x = x0 + Math.random() * (x1 - x0);
+        const y = slope * x + (Math.random() * 2 - 1) * noise + 5;
+        xs.push(x); ys.push(y);
+      }
+      return { xs, ys };
+    }
+    const a = genLinear(35, 1.0, 0.6);
+    const b = genLinear(35, -0.8, 1.5);
+    const c = (() => { const xs = [], ys = []; for (let i = 0; i < 35; i++) { xs.push(Math.random() * 10); ys.push(2 + Math.random() * 8); } return { xs, ys }; })();
+    const opts = { width: 260, height: 200, xLabel: 'x', yLabel: 'y' };
+    StatGraphs.scatter('#chart-2-5-pos', a.xs, a.ys, opts);
+    StatGraphs.scatter('#chart-2-5-neg', b.xs, b.ys, Object.assign({ color: '#fbbf24' }, opts));
+    StatGraphs.scatter('#chart-2-5-none', c.xs, c.ys, Object.assign({ color: '#fb7185' }, opts));
+  </script>
 </div>
 
 <div class="slide">

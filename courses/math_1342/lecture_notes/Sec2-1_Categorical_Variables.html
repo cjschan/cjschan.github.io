@@ -8,6 +8,7 @@
   window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="statgraphs.js?v=1"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -204,6 +205,15 @@
   <div class="callout">
     <strong>Summary statistic:</strong> The difference in proportions compares a categorical outcome across two groups.
   </div>
+</div>
+
+<div class="slide">
+  <h2>Example: Bar Chart</h2>
+  <p class="subtitle">Frequencies of favorite ice cream flavors among 200 surveyed students.</p>
+  <div id="chart-2-1-bar" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:16px; max-width:600px; margin: 8px auto;"></div>
+  <script>
+    StatGraphs.barChart('#chart-2-1-bar', ['Vanilla', 'Chocolate', 'Strawberry', 'Mint', 'Other'], [62, 78, 22, 18, 20], { width: 540, height: 240 });
+  </script>
 </div>
 
 <div class="slide">
