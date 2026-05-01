@@ -475,6 +475,50 @@
 </div>
 
 <div class="slide">
+  <h2>The Chi-Square Distribution</h2>
+  <p class="subtitle">For \(df = 4\). The right tail beyond an observed \(\chi^2 = 9.49\) is the p-value.</p>
+  <div id="chart-7-2-chi" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:18px; max-width:640px; margin:8px auto;"></div>
+  <script>
+    (function() {
+      function logGamma(x) { // Stirling-style approximation
+        const c = [76.18009172947146, -86.50532032941677, 24.01409824083091, -1.231739572450155, 0.1208650973866179e-2, -0.5395239384953e-5];
+        let y = x, tmp = x + 5.5;
+        tmp -= (x + 0.5) * Math.log(tmp);
+        let ser = 1.000000000190015;
+        for (let j = 0; j < 6; j++) ser += c[j] / ++y;
+        return -tmp + Math.log(2.5066282746310005 * ser / x);
+      }
+      const df = 4;
+      const pdf = (x) => x <= 0 ? 0 : Math.exp((df / 2 - 1) * Math.log(x) - x / 2 - (df / 2) * Math.log(2) - logGamma(df / 2));
+      const xs = [], ys = [];
+      for (let x = 0.05; x <= 16; x += 0.1) { xs.push(x); ys.push(pdf(x)); }
+      // Use lineChart with shading: shade the tail beyond 9.49 by drawing a separate filled path.
+      // Simplest: render two curves on the same chart by computing manually.
+      StatGraphs.lineChart('#chart-7-2-chi', {
+        width: 600, height: 240, xMin: 0, xMax: 16, yMin: 0, yMax: Math.max(...ys) * 1.1,
+        xLabel: 'χ² statistic', yLabel: 'density',
+        curves: [{ points: xs.map((x, i) => [x, ys[i]]) }],
+      });
+      // Overlay a marker at 9.49 (chi-sq critical value at alpha=0.05, df=4)
+      const svg = document.querySelector('#chart-7-2-chi svg');
+      const cx = 38 + ((9.49 - 0) / 16) * (600 - 38 - 14);
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', cx); line.setAttribute('x2', cx);
+      line.setAttribute('y1', 14); line.setAttribute('y2', 14 + (240 - 14 - 30));
+      line.setAttribute('stroke', '#fbbf24'); line.setAttribute('stroke-width', 2);
+      line.setAttribute('stroke-dasharray', '4 3');
+      svg.appendChild(line);
+      const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      txt.setAttribute('x', cx); txt.setAttribute('y', 24);
+      txt.setAttribute('fill', '#fbbf24'); txt.setAttribute('font-size', 11);
+      txt.setAttribute('text-anchor', 'middle'); txt.setAttribute('font-family', 'Work Sans, sans-serif');
+      txt.textContent = 'χ² = 9.49';
+      svg.appendChild(txt);
+    })();
+  </script>
+</div>
+
+<div class="slide">
   <h2>What to Remember</h2>
   <p class="subtitle">A chi-square test of association compares observed counts to expected counts from independence.</p>
   <div class="grid-2">

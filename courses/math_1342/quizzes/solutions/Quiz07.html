@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1342 Quiz 7 — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../lecture_notes/statgraphs.js"></script>
+<style>
+  :root { --primary:#38bdf8; --primary-light:#7dd3fc; --green:#34d399; --amber:#fbbf24; --bg:#0f172a; --card-bg:#1e293b; --text:#f1f5f9; --muted:#94a3b8; --border:#475569; }
+  .quiz { max-width:860px; margin:40px auto; padding:36px 48px 60px; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.30); color:var(--text); font-family:'Work Sans',sans-serif; line-height:1.6; font-size:16px; }
+  .quiz .badge { display:inline-block; background:rgba(56,189,248,0.15); color:var(--primary); padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px; }
+  .quiz h1 { color:var(--text); border-bottom:3px solid var(--primary); padding-bottom:10px; margin:4px 0 6px; font-size:30px; font-weight:700; }
+  .quiz .version-tag { color:var(--green); font-size:13px; text-transform:uppercase; letter-spacing:0.8px; margin:0 0 12px; font-weight:600; }
+  .quiz .covers { color:var(--muted); font-size:14px; margin-bottom:18px; }
+  .quiz .total-pts { color:var(--amber); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:16px; }
+  .quiz .instructions { background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.20); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:14px 18px; margin:8px 0 22px; font-size:15px; }
+  .quiz .problem { border:1px solid var(--border); border-radius:10px; padding:16px 20px 14px; margin:16px 0; background:rgba(15,23,42,0.5); }
+  .quiz .problem h3 { margin:0 0 8px; color:var(--primary); font-size:15px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+  .quiz .problem h3 .pts { color:var(--amber); margin-left:8px; font-size:13px; }
+  .quiz .problem ol, .quiz .problem ul { padding-left:22px; margin:0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom:4px; }
+  .quiz .solution { border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.07); border-radius:8px; padding:12px 16px; margin-top:12px; }
+  .quiz .solution::before { content:'Solution'; display:block; font-weight:700; color:var(--green); font-size:11px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; }
+  .quiz .chart { margin:10px 0; }
+  .quiz .chart > div { background:#1e293b; border:1px solid var(--border); border-radius:8px; padding:10px; }
+  .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
+  .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+  @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav><ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul></nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 7</span>
+<h1>Inference for Means and Differences</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections 6.2, 6.3, 6.4</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+</div>
+
+<p class="total-pts">Total: 10 points</p>
+<div class="problem">
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>A sample of \(n = 36\) commute times has \(\bar{x} = 28\) min and \(s = 12\) min. Construct an approximate 95% confidence interval for the mean commute time using \(\bar{x} \pm 2 \cdot s/\sqrt{n}\). <i>(2 pts)</i></p>
+<div class="solution"><p>\(SE = 12 / \sqrt{36} = 2\). \(28 \pm 2(2) = 28 \pm 4\). Interval: \((24, 32)\) minutes.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
+<p>To test \(H_0: \mu = 30\) vs \(H_a: \mu \neq 30\), with the same sample as Problem 1, compute the test statistic \(t = (\bar{x} - 30)/(s/\sqrt{n})\) and state whether you reject at \(\alpha = 0.05\) (using approximate critical value \(\pm 2\)). <i>(1 + 1)</i></p>
+<div class="solution"><p>\(t = (28-30)/2 = -1\). |t| = 1 &lt; 2, so do not reject \(H_0\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
+<p>In a study, 240 of 400 men say they exercise weekly, vs 270 of 500 women. Compute \(\hat{p}_1 - \hat{p}_2\) and a 95% confidence interval, using \(SE = \sqrt{\hat{p}_1(1-\hat{p}_1)/n_1 + \hat{p}_2(1-\hat{p}_2)/n_2}\). <i>(1 pt diff, 1 pt CI)</i></p>
+<div class="solution"><p>\(\hat{p}_1 = 0.60\), \(\hat{p}_2 = 0.54\). Difference \(= 0.06\).</p><p>\(SE = \sqrt{0.60(0.40)/400 + 0.54(0.46)/500} = \sqrt{0.0006 + 0.000497} = \sqrt{0.001097} \approx 0.0331\).</p><p>CI: \(0.06 \pm 2(0.0331) = 0.06 \pm 0.066\), or approximately \((-0.006, 0.126)\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
+<p>Two cleaning products are compared by measuring the bacterial reduction (%): Product A had \(\bar{x}_1 = 78\), \(s_1 = 8\), \(n_1 = 25\); Product B had \(\bar{x}_2 = 71\), \(s_2 = 10\), \(n_2 = 25\). Compute the difference of means and a standard error for the difference using \(SE = \sqrt{s_1^2/n_1 + s_2^2/n_2}\). <i>(1 + 1)</i></p>
+<div class="solution"><p>Difference \(= 78 - 71 = 7\). \(SE = \sqrt{64/25 + 100/25} = \sqrt{2.56 + 4} = \sqrt{6.56} \approx 2.56\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 5 <span class="pts">[2 pts]</span></h3>
+<p>Use the SE from Problem 4 to test \(H_0: \mu_1 = \mu_2\) vs \(H_a: \mu_1 \neq \mu_2\). Compute \(t = (\bar{x}_1 - \bar{x}_2)/SE\) and decide at \(\alpha = 0.05\) (use approximate critical \(\pm 2\)). <i>(1 + 1)</i></p>
+<div class="solution"><p>\(t = 7 / 2.56 \approx 2.73\). Since |t| &gt; 2, reject \(H_0\). Evidence that Products A and B differ in mean reduction.</p></div>
+</div>
+
+</div>
+</body>
+</html>

@@ -279,6 +279,24 @@
 
 <!-- Slide 9: Summary -->
 <div class="slide">
+  <h2>Visualizing a Sampling Distribution</h2>
+  <p class="subtitle">1000 samples of size \(n = 50\) from a population with \(p = 0.6\). Each dot is one \(\hat{p}\).</p>
+  <div id="chart-3-1-samp" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:18px; max-width:640px; margin:8px auto;"></div>
+  <script>
+    (function() {
+      const phats = [];
+      const n = 50, p = 0.6;
+      for (let s = 0; s < 1000; s++) {
+        let k = 0;
+        for (let i = 0; i < n; i++) if (Math.random() < p) k++;
+        phats.push(k / n);
+      }
+      StatGraphs.dotplot('#chart-3-1-samp', phats, { width: 600, height: 220, xLabel: 'sample proportion p̂' });
+    })();
+  </script>
+</div>
+
+<div class="slide">
   <span class="tag tag-blue">Recap</span>
   <h2>Section 3.1 Summary</h2>
   <div class="grid-2">

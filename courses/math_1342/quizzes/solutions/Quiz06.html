@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1342 Quiz 6 — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../lecture_notes/statgraphs.js"></script>
+<style>
+  :root { --primary:#38bdf8; --primary-light:#7dd3fc; --green:#34d399; --amber:#fbbf24; --bg:#0f172a; --card-bg:#1e293b; --text:#f1f5f9; --muted:#94a3b8; --border:#475569; }
+  .quiz { max-width:860px; margin:40px auto; padding:36px 48px 60px; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.30); color:var(--text); font-family:'Work Sans',sans-serif; line-height:1.6; font-size:16px; }
+  .quiz .badge { display:inline-block; background:rgba(56,189,248,0.15); color:var(--primary); padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px; }
+  .quiz h1 { color:var(--text); border-bottom:3px solid var(--primary); padding-bottom:10px; margin:4px 0 6px; font-size:30px; font-weight:700; }
+  .quiz .version-tag { color:var(--green); font-size:13px; text-transform:uppercase; letter-spacing:0.8px; margin:0 0 12px; font-weight:600; }
+  .quiz .covers { color:var(--muted); font-size:14px; margin-bottom:18px; }
+  .quiz .total-pts { color:var(--amber); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:16px; }
+  .quiz .instructions { background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.20); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:14px 18px; margin:8px 0 22px; font-size:15px; }
+  .quiz .problem { border:1px solid var(--border); border-radius:10px; padding:16px 20px 14px; margin:16px 0; background:rgba(15,23,42,0.5); }
+  .quiz .problem h3 { margin:0 0 8px; color:var(--primary); font-size:15px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+  .quiz .problem h3 .pts { color:var(--amber); margin-left:8px; font-size:13px; }
+  .quiz .problem ol, .quiz .problem ul { padding-left:22px; margin:0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom:4px; }
+  .quiz .solution { border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.07); border-radius:8px; padding:12px 16px; margin-top:12px; }
+  .quiz .solution::before { content:'Solution'; display:block; font-weight:700; color:var(--green); font-size:11px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; }
+  .quiz .chart { margin:10px 0; }
+  .quiz .chart > div { background:#1e293b; border:1px solid var(--border); border-radius:8px; padding:10px; }
+  .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
+  .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+  @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav><ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul></nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 6</span>
+<h1>Statistical Significance, Errors, and Normal-Based Tests</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections 4.3, 4.4, 4.5, 5.1, 6.1</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+</div>
+
+<p class="total-pts">Total: 10 points</p>
+<div class="problem">
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>For each p-value, decide whether to reject \(H_0\) at the given significance level. <i>(0.5 pt each)</i></p><ol type='a'><li>p = 0.001, \(\alpha = 0.05\)</li><li>p = 0.07, \(\alpha = 0.05\)</li><li>p = 0.04, \(\alpha = 0.01\)</li><li>p = 0.20, \(\alpha = 0.10\)</li></ol>
+<div class="solution"><p>(a) Reject (p &lt; 0.05). (b) Do not reject (p &gt; 0.05). (c) Do not reject (p &gt; 0.01). (d) Do not reject (p &gt; 0.10).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
+<p>In a hypothesis test, define each in plain English: <i>(1 pt each)</i></p><ol type='a'><li>Type I error</li><li>Type II error</li></ol>
+<div class="solution"><p>(a) Type I error: rejecting \(H_0\) when it is actually true (a false positive).</p><p>(b) Type II error: failing to reject \(H_0\) when it is actually false (a false negative).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
+<p>Compute the standardized test statistic.</p><ol type='a'><li>For a single proportion: \(\hat{p} = 0.62\), \(p_0 = 0.55\), \(n = 200\). Use \(z = (\hat{p} - p_0) / \sqrt{p_0(1-p_0)/n}\). <i>(1 pt)</i></li><li>For a single mean: \(\bar{x} = 102\), \(\mu_0 = 100\), \(s = 8\), \(n = 64\). Use \(z = (\bar{x} - \mu_0) / (s/\sqrt{n})\). <i>(1 pt)</i></li></ol>
+<div class="solution"><p>(a) \(SE = \sqrt{0.55 \cdot 0.45 / 200} = \sqrt{0.001238} \approx 0.0352\). \(z = (0.62 - 0.55)/0.0352 \approx 1.99\).</p><p>(b) \(SE = 8/\sqrt{64} = 1\). \(z = (102 - 100)/1 = 2\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
+<p>The two-tailed p-value for \(z = 2.0\) is approximately 0.0455. State the conclusion at \(\alpha = 0.05\) for the test in Problem 3(b), and write a one-sentence interpretation. <i>(1 pt each)</i></p>
+<div class="solution"><p>Since p ≈ 0.0455 &lt; 0.05, reject \(H_0\). There is statistically significant evidence (at the 5% level) that the population mean differs from 100.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 5 <span class="pts">[2 pts]</span></h3>
+<p>The shaded region of the normal curve below shows the rejection region for a two-sided test at \(\alpha = 0.05\). Roughly what z-values mark the boundaries, and what would be the conclusion if the observed z-value is 1.5? <i>(1 pt each)</i></p>
+<div class='chart'><div id='q6-norm'></div></div><script>StatGraphs.normalCurve('#q6-norm',{mean:0,sd:1,xMin:-4,xMax:4,width:540,height:200,xLabel:'z',shade:[{from:-4,to:-1.96,color:'#fb7185'},{from:1.96,to:4,color:'#fb7185'}],markers:[{x:1.5,label:'z=1.5'}]});</script>
+<div class="solution"><p>Boundaries: \(z = \pm 1.96\). Since 1.5 is inside the (-1.96, 1.96) interval, we do not reject \(H_0\) at \(\alpha = 0.05\).</p></div>
+</div>
+
+</div>
+</body>
+</html>

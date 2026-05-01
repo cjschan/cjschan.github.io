@@ -489,6 +489,18 @@
 </div>
 
 <div class="slide">
+  <h2>Visualizing Between vs. Within Variability</h2>
+  <p class="subtitle">If groups (colors) are very different from each other relative to the spread within each, the F statistic gets large.</p>
+  <div id="chart-8-1-bw" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:18px; max-width:640px; margin:8px auto;"></div>
+  <script>
+    const A = [42, 44, 46, 47, 48, 50, 52, 53, 54, 56];
+    const B = [55, 57, 59, 60, 62, 63, 65, 66, 67, 69];
+    const C = [68, 70, 71, 73, 74, 76, 77, 78, 80, 82];
+    StatGraphs.boxplots('#chart-8-1-bw', [A, B, C], ['Group A', 'Group B', 'Group C'], { width: 580, height: 220, xLabel: 'response value' });
+  </script>
+</div>
+
+<div class="slide">
   <h2>What to Remember</h2>
   <p class="subtitle">ANOVA tests for a difference in means by comparing two kinds of variability.</p>
   <div class="grid-2">

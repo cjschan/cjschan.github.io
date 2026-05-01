@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1342 Quiz 1 — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../lecture_notes/statgraphs.js"></script>
+<style>
+  :root { --primary:#38bdf8; --primary-light:#7dd3fc; --green:#34d399; --amber:#fbbf24; --bg:#0f172a; --card-bg:#1e293b; --text:#f1f5f9; --muted:#94a3b8; --border:#475569; }
+  .quiz { max-width:860px; margin:40px auto; padding:36px 48px 60px; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.30); color:var(--text); font-family:'Work Sans',sans-serif; line-height:1.6; font-size:16px; }
+  .quiz .badge { display:inline-block; background:rgba(56,189,248,0.15); color:var(--primary); padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px; }
+  .quiz h1 { color:var(--text); border-bottom:3px solid var(--primary); padding-bottom:10px; margin:4px 0 6px; font-size:30px; font-weight:700; }
+  .quiz .version-tag { color:var(--green); font-size:13px; text-transform:uppercase; letter-spacing:0.8px; margin:0 0 12px; font-weight:600; }
+  .quiz .covers { color:var(--muted); font-size:14px; margin-bottom:18px; }
+  .quiz .total-pts { color:var(--amber); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:16px; }
+  .quiz .instructions { background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.20); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:14px 18px; margin:8px 0 22px; font-size:15px; }
+  .quiz .problem { border:1px solid var(--border); border-radius:10px; padding:16px 20px 14px; margin:16px 0; background:rgba(15,23,42,0.5); }
+  .quiz .problem h3 { margin:0 0 8px; color:var(--primary); font-size:15px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+  .quiz .problem h3 .pts { color:var(--amber); margin-left:8px; font-size:13px; }
+  .quiz .problem ol, .quiz .problem ul { padding-left:22px; margin:0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom:4px; }
+  .quiz .solution { border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.07); border-radius:8px; padding:12px 16px; margin-top:12px; }
+  .quiz .solution::before { content:'Solution'; display:block; font-weight:700; color:var(--green); font-size:11px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; }
+  .quiz .chart { margin:10px 0; }
+  .quiz .chart > div { background:#1e293b; border:1px solid var(--border); border-radius:8px; padding:10px; }
+  .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
+  .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+  @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav><ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul></nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 1</span>
+<h1>Data Structure and Sampling</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections 1.1, 1.2</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+</div>
+
+<p class="total-pts">Total: 10 points</p>
+<div class="problem">
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>For each variable, decide whether it is <b>categorical</b> or <b>quantitative</b>. <i>(0.5 pt each)</i></p><ol type='a'><li>Eye color of a survey respondent</li><li>Number of siblings</li><li>Letter grade in a course</li><li>Resting heart rate (bpm)</li></ol>
+<div class="solution"><p>(a) Categorical. (b) Quantitative. (c) Categorical (the letters are labels). (d) Quantitative.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
+<p>A pollster asks every 50th visitor to a coffee shop their political party. Identify (a) the population, (b) the sample, and (c) one likely source of bias. <i>(1 + 0.5 + 0.5)</i></p>
+<div class="solution"><p>(a) All adult voters (or whomever the conclusion targets). (b) The set of every-50th visitors actually surveyed. (c) Coverage / selection bias — coffee shop patrons aren't representative of all voters; people who avoid coffee shops are underrepresented.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
+<p>Match each scenario to the most appropriate sampling method (simple random sample, stratified, cluster, or convenience). <i>(0.5 pt each)</i></p><ol type='a'><li>The instructor surveys the first 30 students who walk in.</li><li>A list of all 800 employees is randomized; the first 60 are chosen.</li><li>Voters are split into precincts; 5 precincts are chosen at random and every voter in those precincts is asked.</li><li>Researchers separate hospital patients into &lt;30, 30-59, 60+ years and randomly pick 20 from each age group.</li></ol>
+<div class="solution"><p>(a) Convenience. (b) Simple random sample. (c) Cluster. (d) Stratified.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
+<p>For a population of \(N = 600\) students, a researcher uses a random number generator to select 50 IDs and surveys those students. Is each of the following a parameter or a statistic? <i>(1 pt each)</i></p><ol type='a'><li>The proportion of those 50 students who own a car.</li><li>The mean GPA of all 600 students.</li></ol>
+<div class="solution"><p>(a) Statistic (computed from the sample). (b) Parameter (describes the entire population).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 5 <span class="pts">[2 pts]</span></h3>
+<p>Identify whether each is best described as <b>random sampling</b>, <b>random assignment</b>, <b>both</b>, or <b>neither</b>, and briefly state what each technique allows you to conclude. <i>(1 + 1)</i></p><ol type='a'><li>An online survey link posted on the school website asks for volunteer responses.</li><li>200 patients are randomly assigned to a new drug or a placebo, with treatment outcomes recorded.</li></ol>
+<div class="solution"><p>(a) <b>Neither.</b> Volunteer / convenience sampling — conclusions don't generalize, and we can't infer cause.</p><p>(b) <b>Random assignment</b> only (volunteers came from a non-random pool). Random assignment lets us infer causation within the patients in the study, but findings might not generalize to all patients.</p></div>
+</div>
+
+</div>
+</body>
+</html>

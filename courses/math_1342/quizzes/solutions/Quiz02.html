@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1342 Quiz 2 — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../lecture_notes/statgraphs.js"></script>
+<style>
+  :root { --primary:#38bdf8; --primary-light:#7dd3fc; --green:#34d399; --amber:#fbbf24; --bg:#0f172a; --card-bg:#1e293b; --text:#f1f5f9; --muted:#94a3b8; --border:#475569; }
+  .quiz { max-width:860px; margin:40px auto; padding:36px 48px 60px; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.30); color:var(--text); font-family:'Work Sans',sans-serif; line-height:1.6; font-size:16px; }
+  .quiz .badge { display:inline-block; background:rgba(56,189,248,0.15); color:var(--primary); padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px; }
+  .quiz h1 { color:var(--text); border-bottom:3px solid var(--primary); padding-bottom:10px; margin:4px 0 6px; font-size:30px; font-weight:700; }
+  .quiz .version-tag { color:var(--green); font-size:13px; text-transform:uppercase; letter-spacing:0.8px; margin:0 0 12px; font-weight:600; }
+  .quiz .covers { color:var(--muted); font-size:14px; margin-bottom:18px; }
+  .quiz .total-pts { color:var(--amber); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:16px; }
+  .quiz .instructions { background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.20); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:14px 18px; margin:8px 0 22px; font-size:15px; }
+  .quiz .problem { border:1px solid var(--border); border-radius:10px; padding:16px 20px 14px; margin:16px 0; background:rgba(15,23,42,0.5); }
+  .quiz .problem h3 { margin:0 0 8px; color:var(--primary); font-size:15px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+  .quiz .problem h3 .pts { color:var(--amber); margin-left:8px; font-size:13px; }
+  .quiz .problem ol, .quiz .problem ul { padding-left:22px; margin:0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom:4px; }
+  .quiz .solution { border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.07); border-radius:8px; padding:12px 16px; margin-top:12px; }
+  .quiz .solution::before { content:'Solution'; display:block; font-weight:700; color:var(--green); font-size:11px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; }
+  .quiz .chart { margin:10px 0; }
+  .quiz .chart > div { background:#1e293b; border:1px solid var(--border); border-radius:8px; padding:10px; }
+  .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
+  .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+  @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav><ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul></nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 2</span>
+<h1>Experiments and Descriptive Statistics</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections 1.3, 2.1, 2.2</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+</div>
+
+<p class="total-pts">Total: 10 points</p>
+<div class="problem">
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>A researcher runs an experiment to test whether a new fertilizer increases tomato yield. Each plot is randomly assigned either the new fertilizer or the standard one. Identify the explanatory variable, the response variable, and what makes this an experiment (rather than an observational study). <i>(0.5 + 0.5 + 1)</i></p>
+<div class="solution"><p>Explanatory: type of fertilizer (categorical). Response: tomato yield (quantitative). It is an experiment because the researcher <b>randomly assigns</b> the treatments rather than just observing what each plot already received.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
+<p>Among 250 surveyed customers, 90 chose vanilla, 120 chose chocolate, and 40 chose strawberry. Compute the proportion that chose each flavor. <i>(0.5 pt each + 0.5 pt setup)</i></p>
+<div class="solution"><p>Total = 250. Vanilla: \(90/250 = 0.36\). Chocolate: \(120/250 = 0.48\). Strawberry: \(40/250 = 0.16\). (Sum = 1.00 ✓.)</p></div>
+</div>
+<div class="problem">
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
+<p>Find the mean and the median of the data set: \(4, 7, 7, 8, 9, 11, 14, 20\). Which is more affected if we replace 20 by 200? <i>(1 pt mean, 0.5 pt median, 0.5 pt explain)</i></p>
+<div class="solution"><p>Mean = \(80/8 = 10\). Median = average of 4th and 5th values = \((8+9)/2 = 8.5\).</p><p>Replacing 20 with 200 changes the mean to \(260/8 = 32.5\) but leaves the median unchanged at 8.5. The mean is far more affected by the outlier.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
+<p>Describe the shape of each distribution from its histogram features.</p><ol type='a'><li>Mean = 12, median = 12, dotplot is roughly mirror-image about 12.</li><li>Annual incomes — long upper tail with a few very high values.</li><li>Test scores where most students did very well and a small group struggled.</li></ol>
+<div class="solution"><p>(a) Approximately symmetric.</p><p>(b) Right-skewed (long tail to the right).</p><p>(c) Left-skewed (long tail to the left, toward the lower scores).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 5 <span class="pts">[2 pts]</span></h3>
+<p>Use the histogram below — the body-mass index (BMI) of 80 adult patients — to estimate the median and describe the shape. <i>(1 pt each)</i></p>
+<div class='chart'><div id='q2-hist'></div></div><script>(function(){const data=[19,20,20,21,21,22,22,22,23,23,23,23,24,24,24,24,25,25,25,25,25,26,26,26,26,26,27,27,27,27,27,28,28,28,28,29,29,29,30,30,30,31,31,32,32,33,33,34,34,35,35,36,36,37,38,38,39,40,42,45];StatGraphs.histogram('#q2-hist',data,{xLabel:'BMI',width:560,height:200});})();</script>
+<div class="solution"><p>The peak is around 25-27, the upper tail stretches to the high 30s/40s, and the lower tail is short — <b>right-skewed</b>. The median appears to be around 27.</p></div>
+</div>
+
+</div>
+</body>
+</html>

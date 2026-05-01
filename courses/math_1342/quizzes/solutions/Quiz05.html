@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1342 Quiz 5 — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../lecture_notes/statgraphs.js"></script>
+<style>
+  :root { --primary:#38bdf8; --primary-light:#7dd3fc; --green:#34d399; --amber:#fbbf24; --bg:#0f172a; --card-bg:#1e293b; --text:#f1f5f9; --muted:#94a3b8; --border:#475569; }
+  .quiz { max-width:860px; margin:40px auto; padding:36px 48px 60px; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.30); color:var(--text); font-family:'Work Sans',sans-serif; line-height:1.6; font-size:16px; }
+  .quiz .badge { display:inline-block; background:rgba(56,189,248,0.15); color:var(--primary); padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px; }
+  .quiz h1 { color:var(--text); border-bottom:3px solid var(--primary); padding-bottom:10px; margin:4px 0 6px; font-size:30px; font-weight:700; }
+  .quiz .version-tag { color:var(--green); font-size:13px; text-transform:uppercase; letter-spacing:0.8px; margin:0 0 12px; font-weight:600; }
+  .quiz .covers { color:var(--muted); font-size:14px; margin-bottom:18px; }
+  .quiz .total-pts { color:var(--amber); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:16px; }
+  .quiz .instructions { background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.20); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:14px 18px; margin:8px 0 22px; font-size:15px; }
+  .quiz .problem { border:1px solid var(--border); border-radius:10px; padding:16px 20px 14px; margin:16px 0; background:rgba(15,23,42,0.5); }
+  .quiz .problem h3 { margin:0 0 8px; color:var(--primary); font-size:15px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+  .quiz .problem h3 .pts { color:var(--amber); margin-left:8px; font-size:13px; }
+  .quiz .problem ol, .quiz .problem ul { padding-left:22px; margin:0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom:4px; }
+  .quiz .solution { border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.07); border-radius:8px; padding:12px 16px; margin-top:12px; }
+  .quiz .solution::before { content:'Solution'; display:block; font-weight:700; color:var(--green); font-size:11px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; }
+  .quiz .chart { margin:10px 0; }
+  .quiz .chart > div { background:#1e293b; border:1px solid var(--border); border-radius:8px; padding:10px; }
+  .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
+  .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+  @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav><ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul></nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 5</span>
+<h1>Bootstrap CIs and Hypothesis Tests</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections 3.3, 3.4, 4.1, 4.2</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+</div>
+
+<p class="total-pts">Total: 10 points</p>
+<div class="problem">
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>Briefly describe how to construct one bootstrap sample from a sample of size \(n = 50\), and explain why bootstrapping is useful when we want a confidence interval but only have one sample. <i>(1 pt each)</i></p>
+<div class="solution"><p>To make one bootstrap sample, draw \(n = 50\) values <b>with replacement</b> from the original sample (so some original values may appear multiple times and others not at all). Compute the statistic on the bootstrap sample.</p><p>Repeating this thousands of times produces a bootstrap distribution that approximates the sampling variability we'd see from repeated samples — without needing a formula for the standard error.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
+<p>A bootstrap distribution of the sample mean has standard error \(SE = 1.4\). The original sample mean is \(\bar{x} = 24.6\). Construct an approximate 95% confidence interval using the SE method (\(\bar{x} \pm 2 \, SE\)). <i>(2 pts)</i></p>
+<div class="solution"><p>\(24.6 \pm 2(1.4) = 24.6 \pm 2.8\). Interval: \((21.8,\ 27.4)\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
+<p>1000 bootstrap means have 2.5th percentile \(= 21.6\) and 97.5th percentile \(= 27.5\). Give the percentile-method 95% CI. Briefly compare to the SE-method CI from Problem 2. <i>(1 + 1)</i></p>
+<div class="solution"><p>Percentile CI: \((21.6,\ 27.5)\). It is very close to the SE-method CI \((21.8,\ 27.4)\) — both methods give similar answers when the bootstrap distribution is roughly symmetric and bell-shaped.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
+<p>State an appropriate \(H_0\) and \(H_a\) for each scenario. <i>(1 pt each)</i></p><ol type='a'><li>Researchers want evidence that more than 50% of voters in a city support a measure.</li><li>A new drug should change average blood pressure (in either direction) compared with the current drug, where the current drug's average drop is 7 mmHg.</li></ol>
+<div class="solution"><p>(a) \(H_0: p = 0.5\); \(H_a: p &gt; 0.5\) (one-sided).</p><p>(b) \(H_0: \mu = 7\); \(H_a: \mu \neq 7\) (two-sided).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 5 <span class="pts">[2 pts]</span></h3>
+<p>A researcher runs a one-sided test and finds a p-value of 0.012.</p><ol type='a'><li>Interpret this p-value in context (assume \(H_0\) says \(p = 0.5\) and the alternative is \(p &gt; 0.5\)). <i>(1 pt)</i></li><li>Using \(\alpha = 0.05\), what is the conclusion? Using \(\alpha = 0.01\)? <i>(0.5 pt each)</i></li></ol>
+<div class="solution"><p>(a) Assuming \(H_0: p = 0.5\) is true, there is only a 1.2% chance of getting a sample proportion this large or larger by random chance alone.</p><p>(b) At \(\alpha = 0.05\): reject \(H_0\) (since \(0.012 &lt; 0.05\)). At \(\alpha = 0.01\): do not reject (since \(0.012 &gt; 0.01\)).</p></div>
+</div>
+
+</div>
+</body>
+</html>
