@@ -12,14 +12,14 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=1"></script>
-<script src="statkey.js?v=4"></script>
+<script src="statkey.js?v=5"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
   .deck { width: 100vw; height: 100vh; position: relative; }
   .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
-  .slide.active { display: flex; opacity: 1; }
+  .slide.active { display: flex; opacity: 1; overflow-y: auto; }
   .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
   .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
   .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }

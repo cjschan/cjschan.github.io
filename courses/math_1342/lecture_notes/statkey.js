@@ -97,8 +97,8 @@ const StatKey = (() => {
       svgHost.innerHTML = '<div style="color:#94a3b8; font-size:13px; padding:18px; text-align:center;">No simulations yet. Click <b>Generate One</b> or <b>Run 1000</b> to begin.</div>';
       return;
     }
-    const W = 460, H = 240;
-    const PL = 38, PR = 12, PT = 14, PB = 28;
+    const W = 460, H = 200;
+    const PL = 38, PR = 12, PT = 12, PB = 26;
     const plotW = W - PL - PR;
     const plotH = H - PT - PB;
 
@@ -316,7 +316,7 @@ const StatKey = (() => {
     const samples = [];
 
     // Layout
-    const card = html('div', { style: 'background:#1e293b; border:1px solid #475569; border-radius:12px; padding:18px; color:#f1f5f9; font-family:Work Sans,sans-serif; margin:14px 0; max-width:520px;' });
+    const card = html('div', { style: 'background:#1e293b; border:1px solid #475569; border-radius:12px; padding:14px 18px; color:#f1f5f9; font-family:Work Sans,sans-serif; margin:8px 0; max-width:520px;' });
     const heading = html('div', { style: 'font-weight:700; color:#38bdf8; font-size:13px; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:8px;' }, [meta.title]);
     const summaryDiv = html('div', { style: 'color:#cbd5e1; font-size:14px; line-height:1.55; margin-bottom:10px;' });
     const summaryLines = meta.summary(opts);
