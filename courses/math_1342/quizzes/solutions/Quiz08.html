@@ -65,7 +65,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <div class="problem">
 <h3>Problem 2 <span class="pts">[2 pts]</span></h3>
 <p>How does inference for a <b>paired</b> difference in means differ from inference for the <b>difference of two independent means</b>? Address both the <b>data structure</b> (1 pt) and the <b>statistic / standard error</b> you compute (1 pt).</p>
-<div class="solution"><p><b>Data structure:</b> A paired design produces one set of <em>differences</em> (one per pair), so the analysis reduces to a one-sample procedure on those differences. An independent two-sample design has two separate samples and we work with two means \(\bar{x}_1\) and \(\bar{x}_2\).</p><p><b>Statistic / SE:</b> Paired uses \(\bar{d}\) with \(SE = s_d/\sqrt{n}\) (one sample of differences). Two-sample uses \(\bar{x}_1 - \bar{x}_2\) with \(SE = \sqrt{s_1^2/n_1 + s_2^2/n_2}\). Pairing typically gives a smaller SE because subject-to-subject variability cancels out — that's the whole reason to pair when you can.</p></div>
+<div class="solution"><p><b>Data structure:</b> A paired design produces one set of <em>differences</em> (one per pair), so the analysis reduces to a one-sample procedure on those differences. An independent two-sample design has two separate samples and we work with two means \(\bar{x}_1\) and \(\bar{x}_2\).</p><p><b>Statistic / SE:</b> Paired uses \(\bar{d}\) with \(SE = \frac{s_d}{\sqrt{n}}\) (one sample of differences). Two-sample uses \(\bar{x}_1 - \bar{x}_2\) with \(SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}\). Pairing typically gives a smaller SE because subject-to-subject variability cancels out — that's the whole reason to pair when you can.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 3 <span class="pts">[3 pts]</span></h3>
@@ -74,7 +74,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 </div>
 <div class="problem">
 <h3>Problem 4 <span class="pts">[3 pts]</span></h3>
-<p>Using the values from Problem 3 (\(n = 8\), \(\bar{d} \approx 0.79\), \(s_d \approx 0.34\)):</p><ol type='a'><li>Construct an approximate 95% confidence interval for the mean improvement using \(\bar{d} \pm 2 \cdot s_d / \sqrt{n}\). <i>(1.5 pts)</i></li><li>Test \(H_0: \mu_d = 0\) vs \(H_a: \mu_d &gt; 0\) by computing the test statistic \(t = \bar{d}/(s_d/\sqrt{n})\) and stating the conclusion at \(\alpha = 0.05\) (treat the rough critical value as \(t \approx 1.9\)). <i>(1.5 pts)</i></li></ol>
+<p>Using the values from Problem 3 (\(n = 8\), \(\bar{d} \approx 0.79\), \(s_d \approx 0.34\)):</p><ol type='a'><li>Construct an approximate 95% confidence interval for the mean improvement using \(\bar{d} \pm 2 \cdot \frac{s_d}{\sqrt{n}}\). <i>(1.5 pts)</i></li><li>Test \(H_0: \mu_d = 0\) vs \(H_a: \mu_d &gt; 0\) by computing the test statistic \(t = \frac{\bar{d}}{\frac{s_d}{\sqrt{n}}}\) and stating the conclusion at \(\alpha = 0.05\) (treat the rough critical value as \(t \approx 1.9\)). <i>(1.5 pts)</i></li></ol>
 <div class="solution"><p>(a) \(SE = 0.34 / \sqrt{8} \approx 0.120\). CI: \(0.79 \pm 2(0.120) = 0.79 \pm 0.24\), or approximately \((0.55,\ 1.03)\) min.</p><p>Since 0 is not in the interval, the data show a statistically meaningful improvement.</p><p>(b) \(t = 0.79/0.120 \approx 6.6\). Far beyond 1.9, so reject \(H_0\). Strong evidence that the program reduces 5K times on average.</p></div>
 </div>
 

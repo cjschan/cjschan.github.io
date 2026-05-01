@@ -59,27 +59,27 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
 <h3>Problem 1 <span class="pts">[2 pts]</span></h3>
-<p>A sample of \(n = 36\) commute times has \(\bar{x} = 28\) min and \(s = 12\) min. Construct an approximate 95% confidence interval for the mean commute time using \(\bar{x} \pm 2 \cdot s/\sqrt{n}\). <i>(2 pts)</i></p>
+<p>A sample of \(n = 36\) commute times has \(\bar{x} = 28\) min and \(s = 12\) min. Construct an approximate 95% confidence interval for the mean commute time using \(\bar{x} \pm 2 \cdot \frac{s}{\sqrt{n}}\). <i>(2 pts)</i></p>
 <div class="solution"><p>\(SE = 12 / \sqrt{36} = 2\). \(28 \pm 2(2) = 28 \pm 4\). Interval: \((24, 32)\) minutes.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 2 <span class="pts">[2 pts]</span></h3>
-<p>To test \(H_0: \mu = 30\) vs \(H_a: \mu \neq 30\), with the same sample as Problem 1, compute the test statistic \(t = (\bar{x} - 30)/(s/\sqrt{n})\) and state whether you reject at \(\alpha = 0.05\) (using approximate critical value \(\pm 2\)). <i>(1 + 1)</i></p>
+<p>To test \(H_0: \mu = 30\) vs \(H_a: \mu \neq 30\), with the same sample as Problem 1, compute the test statistic \(t = \frac{\bar{x} - 30}{\frac{s}{\sqrt{n}}}\) and state whether you reject at \(\alpha = 0.05\) (using approximate critical value \(\pm 2\)). <i>(1 + 1)</i></p>
 <div class="solution"><p>\(t = (28-30)/2 = -1\). |t| = 1 &lt; 2, so do not reject \(H_0\).</p></div>
 </div>
 <div class="problem">
 <h3>Problem 3 <span class="pts">[2 pts]</span></h3>
-<p>In a study, 240 of 400 men say they exercise weekly, vs 270 of 500 women. Compute \(\hat{p}_1 - \hat{p}_2\) and a 95% confidence interval, using \(SE = \sqrt{\hat{p}_1(1-\hat{p}_1)/n_1 + \hat{p}_2(1-\hat{p}_2)/n_2}\). <i>(1 pt diff, 1 pt CI)</i></p>
+<p>In a study, 240 of 400 men say they exercise weekly, vs 270 of 500 women. Compute \(\hat{p}_1 - \hat{p}_2\) and a 95% confidence interval, using \(SE = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}\). <i>(1 pt diff, 1 pt CI)</i></p>
 <div class="solution"><p>\(\hat{p}_1 = 0.60\), \(\hat{p}_2 = 0.54\). Difference \(= 0.06\).</p><p>\(SE = \sqrt{0.60(0.40)/400 + 0.54(0.46)/500} = \sqrt{0.0006 + 0.000497} = \sqrt{0.001097} \approx 0.0331\).</p><p>CI: \(0.06 \pm 2(0.0331) = 0.06 \pm 0.066\), or approximately \((-0.006, 0.126)\).</p></div>
 </div>
 <div class="problem">
 <h3>Problem 4 <span class="pts">[2 pts]</span></h3>
-<p>Two cleaning products are compared by measuring the bacterial reduction (%): Product A had \(\bar{x}_1 = 78\), \(s_1 = 8\), \(n_1 = 25\); Product B had \(\bar{x}_2 = 71\), \(s_2 = 10\), \(n_2 = 25\). Compute the difference of means and a standard error for the difference using \(SE = \sqrt{s_1^2/n_1 + s_2^2/n_2}\). <i>(1 + 1)</i></p>
+<p>Two cleaning products are compared by measuring the bacterial reduction (%): Product A had \(\bar{x}_1 = 78\), \(s_1 = 8\), \(n_1 = 25\); Product B had \(\bar{x}_2 = 71\), \(s_2 = 10\), \(n_2 = 25\). Compute the difference of means and a standard error for the difference using \(SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}\). <i>(1 + 1)</i></p>
 <div class="solution"><p>Difference \(= 78 - 71 = 7\). \(SE = \sqrt{64/25 + 100/25} = \sqrt{2.56 + 4} = \sqrt{6.56} \approx 2.56\).</p></div>
 </div>
 <div class="problem">
 <h3>Problem 5 <span class="pts">[2 pts]</span></h3>
-<p>Use the SE from Problem 4 to test \(H_0: \mu_1 = \mu_2\) vs \(H_a: \mu_1 \neq \mu_2\). Compute \(t = (\bar{x}_1 - \bar{x}_2)/SE\) and decide at \(\alpha = 0.05\) (use approximate critical \(\pm 2\)). <i>(1 + 1)</i></p>
+<p>Use the SE from Problem 4 to test \(H_0: \mu_1 = \mu_2\) vs \(H_a: \mu_1 \neq \mu_2\). Compute \(t = \frac{\bar{x}_1 - \bar{x}_2}{SE}\) and decide at \(\alpha = 0.05\) (use approximate critical \(\pm 2\)). <i>(1 + 1)</i></p>
 <div class="solution"><p>\(t = 7 / 2.56 \approx 2.73\). Since |t| &gt; 2, reject \(H_0\). Evidence that Products A and B differ in mean reduction.</p></div>
 </div>
 
