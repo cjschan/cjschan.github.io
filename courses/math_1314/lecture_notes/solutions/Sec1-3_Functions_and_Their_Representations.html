@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.3 Functions and Their Representations</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent: #fbbf24;
+    --accent-light: #fde68a;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .note {
+    max-width: 920px;
+    margin: 40px auto;
+    padding: 36px 48px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .note .section-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .note h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .note .version-tag {
+    color: var(--muted);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+  }
+  .note h2 {
+    color: var(--primary);
+    margin-top: 28px;
+    margin-bottom: 8px;
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    font-size: 19px;
+    font-weight: 600;
+  }
+  .note p { margin: 0.55em 0; }
+  .note ul { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent); }
+  .note b, .note strong { color: var(--accent); font-weight: 600; }
+  .note .solution {
+    background: rgba(52, 211, 153, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    border-left: 4px solid #34d399;
+    border-radius: 0 10px 10px 0;
+    padding: 12px 18px;
+    margin: 10px 0;
+  }
+  .note .solution p { margin: 0.3em 0; color: #d1fae5; }
+  .note ul li.solution-li {
+    background: rgba(52, 211, 153, 0.06);
+    border-left: 3px solid #34d399;
+    padding-left: 10px;
+    color: #d1fae5;
+  }
+  .note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .note a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  @media (max-width: 760px) {
+    .note { margin: 16px; padding: 22px 18px; }
+    .note h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="note">
+<span class="section-tag">Section 1.3</span>
+<h1>Functions and Their Representations</h1>
+<p class="version-tag">Worked Solutions</p>
+<h2>1.3 Functions and Their Representations</h2>
+<p>Basic Concepts and Function Notation</p>
+<p>A <b>function</b> is a mathematical rule that associates a unique output value to each input value. This means that if you provide the same input to a function, you will always get the same output.</p>
+<p>Example</p>
+<p>Lightning causes thunder. However, we often see a flash of lightning before we hear the thunder because sound travels slower than light. The distance between a lightning strike and an observer affects the time delay between seeing the flash and hearing the thunder.</p>
+<p>The following table shows the estimated distance (in miles) between an observer and a lightning strike, based on the time (in seconds) between seeing the lightning and hearing the thunder.</p>
+<p>Question: Can you figure out the relationship between x and y?</p>
+<div class="solution">
+<p>Courtney saw the number 5.</p>
+<p>Velincia said each mile adds 5 seconds.</p>
+<p>x = 5y (Rule or relationship)</p>
+<p>When y = 1, x = 5*1 = 5</p>
+<p>When y = 2, x = 5*2 = 10</p>
+<p>y = x/5 is equivalent to x = 5y</p>
+</div>
+<p>This calculation is represented by <span class="s1">y = f(x)</span> which is known as function notation. It is read as "y equals f of x." This notation indicates that the function <span class="s1">f</span>, when applied to the input <span class="s1">x</span>, produces the output <span class="s1">y</span>. In other words, <span class="s1">f(Input) = Output</span>.</p>
+<div class="solution">
+<p>f(x) = x/5</p>
+<p>The function f takes the input and divides it by 5 to produce an output.</p>
+<p>f(10)  - what is the output when the input is 10?</p>
+<p>y = f(x) = x/5</p>
+<p>f(10) = 10/5 = 2</p>
+<p>f(20) = 20/5 = 4</p>
+</div>
+<p>The variable y is called the dependent variable, and the variable x is called the independent variable.</p>
+<p>A function computes exactly one output for each valid input.</p>
+<div class="solution">
+<p>Checkpoint:</p>
+<p>g(x) = 2x + 5</p>
+<p>"g multiplies the input by 2 and adds 5 to it"</p>
+<p>What is g(3)?</p>
+<p>g(3) = 2*3 + 5 = 6 + 5 = 11</p>
+</div>
+<p>Domain and Range of a Function</p>
+<p>The set of all meaningful inputs x is called the <b>domain</b> of the function.</p>
+<p>The set of corresponding outputs y is called the <b>range</b> of the function.</p>
+<p>Question: In the previous example, what is the domain and range of the function?</p>
+<div class="solution">
+<p>domain: {5, 10, 15, 20, 25}</p>
+<p>range: {1, 2, 3, 4, 5}</p>
+<p>Based on the table alone</p>
+</div>
+<p>Representation of Functions</p>
+<p>Functions can be represented by</p>
+<ul>
+<li>Verbal Representations (Words)</li>
+<li>Numerical Representation (Table of Values)</li>
+<li>Symbolic Representation (Formula)</li>
+<li>Graphical Representation (Graph)</li>
+</ul>
+<p>Question: Go back to the lightning example, how would you verbally represent that function?</p>
+<p>Numerical Representation</p>
+<p>Here is another numerical representation of the same example. Note that this is a partial representation of the function.</p>
+<p>Symbolic Representation</p>
+<p>Question: How do we represent the lightning example symbolically?</p>
+<p>Graphical Representation</p>
+<p>Activity: Use the graph paper to represent this function graphically.</p>
+<p>Example</p>
+<div class="solution">
+<p>Domain: All real numbers</p>
+<p>Range:</p>
+<p>set of all y such that y is greater than or equal to 1</p>
+<p>All y values that are greater than or equal to 1.</p>
+</div>
+<p>Example</p>
+<p>Let a function ƒ be defined by ƒ(−1) = 4, ƒ(0) = 3, ƒ(1) = 4, and ƒ(2) = −2. Write ƒ as a set of ordered pairs. Give the domain and range.</p>
+<p>f(-1) = 4</p>
+<p>The point (-1, 4) is on the graph of f. For the point (-1, 4), the x value is -1 and the y value is 4.</p>
+<p>f(0) = 3</p>
+<p>The point (0, 3) is on the graph of f. For the point (0, 3), the x value is 0 and the y value is 3.</p>
+<p>Domain: {-1, 0, 1, 2}</p>
+<p>Range: {-2, 3, 4}</p>
+<p>Set-Builder Notation</p>
+<p>The expression {x | x &gt; 1} is written in set-builder notation and represents the set of all real numbers x such that x is greater than 1.</p>
+<div class="solution">
+<p>Question: Is the number 2 in the set {x | x &gt; 1}? Yes.</p>
+</div>
+<p>Question: What does the set {y | 1 &lt; y &lt; 5} represent?</p>
+<div class="solution">
+<p>The set of all y such that y is greater than 1 and y is less than 5</p>
+<p>OR</p>
+<p>The set of all y such that y is between 1 and 5, but does not include 1 or 5.</p>
+<p>Is 6 in this set? No, because 6 is greater than 5. 6 is not strictly in between 1 and 5.</p>
+</div>
+<p>1/23/26</p>
+<p>Set-builder and Interval notation are mathematical ways of writing a set of numbers.</p>
+<p>"all real numbers that are at least 2"</p>
+<p>0 1  2  3  4</p>
+<p>&lt;------------------------------------[------------------------&gt;</p>
+<div class="solution">
+<p>Interval Notation: [2, ∞) "We use the bracket symbol if the number is included in the set"</p>
+<p>Set notation: {x | x ≥ 2} "The set of all real numbers x such that x is greater than or equal to 2"</p>
+</div>
+<p>vs</p>
+<p>(2, ∞) "This does not include 2"</p>
+<p>"all real numbers from 2 to 5, but does not include 2 and includes 5"</p>
+<p>0 1  2  3  4 5</p>
+<p>&lt;------------------------------------(----------------]--------&gt;</p>
+<div class="solution">
+<p>Interval notation: (2, 5]  "in this set, 2 is not included, but 5 is"</p>
+<p>Set notation: {x | 2 &lt; x ≤ 5} or {x | 2 &lt; x and x ≤ 5} or {x | x &gt; 2 and x ≤ 5}</p>
+</div>
+<p>Infinity is not a number, but we need to represent this in interval notation. So whenever you see an infinity symbol, you always need to use parentheses.</p>
+<div class="solution">
+<p>Example:</p>
+<p>Represent all numbers less than 3 in interval notation. Keep in mind that 3 is not included in this set.</p>
+</div>
+<p>-2 -1  0  1 2  3</p>
+<p>&lt;---------------------------------------------------------)---&gt;</p>
+<div class="solution">
+<p>Interval Notation: (-∞, 3)</p>
+<p>Set Notation: {x | x &lt; 3}</p>
+</div>
+<p>Activity:</p>
+<p>Let g(x) = x² - 2x</p>
+<p>a. Find the domain and range of g. Use interval notation.</p>
+<p>Domain: from negative infinity to positive infinity (all real numbers)</p>
+<div class="solution">
+<p>(-∞, ∞), "In set notation, <span class="s2"><b>R</b>"</span></p>
+<p>Range:</p>
+<p>[-1, ∞) "In set notation, {y | y ≥ -1}"</p>
+</div>
+<p>b. Use g(x) to evaluate g(−1).</p>
+<p>g(-1) = (-1)² - 2(-1) = 1+2 = 3</p>
+<p>c. Use the graph of g to evaluate g(−1).</p>
+<p>g(-1) = 3</p>
+<p>g(2) = 0</p>
+<p>Identifying Functions: Vertical Line Test</p>
+<p>If every vertical line intersects a graph at no more than one point, then the graph represents a function.</p>
+<p>Activity: Use the vertical line test to determine whether each one is a function.</p>
+<p>For a, yes, because you only hit the graph once.  For b, this is not a function, because</p>
+<p>the vertical line intersects 3 times.</p>
+<p>Question: Sometimes, you get a diagram. Are these functions?</p>
+<div class="solution">
+<p>For each number in the domain, that it only maps to a single number.</p>
+<p>For the first diagram, this is not a function, because 2 maps to different numbers 5 and 6.</p>
+<p>For the second diagram, this is a function, because every single number just maps to 1 number.</p>
+</div>
+</div>
+</body>
+</html>
