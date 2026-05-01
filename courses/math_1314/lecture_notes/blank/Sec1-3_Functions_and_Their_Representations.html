@@ -11,13 +11,17 @@
 window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../graph.js"></script>
 <style>
   :root {
     --primary: #38bdf8;
     --primary-dark: #0284c7;
     --primary-light: #7dd3fc;
-    --accent: #fbbf24;
-    --accent-light: #fde68a;
+    --accent2: #818cf8;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --rose: #fb7185;
     --bg: #0f172a;
     --card-bg: #1e293b;
     --text: #f1f5f9;
@@ -27,7 +31,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
   .note {
     max-width: 920px;
     margin: 40px auto;
-    padding: 36px 48px;
+    padding: 36px 48px 60px;
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 16px;
@@ -67,42 +71,128 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
   }
   .note h2 {
     color: var(--primary);
-    margin-top: 28px;
-    margin-bottom: 8px;
+    margin-top: 32px;
+    margin-bottom: 10px;
     border-left: 4px solid var(--primary);
     padding-left: 12px;
-    font-size: 19px;
+    font-size: 22px;
     font-weight: 600;
   }
-  .note p { margin: 0.55em 0; }
-  .note ul { padding-left: 22px; margin: 0.5em 0 0.9em; }
-  .note ul li { margin-bottom: 5px; }
-  .note ul li::marker { color: var(--accent); }
-  .note b, .note strong { color: var(--accent); font-weight: 600; }
+  .note p { margin: 0.6em 0; }
+  .note ul, .note ol { padding-left: 22px; margin: 0.5em 0 0.9em; }
+  .note ul li, .note ol li { margin-bottom: 5px; }
+  .note ul li::marker { color: var(--accent2); }
+  .note .box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: rgba(15, 23, 42, 0.4);
+  }
+  .note .box .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .definition { border-left: 4px solid var(--primary); }
+  .note .definition .label { color: var(--primary); }
+  .note .theorem { border-left: 4px solid var(--accent3); }
+  .note .theorem .label { color: var(--accent3); }
+  .note .property { border-left: 4px solid var(--amber); }
+  .note .property .label { color: var(--amber); }
+  .note .notation { border-left: 4px solid var(--accent2); }
+  .note .notation .label { color: var(--accent2); }
+  .note .example {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .note .example .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .note .example h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .note .work {
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    margin-top: 10px;
+    min-height: 110px;
+    color: var(--muted);
+    font-size: 13px;
+    background: rgba(15, 23, 42, 0.25);
+  }
+  .note .work::before {
+    content: 'Your work:';
+    display: block;
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 4px;
+  }
   .note .solution {
-    background: rgba(52, 211, 153, 0.08);
-    border: 1px solid rgba(52, 211, 153, 0.25);
-    border-left: 4px solid #34d399;
-    border-radius: 0 10px 10px 0;
-    padding: 12px 18px;
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  .note .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .note .solution p:last-child { margin-bottom: 0; }
+  .note table {
+    border-collapse: collapse;
     margin: 10px 0;
+    font-size: 15px;
   }
-  .note .solution p { margin: 0.3em 0; color: #d1fae5; }
-  .note ul li.solution-li {
-    background: rgba(52, 211, 153, 0.06);
-    border-left: 3px solid #34d399;
-    padding-left: 10px;
-    color: #d1fae5;
+  .note th, .note td {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    text-align: center;
   }
+  .note th { background: rgba(56, 189, 248, 0.10); color: var(--primary); font-weight: 700; font-size: 13px; }
   .note a {
     color: var(--primary);
     text-decoration: none;
     border-bottom: 1px dotted var(--primary-light);
   }
-  .note a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .note a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  .note .plot { display: flex; justify-content: center; margin: 14px 0; }
+  .note .plot svg { max-width: 100%; height: auto; }
+  .note .plot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .note .plot-grid .plot-cell { display: flex; flex-direction: column; align-items: center; }
+  .note .plot-grid .plot-cell svg { max-width: 100%; height: auto; }
+  .note .plot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
   @media (max-width: 760px) {
-    .note { margin: 16px; padding: 22px 18px; }
+    .note { margin: 16px; padding: 22px 18px 36px; }
     .note h1 { font-size: 24px; }
+    .note h2 { font-size: 19px; }
   }
 </style>
 </head>
@@ -123,76 +213,217 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath:
 <div class="note">
 <span class="section-tag">Section 1.3</span>
 <h1>Functions and Their Representations</h1>
-<p class="version-tag">Student Notes (blank)</p>
-<h2>1.3 Functions and Their Representations</h2>
-<p>Basic Concepts and Function Notation</p>
-<p>A <b>function</b> is a mathematical rule that associates a unique output value to each input value. This means that if you provide the same input to a function, you will always get the same output.</p>
-<p>Example</p>
-<p>Lightning causes thunder. However, we often see a flash of lightning before we hear the thunder because sound travels slower than light. The distance between a lightning strike and an observer affects the time delay between seeing the flash and hearing the thunder.</p>
-<p>The following table shows the estimated distance (in miles) between an observer and a lightning strike, based on the time (in seconds) between seeing the lightning and hearing the thunder.</p>
-<p>Question: Can you figure out the relationship between x and y?</p>
-<p>This calculation is represented by <span class="s1">y = f(x)</span> which is known as function notation. It is read as "y equals f of x." This notation indicates that the function <span class="s1">f</span>, when applied to the input <span class="s1">x</span>, produces the output <span class="s1">y</span>. In other words, <span class="s1">f(Input) = Output</span>.</p>
-<p>The variable y is called the dependent variable, and the variable x is called the independent variable.</p>
-<p>A function computes exactly one output for each valid input.</p>
-<p>Domain and Range of a Function</p>
-<p>The set of all meaningful inputs x is called the <b>domain</b> of the function.</p>
-<p>The set of corresponding outputs y is called the <b>range</b> of the function.</p>
-<p>Question: In the previous example, what is the domain and range of the function?</p>
-<p>Representation of Functions</p>
-<p>Functions can be represented by</p>
+<p class="version-tag">Student Notes</p>
+
+<p>Today we introduce the concept of a function &mdash; the central object of study in this course. We&rsquo;ll see four ways to represent a function (verbally, numerically, symbolically, graphically), how to describe its inputs and outputs using domain and range, and how to tell whether a graph or a relation actually represents a function.</p>
+
+<h2>What is a Function?</h2>
+
+<div class="box definition">
+  <span class="label">Definition &mdash; Function</span>
+  <p>A <b>function</b> is a rule that assigns to each input <b>exactly one</b> output. The set of all valid inputs is the <b>domain</b>, and the set of all resulting outputs is the <b>range</b>.</p>
+</div>
+
+<div class="box notation">
+  <span class="label">Function Notation</span>
+  <p>We write \(y = f(x)\), read &ldquo;\(y\) equals \(f\) of \(x\).&rdquo; Here \(x\) is the <b>independent variable</b> (the input), and \(y\) is the <b>dependent variable</b> (the output). The function \(f\) takes \(x\) and produces \(y\).</p>
+  <p>Example: if \(f(x) = 3x + 1\), then \(f(2) = 3(2) + 1 = 7\).</p>
+</div>
+
+<div class="example">
+  <span class="label">Example 1</span>
+  <h3>Function notation</h3>
+  <p>Let \(g(x) = 2x + 5\). Evaluate each of the following.</p>
+  <ol type="a">
+    <li>\(g(3)\)</li>
+    <li>\(g(-4)\)</li>
+    <li>\(g(0)\)</li>
+  </ol>
+  <div class="work"></div>
+</div>
+
+<h2>Domain and Range</h2>
+
+<div class="box definition">
+  <span class="label">Domain and Range</span>
+  <p>The <b>domain</b> of a function is the set of all valid inputs. The <b>range</b> is the set of all outputs that the function actually produces.</p>
+</div>
+
+<div class="example">
+  <span class="label">Example 2</span>
+  <h3>Domain and range from a set of ordered pairs</h3>
+  <p>Let \(f\) be the function defined by</p>
+  <p>\(f(-1) = 4, \quad f(0) = 3, \quad f(1) = 4, \quad f(2) = -2\).</p>
+  <ol type="a">
+    <li>Write \(f\) as a set of ordered pairs.</li>
+    <li>Give the domain and range of \(f\).</li>
+  </ol>
+  <div class="work"></div>
+</div>
+
+<h2>Set-Builder and Interval Notation</h2>
+
+<p>When the domain or range is a set of real numbers (rather than a finite list), we describe it using either set-builder or interval notation.</p>
+
+<div class="box notation">
+  <span class="label">Set-Builder Notation</span>
+  <p>\(\{x \mid \text{condition on } x\}\) reads &ldquo;the set of all \(x\) such that <em>condition</em>.&rdquo;</p>
+  <p>For example, \(\{x \mid x \geq 2\}\) is the set of all real numbers greater than or equal to 2.</p>
+</div>
+
+<div class="box notation">
+  <span class="label">Interval Notation</span>
+  <ul>
+    <li>Use a <b>bracket</b> [ or ] when the endpoint <b>is</b> included.</li>
+    <li>Use a <b>parenthesis</b> ( or ) when the endpoint <b>is not</b> included.</li>
+    <li>\(\infty\) and \(-\infty\) are <b>not numbers</b>, so always pair them with parentheses.</li>
+  </ul>
+  <p>Examples:</p>
+  <ul>
+    <li>\([2, \infty)\) means \(x \geq 2\).</li>
+    <li>\((2, 5]\) means \(2 &lt; x \leq 5\).</li>
+    <li>\((-\infty, 3)\) means \(x &lt; 3\).</li>
+    <li>\((-\infty, \infty)\) means all real numbers.</li>
+  </ul>
+</div>
+
+<div class="example">
+  <span class="label">Example 3</span>
+  <h3>Translating between notations</h3>
+  <p>Express each set in both interval notation and set-builder notation.</p>
+  <ol type="a">
+    <li>All real numbers strictly less than 4.</li>
+    <li>All real numbers from \(-3\) (included) up to 7 (not included).</li>
+    <li>All real numbers \(x\) with \(x \leq -1\) or \(x \geq 5\).</li>
+  </ol>
+  <div class="work"></div>
+</div>
+
+<h2>Four Ways to Represent a Function</h2>
+
+<p>Every function can usually be represented in more than one way. The four standard representations are:</p>
+
 <ul>
-<li>Verbal Representations (Words)</li>
-<li>Numerical Representation (Table of Values)</li>
-<li>Symbolic Representation (Formula)</li>
-<li>Graphical Representation (Graph)</li>
+  <li><b>Verbal</b> &mdash; described in words.</li>
+  <li><b>Numerical</b> &mdash; given as a table of values.</li>
+  <li><b>Symbolic</b> &mdash; written as a formula.</li>
+  <li><b>Graphical</b> &mdash; drawn as a graph in the \(xy\)-plane.</li>
 </ul>
-<p>Question: Go back to the lightning example, how would you verbally represent that function?</p>
-<p>Numerical Representation</p>
-<p>Here is another numerical representation of the same example. Note that this is a partial representation of the function.</p>
-<p>Symbolic Representation</p>
-<p>Question: How do we represent the lightning example symbolically?</p>
-<p>Graphical Representation</p>
-<p>Activity: Use the graph paper to represent this function graphically.</p>
-<p>Example</p>
-<p>Example</p>
-<p>Let a function ƒ be defined by ƒ(−1) = 4, ƒ(0) = 3, ƒ(1) = 4, and ƒ(2) = −2. Write ƒ as a set of ordered pairs. Give the domain and range.</p>
-<p>f(-1) = 4</p>
-<p>The point (-1, 4) is on the graph of f. For the point (-1, 4), the x value is -1 and the y value is 4.</p>
-<p>f(0) = 3</p>
-<p>The point (0, 3) is on the graph of f. For the point (0, 3), the x value is 0 and the y value is 3.</p>
-<p>Domain: {-1, 0, 1, 2}</p>
-<p>Range: {-2, 3, 4}</p>
-<p>Set-Builder Notation</p>
-<p>The expression {x | x &gt; 1} is written in set-builder notation and represents the set of all real numbers x such that x is greater than 1.</p>
-<p>Question: What does the set {y | 1 &lt; y &lt; 5} represent?</p>
-<p>1/23/26</p>
-<p>Set-builder and Interval notation are mathematical ways of writing a set of numbers.</p>
-<p>"all real numbers that are at least 2"</p>
-<p>0 1  2  3  4</p>
-<p>&lt;------------------------------------[------------------------&gt;</p>
-<p>vs</p>
-<p>(2, ∞) "This does not include 2"</p>
-<p>"all real numbers from 2 to 5, but does not include 2 and includes 5"</p>
-<p>0 1  2  3  4 5</p>
-<p>&lt;------------------------------------(----------------]--------&gt;</p>
-<p>Infinity is not a number, but we need to represent this in interval notation. So whenever you see an infinity symbol, you always need to use parentheses.</p>
-<p>-2 -1  0  1 2  3</p>
-<p>&lt;---------------------------------------------------------)---&gt;</p>
-<p>Activity:</p>
-<p>Let g(x) = x² - 2x</p>
-<p>a. Find the domain and range of g. Use interval notation.</p>
-<p>Domain: from negative infinity to positive infinity (all real numbers)</p>
-<p>b. Use g(x) to evaluate g(−1).</p>
-<p>g(-1) = (-1)² - 2(-1) = 1+2 = 3</p>
-<p>c. Use the graph of g to evaluate g(−1).</p>
-<p>g(-1) = 3</p>
-<p>g(2) = 0</p>
-<p>Identifying Functions: Vertical Line Test</p>
-<p>If every vertical line intersects a graph at no more than one point, then the graph represents a function.</p>
-<p>Activity: Use the vertical line test to determine whether each one is a function.</p>
-<p>For a, yes, because you only hit the graph once.  For b, this is not a function, because</p>
-<p>the vertical line intersects 3 times.</p>
-<p>Question: Sometimes, you get a diagram. Are these functions?</p>
+
+<div class="example">
+  <span class="label">Example 4</span>
+  <h3>Lightning and thunder &mdash; four representations</h3>
+  <p>Sound travels at roughly 1 mile every 5 seconds. Let \(d\) be the distance to a lightning strike (in miles) and \(t\) be the time delay (in seconds) between the flash and the thunder.</p>
+  <ol type="a">
+    <li><b>Verbal:</b> Describe in words how to compute \(d\) from \(t\).</li>
+    <li><b>Numerical:</b> Complete the table:
+      <table>
+        <thead><tr><th>\(t\) (sec)</th><th>5</th><th>10</th><th>15</th><th>20</th><th>25</th></tr></thead>
+        <tbody><tr><td>\(d\) (mi)</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td></tr></tbody>
+      </table>
+    </li>
+    <li><b>Symbolic:</b> Write \(d\) as a function of \(t\), i.e., \(d = f(t)\).</li>
+    <li><b>Graphical:</b> Use the grid below to sketch \(d = f(t)\) for \(t\) between 0 and 25 seconds.</li>
+  </ol>
+  <div class="plot" id="plot-ex4-blank"></div>
+  <script>
+    Lvplot.draw('#plot-ex4-blank', {
+      width: 420, height: 260,
+      xMin: 0, xMax: 28, xStep: 5,
+      yMin: 0, yMax: 6,  yStep: 1,
+      xLabel: 't (sec)', yLabel: 'd (mi)',
+      curves: [],
+    });
+  </script>
+  <div class="work"></div>
+</div>
+
+<h2>Identifying Functions</h2>
+
+<p>Not every relation is a function. Recall that a function must give <b>exactly one</b> output for each input.</p>
+
+<div class="box theorem">
+  <span class="label">Theorem &mdash; Vertical Line Test</span>
+  <p>A graph in the \(xy\)-plane represents \(y\) as a function of \(x\) if and only if every vertical line crosses the graph in <b>at most one point</b>.</p>
+</div>
+
+<div class="example">
+  <span class="label">Example 5</span>
+  <h3>Vertical line test</h3>
+  <p>For each graph, decide whether \(y\) is a function of \(x\).</p>
+  <div class="plot-grid">
+    <div class="plot-cell">
+      <div id="plot-ex5a"></div>
+      <div class="plot-cap">(a)</div>
+    </div>
+    <div class="plot-cell">
+      <div id="plot-ex5b"></div>
+      <div class="plot-cap">(b)</div>
+    </div>
+    <div class="plot-cell">
+      <div id="plot-ex5c"></div>
+      <div class="plot-cap">(c)</div>
+    </div>
+    <div class="plot-cell">
+      <div id="plot-ex5d"></div>
+      <div class="plot-cap">(d)</div>
+    </div>
+  </div>
+  <script>
+    Lvplot.draw('#plot-ex5a', {
+      width: 320, height: 240,
+      xMin: -5, xMax: 5, yMin: -5, yMax: 5,
+      curves: [{ fn: x => 0.8 * x + 1 }],
+    });
+    Lvplot.draw('#plot-ex5b', {
+      width: 320, height: 240,
+      xMin: -5, xMax: 5, yMin: -5, yMax: 5,
+      curves: [{ param: t => [3*Math.cos(t), 3*Math.sin(t)], from: 0, to: 2*Math.PI, samples: 200 }],
+    });
+    Lvplot.draw('#plot-ex5c', {
+      width: 320, height: 240,
+      xMin: -3, xMax: 3, yMin: -2, yMax: 6,
+      curves: [{ fn: x => x*x - 1 }],
+    });
+    Lvplot.draw('#plot-ex5d', {
+      width: 320, height: 240,
+      xMin: -2, xMax: 6, yMin: -4, yMax: 4,
+      curves: [{ param: t => [t*t, t], from: -2.5, to: 2.5, samples: 200 }],
+    });
+  </script>
+  <div class="work"></div>
+</div>
+
+<div class="example">
+  <span class="label">Example 6</span>
+  <h3>Domain and range from a graph</h3>
+  <p>The graph below shows \(g(x) = x^2 - 2x\).</p>
+  <div class="plot" id="plot-ex6"></div>
+  <script>
+    Lvplot.draw('#plot-ex6', {
+      width: 380, height: 280,
+      xMin: -3, xMax: 5, yMin: -2, yMax: 8,
+      curves: [{ fn: x => x*x - 2*x }],
+    });
+  </script>
+  <ol type="a">
+    <li>Find the domain of \(g\) in interval notation.</li>
+    <li>Find the range of \(g\) in interval notation.</li>
+    <li>Use the formula to evaluate \(g(-1)\).</li>
+    <li>From the graph, identify all \(x\)-values for which \(g(x) = 0\).</li>
+  </ol>
+  <div class="work"></div>
+</div>
+
+<h2>Wrap-Up</h2>
+
+<ul>
+  <li>A <b>function</b> assigns exactly one output to each input.</li>
+  <li>The four representations &mdash; verbal, numerical, symbolic, graphical &mdash; are different views of the same rule.</li>
+  <li>Use <b>set-builder</b> or <b>interval notation</b> to describe domains and ranges of real numbers.</li>
+  <li>Use the <b>vertical line test</b> to decide whether a graph represents a function.</li>
+</ul>
+
 </div>
 </body>
 </html>
