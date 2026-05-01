@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1314 Quiz 8 — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-light: #7dd3fc;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .quiz {
+    max-width: 860px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .quiz .badge {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .quiz h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+  }
+  .quiz .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 12px;
+    font-weight: 600;
+  }
+  .quiz .covers { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+  .quiz .instructions {
+    background: rgba(56, 189, 248, 0.06);
+    border: 1px solid rgba(56, 189, 248, 0.20);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin: 8px 0 22px;
+    font-size: 15px;
+  }
+  .quiz .instructions p:first-child { margin-top: 0; }
+  .quiz .instructions p:last-child { margin-bottom: 0; }
+  .quiz .problem {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px 14px;
+    margin: 16px 0;
+    background: rgba(15, 23, 42, 0.5);
+  }
+  .quiz .problem h3 {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+  .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
+  .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
+  .quiz .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 12px;
+  }
+  .quiz .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .quiz .solution p:first-child { margin-top: 0; }
+  .quiz .solution p:last-child { margin-bottom: 0; }
+  .quiz a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .quiz a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  @media (max-width: 760px) {
+    .quiz { margin: 16px; padding: 22px 18px 36px; }
+    .quiz h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 8</span>
+<h1>Rational Functions and Equations</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections 4.6, 4.7</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+</div>
+
+<div class="problem">
+<h3>Problem 1</h3>
+<p>Find the domain of each function.</p><ol type='a'><li>\(f(x) = \dfrac{2x}{x^2 - 16}\)</li><li>\(g(x) = \dfrac{x + 1}{x^2 + 9}\)</li></ol>
+<div class="solution"><p>(a) \(x^2 - 16 = 0\) at \(x = \pm 4\). Domain: \((-\infty, -4) \cup (-4, 4) \cup (4, \infty)\).</p><p>(b) Denominator is always positive. Domain: all real numbers.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2</h3>
+<p>Find any vertical asymptotes, holes, and the horizontal asymptote of each.</p><ol type='a'><li>\(f(x) = \dfrac{x - 3}{x^2 - 9}\)</li><li>\(g(x) = \dfrac{2x^2 - 5}{x^2 + 1}\)</li></ol>
+<div class="solution"><p>(a) \(\dfrac{x - 3}{(x - 3)(x + 3)} = \dfrac{1}{x + 3}\) for \(x \neq 3\). VA at \(x = -3\); hole at \(x = 3\); HA \(y = 0\) (numerator degree less than denominator).</p><p>(b) No real zeros of denominator, so no VA. HA: equal degrees, leading coefficients 2 and 1; HA \(y = 2\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 3</h3>
+<p>Solve \(\dfrac{3}{x - 2} - \dfrac{1}{x} = 1\). Check for extraneous solutions.</p>
+<div class="solution"><p>Multiply both sides by \(x(x - 2)\): \(3x - (x - 2) = x(x - 2)\), so \(3x - x + 2 = x^2 - 2x\), \(2x + 2 = x^2 - 2x\), \(x^2 - 4x - 2 = 0\). Quadratic formula: \(x = \dfrac{4 \pm \sqrt{24}}{2} = 2 \pm \sqrt{6}\). Neither is \(0\) or \(2\), so both valid.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 4</h3>
+<p>Solve \(\sqrt{2x + 9} = x + 3\).</p>
+<div class="solution"><p>Square: \(2x + 9 = x^2 + 6x + 9\), so \(0 = x^2 + 4x\), \(x(x + 4) = 0\), \(x = 0\) or \(x = -4\).</p><p>Check: \(x = 0\): \(\sqrt{9} = 3\) ✓. \(x = -4\): \(\sqrt{1} = 1\) but \(-4 + 3 = -1\) ✗.</p><p>Solution: \(x = 0\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 5</h3>
+<p>Solve \(\dfrac{x + 4}{x - 2} \geq 0\). Write the answer in interval notation.</p>
+<div class="solution"><p>Boundaries: \(x = -4\) (numerator) and \(x = 2\) (denominator, excluded).</p><p>Test: \(x = -5\): \(-1 / -7 &gt; 0\) ✓. \(x = 0\): \(4 / -2 &lt; 0\) ✗. \(x = 3\): \(7 / 1 &gt; 0\) ✓.</p><p>Solution: \((-\infty, -4] \cup (2, \infty)\).</p></div>
+</div>
+
+</div>
+</body>
+</html>

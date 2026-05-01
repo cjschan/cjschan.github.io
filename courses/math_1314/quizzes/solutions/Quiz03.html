@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1314 Quiz 3 — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-light: #7dd3fc;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .quiz {
+    max-width: 860px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .quiz .badge {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .quiz h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+  }
+  .quiz .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 12px;
+    font-weight: 600;
+  }
+  .quiz .covers { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+  .quiz .instructions {
+    background: rgba(56, 189, 248, 0.06);
+    border: 1px solid rgba(56, 189, 248, 0.20);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin: 8px 0 22px;
+    font-size: 15px;
+  }
+  .quiz .instructions p:first-child { margin-top: 0; }
+  .quiz .instructions p:last-child { margin-bottom: 0; }
+  .quiz .problem {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px 14px;
+    margin: 16px 0;
+    background: rgba(15, 23, 42, 0.5);
+  }
+  .quiz .problem h3 {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+  .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
+  .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
+  .quiz .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 12px;
+  }
+  .quiz .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .quiz .solution p:first-child { margin-top: 0; }
+  .quiz .solution p:last-child { margin-bottom: 0; }
+  .quiz a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .quiz a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  @media (max-width: 760px) {
+    .quiz { margin: 16px; padding: 22px 18px 36px; }
+    .quiz h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 3</span>
+<h1>Linear Inequalities and Modeling</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections 2.3, 2.4</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+</div>
+
+<div class="problem">
+<h3>Problem 1</h3>
+<p>Solve and write the answer in interval notation.</p><ol type='a'><li>\(2x - 7 \leq 5\)</li><li>\(3 - 4x &gt; 19\)</li></ol>
+<div class="solution"><p>(a) \(2x \leq 12\), so \(x \leq 6\). Solution: \((-\infty, 6]\).</p><p>(b) \(-4x &gt; 16\). Divide by \(-4\) (flip): \(x &lt; -4\). Solution: \((-\infty, -4)\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2</h3>
+<p>Solve the three-part inequality \(-5 \leq 3x + 1 &lt; 7\). Write the answer in interval notation.</p>
+<div class="solution"><p>Subtract 1: \(-6 \leq 3x &lt; 6\). Divide by 3: \(-2 \leq x &lt; 2\). Solution: \([-2, 2)\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 3</h3>
+<p>Solve and graph each on a number line.</p><ol type='a'><li>\(x - 4 &lt; -1\) <b>and</b> \(2x + 3 \geq 1\)</li><li>\(3x &gt; 6\) <b>or</b> \(x + 5 \leq 4\)</li></ol>
+<div class="solution"><p>(a) \(x &lt; 3\) and \(x \geq -1\). Intersection: \([-1, 3)\).</p><p>(b) \(x &gt; 2\) or \(x \leq -1\). Union: \((-\infty, -1] \cup (2, \infty)\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 4</h3>
+<p>The pressure \(P\) (in atm) of a sample of gas at constant temperature varies directly with the depth \(d\) (in feet) below the surface of a lake. At 33 ft the pressure is 2 atm.</p><ol type='a'><li>Find the constant of variation.</li><li>What is the pressure at 99 ft?</li></ol>
+<div class="solution"><p>(a) \(P = kd\). \(2 = k(33)\), so \(k = \tfrac{2}{33}\) atm/ft.</p><p>(b) \(P = \tfrac{2}{33}(99) = 6\) atm.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 5</h3>
+<p>A rideshare company charges a \$3 base fare plus \$1.50 per mile. After 5 miles you owed \$10.50, after 10 miles you owed \$18.</p><ol type='a'><li>Verify that a linear model fits this rate structure.</li><li>Write a linear function \(C(m)\) for the cost.</li><li>If the bill was \$24, how many miles did you ride?</li></ol>
+<div class="solution"><p>(a) Slope between data points: \(\dfrac{18 - 10.50}{10 - 5} = 1.50\) ✓ matches the per-mile charge.</p><p>(b) \(C(m) = 3 + 1.50 m\).</p><p>(c) \(3 + 1.50 m = 24\) gives \(m = 14\) miles.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 6</h3>
+<p>Let \(\displaystyle f(x) = \begin{cases} 3 - x &amp; \text{if } x &lt; 0 \\ x^2 + 1 &amp; \text{if } 0 \leq x \leq 3 \\ 2x &amp; \text{if } x &gt; 3 \end{cases}\). Evaluate \(f(-2),\; f(0),\; f(2),\; f(3),\; f(4)\).</p>
+<div class="solution"><p>\(f(-2) = 5\); \(f(0) = 1\); \(f(2) = 5\); \(f(3) = 10\); \(f(4) = 8\).</p></div>
+</div>
+
+</div>
+</body>
+</html>

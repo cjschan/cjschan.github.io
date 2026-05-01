@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1314 Quiz 2 — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-light: #7dd3fc;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .quiz {
+    max-width: 860px;
+    margin: 40px auto;
+    padding: 36px 48px 60px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .quiz .badge {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .quiz h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin: 4px 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+  }
+  .quiz .version-tag {
+    color: var(--green);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 12px;
+    font-weight: 600;
+  }
+  .quiz .covers { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+  .quiz .instructions {
+    background: rgba(56, 189, 248, 0.06);
+    border: 1px solid rgba(56, 189, 248, 0.20);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin: 8px 0 22px;
+    font-size: 15px;
+  }
+  .quiz .instructions p:first-child { margin-top: 0; }
+  .quiz .instructions p:last-child { margin-bottom: 0; }
+  .quiz .problem {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px 14px;
+    margin: 16px 0;
+    background: rgba(15, 23, 42, 0.5);
+  }
+  .quiz .problem h3 {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+  .quiz .problem ol, .quiz .problem ul { padding-left: 22px; margin: 0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom: 4px; }
+  .quiz .problem ol li::marker, .quiz .problem ul li::marker { color: var(--amber); }
+  .quiz .solution {
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    background: rgba(52, 211, 153, 0.07);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 12px;
+  }
+  .quiz .solution::before {
+    content: 'Solution';
+    display: block;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .quiz .solution p:first-child { margin-top: 0; }
+  .quiz .solution p:last-child { margin-bottom: 0; }
+  .quiz a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+  }
+  .quiz a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+  @media (max-width: 760px) {
+    .quiz { margin: 16px; padding: 22px 18px 36px; }
+    .quiz h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 2</span>
+<h1>Lines and Linear Equations</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections 2.1, 2.2</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+</div>
+
+<div class="problem">
+<h3>Problem 1</h3>
+<p>Write the equation of the line in slope-intercept form.</p><ol type='a'><li>Slope \(-2\), \(y\)-intercept \((0, 5)\).</li><li>Slope \(\tfrac{3}{4}\), passes through \((4, -1)\).</li><li>Through \((-2, 3)\) and \((6, -1)\).</li></ol>
+<div class="solution"><p>(a) \(y = -2x + 5\).</p><p>(b) Point-slope: \(y + 1 = \tfrac{3}{4}(x - 4)\), so \(y = \tfrac{3}{4}x - 4\).</p><p>(c) Slope \(\dfrac{-1 - 3}{6 - (-2)} = -\tfrac{1}{2}\). Use \((-2, 3)\): \(y - 3 = -\tfrac{1}{2}(x + 2)\), so \(y = -\tfrac{1}{2}x + 2\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2</h3>
+<p>Find the equation of the line through \((3, -2)\) that is</p><ol type='a'><li>parallel to \(y = 4x - 1\),</li><li>perpendicular to \(y = 4x - 1\).</li></ol>
+<div class="solution"><p>(a) Slope 4: \(y + 2 = 4(x - 3)\), so \(y = 4x - 14\).</p><p>(b) Perpendicular slope \(-\tfrac{1}{4}\): \(y + 2 = -\tfrac{1}{4}(x - 3)\), so \(y = -\tfrac{1}{4}x - \tfrac{5}{4}\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 3</h3>
+<p>Solve \(5(x - 3) - 2x = 4x + 7\).</p>
+<div class="solution"><p>Distribute: \(5x - 15 - 2x = 4x + 7\), so \(3x - 15 = 4x + 7\). Subtract \(3x\): \(-15 = x + 7\), so \(x = -22\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 4</h3>
+<p>Solve \(\dfrac{x}{4} - \dfrac{x - 1}{6} = \dfrac{5}{12}\).</p>
+<div class="solution"><p>Multiply by 12: \(3x - 2(x - 1) = 5\). Distribute: \(3x - 2x + 2 = 5\), so \(x = 3\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 5</h3>
+<p>Decide whether each is conditional, an identity, or a contradiction.</p><ol type='a'><li>\(4(x + 2) = 4x + 8\)</li><li>\(2x - 5 = 2x + 1\)</li><li>\(7x - 3 = 11\)</li></ol>
+<div class="solution"><p>(a) Identity (true for all \(x\)).</p><p>(b) Contradiction &mdash; no solution.</p><p>(c) Conditional, \(x = 2\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 6</h3>
+<p>A car rental costs \$25 per day plus \$0.20 per mile.</p><ol type='a'><li>Write a linear function for the cost \(C\) of renting for one day and driving \(m\) miles.</li><li>For what number of miles would the cost be \$65?</li></ol>
+<div class="solution"><p>(a) \(C(m) = 25 + 0.20 m\).</p><p>(b) Solve \(25 + 0.20 m = 65\): \(0.20 m = 40\), so \(m = 200\) miles.</p></div>
+</div>
+
+</div>
+</body>
+</html>
