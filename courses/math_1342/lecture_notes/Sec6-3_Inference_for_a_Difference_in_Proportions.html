@@ -16,6 +16,7 @@
   };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="statkey.js"></script>
 <style>
   :root {
     --bg: #0f172a;
@@ -682,6 +683,19 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="slide">
+  <h2>Try It: Two-Proportion Randomization</h2>
+  <p class="subtitle">Suppose group 1 has 18/30 successes and group 2 has 12/30. Is the difference real, or could it be from chance?</p>
+  <div id="sim-2prop"></div>
+  <script>
+    StatKey.create('#sim-2prop', {
+      mode: 'two-prop-rand',
+      n1: 30, x1: 18, n2: 30, x2: 12,
+      direction: 'two-tailed',
+    });
+  </script>
 </div>
 
 <div class="slide">

@@ -11,6 +11,7 @@
   };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="statkey.js"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #94a3b8; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -290,6 +291,19 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- Slide 8b: Interactive bootstrap simulator -->
+<div class="slide">
+  <h2>Try It: Bootstrap a Proportion</h2>
+  <p class="subtitle">Suppose 32 out of 50 surveyed prefer brand A. Build a bootstrap distribution for \(\hat{p}\).</p>
+  <div id="sim-bootp"></div>
+  <script>
+    StatKey.create('#sim-bootp', {
+      mode: 'one-prop-boot',
+      n: 50, x: 32,
+    });
+  </script>
 </div>
 
 <!-- Slide 9: Summary -->
