@@ -155,10 +155,12 @@ const StatKey = (() => {
 
     const sx = (x) => PL + ((x - xMin) / (xMax - xMin)) * plotW;
 
-    // Dot diameter: scale so the tallest stack fits in plotH with a tiny margin.
-    // Each dot spaced by `dotPitch`. We let pitch shrink so the stack always fits.
-    const dotPitch = Math.max(2.5, Math.min(8, plotH / Math.max(maxCount, 8)));
-    const dotR = Math.max(1.5, dotPitch * 0.45);
+    // Dot pitch: scale so the tallest stack fits in plotH. With many
+    // simulations the dots become small but the bell shape remains visible.
+    // Dot radius is independent so dots stay visible even when pitch is tiny
+    // (small overlap is fine for a dot plot of many simulations).
+    const dotPitch = plotH / Math.max(maxCount, 8);
+    const dotR = Math.max(1.0, Math.min(4, dotPitch * 0.45));
 
     const obs = opts.observed;
     const dir = opts.direction || 'two-tailed';
