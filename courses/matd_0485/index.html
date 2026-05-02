@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MATD 0485 / NCBM 0222 - Developing Mathematical Thinking with Foundations</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<style>
+  :root {
+    --primary: #38bdf8;
+    --primary-dark: #0284c7;
+    --primary-light: #7dd3fc;
+    --accent: #fbbf24;
+    --accent-light: #fde68a;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #475569;
+  }
+  .syllabus {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 36px 48px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.6;
+  }
+  .syllabus h1 {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 32px;
+    font-weight: 700;
+  }
+  .syllabus h2 {
+    color: var(--primary);
+    margin-top: 36px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--primary);
+    padding-left: 14px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .syllabus h3 {
+    color: var(--accent);
+    margin-top: 22px;
+    margin-bottom: 6px;
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .syllabus p { margin: 0.6em 0; }
+  .syllabus ul { padding-left: 22px; margin: 0.4em 0 0.8em; }
+  .syllabus ul li { margin-bottom: 6px; }
+  .syllabus ul li::marker { color: var(--accent); }
+  .syllabus a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-light);
+    transition: color 200ms ease, border-color 200ms ease;
+    font-size: inherit;
+  }
+  .syllabus a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    opacity: 1;
+  }
+  .syllabus dl.meta { margin: 0.5em 0 1em; }
+  .syllabus dl.meta dt {
+    font-weight: 600;
+    color: var(--muted);
+    float: left;
+    clear: left;
+    min-width: 12em;
+  }
+  .syllabus dl.meta dd { margin: 0 0 0.4em 0; }
+  .syllabus table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0.8em 0 1.2em;
+    font-size: 15px;
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .syllabus th, .syllabus td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .syllabus th {
+    background: rgba(56, 189, 248, 0.10);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+  .syllabus tr:nth-child(even) td { background: rgba(15, 23, 42, 0.5); }
+  .syllabus .week-cell {
+    color: var(--muted);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .syllabus .section-cell { font-weight: 600; }
+  .syllabus .section-cell .nolink { color: var(--muted); font-weight: 400; }
+  .syllabus .grade-table td { vertical-align: top; }
+  @media (max-width: 900px) {
+    .syllabus { margin: 16px; padding: 24px 20px; }
+    .syllabus h1 { font-size: 26px; }
+    .syllabus h2 { font-size: 19px; }
+    .syllabus dl.meta dt { float: none; min-width: 0; }
+    .syllabus table { font-size: 14px; }
+    .syllabus th, .syllabus td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="syllabus">
+
+<h1>MATD 0485 / NCBM 0222 &mdash; Developing Mathematical Thinking with Foundations</h1>
+<p>A course about thinking and using mathematics, designed to prepare students for Contemporary Math (MATH 1332) and Elementary Statistics (MATH 1342). Topics include linear and exponential models, data interpretation, percentage models, order of operations, the logic of arguments, and an introduction to other models.</p>
+<p><b>Note:</b> Successfully completing NCBM 0222 / MATD 0485 satisfies the prerequisites for MATH 1332 and MATH 1342. It does <i>not</i> make you eligible for any college-level algebra course (e.g., MATH 1314, MATH 1414, or MATH 1324).</p>
+
+<h2>About Your Instructor</h2>
+<dl class="meta">
+  <dt>Name</dt><dd>Chris Chan</dd>
+  <dt>Email</dt><dd>chris.chan@austincc.edu</dd>
+</dl>
+
+<h2>About Your Course</h2>
+<p>Instructional Methodology: DLS &mdash; Synchronous Virtual Class Meetings. Instruction is fully online with required online meetings during scheduled days and times.</p>
+<dl class="meta">
+  <dt>Prerequisites</dt><dd>Appropriate score on the math TSI Assessment. Departmental approval is required for these courses.</dd>
+  <dt>Corequisite</dt><dd>NCBM 0222.</dd>
+</dl>
+<p><b>Paired Course Policy:</b> This is a paired course. Students who withdraw from NCBM 0222 will automatically be withdrawn from MATD 0485.</p>
+
+<h2>Required Materials</h2>
+<p>This is a First Day&trade; class. The cost of the required statistics textbook, including an online version of the textbook and software access, has been added to your tuition and fees bill.</p>
+<p><b>Statistics Textbook:</b> <i>Introductory Statistics: Exploring the World Through Data</i>, 4th Edition by Gould, Ryan, &amp; Wong. Pearson Publishing (MyLab software).</p>
+<p><b>Additional Textbook:</b> <i>Developing Mathematical Thinking</i>, a free OER textbook compiled by the math faculty at Austin Community College.</p>
+<p><b>Calculator:</b> Scientific calculator.</p>
+<p><b>Other Technology:</b> Access to a webcam and microphone is required for this course. Eligible students can check out required technology at <a href="https://www.austincc.edu/students/student-technology-services" target="_blank">austincc.edu/students/student-technology-services</a>.</p>
+
+<h2>General Policies</h2>
+
+<h3>Attendance and Participation</h3>
+<p>I encourage you to attend every class and join in the discussions and activities. If you need to miss a class, please let me know in advance. If you miss a class, try to catch up as soon as you can. Try to arrive on time and be ready for class. If you&rsquo;re running late, just slip in quietly so as not to disturb the class.</p>
+
+<h3>Academic Integrity</h3>
+<p>Honesty is important in our class. Although I encourage you to work in groups, please make sure your work is your own. If you&rsquo;re unsure about what&rsquo;s okay, just ask. We&rsquo;re here to learn together!</p>
+
+<h3>Communication</h3>
+<p>Feel free to reach out if you have questions or need help. I&rsquo;m here to support you! I&rsquo;ll do my best to respond to emails within 24 hours on weekdays. For more in-depth conversations, please visit me during office hours or set up an appointment.</p>
+
+<h3>Electronic Devices</h3>
+<p>Please silence your phones and other devices during class to help keep everyone focused. Laptops and tablets are welcome for class activities, but let&rsquo;s keep them on task.</p>
+
+<h3>Classroom Environment</h3>
+<p>Let&rsquo;s keep our classroom a friendly and engaging place by being respectful of your classmates and the space we&rsquo;re using. Please do not eat, vape, or sleep in class.</p>
+
+<h2>Expectations</h2>
+
+<h3>The Nature of This Course</h3>
+<p>This course is very different from some of your other math courses in that you are asked to use complete sentences to explain your thinking process or justify your answers, which will prepare you for the next college-level course. In this course, how you are thinking about the mathematics is just as important as getting the &ldquo;right answer.&rdquo;</p>
+
+<h3>Why Use Group Activities?</h3>
+<p>When an instructor prepares a math lecture, they have questions in mind that they ask the class as they work through examples. Because students process information in different ways and at different rates, it can be difficult for all students to follow a lecture. To give students more processing time, our lectures are written out as activities. This way every student has time to really think about the question, form better connections between concepts, and practice writing out meaningful responses. The more effort and thought you put into the activities, the more you will learn and the better prepared you will be for assignments and exams.</p>
+
+<h3>Class Expectations</h3>
+<ul>
+  <li>You are expected to struggle through complicated ideas with classmates and on your own to make more meaningful connections and synthesize ideas.</li>
+  <li>You are expected to work with real-world scenarios and data, which means the numbers get messy.</li>
+  <li>You are expected to talk with other students about your ideas and listen carefully to their ideas so you can learn to think through all kinds of different math problems.</li>
+  <li>You are expected to spend a lot of time thinking deeply about mathematical ideas, and to write about your thought process.</li>
+  <li>You are expected to think through a problem and apply your knowledge to problems you have never seen before.</li>
+</ul>
+
+<h2>Course Calendar</h2>
+<p>Schedule changes may occur during the semester. Any changes will be announced in class and posted as a Blackboard Announcement.</p>
+<table>
+  <thead>
+    <tr><th>Week</th><th>Unit</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="week-cell" rowspan="2">Week 1</td><td class="section-cell">1</td><td>Study Strategies</td></tr>
+    <tr><td class="section-cell">1</td><td>Rounding and Estimating</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 2</td><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Labor Day Holiday (No Class)</td></tr>
+    <tr><td class="section-cell">1</td><td>Fractions</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 3</td><td class="section-cell">1</td><td>Decimals</td></tr>
+    <tr><td class="section-cell">1</td><td>Percents</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 4</td><td class="section-cell">1</td><td>Unit 1 Review <span style="display:inline-block; margin-left:8px; padding:2px 8px; border-radius:4px; background:rgba(251,191,36,0.18); color:var(--amber); font-size:12px; font-weight:600;">Unit 1 Project due</span></td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Exam 1</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 5</td><td class="section-cell">2</td><td>Problem Solving with Integers and Patterns</td></tr>
+    <tr><td class="section-cell">2</td><td>Probability</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 6</td><td class="section-cell">2</td><td>Unit Conversion</td></tr>
+    <tr><td class="section-cell">2</td><td>Venn Diagrams</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 7</td><td class="section-cell">2</td><td>Data Collection</td></tr>
+    <tr><td class="section-cell">2</td><td>Categorical Variables</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 8</td><td class="section-cell">2</td><td>Unit 2 Review <span style="display:inline-block; margin-left:8px; padding:2px 8px; border-radius:4px; background:rgba(251,191,36,0.18); color:var(--amber); font-size:12px; font-weight:600;">Unit 2 Project due</span></td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Exam 2</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 9</td><td class="section-cell">3</td><td>Statistics Studies</td></tr>
+    <tr><td class="section-cell">3</td><td>Numerical Variables</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 10</td><td class="section-cell">3</td><td>Describing Distributions</td></tr>
+    <tr><td class="section-cell">3</td><td>Technology in Statistics</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 11</td><td class="section-cell">3</td><td>Numerical Summaries, Measures of Center</td></tr>
+    <tr><td class="section-cell">3</td><td>Box Plots</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 12</td><td class="section-cell">3</td><td>Unit 3 Review <span style="display:inline-block; margin-left:8px; padding:2px 8px; border-radius:4px; background:rgba(251,191,36,0.18); color:var(--amber); font-size:12px; font-weight:600;">Unit 3 Project &amp; Group Project 1 due</span></td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Exam 3</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 13</td><td class="section-cell">4</td><td>Linear Patterns of Change</td></tr>
+    <tr><td class="section-cell">4</td><td>Exponential Patterns of Change</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 14</td><td class="section-cell">4</td><td>Linear and Exponential Patterns; Introduction to Finance</td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Thanksgiving Holiday (No Class)</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 15</td><td class="section-cell">4</td><td>Scatterplots; Modeling Linear Trends</td></tr>
+    <tr><td class="section-cell">4</td><td>Modeling Exponential Trends</td></tr>
+    <tr><td class="week-cell" rowspan="2">Week 16</td><td class="section-cell">4</td><td>Unit 4 Review <span style="display:inline-block; margin-left:8px; padding:2px 8px; border-radius:4px; background:rgba(251,191,36,0.18); color:var(--amber); font-size:12px; font-weight:600;">Group Project 2 due</span></td></tr>
+    <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Exam 4</td></tr>
+  </tbody>
+</table>
+
+<h2>Making Time to Learn</h2>
+<p>We learn math by thinking about and working on mathematical problems, which takes time. Practice is crucial in a math course. To ensure that you have adequate time, set aside 8&ndash;12 hours per week outside of class time to practice and study for this course. Ask for help immediately when something isn&rsquo;t clear.</p>
+
+<h2>Getting Help</h2>
+<p>ACC provides several free resources for students who need help.</p>
+<ul>
+  <li><b>Office hours:</b> Another name for office hours is &ldquo;student hours.&rdquo; This is the time your instructor has set aside to answer student questions, so feel free to drop by if you have questions.</li>
+  <li><b>Instructional Associates:</b> Course-specific tutoring. To make an appointment, go to <a href="https://sites.google.com/a/austincc.edu/math-students/meet/list" target="_blank">the math students meet list</a> and click on your course.</li>
+  <li><b>Learning Labs:</b> The ACC Learning Labs provide tutoring in math and other subjects. To schedule an appointment, go to <a href="https://www.austincc.edu/students/learning-lab" target="_blank">austincc.edu/students/learning-lab</a>.</li>
+  <li><b>Academic Coaching:</b> Academic coaches offer extra support to students with study strategies. Visit <a href="https://www.austincc.edu/students/academic-coaching" target="_blank">austincc.edu/students/academic-coaching</a>.</li>
+  <li><b>ACC Student Services:</b> Services in many areas including academic, financial, personal, and technology support. Visit <a href="https://www.austincc.edu/student-support" target="_blank">austincc.edu/student-support</a>.</li>
+</ul>
+
+<h2>Grades</h2>
+
+<h3>Grade Components</h3>
+<table class="grade-table">
+  <thead>
+    <tr><th>NCBM 0222</th><th>MATD 0485</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MATD 0485 Grade: 60%<br>Group Projects: 40%</td>
+      <td>Exams: 60%<br>Quizzes: 15%<br>Homework: 10%<br>Projects: 10%<br>Discussion: 5%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Grading Scale</h3>
+<table>
+  <tbody>
+    <tr><td>A</td><td>90 &ndash; 100</td></tr>
+    <tr><td>B</td><td>80 &ndash; 89</td></tr>
+    <tr><td>C</td><td>70 &ndash; 79</td></tr>
+    <tr><td>D</td><td>60 &ndash; 69</td></tr>
+    <tr><td>F</td><td>&lt; 60</td></tr>
+  </tbody>
+</table>
+<p>Grades will be posted on Blackboard.</p>
+
+<h2>What Will We Do in This Class?</h2>
+
+<h3>Exams</h3>
+<p>We&rsquo;ll have 4 exams during the semester, given in a proctored setting during class time or in the Testing Center. If you miss one of the exams, your lowest exam score will be dropped from your final grade. Because of this policy, no make-up exams will be offered.</p>
+
+<h3>Quizzes</h3>
+<p>There will be take-home quizzes throughout the semester, with questions in the same format as the exams so they double as practice and feedback. You may use your notes and online resources while completing them. Please refer to the course schedule for the due dates.</p>
+
+<h3>Projects</h3>
+<p>There will be 3 individual projects, one at the end of each of Units 1, 2, and 3. Each project gives you a chance to apply what you&rsquo;ve learned to a real-world scenario.</p>
+
+<h3>Group Projects</h3>
+<p>There will be 2 group projects, due at the end of Units 3 and 4. Group projects make up the majority of your NCBM 0222 grade and are designed to give you opportunities to communicate mathematical ideas in a small group setting.</p>
+
+<h3>Online Homework</h3>
+<p>Online homework will be given through Pearson MyLab. Be sure to register through Blackboard to access your MyLab assignments, the electronic textbook, and other resources. You can try as many questions and complete as many attempts as you need for each MyLab assignment. I&rsquo;ll take your best score for each assignment and use it to calculate your average. Because how you are thinking about the mathematics is just as important as getting the right answer, pay careful attention to the language used in the fill-in-the-blank and multiple-choice items so you know how to explain processes and justify answers on your take-home quizzes and exams. It is important to complete the assignments on time. If you anticipate being late, please inform me in advance, and I can arrange an extension if necessary.</p>
+
+<h3>Participation</h3>
+<p>Class participation takes place both in the classroom and on the discussion boards. Each week, a prompt will be posted on Blackboard, and a response will be required. Group activities also occur during every class session, and active engagement is expected in both settings: contributing to discussions, asking questions, and working through problems with classmates. Although activities are completed in groups, each student records work individually. Those notes serve as a reference for completing homework assignments, so it is important to make sure the ideas are fully understood.</p>
+
+<h2>What Happens If I Miss Something?</h2>
+
+<h3>Late Work Policy</h3>
+<p>For online homework in MyLab, it is important to complete assignments on time, as they build directly on class content. If you believe you may need more time on an assignment, please reach out before the deadline. I am happy to work with you and offer an extension when needed. For take-home quizzes, late submissions are not accepted, so plan ahead and use the time available to your advantage. To account for unexpected situations or emergencies, your two lowest quiz scores will be dropped from your final grade.</p>
+
+<h3>Missed Exam Policy</h3>
+<p>If you are unable to take one of the four scheduled exams, you do not need to worry. Your lowest exam score will be dropped from your final grade. Because of this built-in flexibility, make-up exams are not offered. If you have questions or concerns about a test date, please let me know as soon as possible.</p>
+
+<h3>Attendance / Class Participation Expectations and Policy</h3>
+<p>Regular and punctual attendance in both class and lab is expected. Being present helps you stay connected to the material, your classmates, and the support available to you. If attendance or participation becomes unsatisfactory or if course expectations are not being met, students may be withdrawn from the class based on ACC policies. If you are experiencing challenges that affect your attendance or engagement, please reach out so we can find a way to support you.</p>
+
+<h2>What AI Resources Are Allowed?</h2>
+<p><b>Generative Artificial Intelligence (GAI) Policy:</b> Generative AI (GAI) is a useful tool for exploration and learning. Use of GAI on un-proctored work such as homework and independent learning is permitted, but caution is advised as not to become dependent on it. The purpose of assessments is to demonstrate what students are able to do independently. In this course, GAI includes Computer Algebra Systems (CAS) and any electronic tools that solve problems for students. Violations to GAI use policies are considered scholastic dishonesty and will be handled according to established departmental and college procedures. GAI may not be used on major assessments other than in cases where permissions are explicitly stated.</p>
+
+<h2>Course Content</h2>
+
+<h3>Course Description</h3>
+<p>Credit Hours: 6. Contact Hours: 6.</p>
+<p><b>MATD 0485 &mdash; Developing Mathematical Thinking (4-4-0).</b> A course designed to develop the skills, including reading and critical thinking, and the understanding needed for non-math, non-science majors who take MATH 1332 and MATH 1342. Topics include linear models, data interpretation including graphs and tables, percentage models, order of operations, the logic of arguments, and an introduction to other models which may include exponential, logarithmic, quadratic, and rational models. This course is not for college-level credit. Students who need to prepare for MATH 1314, MATH 1324, MATH 1414, etc. should not take this course but instead should take MATD 0370.</p>
+<p><b>NCBM 0222 &mdash; Math Thinking Foundations (2-2-0).</b> This course prepares students to take MATD 0485 Developing Mathematical Thinking in the same semester. This course is not for college-level credit.</p>
+
+<h3>Course Rationale</h3>
+<p>MATD 0485 is an alternative to Elementary Algebra for students going on to one of these college-credit math courses: MATH 1332 (Contemporary Math) or MATH 1342 (Elementary Statistics). Students mandated to take Developmental Math by the TSI rules may satisfy the TSI requirement by completing this course with a grade of C or better. Students who pass this course are not ready for MATH 1314, MATH 1414, or MATH 1324. If your degree plan requires one of those courses, you will need to complete MATD 0370 followed by the NCBM-paired version of MATH 1314, MATH 1414, or MATH 1324.</p>
+<p>NCBM 0222 is a fast-paced, intensive review designed to be taken alongside MATD 0485.</p>
+
+<h3>MATD 0485 Course Objectives / Student Learning Outcomes</h3>
+<p>Upon successful completion of the course, a student should be able to:</p>
+<ul>
+  <li>Use formulas and the order of operations to solve problems for a variety of models, such as temperature, regression, exponential, or finance models.</li>
+  <li>Explain and justify answers based on an understanding of mathematical properties and rules.</li>
+  <li>Estimate answers and evaluate the reasonableness of answers to application problems.</li>
+  <li>Solve problems involving fractions, decimals, and percents, including percents based in two-way tables.</li>
+  <li>Apply fundamental probability and counting techniques to solve problems.</li>
+  <li>Convert between various units of measurement.</li>
+  <li>Use patterns and diagrams to count objects in a set.</li>
+  <li>Analyze statistical studies.</li>
+  <li>Describe, graph, organize, and analyze quantitative and categorical data.</li>
+  <li>Calculate and interpret measures of center and variation for statistical data.</li>
+  <li>Analyze relationships and make predictions with statistical data.</li>
+  <li>Identify and interpret linear and exponential patterns of change in multiple representations.</li>
+</ul>
+<p>These objectives illustrate that this course is not an algebra course as most developmental mathematics courses are. It is a course about thinking and using mathematics. There is some algebra in the course, but algebra is not the predominant topic or focus.</p>
+
+<h3>NCBM 0222 Course Objectives / Student Learning Outcomes</h3>
+<ul>
+  <li>Provide an opportunity to increase and improve quantitative literacy.</li>
+  <li>Provide an opportunity to communicate mathematical ideas in a small-group setting.</li>
+  <li>Provide just-in-time review of prerequisite topics.</li>
+</ul>
+
+<h2>The Details</h2>
+
+<h3>First Day Access</h3>
+<p>To enhance your learning experience and provide affordable access to the right course material, this course is part of an inclusive access model called First Day&trade;. You can easily access the required materials for this course through Blackboard, at a discounted price, and benefit from single sign-on access. Austin Community College includes the discounted price as a course fee in your registration fees for this course.</p>
+<p>It is NOT recommended that you Opt Out, as these materials are required to complete the course. You can choose to Opt Out on the first day of class, but you will be responsible for purchasing your course materials at the full retail price and access to your materials may be suspended. See your course in Blackboard for details.</p>
+
+<h3>Importance of Completing Developmental Course Requirements</h3>
+<p>The first steps to achieving any college academic goal are completing developmental course requirements and TSI requirements. The first priority for students who are required to take developmental courses must be the developmental courses. TSI rules state that students are allowed to take college credit courses if they are fulfilling their developmental requirements. Because successful completion of developmental courses is so important, ACC will intervene with any student who is not successfully completing developmental requirements. This intervention can mean a hold on records, requiring developmental lab classes, working with the Instructional Associate, and monitoring during the semester.</p>
+
+<h3>Withdrawal Policy</h3>
+<p>It is the responsibility of each student to ensure that his or her name is removed from the roll should he or she decide to withdraw from the class. The instructor does, however, reserve the right to drop a student should he or she feel it is necessary. If a student decides to withdraw, he or she should also verify that the withdrawal is submitted before the Final Withdrawal Date. The student is also strongly encouraged to retain their copy of the withdrawal form for their records.</p>
+<p>Students who enroll for the third or subsequent time in a course taken since Fall 2002 may be charged a higher tuition rate for that course. State law permits students to withdraw from no more than six courses during their entire undergraduate career at Texas public colleges or universities. With certain exceptions, all course withdrawals automatically count towards this limit. Details regarding this policy can be found in the ACC college catalog.</p>
+
+<h3>Reinstatement Policy</h3>
+<p>Students who withdrew or were withdrawn will not be reinstated unless they have completed all coursework, projects, and exams necessary to place them at the same level of course completion as the rest of the class. Reinstatement is up to the instructor&rsquo;s approval.</p>
+
+<h3>Incomplete Grade Policy</h3>
+<p>Incomplete grades (I) will be given only in very rare circumstances. Generally, to receive a grade of &ldquo;I&rdquo;, a student must be up to date on coursework and have a passing grade, and after the last date to withdraw, have a legitimate reason that prevents course completion. An incomplete grade cannot be carried beyond the established date in the following semester. The completion date is determined by the instructor but may not be later than the final deadline for withdrawal in the subsequent semester.</p>
+
+<h3>In-Progress Grade (NCBM 0222 only)</h3>
+<p>A student who is regularly attending and doing all assigned work but is still not earning a grade of C or higher might be eligible for the IP (in progress) grade. An IP is a neutral grade with respect to the student&rsquo;s GPA (it is not counted), but it might be treated like a W (non-completion) for the purposes of financial aid. Students who receive an IP grade are expected to retake (register and pay for) the course in the next semester they are enrolled at ACC. Students may not receive more than 2 IPs in this course (or in any given developmental course).</p>
+
+<h3>Communication with Your Instructor</h3>
+<p>All e-mail communication to students will be sent solely to the student&rsquo;s ACCmail account or math software if applicable, with the expectation that such communications will be read in a timely fashion. Likewise, students should use their ACCmail account or math software when communicating with instructors. Instructors will respond to student emails within 3 business days; if no response has been received by the student at the end of that time, then the student should send a reminder to the instructor.</p>
+
+<h3>Name Change Information</h3>
+<p>If you want to change how your name appears online at ACC, go to <a href="https://www.austincc.edu/admissions/update-student-information/chosen-name" target="_blank">austincc.edu/admissions/update-student-information/chosen-name</a>.</p>
+
+<h3>General College Policies</h3>
+<p>Policies that apply to all courses at ACC can be found at <a href="https://www.austincc.edu/offices/academic-outcomes-assessment/master-syllabi/college-policies" target="_blank">austincc.edu/offices/academic-outcomes-assessment/master-syllabi/college-policies</a>.</p>
+
+</div>
+</body>
+</html>
