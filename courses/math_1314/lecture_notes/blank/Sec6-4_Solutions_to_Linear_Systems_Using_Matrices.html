@@ -196,38 +196,41 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <h1>Solutions to Linear Systems Using Matrices</h1>
 <p class="version-tag">Student Notes</p>
 
-<p>A matrix is a rectangular array of numbers. We can encode any linear system as an augmented matrix and use Gaussian elimination &mdash; a sequence of row operations &mdash; to solve it systematically. This scales much better than ad-hoc elimination.</p>
+<p>A matrix is a rectangular array of numbers. We can encode any linear system as an augmented matrix. Once that matrix is in <b>row-echelon form (REF)</b> or <b>reduced row-echelon form (RREF)</b> &mdash; produced for you by a calculator or software &mdash; the solution can be read directly off the matrix. Our focus in this section is identifying these forms and interpreting them; we won&rsquo;t perform the reduction by hand.</p>
 <h2>The Augmented Matrix</h2>
 <div class="box definition"><span class="label">Augmented Matrix</span><p>The <b>augmented matrix</b> of a linear system places the coefficients of the variables to the left of a vertical bar and the constants to the right. For example, the system \(\begin{cases} x + 2y = 5 \\ 3x - y = 4 \end{cases}\) has augmented matrix \(\left[\begin{array}{cc|c} 1 & 2 & 5 \\ 3 & -1 & 4 \end{array}\right].\)</p></div>
-<h2>Row Operations</h2>
-<div class="box property"><span class="label">Three Elementary Row Operations</span><ol><li><b>Swap</b> two rows.</li><li><b>Multiply</b> a row by a non-zero constant.</li><li><b>Add</b> a multiple of one row to another row.</li></ol><p>Each operation produces an equivalent system &mdash; same solutions.</p></div>
-<h2>Row-Echelon Form</h2>
-<div class="box definition"><span class="label">Row-Echelon Form</span><p>A matrix is in <b>row-echelon form</b> when:</p><ul><li>Any rows of all zeros are at the bottom.</li><li>The first non-zero entry in each non-zero row (its <b>leading entry</b>) is to the right of the leading entry of the row above.</li><li>Often the leading entry is 1.</li></ul><p><b>Reduced row-echelon form (RREF)</b> additionally requires each leading 1 to be the only non-zero entry in its column.</p></div>
-<h2>Gaussian Elimination</h2>
+<h2>Row-Echelon Form (REF)</h2>
+<div class="box definition"><span class="label">Row-Echelon Form</span><p>A matrix is in <b>row-echelon form</b> when:</p><ul><li>Any rows of all zeros are at the bottom.</li><li>The first non-zero entry in each non-zero row (its <b>leading entry</b>) is to the right of the leading entry of the row above.</li><li>The leading entry in each non-zero row is a 1.</li></ul><p>Example: \(\left[\begin{array}{ccc|c} 1 & 2 & -1 & 5 \\ 0 & 1 & 3 & 4 \\ 0 & 0 & 1 & 2 \end{array}\right]\) is in REF &mdash; the leading 1s march down and to the right.</p></div>
+<h2>Reduced Row-Echelon Form (RREF)</h2>
+<div class="box definition"><span class="label">Reduced Row-Echelon Form</span><p>A matrix is in <b>RREF</b> if it is in REF and, in addition, each leading 1 is the <i>only</i> non-zero entry in its column.</p><p>Example: \(\left[\begin{array}{ccc|c} 1 & 0 & 0 & 11 \\ 0 & 1 & 0 & -2 \\ 0 & 0 & 1 & 2 \end{array}\right]\) is in RREF.</p></div>
+<h2>Reading the Solution from RREF</h2>
+<div class="box property"><span class="label">Direct Read-Off</span><p>If every variable has a leading 1 in its column, the entries to the right of the bar <i>are</i> the solution: row by row, leading 1 in column \(x\) with constant \(c\) gives \(x = c\).</p></div>
 <div class="example">
 <span class="label">Example 1</span>
-<h3>Solve a 2 &times; 2 system</h3>
-<p>Solve using row operations.</p><p>\(\begin{cases} x + 2y = 5 \\ 3x - y = 4 \end{cases}\)</p>
+<h3>Read the solution from RREF</h3>
+<p>The augmented matrix below is in RREF. State the solution.</p><p>\(\left[\begin{array}{ccc|c} 1 & 0 & 0 & 4 \\ 0 & 1 & 0 & -1 \\ 0 & 0 & 1 & 2 \end{array}\right]\)</p>
 
 </div>
+<h2>Reading the Solution from REF</h2>
+<div class="box property"><span class="label">Back-Substitution</span><p>If the matrix is in REF (not yet reduced), translate the bottom row back into an equation, solve for that variable, and substitute upward into the rows above.</p></div>
 <div class="example">
 <span class="label">Example 2</span>
-<h3>Solve a 3 &times; 3 system</h3>
-<p>Solve.</p><p>\(\begin{cases} x - y + z = 2 \\ 2x + y - z = 1 \\ -x + 2y + z = 0 \end{cases}\)</p>
+<h3>Back-substitute from REF</h3>
+<p>The augmented matrix below is in REF. Find the solution by back-substitution.</p><p>\(\left[\begin{array}{ccc|c} 1 & 2 & -1 & 5 \\ 0 & 1 & 3 & 4 \\ 0 & 0 & 1 & 2 \end{array}\right]\)</p>
 
 </div>
-<div class="example">
-<span class="label">Example 3</span>
-<h3>Inconsistent system</h3>
-<p>Solve.</p><p>\(\begin{cases} x + y + z = 1 \\ 2x + 2y + 2z = 5 \\ x - y + z = 0 \end{cases}\)</p>
-
-</div>
-<h2>Recognizing Solutions in RREF</h2>
+<h2>Three Possible Outcomes</h2>
 <div class="box property"><span class="label">Reading the Outcome</span><ul><li>Every variable has a leading 1 in its column &rArr; <b>unique solution</b>.</li><li>A variable has no leading 1 &rArr; <b>infinitely many solutions</b>; that variable becomes a parameter.</li><li>A row of the form \([0\;0\;\cdots\;0\,|\,c]\) with \(c \neq 0\) &rArr; <b>no solution</b>.</li></ul></div>
 <div class="example">
+<span class="label">Example 3</span>
+<h3>No solution</h3>
+<p>The augmented matrix below is in RREF. State the solution set.</p><p>\(\left[\begin{array}{ccc|c} 1 & 0 & 0 & 2 \\ 0 & 1 & 0 & -3 \\ 0 & 0 & 0 & 1 \end{array}\right]\)</p>
+
+</div>
+<div class="example">
 <span class="label">Example 4</span>
-<h3>Parameterized solution</h3>
-<p>Solve.</p><p>\(\begin{cases} x + y - z = 4 \\ 2x + 2y - 2z = 8 \\ -x - y + z = -4 \end{cases}\)</p>
+<h3>Infinitely many solutions</h3>
+<p>The augmented matrix below is in RREF. Write the solution in parametric form.</p><p>\(\left[\begin{array}{ccc|c} 1 & 0 & 2 & 3 \\ 0 & 1 & -1 & 4 \\ 0 & 0 & 0 & 0 \end{array}\right]\)</p>
 
 </div>
 </div>
