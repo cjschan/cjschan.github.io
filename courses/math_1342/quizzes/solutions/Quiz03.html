@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Math 1342 Quiz 3 — Solutions</title>
+<title>Math 1342 Quiz 3 &mdash; Solutions</title>
 <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href='/css/styles.css' rel='stylesheet' type='text/css'>
@@ -49,9 +49,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 
 <div class="quiz">
 <span class="badge">Quiz 3</span>
-<h1>Two Quantitative Variables and Probability</h1>
+<h1>Two Quantitative Variables: Correlation and Regression</h1>
 <p class="version-tag">Worked Solutions</p>
-<p class="covers">Covers Sections 2.5, 2.6, P.1</p>
+<p class="covers">Covers Sections 2.5, 2.6</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
@@ -60,22 +60,22 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <div class="problem">
 <h3>Problem 1 <span class="pts">[2 pts]</span></h3>
 <p>Which scatterplot would correspond to a correlation of \(r \approx -0.85\)? Justify your choice.</p><ol type='a'><li>Points lie nearly on a line going up to the right.</li><li>Points lie nearly on a line going down to the right.</li><li>Points form a wide cloud with no clear direction.</li><li>Points form a U-shape.</li></ol>
-<div class="solution"><p>(b). \(r \approx -0.85\) means strong, negative, linear association. (a) is strongly positive, (c) near zero, (d) near zero (curved).</p></div>
+<div class="solution"><p>Choice <b>(b)</b>. A correlation of \(r \approx -0.85\) is strong (close to \(\pm 1\)) and <i>negative</i>. The sign tells us the direction: as \(x\) increases, \(y\) tends to decrease, so the points fall down to the right. The magnitude near 1 means the points cluster tightly around a straight line.</p><p>Why not the others: (a) is a strong <i>positive</i> trend (\(r \approx +0.85\)); (c) is a weak/near-zero correlation (\(r \approx 0\)); (d) is a curved (nonlinear) pattern, for which \(r\) does not describe the relationship well and could be near 0 even though the variables are related.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 2 <span class="pts">[3 pts]</span></h3>
 <p>A least-squares regression of exam score on hours studied gives \(\hat{y} = 50 + 4x\), where \(x\) = hours studied. <i>(1 pt each)</i></p><ol type='a'><li>Interpret the slope in context.</li><li>Predict the exam score for a student who studies 6 hours.</li><li>Should you use this line to predict the score for a student who studies 40 hours? Explain.</li></ol>
-<div class="solution"><p>(a) For each additional hour studied, the predicted exam score increases by 4 points.</p><p>(b) \(\hat{y} = 50 + 4(6) = 74\).</p><p>(c) No — predicting at 40 hours would be extrapolation far outside the range of the data, which is unreliable.</p></div>
+<div class="solution"><p>(a) The slope is 4. For each additional hour studied, the predicted exam score increases by 4 points, on average.</p><p>(b) \(\hat{y} = 50 + 4(6) = 50 + 24 = 74\). The predicted exam score is <b>74 points</b>.</p><p>(c) No. Studying 40 hours is far outside the range of the data used to build the model (extrapolation). The linear relationship is not guaranteed to hold there, and a score cannot exceed 100 anyway, so the prediction would be unreliable.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 3 <span class="pts">[3 pts]</span></h3>
-<p>A jar holds 10 red, 6 blue, and 4 green marbles. Drawing one at random, find: <i>(1 pt each)</i></p><ol type='a'><li>\(P(\text{red})\)</li><li>\(P(\text{red or green})\)</li><li>If two marbles are drawn <b>without replacement</b>, find \(P(\text{both blue})\).</li></ol>
-<div class="solution"><p>Total = 20. (a) \(\frac{10}{20} = 0.5\).</p><p>(b) Disjoint: \(\frac{10}{20} + \frac{4}{20} = \frac{14}{20} = 0.7\).</p><p>(c) \(\frac{6}{20} \cdot \frac{5}{19} = \frac{30}{380} = \frac{3}{38} \approx 0.079\).</p></div>
+<p>A researcher collects data on the number of hours of sunlight per day (\(x\)) and the height of tomato plants in centimeters (\(y\)) after 30 days. The regression equation is \(\hat{y} = 5.2 + 3.8x\) with \(r^2 = 0.72\). <i>(1 pt each)</i></p><ol type='a'><li>Interpret the slope in context.</li><li>Interpret \(r^2\) in context.</li><li>One plant received 6 hours of sunlight and grew to 31 cm. Compute the residual.</li></ol>
+<div class="solution"><p>(a) The slope is 3.8. For each additional hour of sunlight per day, the predicted height of a tomato plant increases by 3.8 cm, on average.</p><p>(b) \(r^2 = 0.72\) means that 72% of the variation in tomato plant height is explained by the linear relationship with hours of sunlight (the remaining 28% is due to other factors).</p><p>(c) First find the predicted height at \(x = 6\): \(\hat{y} = 5.2 + 3.8(6) = 5.2 + 22.8 = 28\) cm. The residual is observed minus predicted: \(31 - 28 = +3\) cm. The plant grew 3 cm <b>taller</b> than the line predicted.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 4 <span class="pts">[2 pts]</span></h3>
-<p>An admissions office finds that 60% of applicants are in-state and 40% are out-of-state. Among in-state applicants, 30% receive a merit scholarship; among out-of-state applicants, 20% receive one. If a randomly selected applicant has a merit scholarship, what is the probability they are in-state? <i>(2 pts)</i></p>
-<div class="solution"><p>\(P(\text{in-state and merit}) = 0.60 \cdot 0.30 = 0.18\). \(P(\text{out-of-state and merit}) = 0.40 \cdot 0.20 = 0.08\). \(P(\text{merit}) = 0.18 + 0.08 = 0.26\).</p><p>\(P(\text{in-state} \mid \text{merit}) = \frac{0.18}{0.26} \approx 0.692\).</p></div>
+<p>True or false? Give a brief explanation for each. <i>(1 pt each)</i></p><ol type='a'><li>If \(r = 0.95\) between shoe size and reading level in elementary school children, then bigger shoes cause better reading.</li><li>If we convert the \(x\)-variable from inches to centimeters, the correlation \(r\) will change.</li></ol>
+<div class="solution"><p>(a) <b>False.</b> Correlation does not imply causation. Here a lurking variable, age, drives both: older children have bigger feet <i>and</i> read better. Buying bigger shoes would not improve reading.</p><p>(b) <b>False.</b> Correlation is unitless and is unaffected by a linear change of units. Converting inches to centimeters (multiplying by a positive constant) leaves \(r\) exactly the same.</p></div>
 </div>
 
 </div>

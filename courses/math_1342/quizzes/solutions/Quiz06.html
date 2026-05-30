@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Math 1342 Quiz 6 — Solutions</title>
+<title>Math 1342 Quiz 6 &mdash; Solutions</title>
 <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href='/css/styles.css' rel='stylesheet' type='text/css'>
@@ -49,9 +49,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 
 <div class="quiz">
 <span class="badge">Quiz 6</span>
-<h1>Errors, Connections, and Normal-Based Tests</h1>
+<h1>Errors, Significance, and Connections</h1>
 <p class="version-tag">Worked Solutions</p>
-<p class="covers">Covers Sections 4.4, 4.5, 5.1</p>
+<p class="covers">Covers Sections 4.4, 4.5</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 </div>
@@ -60,23 +60,22 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <div class="problem">
 <h3>Problem 1 <span class="pts">[2 pts]</span></h3>
 <p>In a hypothesis test, define each in plain English. <i>(1 pt each)</i></p><ol type='a'><li>Type I error</li><li>Type II error</li></ol>
-<div class="solution"><p>(a) Type I error: rejecting \(H_0\) when it is actually true (a false positive).</p><p>(b) Type II error: failing to reject \(H_0\) when it is actually false (a false negative).</p></div>
+<div class="solution"><p>(a) A Type I error occurs when we <b>reject \(H_0\) even though \(H_0\) is actually true</b> &mdash; a &ldquo;false positive&rdquo; in which we conclude there is an effect that does not really exist. Its probability is the significance level \(\alpha\).</p><p>(b) A Type II error occurs when we <b>fail to reject \(H_0\) even though \(H_0\) is actually false</b> &mdash; a &ldquo;false negative&rdquo; in which we miss a real effect that is actually present.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 2 <span class="pts">[2 pts]</span></h3>
 <p>A 95% confidence interval for the mean is \((34.0,\ 39.0)\). Without doing a separate test, would you reject \(H_0: \mu = 36\) at \(\alpha = 0.05\)? Would you reject \(H_0: \mu = 40\)? Explain how the CI gives you this information.</p>
-<div class="solution"><p>Do not reject \(H_0: \mu = 36\) (36 lies inside the CI). Reject \(H_0: \mu = 40\) (40 lies outside the CI).</p><p>A two-sided test rejects \(H_0: \mu = c\) at level \(\alpha\) iff \(c\) is outside the corresponding \((1 - \alpha)\) CI. CIs and tests are two views of the same evidence.</p></div>
+<div class="solution"><p>A 95% CI and a two-sided test at \(\alpha = 0.05\) are dual: reject \(H_0: \mu = \mu_0\) exactly when the hypothesized value \(\mu_0\) lies <b>outside</b> the interval.</p><p>For \(\mu = 36\): since \(36\) lies <b>inside</b> \((34.0,\ 39.0)\), we <b>do not reject</b> \(H_0: \mu = 36\) &mdash; 36 is a plausible value of the mean.</p><p>For \(\mu = 40\): since \(40\) lies <b>outside</b> \((34.0,\ 39.0)\), we <b>reject</b> \(H_0: \mu = 40\) &mdash; 40 is not a plausible value of the mean.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 3 <span class="pts">[3 pts]</span></h3>
-<p>Compute the standardized test statistic. <i>(1.5 pts each)</i></p><ol type='a'><li>For a single proportion: \(\hat{p} = 0.62\), \(p_0 = 0.55\), \(n = 200\). Use \(z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}\).</li><li>For a single mean: \(\bar{x} = 102\), \(\mu_0 = 100\), \(s = 8\), \(n = 64\). Use \(z = \frac{\bar{x} - \mu_0}{s/\sqrt{n}}\).</li></ol>
-<div class="solution"><p>(a) \(SE = \sqrt{\frac{0.55 \cdot 0.45}{200}} \approx 0.0352\). \(z = \frac{0.62 - 0.55}{0.0352} \approx 1.99\).</p><p>(b) \(SE = \frac{8}{\sqrt{64}} = 1\). \(z = \frac{102 - 100}{1} = 2\).</p></div>
+<p>A large hospital study (\(n = 10{,}000\)) finds that a new medication lowers blood pressure by an average of 0.5 mmHg compared to a placebo, with a p-value of 0.003. <i>(1 pt each)</i></p><ol type='a'><li>Is this result statistically significant at \(\alpha = 0.05\)?</li><li>Do you think this result is practically significant? Explain.</li><li>Explain how a very large sample size can lead to statistically significant results that are not practically meaningful.</li></ol>
+<div class="solution"><p>(a) Yes. Since the p-value \(0.003 < 0.05 = \alpha\), the result <b>is statistically significant</b>; we reject \(H_0\).</p><p>(b) Not really. A reduction of only <b>0.5 mmHg</b> in blood pressure is too small to matter clinically &mdash; it is unlikely to change a patient&rsquo;s health outcome or treatment decisions, especially when weighed against cost or side effects. So the result is statistically significant but not <b>practically significant</b>.</p><p>(c) The standard error shrinks as \(n\) grows (it is proportional to \(1/\sqrt{n}\)). With a very large sample, even a tiny, practically meaningless difference produces a large test statistic and hence a very small p-value. So a large \(n\) makes it easy to detect trivial effects as &ldquo;statistically significant,&rdquo; which is why the size of the effect must always be judged separately from the p-value.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 4 <span class="pts">[3 pts]</span></h3>
-<p>The shaded region of the normal curve below shows the rejection region for a two-sided test at \(\alpha = 0.05\). <i>(1 pt each)</i></p><ol type='a'><li>What z-values mark the boundaries?</li><li>If the observed z is 1.5, what is the conclusion?</li><li>If the observed z is 2.4, what is the conclusion?</li></ol>
-<div class='chart'><div id='q6-norm'></div></div><script>StatGraphs.normalCurve('#q6-norm',{mean:0,sd:1,xMin:-4,xMax:4,width:540,height:200,xLabel:'z',shade:[{from:-4,to:-1.96,color:'#fb7185'},{from:1.96,to:4,color:'#fb7185'}]});</script>
-<div class="solution"><p>(a) \(z = \pm 1.96\). (b) 1.5 is inside \((-1.96, 1.96)\), so do not reject \(H_0\). (c) 2.4 is outside that interval, so reject \(H_0\).</p></div>
+<p>A 99% confidence interval for the difference in mean test scores between two teaching methods is \((-1.2,\ 8.4)\). <i>(1 pt each)</i></p><ol type='a'><li>Based on this interval, would you reject \(H_0: \mu_1 - \mu_2 = 0\) at \(\alpha = 0.01\)? Explain.</li><li>If we instead used \(\alpha = 0.05\), would the corresponding 95% confidence interval be wider or narrower?</li><li>Describe a scenario in this context where a Type II error would occur, and explain its consequence.</li></ol>
+<div class="solution"><p>(a) <b>Do not reject</b> \(H_0\). A 99% CI corresponds to a two-sided test at \(\alpha = 0.01\). Since the interval \((-1.2,\ 8.4)\) <b>contains 0</b>, a difference of 0 is plausible, so we fail to reject \(H_0: \mu_1 - \mu_2 = 0\).</p><p>(b) <b>Narrower.</b> A lower confidence level requires less coverage, so the 95% interval is narrower than the 99% interval (higher confidence &rarr; wider interval).</p><p>(c) A Type II error here means concluding there is <b>no difference</b> between the teaching methods (failing to reject \(H_0\)) when in fact one method truly is more effective. The consequence: the genuinely better teaching method would be overlooked, and students could continue using an inferior method even though a real improvement existed.</p></div>
 </div>
 
 </div>
