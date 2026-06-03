@@ -265,11 +265,80 @@
       <h3>Spread</h3>
       <ul class="small">
         <li>Ages run from 17 to 78 &mdash; a few older students stretch things out.</li>
-        <li>Those outliers (78, 50) yank the <span class="accent">mean</span> up to 27.8, but the <span class="accent2">median</span> barely moves from 22.5.</li>
+        <li>That one outlier at 78 yanks the <span class="accent">mean</span> up to 27.8, but the <span class="accent2">median</span> barely moves from 22.5.</li>
       </ul>
     </div>
   </div>
   <div class="callout">Right there, from your own ages, you see why statisticians don't trust a single number to describe a group.</div>
+</div>
+
+<div class="slide">
+  <h2>Describe: A Picture of the Ages</h2>
+  <p class="subtitle">A <span class="accent">boxplot</span> turns the whole class into one honest picture &mdash; center, spread, and anything unusual.</p>
+  <div class="card">
+    <svg viewBox="0 0 760 200" width="100%" style="max-width:780px; display:block; margin:0 auto;" font-family="Inter, sans-serif">
+      <!-- baseline axis -->
+      <line x1="40" y1="158" x2="736" y2="158" stroke="#475569" stroke-width="1.5"/>
+      <g stroke="#475569" stroke-width="1">
+        <line x1="93.5" y1="158" x2="93.5" y2="163"/>
+        <line x1="200.6" y1="158" x2="200.6" y2="163"/>
+        <line x1="307.7" y1="158" x2="307.7" y2="163"/>
+        <line x1="414.8" y1="158" x2="414.8" y2="163"/>
+        <line x1="521.9" y1="158" x2="521.9" y2="163"/>
+        <line x1="628.9" y1="158" x2="628.9" y2="163"/>
+        <line x1="736.0" y1="158" x2="736.0" y2="163"/>
+      </g>
+      <g fill="#94a3b8" font-size="13" text-anchor="middle">
+        <text x="93.5" y="178">20</text>
+        <text x="200.6" y="178">30</text>
+        <text x="307.7" y="178">40</text>
+        <text x="414.8" y="178">50</text>
+        <text x="521.9" y="178">60</text>
+        <text x="628.9" y="178">70</text>
+        <text x="736.0" y="178">80</text>
+      </g>
+      <!-- lower whisker 17 -> 19 -->
+      <line x1="61.4" y1="98" x2="82.8" y2="98" stroke="#38bdf8" stroke-width="2"/>
+      <line x1="61.4" y1="78" x2="61.4" y2="118" stroke="#38bdf8" stroke-width="2"/>
+      <!-- upper whisker 35 -> 50 -->
+      <line x1="254.2" y1="98" x2="414.8" y2="98" stroke="#38bdf8" stroke-width="2"/>
+      <line x1="414.8" y1="78" x2="414.8" y2="118" stroke="#38bdf8" stroke-width="2"/>
+      <!-- box 19 -> 35 -->
+      <rect x="82.8" y="70" width="171.4" height="56" fill="#38bdf8" fill-opacity="0.18" stroke="#38bdf8" stroke-width="2"/>
+      <!-- median 22.5 -->
+      <line x1="120.3" y1="70" x2="120.3" y2="126" stroke="#fbbf24" stroke-width="3"/>
+      <!-- outlier 78 -->
+      <circle cx="714.6" cy="98" r="7" fill="none" stroke="#fb7185" stroke-width="2.5"/>
+      <!-- value labels -->
+      <g font-size="13" text-anchor="middle">
+        <text x="61.4" y="58" fill="#cbd5e1">17</text>
+        <text x="120.3" y="58" fill="#fbbf24" font-weight="700">22.5</text>
+        <text x="414.8" y="58" fill="#cbd5e1">50</text>
+        <text x="714.6" y="82" fill="#fb7185" font-weight="700">78</text>
+        <text x="82.8" y="146" fill="#cbd5e1">Q1 19</text>
+        <text x="254.2" y="146" fill="#cbd5e1">Q3 35</text>
+      </g>
+      <text x="388" y="196" fill="#94a3b8" font-size="13" text-anchor="middle">Age (years)</text>
+    </svg>
+  </div>
+  <div class="grid-3" style="margin-top:18px;">
+    <div class="card card-accent2">
+      <h3>The middle half</h3>
+      <ul class="small">
+        <li>Half the class falls between <span class="accent2">19 and 35</span> &mdash; that range is the box.</li>
+        <li>The typical age (<span class="accent2">median</span>) is about 22&ndash;23: half younger, half older.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Most common age</h3>
+      <ul class="small"><li><span class="green">19</span> shows up more than any other age &mdash; the mode.</li></ul>
+    </div>
+    <div class="card card-rose">
+      <h3>An outlier</h3>
+      <ul class="small"><li>Ages stretch from 17 to 78, but <span class="rose">78</span> stands far apart from everyone else &mdash; a value well outside the usual range.</li></ul>
+    </div>
+  </div>
+  <div class="callout callout-amber">Because of that one high value, the average (about <strong>28</strong>) comes out higher than the typical age of 22&ndash;23 &mdash; a perfect example of how a single extreme value pulls the mean up and away from what's "typical."</div>
 </div>
 
 <div class="slide">
