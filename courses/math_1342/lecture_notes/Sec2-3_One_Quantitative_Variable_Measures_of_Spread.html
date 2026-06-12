@@ -83,6 +83,31 @@
 </div>
 
 <div class="slide">
+  <h2>Small SD vs. Large SD</h2>
+  <p class="subtitle">Both distributions are centered at the same mean. The standard deviation controls how spread out the data are: smaller SD &rarr; tall and narrow, larger SD &rarr; short and wide.</p>
+  <div id="chart-2-3-sd" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:18px; max-width:760px; margin:8px auto;"></div>
+  <div style="text-align:center; margin-top:14px; font-size:17px;">
+    <span style="color:var(--green); font-weight:700;">&#9632; Small standard deviation</span>
+    &nbsp;&nbsp;&nbsp;
+    <span style="color:var(--rose); font-weight:700;">&#9632; Large standard deviation</span>
+  </div>
+  <script>
+    (function () {
+      const norm = (mean, sd) => (x) => Math.exp(-((x - mean) ** 2) / (2 * sd * sd)) / (sd * Math.sqrt(2 * Math.PI));
+      StatGraphs.lineChart('#chart-2-3-sd', {
+        width: 720, height: 320,
+        xMin: 0, xMax: 100, yMin: 0, yMax: 0.055,
+        xLabel: 'value', yLabel: 'density',
+        curves: [
+          { fn: norm(50, 8),  color: '#34d399' },
+          { fn: norm(50, 20), color: '#fb7185' },
+        ],
+      });
+    })();
+  </script>
+</div>
+
+<div class="slide">
   <h2>The 95% Rule</h2>
   <p class="subtitle">For approximately bell-shaped distributions, about 95% of data falls within two standard deviations of the mean.</p>
   <div class="grid-2">
