@@ -83,6 +83,40 @@
 </div>
 
 <div class="slide">
+  <h2>Example: Calculating Standard Deviation</h2>
+  <p class="subtitle">Find the sample standard deviation of the data values 1, 2, 3. First find the mean: \(\bar{x} = \frac{1+2+3}{3} = 2\).</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <h3>Build the Table</h3>
+      <table>
+        <thead>
+          <tr><th>\(x\)</th><th>\(\bar{x}\)</th><th>\(x - \bar{x}\)</th><th>\((x - \bar{x})^2\)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>2</td><td>\(-1\)</td><td>1</td></tr>
+          <tr><td>2</td><td>2</td><td>0</td><td>0</td></tr>
+          <tr><td>3</td><td>2</td><td>1</td><td>1</td></tr>
+          <tr><td><strong>Sum</strong></td><td></td><td>0</td><td><strong>2</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card card-green">
+      <h3>Plug Into the Formula</h3>
+      <div class="formula-box">
+        \[
+          s = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n - 1}} = \sqrt{\frac{2}{3 - 1}} = \sqrt{1} = 1
+        \]
+      </div>
+      <ul class="small">
+        <li>The deviations \((x - \bar{x})\) always sum to 0 &mdash; a good check.</li>
+        <li>Square the deviations, add them, divide by \(n - 1\), then take the square root.</li>
+        <li>The standard deviation is \(s = 1\).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Small SD vs. Large SD</h2>
   <p class="subtitle">Both distributions are centered at the same mean. The standard deviation controls how spread out the data are: smaller SD &rarr; tall and narrow, larger SD &rarr; short and wide.</p>
   <div id="chart-2-3-sd" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:18px; max-width:760px; margin:8px auto;"></div>
