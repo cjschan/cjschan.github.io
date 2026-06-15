@@ -321,6 +321,169 @@ const StatGraphs = (() => {
     host(target).innerHTML = ''; host(target).appendChild(fr.svg);
   }
 
+  // ─── Legend (used by grouped/segmented bar charts) ───────────────────
+  function legend(svg, fr, series, palette) {
+    let lx = fr.PL + 4;
+    const ly = 12;
+    for (let i = 0; i < series.length; i++) {
+      const label = series[i].label || '';
+      svg.appendChild(el('rect', {
+        x: lx, y: ly - 8, width: 11, height: 11, rx: 2,
+        fill: series[i].color || palette[i % palette.length], opacity: 0.85,
+      }));
+      svg.appendChild(el('text', {
+        x: lx + 16, y: ly + 1, fill: COLORS.text,
+        'font-size': 11, 'font-family': 'Work Sans, sans-serif',
+      }, [label]));
+      lx += 22 + label.length * 6.4;
+    }
+  }
+
+  // ─── Grouped (side-by-side) bar chart ────────────────────────────────
+  // groups: ['Single', ...]; series: [{label, values, color}, ...]
+  function groupedBarChart(target, groups, series, opts = {}) {
+    const fr = frame(Object.assign({ padTop: 28, padRight: 18 }, opts));
+    const palette = [COLORS.primary, COLORS.rose, COLORS.green, COLORS.amber, COLORS.purple];
+    const max = opts.max || Math.max(...series.flatMap((s) => s.values));
+    const sy = (v) => fr.PT + fr.plotH - (v / max) * fr.plotH;
+    const slotW = fr.plotW / groups.length;
+    const k = series.length;
+    const groupBarsW = slotW * 0.7;
+    const barW = groupBarsW / k;
+    for (let g = 0; g < groups.length; g++) {
+      const slotStart = fr.PL + slotW * g + (slotW - groupBarsW) / 2;
+      for (let s = 0; s < k; s++) {
+        const v = series[s].values[g];
+        const x = slotStart + s * barW;
+        const y = sy(v);
+        const h = fr.PT + fr.plotH - y;
+        fr.svg.appendChild(el('rect', {
+          x, y, width: barW * 0.92, height: h,
+          fill: series[s].color || palette[s % palette.length], opacity: 0.85,
+        }));
+        fr.svg.appendChild(el('text', {
+          x: x + barW * 0.46, y: y - 4, fill: COLORS.text,
+          'font-size': 10, 'text-anchor': 'middle', 'font-family': 'Work Sans, sans-serif',
+        }, [String(v)]));
+      }
+      fr.svg.appendChild(el('text', {
+        x: fr.PL + slotW * (g + 0.5), y: fr.PT + fr.plotH + 16, fill: COLORS.text,
+        'font-size': 11, 'text-anchor': 'middle', 'font-family': 'Work Sans, sans-serif',
+      }, [groups[g]]));
+    }
+    fr.svg.appendChild(el('line', {
+      x1: fr.PL, y1: fr.PT + fr.plotH, x2: fr.PL + fr.plotW, y2: fr.PT + fr.plotH,
+      stroke: COLORS.axis, 'stroke-width': 1.25,
+    }));
+    if (opts.yLabel) axisY(fr.svg, sy, fr, makeTicks(0, max, Math.min(max, 5)), opts.yLabel);
+    legend(fr.svg, fr, series, palette);
+    host(target).innerHTML = ''; host(target).appendChild(fr.svg);
+  }
+
+  // ─── Segmented (stacked) bar chart ───────────────────────────────────
+  // groups: ['Female', ...]; series: [{label, values, color}, ...]
+  // opts.proportion: stack to 100% (relative frequencies) instead of counts
+  function segmentedBarChart(target, groups, series, opts = {}) {
+    const fr = frame(Object.assign({ padTop: 28, padRight: 18 }, opts));
+    const palette = [COLORS.primary, COLORS.rose, COLORS.green, COLORS.amber, COLORS.purple];
+    const totals = groups.map((_, g) => series.reduce((sum, s) => sum + s.values[g], 0));
+    const proportion = opts.proportion;
+    const max = opts.max || (proportion ? 1 : Math.max(...totals));
+    const sy = (v) => fr.PT + fr.plotH - (v / max) * fr.plotH;
+    const slotW = fr.plotW / groups.length;
+    const barW = Math.min(slotW * 0.55, 90);
+    for (let g = 0; g < groups.length; g++) {
+      const cx = fr.PL + slotW * (g + 0.5);
+      const x = cx - barW / 2;
+      let cumulative = 0;
+      for (let s = 0; s < series.length; s++) {
+        let v = series[s].values[g];
+        if (proportion) v = v / totals[g];
+        const yTop = sy(cumulative + v);
+        const h = sy(cumulative) - yTop;
+        fr.svg.appendChild(el('rect', {
+          x, y: yTop, width: barW, height: h,
+          fill: series[s].color || palette[s % palette.length], opacity: 0.85,
+        }));
+        if (h > 14) {
+          fr.svg.appendChild(el('text', {
+            x: cx, y: yTop + h / 2 + 4, fill: COLORS.bg,
+            'font-size': 10, 'text-anchor': 'middle', 'font-weight': 700,
+            'font-family': 'Work Sans, sans-serif',
+          }, [proportion ? Math.round(v * 100) + '%' : String(series[s].values[g])]));
+        }
+        cumulative += v;
+      }
+      fr.svg.appendChild(el('text', {
+        x: cx, y: fr.PT + fr.plotH + 16, fill: COLORS.text,
+        'font-size': 11, 'text-anchor': 'middle', 'font-family': 'Work Sans, sans-serif',
+      }, [groups[g]]));
+    }
+    fr.svg.appendChild(el('line', {
+      x1: fr.PL, y1: fr.PT + fr.plotH, x2: fr.PL + fr.plotW, y2: fr.PT + fr.plotH,
+      stroke: COLORS.axis, 'stroke-width': 1.25,
+    }));
+    if (opts.yLabel) axisY(fr.svg, sy, fr, makeTicks(0, max, Math.min(5, proportion ? 5 : max)), opts.yLabel);
+    legend(fr.svg, fr, series, palette);
+    host(target).innerHTML = ''; host(target).appendChild(fr.svg);
+  }
+
+  // ─── Pie chart ───────────────────────────────────────────────────────
+  // labels: ['Android', ...]; values: [458, ...]
+  function pieChart(target, labels, values, opts = {}) {
+    const W = opts.width || 460, H = opts.height || 280;
+    const svg = el('svg', {
+      xmlns: SVG, viewBox: `0 0 ${W} ${H}`, width: W, height: H,
+      style: 'background:#0f172a; border-radius:8px; max-width:100%; display:block;',
+    });
+    const total = values.reduce((a, b) => a + b, 0);
+    const palette = [COLORS.primary, COLORS.amber, COLORS.green, COLORS.purple, COLORS.rose];
+    const showLegend = opts.legend !== false;
+    const r = opts.radius || Math.min(H * 0.42, W * (showLegend ? 0.2 : 0.42));
+    const cx = showLegend ? r + 20 : W / 2;
+    const cy = H / 2;
+    let angle = -Math.PI / 2;
+    for (let i = 0; i < values.length; i++) {
+      const frac = values[i] / total;
+      const a0 = angle;
+      const a1 = angle + frac * 2 * Math.PI;
+      angle = a1;
+      const x0 = cx + r * Math.cos(a0), y0 = cy + r * Math.sin(a0);
+      const x1 = cx + r * Math.cos(a1), y1 = cy + r * Math.sin(a1);
+      const large = (a1 - a0) > Math.PI ? 1 : 0;
+      svg.appendChild(el('path', {
+        d: `M ${cx} ${cy} L ${x0.toFixed(2)} ${y0.toFixed(2)} A ${r} ${r} 0 ${large} 1 ${x1.toFixed(2)} ${y1.toFixed(2)} Z`,
+        fill: palette[i % palette.length], opacity: 0.85,
+        stroke: COLORS.bg, 'stroke-width': 1.5,
+      }));
+      if (frac > 0.05) {
+        const mid = (a0 + a1) / 2;
+        const lr = r * 0.62;
+        svg.appendChild(el('text', {
+          x: cx + lr * Math.cos(mid), y: cy + lr * Math.sin(mid) + 4,
+          fill: COLORS.bg, 'font-size': 11, 'font-weight': 700,
+          'text-anchor': 'middle', 'font-family': 'Work Sans, sans-serif',
+        }, [Math.round(frac * 100) + '%']));
+      }
+    }
+    if (showLegend) {
+      const lx = cx + r + 24;
+      let ly = cy - (labels.length * 20) / 2 + 10;
+      for (let i = 0; i < labels.length; i++) {
+        svg.appendChild(el('rect', {
+          x: lx, y: ly - 9, width: 11, height: 11, rx: 2,
+          fill: palette[i % palette.length], opacity: 0.85,
+        }));
+        svg.appendChild(el('text', {
+          x: lx + 16, y: ly, fill: COLORS.text,
+          'font-size': 11, 'font-family': 'Work Sans, sans-serif',
+        }, [`${labels[i]} (${Math.round((values[i] / total) * 100)}%)`]));
+        ly += 20;
+      }
+    }
+    host(target).innerHTML = ''; host(target).appendChild(svg);
+  }
+
   // ─── Normal curve (with optional shading) ────────────────────────────
   function normalCurve(target, opts = {}) {
     const mean = opts.mean !== undefined ? opts.mean : 0;
@@ -414,5 +577,5 @@ const StatGraphs = (() => {
     host(target).innerHTML = ''; host(target).appendChild(fr.svg);
   }
 
-  return { histogram, dotplot, boxplot, boxplots, scatter, barChart, normalCurve, lineChart };
+  return { histogram, dotplot, boxplot, boxplots, scatter, barChart, groupedBarChart, segmentedBarChart, pieChart, normalCurve, lineChart };
 })();

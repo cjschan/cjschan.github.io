@@ -8,7 +8,7 @@
   window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<script src="statgraphs.js?v=2"></script>
+<script src="statgraphs.js?v=4"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -86,29 +86,33 @@
 </div>
 
 <div class="slide">
-  <h2>Proportion</h2>
-  <p class="subtitle">A proportion summarizes a categorical variable as a single number between 0 and 1.</p>
+  <h2>Proportion &amp; Relative Frequency</h2>
+  <p class="subtitle">A relative frequency table converts each count to a proportion of the total.</p>
   <div class="grid-2">
-    <div class="card card-accent">
-      <h3>Formula</h3>
+    <div class="card card-accent table-card">
+      <h3>Relative Frequency Table: Cell Phones</h3>
+      <table>
+        <tr><th>Type</th><th>Count</th><th>Rel. Freq.</th></tr>
+        <tr><td>Android</td><td>458</td><td>0.203</td></tr>
+        <tr><td>iPhone</td><td>437</td><td>0.194</td></tr>
+        <tr><td>Blackberry</td><td>141</td><td>0.063</td></tr>
+        <tr><td>Non-Smartphone</td><td>924</td><td>0.410</td></tr>
+        <tr><td>No Cell Phone</td><td>293</td><td>0.130</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>2253</strong></td><td><strong>1.000</strong></td></tr>
+      </table>
+    </div>
+    <div class="card card-green">
+      <h3>Formula &amp; Key Points</h3>
       <div class="formula-box">
         \[
           \hat{p} = \frac{\text{count in category}}{\text{total count}}
         \]
       </div>
-      <div class="step-note">Example: proportion with no cell phone:</div>
-      <div class="formula-box">
-        \[
-          \hat{p} = \frac{293}{2253} \approx 0.130
-        \]
-      </div>
-    </div>
-    <div class="card card-green">
-      <h3>Key Points</h3>
-      <ul>
-        <li>Proportions and percentages are interchangeable.</li>
-        <li>\(0.130 = 13.0\%\)</li>
-        <li>All proportions in a relative frequency table sum to 1.</li>
+      <div class="step-note">No cell phone: \(\hat{p} = \dfrac{293}{2253} \approx 0.130\)</div>
+      <ul class="small">
+        <li>Proportions and percentages are interchangeable: \(0.130 = 13.0\%\).</li>
+        <li>Each relative frequency is between 0 and 1.</li>
+        <li>All relative frequencies sum to 1.000.</li>
       </ul>
     </div>
   </div>
@@ -135,6 +139,31 @@
       </ul>
     </div>
   </div>
+</div>
+
+<div class="slide">
+  <h2>Example: Bar Chart &amp; Pie Chart</h2>
+  <p class="subtitle">Cell phone types among 2253 respondents.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Bar Chart</h3>
+      <div id="chart-cell-bar"></div>
+    </div>
+    <div class="card card-accent2">
+      <h3>Pie Chart</h3>
+      <div id="chart-cell-pie"></div>
+    </div>
+  </div>
+  <script>
+    StatGraphs.barChart('#chart-cell-bar',
+      ['Android', 'iPhone', 'Blackberry', 'Non-Smart', 'No Phone'],
+      [458, 437, 141, 924, 293],
+      { width: 460, height: 240, yLabel: 'Count' });
+    StatGraphs.pieChart('#chart-cell-pie',
+      ['Android', 'iPhone', 'Blackberry', 'Non-Smartphone', 'No Cell Phone'],
+      [458, 437, 141, 924, 293],
+      { width: 470, height: 240 });
+  </script>
 </div>
 
 <div class="slide">
@@ -208,12 +237,45 @@
 </div>
 
 <div class="slide">
-  <h2>Example: Bar Chart</h2>
-  <p class="subtitle">Frequencies of favorite ice cream flavors among 200 surveyed students.</p>
+  <h2>Example: Bar Chart (One Variable)</h2>
+  <p class="subtitle">Relationship status for all 169 surveyed students, ignoring gender.</p>
   <div id="chart-2-1-bar" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:16px; max-width:600px; margin: 8px auto;"></div>
   <script>
-    StatGraphs.barChart('#chart-2-1-bar', ['Vanilla', 'Chocolate', 'Strawberry', 'Mint', 'Other'], [62, 78, 22, 18, 20], { width: 540, height: 240 });
+    StatGraphs.barChart('#chart-2-1-bar', ['In a Relationship', "It's Complicated", 'Single'], [42, 19, 108], { width: 540, height: 240 });
   </script>
+</div>
+
+<div class="slide">
+  <h2>Example: Grouped Bar Chart</h2>
+  <p class="subtitle">Relationship status by gender, shown as side-by-side counts.</p>
+  <div id="chart-2-1-grouped" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:16px; max-width:640px; margin: 8px auto;"></div>
+  <script>
+    StatGraphs.groupedBarChart('#chart-2-1-grouped',
+      ['In a Relationship', "It's Complicated", 'Single'],
+      [
+        { label: 'Female', values: [32, 12, 63] },
+        { label: 'Male', values: [10, 7, 45] },
+      ],
+      { width: 580, height: 260 });
+  </script>
+  <div class="callout">Bars sit next to each other, so you can directly compare the female and male counts within each status.</div>
+</div>
+
+<div class="slide">
+  <h2>Example: Segmented Bar Chart</h2>
+  <p class="subtitle">How each gender breaks down by relationship status (percent within each gender).</p>
+  <div id="chart-2-1-segmented" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:16px; max-width:560px; margin: 8px auto;"></div>
+  <script>
+    StatGraphs.segmentedBarChart('#chart-2-1-segmented',
+      ['Female', 'Male'],
+      [
+        { label: 'In a Relationship', values: [32, 10] },
+        { label: "It's Complicated", values: [12, 7] },
+        { label: 'Single', values: [63, 45] },
+      ],
+      { width: 500, height: 260, proportion: true });
+  </script>
+  <div class="callout">Each bar is stacked to 100%, so you can compare the <em>distribution</em> of statuses between females and males even though the group sizes differ.</div>
 </div>
 
 <div class="slide">
