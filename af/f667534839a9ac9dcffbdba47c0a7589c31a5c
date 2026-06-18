@@ -1,0 +1,22 @@
+courses/math_1342/lecture_notes/Sec2-6_Two_Quantitative_Variables_Linear_Regression.html
+  s_460435290900ea::t_a2afeb9b1fa2be 210-237
+  s_460435290900ea::t_eb5c28d220251b 275-299
+  s_460435290900ea::t_8bfe651191a5ca 136-159
+  s_460435290900ea::t_d64d211fedd0d2 85-113
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "aff667534839a9ac9dcffbdba47c0a7589c31a5c",
+  "prompts": {},
+  "sessions": {
+    "s_460435290900ea": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6f3dc8da-5249-41f9-966f-0ad6fce13be7",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
