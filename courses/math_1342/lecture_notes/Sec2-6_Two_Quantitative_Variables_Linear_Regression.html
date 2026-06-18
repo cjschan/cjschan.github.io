@@ -82,6 +82,36 @@
 </div>
 
 <div class="slide">
+  <h2>A Quick Review: Graphing Lines</h2>
+  <p class="subtitle">A regression line is just a line &mdash; the same \(y = mx + b\) you met in algebra.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Slope&ndash;Intercept Form</h3>
+      <div class="formula-box">
+        \[ y = mx + b \]
+      </div>
+      <ul>
+        <li>\(b\) is the <span class="accent">\(y\)-intercept</span>: the height where the line crosses the \(y\)-axis (when \(x = 0\)).</li>
+        <li>\(m\) is the <span class="accent">slope</span>: \(\dfrac{\text{rise}}{\text{run}} = \dfrac{\text{change in } y}{\text{change in } x}\).</li>
+        <li>To graph: start at \((0, b)\), then use the slope to step to the next point.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Example: \(y = 1 + 2x\)</h3>
+      <div id="chart-2-6-line" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:10px;"></div>
+      <div class="step-note">Intercept \(b = 1\) (crosses \(y\)-axis at 1). Slope \(m = 2\): up 2 for every 1 step right.</div>
+    </div>
+  </div>
+  <script>
+    StatGraphs.lineChart('#chart-2-6-line', {
+      width: 460, height: 240, xLabel: 'x', yLabel: 'y',
+      xMin: 0, xMax: 5, yMin: 0, yMax: 12,
+      curves: [{ fn: (x) => 1 + 2 * x, color: '#34d399' }]
+    });
+  </script>
+</div>
+
+<div class="slide">
   <h2>Slope and Intercept</h2>
   <p class="subtitle">The two numbers that define the regression line.</p>
   <div class="grid-2">
@@ -99,6 +129,31 @@
         <li>Often not meaningful if \(x = 0\) is far outside the data range.</li>
       </ul>
     </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Interpreting Slope &amp; Intercept in Context</h2>
+  <p class="subtitle">Don't just report the numbers &mdash; say what they mean, and attach the right units. Recall \(\widehat{\text{Temp}} = 37.7 + 0.23 \times \text{Chirps}\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Slope: \(b_1 = 0.23\)</h3>
+      <ul>
+        <li>For each additional <strong>1 chirp per minute</strong>, the predicted temperature goes up by about <strong>\(0.23^\circ\text{F}\)</strong>.</li>
+        <li>Units of slope \(= \dfrac{\text{units of } y}{\text{units of } x} = \dfrac{^\circ\text{F}}{\text{chirp/min}}\).</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Intercept: \(b_0 = 37.7\)</h3>
+      <ul>
+        <li>When chirps \(= 0\), the predicted temperature is <strong>\(37.7^\circ\text{F}\)</strong>.</li>
+        <li>Units of intercept \(=\) units of \(y = {}^\circ\text{F}\).</li>
+        <li>Interpret with care: \(0\) chirps may be outside the data, so this is just where the line starts.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Units rule of thumb:</strong> the <span class="accent">slope</span> is measured in <em>\(y\)-units per \(x\)-unit</em>, and the <span class="accent">intercept</span> is measured in <em>\(y\)-units</em>.
   </div>
 </div>
 
@@ -152,6 +207,35 @@
 </div>
 
 <div class="slide">
+  <h2>Example: Computing a Residual</h2>
+  <p class="subtitle">Using \(\widehat{\text{Temp}} = 37.7 + 0.23 \times \text{Chirps}\). Suppose crickets chirp 140 times per minute and the actual temperature is \(72^\circ\text{F}\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Step 1 &mdash; Predict</h3>
+      <div class="formula-box">
+        \[ \hat{y} = 37.7 + 0.23(140) = 69.9^\circ\text{F} \]
+      </div>
+      <h3 style="margin-top:14px;">Step 2 &mdash; Subtract</h3>
+      <div class="formula-box">
+        \[ y - \hat{y} = 72 - 69.9 = 2.1^\circ\text{F} \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <h3>What It Means</h3>
+      <ul>
+        <li>The residual is <strong>\(+2.1^\circ\text{F}\)</strong>.</li>
+        <li>It is <span class="accent">positive</span>, so the observed point sits <em>above</em> the line.</li>
+        <li>The model <strong>under-predicted</strong>: the real day was \(2.1^\circ\text{F}\) warmer than the line said.</li>
+        <li>Units of a residual match \(y\): degrees Fahrenheit.</li>
+      </ul>
+      <div class="callout" style="margin-top:14px;">
+        A <strong>negative</strong> residual would mean the point is <em>below</em> the line and the model over-predicted.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Regression Cautions</h2>
   <p class="subtitle">Four important warnings when using regression.</p>
   <div class="grid-2">
@@ -185,6 +269,32 @@
     const scores = [55, 58, 62, 67, 65, 70, 73, 68, 72, 78, 76, 80, 82, 79, 84, 87, 85, 88, 90, 89, 92, 88, 93, 91, 95, 94, 97, 96, 98, 99];
     StatGraphs.scatter('#chart-2-6-reg', hours, scores, { width: 540, height: 280, xLabel: 'hours studied', yLabel: 'exam score', regression: true });
   </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Practice: Putting It All Together</h2>
+  <p class="subtitle">Work through every part on your own &mdash; equation, interpretation, prediction, and residual.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>The Scenario</h3>
+      <div class="step-note">A dealership studies how a used car's <strong>age</strong> (in years) relates to its <strong>price</strong> (in dollars). The least-squares regression line is:</div>
+      <div class="formula-box">
+        \[ \widehat{\text{Price}} = 21{,}000 - 1{,}500 \times \text{Age} \]
+      </div>
+      <div class="step-note">The data used to fit this line came from cars between <strong>1 and 12 years old</strong>.</div>
+    </div>
+    <div class="card card-green">
+      <h3>Your Tasks</h3>
+      <ul class="small">
+        <li>(a) Interpret the <strong>slope</strong> in context, including units.</li>
+        <li>(b) Interpret the <strong>intercept</strong> in context, including units.</li>
+        <li>(c) Predict the price of a car that is <strong>6 years old</strong>.</li>
+        <li>(d) One 6-year-old car actually sold for <strong>$13,500</strong>. Find the <strong>residual</strong> and explain what it tells you.</li>
+        <li>(e) Should you use this line to predict the price of a <strong>25-year-old</strong> car? Why or why not?</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <div class="slide">
