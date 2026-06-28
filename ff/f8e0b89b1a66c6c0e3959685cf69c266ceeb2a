@@ -1,0 +1,21 @@
+courses/math_1342/quizzes/blank/Quiz03.html
+  s_d2c2ffebd96081::t_4b249f76f932ac 59
+courses/math_1342/quizzes/solutions/Quiz03.html
+  s_d2c2ffebd96081::t_e1d5224cbae405 72-73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "fff8e0b89b1a66c6c0e3959685cf69c266ceeb2a",
+  "prompts": {},
+  "sessions": {
+    "s_d2c2ffebd96081": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "78cd5bcc-1b89-4934-9934-dbf0bc5aa733",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
