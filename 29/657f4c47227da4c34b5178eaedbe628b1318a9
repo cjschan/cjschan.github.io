@@ -1,0 +1,19 @@
+courses/math_1342/index.html
+  s_a390ee5e62ed2f::t_01484c334238d9 208-210,217-226,236
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "29657f4c47227da4c34b5178eaedbe628b1318a9",
+  "prompts": {},
+  "sessions": {
+    "s_a390ee5e62ed2f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f7f27a28-1e32-4f9e-a3f1-d3a73f47dab7",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
