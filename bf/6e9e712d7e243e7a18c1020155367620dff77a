@@ -1,0 +1,20 @@
+cv.html
+  s_a390ee5e62ed2f::t_d864b9ee3c43ea 82
+  s_a390ee5e62ed2f::t_b3444aefd77991 97,101-106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "bf6e9e712d7e243e7a18c1020155367620dff77a",
+  "prompts": {},
+  "sessions": {
+    "s_a390ee5e62ed2f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f7f27a28-1e32-4f9e-a3f1-d3a73f47dab7",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
