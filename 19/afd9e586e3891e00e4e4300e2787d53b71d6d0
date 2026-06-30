@@ -1,0 +1,52 @@
+courses/math_1342/quizzes_fall2026/solutions/Quiz02.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-89
+courses/math_1342/quizzes_fall2026/solutions/Quiz03.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-83
+courses/math_1342/quizzes_fall2026/solutions/Quiz05.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-83
+courses/math_1342/quizzes_fall2026/blank/Quiz08.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-68
+courses/math_1342/quizzes_fall2026/blank/Quiz02.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-73
+courses/math_1342/quizzes_fall2026/blank/Quiz06.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-68
+courses/math_1342/quizzes_fall2026/solutions/Quiz04.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-88
+courses/math_1342/quizzes_fall2026/blank/Quiz01.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-72
+courses/math_1342/quizzes_fall2026/solutions/Quiz01.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-88
+courses/math_1342/quizzes_fall2026/solutions/Quiz06.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-83
+courses/math_1342/quizzes_fall2026/solutions/Quiz08.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-83
+courses/math_1342/quizzes_fall2026/blank/Quiz07.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-68
+courses/math_1342/index.html
+  s_a390ee5e62ed2f::t_4ef7689ac759c7 211,215,218,222,225,227,231,234
+  s_a390ee5e62ed2f::t_695641501437f0 232
+courses/math_1342/quizzes_fall2026/blank/Quiz04.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-72
+courses/math_1342/quizzes_fall2026/blank/Quiz05.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-68
+courses/math_1342/quizzes_fall2026/blank/Quiz03.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-68
+courses/math_1342/quizzes_fall2026/solutions/Quiz07.html
+  s_a390ee5e62ed2f::t_6aac8298c0fe1c 1-83
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "19afd9e586e3891e00e4e4300e2787d53b71d6d0",
+  "prompts": {},
+  "sessions": {
+    "s_a390ee5e62ed2f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f7f27a28-1e32-4f9e-a3f1-d3a73f47dab7",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
