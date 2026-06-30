@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1342 Quiz 6 &mdash; Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../../lecture_notes/statgraphs.js?v=2"></script>
+<style>
+  :root { --primary:#38bdf8; --primary-light:#7dd3fc; --green:#34d399; --amber:#fbbf24; --bg:#0f172a; --card-bg:#1e293b; --text:#f1f5f9; --muted:#cbd5e1; --border:#475569; }
+  .quiz { max-width:860px; margin:40px auto; padding:36px 48px 60px; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.30); color:var(--text); font-family:'Work Sans',sans-serif; line-height:1.6; font-size:16px; }
+  .quiz .badge { display:inline-block; background:rgba(56,189,248,0.15); color:var(--primary); padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px; }
+  .quiz h1 { color:var(--text); border-bottom:3px solid var(--primary); padding-bottom:10px; margin:4px 0 6px; font-size:30px; font-weight:700; }
+  .quiz .version-tag { color:var(--green); font-size:13px; text-transform:uppercase; letter-spacing:0.8px; margin:0 0 12px; font-weight:600; }
+  .quiz .covers { color:var(--muted); font-size:14px; margin-bottom:18px; }
+  .quiz .total-pts { color:var(--amber); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:16px; }
+  .quiz .instructions { background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.20); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:14px 18px; margin:8px 0 22px; font-size:15px; }
+  .quiz .problem { border:1px solid var(--border); border-radius:10px; padding:16px 20px 14px; margin:16px 0; background:rgba(15,23,42,0.5); }
+  .quiz .problem h3 { margin:0 0 8px; color:var(--primary); font-size:15px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+  .quiz .problem h3 .pts { color:var(--amber); margin-left:8px; font-size:13px; }
+  .quiz .problem ol, .quiz .problem ul { padding-left:22px; margin:0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom:4px; }
+  .quiz .solution { border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.07); border-radius:8px; padding:12px 16px; margin-top:12px; }
+  .quiz .solution::before { content:'Solution'; display:block; font-weight:700; color:var(--green); font-size:11px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; }
+  .quiz .chart { margin:10px 0; }
+  .quiz .chart > div { background:#1e293b; border:1px solid var(--border); border-radius:8px; padding:10px; }
+  .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
+  .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+  @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav><ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul></nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 6</span>
+<h1>Errors, Significance, and Connections</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections 4.4, 4.5</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+</div>
+
+<p class="total-pts">Total: 10 points</p>
+<div class="problem">
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>In a hypothesis test, define each in plain English. <i>(1 pt each)</i></p><ol type='a'><li>Type I error</li><li>Type II error</li></ol>
+<div class="solution"><p>(a) A Type I error occurs when we <b>reject \(H_0\) even though \(H_0\) is actually true</b> &mdash; a &ldquo;false positive&rdquo; in which we conclude there is an effect that does not really exist. Its probability is the significance level \(\alpha\).</p><p>(b) A Type II error occurs when we <b>fail to reject \(H_0\) even though \(H_0\) is actually false</b> &mdash; a &ldquo;false negative&rdquo; in which we miss a real effect that is actually present.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
+<p>A 95% confidence interval for the mean is \((34.0,\ 39.0)\). Without doing a separate test, would you reject \(H_0: \mu = 36\) at \(\alpha = 0.05\)? Would you reject \(H_0: \mu = 40\)? Explain how the CI gives you this information.</p>
+<div class="solution"><p>A 95% CI and a two-sided test at \(\alpha = 0.05\) are dual: reject \(H_0: \mu = \mu_0\) exactly when the hypothesized value \(\mu_0\) lies <b>outside</b> the interval.</p><p>For \(\mu = 36\): since \(36\) lies <b>inside</b> \((34.0,\ 39.0)\), we <b>do not reject</b> \(H_0: \mu = 36\) &mdash; 36 is a plausible value of the mean.</p><p>For \(\mu = 40\): since \(40\) lies <b>outside</b> \((34.0,\ 39.0)\), we <b>reject</b> \(H_0: \mu = 40\) &mdash; 40 is not a plausible value of the mean.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 3 <span class="pts">[3 pts]</span></h3>
+<p>A large hospital study (\(n = 10{,}000\)) finds that a new medication lowers blood pressure by an average of 0.5 mmHg compared to a placebo, with a p-value of 0.003. <i>(1 pt each)</i></p><ol type='a'><li>Is this result statistically significant at \(\alpha = 0.05\)?</li><li>Do you think this result is practically significant? Explain.</li><li>Explain how a very large sample size can lead to statistically significant results that are not practically meaningful.</li></ol>
+<div class="solution"><p>(a) Yes. Since the p-value \(0.003 < 0.05 = \alpha\), the result <b>is statistically significant</b>; we reject \(H_0\).</p><p>(b) Not really. A reduction of only <b>0.5 mmHg</b> in blood pressure is too small to matter clinically &mdash; it is unlikely to change a patient&rsquo;s health outcome or treatment decisions, especially when weighed against cost or side effects. So the result is statistically significant but not <b>practically significant</b>.</p><p>(c) The standard error shrinks as \(n\) grows (it is proportional to \(1/\sqrt{n}\)). With a very large sample, even a tiny, practically meaningless difference produces a large test statistic and hence a very small p-value. So a large \(n\) makes it easy to detect trivial effects as &ldquo;statistically significant,&rdquo; which is why the size of the effect must always be judged separately from the p-value.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 4 <span class="pts">[3 pts]</span></h3>
+<p>A 99% confidence interval for the difference in mean test scores between two teaching methods is \((-1.2,\ 8.4)\). <i>(1 pt each)</i></p><ol type='a'><li>Based on this interval, would you reject \(H_0: \mu_1 - \mu_2 = 0\) at \(\alpha = 0.01\)? Explain.</li><li>If we instead used \(\alpha = 0.05\), would the corresponding 95% confidence interval be wider or narrower?</li><li>Describe a scenario in this context where a Type II error would occur, and explain its consequence.</li></ol>
+<div class="solution"><p>(a) <b>Do not reject</b> \(H_0\). A 99% CI corresponds to a two-sided test at \(\alpha = 0.01\). Since the interval \((-1.2,\ 8.4)\) <b>contains 0</b>, a difference of 0 is plausible, so we fail to reject \(H_0: \mu_1 - \mu_2 = 0\).</p><p>(b) <b>Narrower.</b> A lower confidence level requires less coverage, so the 95% interval is narrower than the 99% interval (higher confidence &rarr; wider interval).</p><p>(c) A Type II error here means concluding there is <b>no difference</b> between the teaching methods (failing to reject \(H_0\)) when in fact one method truly is more effective. The consequence: the genuinely better teaching method would be overlooked, and students could continue using an inferior method even though a real improvement existed.</p></div>
+</div>
+
+</div>
+</body>
+</html>
