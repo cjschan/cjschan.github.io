@@ -1,0 +1,27 @@
+courses/math_1342/index.html
+  s_a390ee5e62ed2f::t_6c1807f9963306 151,155,157-163
+  s_a390ee5e62ed2f::t_e90c7520588194 194
+  s_a390ee5e62ed2f::t_86d7581de9fb83 282
+  s_a390ee5e62ed2f::t_c5f0bc256a19e4 143,145
+  s_a390ee5e62ed2f::t_daaa7ed81f5321 279
+  s_a390ee5e62ed2f::t_8387a81001efae 276
+  s_a390ee5e62ed2f::t_4218a282cf2e31 252
+  s_a390ee5e62ed2f::t_77c3a3f22d2258 308
+  s_a390ee5e62ed2f::t_20fd3c0b59b100 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "bf2a0aba1a6283a87f5fb016c0d3b9ec04149d0f",
+  "prompts": {},
+  "sessions": {
+    "s_a390ee5e62ed2f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f7f27a28-1e32-4f9e-a3f1-d3a73f47dab7",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
