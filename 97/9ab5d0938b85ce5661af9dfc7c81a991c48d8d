@@ -1,0 +1,27 @@
+courses/math_1342/lecture_notes/Sec3-3_Constructing_Bootstrap_Confidence_Intervals.html
+  s_a390ee5e62ed2f::t_1ef488599cc870 127-129,131
+  s_a390ee5e62ed2f::t_271c3469ead9ce 108-126,130,132-158,160-161,163-207
+courses/math_1342/lecture_notes/Sec3-2_Understanding_and_Interpreting_Confidence_Intervals.html
+  s_a390ee5e62ed2f::t_94aa59d4e22118 327
+  s_a390ee5e62ed2f::t_f66ba59903645f 328-458
+  s_a390ee5e62ed2f::t_bceda5721db4ac 459-460
+courses/math_1342/lecture_notes/Sec3-1_Sampling_Distributions.html
+  s_a390ee5e62ed2f::t_7f04f7a93807fd 356-358,363-377
+  s_a390ee5e62ed2f::t_40688f34246ca0 280,282-355,359-360,381-383,386
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "979ab5d0938b85ce5661af9dfc7c81a991c48d8d",
+  "prompts": {},
+  "sessions": {
+    "s_a390ee5e62ed2f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f7f27a28-1e32-4f9e-a3f1-d3a73f47dab7",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
