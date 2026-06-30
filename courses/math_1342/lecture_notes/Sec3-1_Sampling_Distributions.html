@@ -277,25 +277,113 @@
   </div>
 </div>
 
-<!-- Slide 9: Summary -->
+<!-- Slide 9: Brief Review (Big Picture diagram) -->
 <div class="slide">
-  <h2>Visualizing a Sampling Distribution</h2>
-  <p class="subtitle">1000 samples of size \(n = 50\) from a population with \(p = 0.6\). Each dot is one \(\hat{p}\).</p>
-  <div id="chart-3-1-samp" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:18px; max-width:640px; margin:8px auto;"></div>
+  <span class="tag tag-blue">Brief Review</span>
+  <h2>From Population to Sampling Distribution</h2>
+  <p class="subtitle">Draw many samples of the same size, compute a statistic from each, and collect those statistics.</p>
+  <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0;">
+    <svg viewBox="0 0 1000 560" style="width:100%; height:100%; max-height:560px;" font-family="Inter, sans-serif">
+      <defs>
+        <filter id="cloudShadow" x="-30%" y="-30%" width="160%" height="170%">
+          <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.45"/>
+        </filter>
+        <marker id="arrowBig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#fbbf24"/>
+        </marker>
+        <marker id="arrowThin" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#818cf8"/>
+        </marker>
+        <symbol id="cloud" overflow="visible">
+          <ellipse cx="-35" cy="8" rx="28" ry="18"/>
+          <ellipse cx="0" cy="-8" rx="38" ry="26"/>
+          <ellipse cx="34" cy="8" rx="28" ry="19"/>
+          <ellipse cx="0" cy="16" rx="48" ry="18"/>
+        </symbol>
+      </defs>
+
+      <!-- Thick arrows: population to samples -->
+      <g stroke="#fbbf24" stroke-width="7" marker-end="url(#arrowBig)" opacity="0.9">
+        <line x1="250" y1="108" x2="440" y2="92"/>
+        <line x1="278" y1="135" x2="598" y2="138"/>
+        <line x1="282" y1="162" x2="672" y2="230"/>
+        <line x1="248" y1="190" x2="580" y2="316"/>
+        <line x1="208" y1="218" x2="416" y2="316"/>
+        <line x1="172" y1="232" x2="280" y2="298"/>
+      </g>
+
+      <!-- Thin arrows: samples to sampling distribution -->
+      <g stroke="#818cf8" stroke-width="2" marker-end="url(#arrowThin)" opacity="0.75">
+        <line x1="480" y1="120" x2="470" y2="392"/>
+        <line x1="640" y1="170" x2="612" y2="392"/>
+        <line x1="715" y1="264" x2="722" y2="392"/>
+        <line x1="620" y1="350" x2="668" y2="392"/>
+        <line x1="450" y1="350" x2="528" y2="392"/>
+        <line x1="300" y1="350" x2="404" y2="392"/>
+      </g>
+
+      <!-- Population cloud -->
+      <use href="#cloud" transform="translate(165,150) scale(1.95)" fill="#34d399" filter="url(#cloudShadow)"/>
+      <text x="165" y="158" text-anchor="middle" font-size="30" font-weight="800" fill="#0f172a">Population</text>
+
+      <!-- Sample clouds -->
+      <use href="#cloud" transform="translate(480,90)"  fill="#fbbf24" filter="url(#cloudShadow)"/>
+      <use href="#cloud" transform="translate(640,140)" fill="#e2e8f0" filter="url(#cloudShadow)"/>
+      <use href="#cloud" transform="translate(715,235)" fill="#e2e8f0" filter="url(#cloudShadow)"/>
+      <use href="#cloud" transform="translate(620,320)" fill="#e2e8f0" filter="url(#cloudShadow)"/>
+      <use href="#cloud" transform="translate(450,320)" fill="#e2e8f0" filter="url(#cloudShadow)"/>
+      <use href="#cloud" transform="translate(300,320)" fill="#e2e8f0" filter="url(#cloudShadow)"/>
+      <g font-size="18" font-weight="700" fill="#0f172a" text-anchor="middle">
+        <text x="480" y="96">Sample</text>
+        <text x="640" y="146">Sample</text>
+        <text x="715" y="241">Sample</text>
+        <text x="620" y="326">Sample</text>
+        <text x="450" y="326">Sample</text>
+        <text x="300" y="326">Sample</text>
+      </g>
+      <text x="232" y="300" text-anchor="middle" font-size="34" font-weight="800" fill="#cbd5e1" letter-spacing="3">. . .</text>
+
+      <!-- Calculate statistic annotation -->
+      <text x="28" y="420" font-size="22" font-style="italic" font-weight="600" fill="#38bdf8">
+        <tspan x="28" dy="0">Calculate</tspan>
+        <tspan x="28" dy="30">a statistic for</tspan>
+        <tspan x="28" dy="30">each sample</tspan>
+      </text>
+
+      <!-- Sampling distribution box -->
+      <rect x="350" y="398" width="610" height="152" rx="10" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+      <text x="655" y="432" text-anchor="middle" font-size="24" font-weight="800" fill="#f1f5f9">Sampling Distribution</text>
+      <line x1="380" y1="538" x2="930" y2="538" stroke="#475569" stroke-width="1.5"/>
+      <line x1="655" y1="446" x2="655" y2="538" stroke="#a78bfa" stroke-width="2" stroke-dasharray="5 4"/>
+      <g id="dotbell" fill="#38bdf8"></g>
+    </svg>
+  </div>
   <script>
     (function() {
-      const phats = [];
-      const n = 50, p = 0.6;
-      for (let s = 0; s < 1000; s++) {
-        let k = 0;
-        for (let i = 0; i < n; i++) if (Math.random() < p) k++;
-        phats.push(k / n);
+      const g = document.getElementById('dotbell');
+      if (!g) return;
+      const NS = 'http://www.w3.org/2000/svg';
+      const cx = 655, baseline = 533, step = 24, r = 4.2, gap = 8.5, maxH = 11, sd = 3.3;
+      const cols = 21, mid = (cols - 1) / 2;
+      for (let i = 0; i < cols; i++) {
+        const x = cx + (i - mid) * step;
+        const h = Math.round(maxH * Math.exp(-0.5 * Math.pow((i - mid) / sd, 2)));
+        for (let j = 0; j < h; j++) {
+          const c = document.createElementNS(NS, 'circle');
+          c.setAttribute('cx', x);
+          c.setAttribute('cy', baseline - j * gap);
+          c.setAttribute('r', r);
+          g.appendChild(c);
+        }
       }
-      StatGraphs.dotplot('#chart-3-1-samp', phats, { width: 600, height: 220, xLabel: 'sample proportion p̂' });
     })();
   </script>
+  <div class="callout">
+    <strong>The key shift:</strong> the data points in a sampling distribution are not individuals — each dot is a <em>statistic</em> (like \(\bar{x}\) or \(\hat{p}\)) from one whole sample.
+  </div>
 </div>
 
+<!-- Slide 10: Summary -->
 <div class="slide">
   <span class="tag tag-blue">Recap</span>
   <h2>Section 3.1 Summary</h2>

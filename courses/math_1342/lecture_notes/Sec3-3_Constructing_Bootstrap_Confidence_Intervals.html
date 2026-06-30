@@ -105,29 +105,106 @@
 <div class="slide">
   <span class="tag tag-green">Key Idea</span>
   <h2>The Bootstrap Idea</h2>
-  <p class="subtitle">Pretend our sample IS the population, then sample from it repeatedly.</p>
-  <div class="card card-green" style="margin-bottom: 18px;">
-    <h3>Core Insight</h3>
-    <ul>
-      <li>If our sample is representative of the population, then the <strong>distribution of the sample</strong> should resemble the <strong>distribution of the population</strong></li>
-      <li>Imagine the population is <strong>many, many copies</strong> of the original sample</li>
-      <li>We can simulate taking new samples by resampling from our original sample</li>
-    </ul>
+  <p class="subtitle">Resample from your one sample — with replacement — to mimic drawing new samples.</p>
+  <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0;">
+    <svg viewBox="0 0 1200 450" style="width:100%; height:100%; max-height:430px;" font-family="Inter, sans-serif">
+      <defs>
+        <marker id="arrowBig33" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#fbbf24"/>
+        </marker>
+        <marker id="arrowThin33" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#818cf8"/>
+        </marker>
+      </defs>
+
+      <!-- Original sample -->
+      <text x="125" y="138" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">Original Sample</text>
+      <rect x="30" y="150" width="190" height="150" rx="12" fill="#1e293b" stroke="#34d399" stroke-width="2.5"/>
+      <g id="origDots33"></g>
+      <text x="125" y="324" text-anchor="middle" font-size="15" fill="#94a3b8">one real sample, size n</text>
+
+      <!-- Resample arrow -->
+      <text x="285" y="180" text-anchor="middle" font-size="15" font-weight="700" fill="#fbbf24">
+        <tspan x="285" dy="0">resample</tspan>
+        <tspan x="285" dy="18">with replacement</tspan>
+      </text>
+      <line x1="232" y1="230" x2="338" y2="230" stroke="#fbbf24" stroke-width="7" marker-end="url(#arrowBig33)" opacity="0.95"/>
+
+      <!-- Bootstrap samples -->
+      <text x="445" y="40" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">Bootstrap Samples</text>
+      <rect x="355" y="52"  width="180" height="92" rx="10" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+      <rect x="355" y="180" width="180" height="92" rx="10" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+      <rect x="355" y="308" width="180" height="92" rx="10" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+      <g id="b1Dots33"></g>
+      <g id="b2Dots33"></g>
+      <g id="b3Dots33"></g>
+      <text x="445" y="430" text-anchor="middle" font-size="26" font-weight="800" fill="#cbd5e1" letter-spacing="3">. . .</text>
+
+      <!-- Compute-statistic arrows -->
+      <g stroke="#818cf8" stroke-width="2" marker-end="url(#arrowThin33)" opacity="0.8">
+        <line x1="540" y1="98"  x2="688" y2="195"/>
+        <line x1="540" y1="226" x2="688" y2="226"/>
+        <line x1="540" y1="354" x2="688" y2="258"/>
+      </g>
+      <text x="612" y="150" text-anchor="middle" font-size="14" font-weight="600" fill="#a5b4fc">compute</text>
+      <text x="612" y="167" text-anchor="middle" font-size="14" font-weight="600" fill="#a5b4fc">statistic</text>
+
+      <!-- Bootstrap distribution -->
+      <rect x="700" y="110" width="470" height="250" rx="10" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+      <text x="935" y="142" text-anchor="middle" font-size="20" font-weight="800" fill="#f1f5f9">Bootstrap Distribution</text>
+      <line x1="730" y1="346" x2="1140" y2="346" stroke="#475569" stroke-width="1.5"/>
+      <g id="bootDist33" fill="#38bdf8"></g>
+      <text x="935" y="395" text-anchor="middle" font-size="14" fill="#94a3b8">each dot = one bootstrap statistic</text>
+    </svg>
   </div>
-  <div class="grid-3">
-    <div class="card card-accent">
-      <h3>Step 1</h3>
-      <p class="step-note">Start with your original sample of size \(n\)</p>
-    </div>
-    <div class="card card-accent2">
-      <h3>Step 2</h3>
-      <p class="step-note">Draw a new sample of size \(n\) <strong>with replacement</strong> from the original</p>
-    </div>
-    <div class="card card-accent3">
-      <h3>Step 3</h3>
-      <p class="step-note">Compute the statistic on this new sample. Repeat many times.</p>
-    </div>
+  <div class="callout">
+    <strong>Core insight:</strong> pretend the sample IS the population. If the sample is representative, resampling from it with replacement mimics drawing fresh samples — no new data collection required.
   </div>
+  <script>
+    (function() {
+      const NS = 'http://www.w3.org/2000/svg';
+      const C = { g: '#34d399', b: '#38bdf8', a: '#fbbf24', r: '#fb7185', p: '#a78bfa' };
+      function fillBox(gid, x, y, w, h, colors, r) {
+        const g = document.getElementById(gid);
+        if (!g) return;
+        const cols = 4, rows = 2;
+        const mx = 0.16 * w, my = 0.30 * h;
+        const gx = (w - 2 * mx) / (cols - 1), gy = (h - 2 * my) / (rows - 1);
+        colors.forEach((col, i) => {
+          const c = i % cols, row = Math.floor(i / cols);
+          const el = document.createElementNS(NS, 'circle');
+          el.setAttribute('cx', x + mx + c * gx);
+          el.setAttribute('cy', y + my + row * gy);
+          el.setAttribute('r', r);
+          el.setAttribute('fill', C[col]);
+          g.appendChild(el);
+        });
+      }
+      // original sample (8 distinct-ish values)
+      fillBox('origDots33', 30, 150, 190, 150, ['g','b','a','r','p','g','b','a'], 12);
+      // bootstrap resamples: note repeats and omissions
+      fillBox('b1Dots33', 355, 52,  180, 92, ['g','g','b','a','r','g','b','p'], 8);
+      fillBox('b2Dots33', 355, 180, 180, 92, ['b','a','a','r','g','a','p','b'], 8);
+      fillBox('b3Dots33', 355, 308, 180, 92, ['p','r','g','g','b','a','r','a'], 8);
+      // bootstrap distribution (bell-shaped dotplot)
+      const dg = document.getElementById('bootDist33');
+      if (dg) {
+        const cx = 935, baseline = 343, step = 18, r = 3.4, gap = 8, maxH = 9, sd = 3.0;
+        const ncol = 19, mid = (ncol - 1) / 2;
+        for (let i = 0; i < ncol; i++) {
+          const x = cx + (i - mid) * step;
+          const hh = Math.round(maxH * Math.exp(-0.5 * Math.pow((i - mid) / sd, 2)));
+          for (let j = 0; j < hh; j++) {
+            const el = document.createElementNS(NS, 'circle');
+            el.setAttribute('cx', x);
+            el.setAttribute('cy', baseline - j * gap);
+            el.setAttribute('r', r);
+            dg.appendChild(el);
+          }
+        }
+      }
+    })();
+  </script>
 </div>
 
 <!-- Slide 4: Bootstrap Sample Definition -->
