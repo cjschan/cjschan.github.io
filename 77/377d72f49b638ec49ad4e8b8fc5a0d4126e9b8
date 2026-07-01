@@ -1,0 +1,20 @@
+courses/math_1342/lecture_notes/Sec3-2_Understanding_and_Interpreting_Confidence_Intervals.html
+  s_6214108ee79d2a::t_21d34a7d0ee103 277-278,280-289
+  s_6214108ee79d2a::t_86ae8fbd020ab6 259
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "77377d72f49b638ec49ad4e8b8fc5a0d4126e9b8",
+  "prompts": {},
+  "sessions": {
+    "s_6214108ee79d2a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "473c7a61-408b-469b-8a7a-c1230a91f438",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
