@@ -1,0 +1,35 @@
+courses/math_1342/lecture_notes/statgraphs.js
+  s_f102ba456414be::t_3f1805e479f0db 580-701
+courses/math_1342/quizzes_fall2026/solutions/Quiz04.html
+  s_f102ba456414be::t_6f87a683bfa58e 62,64-71
+  s_f102ba456414be::t_985f313f55872c 63
+  s_f102ba456414be::t_6d7980c16e38cc 14
+courses/math_1342/quizzes/blank/Quiz04.html
+  s_f102ba456414be::t_4f38473d39c758 52
+  s_f102ba456414be::t_6a02ba3b7acce6 14
+  s_f102ba456414be::t_0fd6718cb14a64 51,53-59
+courses/math_1342/quizzes/solutions/Quiz04.html
+  s_f102ba456414be::t_a934f94152cd10 14
+  s_f102ba456414be::t_f287b26b08dba9 62,64-71
+  s_f102ba456414be::t_f004422f5041c9 63
+courses/math_1342/quizzes_fall2026/blank/Quiz04.html
+  s_f102ba456414be::t_88cbae80fee53a 14
+  s_f102ba456414be::t_98a90b70ce9661 51,53-59
+  s_f102ba456414be::t_97768a7a46ebc7 52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "16baf6ece8f3a07535f192f691578512c1cf2092",
+  "prompts": {},
+  "sessions": {
+    "s_f102ba456414be": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "74ca61b3-b724-4425-acc2-75b2db5e5350",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
