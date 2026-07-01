@@ -577,5 +577,126 @@ const StatGraphs = (() => {
     host(target).innerHTML = ''; host(target).appendChild(fr.svg);
   }
 
-  return { histogram, dotplot, boxplot, boxplots, scatter, barChart, groupedBarChart, segmentedBarChart, pieChart, normalCurve, lineChart };
+  // ─── StatKey-style simulated sampling distribution (dotplot) ──────────
+  // Feed it pre-binned data via {centers:[...], counts:[...]} plus display
+  // stats {samples, mean, stdError}. Renders a title, a stats box, a count
+  // axis with gridlines, stacked dots, and a triangle marker at the mean.
+  function samplingDotplot(target, opts = {}) {
+    const centers = opts.centers || [];
+    const counts = opts.counts || [];
+    const total = opts.samples !== undefined ? opts.samples : counts.reduce((a, b) => a + b, 0);
+    const decimals = opts.decimals !== undefined ? opts.decimals : 3;
+    const statName = opts.statName || 'std. error';
+    const fr = frame(Object.assign(
+      { width: 640, height: 360, padLeft: 46, padRight: 18, padTop: 40, padBottom: 50 }, opts));
+
+    const niceStep = (range, target) => {
+      const raw = range / target;
+      const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+      const norm = raw / mag;
+      const s = norm < 1.5 ? 1 : norm < 3 ? 2 : norm < 7 ? 5 : 10;
+      return s * mag;
+    };
+
+    // ── x scale ──
+    const dMin = Math.min(...centers), dMax = Math.max(...centers);
+    const margin = (dMax - dMin) * 0.06 || 1;
+    const xMin = opts.xMin !== undefined ? opts.xMin : dMin - margin;
+    const xMax = opts.xMax !== undefined ? opts.xMax : dMax + margin;
+    const sx = (v) => fr.PL + ((v - xMin) / (xMax - xMin)) * fr.plotW;
+
+    // ── y (count) scale ──
+    const peak = Math.max(...counts, 1);
+    const yStep = niceStep(peak, 7);
+    const yTop = Math.ceil(peak / yStep) * yStep;
+    const sy = (v) => fr.PT + fr.plotH - (v / yTop) * fr.plotH;
+    const axisYY = fr.PT + fr.plotH;
+
+    // ── gridlines ──
+    for (let t = 0; t <= yTop + 1e-9; t += yStep) {
+      fr.svg.appendChild(el('line', {
+        x1: fr.PL, y1: sy(t), x2: fr.PL + fr.plotW, y2: sy(t),
+        stroke: COLORS.grid, 'stroke-width': 1,
+      }));
+    }
+    const xStep = opts.xStep || niceStep(xMax - xMin, 5);
+    const xTicks = [];
+    for (let t = Math.ceil(xMin / xStep - 1e-9) * xStep; t <= xMax + 1e-9; t += xStep) {
+      xTicks.push(Math.round(t * 1e6) / 1e6);
+    }
+    for (const t of xTicks) {
+      fr.svg.appendChild(el('line', {
+        x1: sx(t), y1: fr.PT, x2: sx(t), y2: axisYY, stroke: COLORS.grid, 'stroke-width': 1,
+      }));
+    }
+
+    // ── dots (one per sample, stacked; stack height equals its count) ──
+    const dotPitch = fr.plotH / yTop;
+    const dotR = Math.max(1.2, Math.min(4, dotPitch * 0.42));
+    for (let i = 0; i < centers.length; i++) {
+      const cx = sx(centers[i]);
+      for (let k = 0; k < counts[i]; k++) {
+        fr.svg.appendChild(el('circle', {
+          cx, cy: sy(k + 0.5), r: dotR, fill: opts.color || COLORS.primary, opacity: 0.92,
+        }));
+      }
+    }
+
+    // ── axes ──
+    axisY(fr.svg, sy, fr, (() => { const a = []; for (let t = 0; t <= yTop + 1e-9; t += yStep) a.push(t); return a; })(), null);
+    fr.svg.appendChild(el('line', {
+      x1: fr.PL, y1: axisYY, x2: fr.PL + fr.plotW, y2: axisYY, stroke: COLORS.axis, 'stroke-width': 1.25,
+    }));
+    for (const t of xTicks) {
+      fr.svg.appendChild(el('text', {
+        x: sx(t), y: axisYY + 16, fill: COLORS.text, 'font-size': 11,
+        'text-anchor': 'middle', 'font-family': 'Work Sans, sans-serif',
+      }, [String(roundNice(t))]));
+    }
+    if (opts.xLabel) {
+      fr.svg.appendChild(el('text', {
+        x: fr.PL + fr.plotW / 2, y: fr.H - 4, fill: COLORS.text, 'font-size': 12,
+        'text-anchor': 'middle', 'font-family': 'Work Sans, sans-serif', 'font-style': 'italic',
+      }, [opts.xLabel]));
+    }
+
+    // ── title (top-left) ──
+    if (opts.title) {
+      fr.svg.appendChild(el('text', {
+        x: fr.PL, y: 22, fill: COLORS.text, 'font-size': 16, 'font-weight': 700,
+        'text-anchor': 'start', 'font-family': 'Work Sans, sans-serif',
+      }, [opts.title]));
+    }
+
+    // ── stats box (top-right) ──
+    const boxLines = [
+      `samples = ${total}`,
+      `mean = ${Number(opts.mean).toFixed(decimals)}`,
+      `${statName} = ${Number(opts.stdError).toFixed(decimals)}`,
+    ];
+    boxLines.forEach((line, i) => {
+      fr.svg.appendChild(el('text', {
+        x: fr.PL + fr.plotW, y: fr.PT + 12 + i * 16, fill: COLORS.text,
+        'font-size': 12, 'font-weight': 600, 'font-style': 'italic',
+        'text-anchor': 'end', 'font-family': 'Work Sans, sans-serif',
+      }, [line]));
+    });
+
+    // ── mean marker (triangle below axis) ──
+    if (opts.marker !== undefined) {
+      const mx = sx(opts.marker);
+      fr.svg.appendChild(el('path', {
+        d: `M ${mx} ${axisYY + 2} L ${mx - 6} ${axisYY + 12} L ${mx + 6} ${axisYY + 12} Z`,
+        fill: COLORS.amber,
+      }));
+      fr.svg.appendChild(el('text', {
+        x: mx, y: axisYY + 30, fill: COLORS.amber, 'font-size': 12, 'font-weight': 700,
+        'text-anchor': 'middle', 'font-family': 'Work Sans, sans-serif',
+      }, [Number(opts.marker).toFixed(decimals)]));
+    }
+
+    host(target).innerHTML = ''; host(target).appendChild(fr.svg);
+  }
+
+  return { histogram, dotplot, boxplot, boxplots, scatter, barChart, groupedBarChart, segmentedBarChart, pieChart, normalCurve, lineChart, samplingDotplot };
 })();

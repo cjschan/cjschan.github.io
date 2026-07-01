@@ -11,7 +11,7 @@
 window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<script src="../../lecture_notes/statgraphs.js?v=2"></script>
+<script src="../../lecture_notes/statgraphs.js?v=3"></script>
 <style>
   :root { --primary:#38bdf8; --primary-light:#7dd3fc; --green:#34d399; --amber:#fbbf24; --bg:#0f172a; --card-bg:#1e293b; --text:#f1f5f9; --muted:#cbd5e1; --border:#475569; }
   .quiz { max-width:860px; margin:40px auto; padding:36px 48px 60px; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.30); color:var(--text); font-family:'Work Sans',sans-serif; line-height:1.6; font-size:16px; }
@@ -48,7 +48,15 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
 <h3>Problem 1 <span class="pts">[2 pts]</span></h3>
-<p>The proportion of left-handed students in a population is \(p = 0.1\). For samples of size \(n = 100\):</p><ol type='a'><li>What is the center of the sampling distribution of \(\hat{p}\)? <i>(0.5 pt)</i></li><li>What is its standard error? Use \(SE = \sqrt{\frac{p(1-p)}{n}}\). <i>(1 pt)</i></li><li>Roughly what range of \(\hat{p}\) values would we expect (using ±2 SE)? <i>(0.5 pt)</i></li></ol>
+<p>The dotplot below shows a simulated sampling distribution of the sample proportion \(\hat{p}\) of left-handed students, built from 500 random samples of size \(n = 100\). Read the reported statistics off the plot &mdash; do not use a formula.</p>
+<div class='chart'><div id='q4p1-samp'></div></div>
+<script>(function(){StatGraphs.samplingDotplot('#q4p1-samp',{
+  centers:[0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.15,0.16,0.18,0.19,0.2],
+  counts:[2,3,3,21,29,43,56,63,50,66,64,40,25,16,11,3,3,2],
+  samples:500, mean:0.101, stdError:0.030, marker:0.101,
+  title:'Sampling Dotplot of Proportion', xLabel:'sample proportion', xMin:0, xMax:0.22,
+  width:620, height:340});})();</script>
+<ol type='a'><li>What is the center of this sampling distribution of \(\hat{p}\)? <i>(0.5 pt)</i></li><li>What is the standard error of \(\hat{p}\)? <i>(0.5 pt)</i></li><li>Using the reported mean and standard error, roughly what range of \(\hat{p}\) values would we expect? Use ±2 standard errors. <i>(1 pt)</i></li></ol>
 </div>
 <div class="problem">
 <h3>Problem 2 <span class="pts">[2 pts]</span></h3>
