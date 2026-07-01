@@ -256,7 +256,7 @@
 <!-- Inserted: chart slide -->
 <div class="slide">
   <h2>Visualizing Many CIs</h2>
-  <p class="subtitle">20 simulated 95% confidence intervals for the same population mean (true value shown as gold dashed line). About 95% should capture the truth.</p>
+  <p class="subtitle">20 simulated 95% confidence intervals for the same population mean (true value shown as gold dashed line). 19 of the 20 (95%) capture the truth; 1 misses.</p>
   <div id="ci-stack" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:8px auto; max-width:640px;"></div>
 <script>
 (function(){
@@ -274,10 +274,19 @@
   trueLine.setAttribute('y1',PT); trueLine.setAttribute('y2',H-PB);
   trueLine.setAttribute('stroke','#fbbf24'); trueLine.setAttribute('stroke-width',2); trueLine.setAttribute('stroke-dasharray','5 4');
   svg.appendChild(trueLine);
+  const SE = sigma/Math.sqrt(n);
+  const missIdx = Math.floor(Math.random()*20); // exactly 1 of the 20 CIs misses the true mean
   for(let i=0;i<20;i++){
-    let xs=0; for(let j=0;j<n;j++) xs += trueMu + sigma*((Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()-3));
-    const xb = xs/n;
-    const SE = sigma/Math.sqrt(n);
+    let xb;
+    if(i===missIdx){
+      const sign = Math.random()<0.5 ? -1 : 1;
+      xb = trueMu + sign*(z*SE + 0.3 + Math.random()*1.2);
+    } else {
+      do {
+        let xs=0; for(let j=0;j<n;j++) xs += trueMu + sigma*((Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()-3));
+        xb = xs/n;
+      } while(Math.abs(xb-trueMu) >= z*SE);
+    }
     const lo = xb - z*SE, hi = xb + z*SE;
     const y = PT + 8 + i*((H-PT-PB-16)/19);
     const captures = lo <= trueMu && trueMu <= hi;
