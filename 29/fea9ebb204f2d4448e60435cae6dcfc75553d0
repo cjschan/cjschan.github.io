@@ -1,0 +1,25 @@
+courses/math_1342/lecture_notes/Sec4-1_Introducing_Hypothesis_Tests.html
+  s_6214108ee79d2a::t_c340570bf8d9f6 299
+  s_6214108ee79d2a::t_5293312231dd4a 241-242,244-245,247
+  s_6214108ee79d2a::t_e3bce0cfcafa87 133-134
+  s_6214108ee79d2a::t_5e41f2ea2c96bd 328-329,334,336-338,340-351
+  s_6214108ee79d2a::t_980ad413774774 102,104-105,108,110-132,135-173,175-187,191,193-194,199-202
+  s_6214108ee79d2a::t_ef0137be8d8415 335,339
+  s_6214108ee79d2a::t_ad7803129ff9fe 174
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "29fea9ebb204f2d4448e60435cae6dcfc75553d0",
+  "prompts": {},
+  "sessions": {
+    "s_6214108ee79d2a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "473c7a61-408b-469b-8a7a-c1230a91f438",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
