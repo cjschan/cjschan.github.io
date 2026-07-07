@@ -1,0 +1,26 @@
+courses/math_1342/lecture_notes/Sec4-2_Measuring_Evidence_with_P_values.html
+  s_5a1f146e324ec9::t_e132db856d0eca 170-173,176,178-181,187-190,196,198-200,202-214,216,218-220
+  s_5a1f146e324ec9::t_16dd9e512f6d39 14
+  s_5a1f146e324ec9::t_465b1d471343d7 129,131-169
+  s_5a1f146e324ec9::t_63cdc7bbdce5eb 277-279
+courses/math_1342/lecture_notes/statgraphs.js
+  s_5a1f146e324ec9::t_d399dea317e3f3 640,646
+  s_5a1f146e324ec9::t_c7ee886af61d77 691-705
+  s_5a1f146e324ec9::t_d90a2a0ec07deb 636-637,643-645
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "678566832876ff7371baf4bb3cfdf363867909ff",
+  "prompts": {},
+  "sessions": {
+    "s_5a1f146e324ec9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3cbd3f41-43cd-4e2c-91a5-fc4629e16374",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
