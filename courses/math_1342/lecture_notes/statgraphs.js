@@ -633,11 +633,17 @@ const StatGraphs = (() => {
     // ── dots (one per sample, stacked; stack height equals its count) ──
     const dotPitch = fr.plotH / yTop;
     const dotR = Math.max(1.2, Math.min(4, dotPitch * 0.42));
+    const hiR = Math.max(dotR, 3.2);
+    const hiPitch = Math.max(dotPitch, hiR * 2.3);
     for (let i = 0; i < centers.length; i++) {
       const cx = sx(centers[i]);
+      const hi = opts.highlightFrom !== undefined && centers[i] >= opts.highlightFrom;
       for (let k = 0; k < counts[i]; k++) {
         fr.svg.appendChild(el('circle', {
-          cx, cy: sy(k + 0.5), r: dotR, fill: opts.color || COLORS.primary, opacity: 0.92,
+          cx,
+          cy: hi ? axisYY - hiPitch * (k + 0.5) : sy(k + 0.5),
+          r: hi ? hiR : dotR,
+          fill: hi ? (opts.highlightColor || COLORS.rose) : (opts.color || COLORS.primary), opacity: 0.92,
         }));
       }
     }
@@ -681,6 +687,21 @@ const StatGraphs = (() => {
         'text-anchor': 'end', 'font-family': 'Work Sans, sans-serif',
       }, [line]));
     });
+
+    // ── vertical reference line (e.g., observed statistic) ──
+    if (opts.vline !== undefined) {
+      const vx = sx(opts.vline);
+      fr.svg.appendChild(el('line', {
+        x1: vx, y1: fr.PT, x2: vx, y2: axisYY,
+        stroke: opts.vlineColor || COLORS.rose, 'stroke-width': 2, 'stroke-dasharray': '5 4',
+      }));
+      if (opts.vlineLabel) {
+        fr.svg.appendChild(el('text', {
+          x: vx - 8, y: fr.PT + fr.plotH * 0.45, fill: opts.vlineColor || COLORS.rose,
+          'font-size': 12, 'font-weight': 700, 'text-anchor': 'end', 'font-family': 'Work Sans, sans-serif',
+        }, [opts.vlineLabel]));
+      }
+    }
 
     // ── mean marker (triangle below axis) ──
     if (opts.marker !== undefined) {

@@ -10,9 +10,8 @@
     svg: { fontCache: 'global' }
   };
 </script>
-<script src="statkey.js?v=5"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<script src="statgraphs.js?v=2"></script>
+<script src="statgraphs.js?v=3"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -127,44 +126,98 @@
   </div>
 </div>
 
-<!-- Slide 4: Paul the Octopus -->
+<!-- Slide 3b: Three Distributions Compared -->
 <div class="slide">
-  <h2>Paul the Octopus</h2>
-  <p class="subtitle">A famous example of measuring evidence</p>
+  <h2>Three Distributions, Three Purposes</h2>
+  <p class="subtitle">How the randomization distribution relates to the distributions from Chapter 3</p>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <span class="tag tag-blue">Section 3.1</span>
+      <h3>Sampling Distribution</h3>
+      <ul class="small">
+        <li>Statistics from many samples of the same size drawn from the <strong>population</strong></li>
+        <li>Centered at the <strong>true population parameter</strong></li>
+        <li>Mostly theoretical: we rarely have the whole population</li>
+        <li>Shows how much a statistic varies from sample to sample</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <span class="tag tag-green">Sections 3.3&ndash;3.4</span>
+      <h3>Bootstrap Distribution</h3>
+      <ul class="small">
+        <li>Statistics from many samples drawn <strong>with replacement from our one sample</strong></li>
+        <li>Centered at the <strong>observed sample statistic</strong></li>
+        <li>Requires no assumption about the parameter</li>
+        <li>Used to build <strong>confidence intervals</strong></li>
+      </ul>
+    </div>
+    <div class="card card-accent3">
+      <span class="tag tag-purple">Section 4.2</span>
+      <h3>Randomization Distribution</h3>
+      <ul class="small">
+        <li>Statistics from many samples simulated <strong>assuming \(H_0\) is true</strong></li>
+        <li>Centered at the <strong>null hypothesis value</strong></li>
+        <li>Answers "what would happen by chance if \(H_0\) were true?"</li>
+        <li>Used to find <strong>p-values</strong> in hypothesis tests</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    All three are distributions of a sample statistic, and all three have roughly the same shape and spread. The key difference is <strong>where they are centered</strong>: a bootstrap distribution is centered at the statistic from our data, while a randomization distribution is centered at the value claimed by \(H_0\) &mdash; because it simulates a world where the null hypothesis is true.
+  </div>
+</div>
+
+<!-- Slide 4: Buzz and Doris Revisited -->
+<div class="slide">
+  <h2>Revisiting Buzz and Doris</h2>
+  <p class="subtitle">Measuring the evidence in the dolphin communication study from Section 4.1</p>
   <div class="grid-2">
     <div class="card card-amber">
-      <h3>The Story</h3>
+      <h3>The Study</h3>
       <ul>
-        <li>Paul the Octopus correctly predicted <strong>all 8</strong> knockout-round games in the 2010 World Cup</li>
-        <li>Was Paul psychic, or just lucky?</li>
-        <li>\(H_0: p = 0.5\) (Paul is just guessing)</li>
-        <li>\(H_a: p > 0.5\) (Paul can predict)</li>
+        <li>Doris could see the light signal; Buzz had to push the correct button based only on Doris' whistles through the curtain</li>
+        <li>Buzz pushed the correct button <strong>15 out of 16</strong> times \(\left(\hat{p} = \frac{15}{16} \approx 0.94\right)\)</li>
+        <li>\(H_0: p = 0.50\) (Buzz is just guessing)</li>
+        <li>\(H_a: p > 0.50\) (the dolphins are communicating)</li>
       </ul>
     </div>
     <div class="card card-accent">
       <h3>Simulating Under \(H_0\)</h3>
       <ul>
-        <li>If Paul is guessing (\(p = 0.5\)), each prediction is like a fair coin flip</li>
-        <li>Simulate: flip a coin 8 times, count heads</li>
-        <li>Repeat 1000 times and build a distribution</li>
-        <li>Getting 8 out of 8 correct is <strong>extremely rare</strong> under random guessing</li>
+        <li>If Buzz is just guessing (\(p = 0.50\)), each attempt is like a fair coin flip</li>
+        <li>Simulate: flip a coin 16 times, count the number correct</li>
+        <li>Repeat 1000 times to build a randomization distribution</li>
+        <li>Then ask: how often does random guessing get <strong>15 or more</strong> correct?</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- Slide 4b: Interactive randomization for Paul the Octopus -->
+<!-- Slide 4b: Static randomization distribution for Buzz -->
 <div class="slide">
-  <h2>Try It: Simulate Paul</h2>
-  <p class="subtitle">If \(H_0: p = 0.5\) is true, how often do we see 8 out of 8 by luck?</p>
-  <div id="sim-paul"></div>
+  <h2>A Randomization Distribution for Buzz</h2>
+  <p class="subtitle">Number of correct pushes in 1000 simulated sets of 16 attempts, assuming \(H_0: p = 0.50\) is true</p>
+  <div id="rand-buzz" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:0 auto; max-width:700px; width:100%;"></div>
   <script>
-    StatKey.create('#sim-paul', {
-      mode: 'one-prop-rand',
-      n: 8, x: 8, p0: 0.5,
-      direction: 'right',
+  (function(){
+    const centers = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    const counts  = [2, 9, 28, 66, 121, 174, 196, 175, 122, 66, 26, 9, 3, 2, 1];
+    let n = 0, s = 0, s2 = 0;
+    for (let i = 0; i < centers.length; i++) {
+      n += counts[i]; s += centers[i] * counts[i]; s2 += centers[i] * centers[i] * counts[i];
+    }
+    const mean = s / n, sd = Math.sqrt(s2 / n - mean * mean);
+    StatGraphs.samplingDotplot('#rand-buzz', {
+      centers, counts, samples: n, mean, stdError: sd, statName: 'std. dev.', decimals: 2,
+      xMin: 0, xMax: 17, xStep: 2, xLabel: 'Number of correct pushes (out of 16)',
+      highlightFrom: 15, vline: 15, vlineLabel: 'observed = 15',
+      width: 660, height: 330,
     });
+  })();
   </script>
+  <div class="callout">
+    Only <strong>3 of the 1000</strong> simulated samples (the <span style="color:var(--rose); font-weight:700;">highlighted dots</span>) got 15 or more correct just by guessing. Buzz's result is way out in the tail &mdash; random chance almost never produces a result this extreme.
+  </div>
 </div>
 
 <!-- Slide 5: The p-value -->
@@ -220,6 +273,9 @@
         <li>If \(H_a\) uses \(\neq\): count values <strong>in both tails</strong> beyond the observed</li>
       </ul>
     </div>
+  </div>
+  <div class="callout">
+    <strong>Buzz and Doris:</strong> \(H_a: p > 0.50\), so we count simulations with 15 or more correct: &nbsp; p-value \(= \frac{3}{1000} = 0.003\). If Buzz were just guessing, a result this extreme would happen only about 3 times in 1000 &mdash; strong evidence that the dolphins are communicating.
   </div>
 </div>
 
