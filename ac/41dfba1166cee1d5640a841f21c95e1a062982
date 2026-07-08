@@ -1,0 +1,19 @@
+courses/math_1342/lecture_notes/Sec4-1_Introducing_Hypothesis_Tests.html
+  s_affa1fc1366563::t_1fa6156fa105d8 351
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "ac41dfba1166cee1d5640a841f21c95e1a062982",
+  "prompts": {},
+  "sessions": {
+    "s_affa1fc1366563": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "89c2cd4c-cb4a-43dd-8269-6fe5df10dc00",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
