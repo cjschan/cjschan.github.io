@@ -1,0 +1,19 @@
+courses/math_1342/lecture_notes/Sec4-3_Determining_Statistical_Significance.html
+  s_f2afa2b104f00a::t_3395661a3ce6b3 75-86
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "1c35e9266d41763bf32bd45d7152df94e1ad02e2",
+  "prompts": {},
+  "sessions": {
+    "s_f2afa2b104f00a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1b2198f4-f2c7-442b-abdd-fbd55c31bb3a",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
