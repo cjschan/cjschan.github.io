@@ -1,0 +1,21 @@
+courses/math_1342/lecture_notes/Sec4-4_A_Closer_Look_at_Testing.html
+  s_f2afa2b104f00a::t_80922def62733a 82,116-177,200
+  s_f2afa2b104f00a::t_28cbbf23ce3ba8 201-219
+  s_f2afa2b104f00a::t_19fec5cab55d6d 83-91
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.11",
+  "base_commit_sha": "51fec0d888477b2e69112a58b61e1eb8b2db7e2d",
+  "prompts": {},
+  "sessions": {
+    "s_f2afa2b104f00a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1b2198f4-f2c7-442b-abdd-fbd55c31bb3a",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
