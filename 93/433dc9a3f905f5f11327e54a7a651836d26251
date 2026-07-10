@@ -1,0 +1,19 @@
+courses/math_1342/lecture_notes/Sec4-5_Making_Connections.html
+  s_f2afa2b104f00a::t_9ccd9a7d3c28db 152-200
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.11",
+  "base_commit_sha": "93433dc9a3f905f5f11327e54a7a651836d26251",
+  "prompts": {},
+  "sessions": {
+    "s_f2afa2b104f00a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1b2198f4-f2c7-442b-abdd-fbd55c31bb3a",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
