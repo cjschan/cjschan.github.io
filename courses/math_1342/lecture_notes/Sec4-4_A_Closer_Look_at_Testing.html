@@ -80,6 +80,16 @@
 </div>
 
 <div class="slide">
+  <h2>Let's Watch: Type I and Type II Errors</h2>
+  <p class="subtitle">A Khan Academy introduction to the two kinds of testing mistakes.</p>
+  <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+    <div style="position:relative; width:100%; max-width:900px; aspect-ratio:16/9;">
+      <iframe style="position:absolute; inset:0; width:100%; height:100%; border:0; border-radius:12px;" src="https://www.youtube.com/embed/Hdbbx7DIweQ?si=9oCRgqZXFPkGTl1Z" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Probability of Type I Error</h2>
   <p class="subtitle">The significance level \(\alpha\) controls the chance of rejecting a true null.</p>
   <div class="grid-2">
@@ -104,6 +114,68 @@
 </div>
 
 <div class="slide">
+  <h2>Example: BPA in Tomato Soup</h2>
+  <p class="subtitle">A consumer protection agency tests cans of tomato soup from a company. If they find evidence that the mean level of the chemical bisphenol A (BPA) is greater than 100 ppb (parts per billion), they will recall all the soup and sue the company.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <span class="tag tag-blue">Part (a)</span>
+      <h3>State the null and alternative hypotheses</h3>
+      <p class="step-note">The parameter is \(\mu\) = the mean BPA level (in ppb) in all cans of tomato soup from this company.</p>
+      <div class="formula-box">
+        \(H_0: \mu = 100\)<br>
+        \(H_a: \mu > 100\)
+      </div>
+      <p class="step-note">This is a right-tailed test: only evidence that BPA is <strong>too high</strong> triggers a recall.</p>
+    </div>
+    <div class="card card-green">
+      <h3>Setting Up the Decision</h3>
+      <ul class="small">
+        <li>Reject \(H_0\) &rarr; conclude the mean BPA level exceeds 100 ppb &rarr; recall the soup and sue.</li>
+        <li>Do not reject \(H_0\) &rarr; not enough evidence of excess BPA &rarr; no recall.</li>
+        <li>Either decision could be a mistake — that's what parts (b) and (c) explore.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Example: BPA — Type I and Type II Errors</h2>
+  <p class="subtitle">What do the two kinds of errors mean for the tomato soup test?</p>
+  <div class="grid-2">
+    <div class="card card-rose">
+      <span class="tag tag-rose">Part (b): Type I Error</span>
+      <p class="step-note">Rejecting \(H_0\) when \(H_0\) is actually true.</p>
+      <p style="font-size: 15px; line-height: 1.5;">The test finds statistically significant evidence that the mean BPA level is greater than 100 ppb when in fact the mean is 100 ppb (or less). The agency recalls perfectly acceptable soup and sues a company that did nothing wrong.</p>
+    </div>
+    <div class="card card-amber">
+      <span class="tag tag-amber">Part (c): Type II Error</span>
+      <p class="step-note">Not rejecting \(H_0\) when \(H_0\) is actually false.</p>
+      <p style="font-size: 15px; line-height: 1.5;">The test does not find sufficient evidence that the mean BPA level is greater than 100 ppb when in fact it really is greater than 100 ppb. Contaminated soup stays on the shelves.</p>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Part (d): Which error is more serious?</strong> There is no right answer — it's a matter of opinion, and one could argue either way. A Type I error is costly for the company (unnecessary recall and lawsuit). A Type II error is more serious for consumers — especially anyone who is very sensitive to BPA.
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Example: Analogy to Law</h2>
+  <p class="subtitle">A hypothesis test works much like our legal system. Match each legal idea to its statistical counterpart.</p>
+  <div class="card card-accent table-card" style="max-width: 940px; margin-bottom: 14px;">
+    <table>
+      <tr><th>In the courtroom</th><th>In a hypothesis test</th></tr>
+      <tr><td>A person is <strong>innocent until proven guilty</strong></td><td>We assume \(H_0\) is true unless the data give convincing evidence against it</td></tr>
+      <tr><td>Evidence must be <strong>beyond a shadow of a doubt</strong></td><td>We reject \(H_0\) only when the p-value is very small (below \(\alpha\))</td></tr>
+      <tr><td><strong>Convicting an innocent person</strong></td><td>Type I error: rejecting \(H_0\) when it is true</td></tr>
+      <tr><td><strong>Releasing a guilty person</strong></td><td>Type II error: failing to reject \(H_0\) when it is false</td></tr>
+    </table>
+  </div>
+  <div class="callout">
+    Just as a "not guilty" verdict does not prove innocence, "do not reject \(H_0\)" does not prove the null hypothesis is true — it only means we lacked convincing evidence against it.
+  </div>
+</div>
+
+<div class="slide">
   <h2>Multiple Testing</h2>
   <p class="subtitle">When many tests are performed, some will be significant just by chance.</p>
   <div class="grid-2">
@@ -121,6 +193,26 @@
         <li>No one knows about all the insignificant results.</li>
         <li>This can create a very misleading picture of the evidence.</li>
       </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Example: Vitamin E and Heart Attacks?</h2>
+  <p class="subtitle">Suppose 100 tests are conducted to determine whether taking vitamin E increases one's chances of having a heart attack — and suppose vitamin E actually has no effect at all. Each test uses a 5% significance level.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <span class="tag tag-blue">Question 1</span>
+      <h3>How many tests are likely to show significance just by chance?</h3>
+      <div class="formula-box">
+        \(100 \times 0.05 = 5\) tests
+      </div>
+      <p class="step-note">Since \(H_0\) is true in every test, each one has a 5% chance of a Type I error. Out of 100 tests, we expect about 5 to be "statistically significant" purely by random chance.</p>
+    </div>
+    <div class="card card-rose">
+      <span class="tag tag-rose">Question 2</span>
+      <h3>If only significant tests are reported, what does the public hear?</h3>
+      <p style="font-size: 15px; line-height: 1.5;">Only the roughly 5 (false-positive) studies claiming that vitamin E affects heart attack risk. The ~95 studies that correctly found no effect are never published, so the public gets a completely misleading picture of the evidence.</p>
     </div>
   </div>
 </div>
