@@ -114,24 +114,24 @@
 </div>
 
 <div class="slide">
-  <h2>Example: BPA in Tomato Soup</h2>
-  <p class="subtitle">A consumer protection agency tests cans of tomato soup from a company. If they find evidence that the mean level of the chemical bisphenol A (BPA) is greater than 100 ppb (parts per billion), they will recall all the soup and sue the company.</p>
+  <h2>Example: Battery Life Claims</h2>
+  <p class="subtitle">A phone manufacturer advertises that its new phone lasts an average of 12 hours on a single charge. A consumer watchdog group tests a sample of phones. If they find evidence that the mean battery life is less than 12 hours, they will file a false-advertising complaint against the company.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <span class="tag tag-blue">Part (a)</span>
       <h3>State the null and alternative hypotheses</h3>
-      <p class="step-note">The parameter is \(\mu\) = the mean BPA level (in ppb) in all cans of tomato soup from this company.</p>
+      <p class="step-note">The parameter is \(\mu\) = the mean battery life (in hours) of all phones of this model.</p>
       <div class="formula-box">
-        \(H_0: \mu = 100\)<br>
-        \(H_a: \mu > 100\)
+        \(H_0: \mu = 12\)<br>
+        \(H_a: \mu < 12\)
       </div>
-      <p class="step-note">This is a right-tailed test: only evidence that BPA is <strong>too high</strong> triggers a recall.</p>
+      <p class="step-note">This is a left-tailed test: only evidence that battery life falls <strong>short</strong> of the claim triggers a complaint.</p>
     </div>
     <div class="card card-green">
       <h3>Setting Up the Decision</h3>
       <ul class="small">
-        <li>Reject \(H_0\) &rarr; conclude the mean BPA level exceeds 100 ppb &rarr; recall the soup and sue.</li>
-        <li>Do not reject \(H_0\) &rarr; not enough evidence of excess BPA &rarr; no recall.</li>
+        <li>Reject \(H_0\) &rarr; conclude the mean battery life is less than 12 hours &rarr; file the complaint.</li>
+        <li>Do not reject \(H_0\) &rarr; not enough evidence the claim is false &rarr; no complaint.</li>
         <li>Either decision could be a mistake — that's what parts (b) and (c) explore.</li>
       </ul>
     </div>
@@ -139,22 +139,22 @@
 </div>
 
 <div class="slide">
-  <h2>Example: BPA — Type I and Type II Errors</h2>
-  <p class="subtitle">What do the two kinds of errors mean for the tomato soup test?</p>
+  <h2>Example: Battery Life — Type I and Type II Errors</h2>
+  <p class="subtitle">What do the two kinds of errors mean for the battery life test?</p>
   <div class="grid-2">
     <div class="card card-rose">
       <span class="tag tag-rose">Part (b): Type I Error</span>
       <p class="step-note">Rejecting \(H_0\) when \(H_0\) is actually true.</p>
-      <p style="font-size: 15px; line-height: 1.5;">The test finds statistically significant evidence that the mean BPA level is greater than 100 ppb when in fact the mean is 100 ppb (or less). The agency recalls perfectly acceptable soup and sues a company that did nothing wrong.</p>
+      <p style="font-size: 15px; line-height: 1.5;">The test finds statistically significant evidence that the mean battery life is less than 12 hours when in fact the phones really do last 12 hours on average. The watchdog group files a false-advertising complaint against a company whose claim was honest.</p>
     </div>
     <div class="card card-amber">
       <span class="tag tag-amber">Part (c): Type II Error</span>
       <p class="step-note">Not rejecting \(H_0\) when \(H_0\) is actually false.</p>
-      <p style="font-size: 15px; line-height: 1.5;">The test does not find sufficient evidence that the mean BPA level is greater than 100 ppb when in fact it really is greater than 100 ppb. Contaminated soup stays on the shelves.</p>
+      <p style="font-size: 15px; line-height: 1.5;">The test does not find sufficient evidence that the mean battery life is less than 12 hours when in fact it really is less than 12 hours. The misleading advertisement stays up, and consumers keep buying phones based on an inflated claim.</p>
     </div>
   </div>
   <div class="callout">
-    <strong>Part (d): Which error is more serious?</strong> There is no right answer — it's a matter of opinion, and one could argue either way. A Type I error is costly for the company (unnecessary recall and lawsuit). A Type II error is more serious for consumers — especially anyone who is very sensitive to BPA.
+    <strong>Part (d): Which error is more serious?</strong> There is no right answer — it's a matter of opinion, and one could argue either way. A Type I error damages an honest company's reputation and invites a costly legal fight. A Type II error hurts consumers, who keep overpaying for a phone that doesn't deliver what it promises.
   </div>
 </div>
 
