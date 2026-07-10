@@ -149,6 +149,55 @@
 </div>
 
 
+<div class="slide">
+  <h2>Example: Body Temperature</h2>
+  <p class="subtitle">Using a sample of healthy adults, a 95% confidence interval for the mean body temperature is \((98.05,\ 98.47)\) degrees Fahrenheit. Use the interval to draw test conclusions — no new calculations needed.</p>
+  <div class="grid-2">
+    <div class="card card-rose">
+      <span class="tag tag-rose">Part (a)</span>
+      <h3>Test \(H_0: \mu = 98.6\) vs \(H_a: \mu \neq 98.6\) at \(\alpha = 0.05\)</h3>
+      <p class="step-note">Is the null value 98.6 inside the interval \((98.05,\ 98.47)\)?</p>
+      <p style="font-size: 15px; line-height: 1.5;"><strong>No — 98.6 is outside the interval</strong>, so 98.6 is not a plausible value for \(\mu\). We <strong>reject \(H_0\)</strong>: there is sufficient evidence that the mean body temperature differs from the traditional 98.6&deg;F.</p>
+    </div>
+    <div class="card card-green">
+      <span class="tag tag-green">Part (b)</span>
+      <h3>Test \(H_0: \mu = 98.4\) vs \(H_a: \mu \neq 98.4\) at \(\alpha = 0.05\)</h3>
+      <p class="step-note">Is the null value 98.4 inside the interval \((98.05,\ 98.47)\)?</p>
+      <p style="font-size: 15px; line-height: 1.5;"><strong>Yes — 98.4 is inside the interval</strong>, so 98.4 is a plausible value for \(\mu\). We <strong>do not reject \(H_0\)</strong>: there is not sufficient evidence that the mean body temperature differs from 98.4&deg;F.</p>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>The rule:</strong> a 95% confidence interval contains exactly the null values that a two-tailed test at \(\alpha = 0.05\) would <em>not</em> reject.
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Example: Where Is Each Distribution Centered?</h2>
+  <p class="subtitle">In a sample of 50 students, 28 say they get at least 7 hours of sleep, so \(\hat{p} = 28/50 = 0.56\). We want to test \(H_0: p = 0.5\) vs \(H_a: p \neq 0.5\).</p>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <span class="tag tag-blue">Part (a)</span>
+      <h3>One randomization sample</h3>
+      <p style="font-size: 15px; line-height: 1.5;">Simulate what happens if \(H_0\) is true: flip a fair coin 50 times (each flip has probability 0.5 of "yes") and record the proportion of heads. Repeat many times to build the randomization distribution.</p>
+    </div>
+    <div class="card card-amber">
+      <span class="tag tag-amber">Part (b)</span>
+      <h3>Center of the randomization distribution</h3>
+      <div class="formula-box" style="border-left-color: var(--amber);">\(p_0 = 0.5\)</div>
+      <p class="step-note">It assumes \(H_0\) is true, so it centers on the null value.</p>
+    </div>
+    <div class="card card-green">
+      <span class="tag tag-green">Part (c)</span>
+      <h3>Center of the bootstrap distribution</h3>
+      <div class="formula-box" style="border-left-color: var(--green);">\(\hat{p} = 0.56\)</div>
+      <p class="step-note">It makes no assumption about \(H_0\), so it centers on the sample statistic.</p>
+    </div>
+  </div>
+  <div class="callout">
+    Same data, same shape, same spread — the only difference between the two distributions is where they are centered. The next slide shows both.
+  </div>
+</div>
+
 <!-- Inserted: chart slide -->
 <div class="slide">
   <h2>Two Distributions, Same Data</h2>
