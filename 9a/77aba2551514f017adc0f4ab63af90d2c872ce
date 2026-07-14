@@ -1,0 +1,19 @@
+cv.html
+  s_3a1c3bb6d27f16::t_2640b59744052c 126-135
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "9a77aba2551514f017adc0f4ab63af90d2c872ce",
+  "prompts": {},
+  "sessions": {
+    "s_3a1c3bb6d27f16": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "74869e69-9f01-462f-86e9-0c1d983d98dd",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
