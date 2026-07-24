@@ -1,0 +1,38 @@
+courses/math_1342/quizzes/blank/Quiz07.html
+  s_3895a35b7fd455::t_0486ae7d3cede4 55
+  s_3895a35b7fd455::t_e270fafc9f8a59 59
+  s_3895a35b7fd455::t_1a06b267c27f86 51
+  s_3895a35b7fd455::t_31fcbcc327691b 63
+courses/math_1342/quizzes/solutions/Quiz07.html
+  s_3895a35b7fd455::t_54ba93ac1883b4 67
+  s_3895a35b7fd455::t_7c786b9ca5004f 73
+  s_3895a35b7fd455::t_a78a98874241d8 63
+  s_3895a35b7fd455::t_89e7a0c2284af4 72
+  s_3895a35b7fd455::t_abe3b90a909242 62
+  s_3895a35b7fd455::t_bf73b4daf087bb 68
+  s_3895a35b7fd455::t_718da1f0579190 78
+  s_3895a35b7fd455::t_39de4ab9533ac8 77
+courses/math_1342/quizzes_fall2026/blank/Quiz07.html
+  s_3895a35b7fd455::t_8fccca91a98a7e 51,63
+  s_3895a35b7fd455::t_d8608cee5aed20 55,59
+courses/math_1342/quizzes_fall2026/solutions/Quiz07.html
+  s_3895a35b7fd455::t_8fccca91a98a7e 62,77
+  s_3895a35b7fd455::t_d8608cee5aed20 63,67-68,72-73
+  s_3895a35b7fd455::t_018292aed23d4c 78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "7194b94250fdc0a6a4b2593eb95771fc46577b2b",
+  "prompts": {},
+  "sessions": {
+    "s_3895a35b7fd455": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d9b53951-5218-4a6a-880f-0f697a2423c5",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
