@@ -1,0 +1,25 @@
+courses/math_1342/quizzes_fall2026/solutions/Quiz08.html
+  s_c801348822b567::t_d220ee7c23727e 77-78
+courses/math_1342/quizzes_fall2026/blank/Quiz08.html
+  s_c801348822b567::t_d220ee7c23727e 63
+courses/math_1342/quizzes/solutions/Quiz08.html
+  s_c801348822b567::t_d220ee7c23727e 77-78
+courses/math_1342/quizzes/blank/Quiz08.html
+  s_c801348822b567::t_d220ee7c23727e 63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "c9f78be066e5650f612674b6d79264863f8bb59f",
+  "prompts": {},
+  "sessions": {
+    "s_c801348822b567": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7641bfe4-fb63-4099-aafa-f324da54a1ae",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
