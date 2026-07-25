@@ -74,8 +74,8 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 </div>
 <div class="problem">
 <h3>Problem 4 <span class="pts">[3 pts]</span></h3>
-<p>Using the values from Problem 3 (\(n = 8\), \(\bar{d} \approx 0.79\), \(s_d \approx 0.34\)): <i>(1.5 pts each)</i></p><ol type='a'><li>Construct an approximate 95% confidence interval for the mean improvement using \(\bar{d} \pm 2 \cdot \frac{s_d}{\sqrt{n}}\).</li><li>Test \(H_0: \mu_d = 0\) vs \(H_a: \mu_d > 0\) by computing \(t = \frac{\bar{d}}{s_d/\sqrt{n}}\) and stating the conclusion at \(\alpha = 0.05\) (treat the rough critical as \(t \approx 1.9\)).</li></ol>
-<div class="solution"><p>(a) \(SE = \frac{0.34}{\sqrt{8}} \approx 0.120\). CI: \(0.79 \pm 2(0.120) = 0.79 \pm 0.24\), or approximately \((0.55,\ 1.03)\) min. Since 0 is not in the interval, the data show a meaningful improvement.</p><p>(b) \(t = \frac{0.79}{0.120} \approx 6.6\). Far beyond 1.9, so reject \(H_0\). Strong evidence the program reduces 5K times on average.</p></div>
+<p>Using the values from Problem 3 (\(n = 8\), \(\bar{d} \approx 0.79\), \(s_d \approx 0.34\)): <i>(1.5 pts each)</i></p><ol type='a'><li>Construct a 95% confidence interval for the mean improvement.</li><li>Test \(H_0: \mu_d = 0\) vs \(H_a: \mu_d > 0\). Compute the \(t\) test statistic and state the conclusion at \(\alpha = 0.05\).</li></ol>
+<div class="solution"><p>(a) \(SE = \frac{0.34}{\sqrt{8}} \approx 0.120\). From StatKey (Theoretical Distribution &rarr; \(t\), \(df = 7\)), the middle 95% gives \(t^* = 2.365\). CI: \(0.79 \pm 2.365(0.120) = 0.79 \pm 0.284\), or approximately \((0.51,\ 1.07)\) min. Since 0 is not in the interval, the data show a meaningful improvement.</p><p>(b) \(t = \frac{0.79}{0.120} \approx 6.6\). From StatKey (Theoretical Distribution &rarr; \(t\), \(df = 7\)), a right tail of 0.05 gives \(t^* = 1.895\). Since 6.6 &gt; 1.895, reject \(H_0\). Strong evidence the program reduces 5K times on average.</p></div>
 </div>
 
 </div>
