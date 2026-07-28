@@ -244,11 +244,14 @@
       </ul>
     </div>
   </div>
+  <div class="callout">
+    <strong>Same idea, different names:</strong> when the data are <strong>not</strong> paired, you will see it called <em>unpaired</em>, <em>independent samples</em>, <em>separate samples</em>, or <em>two-sample</em> data. All four mean the same thing &mdash; two groups with no link between individual observations &mdash; and all four use the Section 6.4 methods instead of this section's.
+  </div>
 </div>
 
 <div class="slide">
-  <h2>Paired vs Separate Samples</h2>
-  <p class="subtitle">The distinction depends on whether each observation in one group is directly linked to one observation in the other group.</p>
+  <h2>Paired vs Unpaired (Independent) Samples</h2>
+  <p class="subtitle">The distinction depends on whether each observation in one group is directly linked to one observation in the other group, and not on the sample sizes.</p>
   <div class="grid-3">
     <div class="card card-accent">
       <div class="big-number accent">Before / After</div>
@@ -260,8 +263,64 @@
     </div>
     <div class="card card-rose">
       <div class="big-number rose">Two groups</div>
-      <div class="stat-label">If different people receive different treatments with no pairing, use separate-sample methods instead.</div>
+      <div class="stat-label">Different people with no pairing. This is an <strong>unpaired</strong> design, also called <strong>independent samples</strong> or <strong>separate samples</strong>. Use the Section 6.4 methods instead.</div>
     </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber" style="align-self:flex-start;">Practice &mdash; Discuss in Class</span>
+  <h2>Paired or Unpaired?</h2>
+  <p class="subtitle">For each study, decide whether the data are paired or unpaired (independent samples). The test: is each value in one group linked to exactly one value in the other?</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <ul class="small">
+        <li>(a) Blood pressure of 40 patients, measured before and after 8 weeks on a new drug.</li>
+        <li>(b) Reading scores of 30 students taught with Method A and <strong>35 different</strong> students taught with Method B.</li>
+        <li>(c) Vision measured in the left eye and the right eye of 25 people.</li>
+        <li>(d) Mean starting salary of <strong>50</strong> randomly chosen male graduates and <strong>50</strong> randomly chosen female graduates.</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <ul class="small">
+        <li>(e) Tread wear of two tire brands, with one tire of each brand mounted on each of 12 cars.</li>
+        <li>(f) Cholesterol of 60 volunteers randomly assigned to either a new drug or a placebo.</li>
+        <li>(g) Weekly screen time reported by the husband and the wife in each of 100 married couples.</li>
+        <li>(h) Exam averages for the 8 a.m. section and the 10 a.m. section of a statistics course.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Questions to discuss:</strong> What in the study <em>design</em>, not in the numbers, tells you the data are paired? Which of these could you not pair even if you wanted to, and why? Do equal sample sizes mean the data are paired? For each paired study, what is \(d\), and in which order would you subtract?
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Answers</span>
+  <h2>Paired or Unpaired? Answers</h2>
+  <p class="subtitle">Every paired study below produces one difference per pair. Every unpaired study needs the Section 6.4 methods.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>Paired</h3>
+      <ul class="small">
+        <li>(a) Same patient measured twice.</li>
+        <li>(c) Two eyes of the same person.</li>
+        <li>(e) Both brands tested on the same car.</li>
+        <li>(g) Each husband is matched with his own wife.</li>
+      </ul>
+    </div>
+    <div class="card card-rose">
+      <h3>Unpaired (Independent Samples)</h3>
+      <ul class="small">
+        <li>(b) Different students, and \(30 \ne 35\).</li>
+        <li>(d) Different people with no link between them.</li>
+        <li>(f) Volunteers randomly assigned to separate groups.</li>
+        <li>(h) Two separate groups of students.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Key idea:</strong> look for the link, not the counts. Equal sample sizes do not make data paired &mdash; (d) has 50 and 50 with no link between any male and any female graduate. And a pair need not be one person &mdash; (g) pairs two different people who belong together.
   </div>
 </div>
 
