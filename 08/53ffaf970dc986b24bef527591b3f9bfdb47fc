@@ -1,0 +1,23 @@
+courses/math_1342/lecture_notes/Sec6-5_Paired_Difference_in_Means.html
+  s_10fbc5b430db95::t_4407ad8c296fde 247-249
+  s_10fbc5b430db95::t_e5acce9d5d81b1 253-254
+  s_10fbc5b430db95::t_4fd41aa3efa687 266
+  s_10fbc5b430db95::t_6c2f960a783676 267-269,271-319,322-324
+  s_10fbc5b430db95::t_22bf19cd7764dc 270
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "0853ffaf970dc986b24bef527591b3f9bfdb47fc",
+  "prompts": {},
+  "sessions": {
+    "s_10fbc5b430db95": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "838105d9-4553-4aae-83c1-7abb569068de",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
