@@ -1,0 +1,19 @@
+courses/math_1342/summer2026.html
+  s_10fbc5b430db95::t_cfb21f48cf49d0 243-244
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "d4eb24a33c8b21cc518b14f14b14911846e12b58",
+  "prompts": {},
+  "sessions": {
+    "s_10fbc5b430db95": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "838105d9-4553-4aae-83c1-7abb569068de",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
