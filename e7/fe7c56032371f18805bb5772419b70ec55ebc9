@@ -1,0 +1,21 @@
+courses/math_1342/lecture_notes/Review_Sampling_to_Hypothesis_Testing.html
+  s_ab6128e5e09e22::t_e53ce35e61bb3f 315
+courses/math_1342/lecture_notes/Review_Sampling_to_Hypothesis_Testing_no_answers.html
+  s_ab6128e5e09e22::t_e53ce35e61bb3f 314
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "e7fe7c56032371f18805bb5772419b70ec55ebc9",
+  "prompts": {},
+  "sessions": {
+    "s_ab6128e5e09e22": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6690ea1-11ff-4163-99fd-d6dd7d77dff4",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
