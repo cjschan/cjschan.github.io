@@ -37,7 +37,7 @@
   ol.steps li { counter-increment: st; position: relative; padding: 5px 0 5px 32px; font-size: 16px; line-height: 1.45; }
   ol.steps li::before { content: counter(st); position: absolute; left: 0; top: 6px; width: 22px; height: 22px; border-radius: 50%; background: rgba(56,189,248,0.16); color: var(--accent); font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
   .tag { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
-  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); } .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); } .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); } .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); } .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); } .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); } .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); } .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); } .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); } .tag-accent3 { background: rgba(167, 139, 250, 0.15); color: var(--accent3); }
   .accent { color: var(--accent); } .accent2 { color: var(--accent2); } .accent3 { color: var(--accent3); } .green { color: var(--green); } .amber { color: var(--amber); } .rose { color: var(--rose); } .muted { color: var(--muted); }
   .big-number { font-size: 44px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
   .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
@@ -113,7 +113,7 @@
 </div>
 
 <div class="slide">
-  <h2>Step 1: Where the Numbers Came From</h2>
+  <h2>Before Any Formula: Where the Numbers Came From</h2>
   <p class="subtitle sm">The design of the study decides what your p-value is allowed to mean. This is the part students skip and lose points on.</p>
   <div class="grid-2">
     <div class="card card-accent">
@@ -304,6 +304,143 @@
         <li><strong>Significant \(\neq\) large.</strong> A huge \(n\) makes trivial effects significant &mdash; look at the CI for the size.</li>
       </ul>
     </div>
+  </div>
+</div>
+
+<!-- ============ PART 1B: WORKED EXAMPLE (INSTRUCTOR-LED) ============ -->
+
+<div class="slide">
+  <span class="tag tag-accent3" style="align-self:flex-start;">Worked Example &mdash; We Do This One Together</span>
+  <h2>Step 1: Read the Problem and Set the Scene</h2>
+  <p class="subtitle sm">Before any formula, answer three questions: who is the population, how was the sample taken, and what number am I trying to learn about?</p>
+  <div class="grid-2">
+    <div class="card card-amber">
+      <h3>The problem</h3>
+      <p class="ans">Student government claims that students at this college spend an average of <strong>$300</strong> per semester on textbooks. A survey of <strong>64 randomly selected</strong> students at the college found:</p>
+      <div class="formula-box tight" style="border-left-color: var(--amber);">\[\bar{x}=\$272, \qquad s=\$96, \qquad n=64\]</div>
+      <p class="ans">Is there evidence that the mean amount spent <strong>differs</strong> from $300? Use \(\alpha=0.05\).</p>
+    </div>
+    <div class="card card-accent">
+      <h3>Step 1 &mdash; the scene</h3>
+      <ul class="small">
+        <li><strong>Population:</strong> all students at this college.</li>
+        <li><strong>Sample:</strong> 64 randomly selected students from that population.</li>
+        <li><strong>Design:</strong> an observational survey &mdash; nobody was assigned to spend a certain amount.</li>
+        <li><strong>Parameter:</strong> \(\mu=\) the mean textbook spending per semester for <em>all</em> students at this college.</li>
+      </ul>
+      <div class="callout" style="margin-top:10px;">
+        \(\bar{x}=272\) is a fact about 64 students. \(\mu\) is the unknown we are actually arguing about. Keeping those two straight is most of this course.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-accent3" style="align-self:flex-start;">Worked Example</span>
+  <h2>Steps 2 and 3: Hypotheses, Then Name the Test</h2>
+  <p class="subtitle sm">The wording sets the tail. The data type sets the test.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Step 2 &mdash; hypotheses</h3>
+      <div class="formula-box">\[H_0: \mu=300 \qquad H_a: \mu\neq 300\]</div>
+      <ul class="small">
+        <li>\(H_0\) gets the equal sign and the claimed value, $300.</li>
+        <li>The question says <strong>"differs from"</strong> &rarr; two-tailed.</li>
+        <li>\(\alpha=0.05\), stated up front.</li>
+      </ul>
+      <div class="callout amber" style="margin-top:8px;">
+        <strong>Do not take the bait.</strong> Our sample came out <em>low</em> (\$272), but that is not a reason to switch to \(H_a:\mu<300\). The tail comes from the question, which was asked before anyone saw the data.
+      </div>
+    </div>
+    <div class="card card-green">
+      <h3>Step 3 &mdash; test and conditions</h3>
+      <p class="ans"><strong>How I know which test:</strong> one quantitative variable (dollars), one group, and I have \(s\) rather than \(\sigma\). That is a <strong>one-mean \(t\) test</strong>.</p>
+      <ul class="small">
+        <li><strong>Random sample?</strong> Yes, stated. &#10003;</li>
+        <li><strong>Normal enough?</strong> \(n=64\ge 30\), so the CLT makes the sampling distribution of \(\bar{x}\) approximately normal. &#10003;</li>
+      </ul>
+      <div class="step-note" style="margin-top:8px;">That second condition is doing real work here: textbook spending is almost certainly right-skewed, with a few students buying nothing and a few spending a fortune. We are not claiming the <em>data</em> are normal &mdash; only that \(\bar{x}\) is, because \(n\) is large.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-accent3" style="align-self:flex-start;">Worked Example</span>
+  <h2>Step 4: Compute the Test Statistic</h2>
+  <p class="subtitle sm">Standard error first, then the one ratio that runs every test.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>The arithmetic</h3>
+      <div class="formula-box">\[SE=\frac{s}{\sqrt{n}}=\frac{96}{\sqrt{64}}=\frac{96}{8}=12\]</div>
+      <div class="formula-box">\[t=\frac{\bar{x}-\mu_0}{SE}=\frac{272-300}{12}=\frac{-28}{12}\approx -2.33\]</div>
+      <div class="formula-box">\[df=n-1=64-1=63\]</div>
+    </div>
+    <div class="card card-green">
+      <h3>What each piece is telling us</h3>
+      <ul class="small">
+        <li><strong>\(SE=12\):</strong> if we repeated this survey over and over, sample means would typically land about \$12 away from the truth.</li>
+        <li><strong>\(t=-2.33\):</strong> our sample mean sits \(2.33\) standard errors <em>below</em> the claimed \$300. The negative sign means below &mdash; it is information, not an error.</li>
+        <li><strong>\(df=63\):</strong> which \(t\) curve to use. With \(df\) this large the curve is nearly standard normal, but the correct procedure is still \(t\), because \(\sigma\) is unknown.</li>
+      </ul>
+      <div class="step-note" style="margin-top:8px;">Common slip: dividing by \(s=96\) instead of by \(SE=12\). The denominator is always the standard error, never the standard deviation.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-accent3" style="align-self:flex-start;">Worked Example</span>
+  <h2>Steps 5 and 6: p-value, Decision, Conclusion</h2>
+  <p class="subtitle sm">Two tails, one comparison, then a sentence with dollars in it.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Step 5 &mdash; the p-value</h3>
+      <div class="formula-box">\[P(T_{63}<-2.33)\approx 0.0114\]</div>
+      <div class="formula-box">\[p\text{-value}=2(0.0114)\approx \mathbf{0.0228}\]</div>
+      <ul class="small">
+        <li>\(H_a\) is two-sided, so we <strong>double</strong> the tail area &mdash; a result \$28 <em>above</em> \$300 would have been just as surprising.</li>
+        <li>In words: if the true mean really were \$300, we would see a sample mean this far off in either direction only about <strong>2.3%</strong> of the time.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Step 6 &mdash; decide and say it</h3>
+      <div class="formula-box" style="border-left-color: var(--green);">\[0.0228 \le 0.05 \ \Rightarrow\ \text{reject } H_0\]</div>
+      <p class="ans"><strong>Conclusion in context:</strong> Since \(p=0.0228\le 0.05\), we reject \(H_0\). There is statistically significant evidence that the mean textbook spending for students at this college differs from \$300. Because \(\bar{x}=\$272\) is below \$300, the evidence points to students spending <strong>less</strong> than claimed.</p>
+      <div class="step-note">Notice the sentence has dollars and students in it, not a single Greek letter. That is what "in context" means.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-accent3" style="align-self:flex-start;">Worked Example</span>
+  <h2>Finish the Job: Design, Size, and a Cross-Check</h2>
+  <p class="subtitle sm">The test said "not \$300." It did not say why, and it did not say how much. Both matter.</p>
+  <div class="grid-3">
+    <div class="card card-amber">
+      <h3>The design question</h3>
+      <ul class="small">
+        <li>Random sample of this college's students &rarr; we may <strong>generalize to this college</strong>.</li>
+        <li>Not to students everywhere &mdash; other colleges have different courses and prices.</li>
+        <li>Observational, so <strong>no cause and effect</strong>. Nothing here explains <em>why</em> spending is below \$300.</li>
+      </ul>
+    </div>
+    <div class="card card-accent">
+      <h3>How much? Build the CI</h3>
+      <div class="formula-box tight">\[272 \pm 2.00(12)=272\pm 24\]</div>
+      <div class="formula-box tight" style="border-left-color: var(--green);">\[(\$248,\ \$296)\]</div>
+      <p class="ans muted">Using \(t^*\approx 2.00\) for 95% with \(df=63\). We are 95% confident the true mean is between \$248 and \$296.</p>
+    </div>
+    <div class="card card-green">
+      <h3>The two agree</h3>
+      <ul class="small">
+        <li>\$300 is <strong>outside</strong> \((248,296)\).</li>
+        <li>So a two-tailed test at \(\alpha=0.05\) must reject \$300 &mdash; and it did.</li>
+        <li>The test answers <em>"is it \$300?"</em> The interval answers <em>"then what is it?"</em></li>
+      </ul>
+      <div class="step-note" style="margin-top:8px;">If your CI and your test ever disagree, you have made an arithmetic error. Use this as a free check.</div>
+    </div>
+  </div>
+  <div class="callout amber">
+    <strong>Four ways to lose points on this problem.</strong> Forgetting to double the tail area (\(0.0114\) is not the answer). Dividing by \(s=96\) instead of \(SE=12\). Switching to a one-sided \(H_a\) after noticing \(\bar{x}<300\). And writing "the mean is \$272" &mdash; that is the sample mean, and it is exactly the thing we do <em>not</em> get to claim about the population.
   </div>
 </div>
 
