@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Review: From Sampling to Hypothesis Testing</title>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 44px 60px 60px; opacity: 0; transition: opacity 0.4s ease; overflow-y: auto; }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
+  .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
+  h1 { font-size: 56px; font-weight: 800; letter-spacing: -1px; line-height: 1.08; margin-bottom: 14px; }
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 14px; }
+  h3 { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+  h4 { font-size: 15px; font-weight: 700; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .subtitle { font-size: 20px; color: var(--muted); font-weight: 400; margin-bottom: 22px; max-width: 1080px; }
+  .subtitle.sm { font-size: 17px; margin-bottom: 16px; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1; align-items: start; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; flex: 1; align-items: start; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+  .card-accent { border-left: 3px solid var(--accent); } .card-accent2 { border-left: 3px solid var(--accent2); } .card-accent3 { border-left: 3px solid var(--accent3); } .card-green { border-left: 3px solid var(--green); } .card-amber { border-left: 3px solid var(--amber); } .card-rose { border-left: 3px solid var(--rose); }
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 6px 0 6px 20px; font-size: 18px; line-height: 1.45; position: relative; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .small li { font-size: 15px; padding: 4px 0 4px 18px; } .small li::before { top: 11px; width: 5px; height: 5px; }
+  ol.steps { list-style: none; counter-reset: st; padding: 0; }
+  ol.steps li { counter-increment: st; position: relative; padding: 5px 0 5px 32px; font-size: 16px; line-height: 1.45; }
+  ol.steps li::before { content: counter(st); position: absolute; left: 0; top: 6px; width: 22px; height: 22px; border-radius: 50%; background: rgba(56,189,248,0.16); color: var(--accent); font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); } .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); } .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); } .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); } .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+  .accent { color: var(--accent); } .accent2 { color: var(--accent2); } .accent3 { color: var(--accent3); } .green { color: var(--green); } .amber { color: var(--amber); } .rose { color: var(--rose); } .muted { color: var(--muted); }
+  .big-number { font-size: 44px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
+  .formula-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); border-left: 4px solid var(--accent); border-radius: 10px; padding: 10px 14px; font-size: 18px; margin: 8px 0; }
+  .formula-box.tight { font-size: 16px; padding: 8px 12px; }
+  .callout { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 14px 20px; margin-top: 14px; font-size: 16px; line-height: 1.55; }
+  .callout.amber { background: rgba(251, 191, 36, 0.08); border-color: rgba(251, 191, 36, 0.28); }
+  .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 6px; }
+  .ans { font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  .table-card table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 15px; }
+  .table-card th, .table-card td { border: 1px solid var(--border); padding: 8px 10px; text-align: center; }
+  .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
+  .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  .table-card.compact th, .table-card.compact td { padding: 6px 8px; font-size: 14px; }
+  .flow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 6px 0 12px; }
+  .flow .node { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 16px; font-size: 15px; font-weight: 600; }
+  .flow .arrow { color: var(--accent); font-size: 20px; font-weight: 700; }
+  @media (max-width: 900px) { .slide { padding: 28px 24px 56px; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 40px; } h2 { font-size: 23px; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Use arrow keys to navigate</div>
+<div class="deck" id="deck">
+
+<!-- ============ PART 1: THE ARC ============ -->
+
+<div class="slide title-slide">
+  <span class="tag tag-blue">Final Review &mdash; Last Class Day</span>
+  <h1>Putting It All Together</h1>
+  <p class="subtitle">One trip through the whole course &mdash; from how the data were collected to what a p-value lets you say. Then you and a partner run a complete hypothesis test start to finish.</p>
+</div>
+
+<div class="slide">
+  <h2>The Whole Course in One Picture</h2>
+  <p class="subtitle sm">Every topic this semester is one step in this chain. Inference only works if each step holds up.</p>
+  <div class="flow">
+    <div class="node">Population</div><span class="arrow">&rarr;</span>
+    <div class="node">Sample</div><span class="arrow">&rarr;</span>
+    <div class="node">Statistic</div><span class="arrow">&rarr;</span>
+    <div class="node">Sampling distribution</div><span class="arrow">&rarr;</span>
+    <div class="node">CI or test</div><span class="arrow">&rarr;</span>
+    <div class="node">Conclusion</div>
+  </div>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <h3>1. Collect (Ch. 1)</h3>
+      <ul class="small">
+        <li>Random sampling makes the sample look like the population.</li>
+        <li>Random assignment is what buys you cause and effect.</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>2. Describe (Ch. 2)</h3>
+      <ul class="small">
+        <li>Shape, center, spread; graphs before formulas.</li>
+        <li>Produce a statistic: \(\hat{p},\ \bar{x},\ \bar{d},\ \hat{p}_1-\hat{p}_2,\ \bar{x}_1-\bar{x}_2\).</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>3. Infer (Ch. 3&ndash;7)</h3>
+      <ul class="small">
+        <li><span class="accent">Confidence interval:</span> what is the parameter?</li>
+        <li><span class="green">Hypothesis test:</span> is this claimed value believable?</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    A statistic describes your sample. A <strong>parameter</strong> describes the population. Inference is the whole business of using the first to make a claim about the second &mdash; and the gap between them is exactly what SE measures.
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Step 1: Where the Numbers Came From</h2>
+  <p class="subtitle sm">The design of the study decides what your p-value is allowed to mean. This is the part students skip and lose points on.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Who can I generalize to?</h3>
+      <ul class="small">
+        <li><strong>Random sample</strong> from the population &rarr; conclusions extend to that population.</li>
+        <li><strong>Biased sample</strong> (volunteers, convenience, low response) &rarr; conclusions extend to nobody.</li>
+        <li>A bigger biased sample is <span class="rose">not</span> a fix. It just makes a wrong answer look precise.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Can I say one thing caused the other?</h3>
+      <ul class="small">
+        <li><strong>Randomized experiment</strong> (researcher assigns treatments at random) &rarr; yes, causation.</li>
+        <li><strong>Observational study</strong> &rarr; association only. Confounding variables are always available as an alternative explanation.</li>
+        <li>No amount of statistical significance upgrades an observational study to a causal one.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout amber">
+    <strong>Order of operations for every problem today:</strong> identify the population, the sample, and the design <em>before</em> you touch a formula. A perfect calculation on a biased sample is still worthless.
+  </div>
+</div>
+
+<div class="slide">
+  <h2>The Engine: Sampling Distribution and SE</h2>
+  <p class="subtitle sm">Statistics vary from sample to sample. Quantifying that variation is what makes inference possible.</p>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <h3>Sampling distribution</h3>
+      <ul class="small">
+        <li>The distribution of a statistic over all possible samples of size \(n\).</li>
+        <li>Centered at the parameter.</li>
+        <li>Roughly normal when \(n\) is big enough &mdash; that is the CLT.</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>Standard error</h3>
+      <ul class="small">
+        <li>The spread of that distribution: typical distance from statistic to parameter.</li>
+        <li>Shrinks like \(1/\sqrt{n}\): quadruple \(n\) to halve the SE.</li>
+        <li>Every formula on the next slides is just a different SE.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Two ways to use it</h3>
+      <ul class="small">
+        <li><span class="accent">CI:</span> statistic \(\pm\) (critical value)(SE). Centered at the <strong>statistic</strong>.</li>
+        <li><span class="green">Test:</span> how many SEs is the statistic from the null value? Centered at the <strong>null value</strong>.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    A p-value is a probability computed <em>inside a world where \(H_0\) is true</em>. That is why the test's distribution is centered at the null value and not at your data.
+  </div>
+</div>
+
+<div class="slide">
+  <h2>One Formula Runs Almost Every Test</h2>
+  <p class="subtitle sm">There are six tests on your exam. Five of them are this single idea with a different SE.</p>
+  <div class="formula-box" style="font-size: 24px; text-align: center;">
+    \[
+      \text{test statistic}=\frac{\text{sample statistic}-\text{null value}}{SE}
+    \]
+  </div>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>What it means in words</h3>
+      <ul class="small">
+        <li>"My sample came out <strong>this many standard errors</strong> away from what \(H_0\) claimed."</li>
+        <li>Far away (big \(|z|\) or \(|t|\)) &rarr; small p-value &rarr; \(H_0\) looks wrong.</li>
+        <li>Close to 0 &rarr; large p-value &rarr; ordinary sampling variation explains it.</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Only four things change</h3>
+      <ul class="small">
+        <li>The <strong>statistic</strong> (\(\hat{p}\), \(\bar{x}\), \(\bar{d}\), a difference).</li>
+        <li>The <strong>SE formula</strong>.</li>
+        <li>The <strong>distribution</strong>: \(z\) for proportions, \(t\) for means.</li>
+        <li>The <strong>df</strong>, when it is a \(t\).</li>
+      </ul>
+      <div class="step-note" style="margin-top:8px;">The sixth test, \(\chi^2\), is the same instinct in different clothing: add up how far every observed count sits from the count \(H_0\) expects.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Choosing the Right Test</h2>
+  <p class="subtitle sm">Two questions pick the test every time: <strong>how many variables, and what type?</strong> Then: <strong>are the two groups linked?</strong></p>
+  <div class="card table-card compact">
+    <table>
+      <thead>
+        <tr><th>What the problem gives you</th><th>Parameter</th><th>Test</th><th>Statistic &amp; df</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>One categorical variable, one group (a count out of \(n\))</td><td>\(p\)</td><td>One-proportion \(z\)</td><td>\(z=\dfrac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)/n}}\)</td></tr>
+        <tr><td>One quantitative variable, one group (\(\bar{x}\), \(s\))</td><td>\(\mu\)</td><td>One-mean \(t\)</td><td>\(t=\dfrac{\bar{x}-\mu_0}{s/\sqrt{n}}\), \(df=n-1\)</td></tr>
+        <tr><td>Two <strong>separate</strong> groups, categorical response</td><td>\(p_1-p_2\)</td><td>Two-proportion \(z\) (pooled)</td><td>\(z=\dfrac{\hat{p}_1-\hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}\)</td></tr>
+        <tr><td>Two <strong>separate</strong> groups, quantitative response</td><td>\(\mu_1-\mu_2\)</td><td>Two-sample \(t\)</td><td>\(t=\dfrac{\bar{x}_1-\bar{x}_2}{\sqrt{s_1^2/n_1+s_2^2/n_2}}\), \(df=\min(n_1-1,n_2-1)\)</td></tr>
+        <tr><td>Two quantitative measurements <strong>on the same unit</strong> (or matched pairs)</td><td>\(\mu_d\)</td><td>Paired \(t\)</td><td>\(t=\dfrac{\bar{d}-0}{s_d/\sqrt{n_d}}\), \(df=n_d-1\)</td></tr>
+        <tr><td>Two categorical variables, an \(r\times c\) table</td><td>association</td><td>\(\chi^2\) test for association</td><td>\(\chi^2=\sum\dfrac{(O-E)^2}{E}\), \(df=(r-1)(c-1)\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout amber">
+    <strong>The trap:</strong> two columns of numbers with the same \(n\) is <em>not</em> automatically paired data. Ask whether each value in column 1 is tied to <em>one specific</em> value in column 2 (same person, same car, same married couple). If yes &rarr; paired \(t\). If no &rarr; two-sample \(t\).
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Conditions and Tails</h2>
+  <p class="subtitle sm">Know these cold &mdash; the conditions are worth points, and the tail is decided by the wording, never by the data.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>Conditions to check out loud</h3>
+      <ul class="small">
+        <li><strong>Proportions:</strong> random sample, and the relevant counts are at least 10. For a test use \(np_0\ge 10\) and \(n(1-p_0)\ge 10\); for a \(2\times\) table, all four cell counts \(\ge 10\).</li>
+        <li><strong>Means:</strong> random sample, and \(n\ge 30\) <em>or</em> the data are roughly normal with no strong outliers.</li>
+        <li><strong>Paired:</strong> the same conditions, applied to the \(n_d\) <em>differences</em>.</li>
+        <li><strong>\(\chi^2\):</strong> random sample, and every <em>expected</em> count is at least 5.</li>
+      </ul>
+    </div>
+    <div class="card card-rose">
+      <h3>Picking the tail from the wording</h3>
+      <ul class="small">
+        <li>"more than," "increases," "higher," "better" &rarr; \(H_a: >\), right tail.</li>
+        <li>"less than," "decreases," "lower," "reduces" &rarr; \(H_a: <\), left tail.</li>
+        <li>"differs from," "changed," "is there a difference" &rarr; \(H_a: \neq\), <strong>both</strong> tails, so double the tail area.</li>
+        <li>\(H_0\) always gets the equal sign, and always names a specific number (\(p_0\), \(\mu_0\), or 0 for a difference).</li>
+      </ul>
+      <div class="step-note" style="margin-top:8px;">Choose the tail from the research question <em>before</em> you look at which direction your sample went.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Every Test, Same Six Steps</h2>
+  <p class="subtitle sm">This is also the grading rubric for today's activity and for the final.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <ol class="steps">
+        <li><strong>Set the scene.</strong> Population, sample, design. Define the parameter in symbols and in words.</li>
+        <li><strong>Hypotheses.</strong> \(H_0\) with the equal sign, \(H_a\) from the wording. State \(\alpha\).</li>
+        <li><strong>Name the test and check conditions.</strong> Show the numbers, do not just claim it.</li>
+      </ol>
+    </div>
+    <div class="card card-green">
+      <ol class="steps" style="counter-reset: st 3;">
+        <li><strong>Compute.</strong> Statistic, SE, then \(z\), \(t\), or \(\chi^2\). Report \(df\) if you used one.</li>
+        <li><strong>p-value.</strong> Tail area beyond your statistic, doubled if \(H_a\) is two-sided.</li>
+        <li><strong>Decide and conclude in context.</strong> Compare to \(\alpha\), then one sentence about the actual variables &mdash; no symbols.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Conclusion template.</strong> Reject: "Since \(p = \underline{\hphantom{0.000}} \le 0.05\), we reject \(H_0\). There is statistically significant evidence that <em>(the claim in \(H_a\), in plain words)</em>." Do not reject: "Since \(p = \underline{\hphantom{0.000}} > 0.05\), we do not reject \(H_0\). There is not enough evidence to conclude that <em>(the claim in \(H_a\))</em>."
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Saying It Right</h2>
+  <p class="subtitle sm">Three places where correct arithmetic still gets the wrong answer.</p>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <h3>What a p-value is</h3>
+      <div class="step-note">The probability of getting a sample statistic at least this extreme <strong>if \(H_0\) were true.</strong></div>
+      <ul class="small">
+        <li>It is <span class="rose">not</span> \(P(H_0\text{ is true})\).</li>
+        <li>It is <span class="rose">not</span> the probability you made a mistake.</li>
+        <li>Small p-value = my data would be a weird coincidence under \(H_0\).</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Never prove \(H_0\)</h3>
+      <ul class="small">
+        <li>"Do not reject" means <strong>not enough evidence</strong>, not "\(H_0\) is true."</li>
+        <li>A real difference can hide behind a small sample.</li>
+        <li>Courtroom version: "not guilty" is not the same as "innocent."</li>
+      </ul>
+    </div>
+    <div class="card card-rose">
+      <h3>Errors and importance</h3>
+      <ul class="small">
+        <li><strong>Type I:</strong> reject a true \(H_0\). Probability \(=\alpha\).</li>
+        <li><strong>Type II:</strong> fail to reject a false \(H_0\).</li>
+        <li>Lower \(\alpha\) trades Type I risk for Type II risk. Bigger \(n\) lowers both.</li>
+        <li><strong>Significant \(\neq\) large.</strong> A huge \(n\) makes trivial effects significant &mdash; look at the CI for the size.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PART 2: ACTIVITY ============ -->
+
+<div class="slide">
+  <span class="tag tag-amber" style="align-self:flex-start;">Pair Activity</span>
+  <h2>Your Turn: One Complete Test, With a Partner</h2>
+  <p class="subtitle sm">Ten problems, one per pair. Pair up, take the problem number you are assigned, and work it all the way through on paper. Then each pair walks the class through their problem in about a minute.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Do all seven of these</h3>
+      <ol class="steps">
+        <li>Population, sample, and study design.</li>
+        <li>Parameter in symbols and in words.</li>
+        <li>\(H_0\) and \(H_a\), with the tail justified from the wording.</li>
+        <li>Name the test and check every condition with numbers.</li>
+        <li>Statistic, SE, test statistic, and \(df\) if needed.</li>
+        <li>p-value, then decision at \(\alpha=0.05\).</li>
+        <li>Conclusion in context &mdash; plus: <strong>does this design let you claim cause and effect?</strong></li>
+      </ol>
+    </div>
+    <div class="card card-green">
+      <h3>How to work it</h3>
+      <ul class="small">
+        <li>One of you narrates the reasoning, the other writes and checks the arithmetic &mdash; then swap at step 4.</li>
+        <li>Before computing anything, both of you say out loud which of the six tests it is and <em>why</em>. Most lost points live in that sentence.</li>
+        <li>If you disagree about the tail, reread the question's last sentence. The question wording, not your sample, sets the tail.</li>
+        <li>Round SE to at least 4 decimals so your test statistic lands where mine did.</li>
+        <li>Finish early? Build the matching 95% confidence interval and check that it agrees with your two-sided decision.</li>
+      </ul>
+      <div class="step-note" style="margin-top:8px;">You have about 12 minutes. Answers follow the problem slides &mdash; do not peek until your pair has a conclusion written down.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PART 3: PROBLEMS ============ -->
+
+<div class="slide">
+  <span class="tag tag-amber" style="align-self:flex-start;">Problems 1 &amp; 2</span>
+  <h2>Ten Problems &mdash; Use \(\alpha=0.05\) Throughout</h2>
+  <p class="subtitle sm">Each problem is a complete hypothesis test. Run all seven steps.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <span class="tag tag-blue">Problem 1</span>
+      <p class="ans">A college advertises that <strong>more than 60%</strong> of its students work while enrolled. In a random sample of <strong>300</strong> students from the college, <strong>198</strong> said they work.</p>
+      <p class="ans muted">Is there evidence for the college's claim?</p>
+    </div>
+    <div class="card card-accent2">
+      <span class="tag tag-purple">Problem 2</span>
+      <p class="ans">A snack bag is labeled <strong>28.0 grams</strong>. A quality inspector weighs a random sample of <strong>36</strong> bags and finds \(\bar{x}=27.6\) g with \(s=1.2\) g.</p>
+      <p class="ans muted">Is there evidence that the mean net weight <strong>differs</strong> from 28.0 g?</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber" style="align-self:flex-start;">Problems 3 &amp; 4</span>
+  <h2>Ten Problems &mdash; Use \(\alpha=0.05\) Throughout</h2>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <span class="tag tag-blue">Problem 3</span>
+      <p class="ans">A health office takes independent random samples at two campuses to compare flu-shot rates. At Campus&nbsp;A, <strong>120 of 250</strong> students had a flu shot. At Campus&nbsp;B, <strong>96 of 250</strong> did.</p>
+      <p class="ans muted">Is there evidence the two campuses <strong>differ</strong> in flu-shot rate?</p>
+    </div>
+    <div class="card card-accent2">
+      <span class="tag tag-purple">Problem 4</span>
+      <p class="ans">Students in a study-skills course were <strong>randomly assigned</strong> to one of two review methods before a common final exam.</p>
+      <ul class="small">
+        <li>Flashcards: \(n_1=40\), \(\bar{x}_1=82.5\), \(s_1=7.0\)</li>
+        <li>Rereading notes: \(n_2=45\), \(\bar{x}_2=78.9\), \(s_2=8.0\)</li>
+      </ul>
+      <p class="ans muted">Is there evidence flashcards produce a <strong>higher</strong> mean score?</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber" style="align-self:flex-start;">Problems 5 &amp; 6</span>
+  <h2>Ten Problems &mdash; Use \(\alpha=0.05\) Throughout</h2>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <span class="tag tag-blue">Problem 5</span>
+      <p class="ans"><strong>25</strong> runners ran a timed 5K, trained for six weeks of interval workouts, then ran a second timed 5K. For \(d=\)&nbsp;(after \(-\) before) in seconds, \(\bar{d}=-34.0\) and \(s_d=68.0\).</p>
+      <p class="ans muted">Is there evidence the training <strong>reduces</strong> mean 5K time?</p>
+    </div>
+    <div class="card card-accent2">
+      <span class="tag tag-purple">Problem 6</span>
+      <p class="ans">A survey of <strong>240 randomly selected</strong> students recorded whether the student commutes and where they usually study.</p>
+      <div class="table-card compact">
+        <table>
+          <thead><tr><th></th><th>Library</th><th>Home</th><th>Caf&eacute;</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td>Commuter</td><td>30</td><td>60</td><td>30</td><td>120</td></tr>
+            <tr><td>Lives on campus</td><td>50</td><td>40</td><td>30</td><td>120</td></tr>
+            <tr><td><strong>Total</strong></td><td>80</td><td>100</td><td>60</td><td>240</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ans muted" style="margin-top:8px;">Is there evidence of an <strong>association</strong> between the two variables?</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber" style="align-self:flex-start;">Problems 7 &amp; 8</span>
+  <h2>Ten Problems &mdash; Use \(\alpha=0.05\) Throughout</h2>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <span class="tag tag-blue">Problem 7</span>
+      <p class="ans">Historically <strong>75%</strong> of students pass a gateway math course. After a curriculum change, <strong>210</strong> students in a random sample of <strong>300</strong> passed.</p>
+      <p class="ans muted">Is there evidence the pass rate has <strong>dropped</strong>?</p>
+    </div>
+    <div class="card card-accent2">
+      <span class="tag tag-purple">Problem 8</span>
+      <p class="ans">A clinic advertises a mean wait time of <strong>20 minutes</strong>. Patients complain it is longer. A random sample of <strong>49</strong> visits gives \(\bar{x}=22.4\) minutes with \(s=8.4\) minutes.</p>
+      <p class="ans muted">Is there evidence the mean wait is <strong>longer</strong> than advertised?</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber" style="align-self:flex-start;">Problems 9 &amp; 10</span>
+  <h2>Ten Problems &mdash; Use \(\alpha=0.05\) Throughout</h2>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <span class="tag tag-blue">Problem 9</span>
+      <p class="ans">Independent random samples of first-year and returning students reported hours of sleep on a typical weeknight.</p>
+      <ul class="small">
+        <li>First-year: \(n_1=32\), \(\bar{x}_1=6.8\), \(s_1=1.6\)</li>
+        <li>Returning: \(n_2=38\), \(\bar{x}_2=7.4\), \(s_2=1.5\)</li>
+      </ul>
+      <p class="ans muted">Is there evidence the mean hours of sleep <strong>differ</strong>?</p>
+    </div>
+    <div class="card card-accent2">
+      <span class="tag tag-purple">Problem 10</span>
+      <p class="ans"><strong>400</strong> students with an upcoming advising appointment were <strong>randomly assigned</strong> to receive a text reminder or no reminder. <strong>130 of the 200</strong> who got a reminder kept the appointment; <strong>108 of the 200</strong> who got none did.</p>
+      <p class="ans muted">Is there evidence the reminder <strong>increases</strong> the proportion who keep the appointment?</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PART 4: ANSWERS ============ -->
+
+<div class="slide title-slide">
+  <span class="tag tag-green">Answers</span>
+  <h1>Answer Key</h1>
+  <p class="subtitle">One slide per problem. Each pair presents theirs. Watch for the design question at the bottom of every slide &mdash; that is the part that connects Chapter 1 to Chapter 7.</p>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Answer &mdash; Problem 1</span>
+  <h2>One-Proportion \(z\) Test, Right-Tailed</h2>
+  <p class="subtitle sm">Random sample of 300 students; 198 work. Claim: more than 60% work.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h4>Setup</h4>
+      <p class="ans"><strong>Population:</strong> all students at the college. <strong>Sample:</strong> 300 randomly selected students. <strong>Parameter:</strong> \(p=\) the proportion of all students at the college who work while enrolled.</p>
+      <div class="formula-box tight">\[H_0: p=0.60 \qquad H_a: p>0.60\]</div>
+      <p class="ans muted">"More than 60%" is a right-tailed alternative.</p>
+      <h4 style="margin-top:10px;">Test and conditions</h4>
+      <p class="ans">One-proportion \(z\) test. Random sample &#10003;. \(np_0=300(0.60)=180\ge 10\) &#10003;, \(n(1-p_0)=300(0.40)=120\ge 10\) &#10003;.</p>
+    </div>
+    <div class="card card-green">
+      <h4>Compute</h4>
+      <div class="formula-box tight">\[\hat{p}=\frac{198}{300}=0.66\]</div>
+      <div class="formula-box tight">\[SE=\sqrt{\frac{0.60(0.40)}{300}}=0.0283\]</div>
+      <div class="formula-box tight">\[z=\frac{0.66-0.60}{0.0283}\approx 2.12\]</div>
+      <h4 style="margin-top:8px;">p-value and conclusion</h4>
+      <p class="ans">\(p\text{-value}=P(Z>2.12)\approx \mathbf{0.0169}\).</p>
+      <p class="ans">Since \(0.0169\le 0.05\), <strong>reject \(H_0\)</strong>. There is statistically significant evidence that more than 60% of the college's students work while enrolled.</p>
+    </div>
+  </div>
+  <div class="callout amber">
+    <strong>Design:</strong> a random sample, so we can generalize to all students at this college. It is observational, so nothing here is a cause-and-effect claim &mdash; and it says nothing about students at other colleges.
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Answer &mdash; Problem 2</span>
+  <h2>One-Mean \(t\) Test, Two-Tailed</h2>
+  <p class="subtitle sm">36 bags: \(\bar{x}=27.6\) g, \(s=1.2\) g. Label claims 28.0 g.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h4>Setup</h4>
+      <p class="ans"><strong>Population:</strong> all bags from this production process. <strong>Sample:</strong> 36 randomly selected bags. <strong>Parameter:</strong> \(\mu=\) the mean net weight of all bags.</p>
+      <div class="formula-box tight">\[H_0: \mu=28.0 \qquad H_a: \mu\neq 28.0\]</div>
+      <p class="ans muted">"Differs from" is two-tailed &mdash; underfilling and overfilling are both quality problems.</p>
+      <h4 style="margin-top:10px;">Test and conditions</h4>
+      <p class="ans">One-mean \(t\) test. Random sample &#10003;. \(n=36\ge 30\), so the CLT makes the sampling distribution of \(\bar{x}\) approximately normal &#10003;.</p>
+    </div>
+    <div class="card card-rose">
+      <h4>Compute</h4>
+      <div class="formula-box tight">\[SE=\frac{1.2}{\sqrt{36}}=0.20\]</div>
+      <div class="formula-box tight">\[t=\frac{27.6-28.0}{0.20}=-2.00,\quad df=35\]</div>
+      <h4 style="margin-top:8px;">p-value and conclusion</h4>
+      <p class="ans">Two-tailed: \(p\text{-value}=2\,P(T_{35}<-2.00)\approx 2(0.0266)= \mathbf{0.053}\).</p>
+      <p class="ans">Since \(0.053>0.05\), <strong>do not reject \(H_0\)</strong>. There is not enough evidence to conclude that the mean net weight differs from 28.0 g.</p>
+    </div>
+  </div>
+  <div class="callout amber">
+    <strong>Two things worth arguing about.</strong> (1) \(p=0.053\) is <em>barely</em> above \(\alpha\), and "do not reject" still does not mean the mean is 28.0 &mdash; a 95% CI would contain 28.0, but only just. (2) Had the inspector's question been "is the mean <em>less</em> than 28.0," the one-tailed p-value would be \(0.027\) and the decision would flip. That is exactly why the tail must be set by the question, not by the data.
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Answer &mdash; Problem 3</span>
+  <h2>Two-Proportion \(z\) Test, Two-Tailed</h2>
+  <p class="subtitle sm">Campus A: 120 of 250. Campus B: 96 of 250.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h4>Setup</h4>
+      <p class="ans"><strong>Parameters:</strong> \(p_1,p_2=\) the proportion of all students at Campus A, Campus B who had a flu shot. <strong>Samples:</strong> independent random samples of 250 from each campus.</p>
+      <div class="formula-box tight">\[H_0: p_1=p_2 \qquad H_a: p_1\neq p_2\]</div>
+      <h4 style="margin-top:10px;">Test and conditions</h4>
+      <p class="ans">Two-proportion \(z\) test. Independent random samples &#10003;. All four counts \(\ge 10\): \(120,\ 130,\ 96,\ 154\) &#10003;.</p>
+      <p class="ans">\(\hat{p}_1=\dfrac{120}{250}=0.480\), \(\hat{p}_2=\dfrac{96}{250}=0.384\), difference \(=0.096\).</p>
+    </div>
+    <div class="card card-green">
+      <h4>Compute</h4>
+      <p class="ans muted">A test of \(p_1=p_2\) uses the <strong>pooled</strong> proportion in the SE.</p>
+      <div class="formula-box tight">\[\hat{p}=\frac{120+96}{250+250}=\frac{216}{500}=0.432\]</div>
+      <div class="formula-box tight">\[SE=\sqrt{0.432(0.568)\left(\tfrac{1}{250}+\tfrac{1}{250}\right)}=0.0443\]</div>
+      <div class="formula-box tight">\[z=\frac{0.096}{0.0443}\approx 2.17\]</div>
+      <h4 style="margin-top:8px;">p-value and conclusion</h4>
+      <p class="ans">\(p\text{-value}=2\,P(Z>2.17)\approx \mathbf{0.030}\). Since \(0.030\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that the two campuses differ in flu-shot rate.</p>
+    </div>
+  </div>
+  <div class="callout amber">
+    <strong>Design:</strong> observational. The campuses were not assigned to students, so "which campus you attend" is not shown to cause the difference &mdash; the campuses may differ in age, program mix, or clinic access. Note the pooled SE is used here but <em>not</em> in a confidence interval for \(p_1-p_2\).
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Answer &mdash; Problem 4</span>
+  <h2>Two-Sample \(t\) Test, Right-Tailed</h2>
+  <p class="subtitle sm">Flashcards: \(n_1=40,\ \bar{x}_1=82.5,\ s_1=7.0\). Rereading: \(n_2=45,\ \bar{x}_2=78.9,\ s_2=8.0\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h4>Setup</h4>
+      <p class="ans"><strong>Parameters:</strong> \(\mu_1,\mu_2=\) the mean final-exam score if students like these used flashcards, rereading. <strong>Design:</strong> a randomized experiment.</p>
+      <div class="formula-box tight">\[H_0: \mu_1=\mu_2 \qquad H_a: \mu_1>\mu_2\]</div>
+      <p class="ans muted">"Higher" is right-tailed. The two groups are separate students, so this is <strong>not</strong> paired &mdash; and \(40\neq 45\) confirms it.</p>
+      <h4 style="margin-top:10px;">Test and conditions</h4>
+      <p class="ans">Two-sample \(t\) test. Random assignment &#10003;. \(n_1=40\) and \(n_2=45\) are both \(\ge 30\) &#10003;.</p>
+    </div>
+    <div class="card card-green">
+      <h4>Compute</h4>
+      <div class="formula-box tight">\[SE=\sqrt{\frac{7.0^2}{40}+\frac{8.0^2}{45}}=\sqrt{1.225+1.422}\approx 1.627\]</div>
+      <div class="formula-box tight">\[t=\frac{82.5-78.9}{1.627}\approx 2.21\]</div>
+      <div class="formula-box tight">\[df=\min(40-1,\ 45-1)=39\]</div>
+      <h4 style="margin-top:8px;">p-value and conclusion</h4>
+      <p class="ans">\(p\text{-value}=P(T_{39}>2.21)\approx \mathbf{0.016}\). Since \(0.016\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that the mean exam score is higher with flashcards than with rereading.</p>
+    </div>
+  </div>
+  <div class="callout amber">
+    <strong>Design:</strong> this one <em>is</em> a randomized experiment, so a causal conclusion is legitimate &mdash; flashcards caused the higher mean score for these students. Compare this to Problem 3, where identical arithmetic buys you only an association.
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Answer &mdash; Problem 5</span>
+  <h2>Paired \(t\) Test, Left-Tailed</h2>
+  <p class="subtitle sm">25 runners, each timed twice. \(d=\) after \(-\) before, \(\bar{d}=-34.0\) s, \(s_d=68.0\) s.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h4>Setup</h4>
+      <p class="ans"><strong>Parameter:</strong> \(\mu_d=\) the mean change in 5K time (after \(-\) before) for runners like these. <strong>Why paired:</strong> the same runner is measured twice, so each "after" is tied to one specific "before."</p>
+      <div class="formula-box tight">\[H_0: \mu_d=0 \qquad H_a: \mu_d<0\]</div>
+      <p class="ans muted">"Reduces time" means after \(<\) before, so the differences should be negative &mdash; left-tailed.</p>
+      <h4 style="margin-top:10px;">Test and conditions</h4>
+      <p class="ans">Paired \(t\) test, which is a one-mean \(t\) test on the \(n_d=25\) differences. Here \(n_d=25<30\), so we need the <em>differences</em> to be roughly normal with no strong outliers &mdash; state this as an assumption.</p>
+    </div>
+    <div class="card card-green">
+      <h4>Compute</h4>
+      <div class="formula-box tight">\[SE=\frac{s_d}{\sqrt{n_d}}=\frac{68.0}{\sqrt{25}}=13.6\]</div>
+      <div class="formula-box tight">\[t=\frac{-34.0-0}{13.6}=-2.50,\quad df=24\]</div>
+      <h4 style="margin-top:8px;">p-value and conclusion</h4>
+      <p class="ans">\(p\text{-value}=P(T_{24}<-2.50)\approx \mathbf{0.010}\).</p>
+      <p class="ans">Since \(0.010\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that mean 5K time decreased, by about 34 seconds on average.</p>
+    </div>
+  </div>
+  <div class="callout amber">
+    <strong>Design:</strong> significant, but <em>not</em> a randomized experiment &mdash; there is no control group. Every runner trained, so ordinary practice effects, familiarity with the course, or better weather on day two are all live explanations. The test establishes that times dropped; it does not establish that <em>interval training</em> is why.
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Answer &mdash; Problem 6</span>
+  <h2>\(\chi^2\) Test for Association</h2>
+  <p class="subtitle sm">240 randomly selected students; commuter status by usual study location.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h4>Setup and conditions</h4>
+      <div class="formula-box tight" style="font-size:15px;">\(H_0\): there is no association between commuter status and study location.<br>\(H_a\): there is an association.</div>
+      <p class="ans">\(\chi^2\) test for association. Random sample &#10003;. Expected counts, \(E=\dfrac{\text{row total}\times\text{column total}}{n}\):</p>
+      <div class="table-card compact">
+        <table>
+          <thead><tr><th>Expected</th><th>Library</th><th>Home</th><th>Caf&eacute;</th></tr></thead>
+          <tbody>
+            <tr><td>Commuter</td><td>40</td><td>50</td><td>30</td></tr>
+            <tr><td>On campus</td><td>40</td><td>50</td><td>30</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ans muted" style="margin-top:6px;">Both rows total 120, so each row gets the same expected counts. Smallest expected count is 30, well above 5 &#10003;.</p>
+    </div>
+    <div class="card card-green">
+      <h4>Compute</h4>
+      <div class="formula-box tight">\[\chi^2=\sum\frac{(O-E)^2}{E}\]</div>
+      <div class="formula-box tight">\[=\frac{(30-40)^2}{40}+\frac{(60-50)^2}{50}+0+\frac{(50-40)^2}{40}+\frac{(40-50)^2}{50}+0\]</div>
+      <div class="formula-box tight">\[=2.5+2.0+0+2.5+2.0+0=9.00\]</div>
+      <div class="formula-box tight">\[df=(2-1)(3-1)=2\]</div>
+      <h4 style="margin-top:8px;">p-value and conclusion</h4>
+      <p class="ans">\(p\text{-value}=P(\chi^2_2>9.00)\approx \mathbf{0.011}\). Since \(0.011\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence of an association between commuter status and where students study.</p>
+    </div>
+  </div>
+  <div class="callout amber">
+    <strong>Then describe it.</strong> A \(\chi^2\) test says "related," never how. Compare \(O\) to \(E\): commuters study at home more than expected (60 vs 50) and use the library less (30 vs 40); on-campus students do the reverse. The caf&eacute; column matches expectation exactly and contributes nothing to \(\chi^2\). Observational data, so association only. The p-value is always the <strong>right</strong> tail, even though \(H_a\) has no direction.
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Answer &mdash; Problem 7</span>
+  <h2>One-Proportion \(z\) Test, Left-Tailed</h2>
+  <p class="subtitle sm">Historical pass rate 75%. After the change: 210 of 300 passed.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h4>Setup</h4>
+      <p class="ans"><strong>Parameter:</strong> \(p=\) the proportion of all students who pass the course under the new curriculum. <strong>Sample:</strong> 300 randomly selected students.</p>
+      <div class="formula-box tight">\[H_0: p=0.75 \qquad H_a: p<0.75\]</div>
+      <p class="ans muted">"Dropped" is left-tailed. Note \(H_0\) uses the historical rate as the null value.</p>
+      <h4 style="margin-top:10px;">Test and conditions</h4>
+      <p class="ans">One-proportion \(z\) test. Random sample &#10003;. \(np_0=300(0.75)=225\ge 10\) &#10003;, \(n(1-p_0)=300(0.25)=75\ge 10\) &#10003;.</p>
+    </div>
+    <div class="card card-green">
+      <h4>Compute</h4>
+      <div class="formula-box tight">\[\hat{p}=\frac{210}{300}=0.70\]</div>
+      <div class="formula-box tight">\[SE=\sqrt{\frac{0.75(0.25)}{300}}=0.0250\]</div>
+      <div class="formula-box tight">\[z=\frac{0.70-0.75}{0.0250}=-2.00\]</div>
+      <h4 style="margin-top:8px;">p-value and conclusion</h4>
+      <p class="ans">\(p\text{-value}=P(Z<-2.00)\approx \mathbf{0.0228}\).</p>
+      <p class="ans">Since \(0.0228\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that the pass rate is now below 75%.</p>
+    </div>
+  </div>
+  <div class="callout amber">
+    <strong>Design:</strong> this is a before-and-after comparison with no random assignment, so the curriculum change is not established as the cause. Different students, a different semester, and any other simultaneous change are all confounded with the new curriculum. The drop is real; the explanation is not settled.
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Answer &mdash; Problem 8</span>
+  <h2>One-Mean \(t\) Test, Right-Tailed</h2>
+  <p class="subtitle sm">49 visits: \(\bar{x}=22.4\) min, \(s=8.4\) min. Advertised mean: 20 min.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h4>Setup</h4>
+      <p class="ans"><strong>Parameter:</strong> \(\mu=\) the mean wait time for all visits to this clinic. <strong>Sample:</strong> 49 randomly selected visits.</p>
+      <div class="formula-box tight">\[H_0: \mu=20 \qquad H_a: \mu>20\]</div>
+      <p class="ans muted">"Longer than advertised" is right-tailed.</p>
+      <h4 style="margin-top:10px;">Test and conditions</h4>
+      <p class="ans">One-mean \(t\) test. Random sample &#10003;. \(n=49\ge 30\) &#10003;. This matters here: wait times are usually right-skewed, so we are leaning on the CLT rather than on normal data.</p>
+    </div>
+    <div class="card card-green">
+      <h4>Compute</h4>
+      <div class="formula-box tight">\[SE=\frac{8.4}{\sqrt{49}}=1.20\]</div>
+      <div class="formula-box tight">\[t=\frac{22.4-20}{1.20}=2.00,\quad df=48\]</div>
+      <h4 style="margin-top:8px;">p-value and conclusion</h4>
+      <p class="ans">\(p\text{-value}=P(T_{48}>2.00)\approx \mathbf{0.026}\).</p>
+      <p class="ans">Since \(0.026\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that the mean wait time at this clinic is longer than the advertised 20 minutes.</p>
+    </div>
+  </div>
+  <div class="callout amber">
+    <strong>Statistical vs practical significance.</strong> The estimated excess is about 2.4 minutes. That is statistically significant, but whether a 2.4-minute average overrun matters to patients is a judgment call, not a calculation. A confidence interval answers "how much?"; a test only answers "is it more than 20?"
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Answer &mdash; Problem 9</span>
+  <h2>Two-Sample \(t\) Test, Two-Tailed</h2>
+  <p class="subtitle sm">First-year: \(n_1=32,\ \bar{x}_1=6.8,\ s_1=1.6\). Returning: \(n_2=38,\ \bar{x}_2=7.4,\ s_2=1.5\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h4>Setup</h4>
+      <p class="ans"><strong>Parameters:</strong> \(\mu_1,\mu_2=\) mean weeknight sleep hours for all first-year, all returning students. Separate groups of students with no link between them, so <strong>not</strong> paired.</p>
+      <div class="formula-box tight">\[H_0: \mu_1=\mu_2 \qquad H_a: \mu_1\neq\mu_2\]</div>
+      <h4 style="margin-top:10px;">Test and conditions</h4>
+      <p class="ans">Two-sample \(t\) test. Independent random samples &#10003;. \(n_1=32\) and \(n_2=38\) both \(\ge 30\) &#10003;.</p>
+    </div>
+    <div class="card card-rose">
+      <h4>Compute</h4>
+      <div class="formula-box tight">\[SE=\sqrt{\frac{1.6^2}{32}+\frac{1.5^2}{38}}=\sqrt{0.0800+0.0592}\approx 0.3731\]</div>
+      <div class="formula-box tight">\[t=\frac{6.8-7.4}{0.3731}\approx -1.61,\quad df=\min(31,37)=31\]</div>
+      <h4 style="margin-top:8px;">p-value and conclusion</h4>
+      <p class="ans">\(p\text{-value}=2\,P(T_{31}<-1.61)\approx \mathbf{0.118}\).</p>
+      <p class="ans">Since \(0.118>0.05\), <strong>do not reject \(H_0\)</strong>. There is not enough evidence to conclude that mean weeknight sleep differs between first-year and returning students.</p>
+    </div>
+  </div>
+  <div class="callout amber">
+    <strong>Say this carefully.</strong> "Not enough evidence" is <em>not</em> "the two means are equal," and it is certainly not "first-year students sleep the same amount." A real 0.6-hour gap could easily exist with samples this size failing to detect it &mdash; that would be a Type II error. Larger samples would shrink the SE and could turn this same 0.6-hour difference significant.
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Answer &mdash; Problem 10</span>
+  <h2>Two-Proportion \(z\) Test, Right-Tailed</h2>
+  <p class="subtitle sm">Reminder: 130 of 200 kept the appointment. No reminder: 108 of 200.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h4>Setup</h4>
+      <p class="ans"><strong>Parameters:</strong> \(p_1,p_2=\) the proportion who keep the appointment with a reminder, without a reminder. <strong>Design:</strong> a randomized experiment.</p>
+      <div class="formula-box tight">\[H_0: p_1=p_2 \qquad H_a: p_1>p_2\]</div>
+      <h4 style="margin-top:10px;">Test and conditions</h4>
+      <p class="ans">Two-proportion \(z\) test. Random assignment &#10003;. All four counts \(\ge 10\): \(130,\ 70,\ 108,\ 92\) &#10003;.</p>
+      <p class="ans">\(\hat{p}_1=\dfrac{130}{200}=0.650\), \(\hat{p}_2=\dfrac{108}{200}=0.540\), difference \(=0.110\).</p>
+    </div>
+    <div class="card card-green">
+      <h4>Compute</h4>
+      <div class="formula-box tight">\[\hat{p}=\frac{130+108}{400}=\frac{238}{400}=0.595\]</div>
+      <div class="formula-box tight">\[SE=\sqrt{0.595(0.405)\left(\tfrac{1}{200}+\tfrac{1}{200}\right)}=0.0491\]</div>
+      <div class="formula-box tight">\[z=\frac{0.110}{0.0491}\approx 2.24\]</div>
+      <h4 style="margin-top:8px;">p-value and conclusion</h4>
+      <p class="ans">\(p\text{-value}=P(Z>2.24)\approx \mathbf{0.013}\). Since \(0.013\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that text reminders increase the proportion of students who keep their advising appointment.</p>
+    </div>
+  </div>
+  <div class="callout amber">
+    <strong>Design:</strong> random assignment, so this is a genuine causal claim &mdash; the reminders <em>caused</em> the increase, estimated at about 11 percentage points. This is the payoff of Chapter 1: same z-test machinery as Problem 3, but a stronger conclusion, purchased entirely by the design.
+  </div>
+</div>
+
+<!-- ============ PART 5: WRAP ============ -->
+
+<div class="slide">
+  <h2>What to Carry Into the Final</h2>
+  <p class="subtitle sm">If you remember six things from this semester, remember these.</p>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <h3>Design first</h3>
+      <ul class="small">
+        <li>Random <em>sample</em> &rarr; you may generalize.</li>
+        <li>Random <em>assignment</em> &rarr; you may claim cause.</li>
+        <li>Neither is fixed by a bigger \(n\) or a smaller p-value.</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>Name the test before computing</h3>
+      <ul class="small">
+        <li>How many variables, and what type?</li>
+        <li>One group or two? If two, are they <strong>linked</strong>?</li>
+        <li>Proportions get \(z\); means get \(t\) with \(df\).</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>It is always one ratio</h3>
+      <ul class="small">
+        <li>\(\dfrac{\text{statistic}-\text{null value}}{SE}\)</li>
+        <li>Only the SE and the distribution change.</li>
+        <li>\(\chi^2\) compares observed to expected counts.</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Conditions earn points</h3>
+      <ul class="small">
+        <li>Counts \(\ge 10\) for proportions.</li>
+        <li>\(n\ge 30\) or roughly normal for means.</li>
+        <li>Expected counts \(\ge 5\) for \(\chi^2\).</li>
+      </ul>
+    </div>
+    <div class="card card-rose">
+      <h3>The tail comes from the words</h3>
+      <ul class="small">
+        <li>Set \(H_a\) before looking at your sample.</li>
+        <li>"Differs" &rarr; two tails, so double the area.</li>
+        <li>\(\chi^2\) p-values are always right-tailed.</li>
+      </ul>
+    </div>
+    <div class="card card-accent3">
+      <h3>Conclude in context</h3>
+      <ul class="small">
+        <li>Compare \(p\) to \(\alpha\), then write a sentence about the real variables.</li>
+        <li>Never "prove \(H_0\)" &mdash; only "not enough evidence."</li>
+        <li>Significant \(\neq\) important. Use a CI for size.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Final exam: Thursday, August 6, in class through Blackboard.</strong> It covers everything, and every inference problem is one of the six tests on the "Choosing the Right Test" slide. Work each one with the six steps and you have already practiced the whole exam.
+  </div>
+</div>
+
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    slides[current].scrollTop = 0;
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
+  });
+  renderSlide(0);
+</script>
+</body>
+</html>
