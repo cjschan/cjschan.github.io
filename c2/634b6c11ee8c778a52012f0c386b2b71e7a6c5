@@ -1,0 +1,25 @@
+courses/math_1342/lecture_notes/Review_Sampling_to_Hypothesis_Testing.html
+  s_ab6128e5e09e22::t_b35373c2ad3e6b 40,310-445
+  s_ab6128e5e09e22::t_133d6e89585a56 116
+  s_ab6128e5e09e22::t_9b64894edac5e6 446
+courses/math_1342/lecture_notes/Review_Sampling_to_Hypothesis_Testing_no_answers.html
+  s_ab6128e5e09e22::t_b35373c2ad3e6b 40,309-444
+  s_ab6128e5e09e22::t_133d6e89585a56 115
+  s_ab6128e5e09e22::t_63731c70d7b30d 445
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "c2634b6c11ee8c778a52012f0c386b2b71e7a6c5",
+  "prompts": {},
+  "sessions": {
+    "s_ab6128e5e09e22": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6690ea1-11ff-4163-99fd-d6dd7d77dff4",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
