@@ -43,6 +43,7 @@
   .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
   .formula-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); border-left: 4px solid var(--accent); border-radius: 10px; padding: 10px 14px; font-size: 18px; margin: 8px 0; }
   .formula-box.tight { font-size: 16px; padding: 8px 12px; }
+  .formula-box mjx-container[display="true"] { margin: 0.1em 0 !important; }
   .callout { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 14px 20px; margin-top: 14px; font-size: 16px; line-height: 1.55; }
   .callout.amber { background: rgba(251, 191, 36, 0.08); border-color: rgba(251, 191, 36, 0.28); }
   .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 6px; }
@@ -55,6 +56,26 @@
   .flow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 6px 0 12px; }
   .flow .node { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 16px; font-size: 15px; font-weight: 600; }
   .flow .arrow { color: var(--accent); font-size: 20px; font-weight: 700; }
+  @media (max-height: 820px) {
+    .slide { padding: 26px 44px 46px; }
+    h1 { font-size: 44px; }
+    h2 { font-size: 24px; margin-bottom: 10px; }
+    h4 { font-size: 14px; margin-bottom: 4px; }
+    .subtitle { font-size: 17px; margin-bottom: 14px; }
+    .subtitle.sm { font-size: 15px; margin-bottom: 11px; }
+    .card { padding: 12px 14px; }
+    .grid-2 { gap: 15px; } .grid-3 { gap: 12px; }
+    .ans { font-size: 14px; line-height: 1.45; margin-bottom: 6px; }
+    .step-note { font-size: 13.5px; }
+    ul li { font-size: 16px; } .small li { font-size: 13.5px; padding: 3px 0 3px 16px; }
+    ol.steps li { font-size: 14.5px; padding: 4px 0 4px 30px; }
+    .formula-box { font-size: 16px; padding: 8px 12px; margin: 6px 0; }
+    .formula-box.tight { font-size: 14.5px; padding: 5px 10px; margin: 5px 0; }
+    .callout { font-size: 14.5px; padding: 11px 16px; margin-top: 10px; line-height: 1.5; }
+    .table-card table { font-size: 13.5px; }
+    .table-card th, .table-card td { padding: 6px 8px; }
+    .table-card.compact th, .table-card.compact td { padding: 4px 6px; font-size: 13px; }
+  }
   @media (max-width: 900px) { .slide { padding: 28px 24px 56px; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 40px; } h2 { font-size: 23px; } }
 </style>
 </head>
