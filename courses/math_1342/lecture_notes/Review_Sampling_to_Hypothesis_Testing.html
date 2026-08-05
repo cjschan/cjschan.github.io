@@ -490,7 +490,7 @@
     </div>
   </div>
   <div class="callout">
-    <strong>Conclusion template.</strong> Reject: "Since \(p = \underline{\hphantom{0.000}} \le 0.05\), we reject \(H_0\). There is statistically significant evidence that <em>(the claim in \(H_a\), in plain words)</em>." Do not reject: "Since \(p = \underline{\hphantom{0.000}} > 0.05\), we do not reject \(H_0\). There is not enough evidence to conclude that <em>(the claim in \(H_a\))</em>."
+    <strong>Conclusion template.</strong> Reject: "Since \(p = \underline{\hphantom{0.000}} < 0.05\), we reject \(H_0\). There is statistically significant evidence that <em>(the claim in \(H_a\), in plain words)</em>." Do not reject: "Since \(p = \underline{\hphantom{0.000}} \ge 0.05\), we do not reject \(H_0\). There is not enough evidence to conclude that <em>(the claim in \(H_a\))</em>."
   </div>
 </div>
 
@@ -623,8 +623,8 @@
     </div>
     <div class="card card-green">
       <h3>Step 6 &mdash; decide and say it</h3>
-      <div class="formula-box" style="border-left-color: var(--green);">\[0.0228 \le 0.05 \ \Rightarrow\ \text{reject } H_0\]</div>
-      <p class="ans"><strong>Conclusion in context:</strong> Since \(p=0.0228\le 0.05\), we reject \(H_0\). There is statistically significant evidence that the mean textbook spending for students at this college differs from \$300. Because \(\bar{x}=\$272\) is below \$300, the evidence points to students spending <strong>less</strong> than claimed.</p>
+      <div class="formula-box" style="border-left-color: var(--green);">\[0.0228 < 0.05 \ \Rightarrow\ \text{reject } H_0\]</div>
+      <p class="ans"><strong>Conclusion in context:</strong> Since \(p=0.0228< 0.05\), we reject \(H_0\). There is statistically significant evidence that the mean textbook spending for students at this college differs from \$300. Because \(\bar{x}=\$272\) is below \$300, the evidence points to students spending <strong>less</strong> than claimed.</p>
       <div class="step-note">Notice the sentence has dollars and students in it, not a single Greek letter. That is what "in context" means.</div>
     </div>
   </div>
@@ -831,7 +831,7 @@
       <div class="formula-box tight">\[z=\frac{0.66-0.60}{0.0283}\approx 2.12\]</div>
       <h4 style="margin-top:8px;">p-value and conclusion</h4>
       <p class="ans">\(p\text{-value}=P(Z>2.12)\approx \mathbf{0.0169}\).</p>
-      <p class="ans">Since \(0.0169\le 0.05\), <strong>reject \(H_0\)</strong>. There is statistically significant evidence that more than 60% of the college's students work while enrolled.</p>
+      <p class="ans">Since \(0.0169< 0.05\), <strong>reject \(H_0\)</strong>. There is statistically significant evidence that more than 60% of the college's students work while enrolled.</p>
     </div>
   </div>
   <div class="callout amber">
@@ -858,7 +858,7 @@
       <div class="formula-box tight">\[t=\frac{27.6-28.0}{0.20}=-2.00,\quad df=35\]</div>
       <h4 style="margin-top:8px;">p-value and conclusion</h4>
       <p class="ans">Two-tailed: \(p\text{-value}=2\,P(T_{35}<-2.00)\approx 2(0.0266)= \mathbf{0.053}\).</p>
-      <p class="ans">Since \(0.053>0.05\), <strong>do not reject \(H_0\)</strong>. There is not enough evidence to conclude that the mean net weight differs from 28.0 g.</p>
+      <p class="ans">Since \(0.053\ge 0.05\), <strong>do not reject \(H_0\)</strong>. There is not enough evidence to conclude that the mean net weight differs from 28.0 g.</p>
     </div>
   </div>
   <div class="callout amber">
@@ -886,7 +886,7 @@
       <div class="formula-box tight">\[SE=\sqrt{0.432(0.568)\left(\tfrac{1}{250}+\tfrac{1}{250}\right)}=0.0443\]</div>
       <div class="formula-box tight">\[z=\frac{0.096}{0.0443}\approx 2.17\]</div>
       <h4 style="margin-top:8px;">p-value and conclusion</h4>
-      <p class="ans">\(p\text{-value}=2\,P(Z>2.17)\approx \mathbf{0.030}\). Since \(0.030\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that the two campuses differ in flu-shot rate.</p>
+      <p class="ans">\(p\text{-value}=2\,P(Z>2.17)\approx \mathbf{0.030}\). Since \(0.030< 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that the two campuses differ in flu-shot rate.</p>
     </div>
   </div>
   <div class="callout amber">
@@ -913,7 +913,7 @@
       <div class="formula-box tight">\[t=\frac{82.5-78.9}{1.627}\approx 2.21\]</div>
       <div class="formula-box tight">\[df=\min(40-1,\ 45-1)=39\]</div>
       <h4 style="margin-top:8px;">p-value and conclusion</h4>
-      <p class="ans">\(p\text{-value}=P(T_{39}>2.21)\approx \mathbf{0.016}\). Since \(0.016\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that the mean exam score is higher with flashcards than with rereading.</p>
+      <p class="ans">\(p\text{-value}=P(T_{39}>2.21)\approx \mathbf{0.016}\). Since \(0.016< 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that the mean exam score is higher with flashcards than with rereading.</p>
     </div>
   </div>
   <div class="callout amber">
@@ -940,7 +940,7 @@
       <div class="formula-box tight">\[t=\frac{-34.0-0}{13.6}=-2.50,\quad df=24\]</div>
       <h4 style="margin-top:8px;">p-value and conclusion</h4>
       <p class="ans">\(p\text{-value}=P(T_{24}<-2.50)\approx \mathbf{0.010}\).</p>
-      <p class="ans">Since \(0.010\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that mean 5K time decreased, by about 34 seconds on average.</p>
+      <p class="ans">Since \(0.010< 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that mean 5K time decreased, by about 34 seconds on average.</p>
     </div>
   </div>
   <div class="callout amber">
@@ -975,7 +975,7 @@
       <div class="formula-box tight">\[=2.5+2.0+0+2.5+2.0+0=9.00\]</div>
       <div class="formula-box tight">\[df=(2-1)(3-1)=2\]</div>
       <h4 style="margin-top:8px;">p-value and conclusion</h4>
-      <p class="ans">\(p\text{-value}=P(\chi^2_2>9.00)\approx \mathbf{0.011}\). Since \(0.011\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence of an association between commuter status and where students study.</p>
+      <p class="ans">\(p\text{-value}=P(\chi^2_2>9.00)\approx \mathbf{0.011}\). Since \(0.011< 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence of an association between commuter status and where students study.</p>
     </div>
   </div>
   <div class="callout amber">
@@ -1003,7 +1003,7 @@
       <div class="formula-box tight">\[z=\frac{0.70-0.75}{0.0250}=-2.00\]</div>
       <h4 style="margin-top:8px;">p-value and conclusion</h4>
       <p class="ans">\(p\text{-value}=P(Z<-2.00)\approx \mathbf{0.0228}\).</p>
-      <p class="ans">Since \(0.0228\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that the pass rate is now below 75%.</p>
+      <p class="ans">Since \(0.0228< 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that the pass rate is now below 75%.</p>
     </div>
   </div>
   <div class="callout amber">
@@ -1030,7 +1030,7 @@
       <div class="formula-box tight">\[t=\frac{22.4-20}{1.20}=2.00,\quad df=48\]</div>
       <h4 style="margin-top:8px;">p-value and conclusion</h4>
       <p class="ans">\(p\text{-value}=P(T_{48}>2.00)\approx \mathbf{0.026}\).</p>
-      <p class="ans">Since \(0.026\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that the mean wait time at this clinic is longer than the advertised 20 minutes.</p>
+      <p class="ans">Since \(0.026< 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that the mean wait time at this clinic is longer than the advertised 20 minutes.</p>
     </div>
   </div>
   <div class="callout amber">
@@ -1056,7 +1056,7 @@
       <div class="formula-box tight">\[t=\frac{6.8-7.4}{0.3731}\approx -1.61,\quad df=\min(31,37)=31\]</div>
       <h4 style="margin-top:8px;">p-value and conclusion</h4>
       <p class="ans">\(p\text{-value}=2\,P(T_{31}<-1.61)\approx \mathbf{0.118}\).</p>
-      <p class="ans">Since \(0.118>0.05\), <strong>do not reject \(H_0\)</strong>. There is not enough evidence to conclude that mean weeknight sleep differs between first-year and returning students.</p>
+      <p class="ans">Since \(0.118\ge 0.05\), <strong>do not reject \(H_0\)</strong>. There is not enough evidence to conclude that mean weeknight sleep differs between first-year and returning students.</p>
     </div>
   </div>
   <div class="callout amber">
@@ -1083,7 +1083,7 @@
       <div class="formula-box tight">\[SE=\sqrt{0.595(0.405)\left(\tfrac{1}{200}+\tfrac{1}{200}\right)}=0.0491\]</div>
       <div class="formula-box tight">\[z=\frac{0.110}{0.0491}\approx 2.24\]</div>
       <h4 style="margin-top:8px;">p-value and conclusion</h4>
-      <p class="ans">\(p\text{-value}=P(Z>2.24)\approx \mathbf{0.013}\). Since \(0.013\le 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that text reminders increase the proportion of students who keep their advising appointment.</p>
+      <p class="ans">\(p\text{-value}=P(Z>2.24)\approx \mathbf{0.013}\). Since \(0.013< 0.05\), <strong>reject \(H_0\)</strong>. There is significant evidence that text reminders increase the proportion of students who keep their advising appointment.</p>
     </div>
   </div>
   <div class="callout amber">
