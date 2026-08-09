@@ -1,0 +1,28 @@
+courses/math_1342/fall2026_tth.html
+  s_1a825d2cb1b97d::t_497b47cbdf5fd8 236
+  s_1a825d2cb1b97d::t_ce767ce484fbcb 249-250
+  s_1a825d2cb1b97d::t_58037d95ca5ee5 362
+courses/math_1342/fall2026_mw.html
+  s_1a825d2cb1b97d::t_3a973a1b961ecf 279
+  s_1a825d2cb1b97d::t_413a4fbc2bcaca 362
+  s_1a825d2cb1b97d::t_989f5a18472aaa 236
+  s_1a825d2cb1b97d::t_b130a0ca01188b 259,261
+  s_1a825d2cb1b97d::t_8098806105f543 250,252
+  s_1a825d2cb1b97d::t_7624f839fe9592 276
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "af23da6e5750135dd278060a87220aa49c8bd510",
+  "prompts": {},
+  "sessions": {
+    "s_1a825d2cb1b97d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "15503536-9f20-4df5-a3a4-9bc80b981d45",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
