@@ -1,0 +1,22 @@
+courses/math_1342/fall2026_mw.html
+  s_6e67ad18b13eb0::t_0cc5b147710602 274,276
+  s_6e67ad18b13eb0::t_9f1ef178c7cf5c 309
+  s_6e67ad18b13eb0::t_fde6d5d584debf 304
+  s_6e67ad18b13eb0::t_a3ed952a05bb00 280
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "00ac0b92423d399b64f305d2b3ca89fb6eb42b22",
+  "prompts": {},
+  "sessions": {
+    "s_6e67ad18b13eb0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24d11bff-bfef-4199-926c-e3c8ba446292",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Chris Chan <cjschan@gmail.com>"
+    }
+  }
+}
