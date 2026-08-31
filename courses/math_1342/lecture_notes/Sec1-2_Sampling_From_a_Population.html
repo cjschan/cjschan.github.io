@@ -69,7 +69,7 @@
 <div class="slide">
   <h2>Sample vs. Population</h2>
   <p class="subtitle">We collect data on a sample and use it to make inferences about the larger population.</p>
-  <div class="grid-2">
+  <div class="grid-2" style="flex: 0 0 auto;">
     <div class="card card-accent">
       <h3>Population</h3>
       <ul>
@@ -85,7 +85,71 @@
       </ul>
     </div>
   </div>
-  <div class="callout">
+  <div style="flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; margin-top: 14px;">
+    <svg viewBox="0 0 900 520" role="img" aria-label="Diagram of a large population circle of people with five individuals selected at random into a smaller sample circle" style="height: 100%; max-width: 100%;">
+      <defs>
+        <g id="person">
+          <circle cx="0" cy="-9" r="3.2"/>
+          <path d="M-4,-4.5 Q-4,-5.5 -3,-5.5 L3,-5.5 Q4,-5.5 4,-4.5 L4,2 L2.2,2 L2.2,9 L0.7,9 L0.7,3 L-0.7,3 L-0.7,9 L-2.2,9 L-2.2,2 L-4,2 Z"/>
+        </g>
+      </defs>
+      <!-- selection lines converging on the sample -->
+      <g stroke="#cbd5e1" stroke-width="1.5" opacity="0.75">
+        <line x1="150" y1="185" x2="624" y2="285"/>
+        <line x1="250" y1="180" x2="624" y2="285"/>
+        <line x1="270" y1="235" x2="624" y2="285"/>
+        <line x1="180" y1="360" x2="624" y2="285"/>
+        <line x1="155" y1="415" x2="624" y2="285"/>
+      </g>
+      <polygon points="638,285 621,277 621,293" fill="#f1f5f9"/>
+      <!-- population -->
+      <text x="250" y="48" text-anchor="middle" fill="#f1f5f9" font-size="30" font-weight="700">Population</text>
+      <circle cx="250" cy="285" r="205" fill="#0f172a" stroke="#f1f5f9" stroke-width="3"/>
+      <g transform="scale(1)">
+        <use href="#person" fill="#fbbf24" transform="translate(215,130) scale(1.6)"/>
+        <use href="#person" fill="#fb7185" transform="translate(300,125) scale(1.6)"/>
+        <use href="#person" fill="#34d399" transform="translate(150,185) scale(1.6)"/>
+        <use href="#person" fill="#fbbf24" transform="translate(250,180) scale(1.6)"/>
+        <use href="#person" fill="#34d399" transform="translate(330,175) scale(1.6)"/>
+        <use href="#person" fill="#818cf8" transform="translate(400,195) scale(1.6)"/>
+        <use href="#person" fill="#fb7185" transform="translate(110,240) scale(1.6)"/>
+        <use href="#person" fill="#a78bfa" transform="translate(190,235) scale(1.6)"/>
+        <use href="#person" fill="#38bdf8" transform="translate(270,235) scale(1.6)"/>
+        <use href="#person" fill="#818cf8" transform="translate(350,240) scale(1.6)"/>
+        <use href="#person" fill="#34d399" transform="translate(415,250) scale(1.6)"/>
+        <use href="#person" fill="#fbbf24" transform="translate(140,300) scale(1.6)"/>
+        <use href="#person" fill="#34d399" transform="translate(220,300) scale(1.6)"/>
+        <use href="#person" fill="#818cf8" transform="translate(300,300) scale(1.6)"/>
+        <use href="#person" fill="#38bdf8" transform="translate(380,305) scale(1.6)"/>
+        <use href="#person" fill="#818cf8" transform="translate(105,355) scale(1.6)"/>
+        <use href="#person" fill="#fb7185" transform="translate(180,360) scale(1.6)"/>
+        <use href="#person" fill="#fbbf24" transform="translate(260,355) scale(1.6)"/>
+        <use href="#person" fill="#34d399" transform="translate(340,360) scale(1.6)"/>
+        <use href="#person" fill="#a78bfa" transform="translate(410,350) scale(1.6)"/>
+        <use href="#person" fill="#a78bfa" transform="translate(155,415) scale(1.6)"/>
+        <use href="#person" fill="#38bdf8" transform="translate(235,420) scale(1.6)"/>
+        <use href="#person" fill="#fb7185" transform="translate(315,415) scale(1.6)"/>
+        <use href="#person" fill="#818cf8" transform="translate(250,465) scale(1.6)"/>
+      </g>
+      <!-- dashed rings around the randomly selected individuals -->
+      <g fill="none" stroke="#fb7185" stroke-width="2.5" stroke-dasharray="6 5">
+        <circle cx="150" cy="185" r="23"/>
+        <circle cx="250" cy="180" r="23"/>
+        <circle cx="270" cy="235" r="23"/>
+        <circle cx="180" cy="360" r="23"/>
+        <circle cx="155" cy="415" r="23"/>
+      </g>
+      <!-- sample -->
+      <text x="745" y="152" text-anchor="middle" fill="#f1f5f9" font-size="30" font-weight="700">Sample</text>
+      <circle cx="745" cy="285" r="105" fill="#0f172a" stroke="#fb7185" stroke-width="3" stroke-dasharray="10 8"/>
+      <use href="#person" fill="#34d399" transform="translate(715,245) scale(1.6)"/>
+      <use href="#person" fill="#38bdf8" transform="translate(775,245) scale(1.6)"/>
+      <use href="#person" fill="#fbbf24" transform="translate(690,305) scale(1.6)"/>
+      <use href="#person" fill="#fb7185" transform="translate(745,315) scale(1.6)"/>
+      <use href="#person" fill="#a78bfa" transform="translate(800,305) scale(1.6)"/>
+    </svg>
+  </div>
+  <div class="callout" style="flex: 0 0 auto;">
     <strong>Statistical inference</strong> is the process of using data from a sample to gain information about the population.
   </div>
 </div>
