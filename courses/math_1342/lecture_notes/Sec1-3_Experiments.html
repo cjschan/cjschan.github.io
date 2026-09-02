@@ -39,6 +39,12 @@
   .formula-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; font-size: 22px; margin-top: 12px; margin-bottom: 10px; }
   .callout { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 18px 22px; margin-top: 16px; font-size: 16px; line-height: 1.55; }
   .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .grid-2.center { align-items: center; min-height: 0; }
+  .chart-figure { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 10px 10px 8px; display: flex; flex-direction: column; align-items: center; }
+  .chart-figure img { display: block; width: 100%; height: auto; max-height: 46vh; object-fit: contain; }
+  .chart-figure figcaption { font-size: 13px; color: #475569; margin-top: 6px; text-align: center; line-height: 1.4; }
+  .stack { display: flex; flex-direction: column; gap: 14px; }
   @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
 </style>
 </head>
@@ -99,6 +105,58 @@
         <li>We cannot conclude TVs cause longer life.</li>
       </ul>
     </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Spurious Correlations</h2>
+  <p class="subtitle">Sometimes two variables are strongly correlated for no meaningful reason at all.</p>
+  <div class="grid-2 center">
+    <div class="card card-rose">
+      <h3>What Is a Spurious Correlation?</h3>
+      <ul>
+        <li>Two variables appear strongly related, but neither one causes the other.</li>
+        <li>The pattern comes from coincidence, a shared trend over time, or a hidden third variable.</li>
+        <li>Tyler Vigen's website <a href="https://www.tylervigen.com/spurious-correlations" target="_blank" rel="noopener">tylervigen.com/spurious-correlations</a> pairs up thousands of unrelated data series and publishes the ones that happen to line up.</li>
+      </ul>
+    </div>
+    <figure class="chart-figure">
+      <img src="images/spurious_parks_rec_googl.png" alt="Line chart showing master's degrees awarded in Parks and Recreation rising alongside Alphabet's stock price from 2012 to 2021, with correlation 0.963">
+      <figcaption>Correlation r = 0.963 over 2012&ndash;2021. Source: tylervigen.com/spurious/correlation/2298</figcaption>
+    </figure>
+  </div>
+  <div class="callout">
+    <strong>Do Parks &amp; Recreation master's degrees push up Google's stock price?</strong> Of course not. Both simply grew over the same decade. The correlation is real, but the causal story is nonsense.
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Why Spurious Correlations Happen</h2>
+  <p class="subtitle">A correlation near 1 means two series move almost in lockstep (we will define r in Section 2.5). Here is how a meaningless one gets that high.</p>
+  <div class="grid-2 center">
+    <figure class="chart-figure">
+      <img src="images/spurious_camden_ufo.png" alt="Line chart showing the number of babies named Camden rising and falling alongside UFO sightings reported in Florida from 1975 to 2021, with correlation 0.966">
+      <figcaption>Correlation r = 0.966 over 1975&ndash;2021. Source: tylervigen.com/spurious/correlation/3011</figcaption>
+    </figure>
+    <div class="stack">
+      <div class="card card-amber">
+        <h3>Shared Trends Over Time</h3>
+        <ul class="small">
+          <li>Many unrelated quantities rise or fall together across decades: population, prices, internet use, baby-name fads.</li>
+          <li>Time acts as a confounding variable that links them.</li>
+        </ul>
+      </div>
+      <div class="card card-rose">
+        <h3>Searching Through Many Pairs</h3>
+        <ul class="small">
+          <li>Compare enough pairs of variables and a few will line up by pure chance.</li>
+          <li>Vigen's site does this on purpose. Researchers can do it by accident.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>The lesson:</strong> a strong correlation, even one near 1, is never by itself evidence of causation. Always ask what else could explain the pattern. Explore more at <a href="https://www.tylervigen.com/spurious-correlations" target="_blank" rel="noopener">tylervigen.com/spurious-correlations</a>.
   </div>
 </div>
 
@@ -206,6 +264,7 @@
       <ul>
         <li>Association does not imply causation.</li>
         <li>Confounding variables provide alternative explanations.</li>
+        <li>Even a very strong correlation can be spurious.</li>
         <li>Observational studies cannot establish causation.</li>
       </ul>
     </div>
