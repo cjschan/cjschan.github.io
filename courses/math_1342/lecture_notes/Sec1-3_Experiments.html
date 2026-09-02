@@ -45,6 +45,9 @@
   .chart-figure img { display: block; width: 100%; height: auto; max-height: 46vh; object-fit: contain; }
   .chart-figure figcaption { font-size: 13px; color: #475569; margin-top: 6px; text-align: center; line-height: 1.4; }
   .stack { display: flex; flex-direction: column; gap: 14px; }
+  .video-frame { aspect-ratio: 16 / 9; width: min(100%, calc(56vh * 16 / 9)); margin: 0 auto; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #000; }
+  .video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+  .video-caption { font-size: 13px; color: var(--muted); text-align: center; margin-top: 8px; }
   @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
 </style>
 </head>
@@ -211,22 +214,30 @@
 <div class="slide">
   <h2>Control Groups and the Placebo Effect</h2>
   <p class="subtitle">A comparison group is essential. People often improve just because they think they are being treated.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <h3>Control Group</h3>
-      <ul>
-        <li>A group that does not receive the active treatment.</li>
-        <li>Provides a baseline for comparison.</li>
-        <li>Without it, we cannot tell if the treatment actually worked.</li>
-      </ul>
+  <div class="grid-2 center">
+    <div class="stack">
+      <div class="card card-accent">
+        <h3>Control Group</h3>
+        <ul>
+          <li>A group that does not receive the active treatment.</li>
+          <li>Provides a baseline for comparison.</li>
+          <li>Without it, we cannot tell if the treatment actually worked.</li>
+        </ul>
+      </div>
+      <div class="card card-amber">
+        <h3>Placebo Effect</h3>
+        <ul>
+          <li>People experience the effect they <em>expect</em>, even without real treatment.</li>
+          <li>In one study, fake knee surgery relieved pain just as much as real surgery.</li>
+          <li>A <span class="amber">placebo</span> (fake treatment) and <span class="amber">blinding</span> help control for this.</li>
+        </ul>
+      </div>
     </div>
-    <div class="card card-amber">
-      <h3>Placebo Effect</h3>
-      <ul>
-        <li>People experience the effect they <em>expect</em>, even without real treatment.</li>
-        <li>In one study, fake knee surgery relieved pain just as much as real surgery.</li>
-        <li>A <span class="amber">placebo</span> (fake treatment) and <span class="amber">blinding</span> help control for this.</li>
-      </ul>
+    <div>
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/z03FQGlGgo0?si=h-FYjL3m3FaTcWrw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-caption">TED-Ed: <em>The power of the placebo effect</em> (Emma Bryce)</div>
     </div>
   </div>
 </div>
