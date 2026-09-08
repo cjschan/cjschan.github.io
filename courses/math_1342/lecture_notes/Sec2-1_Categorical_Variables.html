@@ -33,6 +33,7 @@
   ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
   .small li { font-size: 15px; padding: 4px 0 4px 18px; } .small li::before { top: 11px; width: 5px; height: 5px; }
   .tag { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .slide:not(.title-slide) > .tag { align-self: flex-start; }
   .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); } .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); } .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); } .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); } .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
   .big-number { font-size: 54px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
   .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
@@ -56,6 +57,44 @@
   <span class="tag tag-blue">Section 2.1</span>
   <h1>Categorical Variables</h1>
   <p class="subtitle">Summarizing and visualizing categorical data with frequency tables, proportions, and bar charts.</p>
+</div>
+
+<div class="slide">
+  <span class="tag tag-blue">Recap</span>
+  <h2>What We've Learned So Far</h2>
+  <p class="subtitle">Before we start summarizing data, remember where the data comes from and what we are allowed to conclude from it.</p>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <h3>1. Population &rarr; Sample</h3>
+      <ul>
+        <li>We want to answer a question about a <strong>population</strong>.</li>
+        <li>The population is usually too large to measure, so we collect data on a <strong>sample</strong>.</li>
+        <li><strong>Statistical inference:</strong> use the sample to learn about the population.</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>2. Good Samples vs. Bad Samples</h3>
+      <ul>
+        <li>The <strong>sampling method</strong> decides whether the sample is trustworthy.</li>
+        <li>A <strong>random sample</strong> avoids sampling bias, so we can generalize to the population.</li>
+        <li>Convenience samples, volunteer samples, and leading questions produce <strong>biased</strong> results.</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>3. Research Questions &amp; Study Design</h3>
+      <ul>
+        <li>Questions about a population are <strong>research questions</strong> about <strong>variables</strong>.</li>
+        <li>Type: <strong>categorical</strong> or <strong>quantitative</strong>. Role: <strong>explanatory</strong> or <strong>response</strong>.</li>
+        <li>Design: <strong>observational study</strong> (researcher only observes) or <strong>experiment</strong> (researcher assigns the explanatory variable).</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Which design lets us conclude causation?</strong> Only a <strong>randomized experiment</strong>. Random assignment eliminates confounding variables. An observational study can show an <em>association</em>, but not that one variable <em>causes</em> the other.
+  </div>
+  <p class="step-note" style="margin-top: 12px;">
+    <strong>Up next:</strong> we have data from a sample. Chapter 2 is about describing that data, starting with categorical variables.
+  </p>
 </div>
 
 <div class="slide">
