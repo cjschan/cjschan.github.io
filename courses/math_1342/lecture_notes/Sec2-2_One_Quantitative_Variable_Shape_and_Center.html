@@ -43,6 +43,11 @@
   .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
   .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
   .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  .grid-2.center { align-items: center; min-height: 0; }
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .chart-figure { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 10px 10px 8px; display: flex; flex-direction: column; align-items: center; }
+  .chart-figure img { display: block; width: 100%; height: auto; max-height: 46vh; object-fit: contain; }
+  .chart-figure figcaption { font-size: 13px; color: #475569; margin-top: 6px; text-align: center; line-height: 1.4; }
   @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
 </style>
 </head>
@@ -55,7 +60,7 @@
 <div class="slide title-slide">
   <span class="tag tag-blue">Section 2.2</span>
   <h1>One Quantitative Variable</h1>
-  <p class="subtitle">Shape and center: dotplots, histograms, mean, and median.</p>
+  <p class="subtitle">Shape and center: dotplots, histograms, mean, and median &mdash; plus a first look at standard deviation.</p>
 </div>
 
 <div class="slide">
@@ -287,8 +292,96 @@
 </div>
 
 <div class="slide">
+  <h2>A First Look at Spread: Standard Deviation</h2>
+  <p class="subtitle">Two distributions can share the same center but look completely different. The standard deviation measures how spread out the data are around the mean.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Formula</h3>
+      <div class="formula-box">
+        \[
+          s = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n - 1}}
+        \]
+      </div>
+      <div class="step-note">Sample standard deviation: \(s\). Population standard deviation: \(\sigma\).</div>
+      <div class="step-note">We will compute this by hand in Section 2.3. For now, focus on what the number means.</div>
+    </div>
+    <div class="card card-green">
+      <h3>Interpretation</h3>
+      <ul>
+        <li>Roughly, the <span style="color:var(--green); font-weight:700;">typical distance</span> of a data value from the mean.</li>
+        <li>Same units as the data (inches, dollars, points).</li>
+        <li>Larger \(s\): data spread far from the mean.</li>
+        <li>Smaller \(s\): data clustered tightly around the mean.</li>
+        <li>\(s = 0\) only when every value is identical.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>The 95% Rule</h2>
+  <p class="subtitle">For a roughly symmetric, bell-shaped distribution, about 95% of the data falls within two standard deviations of the mean.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>The Rule</h3>
+      <div class="formula-box">
+        \[
+          \text{About 95% of the data lies between } \bar{x} - 2s \text{ and } \bar{x} + 2s
+        \]
+      </div>
+      <div class="step-note">Only about 5% of the data (roughly 2.5% in each tail) falls outside this interval.</div>
+    </div>
+    <div class="card card-amber">
+      <h3>Turn It Around: Estimate \(s\) From a Dotplot</h3>
+      <ul class="small">
+        <li><strong>Step 1.</strong> Estimate the mean \(\bar{x}\) &mdash; the balance point of the dots.</li>
+        <li><strong>Step 2.</strong> Find the interval that captures about 95% of the dots. Trim just a few dots off each end.</li>
+        <li><strong>Step 3.</strong> That interval runs from \(\bar{x} - 2s\) to \(\bar{x} + 2s\), so it spans about \(4s\).</li>
+      </ul>
+      <div class="formula-box" style="font-size:20px;">
+        \[
+          s \approx \frac{\text{width of the middle 95%}}{4}
+        \]
+      </div>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Why this works:</strong> the formula on the previous slide is tedious, but for bell-shaped data the eye can get close. Bracket the middle 95% of the dots and divide the width by 4.
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Example: Estimating Standard Deviation from a Dotplot</h2>
+  <p class="subtitle">The dotplot shows about 100 values. Estimate the mean and the standard deviation without calculating anything.</p>
+  <div class="grid-2 center">
+    <figure class="chart-figure">
+      <img src="images/dotplot_estimate_sd.png" alt="Dotplot of about 100 values on an axis labeled 60 to 75, bell-shaped and peaking at 68, with a few dots trailing out to 58 on the left and 77 on the right">
+      <figcaption>A roughly symmetric, bell-shaped dotplot &mdash; the 95% rule applies.</figcaption>
+    </figure>
+    <div class="stack">
+      <div class="card card-accent">
+        <h3>Step 1: Estimate the mean</h3>
+        <div class="step-note">The distribution is symmetric and peaks at 68, so the balance point is about there.</div>
+        <div class="formula-box" style="font-size:20px;">\[ \bar{x} \approx 68 \]</div>
+      </div>
+      <div class="card card-amber">
+        <h3>Step 2: Bracket the middle 95%</h3>
+        <div class="step-note">Trim the two or three lowest dots (58, 59) and the two or three highest (76, 77). Nearly all the remaining dots sit between about <strong>60</strong> and <strong>76</strong>.</div>
+      </div>
+      <div class="card card-green">
+        <h3>Step 3: Divide the width by 4</h3>
+        <div class="formula-box" style="font-size:20px;">\[ s \approx \frac{76 - 60}{4} = \frac{16}{4} = 4 \]</div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Reading the answer:</strong> a typical value is about <strong>4 units</strong> from the mean of 68. Your eyes might give 59 and 76, or 60 and 75 &mdash; any of those lands near \(s \approx 4\), which is what estimation is for.
+  </div>
+</div>
+
+<div class="slide">
   <h2>What to Remember</h2>
-  <p class="subtitle">Visualize, then summarize the center.</p>
+  <p class="subtitle">Visualize, summarize the center, then get a feel for the spread.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <h3>Visualization</h3>
@@ -299,11 +392,13 @@
       </ul>
     </div>
     <div class="card card-green">
-      <h3>Measures of Center</h3>
+      <h3>Center and a First Look at Spread</h3>
       <ul>
         <li>Mean \(\bar{x}\): balance point, not resistant</li>
         <li>Median \(m\): middle value, resistant</li>
         <li>Mean is pulled toward skewness</li>
+        <li>Standard deviation \(s\): typical distance from the mean</li>
+        <li>Bell-shaped data: about 95% lies within \(2s\) of \(\bar{x}\), so \(s \approx\) (width of middle 95%) / 4</li>
       </ul>
     </div>
   </div>
