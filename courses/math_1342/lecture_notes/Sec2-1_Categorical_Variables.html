@@ -338,19 +338,18 @@
 
 <div class="slide">
   <h2>Example: Segmented Bar Chart</h2>
-  <p class="subtitle">How each gender breaks down by relationship status (percent within each gender).</p>
+  <p class="subtitle">How each relationship status breaks down by gender (percent within each status).</p>
   <div id="chart-2-1-segmented" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:16px; max-width:560px; margin: 8px auto;"></div>
   <script>
     StatGraphs.segmentedBarChart('#chart-2-1-segmented',
-      ['Female', 'Male'],
+      ['In a Relationship', "It's Complicated", 'Single'],
       [
-        { label: 'In a Relationship', values: [32, 10] },
-        { label: "It's Complicated", values: [12, 7] },
-        { label: 'Single', values: [63, 45] },
+        { label: 'Female', values: [32, 12, 63] },
+        { label: 'Male', values: [10, 7, 45] },
       ],
       { width: 500, height: 260, proportion: true });
   </script>
-  <div class="callout">Each bar is stacked to 100%, so you can compare the <em>distribution</em> of statuses between females and males even though the group sizes differ.</div>
+  <div class="callout">Each bar is stacked to 100%, so you can compare the <em>gender breakdown</em> across statuses even though the group sizes differ. For example, 76% of students in a relationship are female, the same \(32/42\) from the two-way table.</div>
 </div>
 
 <div class="slide">
