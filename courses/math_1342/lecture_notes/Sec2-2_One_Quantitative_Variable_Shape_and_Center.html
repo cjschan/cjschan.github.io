@@ -354,10 +354,18 @@
   <h2>Example: Estimating Standard Deviation from a Dotplot</h2>
   <p class="subtitle">The dotplot shows about 100 values. Estimate the mean and the standard deviation without calculating anything.</p>
   <div class="grid-2 center">
-    <figure class="chart-figure">
-      <img src="images/dotplot_estimate_sd.png" alt="Dotplot of about 100 values on an axis labeled 60 to 75, bell-shaped and peaking at 68, with a few dots trailing out to 58 on the left and 77 on the right">
-      <figcaption>A roughly symmetric, bell-shaped dotplot &mdash; the 95% rule applies.</figcaption>
-    </figure>
+    <div class="stack">
+      <figure class="chart-figure">
+        <img src="images/dotplot_estimate_sd.png" alt="Dotplot of about 100 values on an axis labeled 60 to 75, bell-shaped and peaking at 68, with a few dots trailing out to 58 on the left and 77 on the right">
+        <figcaption>A roughly symmetric, bell-shaped dotplot &mdash; the 95% rule applies.</figcaption>
+      </figure>
+      <div class="callout" style="margin-top:0;">
+        <strong>Reading the answer:</strong> a typical value sits about <strong>4 units</strong> from the mean of 68.
+      </div>
+      <div class="callout" style="margin-top:0;">
+        <strong>Your bracket may differ:</strong> bracketing 59 to 76, or 60 to 75, still gives \(s \approx 4\). That is what estimation is for.
+      </div>
+    </div>
     <div class="stack">
       <div class="card card-accent">
         <h3>Step 1: Estimate the mean</h3>
@@ -372,14 +380,6 @@
         <h3>Step 3: Divide the width by 4</h3>
         <div class="formula-box" style="font-size:20px;">\[ s \approx \frac{76 - 60}{4} = \frac{16}{4} = 4 \]</div>
       </div>
-    </div>
-  </div>
-  <div class="grid-2" style="flex:0 0 auto; align-items:stretch; margin-top:16px;">
-    <div class="callout" style="margin-top:0;">
-      <strong>Reading the answer:</strong> a typical value sits about <strong>4 units</strong> from the mean of 68.
-    </div>
-    <div class="callout" style="margin-top:0;">
-      <strong>Your bracket may differ:</strong> bracketing 59 to 76, or 60 to 75, still gives \(s \approx 4\). That is what estimation is for.
     </div>
   </div>
 </div>
