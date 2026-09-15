@@ -252,6 +252,74 @@
 </div>
 
 <div class="slide">
+  <h2>Determining Skewness from the Five Number Summary</h2>
+  <p class="subtitle">Compare the distances between the five numbers. Where the median sits inside the box and which whisker is longer reveal the shape of the distribution.</p>
+  <div class="grid-3" style="flex: 0 0 auto;">
+    <div class="card card-accent">
+      <h3>Symmetric</h3>
+      <div id="skew-sym"></div>
+      <ul class="small">
+        <li>The median is halfway between \(Q_1\) and \(Q_3\).</li>
+        <li>The distance from the minimum to the median equals the distance from the median to the maximum.</li>
+        <li>The left and right halves mirror each other.</li>
+      </ul>
+    </div>
+    <div class="card card-rose">
+      <h3>Right-Skewed (Positively Skewed)</h3>
+      <div id="skew-right"></div>
+      <ul class="small">
+        <li>The median is closer to \(Q_1\) than to \(Q_3\).</li>
+        <li>The distance from \(Q_3\) to the maximum is much larger than the distance from the minimum to \(Q_1\).</li>
+        <li>The tail and the extreme high values stretch out to the right.</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Left-Skewed (Negatively Skewed)</h3>
+      <div id="skew-left"></div>
+      <ul class="small">
+        <li>The median is closer to \(Q_3\) than to \(Q_1\).</li>
+        <li>The distance from the minimum to \(Q_1\) is much larger than the distance from \(Q_3\) to the maximum.</li>
+        <li>The tail and the extreme low values stretch out to the left.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">Look back at the caffeine boxplot: the whisker from \(Q_3\) to the maximum is roughly twice as long as the whisker from the minimum to \(Q_1\), so that distribution is right-skewed.</div>
+  <script>
+    (function () {
+      const ns = 'http://www.w3.org/2000/svg';
+      function schematic(target, summary, color) {
+        const W = 300, H = 92, PL = 16, PR = 16, yMid = 32, boxH = 30;
+        const [min, q1, med, q3, max] = summary;
+        const sx = (v) => PL + (v / 100) * (W - PL - PR);
+        const svg = document.createElementNS(ns, 'svg');
+        svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+        svg.setAttribute('style', 'display:block; width:100%; max-width:340px; margin:6px auto 2px;');
+        const add = (tag, attrs, text) => {
+          const e = document.createElementNS(ns, tag);
+          for (const k in attrs) e.setAttribute(k, attrs[k]);
+          if (text !== undefined) e.textContent = text;
+          svg.appendChild(e);
+        };
+        add('line', { x1: sx(min), y1: yMid, x2: sx(q1), y2: yMid, stroke: color, 'stroke-width': 2 });
+        add('line', { x1: sx(q3), y1: yMid, x2: sx(max), y2: yMid, stroke: color, 'stroke-width': 2 });
+        for (const v of [min, max]) {
+          add('line', { x1: sx(v), y1: yMid - boxH * 0.4, x2: sx(v), y2: yMid + boxH * 0.4, stroke: color, 'stroke-width': 2 });
+        }
+        add('rect', { x: sx(q1), y: yMid - boxH / 2, width: sx(q3) - sx(q1), height: boxH, fill: color, 'fill-opacity': 0.2, stroke: color, 'stroke-width': 2 });
+        add('line', { x1: sx(med), y1: yMid - boxH / 2, x2: sx(med), y2: yMid + boxH / 2, stroke: color, 'stroke-width': 3 });
+        [['Min', min], ['Q₁', q1], ['Med', med], ['Q₃', q3], ['Max', max]].forEach(([label, v]) => {
+          add('text', { x: sx(v), y: yMid + boxH / 2 + 24, fill: '#cbd5e1', 'font-size': 13, 'text-anchor': 'middle', 'font-family': 'Inter, sans-serif' }, label);
+        });
+        document.querySelector(target).appendChild(svg);
+      }
+      schematic('#skew-sym',   [0, 35, 50, 65, 100], '#38bdf8');
+      schematic('#skew-right', [0, 12, 22, 40, 100], '#fb7185');
+      schematic('#skew-left',  [0, 60, 78, 88, 100], '#fbbf24');
+    })();
+  </script>
+</div>
+
+<div class="slide">
   <h2>What to Remember</h2>
   <p class="subtitle">Use mean and SD together, or use median and IQR together.</p>
   <div class="grid-2">
