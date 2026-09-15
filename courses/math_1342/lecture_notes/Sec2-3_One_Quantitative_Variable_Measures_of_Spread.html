@@ -84,7 +84,7 @@
 
 <div class="slide">
   <h2>Example: Calculating Standard Deviation</h2>
-  <p class="subtitle">Find the sample standard deviation of the data values 1, 2, 3. First find the mean: \(\bar{x} = \frac{1+2+3}{3} = 2\).</p>
+  <p class="subtitle">Find the sample standard deviation of the data values 2, 4, 6. First find the mean: \(\bar{x} = \frac{2+4+6}{3} = 4\).</p>
   <div class="grid-2">
     <div class="card card-accent table-card">
       <h3>Build the Table</h3>
@@ -93,10 +93,10 @@
           <tr><th>\(x\)</th><th>\(\bar{x}\)</th><th>\(x - \bar{x}\)</th><th>\((x - \bar{x})^2\)</th></tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td>2</td><td>\(-1\)</td><td>1</td></tr>
-          <tr><td>2</td><td>2</td><td>0</td><td>0</td></tr>
-          <tr><td>3</td><td>2</td><td>1</td><td>1</td></tr>
-          <tr><td><strong>Sum</strong></td><td></td><td></td><td><strong>2</strong></td></tr>
+          <tr><td>2</td><td>4</td><td>\(-2\)</td><td>4</td></tr>
+          <tr><td>4</td><td>4</td><td>0</td><td>0</td></tr>
+          <tr><td>6</td><td>4</td><td>2</td><td>4</td></tr>
+          <tr><td><strong>Sum</strong></td><td></td><td></td><td><strong>8</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -104,13 +104,13 @@
       <h3>Plug Into the Formula</h3>
       <div class="formula-box">
         \[
-          s = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n - 1}} = \sqrt{\frac{2}{3 - 1}} = \sqrt{1} = 1
+          s = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n - 1}} = \sqrt{\frac{8}{3 - 1}} = \sqrt{4} = 2
         \]
       </div>
       <ul class="small">
         <li>The deviations \((x - \bar{x})\) always sum to 0 &mdash; a good check.</li>
         <li>Square the deviations, add them, divide by \(n - 1\), then take the square root.</li>
-        <li>The standard deviation is \(s = 1\).</li>
+        <li>The standard deviation is \(s = 2\).</li>
       </ul>
     </div>
   </div>
@@ -185,6 +185,45 @@
         <li>SAT: \(\mu=1500, \sigma=325\). \(z = (2100-1500)/325 \approx 1.85\)</li>
         <li>SAT score is more impressive (higher z-score).</li>
       </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber" style="align-self: flex-start;">Your Turn</span>
+  <h2>Practice: Comparing Across Groups</h2>
+  <p class="subtitle">Two people are tall for their group. A raw height comparison is not fair because the two groups have different means and different spreads. Use z-scores to decide who is <em>relatively</em> taller.</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <h3>The Scenario</h3>
+      <div class="step-note">Heights of U.S. adults are approximately bell-shaped, with the following means and standard deviations:</div>
+      <table>
+        <thead>
+          <tr><th>Group</th><th>Mean height</th><th>Standard deviation</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Adult men</td><td>69 inches</td><td>3 inches</td></tr>
+          <tr><td>Adult women</td><td>64 inches</td><td>2.5 inches</td></tr>
+        </tbody>
+      </table>
+      <ul class="small" style="margin-top: 12px;">
+        <li><strong>Marcus</strong> is a man who is <strong>75 inches</strong> tall (6&prime;3&Prime;).</li>
+        <li><strong>Elena</strong> is a woman who is <strong>70 inches</strong> tall (5&prime;10&Prime;).</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Your Tasks</h3>
+      <ul class="small">
+        <li>(a) Find the <strong>z-score</strong> for Marcus's height relative to adult men.</li>
+        <li>(b) Find the <strong>z-score</strong> for Elena's height relative to adult women.</li>
+        <li>(c) Who is <strong>relatively taller</strong> for their group? Explain using the z-scores.</li>
+        <li>(d) Marcus is 5 inches taller than Elena. Why doesn't that settle the question?</li>
+      </ul>
+      <div class="formula-box" style="font-size: 20px;">
+        \[
+          z = \frac{x - \text{mean}}{\text{SD}}
+        \]
+      </div>
     </div>
   </div>
 </div>
