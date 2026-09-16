@@ -275,6 +275,17 @@ const StatGraphs = (() => {
         stroke: COLORS.amber, 'stroke-width': 2,
       }));
     }
+    if (opts.line) {
+      // Draw a specified line y = intercept + slope * x across the plotted x-range
+      const { slope, intercept } = opts.line;
+      const x1 = opts.line.xFrom !== undefined ? opts.line.xFrom : xMin - padX;
+      const x2 = opts.line.xTo !== undefined ? opts.line.xTo : xMax + padX;
+      fr.svg.appendChild(el('line', {
+        x1: sx(x1), y1: sy(intercept + slope * x1),
+        x2: sx(x2), y2: sy(intercept + slope * x2),
+        stroke: opts.line.color || COLORS.amber, 'stroke-width': opts.line.width || 2,
+      }));
+    }
     for (let i = 0; i < xs.length; i++) {
       fr.svg.appendChild(el('circle', {
         cx: sx(xs[i]), cy: sy(ys[i]), r: opts.dotR || 3.5,
