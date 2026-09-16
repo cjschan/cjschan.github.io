@@ -112,8 +112,13 @@ const StatGraphs = (() => {
       if (i >= 0 && i < numBins) bins[i]++;
     }
     const maxCount = Math.max(...bins);
+    // Frequency axis: whole-number ticks (step 1, 2, 5, 10, ...) with the top rounded up to a multiple of the step
+    const yStep = opts.yStep || [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000].find((st) => maxCount / st <= 8) || 1000;
+    const yTop = Math.max(yStep, Math.ceil(maxCount / yStep) * yStep);
+    const yTicks = [];
+    for (let t = 0; t <= yTop; t += yStep) yTicks.push(t);
     const sx = (v) => fr.PL + ((v - min) / (max - min)) * fr.plotW;
-    const sy = (c) => fr.PT + fr.plotH - (c / maxCount) * fr.plotH;
+    const sy = (c) => fr.PT + fr.plotH - (c / yTop) * fr.plotH;
     for (let i = 0; i < numBins; i++) {
       const x = sx(min + i * binWidth);
       const w = sx(min + (i + 1) * binWidth) - x - 1;
@@ -125,7 +130,7 @@ const StatGraphs = (() => {
       }));
     }
     axisX(fr.svg, sx, fr, makeTicks(min, max, 5), opts.xLabel);
-    axisY(fr.svg, sy, fr, makeTicks(0, maxCount, Math.min(maxCount, 5)), opts.yLabel || 'Frequency');
+    axisY(fr.svg, sy, fr, yTicks, opts.yLabel || 'Frequency');
     host(target).innerHTML = ''; host(target).appendChild(fr.svg);
   }
 
