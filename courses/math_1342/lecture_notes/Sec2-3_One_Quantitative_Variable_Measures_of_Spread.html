@@ -55,7 +55,7 @@
 <div class="slide title-slide">
   <span class="tag tag-blue">Section 2.3</span>
   <h1>Measures of Spread</h1>
-  <p class="subtitle">Standard deviation, z-scores, the five number summary, and the 95% rule.</p>
+  <p class="subtitle">Standard deviation, z-scores, the five number summary, the 95% rule, and outliers.</p>
 </div>
 
 <div class="slide">
@@ -275,6 +275,37 @@
         <li>Range: <span class="rose">not resistant</span> (affected by outliers)</li>
         <li>IQR: <span class="green">resistant</span> (not affected by outliers)</li>
         <li>Standard deviation: <span class="rose">not resistant</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Identifying Outliers</h2>
+  <p class="subtitle">A rule of thumb uses the IQR to flag unusual values.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Outlier Rule</h3>
+      <div class="step-note">A data value is an outlier if it is:</div>
+      <div class="formula-box">
+        \[
+          \text{smaller than } Q_1 - 1.5 \times \text{IQR}
+        \]
+      </div>
+      <div class="formula-box">
+        \[
+          \text{or larger than } Q_3 + 1.5 \times \text{IQR}
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <h3>Example</h3>
+      <div class="step-note">Five number summary: (2, 15, 46, 149, 536)</div>
+      <ul class="small">
+        <li>IQR = 149 - 15 = 134</li>
+        <li>Lower fence: 15 - 1.5(134) = -186</li>
+        <li>Upper fence: 149 + 1.5(134) = 350</li>
+        <li>Values above 350 are outliers: 402, 447, 511, 536</li>
       </ul>
     </div>
   </div>
