@@ -572,8 +572,23 @@ const StatGraphs = (() => {
     const sx = (v) => fr.PL + ((v - xMin) / (xMax - xMin)) * fr.plotW;
     const sy = (v) => fr.PT + fr.plotH - ((v - yMin) / (yMax - yMin)) * fr.plotH;
     // Optional xTicks / yTicks arrays override the default 5 evenly spaced ticks
-    axisX(fr.svg, sx, fr, opts.xTicks || makeTicks(xMin, xMax, 5), opts.xLabel);
-    axisY(fr.svg, sy, fr, opts.yTicks || makeTicks(yMin, yMax, 5), opts.yLabel);
+    const xTicks = opts.xTicks || makeTicks(xMin, xMax, 5);
+    const yTicks = opts.yTicks || makeTicks(yMin, yMax, 5);
+    // Optional gridlines at every tick, drawn beneath the axes and curves
+    if (opts.grid) {
+      for (const t of xTicks) {
+        fr.svg.appendChild(el('line', {
+          x1: sx(t), y1: fr.PT, x2: sx(t), y2: fr.PT + fr.plotH, stroke: COLORS.grid, 'stroke-width': 1,
+        }));
+      }
+      for (const t of yTicks) {
+        fr.svg.appendChild(el('line', {
+          x1: fr.PL, y1: sy(t), x2: fr.PL + fr.plotW, y2: sy(t), stroke: COLORS.grid, 'stroke-width': 1,
+        }));
+      }
+    }
+    axisX(fr.svg, sx, fr, xTicks, opts.xLabel);
+    axisY(fr.svg, sy, fr, yTicks, opts.yLabel);
     for (const c of opts.curves || []) {
       let path = '';
       if (c.points) {
