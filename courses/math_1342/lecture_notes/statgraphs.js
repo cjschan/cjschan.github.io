@@ -571,8 +571,9 @@ const StatGraphs = (() => {
     const xMin = opts.xMin, xMax = opts.xMax, yMin = opts.yMin, yMax = opts.yMax;
     const sx = (v) => fr.PL + ((v - xMin) / (xMax - xMin)) * fr.plotW;
     const sy = (v) => fr.PT + fr.plotH - ((v - yMin) / (yMax - yMin)) * fr.plotH;
-    axisX(fr.svg, sx, fr, makeTicks(xMin, xMax, 5), opts.xLabel);
-    axisY(fr.svg, sy, fr, makeTicks(yMin, yMax, 5), opts.yLabel);
+    // Optional xTicks / yTicks arrays override the default 5 evenly spaced ticks
+    axisX(fr.svg, sx, fr, opts.xTicks || makeTicks(xMin, xMax, 5), opts.xLabel);
+    axisY(fr.svg, sy, fr, opts.yTicks || makeTicks(yMin, yMax, 5), opts.yLabel);
     for (const c of opts.curves || []) {
       let path = '';
       if (c.points) {
