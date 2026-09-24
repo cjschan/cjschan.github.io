@@ -275,6 +275,35 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Spotting Residuals on a Scatterplot</h2>
+  <p class="subtitle">A campus caf&eacute; recorded the daily high temperature (in &deg;F) and the number of iced coffees sold on 12 days. The least squares line is drawn on the scatterplot.</p>
+  <div class="grid-2">
+    <div class="chart-box">
+      <div id="chart-2-5-cafe"></div>
+    </div>
+    <div class="card card-green">
+      <h3>Questions</h3>
+      <ul class="questions">
+        <li>(a) Circle the point with the largest positive residual.</li>
+        <li>(b) Put a square around the point with the most negative residual.</li>
+      </ul>
+      <div class="callout" style="margin-top:14px;">
+        Residual \(= y - \hat{y}\). Measure the distance from a point to the line <em>vertically</em>, not perpendicular to the line.
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const temp = [62, 65, 68, 70, 72, 75, 78, 80, 83, 85, 88, 90];
+      const sold = [35, 42, 40, 55, 48, 60, 58, 78, 70, 63, 85, 84];
+      StatGraphs.scatter('#chart-2-5-cafe', temp, sold,
+        { width: 560, height: 320, padBottom: 48, xMin: 50, xMax: 100, yMin: 0, yMax: 100, xLabel: 'daily high temperature (°F)', yLabel: 'iced coffees sold', dotR: 5.5, regression: true });
+    })();
+  </script>
+</div>
+
+<div class="slide">
   <h2>Example 1: Length of Baseball Games</h2>
   <p class="subtitle">Baseball games can last a long time. How is the length of the game (in minutes) influenced by how many total runs are scored? The scatterplot shows the regression line \(\widehat{\text{Time}} = 139.2 + 2.32 \times \text{Runs}\).</p>
   <div class="grid-2">
