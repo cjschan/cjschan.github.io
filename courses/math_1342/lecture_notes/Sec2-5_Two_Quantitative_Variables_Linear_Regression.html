@@ -47,6 +47,8 @@
   .table-card td:first-child, .table-card th:first-child { text-align: left; }
   .green { color: var(--green); } .rose { color: var(--rose); } .amber { color: var(--amber); } .accent { color: var(--accent); } .muted { color: var(--muted); }
   .chart-box { background: #1e293b; border: 1px solid #475569; border-radius: 8px; padding: 14px; }
+  .video-frame { aspect-ratio: 16 / 9; width: 100%; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #000; }
+  .video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
   .chart-box svg { margin: 0 auto; }
   .chart-caption { font-size: 14px; color: var(--muted); text-align: center; margin-top: 10px; }
   @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
@@ -364,53 +366,28 @@
 </div>
 
 <div class="slide">
-  <h2>Using the Regression Line</h2>
-  <p class="subtitle">Mice normally eat all their calories at night, but when mice ate some of their calories during the day (when mice are supposed to be sleeping), they gained more weight even though all the mice ate the same total amount of calories. The scatterplot shows the percent of calories eaten during the day, DayPct, and body mass gain in grams, BMGain, for 27 mice, with the regression line \(\widehat{\text{BMGain}} = 1.11 + 0.127 \times \text{DayPct}\).</p>
-  <div class="grid-2">
-    <div class="chart-box">
-      <div id="chart-2-5-mice"></div>
-    </div>
-    <div class="card card-green">
-      <h3>Questions</h3>
-      <ul class="small">
-        <li>(a) Circle the dot that has the largest positive residual.</li>
-        <li>(b) Put a square around the dot that has the most negative residual.</li>
-        <li>(c) What is the predicted body mass gain for a mouse that eats 50% of its calories during the day?</li>
-        <li>(d) Find the residual for the mouse who ate 48.3% of its calories during the day and gained 5.82 grams.</li>
-        <li>(e) Interpret the slope of the regression line in context.</li>
-        <li>(f) Interpret the intercept of the line in context, if it makes sense to do so.</li>
-      </ul>
-    </div>
-  </div>
-  <script>
-    (function () {
-      const dayPct = [28.9, 31.1, 35, 40.6, 40.9, 41.5, 41.9, 43, 47.5, 47.5, 48.3, 55.1, 56.4, 56.9, 61.4, 64.9, 66.7, 67.6, 70.5, 71.5, 72.9, 81.7, 81.7, 84.4, 86, 87.3];
-      const bmGain = [6.3, 5, 2.8, 6.3, 10.2, 6.7, 8.1, 5.2, 8.2, 7.3, 5.82, 3.4, 7.6, 6.1, 9.6, 9.1, 8.6, 10.9, 10.9, 9.9, 13.4, 17.4, 12.3, 9.4, 11.2, 9.4];
-      StatGraphs.scatter('#chart-2-5-mice', dayPct, bmGain,
-        { width: 560, height: 320, padBottom: 48, xMin: 15, xMax: 90, yMin: 0, yMax: 20, xLabel: 'percent of calories eaten during the day (DayPct)', yLabel: 'body mass gain (grams)', dotR: 4.5, color: '#34d399',
-          line: { intercept: 1.11, slope: 0.127, xFrom: 22, xTo: 88, color: '#fbbf24' } });
-    })();
-  </script>
-</div>
-
-<div class="slide">
   <h2>Regression Cautions</h2>
   <p class="subtitle">Four important warnings when using regression.</p>
   <div class="grid-2">
-    <div class="card card-rose">
-      <h3>Do Not Extrapolate</h3>
-      <ul>
-        <li>Do not predict far beyond the range of your data.</li>
-        <li>If \(x = 0\) is not near your data, the intercept is meaningless.</li>
-      </ul>
+    <div>
+      <div class="card card-rose">
+        <h3>Do Not Extrapolate</h3>
+        <ul>
+          <li>Do not predict far beyond the range of your data.</li>
+          <li>If \(x = 0\) is not near your data, the intercept is meaningless.</li>
+        </ul>
+      </div>
+      <div class="card card-amber" style="margin-top:16px;">
+        <h3>Check Your Assumptions</h3>
+        <ul>
+          <li>Only use the line if the relationship is approximately linear.</li>
+          <li>Outliers can be very influential on the regression line.</li>
+          <li>It matters which variable is explanatory and which is response.</li>
+        </ul>
+      </div>
     </div>
-    <div class="card card-amber">
-      <h3>Check Your Assumptions</h3>
-      <ul>
-        <li>Only use the line if the relationship is approximately linear.</li>
-        <li>Outliers can be very influential on the regression line.</li>
-        <li>It matters which variable is explanatory and which is response.</li>
-      </ul>
+    <div class="video-frame">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/5z_kLdErZ3M?si=oGTBpCheOvJNkWok" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
   <div class="callout">
