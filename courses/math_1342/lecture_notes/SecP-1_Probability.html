@@ -43,6 +43,9 @@
   .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
   .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
   .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  .venn { width: 100%; max-height: 170px; display: block; margin-top: 10px; }
+  .venn-row { display: flex; gap: 12px; margin-top: 10px; } .venn-row > div { flex: 1; min-width: 0; } .venn-row .venn { margin-top: 0; }
+  .venn-caption { color: var(--muted); font-size: 14px; line-height: 1.4; margin-top: 6px; }
   @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
 </style>
 </head>
@@ -61,7 +64,7 @@
 <div class="slide">
   <h2>Events and Probability</h2>
   <p class="subtitle">An event is any collection of outcomes. Its probability is the long-run proportion of times it occurs.</p>
-  <div class="grid-2">
+  <div class="grid-3">
     <div class="card card-accent">
       <h3>Probability Basics</h3>
       <ul>
@@ -79,6 +82,22 @@
       </div>
       <div class="step-note">Example: \(P(\text{rolling a 5}) = 1/6\)</div>
     </div>
+    <div class="card card-accent2">
+      <h3>The Sample Space</h3>
+      <div class="formula-box">
+        \[
+          P(S) = 1
+        \]
+      </div>
+      <svg class="venn" viewBox="0 0 360 200" role="img" aria-label="Venn diagram of a shaded rectangle S, the sample space, containing an outlined circle A">
+          <rect x="12" y="12" width="336" height="176" rx="10" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="12" y="12" width="336" height="176" rx="10" fill="#818cf8" fill-opacity="0.35"/>
+          <text x="24" y="36" fill="#f1f5f9" font-size="16" font-weight="700">S</text>
+          <circle cx="180" cy="100" r="58" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+          <text x="180" y="106" fill="#f1f5f9" font-size="20" font-weight="700" text-anchor="middle">A</text>
+      </svg>
+      <div class="venn-caption">\(S\) holds every possible outcome, so its probability is 1. An event \(A\) is a region inside \(S\).</div>
+    </div>
   </div>
 </div>
 
@@ -94,6 +113,34 @@
         \]
       </div>
       <div class="step-note">Subtract the overlap to avoid counting it twice.</div>
+      <div class="venn-row">
+        <div>
+          <svg class="venn" viewBox="0 0 360 200" role="img" aria-label="Venn diagram of two overlapping circles A and B inside rectangle S with only the overlap shaded">
+            <defs><clipPath id="venn-add-clipA"><circle cx="140" cy="100" r="62"/></clipPath></defs>
+            <rect x="12" y="12" width="336" height="176" rx="10" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
+          <text x="24" y="36" fill="#cbd5e1" font-size="16" font-weight="700">S</text>
+            <circle cx="220" cy="100" r="62" fill="#fbbf24" fill-opacity="0.6" clip-path="url(#venn-add-clipA)"/>
+            <circle cx="140" cy="100" r="62" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+            <circle cx="220" cy="100" r="62" fill="none" stroke="#34d399" stroke-width="2.5"/>
+            <text x="108" y="106" fill="#f1f5f9" font-size="20" font-weight="700" text-anchor="middle">A</text>
+            <text x="252" y="106" fill="#f1f5f9" font-size="20" font-weight="700" text-anchor="middle">B</text>
+          </svg>
+          <div class="venn-caption">\(P(A \text{ and } B)\): the overlap.</div>
+        </div>
+        <div>
+          <svg class="venn" viewBox="0 0 360 200" role="img" aria-label="Venn diagram of two overlapping circles A and B inside rectangle S with both circles shaded and the overlap shaded more darkly">
+            <rect x="12" y="12" width="336" height="176" rx="10" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
+          <text x="24" y="36" fill="#cbd5e1" font-size="16" font-weight="700">S</text>
+            <circle cx="140" cy="100" r="62" fill="#38bdf8" fill-opacity="0.35"/>
+            <circle cx="220" cy="100" r="62" fill="#38bdf8" fill-opacity="0.35"/>
+            <circle cx="140" cy="100" r="62" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+            <circle cx="220" cy="100" r="62" fill="none" stroke="#34d399" stroke-width="2.5"/>
+            <text x="108" y="106" fill="#f1f5f9" font-size="20" font-weight="700" text-anchor="middle">A</text>
+            <text x="252" y="106" fill="#f1f5f9" font-size="20" font-weight="700" text-anchor="middle">B</text>
+          </svg>
+          <div class="venn-caption">\(P(A \text{ or } B)\): everything in either circle. \(P(A) + P(B)\) counts the overlap twice.</div>
+        </div>
+      </div>
     </div>
     <div class="card card-green">
       <h3>Disjoint Events</h3>
@@ -104,6 +151,15 @@
         \]
       </div>
       <div class="step-note">Example: drawing a heart or a spade from one card.</div>
+      <svg class="venn" viewBox="0 0 360 200" role="img" aria-label="Venn diagram of two separate non-overlapping circles A and B inside rectangle S, both shaded">
+          <rect x="12" y="12" width="336" height="176" rx="10" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
+          <text x="24" y="36" fill="#cbd5e1" font-size="16" font-weight="700">S</text>
+          <circle cx="110" cy="100" r="58" fill="#34d399" fill-opacity="0.4" stroke="#38bdf8" stroke-width="2.5"/>
+          <circle cx="250" cy="100" r="58" fill="#34d399" fill-opacity="0.4" stroke="#34d399" stroke-width="2.5"/>
+          <text x="110" y="106" fill="#f1f5f9" font-size="20" font-weight="700" text-anchor="middle">A</text>
+          <text x="250" y="106" fill="#f1f5f9" font-size="20" font-weight="700" text-anchor="middle">B</text>
+      </svg>
+      <div class="venn-caption">No overlap, so there is nothing to subtract.</div>
     </div>
   </div>
 </div>
@@ -144,6 +200,15 @@
         \]
       </div>
       <div class="step-note">Events A and "not A" are disjoint and together cover all possibilities.</div>
+      <svg class="venn" viewBox="0 0 360 200" role="img" aria-label="Venn diagram of rectangle S with circle A unshaded and everything outside A shaded and labeled not A">
+          <rect x="12" y="12" width="336" height="176" rx="10" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
+          <path fill="#fb7185" fill-opacity="0.4" fill-rule="evenodd" d="M22 12 H338 Q348 12 348 22 V178 Q348 188 338 188 H22 Q12 188 12 178 V22 Q12 12 22 12 Z M180 100 m-58 0 a58 58 0 1 0 116 0 a58 58 0 1 0 -116 0 Z"/>
+          <text x="24" y="36" fill="#f1f5f9" font-size="16" font-weight="700">S</text>
+          <circle cx="180" cy="100" r="58" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+          <text x="180" y="106" fill="#f1f5f9" font-size="20" font-weight="700" text-anchor="middle">A</text>
+          <text x="290" y="160" fill="#f1f5f9" font-size="17" font-weight="700" text-anchor="middle">not A</text>
+      </svg>
+      <div class="venn-caption">\(A\) and not \(A\) never overlap and together fill \(S\).</div>
     </div>
     <div class="card card-green">
       <h3>Example</h3>
@@ -174,6 +239,18 @@
         \]
       </div>
       <div class="step-note">Read as "probability of A given B."</div>
+      <svg class="venn" viewBox="0 0 360 200" role="img" aria-label="Venn diagram of overlapping circles A and B inside rectangle S with circle B shaded lightly, the overlap shaded strongly, and the part of A outside B dimmed">
+          <defs><clipPath id="venn-cond-clipA"><circle cx="140" cy="100" r="62"/></clipPath></defs>
+          <rect x="12" y="12" width="336" height="176" rx="10" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
+          <text x="24" y="36" fill="#cbd5e1" font-size="16" font-weight="700">S</text>
+          <circle cx="220" cy="100" r="62" fill="#34d399" fill-opacity="0.3"/>
+          <circle cx="220" cy="100" r="62" fill="#fbbf24" fill-opacity="0.65" clip-path="url(#venn-cond-clipA)"/>
+          <circle cx="140" cy="100" r="62" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-opacity="0.45"/>
+          <circle cx="220" cy="100" r="62" fill="none" stroke="#34d399" stroke-width="2.5"/>
+          <text x="108" y="106" fill="#f1f5f9" fill-opacity="0.55" font-size="20" font-weight="700" text-anchor="middle">A</text>
+          <text x="252" y="106" fill="#f1f5f9" font-size="20" font-weight="700" text-anchor="middle">B</text>
+      </svg>
+      <div class="venn-caption">Given \(B\), only the inside of \(B\) matters: the overlap as a fraction of \(B\).</div>
     </div>
     <div class="card card-green">
       <h3>Example</h3>
