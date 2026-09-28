@@ -295,6 +295,76 @@
 <div class="slide">
   <h2>Independence Examples</h2>
   <p class="subtitle">Replacement matters when drawing from a finite set.</p>
+  <div class="card card-amber" style="margin-bottom: 18px;">
+    <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 22px; align-items: center;">
+      <div>
+        <h3>A Standard Deck of Cards</h3>
+        <ul class="small">
+          <li><strong>52 cards</strong> in 4 suits of 13 cards each.</li>
+          <li>Two red suits (hearts &#9829;, diamonds &#9830;) and two black suits (spades &#9824;, clubs &#9827;).</li>
+          <li>Each suit has the ranks A, 2&ndash;10, J, Q, K, so there are <strong>4 aces</strong> in the deck.</li>
+          <li>Drawing one card at random: \(P(\text{ace}) = 4/52\), \(P(\text{heart}) = 13/52\).</li>
+        </ul>
+      </div>
+      <div>
+        <svg class="deck-pic" viewBox="0 0 805 260" role="img" aria-label="All 52 cards of a standard deck laid out in four rows by suit (spades, hearts, diamonds, clubs) and thirteen columns by rank from ace to king, with the four aces outlined in gold" style="width:100%; display:block;">
+          <g transform="translate(6,6)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#fbbf24" stroke-width="3"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">A</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♠</text></g>
+          <g transform="translate(67,6)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">2</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♠</text></g>
+          <g transform="translate(128,6)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">3</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♠</text></g>
+          <g transform="translate(189,6)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">4</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♠</text></g>
+          <g transform="translate(250,6)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">5</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♠</text></g>
+          <g transform="translate(311,6)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">6</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♠</text></g>
+          <g transform="translate(372,6)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">7</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♠</text></g>
+          <g transform="translate(433,6)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">8</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♠</text></g>
+          <g transform="translate(494,6)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">9</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♠</text></g>
+          <g transform="translate(555,6)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">10</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♠</text></g>
+          <g transform="translate(616,6)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">J</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♠</text></g>
+          <g transform="translate(677,6)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">Q</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♠</text></g>
+          <g transform="translate(738,6)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">K</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♠</text></g>
+          <g transform="translate(6,68)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#fbbf24" stroke-width="3"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">A</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♥</text></g>
+          <g transform="translate(67,68)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">2</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♥</text></g>
+          <g transform="translate(128,68)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">3</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♥</text></g>
+          <g transform="translate(189,68)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">4</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♥</text></g>
+          <g transform="translate(250,68)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">5</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♥</text></g>
+          <g transform="translate(311,68)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">6</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♥</text></g>
+          <g transform="translate(372,68)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">7</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♥</text></g>
+          <g transform="translate(433,68)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">8</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♥</text></g>
+          <g transform="translate(494,68)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">9</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♥</text></g>
+          <g transform="translate(555,68)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">10</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♥</text></g>
+          <g transform="translate(616,68)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">J</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♥</text></g>
+          <g transform="translate(677,68)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">Q</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♥</text></g>
+          <g transform="translate(738,68)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">K</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♥</text></g>
+          <g transform="translate(6,130)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#fbbf24" stroke-width="3"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">A</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♦</text></g>
+          <g transform="translate(67,130)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">2</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♦</text></g>
+          <g transform="translate(128,130)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">3</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♦</text></g>
+          <g transform="translate(189,130)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">4</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♦</text></g>
+          <g transform="translate(250,130)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">5</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♦</text></g>
+          <g transform="translate(311,130)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">6</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♦</text></g>
+          <g transform="translate(372,130)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">7</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♦</text></g>
+          <g transform="translate(433,130)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">8</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♦</text></g>
+          <g transform="translate(494,130)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">9</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♦</text></g>
+          <g transform="translate(555,130)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">10</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♦</text></g>
+          <g transform="translate(616,130)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">J</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♦</text></g>
+          <g transform="translate(677,130)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">Q</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♦</text></g>
+          <g transform="translate(738,130)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#dc2626" font-size="13" font-weight="700">K</text><text x="28" y="42" fill="#dc2626" font-size="24" text-anchor="middle">♦</text></g>
+          <g transform="translate(6,192)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#fbbf24" stroke-width="3"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">A</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♣</text></g>
+          <g transform="translate(67,192)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">2</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♣</text></g>
+          <g transform="translate(128,192)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">3</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♣</text></g>
+          <g transform="translate(189,192)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">4</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♣</text></g>
+          <g transform="translate(250,192)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">5</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♣</text></g>
+          <g transform="translate(311,192)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">6</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♣</text></g>
+          <g transform="translate(372,192)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">7</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♣</text></g>
+          <g transform="translate(433,192)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">8</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♣</text></g>
+          <g transform="translate(494,192)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">9</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♣</text></g>
+          <g transform="translate(555,192)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">10</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♣</text></g>
+          <g transform="translate(616,192)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">J</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♣</text></g>
+          <g transform="translate(677,192)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">Q</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♣</text></g>
+          <g transform="translate(738,192)"><rect width="55" height="56" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/><text x="5" y="16" fill="#0f172a" font-size="13" font-weight="700">K</text><text x="28" y="42" fill="#0f172a" font-size="24" text-anchor="middle">♣</text></g>
+        </svg>
+        <div class="venn-caption">The four aces are outlined in gold: 4 of the 52 cards.</div>
+      </div>
+    </div>
+  </div>
   <div class="grid-2">
     <div class="card card-accent">
       <h3>With Replacement (Independent)</h3>
@@ -315,21 +385,6 @@
       </div>
     </div>
   </div>
-</div>
-
-
-<!-- Inserted: chart slide -->
-<div class="slide">
-  <h2>Probability Distribution: Rolling a Fair Six-Sided Die</h2>
-  <p class="subtitle">Each of six outcomes is equally likely, so each probability is \(1/6 \approx 0.167\). Observed counts in 600 simulated rolls.</p>
-  <div id="prob-die" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:14px; margin:8px auto; max-width:520px;"></div>
-<script>
-(function(){
-  const counts=[0,0,0,0,0,0];
-  for(let i=0;i<600;i++) counts[Math.floor(Math.random()*6)]++;
-  StatGraphs.barChart('#prob-die',['1','2','3','4','5','6'],counts,{width:480,height:220,yLabel:'count'});
-})();
-</script>
 </div>
 
 <div class="slide">
