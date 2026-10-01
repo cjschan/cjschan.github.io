@@ -56,6 +56,14 @@
   .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
   .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
   .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  .photo { display: block; width: 100%; max-height: 44vh; object-fit: contain; border-radius: 12px; }
+  .steps { list-style: none; counter-reset: step; }
+  .steps li { counter-increment: step; padding-left: 36px; }
+  .steps li::before { content: counter(step); width: 24px; height: 24px; border-radius: 50%; top: 7px; background: rgba(251, 191, 36, 0.2); color: var(--amber); font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .question-card { display: flex; flex-direction: column; gap: 10px; }
+  .question-num { font-size: 40px; font-weight: 800; color: var(--muted); line-height: 1; }
+  .question-text { font-size: 22px; font-weight: 600; line-height: 1.35; }
+  .callout-amber { background: rgba(251, 191, 36, 0.08); border-color: rgba(251, 191, 36, 0.3); }
   @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
 </style>
 </head>
@@ -72,7 +80,96 @@
   <p class="subtitle">Understanding how sample statistics behave across repeated sampling</p>
 </div>
 
-<!-- Slide 2: Statistical Inference -->
+<!-- Slide 2: Case Study - Research Question -->
+<div class="slide">
+  <span class="tag tag-amber">Case Study</span>
+  <h2>Are There More Blue M&amp;Ms?</h2>
+  <p class="subtitle"><strong>Research question:</strong> Does each fun-size bag of M&amp;Ms have a higher proportion of blue M&amp;Ms than the other colors?</p>
+  <div class="grid-2">
+    <div style="display:flex; align-items:center; justify-content:center;">
+      <img class="photo" src="images/mm_fun_size.webp" alt="Three fun-size bags of milk chocolate M&amp;Ms">
+    </div>
+    <div class="card card-amber">
+      <h3>Our Approach</h3>
+      <ul class="steps">
+        <li>Open a bag and draw <strong>10 M&amp;Ms</strong>. That is your <strong>sample</strong>.</li>
+        <li>Count the blues and compute the <strong>sample proportion</strong>.
+          <div class="formula-box" style="font-size:20px;">\(\hat{p} = \dfrac{\text{number of blue}}{10}\)</div>
+        </li>
+        <li>Record your \(\hat{p}\) on the class <strong>dot plot</strong>.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>For reference:</strong> if all six colors were equally likely, we would expect about 1 in 6 to be blue, roughly 0.17.
+  </div>
+</div>
+
+<!-- Slide 3: Case Study - Class Results -->
+<div class="slide">
+  <span class="tag tag-amber">Case Study</span>
+  <h2>Our Class Results</h2>
+  <p class="subtitle">26 students, 10 M&amp;Ms each. Each dot is one student's sample proportion of blue.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Dot Plot of Sample Proportions</h3>
+      <div id="chart-3-1-mm"></div>
+    </div>
+    <div class="card card-accent2">
+      <h3>Summary Statistics</h3>
+      <div class="grid-3" style="flex:none; gap:12px; margin-top:6px;">
+        <div>
+          <div class="big-number" style="color: var(--accent); font-size:44px;">26</div>
+          <p class="stat-label">samples (students)</p>
+        </div>
+        <div>
+          <div class="big-number" style="color: var(--green); font-size:44px;">0.219</div>
+          <p class="stat-label">mean of the \(\hat{p}\) values</p>
+        </div>
+        <div>
+          <div class="big-number" style="color: var(--amber); font-size:44px;">0.110</div>
+          <p class="stat-label">standard deviation</p>
+        </div>
+      </div>
+      <p class="step-note" style="margin-top:14px;">Sample size \(n = 10\) for every sample. Smallest \(\hat{p} = 0.1\), largest \(\hat{p} = 0.4\), median \(0.2\).</p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const mm = [0.1, 0.1, 0.4, 0.2, 0.1, 0.3, 0.1, 0.3, 0.2, 0.4, 0.2, 0.1, 0.1, 0.2, 0.4, 0.2, 0.1, 0.2, 0.3, 0.2, 0.1, 0.3, 0.1, 0.3, 0.4, 0.3];
+      StatGraphs.dotplot('#chart-3-1-mm', mm, { xLabel: 'sample proportion of blue', min: 0, max: 0.5, width: 500, height: 300, padBottom: 46 });
+    })();
+  </script>
+  <div class="callout callout-amber">
+    <strong>Question:</strong> The class average is about 0.22, a bit above 1 in 6. Does this <em>prove</em> that fun-size bags have more blue M&amp;Ms than the other colors?
+  </div>
+</div>
+
+<!-- Slide 4: Case Study - Discussion -->
+<div class="slide">
+  <span class="tag tag-amber">Discussion</span>
+  <h2>Let's Name What We Did</h2>
+  <p class="subtitle">Before we define anything formally, answer these three questions about the M&amp;M activity.</p>
+  <div class="grid-3">
+    <div class="card card-accent question-card">
+      <div class="question-num">1</div>
+      <p class="question-text">What is the <strong>population</strong>?</p>
+    </div>
+    <div class="card card-accent2 question-card">
+      <div class="question-num">2</div>
+      <p class="question-text">What is the <strong>sample</strong>?</p>
+    </div>
+    <div class="card card-accent3 question-card">
+      <div class="question-num">3</div>
+      <p class="question-text">What does <strong>each dot</strong> on the dot plot represent?</p>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Keep these answers in mind.</strong> The rest of this section gives a name to each piece of what we just did.
+  </div>
+</div>
+
+<!-- Slide 5: Statistical Inference -->
 <div class="slide">
   <span class="tag tag-blue">Big Picture</span>
   <h2>Statistical Inference</h2>
@@ -99,7 +196,7 @@
   </div>
 </div>
 
-<!-- Slide 3: Parameter vs Statistic -->
+<!-- Slide 6: Parameter vs Statistic -->
 <div class="slide">
   <span class="tag tag-purple">Definitions</span>
   <h2>Parameter vs Statistic</h2>
@@ -131,7 +228,7 @@
   </div>
 </div>
 
-<!-- Slide 4: Point Estimates -->
+<!-- Slide 7: Point Estimates -->
 <div class="slide">
   <span class="tag tag-green">Estimation</span>
   <h2>Point Estimates</h2>
@@ -161,7 +258,7 @@
   </div>
 </div>
 
-<!-- Slide 5: Sampling Distribution -->
+<!-- Slide 8: Sampling Distribution -->
 <div class="slide">
   <span class="tag tag-blue">Key Concept</span>
   <h2>Sampling Distribution</h2>
@@ -191,7 +288,7 @@
   </div>
 </div>
 
-<!-- Slide 6: Center and Shape -->
+<!-- Slide 9: Center and Shape -->
 <div class="slide">
   <span class="tag tag-purple">Properties</span>
   <h2>Center and Shape of the Sampling Distribution</h2>
@@ -220,7 +317,7 @@
   </div>
 </div>
 
-<!-- Slide 7: Standard Error -->
+<!-- Slide 10: Standard Error -->
 <div class="slide">
   <span class="tag tag-green">Spread</span>
   <h2>Standard Error (SE)</h2>
@@ -250,7 +347,7 @@
   </div>
 </div>
 
-<!-- Slide 8: Sample Size Effect -->
+<!-- Slide 11: Sample Size Effect -->
 <div class="slide">
   <span class="tag tag-amber">Important Relationship</span>
   <h2>Sample Size and Standard Error</h2>
@@ -277,7 +374,7 @@
   </div>
 </div>
 
-<!-- Slide 9: Brief Review (Big Picture diagram) -->
+<!-- Slide 12: Brief Review (Big Picture diagram) -->
 <div class="slide">
   <span class="tag tag-blue">Brief Review</span>
   <h2>From Population to Sampling Distribution</h2>
@@ -383,7 +480,7 @@
   </div>
 </div>
 
-<!-- Slide 10: Summary -->
+<!-- Slide 13: Summary -->
 <div class="slide">
   <span class="tag tag-blue">Recap</span>
   <h2>Section 3.1 Summary</h2>
