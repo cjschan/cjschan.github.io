@@ -1,0 +1,53 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Math 1342 Course Map</title><style>
+@page { size: letter landscape; margin: 0.35in 0.4in; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: Calibri, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 10.0pt; color: #111; }
+.page { page-break-after: always; }
+.page:last-child { page-break-after: auto; }
+h1 { font-size: 10.0pt; margin: 0 0 1px 0; text-align: center; font-weight: 700; }
+.sub { text-align: center; font-size: 10.0pt; color: #333; margin-bottom: 5px; }
+.sub b { color: #111; }
+table.map { width: 99%; border-collapse: collapse; table-layout: fixed; margin: 0 auto; }
+table.map th { border: 1px solid #000; background: #fff; font-weight: 700; padding: 3px 4px; font-size: 10.0pt; text-align: center; vertical-align: middle; }
+table.map th.co { background: #e6e6e6; }
+table.map td { border: 1px solid #000; vertical-align: top; padding: 0; }
+td.co { background: #e6e6e6; }
+td.co ol, td.mo ol { margin: 0; padding: 3px 3px 3px 22px; }
+td.co li, td.mo li { margin: 0 0 3px 0; padding-left: 1px; }
+td.co { line-height: 1.2; }
+td.co li { margin: 0 0 1.5px 0; }
+.tag { font-weight: 400; color: #333; white-space: nowrap; }
+table.sub { width: 100%; border-collapse: collapse; table-layout: fixed; }
+table.sub td { text-align: left; border: none; border-bottom: 1px solid #000; padding: 3px 4px; vertical-align: top; }
+table.sub td.hash { text-align: center; padding-left: 1px; padding-right: 1px; border-left: 1px solid #000; }
+table.sub.w21 td.hash { width: 23.81%; }   /* 5 / (16 + 5)  -> lines up with the header # column */
+table.sub.w15 td.hash { width: 33.33%; }   /* 5 / (10 + 5) */
+.prop { color: #8a4b00; font-style: italic; }
+.notes { margin-top: 5px; color: #222; }
+.notes b { color: #000; }
+.legend { margin-top: 2px; color: #444; }
+</style></head><body>
+<div class="page">
+  <h1>MATH 1342 – Elementary Statistics – Week 13: Inference for Two Means and Paired Data</h1>
+  <div class="sub"><b>Nov 17 – 19</b> &nbsp;|&nbsp; 6.4 Inference for a Difference in Means (Distribution, CI, Hypothesis Test) &nbsp;•&nbsp; 6.5 Paired Difference in Means &nbsp;|&nbsp; Fall 2026 · Section 036 · TTh 6:00–7:20 PM (DIL)</div>
+  <table class="map">
+    <colgroup>
+      <col style="width:20%"><col style="width:23%">
+      <col style="width:16%"><col style="width:5%">
+      <col style="width:16%"><col style="width:5%">
+      <col style="width:10%"><col style="width:5%">
+    </colgroup>
+    <thead><tr>
+      <th class="co">Course-level<br>Objectives</th><th>Module-level<br>Objectives</th>
+      <th>Learning Materials</th><th>#</th><th>Activities</th><th>#</th><th>Assessments</th><th>#</th>
+    </tr></thead>
+    <tbody><tr>
+      <td class="co"><ol><li value="4">Find and use theoretical probabilities from normal, t, chi-squared and F distributions to form confidence intervals and test hypotheses. Apply the 95% rule to normal and to approximately normal distributions.</li><li value="7">Apply ideas of appropriate sampling techniques and experimental design to data production.</li><li value="8">Use the sampling distributions of sample proportions and sample means to answer appropriate questions.</li><li value="9">Estimate single means, difference of two means, single proportions and difference of two proportions using confidence intervals. Interpret the results.</li><li value="10">Demonstrate skills in hypothesis testing for means and proportions, for single populations and comparison of two populations.</li></ol></td>
+      <td class="mo"><ol><li>Compute the standard error and conservative degrees of freedom for a difference in two independent means, and check the conditions. <span class="tag"> (CO4, CO8)</span></li><li>Construct and interpret a confidence interval for μ₁ − μ₂, explaining how the order of the groups affects the sign. <span class="tag"> (CO9)</span></li><li>Carry out a two-sample t test, choosing the tail from the research question. <span class="tag"> (CO10)</span></li><li>Classify a study design as paired or independent samples by checking for a link between observations. <span class="tag"> (CO7, CO10)</span></li><li>Define the difference variable d, carry out a paired t test and paired t confidence interval, and explain why pairing reduces variability. <span class="tag"> (CO9, CO10)</span></li></ol></td>
+      <td colspan="2"><table class="sub w21"><tr><td class="it">e-Text: 6.4 Inference for a Difference in Means (6.4-D, 6.4-CI, 6.4-HT)</td><td class="hash">MO1, MO2, MO3</td></tr><tr><td class="it">Interactive Lecture: 6.4 Inference for a Difference in Means</td><td class="hash">MO1, MO2, MO3</td></tr><tr><td class="it">Slides: 6.4 Inference for a Difference in Means</td><td class="hash">MO1, MO2, MO3</td></tr><tr><td class="it">e-Text: 6.5 Paired Difference in Means</td><td class="hash">MO4, MO5</td></tr><tr><td class="it">Interactive Lecture: 6.5 Paired Difference in Means</td><td class="hash">MO4, MO5</td></tr><tr><td class="it">Slides: 6.5 Paired Difference in Means</td><td class="hash">MO4, MO5</td></tr></table></td>
+      <td colspan="2"><table class="sub w21"><tr><td class="it">Participation: Comparing Two Means – video games and GPA CI; Pygmalion-effect test</td><td class="hash">MO1, MO2, MO3</td></tr><tr><td class="it">Participation: Paired or Independent? – class discussion of eight study scenarios (a)–(h); define d and the order of subtraction</td><td class="hash">MO4, MO5</td></tr></table></td>
+      <td colspan="2"><table class="sub w15"><tr><td class="it">Online Homework: 6.4 Inference for a Difference in Means (due Sun Nov 22, 11:59 PM)</td><td class="hash">MO1, MO2, MO3</td></tr><tr><td class="it">Online Homework: 6.5 Paired Difference in Means (due Sun Nov 22, 11:59 PM)</td><td class="hash">MO4, MO5</td></tr><tr><td class="it">Test 3 – Fri Nov 20 – Sun Nov 22 (Blackboard, proctored, 2 hours). Covers Weeks 10–13.</td><td class="hash">All</td></tr></table></td>
+    </tr></tbody>
+  </table>
+</div></body></html>

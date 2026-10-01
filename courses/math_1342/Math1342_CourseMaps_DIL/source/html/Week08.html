@@ -1,0 +1,53 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Math 1342 Course Map</title><style>
+@page { size: letter landscape; margin: 0.35in 0.4in; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: Calibri, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 10.0pt; color: #111; }
+.page { page-break-after: always; }
+.page:last-child { page-break-after: auto; }
+h1 { font-size: 10.0pt; margin: 0 0 1px 0; text-align: center; font-weight: 700; }
+.sub { text-align: center; font-size: 10.0pt; color: #333; margin-bottom: 5px; }
+.sub b { color: #111; }
+table.map { width: 99%; border-collapse: collapse; table-layout: fixed; margin: 0 auto; }
+table.map th { border: 1px solid #000; background: #fff; font-weight: 700; padding: 3px 4px; font-size: 10.0pt; text-align: center; vertical-align: middle; }
+table.map th.co { background: #e6e6e6; }
+table.map td { border: 1px solid #000; vertical-align: top; padding: 0; }
+td.co { background: #e6e6e6; }
+td.co ol, td.mo ol { margin: 0; padding: 3px 3px 3px 22px; }
+td.co li, td.mo li { margin: 0 0 3px 0; padding-left: 1px; }
+td.co { line-height: 1.2; }
+td.co li { margin: 0 0 1.5px 0; }
+.tag { font-weight: 400; color: #333; white-space: nowrap; }
+table.sub { width: 100%; border-collapse: collapse; table-layout: fixed; }
+table.sub td { text-align: left; border: none; border-bottom: 1px solid #000; padding: 3px 4px; vertical-align: top; }
+table.sub td.hash { text-align: center; padding-left: 1px; padding-right: 1px; border-left: 1px solid #000; }
+table.sub.w21 td.hash { width: 23.81%; }   /* 5 / (16 + 5)  -> lines up with the header # column */
+table.sub.w15 td.hash { width: 33.33%; }   /* 5 / (10 + 5) */
+.prop { color: #8a4b00; font-style: italic; }
+.notes { margin-top: 5px; color: #222; }
+.notes b { color: #000; }
+.legend { margin-top: 2px; color: #444; }
+</style></head><body>
+<div class="page">
+  <h1>MATH 1342 – Elementary Statistics – Week 8: Percentile Intervals and Introducing Hypothesis Tests</h1>
+  <div class="sub"><b>Oct 13 – 15</b> &nbsp;|&nbsp; 3.4 Bootstrap Confidence Intervals Using Percentiles &nbsp;•&nbsp; 4.1 Introducing Hypothesis Tests &nbsp;|&nbsp; Fall 2026 · Section 036 · TTh 6:00–7:20 PM (DIL)</div>
+  <table class="map">
+    <colgroup>
+      <col style="width:20%"><col style="width:23%">
+      <col style="width:16%"><col style="width:5%">
+      <col style="width:16%"><col style="width:5%">
+      <col style="width:10%"><col style="width:5%">
+    </colgroup>
+    <thead><tr>
+      <th class="co">Course-level<br>Objectives</th><th>Module-level<br>Objectives</th>
+      <th>Learning Materials</th><th>#</th><th>Activities</th><th>#</th><th>Assessments</th><th>#</th>
+    </tr></thead>
+    <tbody><tr>
+      <td class="co"><ol><li value="3">Find and use empirical probabilities in bootstrap distributions to find confidence intervals and in randomization distributions to test hypotheses.</li><li value="9">Estimate single means, difference of two means, single proportions and difference of two proportions using confidence intervals. Interpret the results.</li><li value="10">Demonstrate skills in hypothesis testing for means and proportions, for single populations and comparison of two populations.</li></ol></td>
+      <td class="mo"><ol><li>Determine which percentiles of a bootstrap distribution bound a 90%, 95%, or 99% confidence interval, and construct the interval with StatKey. <span class="tag"> (CO3, CO9)</span></li><li>Predict how changing the confidence level or the sample size affects the width of an interval. <span class="tag"> (CO9)</span></li><li>Judge whether a bootstrap confidence interval is trustworthy from the shape of the bootstrap distribution and whether the sample is representative. <span class="tag"> (CO3)</span></li><li>Identify the parameter of interest and write null and alternative hypotheses from a research question. <span class="tag"> (CO10)</span></li><li>Classify a test as right-tailed, left-tailed, or two-tailed, and explain the logic of assuming H₀ and asking whether the data are surprising. <span class="tag"> (CO10)</span></li></ol></td>
+      <td colspan="2"><table class="sub w21"><tr><td class="it">e-Text: 3.4 Bootstrap Confidence Intervals Using Percentiles</td><td class="hash">MO1, MO2, MO3</td></tr><tr><td class="it">Interactive Lecture: 3.4 Bootstrap Confidence Intervals Using Percentiles</td><td class="hash">MO1, MO2, MO3</td></tr><tr><td class="it">Slides: 3.4 Bootstrap Confidence Intervals Using Percentiles</td><td class="hash">MO1, MO2, MO3</td></tr><tr><td class="it">e-Text: 4.1 Introducing Hypothesis Tests</td><td class="hash">MO4, MO5</td></tr><tr><td class="it">Interactive Lecture: 4.1 Introducing Hypothesis Tests</td><td class="hash">MO4, MO5</td></tr><tr><td class="it">Slides: 4.1 Introducing Hypothesis Tests</td><td class="hash">MO4, MO5</td></tr></table></td>
+      <td colspan="2"><table class="sub w21"><tr><td class="it">Participation: Percentile Confidence Intervals – StatKey: 90/95/99% intervals for the same data; compare SE and percentile methods</td><td class="hash">MO1, MO2, MO3</td></tr><tr><td class="it">Participation: Writing Hypotheses – Zener-card ESP practice (26 of 50): define the parameter, state H₀ and Hₐ, choose the tail</td><td class="hash">MO4, MO5</td></tr><tr><td class="it">Think about it: is 15 of 16 correct (dolphin study) convincing?</td><td class="hash">MO5</td></tr></table></td>
+      <td colspan="2"><table class="sub w15"><tr><td class="it">Online Homework: 3.4 Bootstrap Confidence Intervals Using Percentiles (due Sun Oct 18, 11:59 PM)</td><td class="hash">MO1, MO2, MO3</td></tr><tr><td class="it">Online Homework: 4.1 Introducing Hypothesis Tests (due Sun Oct 18, 11:59 PM)</td><td class="hash">MO4, MO5</td></tr><tr><td class="it">Take-Home Quiz 4 (due Tue Oct 13, 11:59 PM) – covers P.1, 3.1–3.3</td><td class="hash">None</td></tr></table></td>
+    </tr></tbody>
+  </table>
+</div></body></html>
