@@ -39,6 +39,7 @@ TITLES = {
     "6.1": "Inference for a Proportion", "6.3": "Inference for a Difference in Proportions", "6.2": "Inference for a Mean",
     "6.4": "Inference for a Difference in Means", "6.5": "Paired Difference in Means",
     "7.2": "Testing for an Association Between Two Categorical Variables", "8.1": "Analysis of Variance",
+    "9.1": "Inference for Slope and Correlation",
 }
 def etext(sec, title=None, suffix=""):   return f"e-Text: {sec} {TITLES[sec]}{suffix}"
 def lecture(sec, suffix=""):             return f"Interactive Lecture: {sec} {TITLES[sec]}{suffix}"
@@ -310,7 +311,7 @@ dict(num=9, title="P-values and Statistical Significance", dates="Oct 20 – 22"
      ]),
 # ---------------------------------------------------------------- Week 10
 dict(num=10, title="A Closer Look at Testing and Making Connections", dates="Oct 27 – 29",
-     sections=["4.4(a) A Closer Look at Testing", "4.5 Making Connections"],
+     sections=["4.4 A Closer Look at Testing", "4.5 Making Connections"],
      notes="Test 2 window Fri Oct 30 – Sun Nov 1 (covers P.1, 3.1–3.4, 4.1–4.3).",
      mos=[
       ("Describe Type I and Type II errors in the context of a study, relate α to the probability of a Type I error, and explain the trade-off between the two errors and the effect of sample size.", [10]),
@@ -449,46 +450,50 @@ dict(num=14, title="Chi-Square Test for Association", dates="Nov 24 – 26",
       ("Test 3 Retake – Mon Nov 23 – Sun Nov 29 (optional; higher score counts)", "None"),
      ]),
 # ---------------------------------------------------------------- Week 15
-dict(num=15, title="ANOVA and Putting It All Together", dates="Dec 1 – 3",
-     sections=["8.1 Analysis of Variance", "Review: Putting It All Together – From Sampling to Hypothesis Testing"],
+dict(num=15, title="ANOVA and Inference for Slope and Correlation", dates="Dec 1 – 3",
+     sections=["8.1 Analysis of Variance", "9.1 Inference for Slope and Correlation"],
      notes=None,
      mos=[
       ("Identify when ANOVA is appropriate and state H₀ and Hₐ in symbols and words.", [12]),
       ("Explain what SSG and SSE measure and how the ratio of between-group to within-group variability gives evidence against H₀.", [12]),
       ("Complete an ANOVA table (df, MS, F) from given sums of squares, interpret the F statistic and p-value, and check the conditions.", [4, 12]),
-      ("Choose the correct test among one- and two-proportion z, one- and two-sample t, paired t, and chi-square, and carry out a complete six-step hypothesis test.", [10, 11]),
-      ("Explain what the study design (random sampling vs. random assignment) allows a conclusion to claim, and distinguish statistical from practical significance.", [7, 10]),
+      ("State the simple linear model, distinguish the population slope β₁ and correlation ρ from the sample estimates b₁ and r, and interpret the slope in context.", [5, 12]),
+      ("Use regression output to test H₀: β₁ = 0 (equivalently ρ = 0) with a t statistic on n − 2 degrees of freedom, state the conclusion in context, and explain why the slope and correlation tests give the same p-value.", [12]),
+      ("Construct and interpret a confidence interval for the slope, interpret R² as the proportion of variability explained, and check the conditions with a residual plot.", [12]),
      ],
      materials=[
       (etext("8.1"), "MO1, MO2, MO3"),
       (lecture("8.1"), "MO1, MO2, MO3"),
       (slides("8.1"), "MO1, MO2, MO3"),
-      ("Review Slides: Putting It All Together (with answer key and no-answers versions)", "MO4, MO5"),
+      (etext("9.1"), "MO4, MO5, MO6"),
+      (lecture("9.1"), "MO4, MO5, MO6"),
+      (slides("9.1"), "MO4, MO5, MO6"),
       ("StatKey – Theoretical Distributions (F)", "MO3"),
      ],
      activities=[
       (proposed("ANOVA") + " – cuckoo-egg example: build the ANOVA table from given SS, find F, decide", "MO1, MO2, MO3"),
-      (proposed("One Complete Test with a Partner") + " – 10 problems, one per pair (narrator/writer roles), 5-minute presentations; extension: build the matching 95% CI", "MO4, MO5"),
+      (proposed("Inference for Slope and Correlation") + " – SleepStudy: depression score vs. classes missed (test for correlation and slope, CI for slope, R²); self-quiz: drinks per week vs. classes missed", "MO4, MO5, MO6"),
      ],
      assessments=[
       (hw("8.1", "Dec 6"), "MO1, MO2, MO3"),
+      (hw("9.1", "Dec 6"), "MO4, MO5, MO6"),
      ]),
 # ---------------------------------------------------------------- Week 16
-dict(num=16, title="Final Exam", dates="Dec 8 – 10",
-     sections=["Review & Catch-Up for the Final Exam (Tue Dec 8)", "Final Exam – Thu Dec 10, online (Blackboard, proctored)"],
+dict(num=16, title="Putting It All Together and Final Exam", dates="Dec 8 – 10",
+     sections=["Review: Putting It All Together – From Sampling to Hypothesis Testing (Tue Dec 8)", "Final Exam – Thu Dec 10, online (Blackboard, proctored)"],
      notes="Late WileyPLUS homework closes Tue Dec 8, 11:59 PM. The final exam is cumulative; a higher final replaces the lowest test score.",
      mos=[
-      ("Select and justify an appropriate inference procedure (CI or test; proportion, mean, two groups, paired, chi-square, ANOVA) for a new scenario.", [9, 10, 11, 12]),
+      ("Choose the correct procedure among one- and two-proportion z, one- and two-sample t, paired t, chi-square, ANOVA, and regression, and carry out a complete six-step hypothesis test.", [9, 10, 11, 12]),
       ("Carry out and interpret a complete confidence interval or hypothesis test, using simulation or theoretical distributions as appropriate.", [3, 4, 9, 10]),
       ("Interpret results in context, including what the study design allows the conclusion to claim about generalization and causation.", [7]),
      ],
      materials=[
-      ("Review Slides: Putting It All Together (answer key)", "MO1, MO2, MO3"),
+      ("Review Slides: Putting It All Together (with answer key and no-answers versions)", "MO1, MO2, MO3"),
       ("All Section Slides and Interactive Lectures (Weeks 1–15)", "MO1, MO2, MO3"),
       ("StatKey", "MO2"),
      ],
      activities=[
-      ("Review & catch-up session (Tue Dec 8): student-selected problems; choosing-the-right-test table", "MO1, MO2, MO3"),
+      (proposed("One Complete Test with a Partner") + " – 10 problems, one per pair (narrator/writer roles), 5-minute presentations; extension: build the matching 95% CI", "MO1, MO2, MO3"),
      ],
      assessments=[
       ("Final Exam – Thu Dec 10 (Blackboard, proctored, 2 hours, cumulative; no retake)", "MO1, MO2, MO3"),

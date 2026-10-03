@@ -3,6 +3,10 @@ Generated Oct 1, 2026 from the syllabus (cjschan.github.io/courses/math_1342/fal
 the lecture slides (cjschan.github.io/courses/math_1342/lecture_notes), and the Blackboard course
 outline. Layout follows the Apodaca/Forsythe "Map Your Way to a Quality Course" handout.
 
+Updated Oct 3, 2026 to match the revised syllabus: Week 10 covers all of 4.4 (was 4.4(a)); Week 15 adds
+9.1 Inference for Slope and Correlation; Week 16 is the Putting It All Together review (Tue Dec 8) and the
+final exam, with no separate catch-up day. Blackboard has no 9.1 items yet; the maps list them by convention.
+
 FILES
   Week01.pdf … Week16.pdf        one landscape page per week
   Math1342_CourseMap_All.pdf     all 16 weeks in one file
