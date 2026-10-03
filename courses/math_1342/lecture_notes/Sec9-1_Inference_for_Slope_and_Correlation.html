@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 9.1: Inference for Slope and Correlation</title>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="statgraphs.js?v=5"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
+  .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
+  h1 { font-size: 56px; font-weight: 800; letter-spacing: -1px; line-height: 1.08; margin-bottom: 14px; }
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 18px; }
+  h3 { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+  .subtitle { font-size: 20px; color: var(--muted); font-weight: 400; margin-bottom: 28px; max-width: 980px; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; align-items: start; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; align-items: start; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .card-accent { border-left: 3px solid var(--accent); } .card-accent2 { border-left: 3px solid var(--accent2); } .card-accent3 { border-left: 3px solid var(--accent3); } .card-green { border-left: 3px solid var(--green); } .card-amber { border-left: 3px solid var(--amber); } .card-rose { border-left: 3px solid var(--rose); }
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 6px 0 6px 20px; font-size: 18px; line-height: 1.45; position: relative; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .small li { font-size: 15px; padding: 4px 0 4px 18px; } .small li::before { top: 11px; width: 5px; height: 5px; }
+  .questions li { font-size: 16px; padding: 5px 0 5px 20px; } .questions li::before { top: 13px; }
+  .tag { display: inline-block; align-self: flex-start; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .title-slide .tag { align-self: center; }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); } .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); } .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); } .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); } .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+  .big-number { font-size: 54px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
+  .formula-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; font-size: 22px; margin-top: 12px; margin-bottom: 10px; }
+  .callout { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 18px 22px; margin-top: 16px; font-size: 16px; line-height: 1.55; }
+  .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  .table-card table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15px; }
+  .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
+  .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
+  .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  .green { color: var(--green); } .rose { color: var(--rose); } .amber { color: var(--amber); } .accent { color: var(--accent); } .muted { color: var(--muted); }
+  .chart-box { background: #1e293b; border: 1px solid #475569; border-radius: 8px; padding: 14px; }
+  .video-frame { aspect-ratio: 16 / 9; width: 100%; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #000; }
+  .video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+  .chart-box svg { margin: 0 auto; }
+  .chart-caption { font-size: 14px; color: var(--muted); text-align: center; margin-top: 10px; }
+  @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Use arrow keys to navigate</div>
+<div class="deck" id="deck">
+<script>
+  // SleepStudy data (Lock5, 3rd ed.): 253 college students.
+  const DEP = [4, 1, 18, 1, 7, 14, 1, 2, 12, 6, 2, 2, 10, 3, 2, 3, 16, 23, 1, 6, 4, 1, 1, 5, 8, 23, 14, 18, 4, 7, 15, 8, 4, 4, 11, 4, 2, 6, 4, 10, 0, 0, 0, 7, 5, 9, 4, 2, 2, 5, 1, 21, 5, 7, 1, 4, 25, 4, 1, 2, 0, 0, 4, 28, 5, 3, 8, 1, 4, 0, 0, 2, 4, 15, 4, 11, 10, 4, 2, 11, 6, 3, 2, 0, 8, 0, 12, 2, 4, 3, 0, 12, 1, 0, 0, 1, 2, 5, 0, 3, 0, 4, 14, 9, 21, 6, 0, 19, 2, 1, 0, 0, 0, 0, 1, 4, 1, 35, 2, 14, 1, 2, 11, 3, 1, 2, 5, 1, 13, 5, 1, 7, 3, 10, 4, 4, 0, 20, 1, 14, 7, 1, 12, 24, 0, 3, 3, 2, 3, 9, 0, 5, 3, 3, 0, 1, 4, 10, 0, 1, 18, 0, 8, 11, 3, 0, 13, 5, 4, 3, 2, 2, 15, 9, 1, 3, 23, 4, 1, 4, 0, 0, 2, 1, 0, 0, 2, 4, 5, 3, 8, 7, 13, 4, 26, 0, 6, 0, 6, 8, 6, 0, 0, 4, 1, 15, 1, 7, 6, 5, 1, 3, 2, 0, 1, 14, 4, 16, 2, 9, 6, 1, 0, 1, 0, 1, 5, 6, 6, 2, 7, 2, 2, 2, 3, 6, 0, 0, 3, 3, 4, 0, 0, 7, 5, 1, 1, 0, 5, 8, 1, 1, 2];
+  const DRINKS = [10, 6, 3, 2, 4, 0, 6, 3, 3, 6, 10, 10, 4, 5, 0, 2, 4, 12, 10, 7, 1, 2, 7, 3, 0, 0, 8, 5, 3, 5, 8, 1, 6, 12, 0, 0, 3, 1, 4, 4, 4, 3, 2, 3, 5, 9, 3, 6, 5, 5, 9, 3, 2, 7, 5, 0, 5, 5, 5, 10, 6, 5, 9, 5, 0, 3, 0, 6, 7, 2, 0, 5, 5, 10, 4, 1, 2, 5, 4, 8, 2, 7, 2, 3, 0, 0, 4, 2, 0, 3, 4, 7, 0, 6, 13, 10, 7, 5, 10, 3, 5, 3, 1, 5, 9, 9, 3, 3, 5, 4, 1, 0, 0, 7, 6, 8, 12, 2, 1, 5, 9, 6, 0, 7, 0, 12, 0, 6, 5, 0, 8, 8, 7, 4, 12, 3, 6, 2, 7, 4, 4, 6, 4, 4, 3, 1, 5, 6, 9, 8, 3, 8, 10, 3, 6, 5, 6, 0, 8, 8, 7, 2, 7, 15, 0, 2, 5, 9, 10, 5, 0, 10, 3, 8, 7, 13, 14, 10, 6, 3, 10, 12, 10, 8, 4, 8, 10, 10, 6, 6, 12, 0, 10, 12, 3, 6, 0, 10, 7, 9, 10, 0, 0, 10, 7, 20, 9, 0, 7, 6, 0, 7, 10, 3, 10, 0, 0, 5, 10, 20, 15, 10, 9, 1, 3, 15, 18, 10, 3, 2, 24, 2, 3, 4, 5, 10, 7, 3, 8, 6, 7, 0, 12, 6, 5, 7, 5, 0, 3, 5, 5, 7, 13];
+  const MISSED = [0, 0, 12, 0, 4, 0, 2, 0, 0, 0, 0, 0, 0, 6, 1, 0, 5, 0, 0, 20, 4, 1, 1, 5, 0, 20, 10, 0, 3, 2, 0, 0, 0, 6, 0, 0, 1, 0, 5, 4, 1, 0, 1, 2, 0, 2, 6, 1, 2, 0, 0, 0, 3, 4, 1, 1, 2, 2, 0, 3, 2, 1, 5, 2, 14, 10, 1, 0, 0, 4, 1, 4, 0, 2, 1, 2, 1, 0, 3, 2, 0, 3, 0, 2, 15, 0, 0, 0, 0, 0, 1, 3, 0, 2, 1, 1, 7, 1, 6, 4, 0, 0, 1, 0, 2, 0, 1, 7, 1, 0, 0, 0, 0, 0, 3, 0, 1, 2, 0, 7, 2, 0, 2, 5, 1, 4, 4, 0, 7, 2, 0, 1, 1, 0, 4, 1, 0, 1, 2, 4, 0, 2, 2, 2, 2, 0, 6, 13, 7, 1, 0, 3, 7, 1, 0, 1, 1, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 3, 4, 2, 0, 0, 0, 3, 2, 0, 1, 2, 0, 1, 1, 1, 5, 3, 3, 1, 4, 2, 2, 5, 0, 1, 3, 6, 5, 1, 0, 2, 0, 6, 6, 0, 2, 14, 3, 1, 0, 1, 1, 4, 1, 0, 1, 1, 0, 1, 2, 0, 6, 2, 2, 2, 0, 3, 2, 5, 2, 4, 1, 0, 6, 0, 0, 0, 6, 0, 1, 2, 0, 3, 0, 0, 2, 0, 8, 0, 10, 0, 7, 1, 1, 0, 3];
+  // Deterministic jitter so integer-valued points do not sit on top of one another.
+  function jitterRng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function jitter(arr, seed, amt) { const r = jitterRng(seed); return arr.map(v => v + (r() * 2 - 1) * amt); }
+  function svgText(svg, x, y, text, color, anchor) { const t = document.createElementNS('http://www.w3.org/2000/svg', 'text'); t.setAttribute('x', x); t.setAttribute('y', y); t.setAttribute('fill', color); t.setAttribute('font-size', 12); t.setAttribute('font-weight', 600); t.setAttribute('text-anchor', anchor || 'start'); t.setAttribute('font-family', 'Work Sans, sans-serif'); t.textContent = text; svg.appendChild(t); }
+</script>
+
+<div class="slide title-slide">
+  <span class="tag tag-blue">Section 9.1</span>
+  <h1>Inference for Slope and Correlation</h1>
+  <p class="subtitle">Moving from describing a linear relationship in a sample to testing whether that relationship exists in the population: hypothesis tests and confidence intervals for the slope and the correlation.</p>
+</div>
+
+<div class="slide">
+  <h2>From Describing to Inferring</h2>
+  <p class="subtitle">In Sections 2.4 and 2.5 we summarized a sample with a correlation and a regression line. Now we ask what the sample tells us about the population.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>What we did before (description)</h3>
+      <ul>
+        <li>Drew a scatterplot of two quantitative variables.</li>
+        <li>Computed the sample correlation \(r\).</li>
+        <li>Fit the least squares line \(\hat{y} = b_0 + b_1 x\) and interpreted its slope.</li>
+        <li>All of these are <span class="accent">statistics</span>: they describe the sample we happened to collect.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>What we do now (inference)</h3>
+      <ul>
+        <li>A different sample would give a different \(r\) and a different slope.</li>
+        <li>So a tilted line in <em>our</em> sample might just be chance.</li>
+        <li>Key question: is there evidence of a linear relationship in the <span class="green">population</span>?</li>
+        <li>Tools: a hypothesis test and a confidence interval, both using a t-distribution.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">Even when two variables are completely unrelated in the population, the sample slope is almost never exactly 0. Inference tells us whether our slope is far enough from 0 to be convincing.</div>
+</div>
+
+<div class="slide">
+  <h2>The Simple Linear Model</h2>
+  <p class="subtitle">Definitions: the population has a true line; the sample gives us an estimate of it.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Population model</h3>
+      <div class="formula-box">
+        \[
+          y = \beta_0 + \beta_1 x + \varepsilon
+        \]
+      </div>
+      <ul class="small">
+        <li>\(\beta_0\) (beta-zero): the <span class="accent">population intercept</span>.</li>
+        <li>\(\beta_1\) (beta-one): the <span class="accent">population slope</span>, the true change in the mean of \(y\) when \(x\) increases by one unit.</li>
+        <li>\(\varepsilon\): random error, the scatter of individuals around the line.</li>
+        <li>\(\rho\) (rho): the <span class="accent">population correlation</span> between \(x\) and \(y\).</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Sample estimates</h3>
+      <div class="formula-box">
+        \[
+          \hat{y} = b_0 + b_1 x
+        \]
+      </div>
+      <ul class="small">
+        <li>\(b_0\) estimates \(\beta_0\); \(b_1\) estimates \(\beta_1\); \(r\) estimates \(\rho\).</li>
+        <li>Each estimate has a <span class="green">standard error</span> that measures how much it would vary from sample to sample.</li>
+        <li>Parameters are Greek letters and fixed; statistics are Roman letters and change with the sample.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">The central question of this section: is \(\beta_1 = 0\) (no linear relationship in the population) or is \(\beta_1 \neq 0\)? Equivalently, is \(\rho = 0\) or \(\rho \neq 0\)?</div>
+</div>
+
+<div class="slide">
+  <h2>The Data: Sleep Study</h2>
+  <p class="subtitle">Is depression a possible factor in students missing classes? The <b>SleepStudy</b> dataset records many variables for a sample of 253 college students, including a standard depression score (higher means more depressed) and the number of classes missed during the semester.</p>
+  <div class="grid-2">
+    <div class="chart-box">
+      <div id="chart-9-1-depression"></div>
+      <div class="chart-caption">Each dot is one student. Points are jittered slightly so repeated values show. The rose line is the least squares line.</div>
+    </div>
+    <div class="card card-green">
+      <h3>Look at the plot</h3>
+      <ul class="questions">
+        <li>(a) Which is the explanatory variable and which is the response?</li>
+        <li>(b) Is the association positive or negative? Strong or weak?</li>
+        <li>(c) The line tilts upward. Could a tilt this small arise by chance in a sample of 253, even if depression and missed classes were unrelated for all students at this college?</li>
+      </ul>
+      <div class="callout" style="margin-top:14px;">Question (c) is exactly what a hypothesis test for the slope answers.</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      StatGraphs.scatter('#chart-9-1-depression', jitter(DEP, 11, 0.35), jitter(MISSED, 12, 0.35),
+        { width: 560, height: 340, padBottom: 48, padLeft: 46, xMin: 0, xMax: 35, yMin: 0, yMax: 20,
+          xLabel: 'depression score', yLabel: 'classes missed', dotR: 4,
+          line: { intercept: 1.7771, slope: 0.08312, xFrom: 0, xTo: 35, color: '#fb7185' } });
+    })();
+  </script>
+</div>
+
+<div class="slide">
+  <h2>Why a Test? The Sampling Distribution of the Slope</h2>
+  <p class="subtitle">Imagine taking many samples of 253 students. Each sample gives its own slope \(b_1\). If there were no relationship in the population, those slopes would pile up around 0.</p>
+  <div class="grid-2">
+    <div class="chart-box">
+      <div id="chart-9-1-sampdist"></div>
+      <div class="chart-caption">Sampling distribution of \(b_1\) when \(\beta_1 = 0\), with standard error 0.0337. The shaded tails are the p-value for our observed slope.</div>
+    </div>
+    <div class="card card-accent">
+      <h3>Reading the picture</h3>
+      <ul>
+        <li>Center: 0, because \(H_0\) says the population slope is 0.</li>
+        <li>Spread: the <span class="accent">standard error of the slope</span>, \(SE_{b_1}\), reported by software.</li>
+        <li>Our sample slope, 0.0831, sits about 2.5 standard errors above 0.</li>
+        <li>The shaded area (both tails) is small, so a slope this far from 0 would be unusual if \(H_0\) were true.</li>
+      </ul>
+      <div class="formula-box" style="font-size:20px;">
+        \[
+          t = \frac{b_1 - 0}{SE_{b_1}} = \frac{0.0831}{0.0337} \approx 2.47
+        \]
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      StatGraphs.normalCurve('#chart-9-1-sampdist', {
+        mean: 0, sd: 0.03368, xMin: -0.14, xMax: 0.14, width: 560, height: 300, padBottom: 44,
+        xLabel: 'sample slope b\u2081',
+        shade: [ { from: -0.14, to: -0.0831, color: '#fb7185' }, { from: 0.0831, to: 0.14, color: '#fb7185' } ],
+        markers: [ { x: 0.0831, label: 'observed b\u2081 = 0.0831' } ],
+      });
+    })();
+  </script>
+</div>
+
+<div class="slide">
+  <h2>Test for Correlation</h2>
+  <p class="subtitle">Definition: a hypothesis test for whether the population correlation is zero.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Hypotheses</h3>
+      <div class="formula-box">
+        \[
+          H_0:\ \rho = 0 \qquad H_a:\ \rho \neq 0
+        \]
+      </div>
+      <div class="step-note">In words: \(H_0\) says there is no linear relationship between the two variables in the population. \(H_a\) says there is one. A one-sided alternative (\(\rho > 0\) or \(\rho < 0\)) is used when the direction is specified in advance.</div>
+    </div>
+    <div class="card card-green">
+      <h3>Test statistic</h3>
+      <div class="formula-box">
+        \[
+          t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}}, \qquad df = n - 2
+        \]
+      </div>
+      <ul class="small">
+        <li>\(r\) is the sample correlation and \(n\) is the number of pairs.</li>
+        <li>Compare to a t-distribution with \(n - 2\) degrees of freedom to get the p-value.</li>
+        <li>For the sleep data: \(t = \dfrac{0.154\sqrt{251}}{\sqrt{1 - 0.154^2}} \approx 2.47\), p-value \(= 0.014\).</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">Why \(n - 2\)? Fitting a line uses up two pieces of information from the data, the intercept and the slope. Every t-procedure in this section uses \(df = n - 2\).</div>
+</div>
+
+<div class="slide">
+  <h2>Test for Slope</h2>
+  <p class="subtitle">Definition: a hypothesis test for whether the population slope is zero, which means whether \(x\) is a useful linear predictor of \(y\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Hypotheses and statistic</h3>
+      <div class="formula-box">
+        \[
+          H_0:\ \beta_1 = 0 \qquad H_a:\ \beta_1 \neq 0
+        \]
+      </div>
+      <div class="formula-box">
+        \[
+          t = \frac{b_1 - 0}{SE_{b_1}}, \qquad df = n - 2
+        \]
+      </div>
+      <div class="step-note">\(b_1\) is the sample slope and \(SE_{b_1}\) is its standard error. Both are printed in the regression output, along with \(t\) and the p-value.</div>
+    </div>
+    <div class="card card-green">
+      <h3>Same test, two names</h3>
+      <ul>
+        <li>"No linear relationship" can be written as \(\rho = 0\) or as \(\beta_1 = 0\). They say the same thing.</li>
+        <li>The t-statistic for the correlation and the t-statistic for the slope are <span class="green">always identical</span>, and so are the p-values.</li>
+        <li>Use whichever version the output gives you; the conclusion is the same.</li>
+        <li>Reject \(H_0\) when the p-value is below the significance level; conclude there is evidence of a linear relationship.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Reading Regression Output</h2>
+  <p class="subtitle">Software reports everything needed for inference. Here is the output for predicting classes missed from depression score.</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <div class="step-note">Pearson correlation of DepressionScore and ClassesMissed = 0.154, P-Value = 0.014</div>
+      <div class="step-note">The regression equation is ClassesMissed = 1.78 + 0.0831 DepressionScore</div>
+      <table>
+        <tr><th>Predictor</th><th>Coef</th><th>SE Coef</th><th>T</th><th>P</th></tr>
+        <tr><td>Constant</td><td>1.7771</td><td>0.2671</td><td>6.65</td><td>0.000</td></tr>
+        <tr><td>DepressionScore</td><td class="amber">0.08312</td><td class="amber">0.03368</td><td class="amber">2.47</td><td class="amber">0.014</td></tr>
+      </table>
+      <div class="step-note" style="margin-top:10px;">S = 3.20806 &nbsp; R-Sq = 2.4% &nbsp; R-Sq(adj) = 2.0%</div>
+    </div>
+    <div class="card card-green">
+      <h3>Where to look</h3>
+      <ul class="small">
+        <li><span class="amber">Coef</span> in the DepressionScore row is the slope \(b_1 = 0.0831\). The Constant row gives the intercept \(b_0 = 1.78\).</li>
+        <li><span class="amber">SE Coef</span> is the standard error of the slope, \(SE_{b_1} = 0.03368\).</li>
+        <li><span class="amber">T</span> is \(b_1 / SE_{b_1} = 2.47\) and <span class="amber">P</span> is its two-sided p-value, 0.014, for testing \(\beta_1 = 0\).</li>
+        <li>The Constant row tests \(\beta_0 = 0\), which is rarely of interest.</li>
+        <li>S is the standard deviation of the residuals: typical prediction error, about 3.2 classes.</li>
+        <li>R-Sq is \(R^2\), the percent of variability in \(y\) explained by the line.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Example 1: Depression and Missed Classes</h2>
+  <p class="subtitle">Using the output on the previous slide, test whether depression score and classes missed are correlated for students at this college.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <div class="tag tag-blue">Question</div>
+      <div class="step-note">(a) What is the sample correlation? (b) What is the p-value for testing the correlation? (c) Give the conclusion of the test in context.</div>
+      <div class="tag tag-purple">Hypotheses</div>
+      <div class="formula-box">\[ H_0:\ \rho = 0 \qquad H_a:\ \rho \neq 0 \]</div>
+      <div class="step-note">In words: \(H_0\) says depression score and classes missed are not linearly related for all students at this college; \(H_a\) says they are.</div>
+    </div>
+    <div class="card card-accent">
+      <div class="tag tag-green">Answers</div>
+      <ul>
+        <li>(a) The sample correlation is \(r = 0.154\), a weak positive association.</li>
+        <li>(b) The p-value for the correlation test is \(0.014\).</li>
+        <li>(c) At a 5% level, \(0.014 < 0.05\), so we <span class="green">reject \(H_0\)</span>. There is evidence that \(\rho \neq 0\): some association exists between depression scores and the number of classes missed.</li>
+      </ul>
+      <div class="callout" style="margin-top:12px;">Rejecting \(H_0\) says the relationship is real, not that it is strong. The correlation is only 0.154.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Example 1: The Line, a Prediction, and a Residual</h2>
+  <p class="subtitle">(d) What is the regression line? (e) Find the predicted value and residual for a student with a depression score of 7 who has missed 4 classes.</p>
+  <div class="grid-2">
+    <div class="chart-box">
+      <div id="chart-9-1-residual"></div>
+      <div class="chart-caption">The amber point is the student with score 7 and 4 missed classes. The dashed segment is the residual.</div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-green">Answers</div>
+      <div class="formula-box" style="font-size:19px;">
+        \[
+          \widehat{\text{ClassesMissed}} = 1.78 + 0.0831\,\text{DepressionScore}
+        \]
+      </div>
+      <div class="step-note">Predicted value for a depression score of 7:</div>
+      <div class="formula-box" style="font-size:19px;">
+        \[
+          \hat{y} = 1.78 + 0.0831(7) = 2.36
+        \]
+      </div>
+      <div class="step-note">Residual = observed \(-\) predicted:</div>
+      <div class="formula-box" style="font-size:19px;">
+        \[
+          y - \hat{y} = 4 - 2.36 = 1.64
+        \]
+      </div>
+      <div class="step-note">This student missed about 1.64 more classes than the line predicts.</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      StatGraphs.scatter('#chart-9-1-residual', jitter(DEP, 11, 0.35), jitter(MISSED, 12, 0.35),
+        { width: 560, height: 340, padBottom: 48, padLeft: 46, xMin: 0, xMax: 35, yMin: 0, yMax: 20,
+          xLabel: 'depression score', yLabel: 'classes missed', dotR: 4,
+          line: { intercept: 1.7771, slope: 0.08312, xFrom: 0, xTo: 35, color: '#fb7185' } });
+      // Overlay the highlighted point and its residual using the same scales as StatGraphs.scatter.
+      const svg = document.querySelector('#chart-9-1-residual svg');
+      const W = 560, H = 340, PL = 46, PR = 14, PT = 14, PB = 48;
+      const plotW = W - PL - PR, plotH = H - PT - PB;
+      const xMin = 0, xMax = 35, yMin = 0, yMax = 20, padX = (xMax - xMin) * 0.06, padY = (yMax - yMin) * 0.06;
+      const sx = v => PL + ((v - (xMin - padX)) / ((xMax + padX) - (xMin - padX))) * plotW;
+      const sy = v => PT + plotH - ((v - (yMin - padY)) / ((yMax + padY) - (yMin - padY))) * plotH;
+      const NS = 'http://www.w3.org/2000/svg';
+      const seg = document.createElementNS(NS, 'line');
+      seg.setAttribute('x1', sx(7)); seg.setAttribute('y1', sy(2.36)); seg.setAttribute('x2', sx(7)); seg.setAttribute('y2', sy(4));
+      seg.setAttribute('stroke', '#fbbf24'); seg.setAttribute('stroke-width', 2.5); seg.setAttribute('stroke-dasharray', '5 4');
+      svg.appendChild(seg);
+      const pt = document.createElementNS(NS, 'circle');
+      pt.setAttribute('cx', sx(7)); pt.setAttribute('cy', sy(4)); pt.setAttribute('r', 7);
+      pt.setAttribute('fill', '#fbbf24'); pt.setAttribute('stroke', '#0f172a'); pt.setAttribute('stroke-width', 2);
+      svg.appendChild(pt);
+      svgText(svg, sx(7) + 12, sy(4) - 8, '(7, 4)', '#fbbf24');
+      svgText(svg, sx(7) + 12, sy(3.2) + 4, 'residual = 1.64', '#fbbf24');
+    })();
+  </script>
+</div>
+
+<div class="slide">
+  <h2>Example 1: Interpreting and Testing the Slope</h2>
+  <p class="subtitle">(f) Interpret the slope in context. (g) What is the p-value for a test of the slope? Give the conclusion in context.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <div class="tag tag-green">Answers</div>
+      <div class="step-note">(f) The slope is \(b_1 = 0.0831\). If a student's depression score were one point higher, the predicted number of classes missed would be <span class="green">0.0831 higher</span>.</div>
+      <div class="tag tag-purple">Hypotheses</div>
+      <div class="formula-box" style="font-size:19px;">\[ H_0:\ \beta_1 = 0 \qquad H_a:\ \beta_1 \neq 0 \]</div>
+      <div class="formula-box" style="font-size:19px;">\[ t = \frac{0.08312}{0.03368} = 2.47, \qquad df = 251 \]</div>
+      <div class="step-note">(g) The p-value is \(0.014\). At a 5% level we reject \(H_0\) and conclude there is evidence that \(\beta_1 \neq 0\): a student's depression score is an effective predictor of the number of classes missed.</div>
+    </div>
+    <div class="chart-box">
+      <div id="chart-9-1-tcurve"></div>
+      <div class="chart-caption">t-distribution with \(df = 251\). With this many degrees of freedom it is indistinguishable from the standard normal curve. Shaded area \(= 0.014\).</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      StatGraphs.normalCurve('#chart-9-1-tcurve', {
+        mean: 0, sd: 1, xMin: -4, xMax: 4, width: 560, height: 300, padBottom: 44,
+        xLabel: 't',
+        shade: [ { from: -4, to: -2.47, color: '#fb7185' }, { from: 2.47, to: 4, color: '#fb7185' } ],
+        markers: [ { x: 2.47, label: 't = 2.47' }, { x: -2.47, label: 't = \u22122.47' } ],
+      });
+    })();
+  </script>
+</div>
+
+<div class="slide">
+  <h2>Confidence Interval for the Slope</h2>
+  <p class="subtitle">Definition: a range of plausible values for the population slope \(\beta_1\), built the same way as every other t-interval.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Formula</h3>
+      <div class="formula-box">
+        \[
+          b_1 \pm t^* \cdot SE_{b_1}, \qquad df = n - 2
+        \]
+      </div>
+      <ul class="small">
+        <li>\(b_1\) and \(SE_{b_1}\) come from the regression output.</li>
+        <li>\(t^*\) is the critical value from a t-distribution with \(n - 2\) degrees of freedom, chosen for the confidence level.</li>
+        <li>\(t^* \cdot SE_{b_1}\) is the margin of error.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Interpretation template</h3>
+      <div class="callout" style="margin-top:0;">We are 95% confident that the slope of the line to predict <em>[response]</em> from <em>[explanatory]</em> for <em>[population]</em> is between <em>[lower]</em> and <em>[upper]</em>.</div>
+      <ul class="small" style="margin-top:12px;">
+        <li>The slope is in units of \(y\) per one unit of \(x\).</li>
+        <li>If the interval contains 0, the data do not rule out "no linear relationship." That matches not rejecting \(H_0\) in the test.</li>
+        <li>If 0 is outside the interval, the slope is significantly different from 0, matching a rejection of \(H_0\).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Example 1: A 95% Confidence Interval for the Slope</h2>
+  <p class="subtitle">(h) What is the standard error of the slope? Find and interpret a 95% confidence interval for the slope of the regression line.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <div class="tag tag-green">Answers</div>
+      <div class="step-note">From the output, \(SE_{b_1} = 0.03368\). With \(df = n - 2 = 251\), the 95% critical value is \(t^* = 1.970\).</div>
+      <div class="formula-box" style="font-size:19px;">
+        \[
+          \begin{aligned}
+            b_1 \pm t^* \cdot SE_{b_1} &amp;= 0.0831 \pm 1.970(0.03368) \\
+                                       &amp;= 0.0831 \pm 0.0664 \\
+                                       &amp;= 0.0167 \ \text{to}\ 0.1495
+          \end{aligned}
+        \]
+      </div>
+    </div>
+    <div class="card card-accent">
+      <h3>Interpretation</h3>
+      <div class="callout" style="margin-top:0;">We are 95% sure that the slope of the linear model to predict classes missed from depression score, for all students at this college, is between 0.0167 and 0.1495.</div>
+      <ul class="small" style="margin-top:12px;">
+        <li>Every plausible slope is positive: each extra point of depression score is associated with somewhere between about 0.02 and 0.15 more classes missed.</li>
+        <li>The interval does not contain 0, which agrees with rejecting \(H_0: \beta_1 = 0\) at the 5% level.</li>
+        <li>The interval is wide relative to the estimate because the relationship is weak and the data are noisy.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Example 1: Two p-values and \(R^2\)</h2>
+  <p class="subtitle">(i) Compare the two p-values, from the test for correlation and the test for slope. (j) What is \(R^2\) for this model? Interpret it in context.</p>
+  <div class="grid-3">
+    <div class="card card-green">
+      <div class="tag tag-green">Answer (i)</div>
+      <div class="big-number green">0.014</div>
+      <div class="stat-label">Both the correlation test and the slope test give p-value 0.014. They are the same, as expected: both test "no linear relationship."</div>
+    </div>
+    <div class="card card-accent">
+      <h3>Definition: \(R^2\)</h3>
+      <div class="formula-box" style="font-size:20px;">\[ R^2 = r^2 \]</div>
+      <div class="stat-label">The proportion of the variability in the response variable that is explained by the linear model. It is always between 0 and 1 (0% and 100%).</div>
+    </div>
+    <div class="card card-amber">
+      <div class="tag tag-green">Answer (j)</div>
+      <div class="big-number amber">2.4%</div>
+      <div class="stat-label">\(R^2 = 0.154^2 \approx 0.024\). Depression scores explain only 2.4% of the variability in the number of classes missed.</div>
+    </div>
+  </div>
+  <div class="callout">Statistically significant does not mean practically important. With \(n = 253\), even a weak relationship (\(r = 0.154\)) produces a small p-value. The tiny \(R^2\) reminds us that depression score alone is a poor predictor of classes missed.</div>
+</div>
+
+<div class="slide">
+  <h2>Conditions for Inference on a Line</h2>
+  <p class="subtitle">The t-procedures for slope and correlation rely on a few conditions. Check them with a scatterplot and a residual plot.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Conditions</h3>
+      <ul class="small">
+        <li><span class="accent">Linearity.</span> The scatterplot shows a roughly linear pattern, and the residual plot has no curve.</li>
+        <li><span class="accent">Constant variability.</span> The vertical spread of residuals is about the same across all values of \(x\).</li>
+        <li><span class="accent">Normal residuals.</span> Residuals are roughly symmetric and bell-shaped, with no extreme outliers. Less critical when \(n\) is large.</li>
+        <li><span class="accent">Independence.</span> Observations do not influence one another, which holds for a random sample.</li>
+      </ul>
+      <div class="step-note">A <b>residual plot</b> graphs each residual \(y - \hat{y}\) against \(x\) (or \(\hat{y}\)). We want a shapeless cloud centered on 0.</div>
+    </div>
+    <div class="chart-box">
+      <div id="chart-9-1-resid"></div>
+      <div class="chart-caption">Residual plot for classes missed vs. depression score. No curve, but the spread is a little uneven and some residuals are large, so interpret the p-value with some care.</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const resid = MISSED.map((y, i) => y - (1.7771 + 0.08312 * DEP[i]));
+      StatGraphs.scatter('#chart-9-1-resid', jitter(DEP, 21, 0.35), jitter(resid, 22, 0.25),
+        { width: 560, height: 320, padBottom: 48, padLeft: 46, xMin: 0, xMax: 35, yMin: -5, yMax: 20,
+          xLabel: 'depression score', yLabel: 'residual', dotR: 4,
+          line: { intercept: 0, slope: 0, xFrom: 0, xTo: 35, color: '#fbbf24' } });
+    })();
+  </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Quick Self-Quiz</span>
+  <h2>Alcohol and Missed Classes</h2>
+  <p class="subtitle">Another possible explanatory variable for ClassesMissed in the SleepStudy data is <b>Drinks</b>, the number of alcoholic drinks per week the students say they have. Output for predicting classes missed from drinks is shown.</p>
+  <div class="grid-2">
+    <div>
+      <div class="chart-box">
+        <div id="chart-9-1-drinks"></div>
+      </div>
+      <div class="card card-accent table-card" style="margin-top:12px; padding:12px 16px;">
+        <div class="step-note">Pearson correlation of Drinks and ClassesMissed = 0.078, P-Value = 0.215</div>
+        <div class="step-note">The regression equation is ClassesMissed = 1.86 + 0.0620 Drinks</div>
+        <table style="font-size:14px;">
+          <tr><th>Predictor</th><th>Coef</th><th>SE Coef</th><th>T</th><th>P</th></tr>
+          <tr><td>Constant</td><td>1.8644</td><td>0.3439</td><td>5.42</td><td>0.000</td></tr>
+          <tr><td>Drinks</td><td>0.06196</td><td>0.04979</td><td>1.24</td><td>0.215</td></tr>
+        </table>
+        <div class="step-note" style="margin-top:8px; margin-bottom:0;">S = 3.23679 &nbsp; R-Sq = 0.6% &nbsp; R-Sq(adj) = 0.2%</div>
+      </div>
+    </div>
+    <div class="card card-green">
+      <h3>Questions</h3>
+      <ul class="questions">
+        <li>(a) What is the correlation? What is the p-value for testing the correlation?</li>
+        <li>(b) Give the conclusion of the test in context.</li>
+        <li>(c) What is the regression line?</li>
+        <li>(d) Find the predicted value and residual for a student who has 6 drinks a week and has missed 2 classes.</li>
+        <li>(e) What is the p-value for a test of the slope? Give the conclusion in context.</li>
+        <li>(f) What is the standard error of the slope? Find and interpret a 95% confidence interval for the slope.</li>
+        <li>(g) Compare the two p-values, from the test for correlation and the test for slope.</li>
+        <li>(h) What is \(R^2\) for this model? Interpret it in context.</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    (function () {
+      StatGraphs.scatter('#chart-9-1-drinks', jitter(DRINKS, 31, 0.35), jitter(MISSED, 32, 0.35),
+        { width: 560, height: 260, padBottom: 44, padLeft: 46, xMin: 0, xMax: 24, yMin: 0, yMax: 20,
+          xLabel: 'alcoholic drinks per week', yLabel: 'classes missed', dotR: 3.5,
+          line: { intercept: 1.8644, slope: 0.06196, xFrom: 0, xTo: 24, color: '#fb7185' } });
+    })();
+  </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Answers</span>
+  <h2>Alcohol and Missed Classes: Answers</h2>
+  <p class="subtitle">Compare each step to Example 1. Same procedure, opposite conclusion.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <ul class="small">
+        <li>(a) \(r = 0.078\); the p-value for testing \(\rho = 0\) is \(0.215\).</li>
+        <li>(b) Since \(0.215 > 0.05\), we <span class="rose">do not reject \(H_0\)</span>. We do not find evidence of a linear relationship between the number of classes missed and the number of alcoholic drinks consumed.</li>
+        <li>(c) \(\widehat{\text{ClassesMissed}} = 1.86 + 0.062\,\text{Drinks}\)</li>
+        <li>(d) Predicted: \(1.86 + 0.062(6) = 2.23\) classes. Residual: \(2 - 2.23 = -0.23\). This student missed slightly fewer classes than predicted.</li>
+        <li>(e) The p-value for the slope is \(0.215\), the same as for the correlation. We do not reject \(H_0: \beta_1 = 0\) and do not find evidence that number of drinks is effective at predicting classes missed.</li>
+      </ul>
+    </div>
+    <div class="card card-accent">
+      <ul class="small">
+        <li>(f) \(SE_{b_1} = 0.04979\). With \(df = 251\), \(t^* = 1.970\):</li>
+      </ul>
+      <div class="formula-box" style="font-size:18px; margin-top:4px;">
+        \[
+          \begin{aligned}
+            0.062 \pm 1.970(0.04979) &amp;= 0.062 \pm 0.098 \\
+                                     &amp;= -0.036 \ \text{to}\ 0.160
+          \end{aligned}
+        \]
+      </div>
+      <ul class="small">
+        <li>We are 95% sure that the slope of the linear model to predict classes missed from drinks per week, for all students at this college, is between \(-0.036\) and \(0.160\). The interval contains 0, consistent with not rejecting \(H_0\).</li>
+        <li>(g) The two p-values are the same, \(0.215\), as expected.</li>
+        <li>(h) \(R^2 = 0.6\%\). The number of alcoholic drinks per week explains only 0.6% of the variability in number of classes missed.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>What to Remember</h2>
+  <p class="subtitle">Inference for a line asks one question in several forms: is there a linear relationship in the population?</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Core Formulas</h3>
+      <ul>
+        <li>Model: \(y = \beta_0 + \beta_1 x + \varepsilon\); estimate: \(\hat{y} = b_0 + b_1 x\)</li>
+        <li>Test for slope: \(t = \dfrac{b_1}{SE_{b_1}}\), \(H_0: \beta_1 = 0\)</li>
+        <li>Test for correlation: \(t = \dfrac{r\sqrt{n-2}}{\sqrt{1-r^2}}\), \(H_0: \rho = 0\)</li>
+        <li>Confidence interval for slope: \(b_1 \pm t^* \cdot SE_{b_1}\)</li>
+        <li>All use \(df = n - 2\); the two tests give identical p-values</li>
+        <li>\(R^2 = r^2\) = proportion of variability in \(y\) explained</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Cautions</h3>
+      <ul>
+        <li>Significant is not the same as strong. Check \(r\) and \(R^2\), not just the p-value.</li>
+        <li>Check conditions with a scatterplot and residual plot before trusting the p-value.</li>
+        <li>A 0 inside the confidence interval means "no relationship" is still plausible.</li>
+        <li>Correlation and regression do not prove causation. Depression and missed classes are observational data.</li>
+        <li>Do not extrapolate beyond the range of the data.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
+  });
+  renderSlide(0);
+</script>
+</body>
+</html>
