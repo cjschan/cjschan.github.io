@@ -130,7 +130,7 @@ dict(num=3, title="Describing Categorical and Quantitative Variables", dates="Se
       (part("Frequency and Relative Frequency"), "MO1"),
       (part("Finding Proportions from Two-Way Tables"), "MO2, MO3"),
       (part("Quantitative Variables") + " – shape, mean vs. median", "MO4, MO5"),
-      ("In-class estimation: estimate the mean and SD of a dotplot without calculating (95% rule)", "MO6"),
+      ("Estimation activity: estimate the mean and SD of a dotplot without calculating (95% rule)", "MO6"),
      ],
      assessments=[
       (hw("2.1", "Sep 13"), "MO1, MO2, MO3"),

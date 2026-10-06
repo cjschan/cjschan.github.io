@@ -79,7 +79,7 @@ def tools_for(text, kind):
     if text.startswith(("e-Text", "Online Homework")):
         return ["WileyPLUS"]
     if "slides" in t.split(":")[0] or text.startswith("All "):
-        return ["Lecture Slides (course website)"]
+        return ["Blackboard"]
     if text.startswith("START HERE"):
         return ["Content Area in Blackboard"]
     if text.startswith("StatKey"):
@@ -93,7 +93,7 @@ def tools_for(text, kind):
         out.append("Kahoot!")
     if "statkey" in t:
         out.append("StatKey")
-    return out or [D.LIVE_TOOL]
+    return out or ([D.LIVE_TOOL] if D.LIVE_TOOL else [])
 
 def clo_tag(clos):
     return '<span class="clo">(' + ", ".join(f"CLO {c}" for c in clos) + ")</span>"

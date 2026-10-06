@@ -36,9 +36,9 @@ HOW TO READ A PAGE (template revised Oct 6, 2026)
                            in the Week 6 module but covers Weeks 1–5). Those are the gaps/misalignments
                            the handout asks you to look for.
   Tools                    derived from each item's name: e-Text and Online Homework -> WileyPLUS;
-                           Interactive Lecture -> WileyPLUS + StatKey; Slides -> course website; quizzes -> Assignment Tool in Blackboard;
+                           Interactive Lecture -> WileyPLUS + StatKey; Slides -> Blackboard; quizzes -> Assignment Tool in Blackboard;
                            tests -> Assessment Tool in Blackboard + Respondus; Kahoot!, StatKey; other
-                           Participation -> LIVE_TOOL in course_map_data.py.
+                           Participation -> LIVE_TOOL in course_map_data.py (None = no tool listed).
 
 WEEK GROUPING (follows the Blackboard outline and the MW syllabus)
   W1 Intro, 1.1 | W2 1.2, 1.3 | W3 2.1 (Labor Day Mon) | W4 2.2, 2.3 | W5 2.4, 2.5 | W6 P.1, 3.1

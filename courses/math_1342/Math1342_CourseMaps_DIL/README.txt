@@ -35,9 +35,9 @@ HOW TO READ A PAGE (template revised Oct 6, 2026)
                            in the Week 6 module but covers Weeks 1–5). Those are the gaps/misalignments
                            the handout asks you to look for.
   Tools                    derived from each item's name: e-Text and Online Homework -> WileyPLUS;
-                           Interactive Lecture -> WileyPLUS + StatKey; Slides -> course website; quizzes -> Assignment Tool in Blackboard;
+                           Interactive Lecture -> WileyPLUS + StatKey; Slides -> Blackboard; quizzes -> Assignment Tool in Blackboard;
                            tests -> Assessment Tool in Blackboard + Respondus; Kahoot!, StatKey; other
-                           Participation -> LIVE_TOOL in course_map_data.py.
+                           Participation -> LIVE_TOOL in course_map_data.py (None = no tool listed).
 
 CONVENTIONS USED FOR RESOURCE NAMES (RRC convention, applied to every week)
   e-Text: x.x Title | Interactive Lecture: x.x Title | Slides: x.x Title | Online Homework: x.x Title

@@ -22,7 +22,7 @@ COURSE_OBJECTIVES = [   # Course Level Objectives (CLOs), revised Oct 6, 2026
 ]
 
 # Tool listed for live class activities (Participation items without Kahoot!/StatKey).
-LIVE_TOOL = "In class"
+LIVE_TOOL = None
 
 TITLES = {
     "1.1": "The Structure of Data",
