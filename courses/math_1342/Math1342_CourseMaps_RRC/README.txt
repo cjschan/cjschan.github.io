@@ -11,8 +11,8 @@ final exam, with no separate catch-up day. Blackboard has no 9.1 items yet; the 
 FILES
   Week01.pdf … Week16.pdf        one landscape page per week
   Math1342_CourseMap_All.pdf     all 16 weeks in one file
-  source/course_map_data.py      ALL content (course objectives, module objectives, materials,
-                                 activities, assessments, # codes). Edit this file.
+  source/course_map_data.py      ALL content (Course Level Objectives, module objectives, materials,
+                                 activities, assessments, MO codes). Edit this file.
   source/build_course_maps.py    renders HTML and prints PDFs with Google Chrome (headless)
   source/html/                   the generated HTML pages
 
@@ -22,14 +22,23 @@ HOW TO REBUILD AFTER EDITING
 (The script picks the largest font size that fits every week on one page and uses it for all pages.
  Requires Google Chrome in /Applications and pdfinfo from poppler; both are installed.)
 
-HOW TO READ A PAGE
-  Course-level Objectives  only the Common Course Objectives this week's module objectives address,
-                           numbered as in the syllabus (CO1-CO12).
-  Module-level Objectives  written from what the slides actually teach; each ends with the course
-                           objective(s) it supports, e.g. (CO2, CO4).
-  #                        module objective(s) an item aligns to ("All" = every module objective
-                           of the week). "None" marks items that do not teach or assess a module
-                           objective of that week (e.g., Test 1 sits in Week 6 but covers Weeks 1-5).
+HOW TO READ A PAGE (template revised Oct 6, 2026)
+  Columns: Module Objectives | Instructional Materials | Learning Activities | Assessments | Tools.
+  Module Objectives        written from what the slides actually teach; each ends with the Course Level
+                           Objective(s) it supports, e.g. (CLO 2, CLO 7). The 8 CLOs (revised Oct 6, 2026)
+                           match the syllabus Student Learning Outcomes; the ones used that week are
+                           spelled out under the table.
+  Rows                     objectives that share a learning material sit in one row, with the materials,
+                           activities, assessments and tools that align to them.
+  "Items that cover ..."   items aligned to objectives in more than one row; their objectives are in
+                           parentheses.
+  "Course resources ..."   items that do not teach or assess an objective of that week (e.g., Test 1 sits
+                           in the Week 6 module but covers Weeks 1–5). Those are the gaps/misalignments
+                           the handout asks you to look for.
+  Tools                    derived from each item's name: e-Text and Online Homework -> WileyPLUS;
+                           Interactive Lecture -> WileyPLUS + StatKey; Slides -> course website; quizzes -> Assignment Tool in Blackboard;
+                           tests -> Assessment Tool in Blackboard + Respondus; Kahoot!, StatKey; other
+                           Participation -> LIVE_TOOL in course_map_data.py.
 
 WEEK GROUPING (follows the Blackboard outline and the MW syllabus)
   W1 Intro, 1.1 | W2 1.2, 1.3 | W3 2.1 (Labor Day Mon) | W4 2.2, 2.3 | W5 2.4, 2.5 | W6 P.1, 3.1
@@ -52,4 +61,3 @@ Blackboard (course _970761_1) vs. MW syllabus, as read on Oct 1, 2026 (second pa
 - Week 10 homework 4.4 is split into "(a)" and "(b)"; the syllabus (updated Oct 3, 2026) lists all of 4.4.
 - Quiz 8 sits in Week 13 (due Mon Nov 23) in Blackboard; the maps follow that placement.
 - Weeks 1-5 contain "Week N Course Map" items; these are the maps themselves and are not listed on the maps.
-- P.1 probability rules are not in the 12 Common Course Objectives (they are in Student Learning Outcome 3).

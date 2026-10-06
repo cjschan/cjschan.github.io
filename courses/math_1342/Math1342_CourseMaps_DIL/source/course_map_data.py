@@ -5,27 +5,26 @@ Edit this file and re-run build_course_maps.py to regenerate the PDFs.
 
 Each week dict:
   num, title, dates, sections (list of str), notes (str or None)
-  mos:  list of (objective_text, [course objective numbers])
+  mos:  list of (objective_text, [CLO numbers])
   materials / activities / assessments: list of (item_text, "MO codes")
 """
 
 COURSE = "MATH 1342 – Elementary Statistics"
 TERM = "Fall 2026 · Section 036 · TTh 6:00–7:20 PM (DIL)"
 
-COURSE_OBJECTIVES = [
-    "Interpret ideas of population versus sample, random variables, and techniques of descriptive statistics including frequency distributions, histograms, boxplots, and scatterplots.",
-    "Calculate and interpret measures of central tendency and dispersion, including mean, median, standard deviation, and quartiles.",
-    "Find and use empirical probabilities in bootstrap distributions to find confidence intervals and in randomization distributions to test hypotheses.",
-    "Find and use theoretical probabilities from normal, t, chi-squared and F distributions to form confidence intervals and test hypotheses. Apply the 95% rule to normal and to approximately normal distributions.",
-    "Analyze relationships between two quantitative variables using correlation and linear regression.",
-    "Analyze data presented in two-way tables to provide information about relationships between categorical variables.",
-    "Apply ideas of appropriate sampling techniques and experimental design to data production.",
-    "Use the sampling distributions of sample proportions and sample means to answer appropriate questions.",
-    "Estimate single means, difference of two means, single proportions and difference of two proportions using confidence intervals. Interpret the results.",
-    "Demonstrate skills in hypothesis testing for means and proportions, for single populations and comparison of two populations.",
-    "Demonstrate skills in hypothesis testing using chi-squared tests.",
-    "Demonstrate skills in inference for regression and ANOVA techniques.",
+COURSE_OBJECTIVES = [   # Course Level Objectives (CLOs), revised Oct 6, 2026
+    "Explain the use of data collection and statistics as tools to reach reasonable conclusions.",
+    "Recognize, examine, and interpret the basic principles of describing and presenting data.",
+    "Compute and interpret empirical and theoretical probabilities using the rules of probabilities and combinatorics.",
+    "Explain the role of probability in statistics.",
+    "Examine, analyze, and compare various sampling distributions for both discrete and continuous random variables.",
+    "Describe and compute confidence intervals.",
+    "Solve linear regression and correlation problems.",
+    "Perform hypothesis testing using statistical methods.",
 ]
+
+# Tool listed for live class activities (Participation items without Kahoot!/StatKey).
+LIVE_TOOL = "Zoom (live class)"
 
 TITLES = {
     "1.1": "The Structure of Data", "1.2": "Sampling from a Population", "1.3": "Experiments and Observational Studies",
@@ -55,10 +54,10 @@ dict(num=1, title="Introduction and the Structure of Data", dates="Aug 25 – 27
      sections=["Introduction: What Is Statistics For?", "1.1 The Structure of Data"],
      notes="First Day™ access: students should open the Wiley course resources this week to keep access.",
      mos=[
-      ("Describe statistics as the process of collecting, describing, and analyzing data, and judge a striking result by how likely it is to occur by chance alone.", [1]),
-      ("Distinguish a sample from a population and explain how a non-representative sample biases an estimate.", [1, 7]),
-      ("Identify the cases and variables in a dataset presented as a table.", [1]),
-      ("Classify a variable as categorical or quantitative.", [1]),
+      ("Describe statistics as the process of collecting, describing, and analyzing data, and judge a striking result by how likely it is to occur by chance alone.", [1, 4]),
+      ("Distinguish a sample from a population and explain how a non-representative sample biases an estimate.", [1]),
+      ("Identify the cases and variables in a dataset presented as a table.", [2]),
+      ("Classify a variable as categorical or quantitative.", [2]),
       ("Identify the explanatory and response variables in a research question.", [1]),
       ("Compute and compare the mean and median of a small dataset and explain how an outlier affects each.", [2]),
      ],
@@ -82,11 +81,11 @@ dict(num=2, title="Sampling, Experiments and Observational Studies", dates="Sep 
      sections=["1.2 Sampling from a Population", "1.3 Experiments and Observational Studies"],
      notes=None,
      mos=[
-      ("Distinguish a population from a sample and describe statistical inference.", [1, 7]),
-      ("Identify sampling bias in a described study, classify the sampling method (random, convenience, volunteer), and judge whether the results can be generalized.", [7]),
-      ("Recognize bias from question wording, question context, and inaccurate responses.", [7]),
-      ("Classify a study as observational or experimental, and identify a plausible confounding variable.", [7]),
-      ("Explain how random assignment, a control group, and blinding support cause-and-effect conclusions, and distinguish random sampling (generalize) from random assignment (causation).", [7]),
+      ("Distinguish a population from a sample and describe statistical inference.", [1]),
+      ("Identify sampling bias in a described study, classify the sampling method (random, convenience, volunteer), and judge whether the results can be generalized.", [1]),
+      ("Recognize bias from question wording, question context, and inaccurate responses.", [1]),
+      ("Classify a study as observational or experimental, and identify a plausible confounding variable.", [1]),
+      ("Explain how random assignment, a control group, and blinding support cause-and-effect conclusions, and distinguish random sampling (generalize) from random assignment (causation).", [1]),
      ],
      materials=[
       (etext("1.2"), "MO1, MO2, MO3"),
@@ -112,12 +111,12 @@ dict(num=3, title="Describing Categorical and Quantitative Variables", dates="Se
      sections=["2.1 Categorical Variables", "2.2 One Quantitative Variable: Shape and Center"],
      notes=None,
      mos=[
-      ("Construct frequency and relative frequency tables, compute a sample proportion p̂, and distinguish the parameter p from the statistic p̂.", [1]),
-      ("Compute and interpret overall and conditional proportions, and a difference in proportions, from a two-way table, choosing the correct denominator.", [6]),
-      ("Interpret bar charts, pie charts, side-by-side bar charts, and segmented bar charts.", [1, 6]),
-      ("Describe the shape of a distribution (symmetric, left-skewed, right-skewed) from a dotplot or histogram.", [1]),
+      ("Construct frequency and relative frequency tables, compute a sample proportion p̂, and distinguish the parameter p from the statistic p̂.", [2]),
+      ("Compute and interpret overall and conditional proportions, and a difference in proportions, from a two-way table, choosing the correct denominator.", [2]),
+      ("Interpret bar charts, pie charts, side-by-side bar charts, and segmented bar charts.", [2]),
+      ("Describe the shape of a distribution (symmetric, left-skewed, right-skewed) from a dotplot or histogram.", [2]),
       ("Compute the mean and median of a dataset and explain how skewness and outliers affect each (resistance).", [2]),
-      ("Interpret the standard deviation as the typical distance from the mean and apply the 95% rule to estimate the mean and standard deviation from a bell-shaped dotplot.", [2, 4]),
+      ("Interpret the standard deviation as the typical distance from the mean and apply the 95% rule to estimate the mean and standard deviation from a bell-shaped dotplot.", [2]),
      ],
      materials=[
       (etext("2.1"), "MO1, MO2, MO3"),
@@ -143,11 +142,11 @@ dict(num=4, title="Percentiles, Boxplots and Two-Variable Relationships", dates=
      notes=None,
      mos=[
       ("Compute the sample standard deviation of a small dataset by hand.", [2]),
-      ("Compute and interpret z-scores to compare values measured on different scales or in different groups.", [2, 4]),
-      ("Find the five-number summary, range, and IQR; apply the 1.5×IQR rule to identify outliers; and construct or interpret a boxplot.", [1, 2]),
-      ("Compare a quantitative variable across groups with side-by-side boxplots, and compute and interpret a difference in means.", [1, 2]),
-      ("Describe the direction, form, and strength of the relationship in a scatterplot and estimate the correlation r.", [5]),
-      ("Use technology to compute r and explain how outliers, nonlinear patterns, and the absence of causation limit its interpretation.", [5]),
+      ("Compute and interpret z-scores to compare values measured on different scales or in different groups.", [2]),
+      ("Find the five-number summary, range, and IQR; apply the 1.5×IQR rule to identify outliers; and construct or interpret a boxplot.", [2]),
+      ("Compare a quantitative variable across groups with side-by-side boxplots, and compute and interpret a difference in means.", [2]),
+      ("Describe the direction, form, and strength of the relationship in a scatterplot and estimate the correlation r.", [7]),
+      ("Use technology to compute r and explain how outliers, nonlinear patterns, and the absence of causation limit its interpretation.", [7]),
      ],
      materials=[
       (etext("2.3"), "MO1, MO2, MO3"),
@@ -172,11 +171,11 @@ dict(num=5, title="Linear Regression", dates="Sep 22 – 24",
      sections=["2.5 Two Quantitative Variables: Linear Regression", "Catch-Up Day (Thu Sep 24)"],
      notes="Interactive Lecture 2.5b is the 3e video labeled “Section 2.6”; it covers 2.5 in the 4e. Test 1 opens Fri Oct 2.",
      mos=[
-      ("Interpret the slope and intercept of a regression line in context with correct units, and judge whether the intercept is meaningful.", [5]),
-      ("Use a regression equation to predict a response value.", [5]),
-      ("Compute and interpret a residual, and locate positive and negative residuals on a scatterplot.", [5]),
-      ("Use technology to find the least-squares regression line and explain what “least squares” means.", [5]),
-      ("Recognize when a regression prediction is not appropriate: extrapolation, nonlinearity, influential outliers, and causal claims.", [5]),
+      ("Interpret the slope and intercept of a regression line in context with correct units, and judge whether the intercept is meaningful.", [7]),
+      ("Use a regression equation to predict a response value.", [7]),
+      ("Compute and interpret a residual, and locate positive and negative residuals on a scatterplot.", [7]),
+      ("Use technology to find the least-squares regression line and explain what “least squares” means.", [7]),
+      ("Recognize when a regression prediction is not appropriate: extrapolation, nonlinearity, influential outliers, and causal claims.", [7]),
      ],
      materials=[
       (etext("2.5"), "MO1–MO5"),
@@ -196,13 +195,13 @@ dict(num=5, title="Linear Regression", dates="Sep 22 – 24",
 # ---------------------------------------------------------------- Week 6
 dict(num=6, title="Probability Rules and Sampling Distributions", dates="Sep 29 – Oct 1",
      sections=["P.1 Probability Rules", "3.1 Sampling Distributions"],
-     notes="Test 1 window Fri Oct 2 – Sun Oct 4 (covers Intro, 1.1–1.3, 2.1–2.5). P.1 probability rules are not among the 12 Common Course Objectives; they support Student Learning Outcome 3 and underpin CO3/CO4.",
+     notes="Test 1 window Fri Oct 2 – Sun Oct 4 (covers Intro, 1.1–1.3, 2.1–2.5).",
      mos=[
-      ("Compute probabilities for equally likely outcomes and apply the complement rule.", []),
-      ("Apply the addition, multiplication, and conditional probability rules using a two-way table, and distinguish disjoint events from independent events.", [6]),
-      ("Classify a numerical summary as a parameter or a statistic and use the correct notation (μ, σ, p, ρ vs. x̄, s, p̂, r).", [8]),
-      ("Describe how a sampling distribution is built from repeated samples, what each dot represents, and its center and shape.", [8]),
-      ("Explain the standard error as the variability of a statistic and predict how sample size affects it.", [8]),
+      ("List the sample space and count outcomes to compute probabilities for equally likely outcomes, and apply the complement rule.", [3]),
+      ("Apply the addition, multiplication, and conditional probability rules using a two-way table, and distinguish disjoint events from independent events.", [3]),
+      ("Classify a numerical summary as a parameter or a statistic and use the correct notation (μ, σ, p, ρ vs. x̄, s, p̂, r).", [5]),
+      ("Describe how a sampling distribution is built from repeated samples, what each dot represents, and its center and shape.", [5]),
+      ("Explain the standard error as the variability of a statistic and predict how sample size affects it.", [5]),
      ],
      materials=[
       (etext("P.1"), "MO1, MO2"),
@@ -227,11 +226,11 @@ dict(num=7, title="Confidence Intervals and the Bootstrap", dates="Oct 6 – 8",
      sections=["3.2 Understanding and Interpreting Confidence Intervals", "3.3 Constructing Bootstrap Confidence Intervals Using Standard Error"],
      notes="Test 1 Retake window Mon Oct 5 – Sun Oct 11.",
      mos=[
-      ("Construct a 95% confidence interval for a mean or proportion as statistic ± 2·SE, given the statistic and its standard error.", [9]),
-      ("Interpret a confidence interval in context, explain the confidence level as the long-run capture rate of the method, and identify common misinterpretations.", [9]),
-      ("Describe how a bootstrap sample and a bootstrap distribution are created, and explain why the bootstrap distribution is centered at the sample statistic.", [3]),
-      ("Use StatKey to generate a bootstrap distribution and estimate the standard error as its standard deviation.", [3]),
-      ("Construct and interpret a 95% bootstrap confidence interval using the standard-error method.", [3, 9]),
+      ("Construct a 95% confidence interval for a mean or proportion as statistic ± 2·SE, given the statistic and its standard error.", [6]),
+      ("Interpret a confidence interval in context, explain the confidence level as the long-run capture rate of the method, and identify common misinterpretations.", [4, 6]),
+      ("Describe how a bootstrap sample and a bootstrap distribution are created, and explain why the bootstrap distribution is centered at the sample statistic.", [5, 6]),
+      ("Use StatKey to generate a bootstrap distribution and estimate the standard error as its standard deviation.", [5, 6]),
+      ("Construct and interpret a 95% bootstrap confidence interval using the standard-error method.", [6]),
      ],
      materials=[
       (etext("3.2"), "MO1, MO2"),
@@ -256,11 +255,11 @@ dict(num=8, title="Percentile Intervals and Introducing Hypothesis Tests", dates
      sections=["3.4 Bootstrap Confidence Intervals Using Percentiles", "4.1 Introducing Hypothesis Tests"],
      notes=None,
      mos=[
-      ("Determine which percentiles of a bootstrap distribution bound a 90%, 95%, or 99% confidence interval, and construct the interval with StatKey.", [3, 9]),
-      ("Predict how changing the confidence level or the sample size affects the width of an interval.", [9]),
-      ("Judge whether a bootstrap confidence interval is trustworthy from the shape of the bootstrap distribution and whether the sample is representative.", [3]),
-      ("Identify the parameter of interest and write null and alternative hypotheses from a research question.", [10]),
-      ("Classify a test as right-tailed, left-tailed, or two-tailed, and explain the logic of assuming H₀ and asking whether the data are surprising.", [10]),
+      ("Determine which percentiles of a bootstrap distribution bound a 90%, 95%, or 99% confidence interval, and construct the interval with StatKey.", [3, 6]),
+      ("Predict how changing the confidence level or the sample size affects the width of an interval.", [6]),
+      ("Judge whether a bootstrap confidence interval is trustworthy from the shape of the bootstrap distribution and whether the sample is representative.", [6]),
+      ("Identify the parameter of interest and write null and alternative hypotheses from a research question.", [8]),
+      ("Classify a test as right-tailed, left-tailed, or two-tailed, and explain the logic of assuming H₀ and asking whether the data are surprising.", [8]),
      ],
      materials=[
       (etext("3.4"), "MO1, MO2, MO3"),
@@ -285,11 +284,11 @@ dict(num=9, title="P-values and Statistical Significance", dates="Oct 20 – 22"
      sections=["4.2 Measuring Evidence with p-values", "4.3 Determining Statistical Significance"],
      notes=None,
      mos=[
-      ("Describe how a randomization distribution is generated assuming H₀ is true, and identify its center as the null value.", [3]),
-      ("Compare sampling, bootstrap, and randomization distributions by their center and purpose.", [3, 8]),
-      ("Compute a p-value from a randomization distribution as a proportion of simulated statistics, choosing the correct tail(s) from Hₐ.", [3, 10]),
-      ("Interpret a p-value in context and relate its size to the strength of evidence against H₀.", [10]),
-      ("Compare the p-value to α, decide whether to reject H₀, write a two-step conclusion in context, and avoid saying “accept H₀”.", [10]),
+      ("Describe how a randomization distribution is generated assuming H₀ is true, and identify its center as the null value.", [5, 8]),
+      ("Compare sampling, bootstrap, and randomization distributions by their center and purpose.", [5]),
+      ("Compute a p-value from a randomization distribution as a proportion of simulated statistics, choosing the correct tail(s) from Hₐ.", [3, 8]),
+      ("Interpret a p-value in context and relate its size to the strength of evidence against H₀.", [4, 8]),
+      ("Compare the p-value to α, decide whether to reject H₀, write a two-step conclusion in context, and avoid saying “accept H₀”.", [8]),
      ],
      materials=[
       (etext("4.2"), "MO1, MO2, MO3, MO4"),
@@ -314,11 +313,11 @@ dict(num=10, title="A Closer Look at Testing and Making Connections", dates="Oct
      sections=["4.4 A Closer Look at Testing", "4.5 Making Connections"],
      notes="Test 2 window Fri Oct 30 – Sun Nov 1 (covers P.1, 3.1–3.4, 4.1–4.3).",
      mos=[
-      ("Describe Type I and Type II errors in the context of a study, relate α to the probability of a Type I error, and explain the trade-off between the two errors and the effect of sample size.", [10]),
-      ("Explain how multiple testing and publication bias produce false positives, and distinguish statistical significance from practical significance.", [10]),
-      ("Describe how to generate randomization samples for a given study design (coin flips, re-randomizing groups, shifting data then bootstrapping).", [3]),
-      ("Compare bootstrap and randomization distributions by their center and use, identifying each center for given data.", [3]),
-      ("Use a 95% confidence interval to reach a two-tailed test conclusion at α = 0.05, and decide whether a confidence interval or a hypothesis test fits a research question.", [9, 10]),
+      ("Describe Type I and Type II errors in the context of a study, relate α to the probability of a Type I error, and explain the trade-off between the two errors and the effect of sample size.", [4, 8]),
+      ("Explain how multiple testing and publication bias produce false positives, and distinguish statistical significance from practical significance.", [8]),
+      ("Describe how to generate randomization samples for a given study design (coin flips, re-randomizing groups, shifting data then bootstrapping).", [8]),
+      ("Compare bootstrap and randomization distributions by their center and use, identifying each center for given data.", [5]),
+      ("Use a 95% confidence interval to reach a two-tailed test conclusion at α = 0.05, and decide whether a confidence interval or a hypothesis test fits a research question.", [6, 8]),
      ],
      materials=[
       (etext("4.4"), "MO1, MO2"),
@@ -344,11 +343,11 @@ dict(num=11, title="Normal Distributions and Inference for a Proportion", dates=
      sections=["5.1 Hypothesis Testing Using Normal Distributions", "6.1 Inference for a Proportion (Distribution, CI, Hypothesis Test)"],
      notes="Test 2 Retake window Mon Nov 2 – Sun Nov 8.",
      mos=[
-      ("Explain when the Central Limit Theorem justifies replacing a simulated randomization distribution with a normal distribution N(null value, SE).", [4, 8]),
-      ("Compute a standardized z statistic and find the p-value as a right-tail, left-tail, or two-tail area of the standard normal distribution.", [4, 10]),
-      ("Check the large-sample condition (at least 10 in each category) for inference about one proportion.", [8]),
-      ("Construct and interpret a confidence interval for a population proportion with z* for 90%, 95%, or 99% confidence.", [4, 9]),
-      ("Carry out a one-proportion z test and conclude in context, and explain why the CI standard error uses p̂ while the test uses p₀.", [4, 10]),
+      ("Explain when the Central Limit Theorem justifies replacing a simulated randomization distribution with a normal distribution N(null value, SE).", [5]),
+      ("Compute a standardized z statistic and find the p-value as a right-tail, left-tail, or two-tail area of the standard normal distribution.", [3, 8]),
+      ("Check the large-sample condition (at least 10 in each category) for inference about one proportion.", [5]),
+      ("Construct and interpret a confidence interval for a population proportion with z* for 90%, 95%, or 99% confidence.", [6]),
+      ("Carry out a one-proportion z test and conclude in context, and explain why the CI standard error uses p̂ while the test uses p₀.", [8]),
      ],
      materials=[
       (etext("5.1"), "MO1, MO2"),
@@ -373,11 +372,11 @@ dict(num=12, title="Inference for Two Proportions and for a Mean", dates="Nov 10
      sections=["6.3 Inference for a Difference in Proportions (Distribution, CI, Hypothesis Test)", "6.2 Inference for a Mean (Distribution, CI, Hypothesis Test)"],
      notes=None,
      mos=[
-      ("Classify a study as calling for one-proportion or difference-in-proportions inference, and check the conditions.", [8]),
-      ("Construct and interpret a confidence interval for p₁ − p₂, including what its sign means and whether it contains 0.", [9]),
-      ("Compute the pooled proportion and carry out a two-proportion z test from summary data or a two-way table.", [10]),
-      ("Explain why inference for a mean uses the t distribution with df = n − 1, and check the conditions for t procedures.", [4]),
-      ("Construct and interpret a t confidence interval for a population mean, and carry out a one-sample t test.", [4, 9, 10]),
+      ("Classify a study as calling for one-proportion or difference-in-proportions inference, and check the conditions.", [5]),
+      ("Construct and interpret a confidence interval for p₁ − p₂, including what its sign means and whether it contains 0.", [6]),
+      ("Compute the pooled proportion and carry out a two-proportion z test from summary data or a two-way table.", [8]),
+      ("Explain why inference for a mean uses the t distribution with df = n − 1, and check the conditions for t procedures.", [5]),
+      ("Construct and interpret a t confidence interval for a population mean, and carry out a one-sample t test.", [6, 8]),
      ],
      materials=[
       (etext("6.3") + " (6.3-D, 6.3-CI, 6.3-HT)", "MO1, MO2, MO3"),
@@ -402,11 +401,11 @@ dict(num=13, title="Inference for Two Means and Paired Data", dates="Nov 17 – 
      sections=["6.4 Inference for a Difference in Means (Distribution, CI, Hypothesis Test)", "6.5 Paired Difference in Means"],
      notes="Last day to withdraw: Thu Nov 19. Test 3 window Fri Nov 20 – Sun Nov 22 (covers 4.4, 4.5, 5.1, 6.1–6.5).",
      mos=[
-      ("Compute the standard error and conservative degrees of freedom for a difference in two independent means, and check the conditions.", [4, 8]),
-      ("Construct and interpret a confidence interval for μ₁ − μ₂, explaining how the order of the groups affects the sign.", [9]),
-      ("Carry out a two-sample t test, choosing the tail from the research question.", [10]),
-      ("Classify a study design as paired or independent samples by checking for a link between observations.", [7, 10]),
-      ("Define the difference variable d, carry out a paired t test and paired t confidence interval, and explain why pairing reduces variability.", [9, 10]),
+      ("Compute the standard error and conservative degrees of freedom for a difference in two independent means, and check the conditions.", [5]),
+      ("Construct and interpret a confidence interval for μ₁ − μ₂, explaining how the order of the groups affects the sign.", [6]),
+      ("Carry out a two-sample t test, choosing the tail from the research question.", [8]),
+      ("Classify a study design as paired or independent samples by checking for a link between observations.", [1, 8]),
+      ("Define the difference variable d, carry out a paired t test and paired t confidence interval, and explain why pairing reduces variability.", [6, 8]),
      ],
      materials=[
       (etext("6.4") + " (6.4-D, 6.4-CI, 6.4-HT)", "MO1, MO2, MO3"),
@@ -430,10 +429,10 @@ dict(num=14, title="Chi-Square Test for Association", dates="Nov 24 – 26",
      sections=["7.2 Testing for an Association Between Two Categorical Variables", "Thanksgiving Holiday – No Class (Thu Nov 26)"],
      notes="Test 3 Retake window Mon Nov 23 – Sun Nov 29.",
      mos=[
-      ("State the hypotheses for a chi-square test of association from a two-way table.", [6, 11]),
-      ("Compute expected counts and check that all expected counts are at least 5.", [11]),
-      ("Compute the chi-square statistic and df = (r − 1)(c − 1), and interpret the right-tail p-value.", [4, 11]),
-      ("Relate the chi-square test on a 2×2 table to the two-proportion z test, and explain that a significant result shows association but not direction or causation.", [11]),
+      ("State the hypotheses for a chi-square test of association from a two-way table.", [8]),
+      ("Compute expected counts and check that all expected counts are at least 5.", [8]),
+      ("Compute the chi-square statistic and df = (r − 1)(c − 1), and interpret the right-tail p-value.", [8]),
+      ("Relate the chi-square test on a 2×2 table to the two-proportion z test, and explain that a significant result shows association but not direction or causation.", [8]),
      ],
      materials=[
       (etext("7.2"), "MO1–MO4"),
@@ -454,12 +453,12 @@ dict(num=15, title="ANOVA and Inference for Slope and Correlation", dates="Dec 1
      sections=["8.1 Analysis of Variance", "9.1 Inference for Slope and Correlation"],
      notes=None,
      mos=[
-      ("Identify when ANOVA is appropriate and state H₀ and Hₐ in symbols and words.", [12]),
-      ("Explain what SSG and SSE measure and how the ratio of between-group to within-group variability gives evidence against H₀.", [12]),
-      ("Complete an ANOVA table (df, MS, F) from given sums of squares, interpret the F statistic and p-value, and check the conditions.", [4, 12]),
-      ("State the simple linear model, distinguish the population slope β₁ and correlation ρ from the sample estimates b₁ and r, and interpret the slope in context.", [5, 12]),
-      ("Use regression output to test H₀: β₁ = 0 (equivalently ρ = 0) with a t statistic on n − 2 degrees of freedom, state the conclusion in context, and explain why the slope and correlation tests give the same p-value.", [12]),
-      ("Construct and interpret a confidence interval for the slope, interpret R² as the proportion of variability explained, and check the conditions with a residual plot.", [12]),
+      ("Identify when ANOVA is appropriate and state H₀ and Hₐ in symbols and words.", [8]),
+      ("Explain what SSG and SSE measure and how the ratio of between-group to within-group variability gives evidence against H₀.", [8]),
+      ("Complete an ANOVA table (df, MS, F) from given sums of squares, interpret the F statistic and p-value, and check the conditions.", [8]),
+      ("State the simple linear model, distinguish the population slope β₁ and correlation ρ from the sample estimates b₁ and r, and interpret the slope in context.", [7]),
+      ("Use regression output to test H₀: β₁ = 0 (equivalently ρ = 0) with a t statistic on n − 2 degrees of freedom, state the conclusion in context, and explain why the slope and correlation tests give the same p-value.", [7, 8]),
+      ("Construct and interpret a confidence interval for the slope, interpret R² as the proportion of variability explained, and check the conditions with a residual plot.", [6, 7]),
      ],
      materials=[
       (etext("8.1"), "MO1, MO2, MO3"),
@@ -483,9 +482,9 @@ dict(num=16, title="Putting It All Together and Final Exam", dates="Dec 8 – 10
      sections=["Review: Putting It All Together – From Sampling to Hypothesis Testing (Tue Dec 8)", "Final Exam – Thu Dec 10, online (Blackboard, proctored)"],
      notes="Late WileyPLUS homework closes Tue Dec 8, 11:59 PM. The final exam is cumulative; a higher final replaces the lowest test score.",
      mos=[
-      ("Choose the correct procedure among one- and two-proportion z, one- and two-sample t, paired t, chi-square, ANOVA, and regression, and carry out a complete six-step hypothesis test.", [9, 10, 11, 12]),
-      ("Carry out and interpret a complete confidence interval or hypothesis test, using simulation or theoretical distributions as appropriate.", [3, 4, 9, 10]),
-      ("Interpret results in context, including what the study design allows the conclusion to claim about generalization and causation.", [7]),
+      ("Choose the correct procedure among one- and two-proportion z, one- and two-sample t, paired t, chi-square, ANOVA, and regression, and carry out a complete six-step hypothesis test.", [8]),
+      ("Carry out and interpret a complete confidence interval or hypothesis test, using simulation or theoretical distributions as appropriate.", [6, 8]),
+      ("Interpret results in context, including what the study design allows the conclusion to claim about generalization and causation.", [1]),
      ],
      materials=[
       ("Review Slides: Putting It All Together (with answer key and no-answers versions)", "MO1, MO2, MO3"),
@@ -513,5 +512,4 @@ DISCREPANCIES = """Blackboard vs. syllabus discrepancies found on Oct 1, 2026 (w
 - Test 1 Retake, Test 2 and Test 3 have 90-minute limits; the syllabus says 2 hours per test.
 - Final Exam due 12/9 in Blackboard; syllabus says Thu Dec 10. Homework 7.2 due 12/6 (expected Sun 11/29).
 - The review slide deck still says the final exam is "Thursday, August 6" (summer carry-over).
-- P.1 probability rules are not in the 12 Common Course Objectives (they are in Student Learning Outcome 3).
 """

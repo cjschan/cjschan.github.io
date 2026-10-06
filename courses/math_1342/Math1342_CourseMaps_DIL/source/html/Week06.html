@@ -2,52 +2,35 @@
 @page { size: letter landscape; margin: 0.35in 0.4in; }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-body { font-family: Calibri, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 10.0pt; color: #111; }
+body { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 10.5pt; color: #111; }
 .page { page-break-after: always; }
 .page:last-child { page-break-after: auto; }
-h1 { font-size: 10.0pt; margin: 0 0 1px 0; text-align: center; font-weight: 700; }
-.sub { text-align: center; font-size: 10.0pt; color: #333; margin-bottom: 5px; }
+h1 { font-size: 10.5pt; margin: 0 0 1px 0; text-align: center; font-weight: 700; }
+.sub { text-align: center; font-size: 10.5pt; color: #333; margin-bottom: 5px; }
 .sub b { color: #111; }
 table.map { width: 99%; border-collapse: collapse; table-layout: fixed; margin: 0 auto; }
-table.map th { border: 1px solid #000; background: #fff; font-weight: 700; padding: 3px 4px; font-size: 10.0pt; text-align: center; vertical-align: middle; }
-table.map th.co { background: #e6e6e6; }
-table.map td { border: 1px solid #000; vertical-align: top; padding: 0; }
-td.co { background: #e6e6e6; }
-td.co ol, td.mo ol { margin: 0; padding: 3px 3px 3px 22px; }
-td.co li, td.mo li { margin: 0 0 3px 0; padding-left: 1px; }
-td.co { line-height: 1.2; }
-td.co li { margin: 0 0 1.5px 0; }
-.tag { font-weight: 400; color: #333; white-space: nowrap; }
-table.sub { width: 100%; border-collapse: collapse; table-layout: fixed; }
-table.sub td { text-align: left; border: none; border-bottom: 1px solid #000; padding: 3px 4px; vertical-align: top; }
-table.sub td.hash { text-align: center; padding-left: 1px; padding-right: 1px; border-left: 1px solid #000; }
-table.sub.w21 td.hash { width: 23.81%; }   /* 5 / (16 + 5)  -> lines up with the header # column */
-table.sub.w15 td.hash { width: 33.33%; }   /* 5 / (10 + 5) */
-.prop { color: #8a4b00; font-style: italic; }
-.notes { margin-top: 5px; color: #222; }
-.notes b { color: #000; }
-.legend { margin-top: 2px; color: #444; }
+table.map th { border: 1px solid #000; background: #d9d9d9; font-weight: 700; padding: 5px 4px; text-align: center; vertical-align: middle; }
+table.map td { border: 1px solid #000; vertical-align: top; padding: 4px 5px; line-height: 1.2; }
+table.map td p { margin: 0 0 4px 0; }
+table.map td p:last-child { margin-bottom: 0; }
+.mo-n { font-weight: 700; }
+.clo { white-space: nowrap; }
+.code { color: #555; white-space: nowrap; }
+.rowlabel { font-style: italic; color: #333; }
+.legend { margin-top: 4px; color: #333; line-height: 1.25; }
+.legend b { color: #111; }
 </style></head><body>
 <div class="page">
   <h1>MATH 1342 – Elementary Statistics – Week 6: Probability Rules and Sampling Distributions</h1>
   <div class="sub"><b>Sep 29 – Oct 1</b> &nbsp;|&nbsp; P.1 Probability Rules &nbsp;•&nbsp; 3.1 Sampling Distributions &nbsp;|&nbsp; Fall 2026 · Section 036 · TTh 6:00–7:20 PM (DIL)</div>
   <table class="map">
     <colgroup>
-      <col style="width:20%"><col style="width:23%">
-      <col style="width:16%"><col style="width:5%">
-      <col style="width:16%"><col style="width:5%">
-      <col style="width:10%"><col style="width:5%">
+      <col style="width:29%"><col style="width:22%"><col style="width:20%"><col style="width:16%"><col style="width:13%">
     </colgroup>
     <thead><tr>
-      <th class="co">Course-level<br>Objectives</th><th>Module-level<br>Objectives</th>
-      <th>Learning Materials</th><th>#</th><th>Activities</th><th>#</th><th>Assessments</th><th>#</th>
+      <th>Module Objectives</th><th>Instructional Materials</th><th>Learning Activities</th><th>Assessments</th><th>Tools</th>
     </tr></thead>
-    <tbody><tr>
-      <td class="co"><ol><li value="6">Analyze data presented in two-way tables to provide information about relationships between categorical variables.</li><li value="8">Use the sampling distributions of sample proportions and sample means to answer appropriate questions.</li></ol></td>
-      <td class="mo"><ol><li>Compute probabilities for equally likely outcomes and apply the complement rule. <span class="tag"> (SLO 3)</span></li><li>Apply the addition, multiplication, and conditional probability rules using a two-way table, and distinguish disjoint events from independent events. <span class="tag"> (CO6)</span></li><li>Classify a numerical summary as a parameter or a statistic and use the correct notation (μ, σ, p, ρ vs. x̄, s, p̂, r). <span class="tag"> (CO8)</span></li><li>Describe how a sampling distribution is built from repeated samples, what each dot represents, and its center and shape. <span class="tag"> (CO8)</span></li><li>Explain the standard error as the variability of a statistic and predict how sample size affects it. <span class="tag"> (CO8)</span></li></ol></td>
-      <td colspan="2"><table class="sub w21"><tr><td class="it">e-Text: P.1 Probability Rules</td><td class="hash">MO1, MO2</td></tr><tr><td class="it">Interactive Lecture: P.1 Probability Rules</td><td class="hash">MO1, MO2</td></tr><tr><td class="it">Slides: P.1 Probability Rules</td><td class="hash">MO1, MO2</td></tr><tr><td class="it">e-Text: 3.1 Sampling Distributions</td><td class="hash">MO3, MO4, MO5</td></tr><tr><td class="it">Interactive Lecture: 3.1 Sampling Distributions</td><td class="hash">MO3, MO4, MO5</td></tr><tr><td class="it">Slides: 3.1 Sampling Distributions</td><td class="hash">MO3, MO4, MO5</td></tr></table></td>
-      <td colspan="2"><table class="sub w21"><tr><td class="it">Participation: Probability – Rock and Roll Hall of Fame two-way table; cards with and without replacement</td><td class="hash">MO1, MO2</td></tr><tr><td class="it">Participation: Sampling Distributions – M&amp;M activity: each student draws 10 M&amp;Ms, computes p̂ (blue), and adds it to a class dotplot; name the population, sample, and what each dot represents</td><td class="hash">MO3, MO4, MO5</td></tr></table></td>
-      <td colspan="2"><table class="sub w15"><tr><td class="it">Online Homework: P.1 Probability Rules (due Sun Oct 4, 11:59 PM)</td><td class="hash">MO1, MO2</td></tr><tr><td class="it">Online Homework: 3.1 Sampling Distributions (due Sun Oct 4, 11:59 PM)</td><td class="hash">MO3, MO4, MO5</td></tr><tr><td class="it">Take-Home Quiz 3 (due Tue Sep 29, 11:59 PM) – covers 2.5</td><td class="hash">None</td></tr><tr><td class="it">Test 1 – Fri Oct 2 – Sun Oct 4 (Blackboard, proctored, 2 hours). Covers Weeks 1–5.</td><td class="hash">None</td></tr></table></td>
-    </tr></tbody>
+    <tbody><tr><td><p><span class="mo-n">1.</span> List the sample space and count outcomes to compute probabilities for equally likely outcomes, and apply the complement rule. <span class="clo">(CLO 3)</span></p><p><span class="mo-n">2.</span> Apply the addition, multiplication, and conditional probability rules using a two-way table, and distinguish disjoint events from independent events. <span class="clo">(CLO 3)</span></p></td><td><p>e-Text: P.1 Probability Rules</p><p>Interactive Lecture: P.1 Probability Rules</p><p>Slides: P.1 Probability Rules</p></td><td><p>Participation: Probability – Rock and Roll Hall of Fame two-way table; cards with and without replacement</p></td><td><p>Online Homework: P.1 Probability Rules (due Sun Oct 4, 11:59 PM)</p></td><td><p>WileyPLUS</p><p>StatKey</p><p>Lecture Slides (course website)</p><p>Zoom (live class)</p></td></tr><tr><td><p><span class="mo-n">3.</span> Classify a numerical summary as a parameter or a statistic and use the correct notation (μ, σ, p, ρ vs. x̄, s, p̂, r). <span class="clo">(CLO 5)</span></p><p><span class="mo-n">4.</span> Describe how a sampling distribution is built from repeated samples, what each dot represents, and its center and shape. <span class="clo">(CLO 5)</span></p><p><span class="mo-n">5.</span> Explain the standard error as the variability of a statistic and predict how sample size affects it. <span class="clo">(CLO 5)</span></p></td><td><p>e-Text: 3.1 Sampling Distributions</p><p>Interactive Lecture: 3.1 Sampling Distributions</p><p>Slides: 3.1 Sampling Distributions</p></td><td><p>Participation: Sampling Distributions – M&amp;M activity: each student draws 10 M&amp;Ms, computes p̂ (blue), and adds it to a class dotplot; name the population, sample, and what each dot represents</p></td><td><p>Online Homework: 3.1 Sampling Distributions (due Sun Oct 4, 11:59 PM)</p></td><td><p>WileyPLUS</p><p>StatKey</p><p>Lecture Slides (course website)</p><p>Zoom (live class)</p></td></tr><tr><td><p class="rowlabel">Course resources and assessments of earlier weeks (not aligned to this week's objectives)</p></td><td></td><td></td><td><p>Take-Home Quiz 3 (due Tue Sep 29, 11:59 PM) – covers 2.5</p><p>Test 1 – Fri Oct 2 – Sun Oct 4 (Blackboard, proctored, 2 hours). Covers Weeks 1–5.</p></td><td><p>Assignment Tool in Blackboard</p><p>Assessment Tool in Blackboard</p><p>Respondus LockDown Browser and Monitor</p></td></tr></tbody>
   </table>
+  <div class="legend"><b>CLO 3</b> Compute and interpret empirical and theoretical probabilities using the rules of probabilities and combinatorics. &nbsp; <b>CLO 5</b> Examine, analyze, and compare various sampling distributions for both discrete and continuous random variables.</div>
 </div></body></html>

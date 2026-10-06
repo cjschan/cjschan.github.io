@@ -2,52 +2,35 @@
 @page { size: letter landscape; margin: 0.35in 0.4in; }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-body { font-family: Calibri, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 9.5pt; color: #111; }
+body { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 9.5pt; color: #111; }
 .page { page-break-after: always; }
 .page:last-child { page-break-after: auto; }
 h1 { font-size: 9.5pt; margin: 0 0 1px 0; text-align: center; font-weight: 700; }
 .sub { text-align: center; font-size: 9.5pt; color: #333; margin-bottom: 5px; }
 .sub b { color: #111; }
 table.map { width: 99%; border-collapse: collapse; table-layout: fixed; margin: 0 auto; }
-table.map th { border: 1px solid #000; background: #fff; font-weight: 700; padding: 3px 4px; font-size: 9.5pt; text-align: center; vertical-align: middle; }
-table.map th.co { background: #e6e6e6; }
-table.map td { border: 1px solid #000; vertical-align: top; padding: 0; }
-td.co { background: #e6e6e6; }
-td.co ol, td.mo ol { margin: 0; padding: 3px 3px 3px 22px; }
-td.co li, td.mo li { margin: 0 0 3px 0; padding-left: 1px; }
-td.co { line-height: 1.2; }
-td.co li { margin: 0 0 1.5px 0; }
-.tag { font-weight: 400; color: #333; white-space: nowrap; }
-table.sub { width: 100%; border-collapse: collapse; table-layout: fixed; }
-table.sub td { text-align: left; border: none; border-bottom: 1px solid #000; padding: 3px 4px; vertical-align: top; }
-table.sub td.hash { text-align: center; padding-left: 1px; padding-right: 1px; border-left: 1px solid #000; }
-table.sub.w21 td.hash { width: 23.81%; }   /* 5 / (16 + 5)  -> lines up with the header # column */
-table.sub.w15 td.hash { width: 33.33%; }   /* 5 / (10 + 5) */
-.prop { color: #8a4b00; font-style: italic; }
-.notes { margin-top: 5px; color: #222; }
-.notes b { color: #000; }
-.legend { margin-top: 2px; color: #444; }
+table.map th { border: 1px solid #000; background: #d9d9d9; font-weight: 700; padding: 5px 4px; text-align: center; vertical-align: middle; }
+table.map td { border: 1px solid #000; vertical-align: top; padding: 4px 5px; line-height: 1.2; }
+table.map td p { margin: 0 0 4px 0; }
+table.map td p:last-child { margin-bottom: 0; }
+.mo-n { font-weight: 700; }
+.clo { white-space: nowrap; }
+.code { color: #555; white-space: nowrap; }
+.rowlabel { font-style: italic; color: #333; }
+.legend { margin-top: 4px; color: #333; line-height: 1.25; }
+.legend b { color: #111; }
 </style></head><body>
 <div class="page">
   <h1>MATH 1342 – Elementary Statistics – Week 5: Two-Variable Relationships and Linear Regression</h1>
   <div class="sub"><b>Sep 21 – 23</b> &nbsp;|&nbsp; 2.4 Two Variable Relationships &nbsp;•&nbsp; 2.5 Two Quantitative Variables: Linear Regression &nbsp;|&nbsp; Fall 2026 · Section 019 · MW 7:30–8:50 PM · RRC Room 8210</div>
   <table class="map">
     <colgroup>
-      <col style="width:20%"><col style="width:23%">
-      <col style="width:16%"><col style="width:5%">
-      <col style="width:16%"><col style="width:5%">
-      <col style="width:10%"><col style="width:5%">
+      <col style="width:29%"><col style="width:22%"><col style="width:20%"><col style="width:16%"><col style="width:13%">
     </colgroup>
     <thead><tr>
-      <th class="co">Course-level<br>Objectives</th><th>Module-level<br>Objectives</th>
-      <th>Learning Materials</th><th>#</th><th>Activities</th><th>#</th><th>Assessments</th><th>#</th>
+      <th>Module Objectives</th><th>Instructional Materials</th><th>Learning Activities</th><th>Assessments</th><th>Tools</th>
     </tr></thead>
-    <tbody><tr>
-      <td class="co"><ol><li value="1">Interpret ideas of population versus sample, random variables, and techniques of descriptive statistics including frequency distributions, histograms, boxplots, and scatterplots.</li><li value="2">Calculate and interpret measures of central tendency and dispersion, including mean, median, standard deviation, and quartiles.</li><li value="5">Analyze relationships between two quantitative variables using correlation and linear regression.</li></ol></td>
-      <td class="mo"><ol><li>Compare a quantitative variable across groups with side-by-side boxplots, and compute and interpret a difference in means. <span class="tag"> (CO1, CO2)</span></li><li>Describe the direction, form, and strength of the relationship in a scatterplot and estimate the correlation r. <span class="tag"> (CO5)</span></li><li>Use technology to compute r and explain how outliers, nonlinear patterns, and the absence of causation limit its interpretation. <span class="tag"> (CO5)</span></li><li>Interpret the slope and intercept of a regression line in context with correct units, and judge whether the intercept is meaningful. <span class="tag"> (CO5)</span></li><li>Use a regression equation to predict a response value, and compute and interpret a residual. <span class="tag"> (CO5)</span></li><li>Use technology to find the least-squares regression line and explain what “least squares” means. <span class="tag"> (CO5)</span></li><li>Recognize when a regression prediction is not appropriate: extrapolation, nonlinearity, influential outliers, and causal claims. <span class="tag"> (CO5)</span></li></ol></td>
-      <td colspan="2"><table class="sub w21"><tr><td class="it">e-Text: 2.4 Two Variable Relationships</td><td class="hash">MO1, MO2, MO3</td></tr><tr><td class="it">Slides: 2.4 Two Variable Relationships</td><td class="hash">MO1, MO2, MO3</td></tr><tr><td class="it">e-Text: 2.5 Two Quantitative Variables: Linear Regression</td><td class="hash">MO4–MO7</td></tr><tr><td class="it">Interactive Lecture: Section 2.5 Two Quantitative Variables: Linear Regression (Part 1)</td><td class="hash">MO4, MO5</td></tr><tr><td class="it">Interactive Lecture: Section 2.5 Two Quantitative Variables: Linear Regression (Part 2)</td><td class="hash">MO6, MO7</td></tr><tr><td class="it">Slides: 2.5 Two Quantitative Variables: Linear Regression</td><td class="hash">MO4–MO7</td></tr></table></td>
-      <td colspan="2"><table class="sub w21"><tr><td class="it">Participation: Box Plots and Outliers – Mon: 1.5×IQR rule review; side-by-side boxplots (tea vs. coffee)</td><td class="hash">MO1</td></tr><tr><td class="it">Participation: Two Variable Relationships – Wed: NBA rebounds vs. free-throw % scatterplot; find r with and without an outlier; Your Turn: spotting residuals</td><td class="hash">MO2, MO3, MO5</td></tr><tr><td class="it">Examples: baseball game length and commute-time regression lines (predict, interpret slope, find a residual)</td><td class="hash">MO4, MO5, MO6</td></tr></table></td>
-      <td colspan="2"><table class="sub w15"><tr><td class="it">Online Homework: 2.4 Two Variable Relationships (due Sun Sep 27, 11:59 PM)</td><td class="hash">MO1, MO2, MO3</td></tr><tr><td class="it">Online Homework: 2.5 Two Quantitative Variables: Linear Regression (due Sun Sep 27, 11:59 PM)</td><td class="hash">MO4–MO7</td></tr><tr><td class="it">Practice Test 1 (Blackboard, due Thu Oct 1, 11:59 PM; 120 min, proctoring practice)</td><td class="hash">None</td></tr></table></td>
-    </tr></tbody>
+    <tbody><tr><td><p><span class="mo-n">1.</span> Compare a quantitative variable across groups with side-by-side boxplots, and compute and interpret a difference in means. <span class="clo">(CLO 2)</span></p><p><span class="mo-n">2.</span> Describe the direction, form, and strength of the relationship in a scatterplot and estimate the correlation r. <span class="clo">(CLO 7)</span></p><p><span class="mo-n">3.</span> Use technology to compute r and explain how outliers, nonlinear patterns, and the absence of causation limit its interpretation. <span class="clo">(CLO 7)</span></p></td><td><p>e-Text: 2.4 Two Variable Relationships</p><p>Slides: 2.4 Two Variable Relationships</p></td><td><p>Participation: Box Plots and Outliers – Mon: 1.5×IQR rule review; side-by-side boxplots (tea vs. coffee)</p></td><td><p>Online Homework: 2.4 Two Variable Relationships (due Sun Sep 27, 11:59 PM)</p></td><td><p>WileyPLUS</p><p>Lecture Slides (course website)</p><p>In class</p></td></tr><tr><td><p><span class="mo-n">4.</span> Interpret the slope and intercept of a regression line in context with correct units, and judge whether the intercept is meaningful. <span class="clo">(CLO 7)</span></p><p><span class="mo-n">5.</span> Use a regression equation to predict a response value, and compute and interpret a residual. <span class="clo">(CLO 7)</span></p><p><span class="mo-n">6.</span> Use technology to find the least-squares regression line and explain what “least squares” means. <span class="clo">(CLO 7)</span></p><p><span class="mo-n">7.</span> Recognize when a regression prediction is not appropriate: extrapolation, nonlinearity, influential outliers, and causal claims. <span class="clo">(CLO 7)</span></p></td><td><p>e-Text: 2.5 Two Quantitative Variables: Linear Regression</p><p>Interactive Lecture: Section 2.5 Two Quantitative Variables: Linear Regression (Part 1)</p><p>Interactive Lecture: Section 2.5 Two Quantitative Variables: Linear Regression (Part 2)</p><p>Slides: 2.5 Two Quantitative Variables: Linear Regression</p></td><td><p>Examples: baseball game length and commute-time regression lines (predict, interpret slope, find a residual)</p></td><td><p>Online Homework: 2.5 Two Quantitative Variables: Linear Regression (due Sun Sep 27, 11:59 PM)</p></td><td><p>WileyPLUS</p><p>StatKey</p><p>Lecture Slides (course website)</p><p>In class</p></td></tr><tr><td><p class="rowlabel">Items that cover objectives from more than one row above (objectives in parentheses)</p></td><td></td><td><p>Participation: Two Variable Relationships – Wed: NBA rebounds vs. free-throw % scatterplot; find r with and without an outlier; Your Turn: spotting residuals <span class="code">(MO2, MO3, MO5)</span></p></td><td></td><td><p>In class</p></td></tr><tr><td><p class="rowlabel">Course resources and assessments of earlier weeks (not aligned to this week's objectives)</p></td><td></td><td></td><td><p>Practice Test 1 (Blackboard, due Thu Oct 1, 11:59 PM; 120 min, proctoring practice)</p></td><td><p>Assessment Tool in Blackboard</p><p>Respondus LockDown Browser and Monitor</p></td></tr></tbody>
   </table>
+  <div class="legend"><b>CLO 2</b> Recognize, examine, and interpret the basic principles of describing and presenting data. &nbsp; <b>CLO 7</b> Solve linear regression and correlation problems.</div>
 </div></body></html>

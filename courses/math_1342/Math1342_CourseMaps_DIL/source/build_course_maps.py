@@ -21,90 +21,152 @@ CSS = """
 @page { size: letter landscape; margin: 0.35in 0.4in; }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-body { font-family: Calibri, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: %(fs)spt; color: #111; }
+body { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: %(fs)spt; color: #111; }
 .page { page-break-after: always; }
 .page:last-child { page-break-after: auto; }
 h1 { font-size: %(fs)spt; margin: 0 0 1px 0; text-align: center; font-weight: 700; }
 .sub { text-align: center; font-size: %(fs)spt; color: #333; margin-bottom: 5px; }
 .sub b { color: #111; }
 table.map { width: 99%%; border-collapse: collapse; table-layout: fixed; margin: 0 auto; }
-table.map th { border: 1px solid #000; background: #fff; font-weight: 700; padding: 3px 4px; font-size: %(fs)spt; text-align: center; vertical-align: middle; }
-table.map th.co { background: #e6e6e6; }
-table.map td { border: 1px solid #000; vertical-align: top; padding: 0; }
-td.co { background: #e6e6e6; }
-td.co ol, td.mo ol { margin: 0; padding: 3px 3px 3px 22px; }
-td.co li, td.mo li { margin: 0 0 3px 0; padding-left: 1px; }
-td.co { line-height: 1.2; }
-td.co li { margin: 0 0 1.5px 0; }
-.tag { font-weight: 400; color: #333; white-space: nowrap; }
-table.sub { width: 100%%; border-collapse: collapse; table-layout: fixed; }
-table.sub td { text-align: left; border: none; border-bottom: 1px solid #000; padding: 3px 4px; vertical-align: top; }
-table.sub td.hash { text-align: center; padding-left: 1px; padding-right: 1px; border-left: 1px solid #000; }
-table.sub.w21 td.hash { width: 23.81%%; }   /* 5 / (16 + 5)  -> lines up with the header # column */
-table.sub.w15 td.hash { width: 33.33%%; }   /* 5 / (10 + 5) */
-.prop { color: #8a4b00; font-style: italic; }
-.notes { margin-top: 5px; color: #222; }
-.notes b { color: #000; }
-.legend { margin-top: 2px; color: #444; }
+table.map th { border: 1px solid #000; background: #d9d9d9; font-weight: 700; padding: 5px 4px; text-align: center; vertical-align: middle; }
+table.map td { border: 1px solid #000; vertical-align: top; padding: 4px 5px; line-height: 1.2; }
+table.map td p { margin: 0 0 4px 0; }
+table.map td p:last-child { margin-bottom: 0; }
+.mo-n { font-weight: 700; }
+.clo { white-space: nowrap; }
+.code { color: #555; white-space: nowrap; }
+.rowlabel { font-style: italic; color: #333; }
+.legend { margin-top: 4px; color: #333; line-height: 1.25; }
+.legend b { color: #111; }
 """
 
 def esc(s):
     return H.escape(s, quote=False)
 
-def mark_proposed(text):
-    t = esc(text)
-    return t.replace("(proposed)", '<span class="prop">(proposed)</span>')
+def parse_codes(code, n_mos):
+    """'MO1, MO3' / 'MO1–MO5' / 'None' -> set of module objective numbers."""
+    out = set()
+    for part in code.replace(" ", "").split(","):
+        m = re.fullmatch(r"MO(\d+)(?:[–-]MO(\d+))?", part)
+        if m:
+            a = int(m.group(1)); b = int(m.group(2) or a)
+            out.update(range(a, b + 1))
+        elif part == "All":
+            out.update(range(1, n_mos + 1))
+    return out
 
-def rows_html(items, n_mos, cls="w21"):
-    rows = []
+def mo_groups(w):
+    """Group module objectives into table rows: objectives that share a learning material go together."""
+    n = len(w["mos"])
+    parent = list(range(n + 1))
+    def find(x):
+        while parent[x] != x:
+            x = parent[x]
+        return x
+    for _, code in w["materials"]:
+        mos = sorted(parse_codes(code, n))
+        for m in mos[1:]:
+            parent[find(m)] = find(mos[0])
+    groups = {}
+    for m in range(1, n + 1):
+        groups.setdefault(find(m), []).append(m)
+    return sorted(groups.values())
+
+def tools_for(text, kind):
+    t = text.lower()
+    if text.startswith("Interactive Lecture"):
+        return ["WileyPLUS", "StatKey"]
+    if text.startswith(("e-Text", "Online Homework")):
+        return ["WileyPLUS"]
+    if "slides" in t.split(":")[0] or text.startswith("All "):
+        return ["Lecture Slides (course website)"]
+    if text.startswith("START HERE"):
+        return ["Content Area in Blackboard"]
+    if text.startswith("StatKey"):
+        return ["StatKey"]
+    if text.startswith("Take-Home Quiz"):
+        return ["Assignment Tool in Blackboard"]
+    if re.match(r"(Practice )?Test|Final Exam", text):
+        return ["Assessment Tool in Blackboard", "Respondus LockDown Browser and Monitor"]
+    out = []
+    if "kahoot" in t:
+        out.append("Kahoot!")
+    if "statkey" in t:
+        out.append("StatKey")
+    return out or [D.LIVE_TOOL]
+
+def clo_tag(clos):
+    return '<span class="clo">(' + ", ".join(f"CLO {c}" for c in clos) + ")</span>"
+
+def item_cell(items, show_codes=False):
+    out = []
     for text, code in items:
-        if code == f"MO1–MO{n_mos}":
-            code = "All"
-        rows.append(f'<tr><td class="it">{mark_proposed(text)}</td><td class="hash">{esc(code)}</td></tr>')
-    return f'<table class="sub {cls}">' + "".join(rows) + "</table>"
+        extra = f' <span class="code">({esc(code)})</span>' if show_codes else ""
+        out.append(f"<p>{esc(text)}{extra}</p>")
+    return "".join(out)
 
-def co_list(active):
-    out = []
-    for i in active:
-        out.append(f'<li value="{i}">{esc(D.COURSE_OBJECTIVES[i - 1])}</li>')
-    if not out:
-        out.append('<li class="none">Supports Student Learning Outcome 3 (probability); not among the 12 Common Course Objectives.</li>')
-    return "<ol>" + "".join(out) + "</ol>"
+def tools_cell(items):
+    seen = []
+    for kind in ("materials", "activities", "assessments"):
+        for text, _ in items[kind]:
+            for tool in tools_for(text, kind):
+                if tool not in seen:
+                    seen.append(tool)
+    return "".join(f"<p>{esc(t)}</p>" for t in seen)
 
-def mo_list(mos):
-    out = []
-    for text, cos in mos:
-        tag = " (" + ", ".join(f"CO{c}" for c in cos) + ")" if cos else " (SLO 3)"
-        out.append(f'<li>{esc(text)} <span class="tag">{tag}</span></li>')
-    return "<ol>" + "".join(out) + "</ol>"
+def week_rows(w):
+    n = len(w["mos"])
+    groups = mo_groups(w)
+    rows = [dict(mos=g, materials=[], activities=[], assessments=[]) for g in groups]
+    spans = dict(materials=[], activities=[], assessments=[])
+    other = dict(materials=[], activities=[], assessments=[])
+    for kind in ("materials", "activities", "assessments"):
+        for text, code in w[kind]:
+            mos = parse_codes(code, n)
+            home = [r for r in rows if mos and mos <= set(r["mos"])]
+            if not mos:
+                other[kind].append((text, code))
+            elif home:
+                home[0][kind].append((text, code))
+            else:
+                if mos == set(range(1, n + 1)):
+                    code = "all objectives"
+                spans[kind].append((text, code))
+    html = []
+    for r in rows:
+        mo_html = "".join(f'<p><span class="mo-n">{m}.</span> {esc(w["mos"][m - 1][0])} {clo_tag(w["mos"][m - 1][1])}</p>' for m in r["mos"])
+        html.append(f"<tr><td>{mo_html}</td><td>{item_cell(r['materials'])}</td><td>{item_cell(r['activities'])}</td>"
+                    f"<td>{item_cell(r['assessments'])}</td><td>{tools_cell(r)}</td></tr>")
+    if any(spans.values()):
+        html.append('<tr><td><p class="rowlabel">Items that cover objectives from more than one row above (objectives in parentheses)</p></td>'
+                    f"<td>{item_cell(spans['materials'], True)}</td><td>{item_cell(spans['activities'], True)}</td>"
+                    f"<td>{item_cell(spans['assessments'], True)}</td><td>{tools_cell(spans)}</td></tr>")
+    if any(other.values()):
+        html.append('<tr><td><p class="rowlabel">Course resources and assessments of earlier weeks (not aligned to this week\'s objectives)</p></td>'
+                    f"<td>{item_cell(other['materials'])}</td><td>{item_cell(other['activities'])}</td>"
+                    f"<td>{item_cell(other['assessments'])}</td><td>{tools_cell(other)}</td></tr>")
+    return "".join(html)
+
+def clo_legend(w):
+    used = sorted({c for _, clos in w["mos"] for c in clos})
+    return " &nbsp; ".join(f"<b>CLO {c}</b> {esc(D.COURSE_OBJECTIVES[c - 1])}" for c in used)
 
 def week_page(w):
-    active = sorted({c for _, cos in w["mos"] for c in cos})
     sections = " &nbsp;•&nbsp; ".join(esc(s) for s in w["sections"])
-    notes = ""  # per-week notes are kept in the data file but not printed
     return f"""
 <div class="page">
   <h1>{esc(D.COURSE)} – Week {w['num']}: {esc(w['title'])}</h1>
   <div class="sub"><b>{esc(w['dates'])}</b> &nbsp;|&nbsp; {sections} &nbsp;|&nbsp; {esc(D.TERM)}</div>
   <table class="map">
     <colgroup>
-      <col style="width:20%"><col style="width:23%">
-      <col style="width:16%"><col style="width:5%">
-      <col style="width:16%"><col style="width:5%">
-      <col style="width:10%"><col style="width:5%">
+      <col style="width:29%"><col style="width:22%"><col style="width:20%"><col style="width:16%"><col style="width:13%">
     </colgroup>
     <thead><tr>
-      <th class="co">Course-level<br>Objectives</th><th>Module-level<br>Objectives</th>
-      <th>Learning Materials</th><th>#</th><th>Activities</th><th>#</th><th>Assessments</th><th>#</th>
+      <th>Module Objectives</th><th>Instructional Materials</th><th>Learning Activities</th><th>Assessments</th><th>Tools</th>
     </tr></thead>
-    <tbody><tr>
-      <td class="co">{co_list(active)}</td>
-      <td class="mo">{mo_list(w['mos'])}</td>
-      <td colspan="2">{rows_html(w['materials'], len(w['mos']))}</td>
-      <td colspan="2">{rows_html(w['activities'], len(w['mos']))}</td>
-      <td colspan="2">{rows_html(w['assessments'], len(w['mos']), 'w15')}</td>
-    </tr></tbody>
+    <tbody>{week_rows(w)}</tbody>
   </table>
+  <div class="legend">{clo_legend(w)}</div>
 </div>"""
 
 def document(pages, fs):
