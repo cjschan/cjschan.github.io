@@ -10,6 +10,9 @@ final exam, with no separate catch-up day. Blackboard has no 9.1 items yet; the 
 FILES
   Week01.pdf … Week16.pdf        one landscape page per week
   Math1342_CourseMap_All.pdf     all 16 weeks in one file
+  Math1342_Weekly_ToDo.docx      student-facing "what to do this week" list for all 16 weeks, to paste
+                                 into Blackboard (opens in Google Docs or Word). Rebuild with
+                                 python3 source/build_weekly_todo.py after editing course_map_data.py.
   source/course_map_data.py      ALL content (Course Level Objectives, module objectives, materials,
                                  activities, assessments, MO codes, notes). Edit this file.
   source/build_course_maps.py    renders HTML and prints PDFs with Google Chrome (headless)
