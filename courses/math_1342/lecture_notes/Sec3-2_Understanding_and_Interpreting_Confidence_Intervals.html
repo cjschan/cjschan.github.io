@@ -357,6 +357,61 @@
   </div>
 </div>
 
+<!-- Example solution: Budgets of Hollywood Movies -->
+<div class="slide">
+  <span class="tag tag-green">Solution</span>
+  <h2>Solution: Budgets of Hollywood Movies</h2>
+  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 16px;">Margin of error: \(2 \times \text{SE} = 2(10.23) = 20.46\). Each 95% CI is \(\bar{x} \pm 20.46\); check whether it contains \(\mu = 53.48\).</p>
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; min-height: 0;">
+    <div class="card card-green table-card">
+      <h3>Each 95% CI</h3>
+      <table>
+        <thead><tr><th>Sample mean</th><th>95% CI</th><th>Captures \(\mu\)?</th></tr></thead>
+        <tbody>
+          <tr><td>\(\bar{x} = 40\)</td><td>\(40 \pm 20.46 = (19.54,\; 60.46)\)</td><td style="color: var(--green); font-weight: 700;">Yes</td></tr>
+          <tr><td>\(\bar{x} = 70\)</td><td>\(70 \pm 20.46 = (49.54,\; 90.46)\)</td><td style="color: var(--green); font-weight: 700;">Yes</td></tr>
+          <tr><td>\(\bar{x} = 84\)</td><td>\(84 \pm 20.46 = (63.54,\; 104.46)\)</td><td style="color: var(--rose); font-weight: 700;">No</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card card-accent">
+      <h3>The Intervals and \(\mu = 53.48\)</h3>
+      <svg viewBox="0 0 560 250" style="width: 100%; height: auto;" font-family="Inter, sans-serif">
+        <line x1="30" y1="210" x2="540" y2="210" stroke="#475569" stroke-width="1.5"/>
+        <g font-size="14" fill="#cbd5e1" text-anchor="middle">
+          <line x1="30" y1="210" x2="30" y2="216" stroke="#475569"/><text x="30" y="234">10</text>
+          <line x1="132" y1="210" x2="132" y2="216" stroke="#475569"/><text x="132" y="234">30</text>
+          <line x1="234" y1="210" x2="234" y2="216" stroke="#475569"/><text x="234" y="234">50</text>
+          <line x1="336" y1="210" x2="336" y2="216" stroke="#475569"/><text x="336" y="234">70</text>
+          <line x1="438" y1="210" x2="438" y2="216" stroke="#475569"/><text x="438" y="234">90</text>
+          <line x1="540" y1="210" x2="540" y2="216" stroke="#475569"/><text x="540" y="234">110</text>
+        </g>
+        <!-- x = 10 + (px - 30) / 5.1 -->
+        <line x1="251.7" y1="18" x2="251.7" y2="210" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6 4"/>
+        <text x="251.7" y="14" text-anchor="middle" font-size="14" font-weight="700" fill="#fbbf24">μ = 53.48</text>
+        <g stroke-width="5" stroke-linecap="round">
+          <line x1="78.7" y1="60" x2="287.3" y2="60" stroke="#34d399"/>
+          <line x1="231.7" y1="115" x2="440.3" y2="115" stroke="#34d399"/>
+          <line x1="303.1" y1="170" x2="511.7" y2="170" stroke="#fb7185"/>
+        </g>
+        <g>
+          <circle cx="183" cy="60" r="6" fill="#f1f5f9"/>
+          <circle cx="336" cy="115" r="6" fill="#f1f5f9"/>
+          <circle cx="407.4" cy="170" r="6" fill="#f1f5f9"/>
+        </g>
+        <g font-size="14" fill="#f1f5f9" text-anchor="middle">
+          <text x="183" y="48">x̄ = 40</text>
+          <text x="336" y="103">x̄ = 70</text>
+          <text x="407.4" y="158">x̄ = 84 (misses)</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Why does \(\bar{x} = 84\) miss?</strong> It lies more than 2 SE above \(\mu\) (84 − 53.48 = 30.52 &gt; 20.46), out in the right tail of the sampling distribution. About 95% of sample means fall within 2 SE of \(\mu\), so about 95% of intervals built this way capture \(\mu\).
+  </div>
+</div>
+
 <!-- Brief Review (Big Picture diagram) -->
 <div class="slide">
   <span class="tag tag-purple">Brief Review</span>
