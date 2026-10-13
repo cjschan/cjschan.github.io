@@ -72,7 +72,92 @@
   <p class="subtitle">A flexible method for any confidence level — just keep the middle P%</p>
 </div>
 
-<!-- Slide 2: Other Confidence Levels -->
+<!-- Slide 2: What Is Statistical Inference? -->
+<div class="slide">
+  <span class="tag tag-blue">Review</span>
+  <h2>What Is Statistical Inference?</h2>
+  <p class="subtitle">Statistical inference is the process of using data from a sample to understand the whole population.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>The Goal: Estimate a Parameter</h3>
+      <ul>
+        <li>A <strong>parameter</strong> is a number that describes the <strong>population</strong></li>
+        <li>It is a fixed value, but it is usually <strong>unknown</strong></li>
+        <li>We can rarely measure the entire population, so we estimate it instead</li>
+      </ul>
+    </div>
+    <div class="card card-accent2">
+      <h3>The Tool: Use the Sample</h3>
+      <ul>
+        <li>A <strong>statistic</strong> is a number computed from the <strong>sample</strong></li>
+        <li>We know its value because we have the sample data</li>
+        <li>A statistic used to estimate a parameter is a <strong>point estimate</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>The big picture:</strong> Population \(\rightarrow\) parameter (unknown).&nbsp;&nbsp; Sample \(\rightarrow\) statistic (known) \(\rightarrow\) used to <em>estimate</em> the parameter.
+  </div>
+</div>
+
+<!-- Slide 3: Parameter and Statistic Notation -->
+<div class="slide">
+  <span class="tag tag-blue">Review</span>
+  <h2>Parameters and Statistics: Notation</h2>
+  <p class="subtitle">Each parameter has a matching statistic that serves as its point estimate.</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <h3>Parameters (Population)</h3>
+      <table>
+        <tr><th>Quantity</th><th>Symbol</th></tr>
+        <tr><td>Mean</td><td>\(\mu\)</td></tr>
+        <tr><td>Difference in means</td><td>\(\mu_1 - \mu_2\)</td></tr>
+        <tr><td>Proportion</td><td>\(p\)</td></tr>
+        <tr><td>Difference in proportions</td><td>\(p_1 - p_2\)</td></tr>
+        <tr><td>Correlation</td><td>\(\rho\)</td></tr>
+        <tr><td>Standard deviation</td><td>\(\sigma\)</td></tr>
+      </table>
+    </div>
+    <div class="card card-accent2 table-card">
+      <h3>Statistics (Sample)</h3>
+      <table>
+        <tr><th>Quantity</th><th>Symbol</th></tr>
+        <tr><td>Mean</td><td>\(\bar{x}\)</td></tr>
+        <tr><td>Difference in means</td><td>\(\bar{x}_1 - \bar{x}_2\)</td></tr>
+        <tr><td>Proportion</td><td>\(\hat{p}\)</td></tr>
+        <tr><td>Difference in proportions</td><td>\(\hat{p}_1 - \hat{p}_2\)</td></tr>
+        <tr><td>Correlation</td><td>\(r\)</td></tr>
+        <tr><td>Standard deviation</td><td>\(s\)</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Read across the rows:</strong> each statistic on the right is the point estimate for the parameter on the left, e.g. \(\bar{x}\) estimates \(\mu\) and \(\hat{p}\) estimates \(p\).
+  </div>
+</div>
+
+<!-- Slide 4: Interval Estimates -->
+<div class="slide">
+  <span class="tag tag-blue">Review</span>
+  <h2>From Point Estimate to Interval Estimate</h2>
+  <p class="subtitle">A point estimate will almost never equal the parameter exactly, so we give a range of plausible values instead.</p>
+  <div class="card card-green">
+    <h3>The Form of an Interval Estimate</h3>
+    <div class="formula-box" style="text-align: center;">
+      \[\text{Statistic} \pm \text{Margin of Error (ME)}\]
+    </div>
+    <ul>
+      <li>The <strong>statistic</strong> is the center of the interval (our point estimate)</li>
+      <li>The <strong>margin of error</strong> reflects how far the statistic is likely to be from the parameter</li>
+      <li>A confidence interval is an interval estimate with a stated confidence level</li>
+    </ul>
+  </div>
+  <div class="callout">
+    <strong>Recall (Section 3.3):</strong> For a 95% CI, \(\text{ME} = 2 \times \text{SE}\), so the interval is \(\text{Statistic} \pm 2 \times \text{SE}\).
+  </div>
+</div>
+
+<!-- Slide 5: Other Confidence Levels -->
 <div class="slide">
   <span class="tag tag-blue">Motivation</span>
   <h2>Beyond 95% Confidence</h2>
@@ -98,7 +183,7 @@
   </div>
 </div>
 
-<!-- Slide 3: Percentile Method -->
+<!-- Slide 6: Percentile Method -->
 <div class="slide">
   <span class="tag tag-green">Method</span>
   <h2>The Percentile Method</h2>
@@ -143,7 +228,7 @@
   </div>
 </div>
 
-<!-- Slide 4: Confidence Level and Width -->
+<!-- Slide 7: Confidence Level and Width -->
 <div class="slide">
   <span class="tag tag-purple">Relationship</span>
   <h2>Confidence Level and Interval Width</h2>
@@ -170,7 +255,7 @@
   </div>
 </div>
 
-<!-- Slide 5: Sample Size and Width -->
+<!-- Slide 8: Sample Size and Width -->
 <div class="slide">
   <span class="tag tag-amber">Sample Size</span>
   <h2>Sample Size and Interval Width</h2>
@@ -202,7 +287,7 @@
   </div>
 </div>
 
-<!-- Slide 6: Two Methods Compared -->
+<!-- Slide 9: Two Methods Compared -->
 <div class="slide">
   <span class="tag tag-blue">Comparison</span>
   <h2>Two Methods for Bootstrap CIs</h2>
@@ -238,7 +323,7 @@
   </div>
 </div>
 
-<!-- Slide 7: Bootstrap Cautions -->
+<!-- Slide 10: Bootstrap Cautions -->
 <div class="slide">
   <span class="tag tag-rose">Cautions</span>
   <h2>Bootstrap Cautions</h2>
@@ -271,38 +356,42 @@
 <!-- Inserted: chart slide -->
 <div class="slide">
   <h2>The Percentile Method Visualized</h2>
-  <p class="subtitle">1000 bootstrap means with the 2.5th and 97.5th percentiles marked — the middle 95% gives the CI.</p>
+  <p class="subtitle">1000 bootstrap means with the 0.5th and 99.5th percentiles marked. The middle 99% gives the 99% CI.</p>
   <div id="boot-pct" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:8px auto; max-width:640px;"></div>
+  <div class="callout" style="max-width:640px; margin:12px auto 0; font-size:15px;">
+    <strong>The whole distribution is 100%.</strong> The lower bound (0.5th percentile) is greater than 0.5% of the bootstrap statistics, and the upper bound (99.5th percentile) is greater than 99.5% of them. That leaves 0.5% in each tail and 99% in between: \(0.5\% + 99\% + 0.5\% = 100\%\).
+  </div>
 <script>
 (function(){
   const data=[2.1,2.4,2.5,2.6,2.7,2.8,2.9,3.0,3.0,3.1,3.1,3.2,3.2,3.3,3.4,3.5,3.7,3.8,4.0,4.2,2.5,2.8,3.0,3.1,3.3,3.5,2.9,3.2,3.4,3.6];
   const sample=()=>{ let s=0; for(let i=0;i<data.length;i++) s+=data[Math.floor(Math.random()*data.length)]; return s/data.length; };
   const boots=[]; for(let i=0;i<1000;i++) boots.push(sample());
   const sorted=[...boots].sort((a,b)=>a-b);
-  const lo=sorted[Math.floor(0.025*sorted.length)], hi=sorted[Math.floor(0.975*sorted.length)];
-  StatGraphs.dotplot('#boot-pct', boots, {width:600,height:240,xLabel:'bootstrap mean'});
-  // Overlay percentile markers
+  // 0.5th and 99.5th percentiles: 5 values fall below lo and 5 fall above hi
+  const lo=sorted[Math.floor(0.005*sorted.length)], hi=sorted[Math.ceil(0.995*sorted.length)-1];
+  const W=600, H=270, PL=38, PR=40, PT=48, PB=28;
+  StatGraphs.dotplot('#boot-pct', boots, {width:W,height:H,padLeft:PL,padRight:PR,padTop:PT,padBottom:PB,xLabel:'bootstrap mean'});
+  // Overlay tail shading, percentile markers, and area labels
   const svg=document.querySelector('#boot-pct svg');
+  const add=(tag,attrs,text)=>{ const n=document.createElementNS('http://www.w3.org/2000/svg',tag); for(const k in attrs) n.setAttribute(k,attrs[k]); if(text) n.textContent=text; svg.appendChild(n); };
+  const font={'font-family':'Work Sans, sans-serif','font-size':11};
   const min=Math.min(...boots), max=Math.max(...boots);
-  const sx=v=>38+((v-min)/(max-min))*(600-38-14);
-  for(const [v,lab] of [[lo,'2.5%'],[hi,'97.5%']]){
-    const ln=document.createElementNS('http://www.w3.org/2000/svg','line');
-    ln.setAttribute('x1',sx(v)); ln.setAttribute('x2',sx(v));
-    ln.setAttribute('y1',14); ln.setAttribute('y2',240-28);
-    ln.setAttribute('stroke','#fbbf24'); ln.setAttribute('stroke-width',2); ln.setAttribute('stroke-dasharray','4 3');
-    svg.appendChild(ln);
-    const txt=document.createElementNS('http://www.w3.org/2000/svg','text');
-    txt.setAttribute('x',sx(v)); txt.setAttribute('y',24);
-    txt.setAttribute('fill','#fbbf24'); txt.setAttribute('font-size',11);
-    txt.setAttribute('text-anchor','middle'); txt.setAttribute('font-family','Work Sans, sans-serif');
-    txt.textContent=lab+' = '+v.toFixed(2);
-    svg.appendChild(txt);
+  const sx=v=>PL+((v-min)/(max-min))*(W-PL-PR);
+  add('rect',{x:PL,y:PT,width:Math.max(sx(lo)-PL,0),height:H-PT-PB,fill:'#fb7185',opacity:0.15});
+  add('rect',{x:sx(hi),y:PT,width:Math.max(W-PR-sx(hi),0),height:H-PT-PB,fill:'#fb7185',opacity:0.15});
+  // Bound labels run inward so they stay inside the chart
+  for(const [v,lab,anchor,dx] of [[lo,'0.5th percentile','start',4],[hi,'99.5th percentile','end',-4]]){
+    add('line',{x1:sx(v),x2:sx(v),y1:14,y2:H-PB,stroke:'#fbbf24','stroke-width':2,'stroke-dasharray':'4 3'});
+    add('text',Object.assign({x:sx(v)+dx,y:24,fill:'#fbbf24','text-anchor':anchor},font),lab+' = '+v.toFixed(2));
   }
+  add('text',Object.assign({x:sx(lo)-4,y:42,fill:'#fb7185','text-anchor':'end','font-weight':700},font),'0.5%');
+  add('text',Object.assign({x:(sx(lo)+sx(hi))/2,y:42,fill:'#34d399','text-anchor':'middle','font-weight':700},font),'middle 99%');
+  add('text',Object.assign({x:sx(hi)+4,y:42,fill:'#fb7185','text-anchor':'start','font-weight':700},font),'0.5%');
 })();
 </script>
 </div>
 
-<!-- Slide 8: Summary -->
+<!-- Slide 11: Summary -->
 <div class="slide">
   <span class="tag tag-blue">Recap</span>
   <h2>Section 3.4 Summary</h2>
