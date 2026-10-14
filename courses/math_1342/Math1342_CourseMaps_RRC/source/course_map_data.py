@@ -208,7 +208,7 @@ dict(num=6, title="Probability Rules and Sampling Distributions", dates="Sep 28 
      ],
      assessments=[
       (hw("P.1", "Oct 4"), "MO1, MO2"),
-      (hw("3.1", "Oct 4"), "MO3, MO4, MO5"),
+      (hw("3.1", "Oct 11"), "MO3, MO4, MO5"),
       ("Test 1 – Fri Oct 2 – Sun Oct 4 (Blackboard, proctored, 2 hours). Covers Weeks 1–5.", "None"),
       (quiz(3, "Mon Oct 5"), "MO1–MO5"),
      ]),
@@ -230,8 +230,9 @@ dict(num=7, title="Confidence Intervals and the Bootstrap", dates="Oct 5 – 7",
       ("StatKey (lock5stat.com/statkey) – Bootstrap Confidence Intervals", "MO4, MO5"),
      ],
      activities=[
-      (proposed("Interpreting Confidence Intervals") + " – which of 20 simulated CIs capture μ; fix three misinterpretations", "MO1, MO2"),
-      (proposed("Bootstrap a Proportion") + " – Try It: 32 of 50 prefer Brand A; build the bootstrap distribution, read off SE, form the CI", "MO3, MO4, MO5"),
+      (part("Sampling Distribution (Kahoot!)") + " – Mon: review of 3.1 (Week 6 objectives)", "None"),
+      (part("Confidence Intervals") + " – which of 20 simulated CIs capture μ; fix three misinterpretations", "MO1, MO2"),
+      (part("Bootstrap Confidence Intervals") + " – Wed: Try It: 32 of 50 prefer Brand A; build the bootstrap distribution, read off SE, form the CI", "MO3, MO4, MO5"),
      ],
      assessments=[
       (hw("3.2", "Oct 11"), "MO1, MO2"),
@@ -254,7 +255,7 @@ dict(num=8, title="Percentile Intervals and Introducing Hypothesis Tests", dates
       *pack("4.1", "MO4, MO5"),
      ],
      activities=[
-      (proposed("Percentile Confidence Intervals") + " – StatKey: 90/95/99% intervals for the same data; compare SE and percentile methods", "MO1, MO2, MO3"),
+      (part("Confidence Intervals Using Percentiles") + " – Mon: StatKey: 90/95/99% intervals for the same data; compare SE and percentile methods", "MO1, MO2, MO3"),
       (proposed("Writing Hypotheses") + " – Zener-card ESP practice (26 of 50): define the parameter, state H₀ and Hₐ, choose the tail", "MO4, MO5"),
       ("Think about it: is 15 of 16 correct (dolphin study) convincing?", "MO5"),
      ],
@@ -264,7 +265,7 @@ dict(num=8, title="Percentile Intervals and Introducing Hypothesis Tests", dates
      ]),
 # ---------------------------------------------------------------- Week 9
 dict(num=9, title="P-values and Statistical Significance", dates="Oct 19 – 21",
-     sections=["4.2 Measuring Evidence with p-values", "4.3 Determining Statistical Significance"], notes=None,
+     sections=["4.2 Measuring Evidence with P-Values", "4.3 Determining Statistical Significance"], notes=None,
      mos=[
       ("Describe how a randomization distribution is generated assuming H₀ is true, and identify its center as the null value.", [5, 8]),
       ("Compare sampling, bootstrap, and randomization distributions by their center and purpose.", [5]),
@@ -433,7 +434,8 @@ dict(num=15, title="ANOVA and Inference for Slope and Correlation", dates="Nov 3
       (proposed("ANOVA") + " – cuckoo-egg example: build the ANOVA table from given SS, find F, decide", "MO1, MO2, MO3"),
       (proposed("Inference for Slope and Correlation") + " – SleepStudy: depression score vs. classes missed (test for correlation and slope, CI for slope, R²); self-quiz: drinks per week vs. classes missed", "MO4, MO5, MO6"),
      ],
-     assessments=[(hw("8.1", "Dec 6"), "MO1, MO2, MO3"), (hw("9.1", "Dec 6"), "MO4, MO5, MO6")]),
+     assessments=[(hw("8.1", "Dec 6"), "MO1, MO2, MO3"), (hw("9.1", "Dec 6"), "MO4, MO5, MO6"),
+                  ("Course Evaluation (in START HERE) – complete before the end of the semester", "None")]),
 # ---------------------------------------------------------------- Week 16
 dict(num=16, title="Putting It All Together and Final Exam", dates="Dec 7 – 9",
      sections=["Review: Putting It All Together – From Sampling to Hypothesis Testing (Mon Dec 7)", "Final Exam – Wed Dec 9, online (Blackboard, proctored)"], notes=None,
@@ -455,15 +457,22 @@ dict(num=16, title="Putting It All Together and Final Exam", dates="Dec 7 – 9"
      ]),
 ]
 
-DISCREPANCIES = """Blackboard (course _970761_1) vs. MW syllabus, as read on Oct 1, 2026 (second pass):
-- All 16 weeks now use the new naming (e-Text: / Interactive Lecture: / Slides: / Online Homework: + section
-  number and title; "Participation: Topic"; Kahoots named by topic with "(Kahoot!)").
-- Small leftovers: Week 2 "1.3 Experiments and Observational Studies" and Week 3 "2.1 Categorical Variables"
-  e-text items lack the "e-Text:" prefix; the three Week 11 items for 6.1 are spelled "eText:" (no hyphen).
+DISCREPANCIES = """Blackboard (course _970761_1) vs. MW syllabus and maps, as read on Oct 8, 2026:
+- Weeks 1-5 and 9-15 match the maps. Weeks 9-16 are still hidden from students.
+- Week 6: Online Homework 3.1 is due Sun Oct 11 in Blackboard (not Oct 4); the maps follow Blackboard.
+- Week 7 Participation items are now in Blackboard: Sampling Distribution (Kahoot!) (Mon Oct 5, a 3.1 review),
+  Confidence Intervals, and Bootstrap Confidence Intervals (Wed Oct 7). The Confidence Intervals item is
+  titled "Participation: Confidence Intervals.docx" and has no due date; the maps drop the ".docx".
+- Week 8: "Participation: Confidence Intervals Using Percentiles" (Mon Oct 12) exists but is hidden from
+  students. There is no 4.1 participation item yet; "Writing Hypotheses" is still a proposed activity.
+- Week 6 has no Blackboard item for the M&M sampling-distribution activity (kept on the map as proposed).
 - Week 7 has no Interactive Lecture items for 3.2 and 3.3 (the maps follow Blackboard and omit them).
+- Week 15 has no 9.1 items and Week 16 holds only the Final Exam (no Review slides); the maps list them by convention.
+- START HERE now also has "Course Evaluation" (listed in Week 15) and "Learn more about your course materials".
+- Naming leftovers: Week 2 "1.3 Experiments and Observational Studies" and Week 3 "2.1 Categorical Variables"
+  e-text items lack the "e-Text:" prefix; the three Week 11 items for 6.1 are spelled "eText:" (no hyphen).
 - Week 5: the 2.5 lecture videos are "Interactive Lecture: Section 2.5 ... (Part 1)" and "(Part 2)".
   There is no Interactive Lecture for 2.4 (intentional).
-- Week 10 homework 4.4 is split into "(a)" and "(b)"; the syllabus (updated Oct 3, 2026) lists all of 4.4.
-- Quiz 8 sits in Week 13 (due Mon Nov 23) in Blackboard; the maps follow that placement.
-- Weeks 1-5 contain "Week N Course Map" items; these are the maps themselves and are not listed on the maps.
+- Week 10 homework 4.4 is split into "(a)" and "(b)".
+- Weeks 1-15 contain "Week N Course Map" items; these are the maps themselves and are not listed on the maps.
 """

@@ -2,25 +2,29 @@ MATH 1342 Weekly Course Maps – Fall 2026, Section 019 (MW, in person, RRC Room
 Generated Oct 1, 2026 from the MW syllabus (cjschan.github.io/courses/math_1342/fall2026_mw.html),
 the lecture slides (cjschan.github.io/courses/math_1342/lecture_notes), and the Blackboard course
 outline for course 50751. Layout follows the Apodaca/Forsythe "Map Your Way to a Quality Course" handout.
-The companion set for the online TTh section (036) is in ~/Desktop/Math1342_CourseMaps.
+The companion set for the online TTh section (036) is in /Users/cjschan/dev/cjschan.github.io/courses/math_1342/Math1342_CourseMaps_DIL.
 
 Updated Oct 3, 2026 to match the revised syllabus: Week 10 covers all of 4.4 (was 4.4(a)); Week 15 adds
 9.1 Inference for Slope and Correlation; Week 16 is the Putting It All Together review (Mon Dec 7) and the
 final exam, with no separate catch-up day. Blackboard has no 9.1 items yet; the maps list them by convention.
+
+Updated Oct 8, 2026 from the Blackboard outline: Online Homework 3.1 is due Sun Oct 11; Week 7 lists the real
+Participation items (Sampling Distribution (Kahoot!), Confidence Intervals, Bootstrap Confidence Intervals); Week 8 lists
+Participation: Confidence Intervals Using Percentiles; Week 15 adds the Course Evaluation.
 
 FILES
   Week01.pdf … Week16.pdf        one landscape page per week
   Math1342_CourseMap_All.pdf     all 16 weeks in one file
   Math1342_Weekly_ToDo.docx      student-facing "what to do this week" list for all 16 weeks, to paste
                                  into Blackboard (opens in Google Docs or Word). Rebuild with
-                                 python3 source/build_weekly_todo.py after editing course_map_data.py.
+                                 /usr/bin/python3 source/build_weekly_todo.py (python-docx is installed there, not in anaconda) after editing course_map_data.py.
   source/course_map_data.py      ALL content (Course Level Objectives, module objectives, materials,
                                  activities, assessments, MO codes). Edit this file.
   source/build_course_maps.py    renders HTML and prints PDFs with Google Chrome (headless)
   source/html/                   the generated HTML pages
 
 HOW TO REBUILD AFTER EDITING
-  cd ~/Desktop/Math1342_CourseMaps_RRC/source
+  cd /Users/cjschan/dev/cjschan.github.io/courses/math_1342/Math1342_CourseMaps_RRC/source
   python3 build_course_maps.py
 (The script picks the largest font size that fits every week on one page and uses it for all pages.
  Requires Google Chrome in /Applications and pdfinfo from poppler; both are installed.)
@@ -53,14 +57,21 @@ RESOURCE NAMES (new Blackboard convention, applied to every week)
   Participation: Topic | Take-Home Quiz N (Monday due dates; Quiz 1 is Wed Sep 9) | Practice Test N,
   Test N, Test N Retake, Final Exam
 
-Blackboard (course _970761_1) vs. MW syllabus, as read on Oct 1, 2026 (second pass):
-- All 16 weeks now use the new naming (e-Text: / Interactive Lecture: / Slides: / Online Homework: + section
-  number and title; "Participation: Topic"; Kahoots named by topic with "(Kahoot!)").
-- Small leftovers: Week 2 "1.3 Experiments and Observational Studies" and Week 3 "2.1 Categorical Variables"
-  e-text items lack the "e-Text:" prefix; the three Week 11 items for 6.1 are spelled "eText:" (no hyphen).
+Blackboard (course _970761_1) vs. MW syllabus and maps, as read on Oct 8, 2026:
+- Weeks 1-5 and 9-15 match the maps. Weeks 9-16 are still hidden from students.
+- Week 6: Online Homework 3.1 is due Sun Oct 11 in Blackboard (not Oct 4); the maps follow Blackboard.
+- Week 7 Participation items are now in Blackboard: Sampling Distribution (Kahoot!) (Mon Oct 5, a 3.1 review),
+  Confidence Intervals, and Bootstrap Confidence Intervals (Wed Oct 7). The Confidence Intervals item is
+  titled "Participation: Confidence Intervals.docx" and has no due date; the maps drop the ".docx".
+- Week 8: "Participation: Confidence Intervals Using Percentiles" (Mon Oct 12) exists but is hidden from
+  students. There is no 4.1 participation item yet; "Writing Hypotheses" is still a proposed activity.
+- Week 6 has no Blackboard item for the M&M sampling-distribution activity (kept on the map as proposed).
 - Week 7 has no Interactive Lecture items for 3.2 and 3.3 (the maps follow Blackboard and omit them).
+- Week 15 has no 9.1 items and Week 16 holds only the Final Exam (no Review slides); the maps list them by convention.
+- START HERE now also has "Course Evaluation" (listed in Week 15) and "Learn more about your course materials".
+- Naming leftovers: Week 2 "1.3 Experiments and Observational Studies" and Week 3 "2.1 Categorical Variables"
+  e-text items lack the "e-Text:" prefix; the three Week 11 items for 6.1 are spelled "eText:" (no hyphen).
 - Week 5: the 2.5 lecture videos are "Interactive Lecture: Section 2.5 ... (Part 1)" and "(Part 2)".
   There is no Interactive Lecture for 2.4 (intentional).
-- Week 10 homework 4.4 is split into "(a)" and "(b)"; the syllabus (updated Oct 3, 2026) lists all of 4.4.
-- Quiz 8 sits in Week 13 (due Mon Nov 23) in Blackboard; the maps follow that placement.
-- Weeks 1-5 contain "Week N Course Map" items; these are the maps themselves and are not listed on the maps.
+- Week 10 homework 4.4 is split into "(a)" and "(b)".
+- Weeks 1-15 contain "Week N Course Map" items; these are the maps themselves and are not listed on the maps.
