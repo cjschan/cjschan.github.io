@@ -72,15 +72,15 @@
   <p class="subtitle">Using sample data to assess claims about a population</p>
 </div>
 
-<!-- Slide 2: What Is a Statistical Test? -->
+<!-- Slide 2: What Is a Hypothesis Test? -->
 <div class="slide">
-  <h2>What Is a Statistical Test?</h2>
+  <h2>What Is a Hypothesis Test?</h2>
   <p class="subtitle">The core idea behind hypothesis testing</p>
   <div class="grid-2">
     <div class="card card-accent">
       <h3>Definition</h3>
       <ul>
-        <li>A <strong>statistical test</strong> uses data from a sample to assess a claim about a population</li>
+        <li>A <strong>hypothesis test</strong> uses data from a sample to assess a claim about a population</li>
         <li>We collect evidence (data) and evaluate whether it supports or contradicts a specific claim</li>
         <li>Similar to a courtroom trial: we start by assuming innocence and look for evidence of guilt</li>
       </ul>
@@ -95,7 +95,7 @@
     </div>
   </div>
   <div class="callout">
-    The goal of a statistical test is to determine whether the sample data provide enough evidence to refute a claim about a population.
+    The goal of a hypothesis test is to determine whether the sample data provide enough evidence to refute a claim about a population.
   </div>
 </div>
 
@@ -192,6 +192,36 @@
   <div class="callout">
     <strong>Think about it:</strong> Is 15 out of 16 correct pushes convincing to you? Or could Buzz have just been guessing and gotten lucky? How would you justify your answer?
   </div>
+</div>
+
+<!-- Inserted: chart slide -->
+<div class="slide">
+  <h2>What If Buzz Were Just Guessing?</h2>
+  <p class="subtitle">Suppose \(H_0: p = 0.50\) is true. Below: 1000 simulated sample proportions \(\hat{p}\) from samples of \(n = 16\) attempts, assuming Buzz is just guessing. Buzz's actual result, \(\hat{p} = 15/16 \approx 0.94\), lies far out in the tail &mdash; it essentially never happens by random chance alone.</p>
+  <div id="rand4-1" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:8px auto; max-width:640px;"></div>
+<script>
+(function(){
+  const samples=[];
+  for(let s=0;s<1000;s++){let k=0;for(let i=0;i<16;i++)if(Math.random()<0.5)k++;samples.push(k/16);}
+  StatGraphs.dotplot('#rand4-1', samples, {width:600,height:240,padBottom:44,min:0,max:1,xLabel:'p̂ (under H₀: p = 0.50, n = 16)'});
+  // Mark Buzz's observed statistic p̂ = 15/16
+  const svg=document.querySelector('#rand4-1 svg');
+  const NS='http://www.w3.org/2000/svg';
+  const W=600,H=240,PL=38,PR=14,PT=14,PB=44;
+  const x=PL+0.9375*(W-PL-PR);
+  const ln=document.createElementNS(NS,'line');
+  ln.setAttribute('x1',x); ln.setAttribute('x2',x);
+  ln.setAttribute('y1',PT); ln.setAttribute('y2',H-PB);
+  ln.setAttribute('stroke','#fb7185'); ln.setAttribute('stroke-width',2); ln.setAttribute('stroke-dasharray','5 4');
+  svg.appendChild(ln);
+  const lbl=document.createElementNS(NS,'text');
+  lbl.setAttribute('x',x-6); lbl.setAttribute('y',PT+12);
+  lbl.setAttribute('fill','#fb7185'); lbl.setAttribute('font-size',12);
+  lbl.setAttribute('text-anchor','end'); lbl.setAttribute('font-family','Work Sans, sans-serif');
+  lbl.textContent='observed p̂ = 15/16';
+  svg.appendChild(lbl);
+})();
+</script>
 </div>
 
 <!-- Slide 4: Null and Alternative Hypotheses -->
@@ -314,47 +344,51 @@
 </div>
 
 
-<!-- Inserted: chart slide -->
+<!-- Worked Example: Coffee Cups (mean) -->
 <div class="slide">
-  <h2>What If Buzz Were Just Guessing?</h2>
-  <p class="subtitle">Suppose \(H_0: p = 0.50\) is true. Below: 1000 simulated sample proportions \(\hat{p}\) from samples of \(n = 16\) attempts, assuming Buzz is just guessing. Buzz's actual result, \(\hat{p} = 15/16 \approx 0.94\), lies far out in the tail &mdash; it essentially never happens by random chance alone.</p>
-  <div id="rand4-1" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:8px auto; max-width:640px;"></div>
-<script>
-(function(){
-  const samples=[];
-  for(let s=0;s<1000;s++){let k=0;for(let i=0;i<16;i++)if(Math.random()<0.5)k++;samples.push(k/16);}
-  StatGraphs.dotplot('#rand4-1', samples, {width:600,height:240,padBottom:44,min:0,max:1,xLabel:'p̂ (under H₀: p = 0.50, n = 16)'});
-  // Mark Buzz's observed statistic p̂ = 15/16
-  const svg=document.querySelector('#rand4-1 svg');
-  const NS='http://www.w3.org/2000/svg';
-  const W=600,H=240,PL=38,PR=14,PT=14,PB=44;
-  const x=PL+0.9375*(W-PL-PR);
-  const ln=document.createElementNS(NS,'line');
-  ln.setAttribute('x1',x); ln.setAttribute('x2',x);
-  ln.setAttribute('y1',PT); ln.setAttribute('y2',H-PB);
-  ln.setAttribute('stroke','#fb7185'); ln.setAttribute('stroke-width',2); ln.setAttribute('stroke-dasharray','5 4');
-  svg.appendChild(ln);
-  const lbl=document.createElementNS(NS,'text');
-  lbl.setAttribute('x',x-6); lbl.setAttribute('y',PT+12);
-  lbl.setAttribute('fill','#fb7185'); lbl.setAttribute('font-size',12);
-  lbl.setAttribute('text-anchor','end'); lbl.setAttribute('font-family','Work Sans, sans-serif');
-  lbl.textContent='observed p̂ = 15/16';
-  svg.appendChild(lbl);
-})();
-</script>
+  <span class="tag tag-green" style="align-self:flex-start;">Worked Example</span>
+  <h2>Example: Are the Coffee Cups Underfilled?</h2>
+  <p class="subtitle">A coffee shop advertises that its medium cup holds <strong>12 ounces</strong> of coffee. A customer suspects the cups are <strong>underfilled</strong>, so they measure <strong>25 randomly selected medium cups</strong>. The sample mean is <strong>\(\bar{x} = 11.8\) ounces</strong> with standard deviation \(s = 0.4\) ounces.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>Setting Up the Test</h3>
+      <ul class="small">
+        <li><strong>Parameter:</strong> \(\mu\) = the mean amount of coffee in <em>all</em> medium cups this shop serves</li>
+        <li><strong>Null value:</strong> if the shop is filling cups as advertised, \(\mu = 12\)</li>
+        <li><strong>Hypotheses:</strong></li>
+      </ul>
+      <div class="formula-box" style="font-size:20px;">
+        \(H_0: \mu = 12\)<br>
+        \(H_a: \mu < 12\)
+      </div>
+      <p class="step-note"><strong>One-sided (left-tailed):</strong> the customer is only looking for evidence that cups hold <em>less</em> than 12 ounces.</p>
+    </div>
+    <div class="card card-accent">
+      <h3>Thinking About the Data</h3>
+      <ul class="small">
+        <li><strong>Sample statistic:</strong> \(\bar{x} = 11.8\) ounces &mdash; a <em>statistic</em>, since it comes from the 25 cups we measured</li>
+        <li><strong>If \(H_0\) is true,</strong> a randomization distribution of \(\bar{x}\) would be centered at the null value, <strong>12</strong></li>
+        <li><strong>How far out is 11.8?</strong> Sample means for \(n = 25\) typically vary by about \(s/\sqrt{n} = 0.4/5 = 0.08\) ounces, so 11.8 is about \(0.2/0.08 = 2.5\) of those steps below 12 &mdash; out in the <strong>left tail</strong></li>
+        <li><strong>Conclusion (informal):</strong> a sample mean this low would be unusual if cups really averaged 12 ounces, so the data give fairly strong evidence that the cups are underfilled</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Notice:</strong> the hypotheses are about \(\mu\) (all cups), not \(\bar{x}\) (our 25 cups). We already know \(\bar{x} = 11.8 &lt; 12\); the question is whether that gap is too big to blame on random sampling.
+  </div>
 </div>
 
-<!-- Practice: Zener Cards -->
+<!-- Practice: Rock Paper Scissors -->
 <div class="slide">
   <span class="tag tag-amber" style="align-self:flex-start;">Practice &mdash; We'll Work Through This in Class</span>
-  <h2>Example: Testing for ESP with Zener Cards</h2>
-  <p class="subtitle">A deck of <strong>Zener cards</strong> contains 5 different symbols (circle, cross, waves, square, star). A card is drawn at random and hidden from the subject, who then guesses which symbol is on the card. One subject makes <strong>50 attempts</strong> and guesses correctly <strong>26 times</strong>.</p>
+  <h2>Example: Is There a Rock Paper Scissors Expert?</h2>
+  <p class="subtitle">A student claims to be <strong>unusually good at rock paper scissors</strong>. To test this, they play <strong>11 games</strong> against a classmate (any tie is replayed, so every game has a winner). The student <strong>wins 9 of the 11 games</strong>.</p>
   <div class="grid-2">
     <div class="card card-amber">
       <h3>Setting Up the Test</h3>
       <ul>
         <li>What is the <strong>parameter</strong> of interest in this study? Define it in words.</li>
-        <li>If the subject is <strong>just guessing</strong>, what is the value of \(p\)?</li>
+        <li>If the student has <strong>no special skill</strong>, what is the value of \(p\)?</li>
         <li>State the null and alternative hypotheses, \(H_0\) and \(H_a\).</li>
         <li>Is this test <strong>one-sided or two-sided</strong>? How do you know?</li>
       </ul>
@@ -365,7 +399,7 @@
         <li>What is the <strong>sample statistic</strong> \(\hat{p}\)? Is it a parameter or a statistic?</li>
         <li>If we simulated 1000 samples assuming \(H_0\) is true, where would the randomization distribution of \(\hat{p}\) be centered?</li>
         <li>Do you expect the observed \(\hat{p}\) to fall in the tail of that distribution, or near the center?</li>
-        <li>Based on your answers, do these data convince you the subject has ESP? Why or why not?</li>
+        <li>Based on your answers, do these data convince you the student has real skill? Why or why not?</li>
       </ul>
     </div>
   </div>

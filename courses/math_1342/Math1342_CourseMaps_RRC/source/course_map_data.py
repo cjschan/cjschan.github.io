@@ -256,7 +256,7 @@ dict(num=8, title="Percentile Intervals and Introducing Hypothesis Tests", dates
      ],
      activities=[
       (part("Confidence Intervals Using Percentiles") + " – Mon: StatKey: 90/95/99% intervals for the same data; compare SE and percentile methods", "MO1, MO2, MO3"),
-      (proposed("Writing Hypotheses") + " – Zener-card ESP practice (26 of 50): define the parameter, state H₀ and Hₐ, choose the tail", "MO4, MO5"),
+      (proposed("Writing Hypotheses") + " – Rock paper scissors practice (9 of 11 wins): define the parameter, state H₀ and Hₐ, choose the tail", "MO4, MO5"),
       ("Think about it: is 15 of 16 correct (dolphin study) convincing?", "MO5"),
      ],
      assessments=[
