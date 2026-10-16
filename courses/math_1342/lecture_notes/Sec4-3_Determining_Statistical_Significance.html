@@ -11,7 +11,7 @@
   };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<script src="statgraphs.js?v=2"></script>
+<script src="statgraphs.js?v=6"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -178,8 +178,8 @@
 <!-- Slide 5: Statistical Significance -->
 <div class="slide">
   <h2>Statistical Significance</h2>
-  <p class="subtitle">Applying the decision rule to real examples</p>
-  <div class="grid-2" style="flex: none; margin-bottom: 18px;">
+  <p class="subtitle">Example 1: Red Wine and Weight Loss</p>
+  <div class="grid-2" style="flex: none; margin-bottom: 14px;">
     <div class="card card-accent">
       <h3>Definition</h3>
       <div class="formula-box">
@@ -188,33 +188,21 @@
     </div>
     <div class="card card-accent3">
       <h3>The Resveratrol Study</h3>
-      <p class="step-note">Resveratrol, a compound found in red wine and grapes, has been shown to promote weight loss in rodents. Researchers want to know whether it works in primates too, so they give resveratrol supplements to grey mouse lemurs and compare measurements before and after treatment.</p>
-      <p class="step-note">\(H_0\): resveratrol has no effect &nbsp;&nbsp; \(H_a\): resveratrol has an effect</p>
-      <p class="step-note">Suppose three studies like this one produce the p-values below.</p>
+      <p class="step-note">Resveratrol, an ingredient in red wine and grapes, has been shown to promote weight loss in animals. In one study, a sample of lemurs had various measurements taken before and after receiving resveratrol supplements for 4 weeks.</p>
+      <p class="step-note">Use a 5% significance level: \(\alpha = 0.05\).</p>
     </div>
   </div>
-  <div class="grid-3">
-    <div class="card card-green">
-      <span class="tag tag-green">Example 1</span>
-      <h3>Resveratrol Study A</h3>
-      <p class="step-note">p-value = 0.04, \(\alpha = 0.05\)</p>
-      <p class="step-note">Since \(0.04 < 0.05\):</p>
-      <p style="font-size: 17px; font-weight: 700; color: var(--green);">Reject \(H_0\) -- Significant</p>
-    </div>
-    <div class="card card-amber">
-      <span class="tag tag-amber">Example 2</span>
-      <h3>Resveratrol Study B</h3>
-      <p class="step-note">p-value = 0.12, \(\alpha = 0.05\)</p>
-      <p class="step-note">Since \(0.12 \geq 0.05\):</p>
-      <p style="font-size: 17px; font-weight: 700; color: var(--amber);">Do not reject \(H_0\) -- Not significant</p>
-    </div>
-    <div class="card card-accent2">
-      <span class="tag tag-purple">Example 3</span>
-      <h3>Resveratrol Study C</h3>
-      <p class="step-note">p-value = 0.0003, \(\alpha = 0.05\)</p>
-      <p class="step-note">Since \(0.0003 < 0.05\):</p>
-      <p style="font-size: 17px; font-weight: 700; color: var(--green);">Reject \(H_0\) -- Highly significant</p>
-    </div>
+  <div class="card table-card" style="flex: none;">
+    <table>
+      <tr><th>Test</th><th style="white-space: nowrap;">p-value</th><th>Decision</th><th>Conclusion in context</th></tr>
+      <tr><td>(a) Mean resting metabolic rate is <strong>higher</strong> after treatment</td><td>0.013</td><td style="color: var(--green); font-weight: 700;">Reject \(H_0\)</td><td>Evidence that mean resting metabolic rate is higher after treatment</td></tr>
+      <tr><td>(b) Mean body mass is <strong>lower</strong> after treatment</td><td>0.007</td><td style="color: var(--green); font-weight: 700;">Reject \(H_0\)</td><td>Evidence that mean body mass is lower after treatment</td></tr>
+      <tr><td>(c) Locomotor activity <strong>changes</strong> after treatment</td><td>0.980</td><td style="color: var(--amber); font-weight: 700; white-space: nowrap;">Do not reject \(H_0\)</td><td>Not enough evidence that locomotor activity changes after treatment</td></tr>
+      <tr><td>(d) Mean food intake <strong>changes</strong> after treatment</td><td>0.035</td><td style="color: var(--green); font-weight: 700;">Reject \(H_0\)</td><td>Evidence that mean food intake changes after treatment</td></tr>
+    </table>
+  </div>
+  <div class="callout">
+    <strong>(e) At a 1% level</strong> (\(\alpha = 0.01\)), only test (b) is significant, since \(0.007 < 0.01\). Tests (a) and (d) are significant at 5% but not at 1%.
   </div>
 </div>
 
@@ -280,18 +268,45 @@
 </div>
 
 
-<!-- Inserted: chart slide -->
+<!-- Slide 7: Decision rule on a randomization distribution -->
 <div class="slide">
   <h2>The Decision Rule Visualized</h2>
-  <p class="subtitle">Two-tailed test at \(\alpha = 0.05\). The shaded tails are the rejection region — total area 5%.</p>
-  <div id="alpha-curve" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:14px; margin:8px auto; max-width:640px;"></div>
-<script>
-StatGraphs.normalCurve('#alpha-curve',{
-  mean:0,sd:1,xMin:-4,xMax:4,width:600,height:240,xLabel:'standardized statistic',
-  shade:[{from:-4,to:-1.96,color:'#fb7185'},{from:1.96,to:4,color:'#fb7185'}],
-  markers:[{x:-1.96,label:'-1.96'},{x:1.96,label:'1.96'}],
-});
-</script>
+  <p class="subtitle">Example 3: Sugar in Bottled Iced Tea. The label says 25 grams per bottle on average; a sample of \(n = 30\) bottles has \(\bar{x} = 33.8\) grams. Is the true mean greater than 25?</p>
+  <div class="grid-2" style="grid-template-columns: 2fr 1fr;">
+    <div id="alpha-dots" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; width:100%;"></div>
+    <div class="card card-accent">
+      <h3>The Test</h3>
+      <p class="step-note">\(H_0: \mu = 25\) &nbsp;&nbsp; \(H_a: \mu > 25\)</p>
+      <p class="step-note">Sample statistic: \(\bar{x} = 33.8\)</p>
+      <p class="step-note">p-value = proportion of the 1000 dots at or above 33.8 &asymp; \(3/1000 = 0.003\)</p>
+      <p class="step-note">Since \(0.003 < 0.05\): <strong style="color: var(--green);">Reject \(H_0\)</strong></p>
+      <p class="step-note"><strong>In context:</strong> There is strong evidence that the average amount of sugar per bottle is greater than 25 grams.</p>
+    </div>
+  </div>
+  <script>
+  (function(){
+    const centers = [16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24, 24.5,
+                     25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5, 30, 30.5, 31, 31.5, 32, 32.5, 33, 33.5,
+                     35, 36, 37.5];
+    const counts  = [1, 2, 2, 3, 5, 7, 10, 13, 18, 22, 28, 34, 40, 46, 52, 57, 62, 64,
+                     66, 64, 62, 57, 52, 46, 40, 34, 28, 22, 18, 13, 10, 7, 5, 3, 2, 2,
+                     1, 1, 1];
+    let n = 0, s = 0, s2 = 0;
+    for (let i = 0; i < centers.length; i++) {
+      n += counts[i]; s += centers[i] * counts[i]; s2 += centers[i] * centers[i] * counts[i];
+    }
+    const mean = s / n, sd = Math.sqrt(s2 / n - mean * mean);
+    StatGraphs.samplingDotplot('#alpha-dots', {
+      centers, counts, samples: n, mean, stdError: sd, statName: 'std. dev.', decimals: 2,
+      xMin: 15, xMax: 38, xStep: 3, xLabel: 'Randomization sample means (assuming H\u2080: \u03bc = 25)',
+      highlightFrom: 33.8, vline: 33.8, vlineLabel: 'x\u0304 = 33.8', marker: 25,
+      width: 620, height: 330,
+    });
+  })();
+  </script>
+  <div class="callout">
+    <strong>Decision rule:</strong> the p-value is the <strong>proportion of dots</strong> at least as extreme as the observed statistic. If that proportion is less than \(\alpha\), reject \(H_0\). With 1000 simulations at \(\alpha = 0.05\), that means fewer than 50 dots.
+  </div>
 </div>
 
 <!-- Slide 8: Summary -->

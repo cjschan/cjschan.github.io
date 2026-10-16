@@ -669,7 +669,8 @@ const StatGraphs = (() => {
     const hiPitch = Math.max(dotPitch, hiR * 2.3);
     for (let i = 0; i < centers.length; i++) {
       const cx = sx(centers[i]);
-      const hi = opts.highlightFrom !== undefined && centers[i] >= opts.highlightFrom;
+      const hi = (opts.highlightFrom !== undefined && centers[i] >= opts.highlightFrom) ||
+        (opts.highlightTo !== undefined && centers[i] <= opts.highlightTo);
       for (let k = 0; k < counts[i]; k++) {
         fr.svg.appendChild(el('circle', {
           cx,
@@ -720,20 +721,23 @@ const StatGraphs = (() => {
       }, [line]));
     });
 
-    // ── vertical reference line (e.g., observed statistic) ──
-    if (opts.vline !== undefined) {
-      const vx = sx(opts.vline);
+    // ── vertical reference line(s) (e.g., observed statistic); vline and
+    //    vlineLabel may be a single value or parallel arrays ──
+    const vlines = opts.vline === undefined ? [] : [].concat(opts.vline);
+    const vlineLabels = [].concat(opts.vlineLabel || []);
+    vlines.forEach((v, i) => {
+      const vx = sx(v);
       fr.svg.appendChild(el('line', {
         x1: vx, y1: fr.PT, x2: vx, y2: axisYY,
         stroke: opts.vlineColor || COLORS.rose, 'stroke-width': 2, 'stroke-dasharray': '5 4',
       }));
-      if (opts.vlineLabel) {
+      if (vlineLabels[i]) {
         fr.svg.appendChild(el('text', {
           x: vx - 8, y: fr.PT + fr.plotH * 0.45, fill: opts.vlineColor || COLORS.rose,
           'font-size': 12, 'font-weight': 700, 'text-anchor': 'end', 'font-family': 'Work Sans, sans-serif',
-        }, [opts.vlineLabel]));
+        }, [vlineLabels[i]]));
       }
-    }
+    });
 
     // ── mean marker (triangle below axis) ──
     if (opts.marker !== undefined) {
