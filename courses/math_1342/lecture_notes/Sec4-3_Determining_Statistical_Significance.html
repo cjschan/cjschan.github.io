@@ -309,6 +309,46 @@
   </div>
 </div>
 
+<!-- Slide 7b: Two-tailed decision on a randomization distribution -->
+<div class="slide">
+  <h2>A Two-Tailed Decision</h2>
+  <p class="subtitle">Example 3: Filling Cereal Boxes. A machine is supposed to fill boxes with 16 oz on average; overfilling and underfilling are both problems. A sample of \(n = 36\) boxes has \(\bar{x} = 16.12\) oz. Is the machine off target?</p>
+  <div class="grid-2" style="grid-template-columns: 2fr 1fr;">
+    <div id="alpha-dots-2tail" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; width:100%;"></div>
+    <div class="card card-accent">
+      <h3>The Test</h3>
+      <p class="step-note">\(H_0: \mu = 16\) &nbsp;&nbsp; \(H_a: \mu \neq 16\)</p>
+      <p class="step-note">Sample statistic: \(\bar{x} = 16.12\), which is 0.12 above 16</p>
+      <p class="step-note">"As extreme" means 0.12 or more away from 16 in <strong>either direction</strong>: \(\bar{x} \ge 16.12\) or \(\bar{x} \le 15.88\)</p>
+      <p class="step-note">p-value \(= \frac{12 + 14}{1000} = 0.026\)</p>
+      <p class="step-note">Since \(0.026 < 0.05\): <strong style="color: var(--green);">Reject \(H_0\)</strong></p>
+      <p class="step-note"><strong>In context:</strong> There is evidence that the machine's mean fill amount is different from 16 oz.</p>
+    </div>
+  </div>
+  <script>
+  (function(){
+    const centers = [15.82, 15.84, 15.86, 15.87, 15.88, 15.89, 15.90, 15.91, 15.92, 15.93, 15.94, 15.95, 15.96, 15.97, 15.98, 15.99, 16.00,
+                     16.01, 16.02, 16.03, 16.04, 16.05, 16.06, 16.07, 16.08, 16.09, 16.10, 16.11, 16.12, 16.13, 16.14, 16.15, 16.16, 16.18];
+    const counts  = [1, 3, 1, 2, 7, 7, 19, 25, 32, 30, 37, 42, 54, 53, 74, 85, 75,
+                     69, 69, 61, 48, 49, 42, 35, 25, 24, 10, 9, 3, 2, 3, 1, 2, 1];
+    let n = 0, s = 0, s2 = 0;
+    for (let i = 0; i < centers.length; i++) {
+      n += counts[i]; s += centers[i] * counts[i]; s2 += centers[i] * centers[i] * counts[i];
+    }
+    const mean = s / n, sd = Math.sqrt(s2 / n - mean * mean);
+    StatGraphs.samplingDotplot('#alpha-dots-2tail', {
+      centers, counts, samples: n, mean, stdError: sd, statName: 'std. dev.', decimals: 3,
+      xMin: 15.78, xMax: 16.22, xStep: 0.04, xLabel: 'Randomization sample means (assuming H₀: μ = 16)',
+      highlightFrom: 16.12, highlightTo: 15.88, vline: [15.88, 16.12], vlineLabel: ['15.88', 'x̄ = 16.12'], marker: 16,
+      width: 620, height: 330,
+    });
+  })();
+  </script>
+  <div class="callout">
+    <strong>Two tails:</strong> because \(H_a\) uses \(\neq\), we count dots in <strong>both</strong> tails, as far from 16 as our \(\bar{x}\) on either side. Note that at \(\alpha = 0.01\) we would <strong>not</strong> reject \(H_0\), since \(0.026 > 0.01\).
+  </div>
+</div>
+
 <!-- Slide 8: Summary -->
 <div class="slide">
   <h2>Summary: Determining Statistical Significance</h2>
