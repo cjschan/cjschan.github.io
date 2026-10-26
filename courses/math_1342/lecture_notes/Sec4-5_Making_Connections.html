@@ -102,6 +102,278 @@
 </div>
 
 <div class="slide">
+  <span style="align-self:flex-start;" class="tag tag-purple">Two Populations</span>
+  <h2>Two Ways to Simulate \(H_0\) for Two Groups</h2>
+  <p class="subtitle">To test \(H_0: \mu_1 = \mu_2\) (or \(p_1 = p_2\)), we need samples where the group label makes no difference. There are two common ways to make them.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <span class="tag tag-green">Method 1</span>
+      <h3>Reallocation (re-randomization)</h3>
+      <ul class="small">
+        <li>Pool all the values, then <strong>shuffle and deal</strong> them back into two groups of the original sizes.</li>
+        <li>Sampling <strong>without replacement</strong>: every value is used exactly once.</li>
+        <li>Mirrors the <strong>random assignment</strong> in a randomized experiment.</li>
+      </ul>
+    </div>
+    <div class="card card-accent3">
+      <span class="tag tag-purple">Method 2</span>
+      <h3>Resampling (bootstrapping)</h3>
+      <ul class="small">
+        <li>Pool all the values, then <strong>draw at random</strong> to fill two groups of the original sizes.</li>
+        <li>Sampling <strong>with replacement</strong>: some values repeat, others are left out.</li>
+        <li>Mirrors <strong>random sampling</strong> from two populations in an observational study.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    Either way, compute the difference in sample statistics for the new groups, repeat thousands of times, and you get a randomization distribution centered at <strong>0</strong>, the null value.
+  </div>
+</div>
+
+<div class="slide">
+  <span style="align-self:flex-start;" class="tag tag-green">Method 1</span>
+  <h2>Reallocation: Shuffle the Group Labels</h2>
+  <p class="subtitle">A small illustration: 5 treatment and 5 control values. Observed difference \(\bar{x}_T - \bar{x}_C = 17.6 - 13.6 = 4.0\).</p>
+  <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0;">
+    <svg viewBox="0 0 1230 380" style="width:100%; height:100%; max-height:400px;" font-family="Inter, sans-serif" role="img" aria-label="Reallocation diagram: the original treatment and control values are pooled, then split into new groups of 5 without replacement, giving one simulated difference in means.">
+      <defs>
+        <marker id="arw-realloc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#cbd5e1"/></marker>
+        <marker id="arw2-realloc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#34d399"/></marker>
+      </defs>
+      <text x="170" y="34" text-anchor="middle" font-size="20" font-weight="800" fill="#f1f5f9">Original sample</text>
+      <text x="20" y="78" font-size="17" font-weight="700" fill="#38bdf8">Treatment<tspan dx="12" fill="#cbd5e1" font-weight="500">x&#772; = 17.6</tspan></text>
+      <rect x="20" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="46.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">18</text>
+      <rect x="82" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="108.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">14</text>
+      <rect x="144" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="170.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">21</text>
+      <rect x="206" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="232.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">16</text>
+      <rect x="268" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="294.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">19</text>
+      <text x="20" y="180" font-size="17" font-weight="700" fill="#fbbf24">Control<tspan dx="12" fill="#cbd5e1" font-weight="500">x&#772; = 13.6</tspan></text>
+      <rect x="20" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="46.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">12</text>
+      <rect x="82" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="108.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">15</text>
+      <rect x="144" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="170.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">11</text>
+      <rect x="206" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="232.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">17</text>
+      <rect x="268" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="294.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">13</text>
+      <text x="170" y="290" text-anchor="middle" font-size="20" font-weight="700" fill="#f1f5f9">x&#772;<tspan font-size="13" dy="5">T</tspan><tspan dy="-5"> &#8722; x&#772;</tspan><tspan font-size="13" dy="5">C</tspan><tspan dy="-5"> = 4.0</tspan></text>
+      <line x1="338" y1="170" x2="448" y2="170" stroke="#cbd5e1" stroke-width="4" marker-end="url(#arw-realloc)"/>
+      <text x="393" y="154" text-anchor="middle" font-size="16" font-weight="700" fill="#cbd5e1">combine</text>
+      <text x="615" y="34" text-anchor="middle" font-size="20" font-weight="800" fill="#f1f5f9">Pool all 10 values</text>
+      <text x="615" y="60" text-anchor="middle" font-size="15" font-style="italic" fill="#cbd5e1">If H&#8320; is true, the labels don&#8217;t matter</text>
+      <rect x="450" y="96" width="330" height="148" rx="14" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 6"/>
+      <rect x="465" y="112" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="491.0" y="146.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">18</text>
+      <rect x="527" y="112" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="553.0" y="146.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">14</text>
+      <rect x="589" y="112" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="615.0" y="146.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">21</text>
+      <rect x="651" y="112" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="677.0" y="146.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">16</text>
+      <rect x="713" y="112" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="739.0" y="146.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">19</text>
+      <rect x="465" y="176" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="491.0" y="210.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">12</text>
+      <rect x="527" y="176" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="553.0" y="210.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">15</text>
+      <rect x="589" y="176" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="615.0" y="210.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">11</text>
+      <rect x="651" y="176" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="677.0" y="210.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">17</text>
+      <rect x="713" y="176" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="739.0" y="210.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">13</text>
+      <line x1="786" y1="170" x2="896" y2="170" stroke="#34d399" stroke-width="4" marker-end="url(#arw2-realloc)"/>
+      <text x="841" y="152" text-anchor="middle" font-size="15" font-weight="700" fill="#34d399">shuffle &amp; deal</text>
+      <text x="841" y="196" text-anchor="middle" font-size="15" font-weight="800" fill="#34d399">without</text>
+      <text x="841" y="214" text-anchor="middle" font-size="15" font-weight="800" fill="#34d399">replacement</text>
+      <text x="1060" y="34" text-anchor="middle" font-size="20" font-weight="800" fill="#f1f5f9">New groups (same sizes)</text>
+      <text x="910" y="78" font-size="17" font-weight="700" fill="#38bdf8">Treatment<tspan dx="12" fill="#cbd5e1" font-weight="500">x&#772;* = 14.8</tspan></text>
+      <rect x="910" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="936.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">15</text>
+      <rect x="972" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="998.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">21</text>
+      <rect x="1034" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="1060.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">11</text>
+      <rect x="1096" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="1122.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">13</text>
+      <rect x="1158" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="1184.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">14</text>
+      <text x="910" y="180" font-size="17" font-weight="700" fill="#fbbf24">Control<tspan dx="12" fill="#cbd5e1" font-weight="500">x&#772;* = 16.4</tspan></text>
+      <rect x="910" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="936.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">18</text>
+      <rect x="972" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="998.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">12</text>
+      <rect x="1034" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="1060.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">16</text>
+      <rect x="1096" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="1122.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">19</text>
+      <rect x="1158" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="1184.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">17</text>
+      <text x="1060" y="290" text-anchor="middle" font-size="20" font-weight="700" fill="#f1f5f9">x&#772;*<tspan font-size="13" dy="5">T</tspan><tspan dy="-5"> &#8722; x&#772;*</tspan><tspan font-size="13" dy="5">C</tspan><tspan dy="-5"> = &#8722;1.6</tspan></text>
+      <text x="1060" y="320" text-anchor="middle" font-size="15" font-style="italic" fill="#cbd5e1">= one dot in the randomization distribution</text>
+      <text x="615" y="300" text-anchor="middle" font-size="16" font-weight="700" fill="#34d399">Every value is used exactly once</text>
+    </svg>
+  </div>
+  <div class="callout">
+    Reallocation asks: <em>if the treatment had no effect, how different could the groups look just from which subjects happened to be assigned where?</em>
+  </div>
+</div>
+
+<div class="slide">
+  <span style="align-self:flex-start;" class="tag tag-purple">Method 2</span>
+  <h2>Resampling: Bootstrap from the Pooled Sample</h2>
+  <p class="subtitle">Same data. Now each new group is drawn <strong>with replacement</strong> from the pool of all 10 values.</p>
+  <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0;">
+    <svg viewBox="0 0 1230 380" style="width:100%; height:100%; max-height:400px;" font-family="Inter, sans-serif" role="img" aria-label="Resampling diagram: the original treatment and control values are pooled, then split into new groups of 5 with replacement, giving one simulated difference in means.">
+      <defs>
+        <marker id="arw-resamp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#cbd5e1"/></marker>
+        <marker id="arw2-resamp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#a78bfa"/></marker>
+      </defs>
+      <text x="170" y="34" text-anchor="middle" font-size="20" font-weight="800" fill="#f1f5f9">Original sample</text>
+      <text x="20" y="78" font-size="17" font-weight="700" fill="#38bdf8">Treatment<tspan dx="12" fill="#cbd5e1" font-weight="500">x&#772; = 17.6</tspan></text>
+      <rect x="20" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="46.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">18</text>
+      <rect x="82" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="108.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">14</text>
+      <rect x="144" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="170.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">21</text>
+      <rect x="206" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="232.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">16</text>
+      <rect x="268" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="294.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">19</text>
+      <text x="20" y="180" font-size="17" font-weight="700" fill="#fbbf24">Control<tspan dx="12" fill="#cbd5e1" font-weight="500">x&#772; = 13.6</tspan></text>
+      <rect x="20" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="46.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">12</text>
+      <rect x="82" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="108.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">15</text>
+      <rect x="144" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="170.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">11</text>
+      <rect x="206" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="232.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">17</text>
+      <rect x="268" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="294.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">13</text>
+      <text x="170" y="290" text-anchor="middle" font-size="20" font-weight="700" fill="#f1f5f9">x&#772;<tspan font-size="13" dy="5">T</tspan><tspan dy="-5"> &#8722; x&#772;</tspan><tspan font-size="13" dy="5">C</tspan><tspan dy="-5"> = 4.0</tspan></text>
+      <line x1="338" y1="170" x2="448" y2="170" stroke="#cbd5e1" stroke-width="4" marker-end="url(#arw-resamp)"/>
+      <text x="393" y="154" text-anchor="middle" font-size="16" font-weight="700" fill="#cbd5e1">combine</text>
+      <text x="615" y="34" text-anchor="middle" font-size="20" font-weight="800" fill="#f1f5f9">Pool all 10 values</text>
+      <text x="615" y="60" text-anchor="middle" font-size="15" font-style="italic" fill="#cbd5e1">If H&#8320; is true, the labels don&#8217;t matter</text>
+      <rect x="450" y="96" width="330" height="148" rx="14" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 6"/>
+      <rect x="465" y="112" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="491.0" y="146.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">18</text>
+      <rect x="527" y="112" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="553.0" y="146.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">14</text>
+      <rect x="589" y="112" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="615.0" y="146.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">21</text>
+      <rect x="651" y="112" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="677.0" y="146.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">16</text>
+      <rect x="713" y="112" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="739.0" y="146.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">19</text>
+      <rect x="465" y="176" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="491.0" y="210.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">12</text>
+      <rect x="527" y="176" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="553.0" y="210.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">15</text>
+      <rect x="589" y="176" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="615.0" y="210.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">11</text>
+      <rect x="651" y="176" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="677.0" y="210.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">17</text>
+      <rect x="713" y="176" width="52" height="52" rx="8" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+      <text x="739.0" y="210.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">13</text>
+      <line x1="786" y1="170" x2="896" y2="170" stroke="#a78bfa" stroke-width="4" marker-end="url(#arw2-resamp)"/>
+      <text x="841" y="152" text-anchor="middle" font-size="15" font-weight="700" fill="#a78bfa">draw at random</text>
+      <text x="841" y="196" text-anchor="middle" font-size="15" font-weight="800" fill="#a78bfa">WITH</text>
+      <text x="841" y="214" text-anchor="middle" font-size="15" font-weight="800" fill="#a78bfa">replacement</text>
+      <text x="1060" y="34" text-anchor="middle" font-size="20" font-weight="800" fill="#f1f5f9">New groups (same sizes)</text>
+      <text x="910" y="78" font-size="17" font-weight="700" fill="#38bdf8">Treatment<tspan dx="12" fill="#cbd5e1" font-weight="500">x&#772;* = 15.4</tspan></text>
+      <rect x="910" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <rect x="905" y="85" width="62" height="62" rx="11" fill="none" stroke="#fb7185" stroke-width="3"/>
+      <text x="936.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">19</text>
+      <rect x="972" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="998.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">11</text>
+      <rect x="1034" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <rect x="1029" y="85" width="62" height="62" rx="11" fill="none" stroke="#fb7185" stroke-width="3"/>
+      <text x="1060.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">19</text>
+      <rect x="1096" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="1122.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">15</text>
+      <rect x="1158" y="90" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="1184.0" y="124.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">13</text>
+      <text x="910" y="180" font-size="17" font-weight="700" fill="#fbbf24">Control<tspan dx="12" fill="#cbd5e1" font-weight="500">x&#772;* = 15.8</tspan></text>
+      <rect x="910" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <rect x="905" y="187" width="62" height="62" rx="11" fill="none" stroke="#fb7185" stroke-width="3"/>
+      <text x="936.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">14</text>
+      <rect x="972" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="998.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">21</text>
+      <rect x="1034" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="1060.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">12</text>
+      <rect x="1096" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <rect x="1091" y="187" width="62" height="62" rx="11" fill="none" stroke="#fb7185" stroke-width="3"/>
+      <text x="1122.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">14</text>
+      <rect x="1158" y="192" width="52" height="52" rx="8" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="1184.0" y="226.0" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9">18</text>
+      <text x="1060" y="290" text-anchor="middle" font-size="20" font-weight="700" fill="#f1f5f9">x&#772;*<tspan font-size="13" dy="5">T</tspan><tspan dy="-5"> &#8722; x&#772;*</tspan><tspan font-size="13" dy="5">C</tspan><tspan dy="-5"> = &#8722;0.4</tspan></text>
+      <text x="1060" y="320" text-anchor="middle" font-size="15" font-style="italic" fill="#cbd5e1">= one dot in the randomization distribution</text>
+      <text x="615" y="300" text-anchor="middle" font-size="16" font-weight="700" fill="#a78bfa">Some values repeat (circled); 16 and 17 were not drawn</text>
+    </svg>
+  </div>
+  <div class="callout">
+    Resampling asks: <em>if both samples came from the same population, how different could two random samples look just by chance?</em>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Comparing the Two Randomization Distributions</h2>
+  <p class="subtitle">2,000 simulated differences \(\bar{x}^*_T - \bar{x}^*_C\) from each method, testing \(H_0: \mu_T = \mu_C\) vs \(H_a: \mu_T &gt; \mu_C\). The observed difference, 4.0, is marked in rose.</p>
+  <div class="grid-2" style="flex:0;">
+    <div class="card card-green">
+      <h3 style="color: var(--green);">Reallocation (no replacement)</h3>
+      <div id="two-realloc"></div>
+      <p class="step-note" style="margin-top:8px;">p-value &asymp; <strong id="two-realloc-p"></strong></p>
+    </div>
+    <div class="card card-accent3">
+      <h3 style="color: var(--accent3);">Resampling (with replacement)</h3>
+      <div id="two-resamp"></div>
+      <p class="step-note" style="margin-top:8px;">p-value &asymp; <strong id="two-resamp-p"></strong></p>
+    </div>
+  </div>
+  <div class="callout">
+    Both distributions are centered at 0 and have similar spread, so they give similar p-values. Choose the method that matches how the data were collected: <strong>reallocate</strong> for a randomized experiment, <strong>resample</strong> for random samples from two populations.
+  </div>
+<script>
+(function(){
+  const T=[18,14,21,16,19], C=[12,15,11,17,13], pool=T.concat(C), obs=4.0, reps=2000;
+  const mean=(a)=>a.reduce((s,v)=>s+v,0)/a.length;
+  const realloc=[], resamp=[];
+  for(let r=0;r<reps;r++){
+    const p=pool.slice();
+    for(let i=p.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[p[i],p[j]]=[p[j],p[i]];}
+    realloc.push(mean(p.slice(0,5))-mean(p.slice(5)));
+    const draw=()=>Array.from({length:5},()=>pool[Math.floor(Math.random()*pool.length)]);
+    resamp.push(mean(draw())-mean(draw()));
+  }
+  const opts={width:600,height:230,min:-8,max:8,bins:40,xLabel:'x̄*T − x̄*C'};
+  function mark(id, data, color){
+    // nudge so values on a bin edge (multiples of 0.4) land in the bin to their right
+    StatGraphs.histogram('#'+id, data.map(d=>d+1e-6), Object.assign({color}, opts));
+    const svg=document.querySelector('#'+id+' svg'), PL=38, PT=14, plotW=opts.width-PL-14, plotH=opts.height-PT-30;
+    const x=PL+(obs-opts.min)/(opts.max-opts.min)*plotW;
+    const ln=document.createElementNS('http://www.w3.org/2000/svg','line');
+    [['x1',x],['x2',x],['y1',PT],['y2',PT+plotH],['stroke','#fb7185'],['stroke-width',2.5],['stroke-dasharray','6 4']].forEach(([k,v])=>ln.setAttribute(k,v));
+    svg.appendChild(ln);
+    document.getElementById(id+'-p').textContent=(data.filter(d=>d>=obs-1e-9).length/reps).toFixed(3);
+  }
+  mark('two-realloc', realloc, '#34d399');
+  mark('two-resamp', resamp, '#a78bfa');
+})();
+</script>
+</div>
+
+<div class="slide">
   <h2>Bootstrap vs. Randomization Distributions</h2>
   <p class="subtitle">They look similar but serve different purposes.</p>
   <div class="grid-2">
