@@ -170,6 +170,7 @@
   .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); }
   .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); }
   .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); }
+  .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
   .big-number {
     font-size: 58px;
     font-weight: 800;
@@ -436,6 +437,83 @@
       </div>
       <div class="callout">
         With \(df=64\), the right-tail p-value is about \(0.020\). That gives statistically significant evidence that the expected “growth spurters” improved more on average.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Exercise and Sleep</h2>
+  <p class="subtitle">A random sample of college students reported how many hours they slept on a typical night and whether they exercise regularly. Do exercisers and non-exercisers differ in mean sleep? Use \(\alpha=0.05\).</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <table>
+        <tr><th>Group</th><th>\(n\)</th><th>Mean sleep (hr)</th><th>SD</th></tr>
+        <tr><td>1: Exercise regularly</td><td>35</td><td>7.4</td><td>1.3</td></tr>
+        <tr><td>2: Do not exercise</td><td>40</td><td>6.9</td><td>1.1</td></tr>
+      </table>
+      <h3 style="margin-top:12px;">StatKey for the t Distribution</h3>
+      <ul class="small">
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>t</strong>.</li>
+        <li><strong>2.</strong> Set the degrees of freedom (df).</li>
+        <li><strong>3.</strong> For a p-value: check <strong>Two-Tail</strong> and type your \(t\) into the axis box.</li>
+        <li><strong>4.</strong> For \(t^*\): check <strong>Two-Tail</strong> and type <strong>0.95</strong> in the middle proportion box.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Questions</h3>
+      <ul>
+        <li>(a) State \(H_0\) and \(H_a\).</li>
+        <li>(b) Find \(\bar{x}_1-\bar{x}_2\), the SE, and the \(t\) statistic.</li>
+        <li>(c) What is the df? Use StatKey to find the p-value. What do you conclude?</li>
+        <li>(d) Use StatKey to find \(t^*\), then build a \(95\%\) CI for \(\mu_1-\mu_2\). Does it agree with (c)?</li>
+        <li>(e) Can we say exercise <em>causes</em> more sleep? Why or why not?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Exercise and Sleep</h2>
+  <p class="subtitle">Group 1 is exercisers and Group 2 is non-exercisers.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">(a) Hypotheses</div>
+      <div class="formula-box">
+        \[
+          H_0:\mu_1-\mu_2=0 \qquad H_a:\mu_1-\mu_2\neq 0
+        \]
+      </div>
+      <div class="tag tag-purple">(b) Statistic</div>
+      <div class="formula-box">
+        \[
+          SE=\sqrt{\frac{1.3^2}{35}+\frac{1.1^2}{40}}\approx 0.280
+          \qquad
+          t=\frac{7.4-6.9}{0.280}\approx 1.78
+        \]
+      </div>
+      <div class="tag tag-green">(c) p-Value</div>
+      <div class="step-note">\(df=\min(34,39)=34\). StatKey t (df 34), two-tail at \(\pm 1.78\): p-value \(\approx 0.083\). Since \(0.083>0.05\), do not reject \(H_0\). Not enough evidence that mean sleep differs.</div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-amber">(d) Confidence Interval</div>
+      <div class="formula-box">
+        \[
+          t^*\approx 2.032 \qquad 0.5\pm 2.032(0.280)=0.5\pm 0.57
+        \]
+      </div>
+      <div class="formula-box">
+        \[
+          (-0.07,\ 1.07) \text{ hours}
+        \]
+      </div>
+      <div class="step-note">The interval contains 0, which matches not rejecting \(H_0\) at \(\alpha=0.05\).</div>
+      <div class="tag tag-rose">(e) Causation?</div>
+      <div class="callout">
+        No. This is an observational study: students chose whether to exercise, so confounding variables (such as schedule or stress) could explain any difference.
       </div>
     </div>
   </div>

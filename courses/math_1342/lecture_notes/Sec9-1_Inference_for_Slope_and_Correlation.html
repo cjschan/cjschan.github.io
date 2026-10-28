@@ -510,8 +510,8 @@
 </div>
 
 <div class="slide">
-  <span class="tag tag-amber">Quick Self-Quiz</span>
-  <h2>Alcohol and Missed Classes</h2>
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Alcohol and Missed Classes</h2>
   <p class="subtitle">Another possible explanatory variable for ClassesMissed in the SleepStudy data is <b>Drinks</b>, the number of alcoholic drinks per week the students say they have. Output for predicting classes missed from drinks is shown.</p>
   <div class="grid-2">
     <div>
@@ -554,8 +554,8 @@
 </div>
 
 <div class="slide">
-  <span class="tag tag-green">Answers</span>
-  <h2>Alcohol and Missed Classes: Answers</h2>
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Alcohol and Missed Classes</h2>
   <p class="subtitle">Compare each step to Example 1. Same procedure, opposite conclusion.</p>
   <div class="grid-2">
     <div class="card card-green">
@@ -584,6 +584,62 @@
         <li>(g) The two p-values are the same, \(0.215\), as expected.</li>
         <li>(h) \(R^2 = 0.6\%\). The number of alcoholic drinks per week explains only 0.6% of the variability in number of classes missed.</li>
       </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Correlation Test from \(r\)</h2>
+  <p class="subtitle">A random sample of 30 students at a college reported their average daily hours on social media and their GPA. The scatterplot looks roughly linear with no outliers, and the sample correlation is \(r=-0.42\). There is no software output, only \(r\) and \(n\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>StatKey for the t Distribution</h3>
+      <ul class="small">
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>t</strong>.</li>
+        <li><strong>2.</strong> Set df to \(n-2\).</li>
+        <li><strong>3.</strong> Check <strong>Two-Tail</strong> and type your \(t\) statistic into the axis box.</li>
+        <li><strong>4.</strong> Read the total area in both tails. That is the p-value.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Questions</h3>
+      <ul class="questions">
+        <li>(a) State \(H_0\) and \(H_a\) for testing whether social media time and GPA are correlated.</li>
+        <li>(b) Compute the \(t\) statistic and its df.</li>
+        <li>(c) Use StatKey to find the p-value. Give the conclusion in context at \(\alpha=0.05\).</li>
+        <li>(d) Find and interpret \(R^2\).</li>
+        <li>(e) Does this show that social media use lowers GPA? Why or why not?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Correlation Test from \(r\)</h2>
+  <p class="subtitle">The same t-test works with only \(r\) and \(n\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">(a) Hypotheses</div>
+      <div class="formula-box" style="font-size:19px;">\[ H_0:\ \rho = 0 \qquad H_a:\ \rho \neq 0 \]</div>
+      <div class="tag tag-purple">(b) Test Statistic</div>
+      <div class="formula-box" style="font-size:19px;">
+        \[
+          t=\frac{-0.42\sqrt{28}}{\sqrt{1-(-0.42)^2}}=\frac{-2.222}{0.908}\approx -2.45, \qquad df=28
+        \]
+      </div>
+      <div class="tag tag-green">(c) p-Value</div>
+      <div class="step-note">StatKey t with df 28, two tails beyond \(\pm 2.45\): p-value \(\approx 0.021\). Since \(0.021<0.05\), reject \(H_0\). There is evidence of a (negative) linear relationship between social media time and GPA for students at this college.</div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-amber">(d) \(R^2\)</div>
+      <div class="step-note">\(R^2=(-0.42)^2=0.176\). Social media time explains about 17.6% of the variability in GPA.</div>
+      <div class="tag tag-rose">(e) Causation?</div>
+      <div class="step-note">No. This is an observational sample, so a confounding variable (such as work hours or study habits) could explain the association.</div>
+      <div class="callout">
+        <strong>With the raw data:</strong> in StatKey, choose <strong>Randomization Hypothesis Tests &rarr; Test for Slope/Correlation</strong>, click <strong>Edit Data</strong> and paste the \((x, y)\) pairs, click <strong>Generate 1000 Samples</strong>, check <strong>Two-Tail</strong>, and enter the observed \(r\) or slope. The randomization p-value should be close to the t-based one.
+      </div>
     </div>
   </div>
 </div>

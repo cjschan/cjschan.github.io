@@ -369,10 +369,10 @@
       <h3>Total Statistic</h3>
       <div class="formula-box">
         \[
-          \chi^2 \approx 2.10
+          \chi^2 \approx 0.54+0.12+0.28+0.73+0.16+0.38\approx 2.21
         \]
       </div>
-      <div class="step-note">This is found by adding all six cell contributions in the table.</div>
+      <div class="step-note">This is found by adding all six cell contributions in the table (Math row first, then Verbal).</div>
     </div>
   </div>
 </div>
@@ -397,36 +397,80 @@
     </div>
     <div class="card card-rose">
       <h3>p-Value</h3>
-      <div class="callout">
-        A chi-square statistic of about \(2.10\) with \(df=2\) gives a p-value much larger than \(0.05\), so this example does not show strong evidence of association.
-      </div>
       <div class="step-note">The p-value is always a right-tail area because larger chi-square values mean a bigger departure from \(H_0\).</div>
+      <ul class="small">
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>Chi-square</strong>.</li>
+        <li><strong>2.</strong> Set df to <strong>2</strong> and check <strong>Right Tail</strong>.</li>
+        <li><strong>3.</strong> Change the axis box to <strong>2.21</strong>. The tail area is about <strong>0.33</strong>.</li>
+      </ul>
+      <div class="callout">
+        \(\chi^2\approx 2.21\) with \(df=2\) gives p-value \(\approx 0.33\), much larger than \(0.05\), so this example does not show evidence of an association.
+      </div>
     </div>
   </div>
 </div>
 
 <div class="slide">
-  <h2>Faculty Rank and Gender Example</h2>
-  <p class="subtitle">A second two-way-table example compares faculty rank and gender.</p>
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Faculty Rank and Gender</h2>
+  <p class="subtitle">A sample of faculty at one university was classified by rank (assistant, associate, or full professor) and gender. Is rank associated with gender? Use \(\alpha=0.05\).</p>
   <div class="grid-2">
     <div class="card card-accent table-card">
       <table>
-        <tr><th></th><th>aP</th><th>AP</th><th>P</th><th>Total</th></tr>
-        <tr><td>M</td><td>20</td><td>30</td><td>33</td><td>83</td></tr>
-        <tr><td>F</td><td>20</td><td>45</td><td>9</td><td>74</td></tr>
+        <tr><th></th><th>Assistant</th><th>Associate</th><th>Full</th><th>Total</th></tr>
+        <tr><td>Male</td><td>20</td><td>30</td><td>33</td><td>83</td></tr>
+        <tr><td>Female</td><td>20</td><td>45</td><td>9</td><td>74</td></tr>
         <tr><td>Total</td><td>40</td><td>75</td><td>42</td><td>157</td></tr>
       </table>
     </div>
     <div class="card card-green">
-      <div class="tag tag-blue">Compute</div>
-      <ul class="small">
-        <li>Find all expected counts.</li>
-        <li>Compute each \((O-E)^2/E\) contribution.</li>
-        <li>Add them for the chi-square statistic.</li>
-        <li>Use \(df=(2-1)(3-1)=2\).</li>
+      <h3>Questions</h3>
+      <ul>
+        <li>(a) State \(H_0\) and \(H_a\).</li>
+        <li>(b) Find all six expected counts. Is the condition met?</li>
+        <li>(c) Compute each \((O-E)^2/E\) and the \(\chi^2\) statistic.</li>
+        <li>(d) Find the df and use StatKey (Chi-square, Right Tail) for the p-value.</li>
+        <li>(e) State your conclusion. Which cells contribute the most?</li>
       </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Faculty Rank and Gender</h2>
+  <p class="subtitle">(a) \(H_0\): rank and gender are not associated. \(H_a\): rank and gender are associated.</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <div class="tag tag-blue">(b) Expected Counts</div>
+      <table>
+        <tr><th></th><th>Assistant</th><th>Associate</th><th>Full</th></tr>
+        <tr><td>Male</td><td>21.15</td><td>39.65</td><td>22.20</td></tr>
+        <tr><td>Female</td><td>18.85</td><td>35.35</td><td>19.80</td></tr>
+      </table>
+      <div class="step-note">Example: \(83\cdot 40/157\approx 21.15\). All expected counts are at least 5.</div>
+      <div class="tag tag-purple">(c) Contributions</div>
+      <table>
+        <tr><th></th><th>Assistant</th><th>Associate</th><th>Full</th></tr>
+        <tr><td>Male</td><td>0.06</td><td>2.35</td><td>5.25</td></tr>
+        <tr><td>Female</td><td>0.07</td><td>2.63</td><td>5.89</td></tr>
+      </table>
+    </div>
+    <div class="card card-green">
+      <div class="formula-box">
+        \[
+          \chi^2\approx 0.06+2.35+5.25+0.07+2.63+5.89\approx 16.25
+        \]
+      </div>
+      <div class="tag tag-amber">(d) p-Value</div>
+      <div class="formula-box">
+        \[
+          df=(2-1)(3-1)=2 \qquad \text{p-value}\approx 0.0003
+        \]
+      </div>
+      <div class="tag tag-rose">(e) Conclusion</div>
       <div class="callout">
-        This table shows a much larger departure from independence than the SAT example, so it produces a much smaller p-value.
+        Since \(0.0003<0.05\), reject \(H_0\). There is very strong evidence that rank and gender are associated. The Full Professor cells contribute most: far fewer women (9 vs. 19.8 expected) and more men (33 vs. 22.2) than independence predicts.
       </div>
     </div>
   </div>
@@ -456,6 +500,65 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: \(2\times 2\) Chi-Square</h2>
+  <p class="subtitle">This is the randomized treatment vs. placebo pain-relief experiment from Section 6.3, where the two-proportion test gave \(z\approx 2.52\).</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <table>
+        <tr><th></th><th>Treatment</th><th>Placebo</th><th>Total</th></tr>
+        <tr><td>Relieved pain</td><td>36</td><td>21</td><td>57</td></tr>
+        <tr><td>Not relieved</td><td>39</td><td>54</td><td>93</td></tr>
+        <tr><td>Total</td><td>75</td><td>75</td><td>150</td></tr>
+      </table>
+    </div>
+    <div class="card card-green">
+      <h3>Questions</h3>
+      <ul>
+        <li>(a) State \(H_0\) and \(H_a\) for a chi-square test.</li>
+        <li>(b) Find the four expected counts.</li>
+        <li>(c) Compute \(\chi^2\) and its df.</li>
+        <li>(d) Use StatKey (Chi-square, Right Tail) for the p-value. What do you conclude?</li>
+        <li>(e) Compare \(\chi^2\) with \(z^2=2.52^2\). What do you notice?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: \(2\times 2\) Chi-Square</h2>
+  <p class="subtitle">(a) \(H_0\): treatment and pain relief are not associated. \(H_a\): they are associated.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">(b) Expected Counts</div>
+      <div class="step-note">Relieved: \(57\cdot 75/150=28.5\) in each column. Not relieved: \(93\cdot 75/150=46.5\) in each column.</div>
+      <div class="tag tag-purple">(c) Statistic</div>
+      <div class="formula-box">
+        \[
+          \chi^2=2\cdot\frac{(36-28.5)^2}{28.5}+2\cdot\frac{(39-46.5)^2}{46.5}
+          \approx 3.95+2.42=6.37
+        \]
+      </div>
+      <div class="step-note">\(df=(2-1)(2-1)=1\)</div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-amber">(d) p-Value</div>
+      <div class="formula-box">
+        \[
+          \text{p-value}\approx 0.012
+        \]
+      </div>
+      <div class="step-note">Reject \(H_0\) at \(\alpha=0.05\): pain relief is associated with treatment. Since this was randomized, the treatment causes the difference.</div>
+      <div class="tag tag-rose">(e) \(\chi^2=z^2\)</div>
+      <div class="callout">
+        \(z^2=2.52^2\approx 6.37=\chi^2\). The chi-square p-value 0.012 equals the <strong>two-sided</strong> z p-value (\(2\times 0.0059\)). For a \(2\times 2\) table, the two tests are the same test.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>What You Can and Cannot Conclude</h2>
   <p class="subtitle">A significant result shows association, but it does not automatically show causation.</p>
   <div class="grid-3">
@@ -476,44 +579,52 @@
 
 <div class="slide">
   <h2>The Chi-Square Distribution</h2>
-  <p class="subtitle">For \(df = 4\). The right tail beyond an observed \(\chi^2 = 9.49\) is the p-value.</p>
+  <p class="subtitle">For the SAT example, \(df = 2\). The shaded right tail beyond the observed \(\chi^2 = 2.21\) is the p-value, about \(0.33\).</p>
   <div id="chart-7-2-chi" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:18px; max-width:640px; margin:8px auto;"></div>
   <script>
     (function() {
-      function logGamma(x) { // Stirling-style approximation
-        const c = [76.18009172947146, -86.50532032941677, 24.01409824083091, -1.231739572450155, 0.1208650973866179e-2, -0.5395239384953e-5];
-        let y = x, tmp = x + 5.5;
-        tmp -= (x + 0.5) * Math.log(tmp);
-        let ser = 1.000000000190015;
-        for (let j = 0; j < 6; j++) ser += c[j] / ++y;
-        return -tmp + Math.log(2.5066282746310005 * ser / x);
-      }
-      const df = 4;
-      const pdf = (x) => x <= 0 ? 0 : Math.exp((df / 2 - 1) * Math.log(x) - x / 2 - (df / 2) * Math.log(2) - logGamma(df / 2));
-      const xs = [], ys = [];
-      for (let x = 0.05; x <= 16; x += 0.1) { xs.push(x); ys.push(pdf(x)); }
-      // Use lineChart with shading: shade the tail beyond 9.49 by drawing a separate filled path.
-      // Simplest: render two curves on the same chart by computing manually.
+      const df = 2;
+      // Chi-square pdf for df = 2 is (1/2) e^(-x/2)
+      const pdf = (x) => x < 0 ? 0 : 0.5 * Math.exp(-x / 2);
+      const W = 600, H = 240, PL = 38, PR = 14, PT = 14, PB = 30;
+      const xMax = 10, yMax = 0.55, obs = 2.21;
       StatGraphs.lineChart('#chart-7-2-chi', {
-        width: 600, height: 240, xMin: 0, xMax: 16, yMin: 0, yMax: Math.max(...ys) * 1.1,
-        xLabel: 'χ² statistic', yLabel: 'density',
-        curves: [{ points: xs.map((x, i) => [x, ys[i]]) }],
+        width: W, height: H, xMin: 0, xMax: xMax, yMin: 0, yMax: yMax,
+        xTicks: [0, 2, 4, 6, 8, 10], yTicks: [0, 0.1, 0.2, 0.3, 0.4, 0.5],
+        xLabel: 'χ² statistic (df = 2)', yLabel: 'density',
+        curves: [{ fn: pdf }],
       });
-      // Overlay a marker at 9.49 (chi-sq critical value at alpha=0.05, df=4)
+      const NS = 'http://www.w3.org/2000/svg';
       const svg = document.querySelector('#chart-7-2-chi svg');
-      const cx = 38 + ((9.49 - 0) / 16) * (600 - 38 - 14);
-      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('x1', cx); line.setAttribute('x2', cx);
-      line.setAttribute('y1', 14); line.setAttribute('y2', 14 + (240 - 14 - 30));
+      const plotW = W - PL - PR, plotH = H - PT - PB;
+      const sx = (v) => PL + (v / xMax) * plotW;
+      const sy = (v) => PT + plotH - (v / yMax) * plotH;
+      // Shade the right tail beyond the observed statistic
+      let d = `M ${sx(obs)} ${sy(0)}`;
+      for (let i = 0; i <= 60; i++) { const x = obs + ((xMax - obs) * i) / 60; d += ` L ${sx(x)} ${sy(pdf(x))}`; }
+      d += ` L ${sx(xMax)} ${sy(0)} Z`;
+      const area = document.createElementNS(NS, 'path');
+      area.setAttribute('d', d); area.setAttribute('fill', '#fbbf24'); area.setAttribute('opacity', 0.35);
+      svg.insertBefore(area, svg.firstChild);
+      // Marker at the observed statistic
+      const line = document.createElementNS(NS, 'line');
+      line.setAttribute('x1', sx(obs)); line.setAttribute('x2', sx(obs));
+      line.setAttribute('y1', sy(0)); line.setAttribute('y2', sy(pdf(obs)) - 12);
       line.setAttribute('stroke', '#fbbf24'); line.setAttribute('stroke-width', 2);
       line.setAttribute('stroke-dasharray', '4 3');
       svg.appendChild(line);
-      const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      txt.setAttribute('x', cx); txt.setAttribute('y', 24);
-      txt.setAttribute('fill', '#fbbf24'); txt.setAttribute('font-size', 11);
-      txt.setAttribute('text-anchor', 'middle'); txt.setAttribute('font-family', 'Work Sans, sans-serif');
-      txt.textContent = 'χ² = 9.49';
+      const txt = document.createElementNS(NS, 'text');
+      txt.setAttribute('x', sx(obs) + 6); txt.setAttribute('y', sy(pdf(obs)) - 16);
+      txt.setAttribute('fill', '#fbbf24'); txt.setAttribute('font-size', 12);
+      txt.setAttribute('font-family', 'Work Sans, sans-serif');
+      txt.textContent = 'observed χ² = 2.21';
       svg.appendChild(txt);
+      const ptxt = document.createElementNS(NS, 'text');
+      ptxt.setAttribute('x', sx(4.6)); ptxt.setAttribute('y', sy(0.09));
+      ptxt.setAttribute('fill', '#fbbf24'); ptxt.setAttribute('font-size', 12);
+      ptxt.setAttribute('font-family', 'Work Sans, sans-serif');
+      ptxt.textContent = 'shaded area = p-value ≈ 0.33';
+      svg.appendChild(ptxt);
     })();
   </script>
 </div>
