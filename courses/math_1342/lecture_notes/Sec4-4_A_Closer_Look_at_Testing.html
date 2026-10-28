@@ -9,6 +9,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<script src="statkey.js?v=5"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -218,6 +219,56 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Errors and Multiple Tests</h2>
+  <p class="subtitle">A city's ambulances currently average 10 minutes to reach an emergency. The city tests a new dispatch system to see whether it lowers the mean response time: \(H_0: \mu = 10\) vs. \(H_a: \mu &lt; 10\). If the test is significant, the city will pay to switch every station to the new system.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Ambulance Response Times</h3>
+      <ul>
+        <li>(a) Describe a Type I error in context. What would it cost the city?</li>
+        <li>(b) Describe a Type II error in context. What would it cost the city?</li>
+        <li>(c) If the city uses \(\alpha = 0.01\) instead of \(\alpha = 0.05\), which error becomes less likely, and which becomes more likely?</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Many Tests at Once</h3>
+      <ul>
+        <li>(d) A health department tests 40 different dietary supplements to see whether any of them lowers blood pressure. Suppose <strong>none</strong> of them actually works, and each test uses \(\alpha = 0.05\). About how many supplements will look "significant" just by chance?</li>
+        <li>(e) Why should we be skeptical if a news story reports only the supplements that were significant?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Errors and Multiple Tests</h2>
+  <p class="subtitle">Type I = rejecting a true \(H_0\); Type II = not rejecting a false \(H_0\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-rose">(a) Type I Error</div>
+      <p class="step-note">The test concludes the new system lowers the mean response time when it really does not (\(\mu = 10\)). The city spends money switching every station to a system that does not help.</p>
+      <div class="tag tag-amber">(b) Type II Error</div>
+      <p class="step-note">The test does not find evidence that the new system helps when it really does lower the mean (\(\mu &lt; 10\)). The city keeps the old system and misses out on faster ambulances.</p>
+      <div class="tag tag-blue">(c) Smaller \(\alpha\)</div>
+      <p class="step-note">\(P(\text{Type I}) = \alpha\) drops from 0.05 to 0.01, so a Type I error becomes <strong>less</strong> likely. It is harder to reject \(H_0\), so a Type II error becomes <strong>more</strong> likely.</p>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-purple">(d) Expected False Positives</div>
+      <div class="formula-box">
+        \(40 \times 0.05 = 2\) supplements
+      </div>
+      <p class="step-note">Every null hypothesis is true, so each test has a 5% chance of a Type I error. About 2 of the 40 will look significant purely by chance.</p>
+      <div class="tag tag-green">(e) Skepticism</div>
+      <div class="callout" style="margin-top:6px;">
+        Reporting only the "winners" hides the 38 tests that found nothing. The 2 significant results are most likely false positives, so we should look for the full set of tests and for replication before believing them.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Sample Size and Significance</h2>
   <p class="subtitle">Larger samples make it easier to reject \(H_0\), for better or worse.</p>
   <div class="grid-2">
@@ -235,6 +286,26 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="slide">
+  <h2>Sample Size and Significance: See It</h2>
+  <p class="subtitle">Is a coin biased toward heads? Test \(H_0: p = 0.5\) vs. \(H_a: p &gt; 0.5\). Both samples have the <strong>same</strong> \(\hat{p} = 0.55\). Click <strong>Run 1000</strong> on each and compare the p-values.</p>
+  <div class="grid-2">
+    <div>
+      <span class="tag tag-amber">55 heads in 100 flips</span>
+      <div id="sim-n100"></div>
+    </div>
+    <div>
+      <span class="tag tag-green">550 heads in 1000 flips</span>
+      <div id="sim-n1000"></div>
+    </div>
+  </div>
+  <script>
+    StatKey.create('#sim-n100', { mode: 'one-prop-rand', n: 100, x: 55, p0: 0.5, direction: 'right' });
+    StatKey.create('#sim-n1000', { mode: 'one-prop-rand', n: 1000, x: 550, p0: 0.5, direction: 'right' });
+  </script>
+  <p class="step-note">With \(n = 100\), the p-value is about 0.18: not significant. With \(n = 1000\), the p-value is about 0.001 or less: very significant. The effect (55% heads) is identical; only the sample size changed. (Your simulated values will vary slightly from run to run.)</p>
 </div>
 
 <div class="slide">

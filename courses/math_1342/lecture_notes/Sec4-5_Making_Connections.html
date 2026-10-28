@@ -9,6 +9,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<script src="statkey.js?v=5"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -469,6 +470,80 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-blue">StatKey</span>
+  <h2>Check It in StatKey: Body Temperature Test</h2>
+  <p class="subtitle">StatKey's built-in Body Temperature data (\(n = 50\), \(\bar{x} = 98.26\)) is the sample behind this interval. Run the tests directly and compare with the CI conclusions.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>Steps</h3>
+      <ul class="small">
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Randomization Hypothesis Tests</strong>, choose <strong>Test for Single Mean</strong></li>
+        <li><strong>2.</strong> Make sure the dataset menu shows <strong>Body Temperature</strong> (the default)</li>
+        <li><strong>3.</strong> Check that the null hypothesis reads \(\mu = 98.6\) (click it to edit)</li>
+        <li><strong>4.</strong> Click <strong>Generate 1000 Samples</strong>, then check <strong>Two-Tail</strong></li>
+        <li><strong>5.</strong> Read the p-value. Then change the null to <strong>98.4</strong> and repeat.</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>What You Should See</h3>
+      <ul class="small">
+        <li><strong>\(H_0: \mu = 98.6\):</strong> the randomization distribution is centered at 98.6, and almost no simulated means are as far away as 98.26. p-value \(\approx 0.002\) or less &rarr; <strong>reject</strong> \(H_0\).</li>
+        <li><strong>\(H_0: \mu = 98.4\):</strong> centered at 98.4; p-value \(\approx 0.2\) &rarr; <strong>do not reject</strong> \(H_0\).</li>
+        <li>Both match the CI: 98.6 is outside \((98.05,\ 98.47)\), and 98.4 is inside.</li>
+      </ul>
+      <p class="step-note" style="margin-top:8px;">Your simulated p-values will vary slightly from run to run.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: CI or Test?</h2>
+  <p class="subtitle">A random sample of 1,000 U.S. adults gives a 95% confidence interval of \((0.33,\ 0.39)\) for \(p\), the proportion of all U.S. adults who own a smart speaker.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Use the Interval</h3>
+      <ul>
+        <li>(a) Test \(H_0: p = 0.35\) vs. \(H_a: p \neq 0.35\) at \(\alpha = 0.05\). What is your decision?</li>
+        <li>(b) Test \(H_0: p = 0.40\) vs. \(H_a: p \neq 0.40\) at \(\alpha = 0.05\). What is your decision?</li>
+        <li>(c) Does part (a) prove that \(p = 0.35\)? Explain.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Pick the Tool</h3>
+      <p class="step-note">(d) Would a confidence interval or a hypothesis test fit each question better?</p>
+      <ul>
+        <li>(i) About how much does the average college student spend on textbooks per semester?</li>
+        <li>(ii) Is there evidence that more than half of the city's voters support building a new park?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: CI or Test?</h2>
+  <p class="subtitle">A 95% CI holds the null values that a two-tailed test at \(\alpha = 0.05\) would not reject.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-green">(a) Null value 0.35</div>
+      <p class="step-note">0.35 is <strong>inside</strong> \((0.33,\ 0.39)\), so it is a plausible value. <strong>Do not reject \(H_0\)</strong>: not enough evidence that the proportion differs from 0.35.</p>
+      <div class="tag tag-rose">(b) Null value 0.40</div>
+      <p class="step-note">0.40 is <strong>outside</strong> the interval. <strong>Reject \(H_0\)</strong>: there is evidence that the proportion differs from 0.40 (the interval says it is lower).</p>
+      <div class="tag tag-amber">(c) Not proof</div>
+      <p class="step-note">No. Every value from 0.33 to 0.39 is plausible, not just 0.35. "Do not reject" means we lack evidence against \(H_0\), not that \(H_0\) is true.</p>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-blue">(d) Pick the Tool</div>
+      <ul>
+        <li>(i) <strong>Confidence interval.</strong> The question asks <em>how much</em>, so we want to <strong>estimate</strong> the mean spending.</li>
+        <li>(ii) <strong>Hypothesis test.</strong> The question asks whether there is evidence for a <strong>claim</strong>: \(H_0: p = 0.5\) vs. \(H_a: p &gt; 0.5\).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Example: Where Is Each Distribution Centered?</h2>
   <p class="subtitle">In a sample of 50 students, 28 say they get at least 7 hours of sleep, so \(\hat{p} = 28/50 = 0.56\). We want to test \(H_0: p = 0.5\) vs \(H_a: p \neq 0.5\).</p>
   <div class="grid-3">
@@ -495,30 +570,65 @@
   </div>
 </div>
 
-<!-- Inserted: chart slide -->
+<!-- Side-by-side simulators: bootstrap vs randomization -->
 <div class="slide">
   <h2>Two Distributions, Same Data</h2>
-  <p class="subtitle">Same sample of 50 yes/no responses (28 yes). Left: <b>bootstrap</b> distribution centered at \(\hat{p} = 0.56\) (for CIs). Right: <b>randomization</b> distribution centered at \(p_0 = 0.5\) (for hypothesis tests).</p>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin: 8px auto; max-width: 720px;">
-  <div style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:10px;">
-    <div style="font-size:12px; color:#94a3b8; margin-bottom:4px;">Bootstrap (centered at p̂)</div>
-    <div id="comp-boot"></div>
+  <p class="subtitle">Same sample of 50 yes/no responses (28 yes). Click <strong>Run 1000</strong> on each. Left: <b>bootstrap</b> distribution centered at \(\hat{p} = 0.56\) (for CIs). Right: <b>randomization</b> distribution centered at \(p_0 = 0.5\) (for hypothesis tests).</p>
+  <div class="grid-2">
+    <div><div id="comp-boot"></div></div>
+    <div><div id="comp-rand"></div></div>
   </div>
-  <div style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:10px;">
-    <div style="font-size:12px; color:#94a3b8; margin-bottom:4px;">Randomization (centered at p₀ = 0.5)</div>
-    <div id="comp-rand"></div>
-  </div>
+  <script>
+    StatKey.create('#comp-boot', { mode: 'one-prop-boot', n: 50, x: 28 });
+    StatKey.create('#comp-rand', { mode: 'one-prop-rand', n: 50, x: 28, p0: 0.5, direction: 'two-tailed' });
+  </script>
+  <p class="step-note">Compare the <strong>Sim mean</strong> (about 0.56 vs. about 0.50) and the <strong>Sim SD</strong> (about 0.07 for both): different centers, same spread.</p>
 </div>
-<script>
-(function(){
-  const n=50, x=28;
-  const phat=x/n;
-  const boot=[]; for(let s=0;s<1000;s++){let k=0;for(let i=0;i<n;i++)if(Math.random()<phat)k++;boot.push(k/n);}
-  const rand=[]; for(let s=0;s<1000;s++){let k=0;for(let i=0;i<n;i++)if(Math.random()<0.5)k++;rand.push(k/n);}
-  StatGraphs.dotplot('#comp-boot', boot, {width:340,height:200,xLabel:'p̂*'});
-  StatGraphs.dotplot('#comp-rand', rand, {width:340,height:200,xLabel:'p̂ under H₀',color:'#fbbf24'});
-})();
-</script>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Two Centers</h2>
+  <p class="subtitle">A company claims 60% of its customers are repeat buyers. In a random sample of 80 customers, 52 are repeat buyers. Test \(H_0: p = 0.60\) vs. \(H_a: p \neq 0.60\). Click <strong>Run 1000</strong> on both, then answer: (a) What is \(\hat{p}\)? (b) Where is the bootstrap distribution centered? (c) Where is the randomization distribution centered? Why are they different? (d) Use the randomization distribution to estimate the p-value. What do you conclude at \(\alpha = 0.05\)?</p>
+  <div class="grid-2">
+    <div><div id="yt-boot"></div></div>
+    <div><div id="yt-rand"></div></div>
+  </div>
+  <script>
+    StatKey.create('#yt-boot', { mode: 'one-prop-boot', n: 80, x: 52 });
+    StatKey.create('#yt-rand', { mode: 'one-prop-rand', n: 80, x: 52, p0: 0.6, direction: 'two-tailed' });
+  </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Two Centers</h2>
+  <p class="subtitle">Your simulated values will vary slightly from run to run.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">(a) Sample Proportion</div>
+      <div class="formula-box">
+        \[
+          \hat{p} = \frac{52}{80} = 0.65
+        \]
+      </div>
+      <div class="tag tag-green">(b) Bootstrap Center</div>
+      <p class="step-note">About <strong>0.65</strong>, the sample statistic. Bootstrapping does not assume \(H_0\).</p>
+      <div class="tag tag-amber">(c) Randomization Center</div>
+      <p class="step-note">About <strong>0.60</strong>, the null value. The randomization distribution assumes \(H_0: p = 0.60\) is true. Both have about the same spread (SD \(\approx 0.05\)).</p>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-rose">(d) p-Value and Conclusion</div>
+      <div class="formula-box">
+        \[
+          \text{p-value} \approx 0.42
+        \]
+      </div>
+      <p class="step-note">About 42% of the simulated proportions are at least 0.05 away from 0.60 (at or above 0.65, or at or below 0.55).</p>
+      <div class="callout" style="margin-top:6px;">
+        0.42 &gt; 0.05, so we <strong>do not reject \(H_0\)</strong>. There is not enough evidence that the proportion of repeat buyers differs from 60%. Consistent with this, the bootstrap 95% CI (roughly 0.54 to 0.75) contains 0.60.
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="slide">

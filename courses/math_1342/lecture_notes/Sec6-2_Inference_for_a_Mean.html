@@ -475,6 +475,66 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: CI for a Mean</h2>
+  <p class="subtitle">A random sample of \(36\) college students who work part-time reports an average of \(\bar{x} = 24.5\) hours of work per week, with \(s = 9\) hours.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Questions</h3>
+      <ul>
+        <li>(a) Can we use the t-distribution here? Why?</li>
+        <li>(b) Find the degrees of freedom and the standard error.</li>
+        <li>(c) Find a 95% confidence interval for \(\mu\). Use \(t^* = 2.030\).</li>
+        <li>(d) Interpret the interval in context.</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Reminder</h3>
+      <div class="formula-box">
+        \[
+          \bar{x} \pm t^* \cdot \frac{s}{\sqrt{n}}
+        \]
+      </div>
+      <div class="step-note">\(t^*\) comes from a t-distribution with \(df=n-1\). (Later in this deck you'll see how to find \(t^*\) in StatKey.)</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: CI for a Mean</h2>
+  <p class="subtitle">Same four steps as the gribbles example.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">(a) Conditions</div>
+      <div class="step-note">Yes. \(n = 36 \ge 30\), so the CLT makes \(\bar{x}\) approximately normal.</div>
+      <div class="tag tag-purple">(b) df and SE</div>
+      <div class="formula-box">
+        \[
+          df = 36-1 = 35, \qquad SE=\frac{9}{\sqrt{36}} = 1.5
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-green">(c) 95% CI</div>
+      <div class="formula-box">
+        \[
+          24.5 \pm 2.030(1.5) = 24.5 \pm 3.05
+        \]
+      </div>
+      <div class="formula-box">
+        \[
+          (21.45,\ 27.55)
+        \]
+      </div>
+      <div class="callout">
+        <strong>(d)</strong> We are 95% confident that the mean number of hours worked per week by all part-time working college students is between 21.45 and 27.55 hours.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Hypothesis Testing for a Mean</h2>
   <p class="subtitle">For a mean, the test statistic uses a t-distribution with \(df=n-1\).</p>
   <div class="grid-2">
@@ -525,7 +585,12 @@
         \]
       </div>
       <div class="tag tag-amber">Steps 4-5</div>
-      <div class="step-note">Find the right-tail p-value and interpret in context.</div>
+      <div class="step-note">Find the right-tail p-value from a t-distribution with \(df=41\), then interpret in context.</div>
+      <div class="formula-box">
+        \[
+          \text{p-value}\approx 0 \quad (\text{far less than } 0.0001)
+        \]
+      </div>
       <div class="callout">
         <strong>Conclusion:</strong> We reject the null hypothesis \(H_0\). We have statistically significant evidence that the average number of chocolate chips per bag is greater than \(1000\).
       </div>
@@ -533,6 +598,97 @@
   </div>
 </div>
 
+
+<div class="slide">
+  <span class="tag tag-blue">StatKey</span>
+  <h2>t Values in StatKey</h2>
+  <p class="subtitle">StatKey's t-distribution gives both critical values \(t^*\) (for CIs) and tail areas (for p-values).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Find \(t^*\) for a Confidence Interval</h3>
+      <ul class="small">
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>t</strong></li>
+        <li><strong>2.</strong> Set <strong>df</strong> to \(n-1\)</li>
+        <li><strong>3.</strong> Check <strong>Two-Tail</strong></li>
+        <li><strong>4.</strong> Click the proportion in the right tail and type the tail area: 0.05 for 90%, 0.025 for 95%</li>
+        <li><strong>5.</strong> The value on the axis is \(t^*\)</li>
+      </ul>
+      <p class="step-note"><strong>Check:</strong> gribbles, df = 49, 90% &rarr; tail area 0.05 &rarr; \(t^* \approx 1.677\).</p>
+    </div>
+    <div class="card card-green">
+      <h3>Find a p-Value for a Test</h3>
+      <ul class="small">
+        <li><strong>1.</strong> Same page: <strong>Theoretical Distributions</strong> &rarr; <strong>t</strong></li>
+        <li><strong>2.</strong> Set <strong>df</strong> to \(n-1\)</li>
+        <li><strong>3.</strong> Check <strong>Left Tail</strong>, <strong>Right Tail</strong>, or <strong>Two-Tail</strong> to match \(H_a\)</li>
+        <li><strong>4.</strong> Click the box on the horizontal axis and type your t statistic</li>
+        <li><strong>5.</strong> The shaded area is the p-value (for Two-Tail, add both areas)</li>
+      </ul>
+      <p class="step-note"><strong>Check:</strong> Chips Ahoy!, df = 41, Right Tail, \(t = 14.42\) &rarr; area \(\approx 0.000\).</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Testing a Mean</h2>
+  <p class="subtitle">A juice company labels its bottles as containing \(500\) mL. A consumer group measures a random sample of \(25\) bottles and finds \(\bar{x} = 488\) mL with \(s = 30\) mL. The data show no strong skew or outliers. Is there evidence that the bottles are <strong>underfilled</strong> on average?</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Questions</h3>
+      <ul>
+        <li>(a) State \(H_0\) and \(H_a\).</li>
+        <li>(b) Compute the standard error and the t statistic.</li>
+        <li>(c) Use StatKey (t-distribution, \(df = 24\)) to find the p-value.</li>
+        <li>(d) State a conclusion at \(\alpha = 0.05\).</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Reminder</h3>
+      <div class="formula-box">
+        \[
+          t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}, \qquad df=n-1
+        \]
+      </div>
+      <div class="step-note">\(n = 25 &lt; 30\), so we rely on the data being roughly symmetric with no outliers.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Testing a Mean</h2>
+  <p class="subtitle">Left-tailed test with \(df = 25 - 1 = 24\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">(a) Hypotheses</div>
+      <div class="formula-box">
+        \[
+          H_0:\mu=500 \qquad H_a:\mu&lt;500
+        \]
+      </div>
+      <div class="tag tag-purple">(b) SE and t</div>
+      <div class="formula-box">
+        \[
+          SE=\frac{30}{\sqrt{25}}=6 \qquad t=\frac{488-500}{6}=-2.00
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-amber">(c) p-Value</div>
+      <div class="step-note">StatKey: t with df = 24, <strong>Left Tail</strong>, type \(-2.00\).</div>
+      <div class="formula-box">
+        \[
+          \text{p-value}\approx 0.028
+        \]
+      </div>
+      <div class="tag tag-rose">(d) Conclusion</div>
+      <div class="callout">
+        \(0.028 &lt; 0.05\), so reject \(H_0\). There is evidence that the bottles contain less than 500 mL on average.
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Inserted: chart slide -->
 <div class="slide">

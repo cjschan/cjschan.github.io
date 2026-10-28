@@ -17,6 +17,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<script src="statkey.js?v=5"></script>
 <style>
   :root {
     --bg: #0f172a;
@@ -496,6 +497,94 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-blue">Simulation Check</span>
+  <h2>Check by Simulation: Online Notes CI</h2>
+  <p class="subtitle">Does the bootstrap agree with the formula? Click <strong>Run 1000</strong> a few times and compare the 95% bootstrap CI with \((0.553,\ 0.687)\).</p>
+  <div class="grid-2">
+    <div><div id="sim-6-1-boot"></div></div>
+    <div class="card card-green">
+      <h3>What to Look For</h3>
+      <ul class="small">
+        <li>The bootstrap distribution is centered near \(\hat{p} = 0.62\).</li>
+        <li>The <strong>Sim SD</strong> is about 0.034, matching the formula \(SE = \sqrt{0.62(0.38)/200}\).</li>
+        <li>The 95% bootstrap CI is about \((0.555,\ 0.685)\), very close to the formula interval \((0.553,\ 0.687)\).</li>
+        <li>Your simulated values will vary slightly from run to run.</li>
+      </ul>
+      <div class="callout">The bell-shaped bootstrap distribution is why the normal formula works here.</div>
+    </div>
+  </div>
+  <script>
+    StatKey.create('#sim-6-1-boot', { mode: 'one-prop-boot', n: 200, x: 124 });
+  </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: CI for a Proportion</h2>
+  <p class="subtitle">In a random sample of \(400\) adults, \(148\) say they used a food-delivery app in the past month.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Questions</h3>
+      <ul>
+        <li>(a) Find the sample proportion \(\hat{p}\).</li>
+        <li>(b) Check the sample-size condition.</li>
+        <li>(c) Compute the standard error.</li>
+        <li>(d) Find a 95% confidence interval for \(p\).</li>
+        <li>(e) Interpret the interval in context.</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Reminder</h3>
+      <div class="formula-box">
+        \[
+          \hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+        \]
+      </div>
+      <div class="step-note">For 95% confidence, \(z^* = 1.96\).</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: CI for a Proportion</h2>
+  <p class="subtitle">Use \(\hat{p}\) in the SE formula for a confidence interval.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">(a) and (b)</div>
+      <div class="formula-box">
+        \[
+          \hat{p}=\frac{148}{400}=0.37
+        \]
+      </div>
+      <div class="step-note">148 yes and 252 no: both counts are at least 10, so the normal model is OK.</div>
+      <div class="tag tag-purple">(c) Standard Error</div>
+      <div class="formula-box">
+        \[
+          SE=\sqrt{\frac{0.37(0.63)}{400}}\approx 0.0241
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-green">(d) 95% CI</div>
+      <div class="formula-box">
+        \[
+          0.37 \pm 1.96(0.0241) = 0.37 \pm 0.047
+        \]
+      </div>
+      <div class="formula-box">
+        \[
+          (0.323,\ 0.417)
+        \]
+      </div>
+      <div class="callout">
+        <strong>(e)</strong> We are 95% confident that between 32.3% and 41.7% of all adults used a food-delivery app in the past month.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Hypothesis Testing Uses a z Score</h2>
   <p class="subtitle">A z test compares the sample result to the null value in standard error units.</p>
   <div class="grid-2">
@@ -568,6 +657,93 @@
       </div>
       <div class="callout">
         <strong>Conclusion:</strong> Reject \(H_0\). There is strong evidence that more than half of US citizens plan to vote.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-blue">Simulation Check</span>
+  <h2>Check by Simulation: Voting Test</h2>
+  <p class="subtitle">Does a randomization test agree with the z test? Click <strong>Run 1000</strong> a few times and compare the p-value with 0.0036.</p>
+  <div class="grid-2">
+    <div><div id="sim-6-1-rand"></div></div>
+    <div class="card card-green">
+      <h3>What to Look For</h3>
+      <ul class="small">
+        <li>The randomization distribution is centered at the null value \(p_0 = 0.50\).</li>
+        <li>The <strong>Sim SD</strong> is about 0.022, matching \(SE = \sqrt{0.5(0.5)/500}\).</li>
+        <li>Only a handful of the 1000 simulated proportions reach 0.56, so the p-value is about 0.004, close to the normal-curve value 0.0036.</li>
+        <li>Your simulated values will vary slightly from run to run.</li>
+      </ul>
+      <div class="callout">Both methods give the same conclusion: reject \(H_0\).</div>
+    </div>
+  </div>
+  <script>
+    StatKey.create('#sim-6-1-rand', { mode: 'one-prop-rand', n: 500, x: 280, p0: 0.5, direction: 'right' });
+  </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Testing a Proportion</h2>
+  <p class="subtitle">Nationally, about 30% of college students live in campus housing. At one commuter college, a random sample of \(250\) students finds that \(60\) live on campus. Is there evidence that the proportion at this college is <strong>lower</strong> than 30%?</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Questions</h3>
+      <ul>
+        <li>(a) State \(H_0\) and \(H_a\).</li>
+        <li>(b) Find \(\hat{p}\) and the standard error.</li>
+        <li>(c) Compute the z statistic.</li>
+        <li>(d) Find the p-value and state a conclusion at \(\alpha = 0.05\).</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Reminder</h3>
+      <div class="formula-box">
+        \[
+          z=\frac{\hat{p}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
+        \]
+      </div>
+      <div class="step-note">For a test, use the null value \(p_0\) in the SE formula.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Testing a Proportion</h2>
+  <p class="subtitle">Conditions: \(np_0 = 250(0.30) = 75\) and \(n(1-p_0) = 175\), both at least 10.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">(a) Hypotheses</div>
+      <div class="formula-box">
+        \[
+          H_0:p=0.30 \qquad H_a:p&lt;0.30
+        \]
+      </div>
+      <div class="tag tag-purple">(b) Proportion and SE</div>
+      <div class="formula-box">
+        \[
+          \hat{p}=\frac{60}{250}=0.24 \qquad SE=\sqrt{\frac{0.30(0.70)}{250}}\approx 0.0290
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-amber">(c) z Statistic</div>
+      <div class="formula-box">
+        \[
+          z=\frac{0.24-0.30}{0.0290}\approx -2.07
+        \]
+      </div>
+      <div class="tag tag-rose">(d) p-Value and Conclusion</div>
+      <div class="formula-box">
+        \[
+          \text{p-value (left tail)}\approx 0.019
+        \]
+      </div>
+      <div class="callout">
+        \(0.019 &lt; 0.05\), so reject \(H_0\). There is evidence that fewer than 30% of students at this college live on campus.
       </div>
     </div>
   </div>

@@ -107,7 +107,7 @@
 
 <div class="slide">
   <h2>The Normal Curve in Action</h2>
-  <p class="subtitle">A test statistic of \(z = -0.131 / 0.056 \approx -2.34\). Shaded tails show the two-tailed p-value.</p>
+  <p class="subtitle">A test statistic of \(z = -0.131 / 0.056 \approx -2.34\). This is a left-tailed test, so the shaded left tail is the p-value (\(\approx 0.0096\)).</p>
   <div id="chart-5-1-norm" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:18px; max-width:640px; margin:8px auto;"></div>
   <script>
     StatGraphs.normalCurve('#chart-5-1-norm', {
@@ -115,7 +115,6 @@
       xLabel: 'z',
       shade: [
         { from: -4, to: -2.34, color: '#fb7185' },
-        { from: 2.34, to: 4, color: '#fb7185' },
       ],
       markers: [{ x: -2.34, label: 'observed z = -2.34' }],
     });
@@ -199,6 +198,92 @@
       <div class="callout">
         Strong evidence that infected mosquitoes are more likely to approach humans after becoming infectious, favoring transmission of the parasite.
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-blue">StatKey</span>
+  <h2>Normal Tail Areas in StatKey</h2>
+  <p class="subtitle">StatKey finds the area beyond any z-statistic in \(N(0,1)\), with no table needed.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>Steps</h3>
+      <ul class="small">
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>Normal</strong></li>
+        <li><strong>2.</strong> Leave Mean = 0 and Standard Deviation = 1</li>
+        <li><strong>3.</strong> Check <strong>Left Tail</strong>, <strong>Right Tail</strong>, or <strong>Two-Tail</strong> to match \(H_a\)</li>
+        <li><strong>4.</strong> Click the box on the horizontal axis and type your z-statistic</li>
+        <li><strong>5.</strong> Read the shaded area: that is the p-value (for Two-Tail, add the two areas shown)</li>
+      </ul>
+    </div>
+    <div class="card card-accent">
+      <h3>Check: Malaria Mosquitoes</h3>
+      <p class="step-note">\(H_a\) is left-tailed and \(z = -2.34\). Check <strong>Left Tail</strong> and type <strong>&minus;2.34</strong> in the box.</p>
+      <div class="formula-box">
+        \[
+          \text{Left-tail area} \approx 0.0096
+        \]
+      </div>
+      <p class="step-note">This matches the p-value on the previous slides. For "After Infectious" (\(z = 3.02\), right-tailed), check <strong>Right Tail</strong> and type 3.02 to get about 0.0013.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: z-Tests</h2>
+  <p class="subtitle">For each test: (i) compute the z-statistic, (ii) find the p-value (use StatKey's Normal distribution), and (iii) state a conclusion at \(\alpha = 0.05\).</p>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <span class="tag tag-blue">(a) Right-tailed</span>
+      <p class="step-note">A candidate claims majority support. In a poll, \(\hat{p} = 0.57\) with \(SE = 0.025\).</p>
+      <div class="formula-box" style="font-size:18px;">\(H_0: p = 0.5\)<br>\(H_a: p &gt; 0.5\)</div>
+    </div>
+    <div class="card card-amber">
+      <span class="tag tag-amber">(b) Left-tailed</span>
+      <p class="step-note">A store tests whether a new self-checkout lowers the mean checkout time below 30 seconds. A sample gives \(\bar{x} = 28.5\) seconds with \(SE = 0.6\).</p>
+      <div class="formula-box" style="font-size:18px;">\(H_0: \mu = 30\)<br>\(H_a: \mu &lt; 30\)</div>
+    </div>
+    <div class="card card-rose">
+      <span class="tag tag-rose">(c) Two-tailed</span>
+      <p class="step-note">Do first-year students and seniors differ in the proportion who prefer online classes? \(\hat{p}_1 - \hat{p}_2 = -0.041\) with \(SE = 0.025\).</p>
+      <div class="formula-box" style="font-size:18px;">\(H_0: p_1 - p_2 = 0\)<br>\(H_a: p_1 - p_2 \neq 0\)</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: z-Tests</h2>
+  <p class="subtitle">\(z = (\text{statistic} - \text{null value})/SE\), then the tail area from \(N(0,1)\).</p>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <span class="tag tag-blue">(a) Right-tailed</span>
+      <div class="formula-box" style="font-size:18px;">
+        \(z = \dfrac{0.57 - 0.5}{0.025} = 2.80\)
+      </div>
+      <p class="step-note">Right-tail area beyond 2.80:</p>
+      <div class="formula-box" style="font-size:18px;">p-value \(\approx 0.0026\)</div>
+      <p class="step-note">\(0.0026 &lt; 0.05\): reject \(H_0\). Strong evidence the candidate has majority support.</p>
+    </div>
+    <div class="card card-amber">
+      <span class="tag tag-amber">(b) Left-tailed</span>
+      <div class="formula-box" style="font-size:18px;">
+        \(z = \dfrac{28.5 - 30}{0.6} = -2.50\)
+      </div>
+      <p class="step-note">Left-tail area below \(-2.50\):</p>
+      <div class="formula-box" style="font-size:18px;">p-value \(\approx 0.0062\)</div>
+      <p class="step-note">\(0.0062 &lt; 0.05\): reject \(H_0\). Strong evidence the new self-checkout lowers the mean time below 30 seconds.</p>
+    </div>
+    <div class="card card-rose">
+      <span class="tag tag-rose">(c) Two-tailed</span>
+      <div class="formula-box" style="font-size:18px;">
+        \(z = \dfrac{-0.041 - 0}{0.025} = -1.64\)
+      </div>
+      <p class="step-note">Two tails: \(2 \times 0.0505\):</p>
+      <div class="formula-box" style="font-size:18px;">p-value \(\approx 0.10\)</div>
+      <p class="step-note">\(0.10 &gt; 0.05\): do not reject \(H_0\). Not enough evidence that the two groups differ.</p>
     </div>
   </div>
 </div>
