@@ -168,37 +168,30 @@
   </div>
 </div>
 
-<!-- Slide 4: Buzz and Doris Revisited -->
+<!-- Slide 4: Buzz and Doris revisited, with a randomization distribution -->
 <div class="slide">
   <h2>Revisiting Buzz and Doris</h2>
   <p class="subtitle">Measuring the evidence in the dolphin communication study from Section 4.1</p>
-  <div class="grid-2">
+  <div class="grid-2" style="grid-template-columns: 0.85fr 1.15fr; flex:none;">
     <div class="card card-amber">
       <h3>The Study</h3>
-      <ul>
+      <ul class="small">
         <li>Doris could see the light signal; Buzz had to push the correct button based only on Doris' whistles through the curtain</li>
         <li>Buzz pushed the correct button <strong>15 out of 16</strong> times \(\left(\hat{p} = \frac{15}{16} \approx 0.94\right)\)</li>
-        <li>\(H_0: p = 0.50\) (Buzz is just guessing)</li>
-        <li>\(H_a: p > 0.50\) (the dolphins are communicating)</li>
+        <li>\(H_0: p = 0.50\) (just guessing) &nbsp; vs. &nbsp; \(H_a: p > 0.50\) (communicating)</li>
       </ul>
-    </div>
-    <div class="card card-accent">
-      <h3>Simulating Under \(H_0\)</h3>
-      <ul>
-        <li>If Buzz is just guessing (\(p = 0.50\)), each attempt is like a fair coin flip</li>
-        <li>Simulate: flip a coin 16 times, count the number correct</li>
-        <li>Repeat 1000 times to build a randomization distribution</li>
+      <h3 style="margin-top:10px;">Simulating Under \(H_0\)</h3>
+      <ul class="small">
+        <li>If Buzz is just guessing, each attempt is like a fair coin flip: flip a coin 16 times, count the number correct</li>
+        <li>Repeat 1000 times to build a randomization distribution (right)</li>
         <li>Then ask: how often does random guessing get <strong>15 or more</strong> correct?</li>
       </ul>
     </div>
+    <div>
+      <p class="step-note">Correct pushes in 1000 simulated sets of 16 attempts, assuming \(H_0: p = 0.50\)</p>
+      <div id="rand-buzz" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:10px; width:100%;"></div>
+    </div>
   </div>
-</div>
-
-<!-- Slide 4b: Static randomization distribution for Buzz -->
-<div class="slide">
-  <h2>A Randomization Distribution for Buzz</h2>
-  <p class="subtitle">Number of correct pushes in 1000 simulated sets of 16 attempts, assuming \(H_0: p = 0.50\) is true</p>
-  <div id="rand-buzz" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:0 auto; max-width:700px; width:100%;"></div>
   <script>
   (function(){
     const centers = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
@@ -212,38 +205,13 @@
       centers, counts, samples: n, mean, stdError: sd, statName: 'std. dev.', decimals: 2,
       xMin: 0, xMax: 17, xStep: 2, xLabel: 'Number of correct pushes (out of 16)',
       highlightFrom: 15, vline: 15, vlineLabel: 'observed = 15',
-      width: 660, height: 330,
+      width: 620, height: 330,
     });
   })();
   </script>
   <div class="callout">
     Only <strong>1 of the 1000</strong> simulated samples (the <span style="color:var(--rose); font-weight:700;">highlighted dot</span>) got 15 or more correct just by guessing. Buzz's result is way out in the tail &mdash; random chance almost never produces a result this extreme.
   </div>
-</div>
-
-<!-- Slide 4c: Simulate Buzz with the simulator -->
-<div class="slide">
-  <h2>Simulate Buzz Yourself</h2>
-  <p class="subtitle">Each simulated set flips a fair coin 16 times (Buzz just guessing) and records \(\hat{p}\), the proportion correct.</p>
-  <div class="grid-2" style="grid-template-columns: 1fr 1.1fr;">
-    <div class="card card-accent">
-      <h3>What to Do</h3>
-      <ul class="small">
-        <li>Click <strong>Generate One</strong> a few times. Each dot is one set of 16 guesses.</li>
-        <li>Click <strong>Run 1000</strong> to build the randomization distribution. It is centered near <strong>0.50</strong>, the value in \(H_0\).</li>
-        <li>The gold line marks Buzz's \(\hat{p} = 15/16 \approx 0.94\). The readout gives the proportion of simulated sets at or above it: the <strong>p-value</strong>.</li>
-      </ul>
-      <p class="step-note" style="margin-top: 10px;">The exact chance of 15 or more correct by guessing is \(17/65{,}536 \approx 0.0003\), so most runs of 1000 show <strong>0 or 1</strong> such sets. Your result will vary a little from run to run, but it is always tiny.</p>
-    </div>
-    <div id="sim-buzz"></div>
-  </div>
-  <script>
-    StatKey.create('#sim-buzz', {
-      mode: 'one-prop-rand',
-      n: 16, x: 15, p0: 0.5,
-      direction: 'right',
-    });
-  </script>
 </div>
 
 <!-- Slide 5: The p-value -->
@@ -429,37 +397,30 @@
   </div>
 </div>
 
-<!-- Slide 8b: Worked example, lower tail (setup) -->
+<!-- Slide 8b: Worked example, lower tail (setup + distribution) -->
 <div class="slide">
   <h2>Worked Example: A Lower-Tail Test</h2>
   <p class="subtitle">Are there fewer orange candies than the company claims?</p>
-  <div class="grid-2">
+  <div class="grid-2" style="grid-template-columns: 0.85fr 1.15fr; flex:none;">
     <div class="card card-amber">
       <h3>The Study</h3>
-      <ul>
+      <ul class="small">
         <li>A candy company claims that <strong>20%</strong> of its candies are orange</li>
-        <li>A student suspects there are fewer, so they count a random sample of <strong>100</strong> candies</li>
-        <li>Only <strong>12</strong> are orange: \(\hat{p} = 0.12\)</li>
+        <li>A student suspects there are fewer and counts a random sample of <strong>100</strong> candies: only <strong>12</strong> are orange, \(\hat{p} = 0.12\)</li>
         <li>\(H_0: p = 0.20\) &nbsp; vs. &nbsp; \(H_a: p < 0.20\)</li>
       </ul>
-    </div>
-    <div class="card card-accent">
-      <h3>Simulating Under \(H_0\)</h3>
-      <ul>
-        <li>Assume the claim is true: each candy has a 0.20 chance of being orange</li>
-        <li>Simulate a bag of 100 candies and record \(\hat{p}\)</li>
-        <li>Repeat 1000 times to build the randomization distribution, centered at 0.20</li>
+      <h3 style="margin-top:10px;">Simulating Under \(H_0\)</h3>
+      <ul class="small">
+        <li>Assume each candy has a 0.20 chance of being orange; simulate a bag of 100 and record \(\hat{p}\)</li>
+        <li>Repeat 1000 times: the randomization distribution is centered at 0.20</li>
         <li>\(H_a\) uses \(<\), so "as extreme" means \(\hat{p}\) <strong>&le; 0.12</strong> (the <strong>left tail</strong>)</li>
       </ul>
     </div>
+    <div>
+      <p class="step-note">\(\hat{p}\) from 1000 simulated bags of 100 candies, assuming \(H_0: p = 0.20\)</p>
+      <div id="rand-candy" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:10px; width:100%;"></div>
+    </div>
   </div>
-</div>
-
-<!-- Slide 8c: Worked example, lower tail (distribution) -->
-<div class="slide">
-  <h2>Lower-Tail Test: Finding the p-value</h2>
-  <p class="subtitle">Sample proportions \(\hat{p}\) from 1000 simulated bags of 100 candies, assuming \(H_0: p = 0.20\) is true</p>
-  <div id="rand-candy" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:0 auto; max-width:700px; width:100%;"></div>
   <script>
   (function(){
     const centers = [0.08, 0.09, 0.10, 0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.20, 0.21, 0.22, 0.23, 0.24, 0.25, 0.26, 0.27, 0.28, 0.29, 0.30, 0.31, 0.32];
@@ -473,7 +434,7 @@
       centers, counts, samples: n, mean, stdError: sd, statName: 'std. dev.', decimals: 3,
       xMin: 0.04, xMax: 0.36, xStep: 0.04, xLabel: 'Sample proportion of orange candies',
       highlightTo: 0.12, vline: 0.12, vlineLabel: 'observed = 0.12',
-      width: 660, height: 330,
+      width: 620, height: 330,
     });
   })();
   </script>
@@ -482,38 +443,29 @@
   </div>
 </div>
 
-<!-- Slide 8d: Worked example, two tails (setup) -->
+<!-- Slide 8c: Worked example, two tails (setup + distribution) -->
 <div class="slide">
   <h2>Worked Example: A Two-Tailed Test</h2>
   <p class="subtitle">Sleep or caffeine for memory?</p>
-  <div class="grid-2">
+  <div class="grid-2" style="grid-template-columns: 0.85fr 1.15fr; flex:none;">
     <div class="card card-amber">
       <h3>The Study</h3>
-      <ul>
+      <ul class="small">
         <li>24 adults were randomly assigned to take a 90-minute nap or a caffeine pill, then given a word-recall test</li>
-        <li>Sleep group (\(n = 12\)): \(\bar{x}_s = 15.25\) words</li>
-        <li>Caffeine group (\(n = 12\)): \(\bar{x}_c = 12.25\) words</li>
-        <li>Observed difference: \(\bar{x}_s - \bar{x}_c = 3.0\)</li>
+        <li>Sleep (\(n = 12\)): \(\bar{x}_s = 15.25\) words; caffeine (\(n = 12\)): \(\bar{x}_c = 12.25\) words; observed \(\bar{x}_s - \bar{x}_c = 3.0\)</li>
         <li>\(H_0: \mu_s = \mu_c\) &nbsp; vs. &nbsp; \(H_a: \mu_s \neq \mu_c\)</li>
       </ul>
-    </div>
-    <div class="card card-accent">
-      <h3>Simulating Under \(H_0\)</h3>
-      <ul>
-        <li>If sleep vs. caffeine makes no difference, each person's score would be the same in either group</li>
-        <li>Randomly reassign the 24 scores into two groups of 12 and compute \(\bar{x}_s - \bar{x}_c\)</li>
-        <li>Repeat 1000 times; the distribution is centered at 0</li>
+      <h3 style="margin-top:10px;">Simulating Under \(H_0\)</h3>
+      <ul class="small">
+        <li>If sleep vs. caffeine makes no difference, randomly reassign the 24 scores into two groups of 12 and compute \(\bar{x}_s - \bar{x}_c\); repeat 1000 times (centered at 0)</li>
         <li>\(H_a\) uses \(\neq\), so "as extreme" means <strong>3.0 or more away from 0 in either direction</strong>: \(\ge 3.0\) <strong>or</strong> \(\le -3.0\)</li>
       </ul>
     </div>
+    <div>
+      <p class="step-note">\(\bar{x}_s - \bar{x}_c\) from 1000 random reassignments, assuming \(H_0: \mu_s = \mu_c\)</p>
+      <div id="rand-sleep" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:10px; width:100%;"></div>
+    </div>
   </div>
-</div>
-
-<!-- Slide 8e: Worked example, two tails (distribution) -->
-<div class="slide">
-  <h2>Two-Tailed Test: Finding the p-value</h2>
-  <p class="subtitle">Differences in means \(\bar{x}_s - \bar{x}_c\) from 1000 random reassignments, assuming \(H_0: \mu_s = \mu_c\) is true</p>
-  <div id="rand-sleep" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:0 auto; max-width:700px; width:100%;"></div>
   <script>
   (function(){
     const centers = [-4.833, -4.0, -3.833, -3.5, -3.333, -3.167, -3.0, -2.833, -2.667, -2.5, -2.333, -2.167, -2.0, -1.833, -1.667, -1.5, -1.333, -1.167, -1.0, -0.833, -0.667, -0.5, -0.333, -0.167, 0.0, 0.167, 0.333, 0.5, 0.667, 0.833, 1.0, 1.167, 1.333, 1.5, 1.667, 1.833, 2.0, 2.167, 2.333, 2.5, 2.667, 2.833, 3.0, 3.167, 3.333, 3.5, 3.667, 3.833, 4.0, 4.333];
@@ -527,71 +479,12 @@
       centers, counts, samples: n, mean, stdError: sd, statName: 'std. dev.', decimals: 2,
       xMin: -5.5, xMax: 5.5, xStep: 1, xLabel: 'Difference in means (sleep − caffeine)',
       highlightFrom: 3.0, highlightTo: -3.0, vline: [-3.0, 3.0], vlineLabel: ['−3.0', 'observed = 3.0'],
-      width: 660, height: 330,
+      width: 620, height: 330,
     });
   })();
   </script>
   <div class="callout">
     <strong>Right tail</strong> (\(\ge 3.0\)): 28 &nbsp;&nbsp; <strong>Left tail</strong> (\(\le -3.0\)): 26 &nbsp;&nbsp; p-value \(= \frac{28 + 26}{1000} = 0.054\). &nbsp; Using the shortcut, \(2 \times \frac{26}{1000} = 0.052\) &mdash; nearly the same. A difference this large in either direction happens about 5% of the time by chance alone: moderate evidence of a difference in memory.
-  </div>
-</div>
-
-<!-- Slide 8f: Your Turn, lower- and two-tailed p-values -->
-<div class="slide">
-  <span class="tag tag-amber" style="align-self:flex-start;">Your Turn</span>
-  <h2>Your Turn: Lower- and Two-Tailed p-values</h2>
-  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 12px;">For each study: <strong>(a)</strong> write \(H_0\) and \(H_a\); <strong>(b)</strong> click <strong>Run 1000</strong> and record the p-value; <strong>(c)</strong> describe the strength of evidence against \(H_0\) in context.</p>
-  <div class="grid-2">
-    <div>
-      <div class="card card-amber">
-        <h3>Study 1: Free Throws</h3>
-        <p class="step-note">A player claims she makes <strong>80%</strong> of her free throws. A coach suspects her true rate is <strong>lower</strong>. In 60 attempts she makes <strong>42</strong> (\(\hat{p} = 0.70\)).</p>
-      </div>
-      <div id="sim-ft"></div>
-    </div>
-    <div>
-      <div class="card card-amber">
-        <h3>Study 2: Carnival Spinner</h3>
-        <p class="step-note">A spinner should land on red <strong>half</strong> the time. In 50 spins it lands on red <strong>32</strong> times (\(\hat{p} = 0.64\)). Is the spinner unfair in <strong>either direction</strong>?</p>
-      </div>
-      <div id="sim-spin"></div>
-    </div>
-  </div>
-  <script>
-    StatKey.create('#sim-ft', { mode: 'one-prop-rand', n: 60, x: 42, p0: 0.8, direction: 'left' });
-    StatKey.create('#sim-spin', { mode: 'one-prop-rand', n: 50, x: 32, p0: 0.5, direction: 'two-tailed' });
-  </script>
-</div>
-
-<!-- Slide 8g: Your Turn answers -->
-<div class="slide">
-  <span class="tag tag-green" style="align-self:flex-start;">Your Turn &mdash; Answers</span>
-  <h2>Answers: Lower- and Two-Tailed p-values</h2>
-  <p class="subtitle">Your simulated p-values will vary slightly from these, because every set of 1000 simulations is random.</p>
-  <div class="grid-2">
-    <div class="card card-green">
-      <h3>Study 1: Free Throws (lower tail)</h3>
-      <div class="formula-box" style="font-size:19px;">
-        \(H_0: p = 0.80\) &nbsp; vs. &nbsp; \(H_a: p < 0.80\)
-      </div>
-      <ul class="small">
-        <li>Randomization distribution centered at <strong>0.80</strong></li>
-        <li>"As extreme" means \(\hat{p} \le 0.70\): the <strong>left tail</strong></li>
-        <li><strong>p-value \(\approx 0.04\)</strong> (exact value 0.043)</li>
-        <li>If she really made 80%, making 42 or fewer of 60 would happen only about 4% of the time. This is moderate evidence that her true free-throw rate is <strong>below 80%</strong>.</li>
-      </ul>
-    </div>
-    <div class="card card-accent">
-      <h3>Study 2: Spinner (two tails)</h3>
-      <div class="formula-box" style="font-size:19px;">
-        \(H_0: p = 0.50\) &nbsp; vs. &nbsp; \(H_a: p \neq 0.50\)
-      </div>
-      <ul class="small">
-        <li>\(\hat{p} = 0.64\) is 0.14 above 0.50, so "as extreme" means \(\hat{p} \ge 0.64\) <strong>or</strong> \(\hat{p} \le 0.36\)</li>
-        <li>Each tail holds about 0.032, so <strong>p-value \(\approx 2(0.032) \approx 0.065\)</strong></li>
-        <li>A fair spinner gives a result this lopsided about 6.5% of the time. This is only some evidence that the spinner is unfair; chance is still a reasonable explanation.</li>
-      </ul>
-    </div>
   </div>
 </div>
 

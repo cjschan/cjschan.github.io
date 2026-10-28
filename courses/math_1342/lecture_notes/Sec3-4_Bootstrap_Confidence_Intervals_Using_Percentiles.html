@@ -258,30 +258,48 @@
   </div>
 </div>
 
-<!-- Slide 7: Confidence Level and Width -->
+<!-- Slide 7: Confidence Level, Sample Size, and Width (merged) -->
 <div class="slide">
   <span class="tag tag-purple">Relationship</span>
-  <h2>Confidence Level and Interval Width</h2>
-  <p class="subtitle">How does changing the confidence level affect the interval?</p>
-  <div class="grid-3">
+  <h2>What Affects Interval Width?</h2>
+  <p class="subtitle">How do the confidence level and the sample size affect the interval?</p>
+  <div class="grid-3" style="flex:none; margin-bottom:16px;">
     <div class="card card-green">
       <h3>90% CI</h3>
-      <div class="big-number" style="color: var(--green);">Narrow</div>
+      <div class="big-number" style="color: var(--green); font-size:40px;">Narrow</div>
       <p class="stat-label">Keep middle 90%. Cut 5% from each tail. Less confident, but more precise.</p>
     </div>
     <div class="card card-accent">
       <h3>95% CI</h3>
-      <div class="big-number" style="color: var(--accent);">Medium</div>
+      <div class="big-number" style="color: var(--accent); font-size:40px;">Medium</div>
       <p class="stat-label">Keep middle 95%. Cut 2.5% from each tail. The standard choice.</p>
     </div>
     <div class="card card-accent2">
       <h3>99% CI</h3>
-      <div class="big-number" style="color: var(--accent2);">Wide</div>
+      <div class="big-number" style="color: var(--accent2); font-size:40px;">Wide</div>
       <p class="stat-label">Keep middle 99%. Cut 0.5% from each tail. Very confident, but less precise.</p>
     </div>
   </div>
+  <div class="grid-2">
+    <div class="card card-rose">
+      <h3>Smaller Sample Size</h3>
+      <ul class="small">
+        <li>More variability in the statistic; larger SE</li>
+        <li>Bootstrap distribution is more spread out</li>
+        <li>Results in a <strong>wider</strong> confidence interval</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Larger Sample Size</h3>
+      <ul class="small">
+        <li>Less variability in the statistic; smaller SE</li>
+        <li>Bootstrap distribution is more concentrated</li>
+        <li>Results in a <strong>narrower</strong> confidence interval</li>
+      </ul>
+    </div>
+  </div>
   <div class="callout">
-    <strong>The trade-off:</strong> Higher confidence level \(\Rightarrow\) wider interval. To be <em>more confident</em> we capture the parameter, we need to cast a <em>wider net</em>.
+    <strong>The trade-off:</strong> Higher confidence level \(\Rightarrow\) wider interval (to be <em>more confident</em> we capture the parameter, we cast a <em>wider net</em>). Larger sample size \(\Rightarrow\) narrower interval.
   </div>
 </div>
 
@@ -336,38 +354,6 @@
       </ul>
       <p class="step-note" style="margin-top: 8px;">Higher confidence needs a wider net.</p>
     </div>
-  </div>
-</div>
-
-<!-- Slide 8: Sample Size and Width -->
-<div class="slide">
-  <span class="tag tag-amber">Sample Size</span>
-  <h2>Sample Size and Interval Width</h2>
-  <p class="subtitle">How does the sample size affect the width of the confidence interval?</p>
-  <div class="grid-2">
-    <div class="card card-rose">
-      <h3>Smaller Sample Size</h3>
-      <ul>
-        <li>More variability in the statistic</li>
-        <li>Larger SE</li>
-        <li>Bootstrap distribution is more spread out</li>
-        <li>Results in a <strong>wider</strong> confidence interval</li>
-      </ul>
-    </div>
-    <div class="card card-green">
-      <h3>Larger Sample Size</h3>
-      <ul>
-        <li>Less variability in the statistic</li>
-        <li>Smaller SE</li>
-        <li>Bootstrap distribution is more concentrated</li>
-        <li>Results in a <strong>narrower</strong> confidence interval</li>
-      </ul>
-    </div>
-  </div>
-  <div class="callout">
-    <strong>Summary of what affects width:</strong><br>
-    Higher confidence level \(\Rightarrow\) wider interval<br>
-    Larger sample size \(\Rightarrow\) narrower interval
   </div>
 </div>
 

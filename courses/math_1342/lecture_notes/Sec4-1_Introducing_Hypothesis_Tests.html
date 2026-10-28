@@ -265,54 +265,39 @@
   </div>
 </div>
 
-<!-- Slide 5: Writing Hypotheses -->
+<!-- Slide 5: Writing Hypotheses (with Sleep vs. Caffeine example) -->
 <div class="slide">
   <h2>Writing Hypotheses</h2>
   <p class="subtitle">How to set up the null and alternative for a given scenario</p>
-  <div class="grid-2">
+  <div class="grid-3">
     <div class="card card-green">
-      <h3>Dolphin Communication Example</h3>
+      <h3>Dolphin Communication</h3>
       <p class="step-note">Claim: Buzz pushes the correct button more often than he would by random guessing.</p>
-      <div class="formula-box">
+      <div class="formula-box" style="font-size:20px;">
         \(H_0: p = 0.50\)<br>
         \(H_a: p > 0.50\)
       </div>
       <p class="step-note">Here \(p\) = the true proportion of times Buzz pushes the correct button. The sample gives \(\hat{p} = 15/16 \approx 0.94\), but the hypotheses are about \(p\), not \(\hat{p}\).</p>
     </div>
+    <div class="card card-accent3">
+      <h3>Sleep vs. Caffeine</h3>
+      <p class="step-note">Subjects are randomly assigned to take a <strong>nap</strong> or drink <strong>caffeine</strong>, then do a memory task. Is there a <strong>difference</strong> in mean scores?</p>
+      <p class="step-note">\(\mu_s\), \(\mu_c\) = mean score for the sleep and caffeine groups</p>
+      <div class="formula-box" style="font-size:20px;">
+        \(H_0: \mu_s = \mu_c\)<br>
+        \(H_a: \mu_s \neq \mu_c\)
+      </div>
+      <p class="step-note">A <strong>two-sided</strong> test: we are looking for any difference, not a specific direction.</p>
+    </div>
     <div class="card card-amber">
       <h3>Tips for Writing Hypotheses</h3>
-      <ul>
+      <ul class="small">
         <li>Hypotheses are always about <strong>population parameters</strong> (not sample statistics)</li>
         <li>Use notation like \(p\), \(\mu\), \(\mu_1 - \mu_2\), etc.</li>
         <li>\(H_0\) always includes the "=" case</li>
         <li>\(H_a\) is determined by the research question</li>
         <li>Set up hypotheses <strong>before</strong> collecting data</li>
       </ul>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 6: Sleep vs Caffeine Example -->
-<div class="slide">
-  <h2>Example: Sleep vs. Caffeine</h2>
-  <p class="subtitle">Does sleep or caffeine have a different effect on memory performance?</p>
-  <div class="grid-2">
-    <div class="card card-accent2">
-      <h3>The Study</h3>
-      <ul>
-        <li>Researchers randomly assign subjects to either take a <strong>nap</strong> or drink <strong>caffeine</strong></li>
-        <li>Later, both groups complete a memory task</li>
-        <li>We want to know if there is a <strong>difference</strong> in mean scores between the two groups</li>
-      </ul>
-    </div>
-    <div class="card card-accent3">
-      <h3>Setting Up Hypotheses</h3>
-      <p class="step-note">Let \(\mu_s\) = mean score for the sleep group<br>Let \(\mu_c\) = mean score for the caffeine group</p>
-      <div class="formula-box">
-        \(H_0: \mu_s = \mu_c\)<br>
-        \(H_a: \mu_s \neq \mu_c\)
-      </div>
-      <p class="step-note">This is a <strong>two-sided</strong> test because we are looking for any difference, not a specific direction.</p>
     </div>
   </div>
 </div>
@@ -390,71 +375,37 @@
   </div>
 </div>
 
-<!-- Practice: Rock Paper Scissors -->
+<!-- Worked Example: Rock Paper Scissors (questions + solution) -->
 <div class="slide">
-  <span class="tag tag-amber" style="align-self:flex-start;">Practice &mdash; We'll Work Through This in Class</span>
+  <span class="tag tag-green" style="align-self:flex-start;">Worked Example</span>
   <h2>Example: Is There a Rock Paper Scissors Expert?</h2>
-  <p class="subtitle">A student claims to be <strong>unusually good at rock paper scissors</strong>. To test this, they play <strong>11 games</strong> against a classmate (any tie is replayed, so every game has a winner). The student <strong>wins 9 of the 11 games</strong>.</p>
+  <p class="subtitle" style="font-size:18px; margin-bottom:16px;">A student claims to be <strong>unusually good at rock paper scissors</strong>. To test this, they play <strong>11 games</strong> against a classmate (any tie is replayed, so every game has a winner). The student <strong>wins 9 of the 11 games</strong>.</p>
   <div class="grid-2">
-    <div class="card card-amber">
+    <div class="card card-green">
       <h3>Setting Up the Test</h3>
-      <ul>
-        <li>What is the <strong>parameter</strong> of interest in this study? Define it in words.</li>
-        <li>If the student has <strong>no special skill</strong>, what is the value of \(p\)?</li>
-        <li>State the null and alternative hypotheses, \(H_0\) and \(H_a\).</li>
-        <li>Is this test <strong>one-sided or two-sided</strong>? How do you know?</li>
+      <ul class="small">
+        <li><strong>Parameter?</strong> \(p\) = the true proportion of games this student wins against the classmate, in the long run</li>
+        <li><strong>Value of \(p\) if no special skill?</strong> Each game is a 50-50 toss-up, so \(p = 0.5\)</li>
+      </ul>
+      <div class="formula-box" style="font-size:19px; margin-bottom:8px;">
+        \(H_0: p = 0.5\) &nbsp;&nbsp;&nbsp; \(H_a: p > 0.5\)
+      </div>
+      <ul class="small">
+        <li><strong>One- or two-sided?</strong> One-sided (right-tailed): the claim is that the student is <em>better</em> than chance</li>
       </ul>
     </div>
     <div class="card card-accent">
       <h3>Thinking About the Data</h3>
-      <ul>
-        <li>What is the <strong>sample statistic</strong> \(\hat{p}\)? Is it a parameter or a statistic?</li>
-        <li>If we simulated 1000 samples assuming \(H_0\) is true, where would the randomization distribution of \(\hat{p}\) be centered?</li>
-        <li>Do you expect the observed \(\hat{p}\) to fall in the tail of that distribution, or near the center?</li>
-        <li>Based on your answers, do these data convince you the student has real skill? Why or why not?</li>
+      <ul class="small">
+        <li><strong>Sample statistic?</strong> \(\hat{p} = 9/11 \approx 0.818\), a <em>statistic</em> from the 11 games played</li>
+        <li><strong>Center under \(H_0\)?</strong> A randomization distribution of \(\hat{p}\) would be centered at <strong>0.5</strong></li>
+        <li><strong>Tail or center?</strong> 0.818 lands in the right tail: a player with no skill wins 9 or more of 11 only about <strong>3%</strong> of the time (we will name this proportion the <em>p-value</em> in Section 4.2)</li>
+        <li><strong>Convinced?</strong> Fairly convincing evidence of real skill, but much weaker than Buzz (15 of 16), which chance alone almost never produces</li>
       </ul>
     </div>
   </div>
   <div class="callout">
-    <strong>Compare:</strong> How is this example like the Buzz and Doris study? How is it different?
-  </div>
-</div>
-
-<!-- Solution: Rock Paper Scissors -->
-<div class="slide">
-  <span class="tag tag-green" style="align-self:flex-start;">Solution</span>
-  <h2>Solution: Is There a Rock Paper Scissors Expert?</h2>
-  <div class="grid-2" style="grid-template-columns: 1fr 1fr;">
-    <div class="card card-green">
-      <h3>Setting Up the Test</h3>
-      <ul class="small">
-        <li><strong>Parameter:</strong> \(p\) = the true proportion of games this student wins against the classmate, in the long run</li>
-        <li><strong>No special skill:</strong> each game is a 50-50 toss-up, so \(p = 0.5\)</li>
-      </ul>
-      <div class="formula-box" style="font-size:20px;">
-        \(H_0: p = 0.5\)<br>
-        \(H_a: p > 0.5\)
-      </div>
-      <ul class="small">
-        <li><strong>One-sided (right-tailed):</strong> the claim is that the student is <em>better</em> than chance</li>
-        <li><strong>Statistic:</strong> \(\hat{p} = 9/11 \approx 0.818\), from the 11 games played</li>
-        <li><strong>Under \(H_0\),</strong> the randomization distribution of \(\hat{p}\) is centered at <strong>0.5</strong></li>
-      </ul>
-    </div>
-    <div>
-      <div id="sim-rps"></div>
-      <p class="step-note">Click <strong>Run 1000</strong>. The highlighted dots are simulated players with no skill who won 9 or more of 11. Expect about 3% of them (your count will vary a little). We will name this proportion the <em>p-value</em> in Section 4.2.</p>
-    </div>
-  </div>
-  <script>
-    StatKey.create('#sim-rps', {
-      mode: 'one-prop-rand',
-      n: 11, x: 9, p0: 0.5,
-      direction: 'right',
-    });
-  </script>
-  <div class="callout">
-    <strong>Conclusion (informal):</strong> \(\hat{p} = 0.818\) lands in the right tail; a player with no skill wins 9 or more of 11 only about 3% of the time. That is fairly convincing evidence of real skill, but much weaker than Buzz (15 of 16), which chance alone almost never produces. <strong>Like Buzz:</strong> one proportion, null value 0.5, right-tailed. <strong>Unlike Buzz:</strong> fewer trials, and a less extreme result.
+    <strong>Compare with Buzz and Doris.</strong> <strong>Alike:</strong> one proportion, null value 0.5, right-tailed. <strong>Different:</strong> fewer trials, and a less extreme result.
   </div>
 </div>
 

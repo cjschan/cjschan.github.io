@@ -145,50 +145,26 @@
   </div>
 </div>
 
-<!-- Slide 4: Case Study - Discussion -->
+<!-- Slide 4: Case Study - Discussion (questions + solution) -->
 <div class="slide">
   <span class="tag tag-amber">Discussion</span>
   <h2>Let's Name What We Did</h2>
-  <p class="subtitle">Before we define anything formally, answer these three questions about the M&amp;M activity.</p>
+  <p class="subtitle">Answer each question about the M&amp;M activity, then check. Each piece has a name we will use for the rest of the course.</p>
   <div class="grid-3">
     <div class="card card-accent question-card">
       <div class="question-num">1</div>
       <p class="question-text">What is the <strong>population</strong>?</p>
+      <p class="step-note"><strong style="color:var(--green);">Answer:</strong> <strong>All</strong> M&amp;Ms in fun-size bags. We want the proportion of blue among all of them, \(p\), which we never get to see.</p>
     </div>
     <div class="card card-accent2 question-card">
       <div class="question-num">2</div>
       <p class="question-text">What is the <strong>sample</strong>?</p>
+      <p class="step-note"><strong style="color:var(--green);">Answer:</strong> The <strong>10 M&amp;Ms</strong> one student drew. Each student has their own sample, so the class has 26 samples of size \(n = 10\).</p>
     </div>
     <div class="card card-accent3 question-card">
       <div class="question-num">3</div>
       <p class="question-text">What does <strong>each dot</strong> on the dot plot represent?</p>
-    </div>
-  </div>
-  <div class="callout">
-    <strong>Keep these answers in mind.</strong> The rest of this section gives a name to each piece of what we just did.
-  </div>
-</div>
-
-<!-- Slide 4b: Solution to the discussion -->
-<div class="slide">
-  <span class="tag tag-green">Solution</span>
-  <h2>Solution: Let's Name What We Did</h2>
-  <p class="subtitle">Each piece of the M&amp;M activity has a name we will use for the rest of the course.</p>
-  <div class="grid-3">
-    <div class="card card-accent question-card">
-      <div class="question-num">1</div>
-      <p class="question-text">Population</p>
-      <p class="step-note"><strong>All</strong> M&amp;Ms in fun-size bags. We want the proportion of blue among all of them, \(p\), which we never get to see.</p>
-    </div>
-    <div class="card card-accent2 question-card">
-      <div class="question-num">2</div>
-      <p class="question-text">Sample</p>
-      <p class="step-note">The <strong>10 M&amp;Ms</strong> one student drew. Each student has their own sample, so the class has 26 samples of size \(n = 10\).</p>
-    </div>
-    <div class="card card-accent3 question-card">
-      <div class="question-num">3</div>
-      <p class="question-text">Each dot</p>
-      <p class="step-note">One student's <strong>sample proportion</strong> \(\hat{p}\) of blue. A dot is a number from a whole sample, not a single M&amp;M.</p>
+      <p class="step-note"><strong style="color:var(--green);">Answer:</strong> One student's <strong>sample proportion</strong> \(\hat{p}\) of blue. A dot is a number from a whole sample, not a single M&amp;M.</p>
     </div>
   </div>
   <div class="callout">
@@ -196,38 +172,13 @@
   </div>
 </div>
 
-<!-- Slide 5: Statistical Inference -->
+<!-- Slide 5: Statistical Inference + Parameter vs Statistic -->
 <div class="slide">
-  <span class="tag tag-blue">Big Picture</span>
-  <h2>Statistical Inference</h2>
-  <p class="subtitle">The core goal of statistics: learn about populations from samples.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <h3>The Problem</h3>
-      <ul>
-        <li>We want to know about an entire <strong>population</strong></li>
-        <li>It is usually impossible or impractical to measure everyone</li>
-        <li>So we collect a <strong>sample</strong> and use it to draw conclusions</li>
-      </ul>
-    </div>
-    <div class="card card-accent2">
-      <h3>Statistical Inference</h3>
-      <ul>
-        <li>Drawing conclusions about a <strong>population</strong> based on information from a <strong>sample</strong></li>
-        <li>We use sample data to estimate, predict, and make decisions about the population</li>
-      </ul>
-    </div>
+  <span class="tag tag-purple">Big Picture &amp; Definitions</span>
+  <h2>Statistical Inference: Parameter vs Statistic</h2>
+  <div class="card card-accent3" style="margin-bottom:16px; padding:14px 18px;">
+    <p style="font-size:18px; line-height:1.5;"><strong>Statistical inference</strong> is drawing conclusions about a <strong>population</strong> based on information from a <strong>sample</strong>. Measuring everyone is usually impossible or impractical, so we use sample data to estimate, predict, and make decisions about the population.</p>
   </div>
-  <div class="callout">
-    <strong>Key idea:</strong> We never know the true population values exactly — we use samples to get our best estimates.
-  </div>
-</div>
-
-<!-- Slide 6: Parameter vs Statistic -->
-<div class="slide">
-  <span class="tag tag-purple">Definitions</span>
-  <h2>Parameter vs Statistic</h2>
-  <p class="subtitle">Two categories of numerical summaries — one for populations, one for samples.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <h3>Parameter (Population)</h3>
@@ -251,7 +202,7 @@
     </div>
   </div>
   <div class="callout">
-    <strong>Remember:</strong> Parameters are fixed but unknown. Statistics are known but vary from sample to sample.
+    <strong>Remember:</strong> Parameters are fixed but unknown. Statistics are known but vary from sample to sample. We never know the true population values exactly; we use samples to get our best estimates.
   </div>
 </div>
 
@@ -443,59 +394,8 @@
   <div class="callout">
     <strong>The rule:</strong> Larger sample size \(\Rightarrow\) smaller standard error \(\Rightarrow\) less variability \(\Rightarrow\) more precise estimates.
   </div>
-</div>
-
-<!-- Slide 11b: Your Turn, sampling distribution in StatKey -->
-<div class="slide">
-  <span class="tag tag-amber">Your Turn</span>
-  <h2>Your Turn: M&amp;M Sampling Distribution in StatKey</h2>
-  <p class="subtitle">Our class built a sampling distribution by hand with only 26 samples. Let StatKey draw 1000 samples, assuming 1 in 6 M&amp;Ms are blue (\(p = 0.167\)).</p>
-  <div class="grid-2">
-    <div class="card card-green">
-      <h3>Steps</h3>
-      <ul class="small">
-        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Sampling Distributions</strong>, choose <strong>Proportion</strong></li>
-        <li><strong>2.</strong> Click <strong>Edit Proportion</strong> and set the population proportion to <strong>0.167</strong></li>
-        <li><strong>3.</strong> Set the sample size to <strong>n = 10</strong></li>
-        <li><strong>4.</strong> Click <strong>Generate 1000 Samples</strong>; read the mean and std. error in the upper right</li>
-        <li><strong>5.</strong> Click <strong>Reset Plot</strong>, change the sample size to <strong>n = 40</strong>, and generate 1000 samples again</li>
-      </ul>
-    </div>
-    <div class="card card-amber">
-      <h3>Questions</h3>
-      <ul class="small">
-        <li><strong>(a)</strong> With \(n = 10\), where is the sampling distribution centered? Why there?</li>
-        <li><strong>(b)</strong> What is the standard error with \(n = 10\)? How does it compare to our class SD of 0.110?</li>
-        <li><strong>(c)</strong> What is the standard error with \(n = 40\)?</li>
-        <li><strong>(d)</strong> The sample size went up 4 times. What happened to the SE? What does that mean for precision?</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 11c: Your Turn answers -->
-<div class="slide">
-  <span class="tag tag-green">Your Turn &mdash; Answers</span>
-  <h2>Answers: M&amp;M Sampling Distribution in StatKey</h2>
-  <p class="subtitle">Your simulated values will vary slightly from these, because every set of 1000 samples is random.</p>
-  <div class="grid-2">
-    <div class="card card-green">
-      <h3>\(n = 10\)</h3>
-      <ul class="small">
-        <li><strong>(a)</strong> Centered near <strong>0.167</strong>, the population proportion. Random samples give a sampling distribution centered at the parameter.</li>
-        <li><strong>(b)</strong> SE \(\approx\) <strong>0.118</strong>. Close to our class SD of 0.110: our 26 hand-drawn samples gave a rough version of the same distribution.</li>
-      </ul>
-    </div>
-    <div class="card card-accent">
-      <h3>\(n = 40\)</h3>
-      <ul class="small">
-        <li><strong>(c)</strong> SE \(\approx\) <strong>0.059</strong>, still centered near 0.167.</li>
-        <li><strong>(d)</strong> \(0.059 / 0.118 \approx 0.5\): four times the sample size <strong>cut the SE in half</strong>. Sample proportions cluster more tightly around \(p\), so estimates are more precise.</li>
-      </ul>
-    </div>
-  </div>
-  <div class="callout">
-    <strong>Back to the research question:</strong> with \(n = 10\), a typical \(\hat{p}\) is about 0.12 away from \(p\). One student getting \(\hat{p} = 0.3\) blue says very little about \(p\) on its own; small samples vary a lot.
+  <div class="callout callout-amber" style="font-size:15px; padding:12px 18px;">
+    <strong>See it in StatKey</strong> (<a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>): Sampling Distributions &rarr; <strong>Proportion</strong> &rarr; Edit Proportion to <strong>0.167</strong>, \(n = 10\), <strong>Generate 1000 Samples</strong>: centered near 0.167 with SE \(\approx 0.118\) (close to our class SD of 0.110). Reset Plot, \(n = 40\): SE \(\approx 0.059\). Four times the sample size cuts the SE in half.
   </div>
 </div>
 

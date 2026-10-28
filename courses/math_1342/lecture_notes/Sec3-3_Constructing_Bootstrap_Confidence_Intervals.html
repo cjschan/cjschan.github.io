@@ -511,48 +511,27 @@
   </div>
 </div>
 
-<!-- Example: Global Warming (no solution shown) -->
+<!-- Example: Global Warming (with solution) -->
 <div class="slide">
   <span class="tag tag-amber">Example</span>
   <h2>Example: Global Warming</h2>
   <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 16px;">What percentage of Americans believe in global warming? A survey on 2,251 randomly selected individuals conducted in October 2010 found that 1,328 answered Yes to the question <em>&ldquo;Is there solid evidence of global warming?&rdquo;</em> A bootstrap distribution for this data is shown. Use the information there to give and interpret a 95% CI for the proportion of Americans who believe there is solid evidence of global warming.</p>
-  <div class="grid-2" style="grid-template-columns: 1.35fr 0.65fr; min-height: 0;">
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr; min-height: 0;">
     <div class="card" style="padding: 12px; min-height: 0;">
-      <img src="images/global_warming_bootstrap.png" alt="StatKey bootstrap dotplot of 3000 bootstrap proportions, bell-shaped from about 0.55 to 0.62 and centered at 0.590, with standard deviation 0.010. The original sample has count 1328, n = 2251, proportion 0.590; one bootstrap sample has count 1304, proportion 0.579." style="display: block; width: 100%; max-height: 50vh; object-fit: contain; border-radius: 8px; background: #fff;">
+      <img src="images/global_warming_bootstrap.png" alt="StatKey bootstrap dotplot of 3000 bootstrap proportions, bell-shaped from about 0.55 to 0.62 and centered at 0.590, with standard deviation 0.010. The original sample has count 1328, n = 2251, proportion 0.590; one bootstrap sample has count 1304, proportion 0.579." style="display: block; width: 100%; max-height: 40vh; object-fit: contain; border-radius: 8px; background: #fff;">
+      <p class="step-note" style="margin: 10px 4px 0;"><strong>Note:</strong> the bootstrap distribution is centered at the sample statistic (mean = 0.590 = \(\hat{p}\)), not at the unknown \(p\). We use it only for its spread, the SE.</p>
     </div>
-    <div class="card card-amber">
-      <h3>Fill In</h3>
-      <p class="step-note">Statistic \(\hat{p}\) =</p>
-      <p class="step-note" style="margin-top: 22px;">Bootstrap SE =</p>
-      <p class="step-note" style="margin-top: 22px;">95% CI =</p>
-      <p class="step-note" style="margin-top: 22px;">Interpretation:</p>
-    </div>
-  </div>
-</div>
-
-<!-- Example solution: Global Warming -->
-<div class="slide">
-  <span class="tag tag-green">Solution</span>
-  <h2>Solution: Global Warming</h2>
-  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 16px;">Read the statistic from the original sample and the SE from the bootstrap distribution, then use Statistic \(\pm\; 2 \times \text{SE}\).</p>
-  <div class="grid-2">
     <div class="card card-green">
-      <h3>Compute the CI</h3>
+      <h3>Solution</h3>
       <p class="step-note">Statistic: \(\hat{p} = \dfrac{1328}{2251} \approx 0.590\)</p>
       <p class="step-note">Bootstrap SE: st. dev. of the 3000 bootstrap proportions \(\approx 0.010\)</p>
-      <div class="formula-box" style="font-size: 20px;">
-        \(95\%\;\text{CI} = 0.590 \pm 2(0.010)\)<br><br>
+      <div class="formula-box" style="font-size: 19px; margin-bottom: 12px;">
+        \(95\%\;\text{CI} = 0.590 \pm 2(0.010)\)<br>
         \(= 0.590 \pm 0.020 = (0.570,\; 0.610)\)
       </div>
+      <p style="font-size: 16px; line-height: 1.5;"><strong>Interpret:</strong> &ldquo;We are <strong>95% confident</strong> that the proportion of <strong>all Americans</strong> who believe there is solid evidence of global warming is between <strong>0.570</strong> and <strong>0.610</strong> (57% to 61%).&rdquo;</p>
+      <p class="step-note" style="margin-top: 8px;">The interval is about the population proportion \(p\), not the 2,251 people surveyed.</p>
     </div>
-    <div class="card card-accent">
-      <h3>Interpret</h3>
-      <p style="font-size: 17px; line-height: 1.5;">&ldquo;We are <strong>95% confident</strong> that the proportion of <strong>all Americans</strong> who believe there is solid evidence of global warming is between <strong>0.570</strong> and <strong>0.610</strong> (57% to 61%).&rdquo;</p>
-      <p class="step-note" style="margin-top: 12px;">The interval is about the population proportion \(p\), not the 2,251 people surveyed.</p>
-    </div>
-  </div>
-  <div class="callout">
-    <strong>Note:</strong> the bootstrap distribution is centered at the sample statistic (mean = 0.590 = \(\hat{p}\)), not at the unknown \(p\). We use it only for its spread, the SE.
   </div>
 </div>
 
@@ -590,58 +569,6 @@
       <h3>(e) Interpret</h3>
       <p style="font-size: 17px; line-height: 1.5;">&ldquo;We are <strong>95% confident</strong> that the proportion of <strong>all shoppers</strong> who prefer brand A is between <strong>0.50</strong> and <strong>0.78</strong> (50% to 78%).&rdquo;</p>
       <p class="step-note" style="margin-top: 12px;">With only 50 people surveyed, the interval is wide. A larger sample would give a smaller SE and a narrower interval.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 8d: Your Turn, bootstrap a mean in StatKey -->
-<div class="slide">
-  <span class="tag tag-amber">Your Turn</span>
-  <h2>Your Turn: Bootstrap a Mean in StatKey</h2>
-  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 16px;">A random sample of <strong>500</strong> commuters in metropolitan Atlanta recorded their one-way commute time in minutes. Use StatKey to bootstrap the sample mean and build a 95% CI for the mean commute time of <strong>all</strong> Atlanta commuters.</p>
-  <div class="grid-2">
-    <div class="card card-green">
-      <h3>Steps</h3>
-      <ul class="small">
-        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Bootstrap Confidence Intervals</strong>, choose <strong>CI for Single Mean, Median, St.Dev.</strong></li>
-        <li><strong>2.</strong> The default dataset is <strong>Atlanta Commutes (Time)</strong>; leave it selected. The <strong>Original Sample</strong> box shows \(n\) and the mean.</li>
-        <li><strong>3.</strong> Click <strong>Generate 1000 Samples</strong></li>
-        <li><strong>4.</strong> Read the <strong>mean</strong> and <strong>std. error</strong> in the upper right of the bootstrap dotplot</li>
-      </ul>
-    </div>
-    <div class="card card-amber">
-      <h3>Questions</h3>
-      <ul class="small">
-        <li><strong>(a)</strong> What is the sample statistic \(\bar{x}\)?</li>
-        <li><strong>(b)</strong> Where is the bootstrap distribution centered? What is its shape?</li>
-        <li><strong>(c)</strong> What is the bootstrap SE?</li>
-        <li><strong>(d)</strong> Find a 95% CI using Statistic \(\pm\; 2 \times \text{SE}\).</li>
-        <li><strong>(e)</strong> Interpret your interval in context.</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 8e: Your Turn answers -->
-<div class="slide">
-  <span class="tag tag-green">Your Turn &mdash; Answers</span>
-  <h2>Answers: Bootstrap a Mean in StatKey</h2>
-  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 16px;">Your simulated values will vary slightly from these, because every set of 1000 bootstrap samples is random.</p>
-  <div class="grid-2">
-    <div class="card card-green">
-      <h3>Compute the CI</h3>
-      <p class="step-note">(a) Statistic: \(\bar{x} = 29.11\) minutes (\(n = 500\))</p>
-      <p class="step-note">(b) Centered near <strong>29.11</strong>, the sample mean; roughly bell-shaped</p>
-      <p class="step-note">(c) Bootstrap SE: std. error \(\approx 0.93\) minutes</p>
-      <div class="formula-box" style="font-size: 20px;">
-        (d) \(95\%\;\text{CI} \approx 29.11 \pm 2(0.93)\)<br><br>
-        \(= 29.11 \pm 1.86 \approx (27.3,\; 31.0)\)
-      </div>
-    </div>
-    <div class="card card-accent">
-      <h3>(e) Interpret</h3>
-      <p style="font-size: 17px; line-height: 1.5;">&ldquo;We are <strong>95% confident</strong> that the mean one-way commute time for <strong>all commuters in metropolitan Atlanta</strong> is between about <strong>27.3</strong> and <strong>31.0</strong> minutes.&rdquo;</p>
-      <p class="step-note" style="margin-top: 12px;">Individual commutes vary a lot (some take over an hour), but with \(n = 500\) the sample <em>mean</em> varies little, so the interval is narrow.</p>
     </div>
   </div>
 </div>
