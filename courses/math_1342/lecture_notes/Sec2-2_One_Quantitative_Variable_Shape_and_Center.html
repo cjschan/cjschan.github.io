@@ -91,38 +91,22 @@
 
 <div class="slide">
   <h2>Shape of a Distribution</h2>
-  <p class="subtitle">The shape tells us about the pattern of data values.</p>
-  <div class="grid-3">
-    <div class="card card-accent">
-      <div class="big-number accent">Symmetric</div>
-      <div class="stat-label">Left and right sides are roughly mirror images.</div>
-    </div>
-    <div class="card card-amber">
-      <div class="big-number amber">Left-Skewed</div>
-      <div class="stat-label">Long tail stretches to the left (toward smaller values).</div>
-    </div>
-    <div class="card card-rose">
-      <div class="big-number rose">Right-Skewed</div>
-      <div class="stat-label">Long tail stretches to the right (toward larger values).</div>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Example: Three Shapes</h2>
-  <p class="subtitle">The same idea in three patterns &mdash; watch which direction the long tail points.</p>
+  <p class="subtitle">The shape tells us about the pattern of data values &mdash; watch which direction the long tail points.</p>
   <div class="grid-3">
     <div class="card card-accent">
       <h3>Symmetric</h3>
       <div id="shape-sym"></div>
+      <div class="stat-label" style="margin-top:10px;">Left and right sides are roughly mirror images.</div>
     </div>
     <div class="card card-amber">
       <h3>Left-Skewed</h3>
       <div id="shape-left"></div>
+      <div class="stat-label" style="margin-top:10px;">Long tail stretches to the left (toward smaller values).</div>
     </div>
     <div class="card card-rose">
       <h3>Right-Skewed</h3>
       <div id="shape-right"></div>
+      <div class="stat-label" style="margin-top:10px;">Long tail stretches to the right (toward larger values).</div>
     </div>
   </div>
   <script>
@@ -171,35 +155,23 @@
         \]
       </div>
       <div class="step-note">\(n\) is the sample size and \(x_1, x_2, \ldots, x_n\) are the data values.</div>
-    </div>
-    <div class="card card-green">
-      <h3>Interpretation</h3>
-      <ul>
+      <h3 style="margin-top:12px;">Interpretation</h3>
+      <ul class="small">
         <li>The mean is the balance point of the distribution.</li>
         <li>It uses every data value in the calculation.</li>
         <li>Notation: sample mean \(\bar{x}\), population mean \(\mu\).</li>
       </ul>
     </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Example: Finding the Mean</h2>
-  <p class="subtitle">Hours that five students spent studying for an exam.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <h3>Data</h3>
+    <div class="card card-amber">
+      <h3>Example: Finding the Mean</h3>
+      <div class="step-note">Hours that five students spent studying for an exam:</div>
       <div class="formula-box" style="font-size:20px;">3, &nbsp; 5, &nbsp; 6, &nbsp; 8, &nbsp; 8</div>
-      <div class="step-note">There are \(n = 5\) values. Add them, then divide by \(n\).</div>
-    </div>
-    <div class="card card-green">
-      <h3>Calculation</h3>
-      <div class="formula-box">
+      <div class="formula-box" style="font-size:20px;">
         \[
           \bar{x} = \frac{3 + 5 + 6 + 8 + 8}{5} = \frac{30}{5} = 6
         \]
       </div>
-      <div class="step-note">The mean study time is \(6\) hours.</div>
+      <div class="step-note">There are \(n = 5\) values. The mean study time is \(6\) hours.</div>
     </div>
   </div>
 </div>
@@ -207,45 +179,30 @@
 <div class="slide">
   <h2>The Median</h2>
   <p class="subtitle">The middle value when data are ordered from smallest to largest.</p>
-  <div class="grid-2">
+  <div class="grid-3">
     <div class="card card-accent">
       <h3>How to Find It</h3>
-      <ul>
+      <ul class="small">
         <li>Order all values from smallest to largest.</li>
         <li>If \(n\) is odd, the median is the middle value.</li>
         <li>If \(n\) is even, the median is the average of the two middle values.</li>
       </ul>
     </div>
-    <div class="card card-amber">
-      <h3>Mean vs. Median and Skewness</h3>
-      <ul>
-        <li>The mean is pulled in the direction of skewness.</li>
-        <li>Right-skewed: mean &gt; median.</li>
-        <li>Left-skewed: mean &lt; median.</li>
-        <li>Symmetric: mean \(\approx\) median.</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Example: Finding the Median</h2>
-  <p class="subtitle">Order the data from smallest to largest, then locate the middle.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <h3>Odd \(n\): five values</h3>
+    <div class="card card-green">
+      <h3>Example: Odd \(n\) (five values)</h3>
       <div class="step-note">Unordered: 7, 2, 9, 4, 5</div>
       <div class="formula-box" style="font-size:20px;">2, &nbsp; 4, &nbsp; <span style="color:var(--green); font-weight:700;">5</span>, &nbsp; 7, &nbsp; 9</div>
-      <div class="step-note">With \(n = 5\), the single middle value (the 3rd) is the median.</div>
-      <div class="formula-box">\[ m = 5 \]</div>
+      <div class="step-note">With \(n = 5\), the single middle value (the 3rd) is the median: \(m = 5\).</div>
     </div>
-    <div class="card card-amber">
-      <h3>Even \(n\): six values</h3>
+    <div class="card card-accent2">
+      <h3>Example: Even \(n\) (six values)</h3>
       <div class="step-note">Unordered: 7, 2, 9, 4, 5, 8</div>
       <div class="formula-box" style="font-size:20px;">2, &nbsp; 4, &nbsp; <span style="color:var(--green); font-weight:700;">5, &nbsp; 7</span>, &nbsp; 8, &nbsp; 9</div>
-      <div class="step-note">With \(n = 6\), average the two middle values (the 3rd and 4th).</div>
-      <div class="formula-box">\[ m = \frac{5 + 7}{2} = 6 \]</div>
+      <div class="step-note">With \(n = 6\), average the two middle values (the 3rd and 4th): \(m = \dfrac{5 + 7}{2} = 6\).</div>
     </div>
+  </div>
+  <div class="callout">
+    <strong>Mean vs. median and skewness:</strong> the mean is pulled in the direction of skewness. Right-skewed: mean &gt; median. Left-skewed: mean &lt; median. Symmetric: mean \(\approx\) median.
   </div>
 </div>
 
@@ -413,8 +370,7 @@
     <div class="stack">
       <div class="card card-accent">
         <h3>Step 1: Estimate the mean</h3>
-        <div class="step-note">The distribution is symmetric and peaks at 68, so the balance point is about there.</div>
-        <div class="formula-box" style="font-size:20px;">\[ \bar{x} \approx 68 \]</div>
+        <div class="step-note">The distribution is symmetric and peaks at 68, so the balance point is about there: \(\bar{x} \approx 68\).</div>
       </div>
       <div class="card card-amber">
         <h3>Step 2: Bracket the middle 95%</h3>
@@ -424,58 +380,6 @@
         <h3>Step 3: Divide the width by 4</h3>
         <div class="formula-box" style="font-size:20px;">\[ s \approx \frac{76 - 60}{4} = \frac{16}{4} = 4 \]</div>
       </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <span class="tag tag-amber">Your Turn</span>
-  <h2>Your Turn: Estimate SD from a Dotplot</h2>
-  <p class="subtitle">The dotplot shows the resting heart rates (beats per minute) of 85 adults. Estimate without calculating.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <h3>Resting heart rate (bpm)</h3>
-      <div id="chart-2-2-yt-dot"></div>
-    </div>
-    <div class="card card-amber">
-      <h3>Questions</h3>
-      <ul class="small">
-        <li><strong>(a)</strong> Is the distribution roughly symmetric and bell-shaped? Why does that matter here?</li>
-        <li><strong>(b)</strong> Estimate the mean \(\bar{x}\).</li>
-        <li><strong>(c)</strong> Find an interval that contains about the middle 95% of the dots.</li>
-        <li><strong>(d)</strong> Use your interval to estimate the standard deviation \(s\).</li>
-      </ul>
-    </div>
-  </div>
-  <script>
-    (function () {
-      const vals = [54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90];
-      const counts = [1, 2, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 2, 1];
-      const hr = vals.flatMap((v, i) => Array(counts[i]).fill(v));
-      StatGraphs.dotplot('#chart-2-2-yt-dot', hr, { xLabel: 'beats per minute', width: 440, height: 240, min: 52, max: 92 });
-    })();
-  </script>
-</div>
-
-<div class="slide">
-  <span class="tag tag-green">Your Turn &mdash; Answers</span>
-  <h2>Answers: Estimate SD from a Dotplot</h2>
-  <p class="subtitle">Same three steps as the worked example: balance point, bracket the middle 95%, divide by 4.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <h3>(a)&ndash;(b) Shape and center</h3>
-      <ul class="small">
-        <li><strong>(a)</strong> Yes &mdash; it rises to a single peak and falls off evenly on both sides. The 95% rule only applies to bell-shaped data.</li>
-        <li><strong>(b)</strong> The peak and balance point are at about \(\bar{x} \approx 72\) bpm.</li>
-      </ul>
-    </div>
-    <div class="card card-green">
-      <h3>(c)&ndash;(d) Spread</h3>
-      <ul class="small">
-        <li><strong>(c)</strong> Trim the couple of dots at each end (54 and 90): nearly all the rest lie between about <strong>56</strong> and <strong>88</strong>.</li>
-      </ul>
-      <div class="formula-box" style="font-size:20px;">\[ s \approx \frac{88 - 56}{4} = \frac{32}{4} = 8 \text{ bpm} \]</div>
-      <div class="step-note">For these 85 values the actual \(s \approx 8.1\) &mdash; the estimate is very close. A bracket like 58 to 86 gives \(s \approx 7\), also reasonable.</div>
     </div>
   </div>
 </div>
