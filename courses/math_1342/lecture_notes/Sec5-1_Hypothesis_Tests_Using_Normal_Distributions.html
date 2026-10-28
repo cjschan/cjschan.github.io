@@ -311,9 +311,17 @@
         <li><strong>5.</strong> Read the shaded area: that is the p-value (for Two-Tail, add the two areas shown)</li>
       </ul>
     </div>
-    <div class="card card-accent">
+    <div class="card card-accent table-card">
       <h3>Check: Malaria Mosquitoes</h3>
-      <p class="step-note"><strong>The study:</strong> Researchers exposed one group of mosquitoes to the malaria parasite and left another group unexposed. They then recorded whether each mosquito approached a human. Before the parasite became infectious, the proportion that approached was 0.131 lower in the exposed group (\(\hat{p}_E - \hat{p}_U = -0.131\), \(SE = 0.056\)). Is it lower in general (\(H_a: p_E &lt; p_U\))?</p>
+      <table style="margin-bottom:12px;">
+        <thead>
+          <tr><th>Group</th><th>Approached a human</th><th>Total</th><th>Proportion</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Unexposed</td><td>36</td><td>117</td><td>0.308</td></tr>
+          <tr><td>Exposed</td><td>20</td><td>113</td><td>0.177</td></tr>
+        </tbody>
+      </table>
       <p class="step-note">\(H_a\) is left-tailed and \(z = -2.34\). Check <strong>Left Tail</strong> and type <strong>&minus;2.34</strong> in the box.</p>
       <div class="formula-box">
         \[
