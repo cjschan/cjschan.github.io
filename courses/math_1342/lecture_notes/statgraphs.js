@@ -37,18 +37,18 @@ const StatGraphs = (() => {
     return { svg, W, H, PL, PR, PT, PB, plotW, plotH };
   }
 
-  function axisX(svg, sx, fr, ticks, label) {
+  function axisX(svg, sx, fr, ticks, label, tickLabels) {
     svg.appendChild(el('line', {
       x1: fr.PL, y1: fr.PT + fr.plotH, x2: fr.PL + fr.plotW, y2: fr.PT + fr.plotH,
       stroke: COLORS.axis, 'stroke-width': 1.25,
     }));
-    for (const t of ticks) {
+    ticks.forEach((t, i) => {
       svg.appendChild(el('text', {
         x: sx(t), y: fr.PT + fr.plotH + 16,
         fill: COLORS.text, 'font-size': 11, 'text-anchor': 'middle',
         'font-family': 'Work Sans, sans-serif',
-      }, [String(typeof t === 'number' ? roundNice(t) : t)]));
-    }
+      }, [tickLabels ? tickLabels[i] : String(typeof t === 'number' ? roundNice(t) : t)]));
+    });
     if (label) {
       svg.appendChild(el('text', {
         x: fr.PL + fr.plotW / 2, y: fr.H - 4,
@@ -598,10 +598,10 @@ const StatGraphs = (() => {
       }
     }
 
-    // X axis with mean and ±1, ±2, ±3 SD ticks
+    // X axis with mean and ±1, ±2, ±3 SD ticks (opts.tickLabels replaces the numbers, e.g. μ − σ)
     const ticks = [];
     for (let k = -3; k <= 3; k++) ticks.push(mean + k * sd);
-    axisX(fr.svg, sx, fr, ticks, opts.xLabel);
+    axisX(fr.svg, sx, fr, ticks, opts.xLabel, opts.tickLabels);
     host(target).innerHTML = ''; host(target).appendChild(fr.svg);
   }
 
