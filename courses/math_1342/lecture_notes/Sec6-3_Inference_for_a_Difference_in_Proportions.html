@@ -589,8 +589,9 @@
 </div>
 
 <div class="slide">
-  <h2>Treatment vs Placebo Practice</h2>
-  <p class="subtitle">A randomized double-blind experiment compared pain relief rates for a treatment and a placebo.</p>
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Treatment vs Placebo</h2>
+  <p class="subtitle">A randomized double-blind experiment compared pain relief rates for a treatment and a placebo. Is there evidence that the treatment relieves pain more often than the placebo?</p>
   <div class="grid-2">
     <div class="card card-accent table-card">
       <h3>Two-Way Table</h3>
@@ -622,24 +623,52 @@
       </table>
     </div>
     <div class="card card-green">
-      <div class="tag tag-green">Pooled Proportion</div>
+      <h3>Questions</h3>
+      <ul>
+        <li>(a) State \(H_0\) and \(H_a\).</li>
+        <li>(b) Find \(\hat{p}_1\), \(\hat{p}_2\), and the pooled proportion \(\hat{p}\).</li>
+        <li>(c) Compute the \(z\) test statistic.</li>
+        <li>(d) Find the p-value and state your conclusion in context.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Treatment vs Placebo</h2>
+  <p class="subtitle">Group 1 is treatment and Group 2 is placebo.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">(a) Hypotheses</div>
       <div class="formula-box">
         \[
-          \hat{p}=\frac{57}{150}=0.38
+          H_0:p_1-p_2=0 \qquad H_a:p_1-p_2>0
         \]
       </div>
-      <div class="tag tag-amber">Test Statistic</div>
+      <div class="tag tag-purple">(b) Proportions</div>
+      <div class="formula-box">
+        \[
+          \hat{p}_1=\frac{36}{75}=0.48 \qquad \hat{p}_2=\frac{21}{75}=0.28 \qquad \hat{p}=\frac{57}{150}=0.38
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-amber">(c) Test Statistic</div>
       <div class="formula-box">
         \[
           z=\frac{0.48-0.28}{\sqrt{0.38(0.62)\left(\frac{1}{75}+\frac{1}{75}\right)}}
           \approx 2.52
         \]
       </div>
-      <div class="tag tag-rose">p-Value</div>
+      <div class="tag tag-rose">(d) p-Value and Conclusion</div>
       <div class="formula-box">
         \[
           \text{p-value}\approx 0.0059
         \]
+      </div>
+      <div class="callout">
+        The right-tail p-value is very small, so there is strong evidence that the treatment relieves pain more often than the placebo. Because this was a randomized experiment, we can conclude the treatment <em>causes</em> the higher relief rate.
       </div>
     </div>
   </div>
@@ -687,8 +716,9 @@
 </div>
 
 <div class="slide">
-  <h2>Try It: Two-Proportion Randomization</h2>
-  <p class="subtitle">Suppose group 1 has 18/30 successes and group 2 has 12/30. Is the difference real, or could it be from chance?</p>
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Two-Proportion Randomization</h2>
+  <p class="subtitle">Suppose group 1 has 18/30 successes and group 2 has 12/30. Click <strong>Run 1000</strong>, then answer: (a) State \(H_0\) and \(H_a\) for a two-tailed test. (b) What is the observed difference \(\hat{p}_1-\hat{p}_2\)? (c) What is your estimated p-value? (d) Is the difference real, or could it be from chance? Use \(\alpha=0.05\).</p>
   <div id="sim-2prop"></div>
   <script>
     StatKey.create('#sim-2prop', {
@@ -697,6 +727,41 @@
       direction: 'two-tailed',
     });
   </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Two-Proportion Randomization</h2>
+  <p class="subtitle">Your simulated p-value will vary a little because every set of 1000 randomizations is different.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">(a) Hypotheses</div>
+      <div class="formula-box">
+        \[
+          H_0:p_1-p_2=0 \qquad H_a:p_1-p_2\neq 0
+        \]
+      </div>
+      <div class="tag tag-purple">(b) Observed Difference</div>
+      <div class="formula-box">
+        \[
+          \hat{p}_1-\hat{p}_2=\frac{18}{30}-\frac{12}{30}=0.60-0.40=0.20
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-amber">(c) p-Value</div>
+      <div class="formula-box">
+        \[
+          \text{p-value}\approx 0.20
+        \]
+      </div>
+      <div class="step-note">About 20% of the random reassignments give a difference at least 0.20 away from 0 in either direction.</div>
+      <div class="tag tag-rose">(d) Conclusion</div>
+      <div class="callout">
+        Since \(0.20 > 0.05\), we do not reject \(H_0\). A difference of 0.20 could easily come from chance alone with groups this small, so there is not enough evidence that the two proportions differ.
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="slide">

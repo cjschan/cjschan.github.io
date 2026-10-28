@@ -8,7 +8,7 @@
   window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<script src="statgraphs.js?v=5"></script>
+<script src="statgraphs.js?v=6"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -278,7 +278,7 @@
 
 <div class="slide">
   <span class="tag tag-amber">Your Turn</span>
-  <h2>Spotting Residuals on a Scatterplot</h2>
+  <h2>Your Turn: Spotting Residuals on a Scatterplot</h2>
   <p class="subtitle">A campus caf&eacute; recorded the daily high temperature (in &deg;F) and the number of iced coffees sold on 12 days. The least squares line is drawn on the scatterplot.</p>
   <div class="grid-2">
     <div class="chart-box">
@@ -301,6 +301,36 @@
       const sold = [35, 42, 40, 55, 48, 60, 58, 78, 70, 63, 85, 84];
       StatGraphs.scatter('#chart-2-5-cafe', temp, sold,
         { width: 560, height: 320, padBottom: 48, xMin: 50, xMax: 100, yMin: 0, yMax: 100, xLabel: 'daily high temperature (°F)', yLabel: 'iced coffees sold', dotR: 5.5, regression: true });
+    })();
+  </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Spotting Residuals on a Scatterplot</h2>
+  <p class="subtitle">The least squares line is \(\widehat{\text{Sold}} \approx -71.5 + 1.72 \times \text{Temp}\). Look for the points farthest <em>above</em> and farthest <em>below</em> the line, measured vertically.</p>
+  <div class="grid-2">
+    <div class="chart-box">
+      <div id="chart-2-5-cafe-ans"></div>
+    </div>
+    <div class="card card-green">
+      <h3>Answers</h3>
+      <ul class="questions">
+        <li>(a) <span class="green">Circle</span> the point at <strong>80&deg;F, 78 sold</strong>. Predicted: \(\hat{y} \approx 66.1\), so the residual is \(78 - 66.1 \approx +11.9\) iced coffees.</li>
+        <li>(b) <span class="rose">Square</span> the point at <strong>85&deg;F, 63 sold</strong>. Predicted: \(\hat{y} \approx 74.7\), so the residual is \(63 - 74.7 \approx -11.7\) iced coffees.</li>
+      </ul>
+      <div class="callout" style="margin-top:14px;">
+        The two residuals are close in size, but (a) sits <em>above</em> the line (the model under-predicted) and (b) sits <em>below</em> it (the model over-predicted).
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const temp = [62, 65, 68, 70, 72, 75, 78, 80, 83, 85, 88, 90];
+      const sold = [35, 42, 40, 55, 48, 60, 58, 78, 70, 63, 85, 84];
+      StatGraphs.scatter('#chart-2-5-cafe-ans', temp, sold,
+        { width: 560, height: 320, padBottom: 48, xMin: 50, xMax: 100, yMin: 0, yMax: 100, xLabel: 'daily high temperature (°F)', yLabel: 'iced coffees sold', dotR: 5.5, regression: true,
+          marks: [{ x: 80, y: 78, shape: 'circle', color: '#34d399' }, { x: 85, y: 63, shape: 'square', color: '#fb7185' }] });
     })();
   </script>
 </div>
@@ -397,7 +427,7 @@
 
 <div class="slide">
   <span class="tag tag-amber">Your Turn</span>
-  <h2>Practice: Putting It All Together</h2>
+  <h2>Your Turn: Putting It All Together</h2>
   <p class="subtitle">Work through every part on your own &mdash; equation, interpretation, prediction, and residual.</p>
   <div class="grid-2">
     <div class="card card-accent">
@@ -416,6 +446,40 @@
         <li>(c) Predict the price of a car that is <strong>6 years old</strong>.</li>
         <li>(d) One 6-year-old car actually sold for <strong>$13,500</strong>. Find the <strong>residual</strong> and explain what it tells you.</li>
         <li>(e) Should you use this line to predict the price of a <strong>25-year-old</strong> car? Why or why not?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Putting It All Together</h2>
+  <p class="subtitle">\(\widehat{\text{Price}} = 21{,}000 - 1{,}500 \times \text{Age}\), fit to cars between 1 and 12 years old.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Interpreting the Line</h3>
+      <ul class="small">
+        <li>(a) <strong>Slope:</strong> for each additional year of age, the predicted price of a used car <strong>decreases by \$1,500</strong>.</li>
+        <li>(b) <strong>Intercept:</strong> a car that is 0 years old (brand new) has a predicted price of <strong>\$21,000</strong>. Use with care: age 0 is outside the 1&ndash;12 year range of the data.</li>
+      </ul>
+      <h3 style="margin-top:14px;">(c) Prediction</h3>
+      <div class="formula-box">
+        \[ \hat{y} = 21{,}000 - 1{,}500(6) = \$12{,}000 \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <h3>(d) Residual</h3>
+      <div class="formula-box">
+        \[ y - \hat{y} = 13{,}500 - 12{,}000 = +\$1{,}500 \]
+      </div>
+      <ul class="small">
+        <li>The residual is <span class="accent">positive</span>, so the point is <em>above</em> the line.</li>
+        <li>This car sold for \$1,500 <strong>more</strong> than the line predicted (the model under-predicted).</li>
+      </ul>
+      <h3 style="margin-top:14px;">(e) A 25-Year-Old Car?</h3>
+      <ul class="small">
+        <li><strong>No.</strong> 25 years is far outside the 1&ndash;12 year range, so this is <strong>extrapolation</strong>.</li>
+        <li>The line would predict \(21{,}000 - 1{,}500(25) = -\$16{,}500\), a negative price, which makes no sense.</li>
       </ul>
     </div>
   </div>

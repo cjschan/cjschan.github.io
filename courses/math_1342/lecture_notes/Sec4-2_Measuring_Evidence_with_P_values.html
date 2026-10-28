@@ -310,10 +310,10 @@
   </div>
 </div>
 
-<!-- Slide 7b: Try It in StatKey -->
+<!-- Slide 7b: Your Turn in StatKey -->
 <div class="slide">
-  <span class="tag tag-green">Try It</span>
-  <h2>Try It: Tea and Immunity in StatKey</h2>
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Tea and Immunity in StatKey</h2>
   <p class="subtitle">Build the randomization distribution yourself and find the p-value</p>
   <div class="grid-2">
     <div class="card card-green">
@@ -336,6 +336,32 @@
         <li>Is a difference of 3.5 unusual if \(H_0\) is true?</li>
       </ul>
     </div>
+  </div>
+</div>
+
+<!-- Slide 7c: Your Turn answers -->
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Tea and Immunity in StatKey</h2>
+  <p class="subtitle">Your exact numbers will vary a little because every set of 1000 randomizations is different.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>The Randomization Distribution</h3>
+      <ul>
+        <li><strong>Centered near 0.</strong> The randomization distribution assumes \(H_0: \mu_t = \mu_c\) is true, so the groups are reshuffled as if tea vs. coffee makes no difference.</li>
+        <li><strong>p-value \(\approx 0.33\)</strong>: about a third of the simulated differences are \(\ge 3.5\).</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Interpreting It</h3>
+      <ul>
+        <li><strong>Close to 0.333, but not exact.</strong> Each run of 1000 random reassignments is different, so simulated p-values vary slightly from run to run.</li>
+        <li><strong>Not unusual.</strong> A difference of 3.5 or more happens about 33% of the time just by chance when \(H_0\) is true.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    A p-value around 0.33 gives little to no evidence that tea boosts immune response more than coffee.
   </div>
 </div>
 

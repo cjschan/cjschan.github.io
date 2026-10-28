@@ -297,6 +297,16 @@ const StatGraphs = (() => {
         fill: opts.color || COLORS.primary, opacity: 0.9,
       }));
     }
+    if (opts.marks) {
+      // Outline chosen points: marks: [{ x, y, shape: 'circle' | 'square', color }]
+      const r = (opts.dotR || 3.5) + 6;
+      opts.marks.forEach((mk) => {
+        const attrs = { fill: 'none', stroke: mk.color || COLORS.amber, 'stroke-width': 2.5 };
+        fr.svg.appendChild(mk.shape === 'square'
+          ? el('rect', { x: sx(mk.x) - r, y: sy(mk.y) - r, width: 2 * r, height: 2 * r, ...attrs })
+          : el('circle', { cx: sx(mk.x), cy: sy(mk.y), r, ...attrs }));
+      });
+    }
     host(target).innerHTML = ''; host(target).appendChild(fr.svg);
   }
 
