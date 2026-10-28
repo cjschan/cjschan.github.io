@@ -12,13 +12,14 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<script src="statkey.js?v=5"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
   .deck { width: 100vw; height: 100vh; position: relative; }
   .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
-  .slide.active { display: flex; opacity: 1; }
+  .slide.active { display: flex; opacity: 1; overflow-y: auto; }
   .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
   .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
   .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
@@ -228,6 +229,35 @@
   </div>
 </div>
 
+<!-- Slide 6b: Worked example, percentile CIs in StatKey -->
+<div class="slide">
+  <span class="tag tag-green">Worked Example</span>
+  <h2>Example: Percentile CIs for Atlanta Commutes</h2>
+  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 16px;">A random sample of \(n = 500\) Atlanta commuters has mean one-way commute time \(\bar{x} = 29.11\) minutes. Find a <strong>90%</strong> and a <strong>99%</strong> CI for the mean commute time \(\mu\) of all Atlanta commuters.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>In StatKey</h3>
+      <ul class="small">
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Bootstrap Confidence Intervals</strong>, choose <strong>CI for Single Mean, Median, St.Dev.</strong> (Atlanta Commutes is the default dataset)</li>
+        <li><strong>2.</strong> Click <strong>Generate 1000 Samples</strong></li>
+        <li><strong>3.</strong> Check <strong>Two-Tail</strong>. StatKey shades the middle <strong>0.95</strong> and labels the two cutoffs.</li>
+        <li><strong>4.</strong> Click the <strong>0.95</strong> box and change it to <strong>0.90</strong>; the cutoffs are the 5th and 95th percentiles</li>
+        <li><strong>5.</strong> Change it to <strong>0.99</strong>; the cutoffs are the 0.5th and 99.5th percentiles</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Results</h3>
+      <p class="step-note">One run of 1000 bootstrap means gave about:</p>
+      <div class="formula-box" style="font-size: 19px;">
+        90% CI \(\approx (27.6,\; 30.6)\) minutes<br>
+        99% CI \(\approx (26.7,\; 31.5)\) minutes
+      </div>
+      <p style="font-size: 16px; line-height: 1.5;">&ldquo;We are <strong>90% confident</strong> that the mean commute time for all Atlanta commuters is between about 27.6 and 30.6 minutes.&rdquo;</p>
+      <p class="step-note" style="margin-top: 8px;">The 99% interval is wider (about 4.8 minutes vs. 3.0) because it keeps more of the bootstrap distribution. Your endpoints will differ slightly from run to run.</p>
+    </div>
+  </div>
+</div>
+
 <!-- Slide 7: Confidence Level and Width -->
 <div class="slide">
   <span class="tag tag-purple">Relationship</span>
@@ -252,6 +282,60 @@
   </div>
   <div class="callout">
     <strong>The trade-off:</strong> Higher confidence level \(\Rightarrow\) wider interval. To be <em>more confident</em> we capture the parameter, we need to cast a <em>wider net</em>.
+  </div>
+</div>
+
+<!-- Slide 7b: Your Turn, percentile CIs -->
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Percentile CIs</h2>
+  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 12px;">In a random sample of <strong>200</strong> community college students, <strong>124</strong> said they work at least part-time.</p>
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr;">
+    <div class="card card-amber">
+      <h3>Questions</h3>
+      <ul class="small">
+        <li><strong>(a)</strong> What is the sample statistic \(\hat{p}\)?</li>
+        <li><strong>(b)</strong> Click <strong>Run 1000</strong> in the simulator. What 95% percentile CI does it report? Interpret it.</li>
+        <li><strong>(c)</strong> In <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">StatKey</a>, choose <strong>Bootstrap Confidence Intervals &rarr; CI for Single Proportion</strong>. Click <strong>Edit Data</strong>, enter count <strong>124</strong> and sample size <strong>200</strong>, and generate 1000 samples. Check <strong>Two-Tail</strong> and change 0.95 to <strong>0.90</strong>, then to <strong>0.99</strong>. Give the 90% and 99% CIs.</li>
+        <li><strong>(d)</strong> Put the three intervals in order from narrowest to widest. Why does that order make sense?</li>
+      </ul>
+    </div>
+    <div id="sim-pct-boot"></div>
+  </div>
+  <script>
+    StatKey.create('#sim-pct-boot', {
+      mode: 'one-prop-boot',
+      n: 200, x: 124,
+    });
+  </script>
+</div>
+
+<!-- Slide 7c: Your Turn answers -->
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Percentile CIs</h2>
+  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 16px;">Your simulated values will vary slightly from these, because every bootstrap run is random.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>The Intervals</h3>
+      <p class="step-note">(a) \(\hat{p} = \dfrac{124}{200} = 0.62\); the bootstrap distribution is centered near 0.62</p>
+      <div class="formula-box" style="font-size: 19px;">
+        90% CI \(\approx (0.565,\; 0.675)\)<br>
+        95% CI \(\approx (0.55,\; 0.69)\)<br>
+        99% CI \(\approx (0.53,\; 0.71)\)
+      </div>
+      <p class="step-note">(b) &ldquo;We are 95% confident that between about 55% and 69% of <strong>all</strong> community college students work at least part-time.&rdquo;</p>
+    </div>
+    <div class="card card-accent">
+      <h3>(d) Narrowest to Widest</h3>
+      <p class="step-note"><strong>90% &lt; 95% &lt; 99%.</strong> Widths are about 0.11, 0.14, and 0.18.</p>
+      <ul class="small">
+        <li>90%: cut 5% from each tail (5th to 95th percentile)</li>
+        <li>95%: cut 2.5% from each tail</li>
+        <li>99%: cut only 0.5% from each tail, so the interval reaches farther out</li>
+      </ul>
+      <p class="step-note" style="margin-top: 8px;">Higher confidence needs a wider net.</p>
+    </div>
   </div>
 </div>
 

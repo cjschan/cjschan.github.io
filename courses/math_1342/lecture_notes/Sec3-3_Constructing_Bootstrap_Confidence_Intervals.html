@@ -594,6 +594,58 @@
   </div>
 </div>
 
+<!-- Slide 8d: Your Turn, bootstrap a mean in StatKey -->
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Bootstrap a Mean in StatKey</h2>
+  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 16px;">A random sample of <strong>500</strong> commuters in metropolitan Atlanta recorded their one-way commute time in minutes. Use StatKey to bootstrap the sample mean and build a 95% CI for the mean commute time of <strong>all</strong> Atlanta commuters.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>Steps</h3>
+      <ul class="small">
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Bootstrap Confidence Intervals</strong>, choose <strong>CI for Single Mean, Median, St.Dev.</strong></li>
+        <li><strong>2.</strong> The default dataset is <strong>Atlanta Commutes (Time)</strong>; leave it selected. The <strong>Original Sample</strong> box shows \(n\) and the mean.</li>
+        <li><strong>3.</strong> Click <strong>Generate 1000 Samples</strong></li>
+        <li><strong>4.</strong> Read the <strong>mean</strong> and <strong>std. error</strong> in the upper right of the bootstrap dotplot</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>Questions</h3>
+      <ul class="small">
+        <li><strong>(a)</strong> What is the sample statistic \(\bar{x}\)?</li>
+        <li><strong>(b)</strong> Where is the bootstrap distribution centered? What is its shape?</li>
+        <li><strong>(c)</strong> What is the bootstrap SE?</li>
+        <li><strong>(d)</strong> Find a 95% CI using Statistic \(\pm\; 2 \times \text{SE}\).</li>
+        <li><strong>(e)</strong> Interpret your interval in context.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 8e: Your Turn answers -->
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Bootstrap a Mean in StatKey</h2>
+  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 16px;">Your simulated values will vary slightly from these, because every set of 1000 bootstrap samples is random.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>Compute the CI</h3>
+      <p class="step-note">(a) Statistic: \(\bar{x} = 29.11\) minutes (\(n = 500\))</p>
+      <p class="step-note">(b) Centered near <strong>29.11</strong>, the sample mean; roughly bell-shaped</p>
+      <p class="step-note">(c) Bootstrap SE: std. error \(\approx 0.93\) minutes</p>
+      <div class="formula-box" style="font-size: 20px;">
+        (d) \(95\%\;\text{CI} \approx 29.11 \pm 2(0.93)\)<br><br>
+        \(= 29.11 \pm 1.86 \approx (27.3,\; 31.0)\)
+      </div>
+    </div>
+    <div class="card card-accent">
+      <h3>(e) Interpret</h3>
+      <p style="font-size: 17px; line-height: 1.5;">&ldquo;We are <strong>95% confident</strong> that the mean one-way commute time for <strong>all commuters in metropolitan Atlanta</strong> is between about <strong>27.3</strong> and <strong>31.0</strong> minutes.&rdquo;</p>
+      <p class="step-note" style="margin-top: 12px;">Individual commutes vary a lot (some take over an hour), but with \(n = 500\) the sample <em>mean</em> varies little, so the interval is narrow.</p>
+    </div>
+  </div>
+</div>
+
 <!-- Slide 9: Summary -->
 <div class="slide">
   <span class="tag tag-blue">Recap</span>

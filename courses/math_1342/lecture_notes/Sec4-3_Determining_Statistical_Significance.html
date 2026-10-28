@@ -12,13 +12,14 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=6"></script>
+<script src="statkey.js?v=5"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
   .deck { width: 100vw; height: 100vh; position: relative; }
   .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
-  .slide.active { display: flex; opacity: 1; }
+  .slide.active { display: flex; opacity: 1; overflow-y: auto; }
   .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
   .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
   .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
@@ -346,6 +347,51 @@
   </script>
   <div class="callout">
     <strong>Two tails:</strong> because \(H_a\) uses \(\neq\), we count dots in <strong>both</strong> tails, as far from 16 as our \(\bar{x}\) on either side. Note that at \(\alpha = 0.01\) we would <strong>not</strong> reject \(H_0\), since \(0.026 > 0.01\).
+  </div>
+</div>
+
+<!-- Slide 7c: Your Turn, decide and conclude -->
+<div class="slide">
+  <span class="tag tag-amber" style="align-self:flex-start;">Your Turn</span>
+  <h2>Your Turn: Decide and Conclude</h2>
+  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 12px;">For each test, state the decision (reject or do not reject \(H_0\)) and write a conclusion in context.</p>
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr;">
+    <div class="card card-amber">
+      <ul class="small">
+        <li><strong>(a)</strong> Does a new teaching method <strong>raise</strong> mean test scores? p-value = 0.012, \(\alpha = 0.05\)</li>
+        <li><strong>(b)</strong> Is a coin <strong>unfair</strong>? p-value = 0.21, \(\alpha = 0.05\)</li>
+        <li><strong>(c)</strong> Does a drug <strong>lower</strong> mean cholesterol? p-value = 0.03, \(\alpha = 0.01\)</li>
+        <li><strong>(d)</strong> Is the proportion of defective chips <strong>different</strong> from 2%? p-value = 0.0004, \(\alpha = 0.05\)</li>
+        <li><strong>(e)</strong> A website asks 100 randomly chosen visitors which homepage they prefer; <strong>59</strong> pick the new design. Test \(H_0: p = 0.5\) vs. \(H_a: p > 0.5\), where \(p\) is the proportion of all visitors who prefer the new design. Click <strong>Run 1000</strong> to find the p-value, then decide at \(\alpha = 0.05\).</li>
+      </ul>
+    </div>
+    <div id="sim-web"></div>
+  </div>
+  <script>
+    StatKey.create('#sim-web', {
+      mode: 'one-prop-rand',
+      n: 100, x: 59, p0: 0.5,
+      direction: 'right',
+    });
+  </script>
+</div>
+
+<!-- Slide 7d: Your Turn answers -->
+<div class="slide">
+  <span class="tag tag-green" style="align-self:flex-start;">Your Turn &mdash; Answers</span>
+  <h2>Answers: Decide and Conclude</h2>
+  <div class="card table-card" style="flex: none;">
+    <table>
+      <tr><th>Test</th><th>Compare</th><th>Decision</th><th>Conclusion in context</th></tr>
+      <tr><td>(a) Teaching method</td><td>\(0.012 < 0.05\)</td><td style="color: var(--green); font-weight: 700;">Reject \(H_0\)</td><td>Evidence that the new method raises mean test scores</td></tr>
+      <tr><td>(b) Coin</td><td>\(0.21 \ge 0.05\)</td><td style="color: var(--amber); font-weight: 700; white-space: nowrap;">Do not reject \(H_0\)</td><td>Not enough evidence that the coin is unfair (not proof that it is fair)</td></tr>
+      <tr><td>(c) Cholesterol drug</td><td>\(0.03 \ge 0.01\)</td><td style="color: var(--amber); font-weight: 700; white-space: nowrap;">Do not reject \(H_0\)</td><td>Not enough evidence at the 1% level that the drug lowers mean cholesterol (it would be significant at 5%)</td></tr>
+      <tr><td>(d) Defective chips</td><td>\(0.0004 < 0.05\)</td><td style="color: var(--green); font-weight: 700;">Reject \(H_0\)</td><td>Strong evidence that the defect rate is different from 2%</td></tr>
+      <tr><td>(e) Homepage, \(\hat{p} = 0.59\)</td><td>p-value \(\approx 0.044 < 0.05\)</td><td style="color: var(--green); font-weight: 700;">Reject \(H_0\)</td><td>Evidence that more than half of all visitors prefer the new design</td></tr>
+    </table>
+  </div>
+  <div class="callout">
+    <strong>About (e):</strong> your simulated p-value will vary slightly from 0.044. Because it is close to \(\alpha = 0.05\), a few runs land just above 0.05. When a p-value is this close to the cutoff, the evidence is moderate at best; running more simulations (click <strong>Run 1000</strong> again) gives a steadier estimate.
   </div>
 </div>
 

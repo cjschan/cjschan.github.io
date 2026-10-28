@@ -412,6 +412,59 @@
   </div>
 </div>
 
+<!-- Your Turn: Do these CIs capture p? -->
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Do These CIs Capture p?</h2>
+  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 16px;">At a large university, the proportion of <strong>all</strong> students who live on campus is \(p = 0.30\). For random samples of \(n = 100\) students, the sampling distribution of \(\hat{p}\) has a standard error of about <strong>0.046</strong>.</p>
+  <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr;">
+    <div class="card card-amber table-card">
+      <h3>(a)&ndash;(c) Find Each 95% CI</h3>
+      <p class="step-note">Use \(\hat{p} \pm 2 \times \text{SE}\) and check whether each interval contains \(p = 0.30\).</p>
+      <table>
+        <thead><tr><th>Sample proportion</th><th>95% CI</th><th>Captures \(p\)?</th></tr></thead>
+        <tbody>
+          <tr><td>(a) \(\hat{p} = 0.24\)</td><td style="height: 48px;"></td><td></td></tr>
+          <tr><td>(b) \(\hat{p} = 0.33\)</td><td style="height: 48px;"></td><td></td></tr>
+          <tr><td>(c) \(\hat{p} = 0.40\)</td><td style="height: 48px;"></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card card-rose">
+      <h3>(d) Spot the Mistake</h3>
+      <p class="step-note">A classmate interprets the interval from (b) this way:</p>
+      <p style="font-size: 17px; line-height: 1.5;">&ldquo;There is a 95% chance that the sample proportion 0.33 is in this interval.&rdquo;</p>
+      <p class="step-note" style="margin-top: 10px;">What is wrong with this statement? Write a correct interpretation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Your Turn answers -->
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Do These CIs Capture p?</h2>
+  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 16px;">Margin of error: \(2 \times \text{SE} = 2(0.046) = 0.092\). Each 95% CI is \(\hat{p} \pm 0.092\).</p>
+  <div class="grid-2" style="grid-template-columns: 1.1fr 0.9fr;">
+    <div class="card card-green table-card">
+      <h3>(a)&ndash;(c) Each 95% CI</h3>
+      <table>
+        <thead><tr><th>Sample proportion</th><th>95% CI</th><th>Captures \(p\)?</th></tr></thead>
+        <tbody>
+          <tr><td>(a) \(\hat{p} = 0.24\)</td><td>\(0.24 \pm 0.092 = (0.148,\; 0.332)\)</td><td style="color: var(--green); font-weight: 700;">Yes</td></tr>
+          <tr><td>(b) \(\hat{p} = 0.33\)</td><td>\(0.33 \pm 0.092 = (0.238,\; 0.422)\)</td><td style="color: var(--green); font-weight: 700;">Yes</td></tr>
+          <tr><td>(c) \(\hat{p} = 0.40\)</td><td>\(0.40 \pm 0.092 = (0.308,\; 0.492)\)</td><td style="color: var(--rose); font-weight: 700;">No</td></tr>
+        </tbody>
+      </table>
+      <p class="step-note" style="margin-top: 10px;">(c) misses because 0.40 is more than 2 SE above \(p\): \(0.40 - 0.30 = 0.10 &gt; 0.092\).</p>
+    </div>
+    <div class="card card-accent">
+      <h3>(d) The Mistake</h3>
+      <p class="step-note">The sample proportion 0.33 is the <strong>center</strong> of the interval, so it is always inside it. The CI is about the <strong>parameter</strong> \(p\), not \(\hat{p}\).</p>
+      <p style="font-size: 17px; line-height: 1.5;">&ldquo;We are <strong>95% confident</strong> that the proportion of <strong>all students</strong> at this university who live on campus is between <strong>0.238</strong> and <strong>0.422</strong>.&rdquo;</p>
+    </div>
+  </div>
+</div>
+
 <!-- Brief Review (Big Picture diagram) -->
 <div class="slide">
   <span class="tag tag-purple">Brief Review</span>

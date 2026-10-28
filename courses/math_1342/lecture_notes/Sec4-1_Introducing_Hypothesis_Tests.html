@@ -12,13 +12,14 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<script src="statkey.js?v=5"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
   .deck { width: 100vw; height: 100vh; position: relative; }
   .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
-  .slide.active { display: flex; opacity: 1; }
+  .slide.active { display: flex; opacity: 1; overflow-y: auto; }
   .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
   .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
   .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
@@ -416,6 +417,103 @@
   </div>
   <div class="callout">
     <strong>Compare:</strong> How is this example like the Buzz and Doris study? How is it different?
+  </div>
+</div>
+
+<!-- Solution: Rock Paper Scissors -->
+<div class="slide">
+  <span class="tag tag-green" style="align-self:flex-start;">Solution</span>
+  <h2>Solution: Is There a Rock Paper Scissors Expert?</h2>
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr;">
+    <div class="card card-green">
+      <h3>Setting Up the Test</h3>
+      <ul class="small">
+        <li><strong>Parameter:</strong> \(p\) = the true proportion of games this student wins against the classmate, in the long run</li>
+        <li><strong>No special skill:</strong> each game is a 50-50 toss-up, so \(p = 0.5\)</li>
+      </ul>
+      <div class="formula-box" style="font-size:20px;">
+        \(H_0: p = 0.5\)<br>
+        \(H_a: p > 0.5\)
+      </div>
+      <ul class="small">
+        <li><strong>One-sided (right-tailed):</strong> the claim is that the student is <em>better</em> than chance</li>
+        <li><strong>Statistic:</strong> \(\hat{p} = 9/11 \approx 0.818\), from the 11 games played</li>
+        <li><strong>Under \(H_0\),</strong> the randomization distribution of \(\hat{p}\) is centered at <strong>0.5</strong></li>
+      </ul>
+    </div>
+    <div>
+      <div id="sim-rps"></div>
+      <p class="step-note">Click <strong>Run 1000</strong>. The highlighted dots are simulated players with no skill who won 9 or more of 11. Expect about 3% of them (your count will vary a little). We will name this proportion the <em>p-value</em> in Section 4.2.</p>
+    </div>
+  </div>
+  <script>
+    StatKey.create('#sim-rps', {
+      mode: 'one-prop-rand',
+      n: 11, x: 9, p0: 0.5,
+      direction: 'right',
+    });
+  </script>
+  <div class="callout">
+    <strong>Conclusion (informal):</strong> \(\hat{p} = 0.818\) lands in the right tail; a player with no skill wins 9 or more of 11 only about 3% of the time. That is fairly convincing evidence of real skill, but much weaker than Buzz (15 of 16), which chance alone almost never produces. <strong>Like Buzz:</strong> one proportion, null value 0.5, right-tailed. <strong>Unlike Buzz:</strong> fewer trials, and a less extreme result.
+  </div>
+</div>
+
+<!-- Your Turn: Write the hypotheses -->
+<div class="slide">
+  <span class="tag tag-amber" style="align-self:flex-start;">Your Turn</span>
+  <h2>Your Turn: Write the Hypotheses</h2>
+  <p class="subtitle">For each study: <strong>(i)</strong> define the parameter in words and with notation, <strong>(ii)</strong> write \(H_0\) and \(H_a\), and <strong>(iii)</strong> say whether the test is one-sided or two-sided.</p>
+  <div class="grid-3">
+    <div class="card card-amber">
+      <h3>(a) Airline On-Time Rate</h3>
+      <p class="step-note">An airline advertises that <strong>90%</strong> of its flights arrive on time. A consumer group suspects the true on-time rate is <strong>lower</strong>, so it checks a random sample of 200 flights.</p>
+    </div>
+    <div class="card card-amber">
+      <h3>(b) SAT Prep Course</h3>
+      <p class="step-note">Suppose the national mean SAT Math score is <strong>520</strong>. A tutoring company wants evidence that students who finish its course score <strong>higher</strong> than 520 on average. It records the scores of 40 recent students.</p>
+    </div>
+    <div class="card card-amber">
+      <h3>(c) Fertilizer and Tomatoes</h3>
+      <p class="step-note">A gardener randomly assigns tomato plants to a <strong>new</strong> fertilizer or the <strong>standard</strong> one and records each plant's yield. She wants to know whether the mean yield is <strong>different</strong> for the two fertilizers.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Your Turn answers -->
+<div class="slide">
+  <span class="tag tag-green" style="align-self:flex-start;">Your Turn &mdash; Answers</span>
+  <h2>Answers: Write the Hypotheses</h2>
+  <div class="grid-3">
+    <div class="card card-green">
+      <h3>(a) Airline On-Time Rate</h3>
+      <p class="step-note">\(p\) = proportion of <strong>all</strong> this airline's flights that arrive on time</p>
+      <div class="formula-box" style="font-size:19px;">
+        \(H_0: p = 0.90\)<br>
+        \(H_a: p < 0.90\)
+      </div>
+      <p class="step-note"><strong>One-sided (left-tailed):</strong> the group suspects the rate is <em>lower</em>.</p>
+    </div>
+    <div class="card card-green">
+      <h3>(b) SAT Prep Course</h3>
+      <p class="step-note">\(\mu\) = mean SAT Math score of <strong>all</strong> students who finish the course</p>
+      <div class="formula-box" style="font-size:19px;">
+        \(H_0: \mu = 520\)<br>
+        \(H_a: \mu > 520\)
+      </div>
+      <p class="step-note"><strong>One-sided (right-tailed):</strong> the company wants evidence of <em>higher</em> scores.</p>
+    </div>
+    <div class="card card-green">
+      <h3>(c) Fertilizer and Tomatoes</h3>
+      <p class="step-note">\(\mu_N\), \(\mu_S\) = mean yield of <strong>all</strong> plants given the new and the standard fertilizer</p>
+      <div class="formula-box" style="font-size:19px;">
+        \(H_0: \mu_N = \mu_S\)<br>
+        \(H_a: \mu_N \neq \mu_S\)
+      </div>
+      <p class="step-note"><strong>Two-sided:</strong> she wants to detect a difference in <em>either</em> direction.</p>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Check:</strong> every hypothesis is about a parameter (\(p\), \(\mu\)), never a sample statistic, and \(H_0\) always has the "=".
   </div>
 </div>
 

@@ -12,6 +12,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=3"></script>
+<script src="statkey.js?v=5"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -200,8 +201,8 @@
   <div id="rand-buzz" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:0 auto; max-width:700px; width:100%;"></div>
   <script>
   (function(){
-    const centers = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-    const counts  = [2, 9, 28, 66, 121, 174, 196, 175, 122, 66, 26, 9, 3, 2, 1];
+    const centers = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+    const counts  = [2, 9, 28, 66, 121, 174, 199, 175, 122, 66, 26, 9, 2, 1];
     let n = 0, s = 0, s2 = 0;
     for (let i = 0; i < centers.length; i++) {
       n += counts[i]; s += centers[i] * counts[i]; s2 += centers[i] * centers[i] * counts[i];
@@ -216,8 +217,33 @@
   })();
   </script>
   <div class="callout">
-    Only <strong>3 of the 1000</strong> simulated samples (the <span style="color:var(--rose); font-weight:700;">highlighted dots</span>) got 15 or more correct just by guessing. Buzz's result is way out in the tail &mdash; random chance almost never produces a result this extreme.
+    Only <strong>1 of the 1000</strong> simulated samples (the <span style="color:var(--rose); font-weight:700;">highlighted dot</span>) got 15 or more correct just by guessing. Buzz's result is way out in the tail &mdash; random chance almost never produces a result this extreme.
   </div>
+</div>
+
+<!-- Slide 4c: Simulate Buzz with the simulator -->
+<div class="slide">
+  <h2>Simulate Buzz Yourself</h2>
+  <p class="subtitle">Each simulated set flips a fair coin 16 times (Buzz just guessing) and records \(\hat{p}\), the proportion correct.</p>
+  <div class="grid-2" style="grid-template-columns: 1fr 1.1fr;">
+    <div class="card card-accent">
+      <h3>What to Do</h3>
+      <ul class="small">
+        <li>Click <strong>Generate One</strong> a few times. Each dot is one set of 16 guesses.</li>
+        <li>Click <strong>Run 1000</strong> to build the randomization distribution. It is centered near <strong>0.50</strong>, the value in \(H_0\).</li>
+        <li>The gold line marks Buzz's \(\hat{p} = 15/16 \approx 0.94\). The readout gives the proportion of simulated sets at or above it: the <strong>p-value</strong>.</li>
+      </ul>
+      <p class="step-note" style="margin-top: 10px;">The exact chance of 15 or more correct by guessing is \(17/65{,}536 \approx 0.0003\), so most runs of 1000 show <strong>0 or 1</strong> such sets. Your result will vary a little from run to run, but it is always tiny.</p>
+    </div>
+    <div id="sim-buzz"></div>
+  </div>
+  <script>
+    StatKey.create('#sim-buzz', {
+      mode: 'one-prop-rand',
+      n: 16, x: 15, p0: 0.5,
+      direction: 'right',
+    });
+  </script>
 </div>
 
 <!-- Slide 5: The p-value -->
@@ -275,7 +301,7 @@
     </div>
   </div>
   <div class="callout">
-    <strong>Buzz and Doris:</strong> \(H_a: p > 0.50\), so we count simulations with 15 or more correct: &nbsp; p-value \(= \frac{3}{1000} = 0.003\). If Buzz were just guessing, a result this extreme would happen only about 3 times in 1000 &mdash; strong evidence that the dolphins are communicating.
+    <strong>Buzz and Doris:</strong> \(H_a: p > 0.50\), so we count simulations with 15 or more correct: &nbsp; p-value \(= \frac{1}{1000} = 0.001\). If Buzz were just guessing, a result this extreme would happen only about once in 1000 (or less) &mdash; strong evidence that the dolphins are communicating.
   </div>
 </div>
 
@@ -312,7 +338,7 @@
 
 <!-- Slide 7b: Your Turn in StatKey -->
 <div class="slide">
-  <span class="tag tag-amber">Your Turn</span>
+  <span class="tag tag-amber" style="align-self:flex-start;">Your Turn</span>
   <h2>Your Turn: Tea and Immunity in StatKey</h2>
   <p class="subtitle">Build the randomization distribution yourself and find the p-value</p>
   <div class="grid-2">
@@ -341,7 +367,7 @@
 
 <!-- Slide 7c: Your Turn answers -->
 <div class="slide">
-  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <span class="tag tag-green" style="align-self:flex-start;">Your Turn &mdash; Answers</span>
   <h2>Answers: Tea and Immunity in StatKey</h2>
   <p class="subtitle">Your exact numbers will vary a little because every set of 1000 randomizations is different.</p>
   <div class="grid-2">
@@ -507,6 +533,65 @@
   </script>
   <div class="callout">
     <strong>Right tail</strong> (\(\ge 3.0\)): 28 &nbsp;&nbsp; <strong>Left tail</strong> (\(\le -3.0\)): 26 &nbsp;&nbsp; p-value \(= \frac{28 + 26}{1000} = 0.054\). &nbsp; Using the shortcut, \(2 \times \frac{26}{1000} = 0.052\) &mdash; nearly the same. A difference this large in either direction happens about 5% of the time by chance alone: moderate evidence of a difference in memory.
+  </div>
+</div>
+
+<!-- Slide 8f: Your Turn, lower- and two-tailed p-values -->
+<div class="slide">
+  <span class="tag tag-amber" style="align-self:flex-start;">Your Turn</span>
+  <h2>Your Turn: Lower- and Two-Tailed p-values</h2>
+  <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 12px;">For each study: <strong>(a)</strong> write \(H_0\) and \(H_a\); <strong>(b)</strong> click <strong>Run 1000</strong> and record the p-value; <strong>(c)</strong> describe the strength of evidence against \(H_0\) in context.</p>
+  <div class="grid-2">
+    <div>
+      <div class="card card-amber">
+        <h3>Study 1: Free Throws</h3>
+        <p class="step-note">A player claims she makes <strong>80%</strong> of her free throws. A coach suspects her true rate is <strong>lower</strong>. In 60 attempts she makes <strong>42</strong> (\(\hat{p} = 0.70\)).</p>
+      </div>
+      <div id="sim-ft"></div>
+    </div>
+    <div>
+      <div class="card card-amber">
+        <h3>Study 2: Carnival Spinner</h3>
+        <p class="step-note">A spinner should land on red <strong>half</strong> the time. In 50 spins it lands on red <strong>32</strong> times (\(\hat{p} = 0.64\)). Is the spinner unfair in <strong>either direction</strong>?</p>
+      </div>
+      <div id="sim-spin"></div>
+    </div>
+  </div>
+  <script>
+    StatKey.create('#sim-ft', { mode: 'one-prop-rand', n: 60, x: 42, p0: 0.8, direction: 'left' });
+    StatKey.create('#sim-spin', { mode: 'one-prop-rand', n: 50, x: 32, p0: 0.5, direction: 'two-tailed' });
+  </script>
+</div>
+
+<!-- Slide 8g: Your Turn answers -->
+<div class="slide">
+  <span class="tag tag-green" style="align-self:flex-start;">Your Turn &mdash; Answers</span>
+  <h2>Answers: Lower- and Two-Tailed p-values</h2>
+  <p class="subtitle">Your simulated p-values will vary slightly from these, because every set of 1000 simulations is random.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>Study 1: Free Throws (lower tail)</h3>
+      <div class="formula-box" style="font-size:19px;">
+        \(H_0: p = 0.80\) &nbsp; vs. &nbsp; \(H_a: p < 0.80\)
+      </div>
+      <ul class="small">
+        <li>Randomization distribution centered at <strong>0.80</strong></li>
+        <li>"As extreme" means \(\hat{p} \le 0.70\): the <strong>left tail</strong></li>
+        <li><strong>p-value \(\approx 0.04\)</strong> (exact value 0.043)</li>
+        <li>If she really made 80%, making 42 or fewer of 60 would happen only about 4% of the time. This is moderate evidence that her true free-throw rate is <strong>below 80%</strong>.</li>
+      </ul>
+    </div>
+    <div class="card card-accent">
+      <h3>Study 2: Spinner (two tails)</h3>
+      <div class="formula-box" style="font-size:19px;">
+        \(H_0: p = 0.50\) &nbsp; vs. &nbsp; \(H_a: p \neq 0.50\)
+      </div>
+      <ul class="small">
+        <li>\(\hat{p} = 0.64\) is 0.14 above 0.50, so "as extreme" means \(\hat{p} \ge 0.64\) <strong>or</strong> \(\hat{p} \le 0.36\)</li>
+        <li>Each tail holds about 0.032, so <strong>p-value \(\approx 2(0.032) \approx 0.065\)</strong></li>
+        <li>A fair spinner gives a result this lopsided about 6.5% of the time. This is only some evidence that the spinner is unfair; chance is still a reasonable explanation.</li>
+      </ul>
+    </div>
   </div>
 </div>
 
