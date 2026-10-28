@@ -59,6 +59,44 @@
 </div>
 
 <div class="slide">
+  <h2>The Study: Malaria and Mosquitoes</h2>
+  <p class="subtitle">Does the malaria parasite change how mosquitoes behave before the parasite becomes infectious?</p>
+  <div class="grid-2" style="flex:none;">
+    <div class="card card-accent">
+      <h3>The Study</h3>
+      <ul>
+        <li>Researchers exposed one group of mosquitoes to the malaria parasite and left another group unexposed.</li>
+        <li>They then recorded whether each mosquito approached a human.</li>
+        <li>Is the proportion that approach a human lower for exposed mosquitoes?</li>
+      </ul>
+      <div class="formula-box">
+        \[
+          H_0: p_E - p_U = 0 \qquad H_a: p_E - p_U &lt; 0
+        \]
+      </div>
+    </div>
+    <div class="card card-green table-card">
+      <h3>The Data</h3>
+      <table>
+        <thead>
+          <tr><th>Group</th><th>Approached a human</th><th>Total</th><th>Proportion</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Unexposed</td><td>36</td><td>117</td><td>\(\hat{p}_U = 0.308\)</td></tr>
+          <tr><td>Exposed</td><td>20</td><td>113</td><td>\(\hat{p}_E = 0.177\)</td></tr>
+        </tbody>
+      </table>
+      <div class="formula-box">
+        \[
+          \hat{p}_E - \hat{p}_U = 0.177 - 0.308 = -0.131
+        \]
+      </div>
+      <div class="step-note">How unusual is \(-0.131\) if \(H_0\) is true? We need a p-value.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Two Ways to Find a p-Value</h2>
   <p class="subtitle">Malaria and mosquitoes: \(H_0: p_E - p_U = 0\) vs. \(H_a: p_E - p_U &lt; 0\), observed statistic \(= -0.131\). The p-value is the proportion of the distribution at or beyond the observed statistic.</p>
   <div class="grid-2" style="flex:none;">
