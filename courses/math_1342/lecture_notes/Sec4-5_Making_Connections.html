@@ -61,8 +61,8 @@
 
 <div class="slide">
   <h2>Generating Randomization Samples</h2>
-  <p class="subtitle">Three criteria for creating samples under the null hypothesis.</p>
-  <div class="grid-3">
+  <p class="subtitle">Three criteria for creating samples under the null hypothesis. The specific simulation method depends on the study design.</p>
+  <div class="grid-3" style="flex:0; margin-bottom:18px;">
     <div class="card card-accent">
       <div class="big-number accent">1</div>
       <div class="stat-label">Be consistent with the null hypothesis.</div>
@@ -76,12 +76,7 @@
       <div class="stat-label">Reflect the way the original data were collected.</div>
     </div>
   </div>
-</div>
-
-<div class="slide">
-  <h2>Methods Vary by Situation</h2>
-  <p class="subtitle">The specific simulation method depends on the study design.</p>
-  <div class="grid-2">
+  <div class="grid-2" style="flex:0;">
     <div class="card card-accent">
       <h3>Randomized Experiment</h3>
       <ul>
@@ -450,7 +445,7 @@
 <div class="slide">
   <h2>Example: Body Temperature</h2>
   <p class="subtitle">Using a sample of healthy adults, a 95% confidence interval for the mean body temperature is \((98.05,\ 98.47)\) degrees Fahrenheit. Use the interval to draw test conclusions — no new calculations needed.</p>
-  <div class="grid-2">
+  <div class="grid-2" style="flex:0;">
     <div class="card card-rose">
       <span class="tag tag-rose">Part (a)</span>
       <h3>Test \(H_0: \mu = 98.6\) vs \(H_a: \mu \neq 98.6\) at \(\alpha = 0.05\)</h3>
@@ -464,35 +459,11 @@
       <p style="font-size: 15px; line-height: 1.5;"><strong>Yes — 98.4 is inside the interval</strong>, so 98.4 is a plausible value for \(\mu\). We <strong>do not reject \(H_0\)</strong>: there is not sufficient evidence that the mean body temperature differs from 98.4&deg;F.</p>
     </div>
   </div>
-  <div class="callout">
+  <div class="callout" style="margin-top:12px; padding:12px 18px;">
     <strong>The rule:</strong> a 95% confidence interval contains exactly the null values that a two-tailed test at \(\alpha = 0.05\) would <em>not</em> reject.
   </div>
-</div>
-
-<div class="slide">
-  <span class="tag tag-blue">StatKey</span>
-  <h2>Check It in StatKey: Body Temperature Test</h2>
-  <p class="subtitle">StatKey's built-in Body Temperature data (\(n = 50\), \(\bar{x} = 98.26\)) is the sample behind this interval. Run the tests directly and compare with the CI conclusions.</p>
-  <div class="grid-2">
-    <div class="card card-green">
-      <h3>Steps</h3>
-      <ul class="small">
-        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Randomization Hypothesis Tests</strong>, choose <strong>Test for Single Mean</strong></li>
-        <li><strong>2.</strong> Make sure the dataset menu shows <strong>Body Temperature</strong> (the default)</li>
-        <li><strong>3.</strong> Check that the null hypothesis reads \(\mu = 98.6\) (click it to edit)</li>
-        <li><strong>4.</strong> Click <strong>Generate 1000 Samples</strong>, then check <strong>Two-Tail</strong></li>
-        <li><strong>5.</strong> Read the p-value. Then change the null to <strong>98.4</strong> and repeat.</li>
-      </ul>
-    </div>
-    <div class="card card-amber">
-      <h3>What You Should See</h3>
-      <ul class="small">
-        <li><strong>\(H_0: \mu = 98.6\):</strong> the randomization distribution is centered at 98.6, and almost no simulated means are as far away as 98.26. p-value \(\approx 0.002\) or less &rarr; <strong>reject</strong> \(H_0\).</li>
-        <li><strong>\(H_0: \mu = 98.4\):</strong> centered at 98.4; p-value \(\approx 0.2\) &rarr; <strong>do not reject</strong> \(H_0\).</li>
-        <li>Both match the CI: 98.6 is outside \((98.05,\ 98.47)\), and 98.4 is inside.</li>
-      </ul>
-      <p class="step-note" style="margin-top:8px;">Your simulated p-values will vary slightly from run to run.</p>
-    </div>
+  <div class="callout" style="margin-top:10px; padding:12px 18px; font-size:14px;">
+    <strong>Check it in StatKey</strong> (built-in Body Temperature data, \(n = 50\), \(\bar{x} = 98.26\)): <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a> &rarr; <strong>Test for Single Mean</strong> &rarr; set the null to \(\mu = 98.6\) &rarr; <strong>Generate 1000 Samples</strong> &rarr; <strong>Two-Tail</strong>. The p-value is about 0.002 or less (reject). Change the null to 98.4: p-value \(\approx 0.2\) (do not reject). Both match the CI. Simulated p-values vary slightly from run to run.
   </div>
 </div>
 
@@ -583,52 +554,6 @@
     StatKey.create('#comp-rand', { mode: 'one-prop-rand', n: 50, x: 28, p0: 0.5, direction: 'two-tailed' });
   </script>
   <p class="step-note">Compare the <strong>Sim mean</strong> (about 0.56 vs. about 0.50) and the <strong>Sim SD</strong> (about 0.07 for both): different centers, same spread.</p>
-</div>
-
-<div class="slide">
-  <span class="tag tag-amber">Your Turn</span>
-  <h2>Your Turn: Two Centers</h2>
-  <p class="subtitle">A company claims 60% of its customers are repeat buyers. In a random sample of 80 customers, 52 are repeat buyers. Test \(H_0: p = 0.60\) vs. \(H_a: p \neq 0.60\). Click <strong>Run 1000</strong> on both, then answer: (a) What is \(\hat{p}\)? (b) Where is the bootstrap distribution centered? (c) Where is the randomization distribution centered? Why are they different? (d) Use the randomization distribution to estimate the p-value. What do you conclude at \(\alpha = 0.05\)?</p>
-  <div class="grid-2">
-    <div><div id="yt-boot"></div></div>
-    <div><div id="yt-rand"></div></div>
-  </div>
-  <script>
-    StatKey.create('#yt-boot', { mode: 'one-prop-boot', n: 80, x: 52 });
-    StatKey.create('#yt-rand', { mode: 'one-prop-rand', n: 80, x: 52, p0: 0.6, direction: 'two-tailed' });
-  </script>
-</div>
-
-<div class="slide">
-  <span class="tag tag-green">Your Turn &mdash; Answers</span>
-  <h2>Answers: Two Centers</h2>
-  <p class="subtitle">Your simulated values will vary slightly from run to run.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <div class="tag tag-blue">(a) Sample Proportion</div>
-      <div class="formula-box">
-        \[
-          \hat{p} = \frac{52}{80} = 0.65
-        \]
-      </div>
-      <div class="tag tag-green">(b) Bootstrap Center</div>
-      <p class="step-note">About <strong>0.65</strong>, the sample statistic. Bootstrapping does not assume \(H_0\).</p>
-      <div class="tag tag-amber">(c) Randomization Center</div>
-      <p class="step-note">About <strong>0.60</strong>, the null value. The randomization distribution assumes \(H_0: p = 0.60\) is true. Both have about the same spread (SD \(\approx 0.05\)).</p>
-    </div>
-    <div class="card card-green">
-      <div class="tag tag-rose">(d) p-Value and Conclusion</div>
-      <div class="formula-box">
-        \[
-          \text{p-value} \approx 0.42
-        \]
-      </div>
-      <p class="step-note">About 42% of the simulated proportions are at least 0.05 away from 0.60 (at or above 0.65, or at or below 0.55).</p>
-      <div class="callout" style="margin-top:6px;">
-        0.42 &gt; 0.05, so we <strong>do not reject \(H_0\)</strong>. There is not enough evidence that the proportion of repeat buyers differs from 60%. Consistent with this, the bootstrap 95% CI (roughly 0.54 to 0.75) contains 0.60.
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="slide">

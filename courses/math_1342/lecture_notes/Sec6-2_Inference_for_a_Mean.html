@@ -405,6 +405,55 @@
 </div>
 
 <div class="slide">
+  <h2>The t-Distribution</h2>
+  <p class="subtitle">When the population SD is unknown, we use the <b>t-distribution</b> with \(n-1\) degrees of freedom. It has slightly heavier tails than the standard normal; for large \(n\) the two are almost identical.</p>
+  <div class="grid-2" style="grid-template-columns: 548px 1fr; flex:0;">
+    <div id="t-curve" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:14px;"></div>
+    <div class="card card-green" style="padding:14px 16px;">
+      <h3>t Values in StatKey</h3>
+      <p class="step-note" style="margin-bottom:4px;"><a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a> &rarr; <strong>Theoretical Distributions</strong> &rarr; <strong>t</strong>; set <strong>df</strong> to \(n-1\).</p>
+      <ul class="small">
+        <li><strong>\(t^*\) for a CI:</strong> check <strong>Two-Tail</strong>, click the right-tail proportion and type the tail area (0.05 for 90%, 0.025 for 95%); the axis value is \(t^*\). <em>Check:</em> df = 49, 90% &rarr; \(t^* \approx 1.677\).</li>
+        <li><strong>p-value for a test:</strong> check <strong>Left Tail</strong>, <strong>Right Tail</strong>, or <strong>Two-Tail</strong> to match \(H_a\); click the axis box and type your t statistic. The shaded area is the p-value (for Two-Tail, add both areas). <em>Check:</em> df = 41, Right Tail, \(t = 14.42\) &rarr; \(\approx 0.000\).</li>
+      </ul>
+    </div>
+  </div>
+<script>
+(function(){
+  // Normal pdf
+  const npdf=x=>Math.exp(-x*x/2)/Math.sqrt(2*Math.PI);
+  // t pdf for given df (using approximation for visual comparison)
+  function tpdf(x,df){
+    function logG(x){const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];let y=x,tmp=x+5.5;tmp-=(x+0.5)*Math.log(tmp);let ser=1.000000000190015;for(let j=0;j<6;j++)ser+=c[j]/++y;return -tmp+Math.log(2.5066282746310005*ser/x);}
+    const lp=logG((df+1)/2)-0.5*Math.log(df*Math.PI)-logG(df/2)-((df+1)/2)*Math.log(1+x*x/df);
+    return Math.exp(lp);
+  }
+  const xs=[];
+  for(let x=-4;x<=4.001;x+=0.05) xs.push(x);
+  const norm = xs.map(x=>[x,npdf(x)]);
+  const t5 = xs.map(x=>[x,tpdf(x,5)]);
+  const t30 = xs.map(x=>[x,tpdf(x,30)]);
+  const yMax=Math.max(...norm.map(p=>p[1]),...t5.map(p=>p[1]))*1.1;
+  StatGraphs.lineChart('#t-curve',{
+    width:520,height:260,xMin:-4,xMax:4,yMin:0,yMax,
+    xLabel:'value',yLabel:'density',
+    curves:[
+      {points:norm,color:'#94a3b8',dashed:true},
+      {points:t5,color:'#fb7185'},
+      {points:t30,color:'#38bdf8'},
+    ],
+  });
+  // Annotate via text overlay (legend approximation)
+  const svg=document.querySelector('#t-curve svg');
+  function addLabel(x,y,text,color){const t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',x);t.setAttribute('y',y);t.setAttribute('fill',color);t.setAttribute('font-size',11);t.setAttribute('font-family','Work Sans, sans-serif');t.textContent=text;svg.appendChild(t);}
+  addLabel(420,30,'standard normal','#94a3b8');
+  addLabel(420,46,'t (df = 30)','#38bdf8');
+  addLabel(420,62,'t (df = 5)','#fb7185');
+})();
+</script>
+</div>
+
+<div class="slide">
   <h2>Confidence Interval for a Mean</h2>
   <p class="subtitle">For a one-sample mean, use the sample mean, a t critical value, and the standard error based on \(s\).</p>
   <div class="grid-2">
@@ -469,66 +518,6 @@
       </div>
       <div class="callout">
         <strong>Interpretation:</strong> We are \(90\%\) confident that the average length of gribbles is between \(2.929\) mm and \(3.271\) mm.
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <span class="tag tag-amber">Your Turn</span>
-  <h2>Your Turn: CI for a Mean</h2>
-  <p class="subtitle">A random sample of \(36\) college students who work part-time reports an average of \(\bar{x} = 24.5\) hours of work per week, with \(s = 9\) hours.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <h3>Questions</h3>
-      <ul>
-        <li>(a) Can we use the t-distribution here? Why?</li>
-        <li>(b) Find the degrees of freedom and the standard error.</li>
-        <li>(c) Find a 95% confidence interval for \(\mu\). Use \(t^* = 2.030\).</li>
-        <li>(d) Interpret the interval in context.</li>
-      </ul>
-    </div>
-    <div class="card card-amber">
-      <h3>Reminder</h3>
-      <div class="formula-box">
-        \[
-          \bar{x} \pm t^* \cdot \frac{s}{\sqrt{n}}
-        \]
-      </div>
-      <div class="step-note">\(t^*\) comes from a t-distribution with \(df=n-1\). (Later in this deck you'll see how to find \(t^*\) in StatKey.)</div>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <span class="tag tag-green">Your Turn &mdash; Answers</span>
-  <h2>Answers: CI for a Mean</h2>
-  <p class="subtitle">Same four steps as the gribbles example.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <div class="tag tag-blue">(a) Conditions</div>
-      <div class="step-note">Yes. \(n = 36 \ge 30\), so the CLT makes \(\bar{x}\) approximately normal.</div>
-      <div class="tag tag-purple">(b) df and SE</div>
-      <div class="formula-box">
-        \[
-          df = 36-1 = 35, \qquad SE=\frac{9}{\sqrt{36}} = 1.5
-        \]
-      </div>
-    </div>
-    <div class="card card-green">
-      <div class="tag tag-green">(c) 95% CI</div>
-      <div class="formula-box">
-        \[
-          24.5 \pm 2.030(1.5) = 24.5 \pm 3.05
-        \]
-      </div>
-      <div class="formula-box">
-        \[
-          (21.45,\ 27.55)
-        \]
-      </div>
-      <div class="callout">
-        <strong>(d)</strong> We are 95% confident that the mean number of hours worked per week by all part-time working college students is between 21.45 and 27.55 hours.
       </div>
     </div>
   </div>
@@ -600,36 +589,6 @@
 
 
 <div class="slide">
-  <span class="tag tag-blue">StatKey</span>
-  <h2>t Values in StatKey</h2>
-  <p class="subtitle">StatKey's t-distribution gives both critical values \(t^*\) (for CIs) and tail areas (for p-values).</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <h3>Find \(t^*\) for a Confidence Interval</h3>
-      <ul class="small">
-        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>t</strong></li>
-        <li><strong>2.</strong> Set <strong>df</strong> to \(n-1\)</li>
-        <li><strong>3.</strong> Check <strong>Two-Tail</strong></li>
-        <li><strong>4.</strong> Click the proportion in the right tail and type the tail area: 0.05 for 90%, 0.025 for 95%</li>
-        <li><strong>5.</strong> The value on the axis is \(t^*\)</li>
-      </ul>
-      <p class="step-note"><strong>Check:</strong> gribbles, df = 49, 90% &rarr; tail area 0.05 &rarr; \(t^* \approx 1.677\).</p>
-    </div>
-    <div class="card card-green">
-      <h3>Find a p-Value for a Test</h3>
-      <ul class="small">
-        <li><strong>1.</strong> Same page: <strong>Theoretical Distributions</strong> &rarr; <strong>t</strong></li>
-        <li><strong>2.</strong> Set <strong>df</strong> to \(n-1\)</li>
-        <li><strong>3.</strong> Check <strong>Left Tail</strong>, <strong>Right Tail</strong>, or <strong>Two-Tail</strong> to match \(H_a\)</li>
-        <li><strong>4.</strong> Click the box on the horizontal axis and type your t statistic</li>
-        <li><strong>5.</strong> The shaded area is the p-value (for Two-Tail, add both areas)</li>
-      </ul>
-      <p class="step-note"><strong>Check:</strong> Chips Ahoy!, df = 41, Right Tail, \(t = 14.42\) &rarr; area \(\approx 0.000\).</p>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
   <span class="tag tag-amber">Your Turn</span>
   <h2>Your Turn: Testing a Mean</h2>
   <p class="subtitle">A juice company labels its bottles as containing \(500\) mL. A consumer group measures a random sample of \(25\) bottles and finds \(\bar{x} = 488\) mL with \(s = 30\) mL. The data show no strong skew or outliers. Is there evidence that the bottles are <strong>underfilled</strong> on average?</p>
@@ -688,46 +647,6 @@
       </div>
     </div>
   </div>
-</div>
-
-<!-- Inserted: chart slide -->
-<div class="slide">
-  <h2>The t-Distribution</h2>
-  <p class="subtitle">When the population SD is unknown, we use the <b>t-distribution</b> with \(n-1\) degrees of freedom. It has slightly heavier tails than the standard normal; for large \(n\) the two are almost identical.</p>
-  <div id="t-curve" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:14px; margin:8px auto; max-width:640px;"></div>
-<script>
-(function(){
-  // Normal pdf
-  const npdf=x=>Math.exp(-x*x/2)/Math.sqrt(2*Math.PI);
-  // t pdf for given df (using approximation for visual comparison)
-  function tpdf(x,df){
-    function logG(x){const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];let y=x,tmp=x+5.5;tmp-=(x+0.5)*Math.log(tmp);let ser=1.000000000190015;for(let j=0;j<6;j++)ser+=c[j]/++y;return -tmp+Math.log(2.5066282746310005*ser/x);}
-    const lp=logG((df+1)/2)-0.5*Math.log(df*Math.PI)-logG(df/2)-((df+1)/2)*Math.log(1+x*x/df);
-    return Math.exp(lp);
-  }
-  const xs=[];
-  for(let x=-4;x<=4.001;x+=0.05) xs.push(x);
-  const norm = xs.map(x=>[x,npdf(x)]);
-  const t5 = xs.map(x=>[x,tpdf(x,5)]);
-  const t30 = xs.map(x=>[x,tpdf(x,30)]);
-  const yMax=Math.max(...norm.map(p=>p[1]),...t5.map(p=>p[1]))*1.1;
-  StatGraphs.lineChart('#t-curve',{
-    width:600,height:260,xMin:-4,xMax:4,yMin:0,yMax,
-    xLabel:'value',yLabel:'density',
-    curves:[
-      {points:norm,color:'#94a3b8',dashed:true},
-      {points:t5,color:'#fb7185'},
-      {points:t30,color:'#38bdf8'},
-    ],
-  });
-  // Annotate via text overlay (legend approximation)
-  const svg=document.querySelector('#t-curve svg');
-  function addLabel(x,y,text,color){const t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',x);t.setAttribute('y',y);t.setAttribute('fill',color);t.setAttribute('font-size',11);t.setAttribute('font-family','Work Sans, sans-serif');t.textContent=text;svg.appendChild(t);}
-  addLabel(500,30,'standard normal','#94a3b8');
-  addLabel(500,46,'t (df = 30)','#38bdf8');
-  addLabel(500,62,'t (df = 5)','#fb7185');
-})();
-</script>
 </div>
 
 <div class="slide">

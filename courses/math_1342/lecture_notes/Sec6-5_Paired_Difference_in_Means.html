@@ -270,9 +270,9 @@
 </div>
 
 <div class="slide">
-  <span class="tag tag-amber" style="align-self:flex-start;">Practice &mdash; Discuss in Class</span>
-  <h2>Paired or Unpaired?</h2>
-  <p class="subtitle">For each study, decide whether the data are paired or unpaired (independent samples). The test: is each value in one group linked to exactly one value in the other?</p>
+  <span class="tag tag-amber" style="align-self:flex-start;">Your Turn</span>
+  <h2>Your Turn: Paired or Unpaired?</h2>
+  <p class="subtitle">Discuss in class: for each study, decide whether the data are paired or unpaired (independent samples). The test: is each value in one group linked to exactly one value in the other?</p>
   <div class="grid-2">
     <div class="card card-accent">
       <ul class="small">
@@ -297,8 +297,8 @@
 </div>
 
 <div class="slide">
-  <span class="tag tag-green">Answers</span>
-  <h2>Paired or Unpaired? Answers</h2>
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Paired or Unpaired?</h2>
   <p class="subtitle">Every paired study below produces one difference per pair. Every unpaired study needs the Section 6.4 methods.</p>
   <div class="grid-2">
     <div class="card card-green">
@@ -451,79 +451,6 @@
       </div>
       <div class="callout">
         <strong>Interpretation:</strong> We are \(95\%\) confident that female tears lower testosterone by about \(8.5\) to \(34.9\) pg/ml on average.
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <span class="tag tag-amber">Your Turn</span>
-  <h2>Your Turn: Review Session Scores</h2>
-  <p class="subtitle">Fifteen students took a 50-point practice quiz, attended a review session, then took a similar quiz. Let \(d=\) after \(-\) before. A dotplot of the differences shows no strong skew or outliers.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <h3>Summary of Differences</h3>
-      <ul>
-        <li>\(\bar{d}=4.2\) points, \(s_d=5.6\), \(n_d=15\)</li>
-      </ul>
-      <h3>StatKey for the t Distribution</h3>
-      <ul class="small">
-        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>t</strong>.</li>
-        <li><strong>2.</strong> Set df to \(n_d-1\).</li>
-        <li><strong>3.</strong> For a p-value: check <strong>Right Tail</strong> and type your \(t\) into the axis box.</li>
-        <li><strong>4.</strong> For \(t^*\): check <strong>Two-Tail</strong> and type <strong>0.95</strong> in the middle proportion box.</li>
-      </ul>
-    </div>
-    <div class="card card-green">
-      <h3>Questions</h3>
-      <ul>
-        <li>(a) Why is this paired data?</li>
-        <li>(b) State \(H_0\) and \(H_a\) to test whether the review session raises scores on average.</li>
-        <li>(c) Compute the SE and the \(t\) statistic.</li>
-        <li>(d) Use StatKey to find the p-value. Conclude at \(\alpha=0.05\).</li>
-        <li>(e) Find and interpret a \(95\%\) CI for \(\mu_d\).</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <span class="tag tag-green">Your Turn &mdash; Answers</span>
-  <h2>Answers: Review Session Scores</h2>
-  <p class="subtitle">Paired t procedures are just one-sample t procedures on the differences.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <div class="tag tag-blue">(a) Paired</div>
-      <div class="step-note">Each student is measured twice (before and after), so each "after" score is matched to that student's own "before" score.</div>
-      <div class="tag tag-purple">(b) Hypotheses</div>
-      <div class="formula-box">
-        \[
-          H_0:\mu_d=0 \qquad H_a:\mu_d>0
-        \]
-      </div>
-      <div class="tag tag-green">(c) Statistic</div>
-      <div class="formula-box">
-        \[
-          SE=\frac{5.6}{\sqrt{15}}\approx 1.446 \qquad t=\frac{4.2-0}{1.446}\approx 2.90
-        \]
-      </div>
-    </div>
-    <div class="card card-green">
-      <div class="tag tag-amber">(d) p-Value</div>
-      <div class="step-note">StatKey t with \(df=14\), right tail beyond 2.90: p-value \(\approx 0.006\). Since \(0.006<0.05\), reject \(H_0\): strong evidence that scores go up on average after the review session.</div>
-      <div class="tag tag-rose">(e) Confidence Interval</div>
-      <div class="formula-box">
-        \[
-          t^*\approx 2.145 \qquad 4.2\pm 2.145(1.446)=4.2\pm 3.10
-        \]
-      </div>
-      <div class="formula-box">
-        \[
-          (1.10,\ 7.30) \text{ points}
-        \]
-      </div>
-      <div class="callout">
-        We are \(95\%\) confident that the mean improvement after the review session is between about 1.1 and 7.3 points.
       </div>
     </div>
   </div>

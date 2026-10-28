@@ -201,69 +201,47 @@
 </div>
 
 <div class="slide">
-  <h2>Test for Correlation</h2>
-  <p class="subtitle">Definition: a hypothesis test for whether the population correlation is zero.</p>
-  <div class="grid-2">
+  <h2>Tests for Correlation and Slope</h2>
+  <p class="subtitle">Definitions: two hypothesis tests for "no linear relationship in the population," one stated with the correlation \(\rho\) and one with the slope \(\beta_1\).</p>
+  <div class="grid-2" style="flex:0;">
     <div class="card card-accent">
-      <h3>Hypotheses</h3>
-      <div class="formula-box">
+      <h3>Test for correlation</h3>
+      <div class="formula-box" style="font-size:19px;">
         \[
-          H_0:\ \rho = 0 \qquad H_a:\ \rho \neq 0
-        \]
-      </div>
-      <div class="step-note">In words: \(H_0\) says there is no linear relationship between the two variables in the population. \(H_a\) says there is one. A one-sided alternative (\(\rho > 0\) or \(\rho < 0\)) is used when the direction is specified in advance.</div>
-    </div>
-    <div class="card card-green">
-      <h3>Test statistic</h3>
-      <div class="formula-box">
-        \[
-          t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}}, \qquad df = n - 2
+          \begin{gathered}
+            H_0:\ \rho = 0 \qquad H_a:\ \rho \neq 0 \\
+            t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}}, \qquad df = n - 2
+          \end{gathered}
         \]
       </div>
       <ul class="small">
         <li>\(r\) is the sample correlation and \(n\) is the number of pairs.</li>
-        <li>Compare to a t-distribution with \(n - 2\) degrees of freedom to get the p-value.</li>
-        <li>For the sleep data: \(t = \dfrac{0.154\sqrt{251}}{\sqrt{1 - 0.154^2}} \approx 2.47\), p-value \(= 0.014\).</li>
+        <li>Sleep data: \(t = \dfrac{0.154\sqrt{251}}{\sqrt{1 - 0.154^2}} \approx 2.47\), p-value \(= 0.014\).</li>
       </ul>
-    </div>
-  </div>
-  <div class="callout">Why \(n - 2\)? Fitting a line uses up two pieces of information from the data, the intercept and the slope. Every t-procedure in this section uses \(df = n - 2\).</div>
-</div>
-
-<div class="slide">
-  <h2>Test for Slope</h2>
-  <p class="subtitle">Definition: a hypothesis test for whether the population slope is zero, which means whether \(x\) is a useful linear predictor of \(y\).</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <h3>Hypotheses and statistic</h3>
-      <div class="formula-box">
-        \[
-          H_0:\ \beta_1 = 0 \qquad H_a:\ \beta_1 \neq 0
-        \]
-      </div>
-      <div class="formula-box">
-        \[
-          t = \frac{b_1 - 0}{SE_{b_1}}, \qquad df = n - 2
-        \]
-      </div>
-      <div class="step-note">\(b_1\) is the sample slope and \(SE_{b_1}\) is its standard error. Both are printed in the regression output, along with \(t\) and the p-value.</div>
     </div>
     <div class="card card-green">
-      <h3>Same test, two names</h3>
-      <ul>
-        <li>"No linear relationship" can be written as \(\rho = 0\) or as \(\beta_1 = 0\). They say the same thing.</li>
-        <li>The t-statistic for the correlation and the t-statistic for the slope are <span class="green">always identical</span>, and so are the p-values.</li>
-        <li>Use whichever version the output gives you; the conclusion is the same.</li>
-        <li>Reject \(H_0\) when the p-value is below the significance level; conclude there is evidence of a linear relationship.</li>
+      <h3>Test for slope</h3>
+      <div class="formula-box" style="font-size:19px;">
+        \[
+          \begin{gathered}
+            H_0:\ \beta_1 = 0 \qquad H_a:\ \beta_1 \neq 0 \\
+            t = \frac{b_1 - 0}{SE_{b_1}}, \qquad df = n - 2
+          \end{gathered}
+        \]
+      </div>
+      <ul class="small">
+        <li>\(b_1\) and \(SE_{b_1}\) are printed in the regression output, along with \(t\) and the p-value.</li>
+        <li>Rejecting \(H_0\) means \(x\) is a useful linear predictor of \(y\).</li>
       </ul>
     </div>
   </div>
+  <div class="callout"><strong>Same test, two names:</strong> \(\rho = 0\) and \(\beta_1 = 0\) both say "no linear relationship," so the two t-statistics are <span class="green">always identical</span>, and so are the p-values. A one-sided alternative is used when the direction is specified in advance. Why \(df = n - 2\)? Fitting a line uses up two pieces of information, the intercept and the slope.</div>
 </div>
 
 <div class="slide">
   <h2>Reading Regression Output</h2>
   <p class="subtitle">Software reports everything needed for inference. Here is the output for predicting classes missed from depression score.</p>
-  <div class="grid-2">
+  <div class="grid-2" style="flex:0;">
     <div class="card card-accent table-card">
       <div class="step-note">Pearson correlation of DepressionScore and ClassesMissed = 0.154, P-Value = 0.014</div>
       <div class="step-note">The regression equation is ClassesMissed = 1.78 + 0.0831 DepressionScore</div>
@@ -282,38 +260,44 @@
         <li><span class="amber">T</span> is \(b_1 / SE_{b_1} = 2.47\) and <span class="amber">P</span> is its two-sided p-value, 0.014, for testing \(\beta_1 = 0\).</li>
         <li>The Constant row tests \(\beta_0 = 0\), which is rarely of interest.</li>
         <li>S is the standard deviation of the residuals: typical prediction error, about 3.2 classes.</li>
-        <li>R-Sq is \(R^2\), the percent of variability in \(y\) explained by the line.</li>
+        <li>R-Sq is \(R^2 = r^2\), the proportion of variability in \(y\) explained by the line (always between 0 and 1).</li>
       </ul>
     </div>
   </div>
+  <div class="callout" style="margin-top:12px; padding:12px 18px;"><strong>\(R^2\) here:</strong> \(0.154^2 \approx 0.024\), so depression scores explain only <span class="amber">2.4%</span> of the variability in classes missed. Statistically significant does not mean practically important: with \(n = 253\), even a weak relationship produces a small p-value.</div>
 </div>
 
 <div class="slide">
   <h2>Example 1: Depression and Missed Classes</h2>
-  <p class="subtitle">Using the output on the previous slide, test whether depression score and classes missed are correlated for students at this college.</p>
-  <div class="grid-2">
+  <p class="subtitle">Using the output on the previous slide, test whether depression score and classes missed are linearly related for students at this college.</p>
+  <div class="grid-2" style="flex:0;">
     <div class="card card-green">
-      <div class="tag tag-blue">Question</div>
-      <div class="step-note">(a) What is the sample correlation? (b) What is the p-value for testing the correlation? (c) Give the conclusion of the test in context.</div>
-      <div class="tag tag-purple">Hypotheses</div>
-      <div class="formula-box">\[ H_0:\ \rho = 0 \qquad H_a:\ \rho \neq 0 \]</div>
-      <div class="step-note">In words: \(H_0\) says depression score and classes missed are not linearly related for all students at this college; \(H_a\) says they are.</div>
+      <div class="tag tag-blue">Correlation Test</div>
+      <div class="step-note">(a) What is the sample correlation? (b) What is the p-value for testing the correlation? (c) Give the conclusion in context.</div>
+      <div class="formula-box" style="font-size:19px; margin-top:4px;">\[ H_0:\ \rho = 0 \qquad H_a:\ \rho \neq 0 \]</div>
+      <ul class="small">
+        <li>(a) \(r = 0.154\), a weak positive association.</li>
+        <li>(b) The p-value is \(0.014\).</li>
+        <li>(c) \(0.014 < 0.05\), so we <span class="green">reject \(H_0\)</span>. There is evidence of an association between depression scores and the number of classes missed.</li>
+      </ul>
     </div>
     <div class="card card-accent">
-      <div class="tag tag-green">Answers</div>
-      <ul>
-        <li>(a) The sample correlation is \(r = 0.154\), a weak positive association.</li>
-        <li>(b) The p-value for the correlation test is \(0.014\).</li>
-        <li>(c) At a 5% level, \(0.014 < 0.05\), so we <span class="green">reject \(H_0\)</span>. There is evidence that \(\rho \neq 0\): some association exists between depression scores and the number of classes missed.</li>
+      <div class="tag tag-purple">Slope Test</div>
+      <div class="step-note">(d) Interpret the slope in context. (e) What is the p-value for a test of the slope? Conclude in context. (f) Compare the two p-values.</div>
+      <div class="formula-box" style="font-size:19px; margin-top:4px;">\[ H_0:\ \beta_1 = 0 \quad t = \frac{0.08312}{0.03368} = 2.47,\ df = 251 \]</div>
+      <ul class="small">
+        <li>(d) If a student's depression score were one point higher, the predicted number of classes missed would be <span class="green">0.0831 higher</span>.</li>
+        <li>(e) p-value \(= 0.014\): reject \(H_0\). Depression score is an effective predictor of classes missed.</li>
+        <li>(f) Both tests give 0.014, as expected: both test "no linear relationship."</li>
       </ul>
-      <div class="callout" style="margin-top:12px;">Rejecting \(H_0\) says the relationship is real, not that it is strong. The correlation is only 0.154.</div>
     </div>
   </div>
+  <div class="callout">Rejecting \(H_0\) says the relationship is real, not that it is strong. The correlation is only 0.154.</div>
 </div>
 
 <div class="slide">
   <h2>Example 1: The Line, a Prediction, and a Residual</h2>
-  <p class="subtitle">(d) What is the regression line? (e) Find the predicted value and residual for a student with a depression score of 7 who has missed 4 classes.</p>
+  <p class="subtitle">(g) What is the regression line? (h) Find the predicted value and residual for a student with a depression score of 7 who has missed 4 classes.</p>
   <div class="grid-2">
     <div class="chart-box">
       <div id="chart-9-1-residual"></div>
@@ -370,113 +354,40 @@
 </div>
 
 <div class="slide">
-  <h2>Example 1: Interpreting and Testing the Slope</h2>
-  <p class="subtitle">(f) Interpret the slope in context. (g) What is the p-value for a test of the slope? Give the conclusion in context.</p>
-  <div class="grid-2">
-    <div class="card card-green">
-      <div class="tag tag-green">Answers</div>
-      <div class="step-note">(f) The slope is \(b_1 = 0.0831\). If a student's depression score were one point higher, the predicted number of classes missed would be <span class="green">0.0831 higher</span>.</div>
-      <div class="tag tag-purple">Hypotheses</div>
-      <div class="formula-box" style="font-size:19px;">\[ H_0:\ \beta_1 = 0 \qquad H_a:\ \beta_1 \neq 0 \]</div>
-      <div class="formula-box" style="font-size:19px;">\[ t = \frac{0.08312}{0.03368} = 2.47, \qquad df = 251 \]</div>
-      <div class="step-note">(g) The p-value is \(0.014\). At a 5% level we reject \(H_0\) and conclude there is evidence that \(\beta_1 \neq 0\): a student's depression score is an effective predictor of the number of classes missed.</div>
-    </div>
-    <div class="chart-box">
-      <div id="chart-9-1-tcurve"></div>
-      <div class="chart-caption">t-distribution with \(df = 251\). With this many degrees of freedom it is indistinguishable from the standard normal curve. Shaded area \(= 0.014\).</div>
-    </div>
-  </div>
-  <script>
-    (function () {
-      StatGraphs.normalCurve('#chart-9-1-tcurve', {
-        mean: 0, sd: 1, xMin: -4, xMax: 4, width: 560, height: 300, padBottom: 44,
-        xLabel: 't',
-        shade: [ { from: -4, to: -2.47, color: '#fb7185' }, { from: 2.47, to: 4, color: '#fb7185' } ],
-        markers: [ { x: 2.47, label: 't = 2.47' }, { x: -2.47, label: 't = \u22122.47' } ],
-      });
-    })();
-  </script>
-</div>
-
-<div class="slide">
   <h2>Confidence Interval for the Slope</h2>
   <p class="subtitle">Definition: a range of plausible values for the population slope \(\beta_1\), built the same way as every other t-interval.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <h3>Formula</h3>
-      <div class="formula-box">
+      <div class="formula-box" style="font-size:20px;">
         \[
           b_1 \pm t^* \cdot SE_{b_1}, \qquad df = n - 2
         \]
       </div>
       <ul class="small">
-        <li>\(b_1\) and \(SE_{b_1}\) come from the regression output.</li>
-        <li>\(t^*\) is the critical value from a t-distribution with \(n - 2\) degrees of freedom, chosen for the confidence level.</li>
-        <li>\(t^* \cdot SE_{b_1}\) is the margin of error.</li>
+        <li>\(b_1\) and \(SE_{b_1}\) come from the regression output; \(t^*\) comes from a t-distribution with \(n - 2\) df.</li>
+        <li>\(t^* \cdot SE_{b_1}\) is the margin of error. The slope is in units of \(y\) per one unit of \(x\).</li>
+        <li>0 inside the interval: "no linear relationship" is still plausible (matches not rejecting \(H_0\)). 0 outside: matches rejecting \(H_0\).</li>
       </ul>
+      <div class="callout" style="margin-top:10px; padding:12px 16px; font-size:15px;"><strong>Template:</strong> We are 95% confident that the slope of the line to predict <em>[response]</em> from <em>[explanatory]</em> for <em>[population]</em> is between <em>[lower]</em> and <em>[upper]</em>.</div>
     </div>
     <div class="card card-green">
-      <h3>Interpretation template</h3>
-      <div class="callout" style="margin-top:0;">We are 95% confident that the slope of the line to predict <em>[response]</em> from <em>[explanatory]</em> for <em>[population]</em> is between <em>[lower]</em> and <em>[upper]</em>.</div>
-      <ul class="small" style="margin-top:12px;">
-        <li>The slope is in units of \(y\) per one unit of \(x\).</li>
-        <li>If the interval contains 0, the data do not rule out "no linear relationship." That matches not rejecting \(H_0\) in the test.</li>
-        <li>If 0 is outside the interval, the slope is significantly different from 0, matching a rejection of \(H_0\).</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Example 1: A 95% Confidence Interval for the Slope</h2>
-  <p class="subtitle">(h) What is the standard error of the slope? Find and interpret a 95% confidence interval for the slope of the regression line.</p>
-  <div class="grid-2">
-    <div class="card card-green">
-      <div class="tag tag-green">Answers</div>
-      <div class="step-note">From the output, \(SE_{b_1} = 0.03368\). With \(df = n - 2 = 251\), the 95% critical value is \(t^* = 1.970\).</div>
-      <div class="formula-box" style="font-size:19px;">
+      <div class="tag tag-green">Example 1</div>
+      <div class="step-note">(i) What is the standard error of the slope? Find and interpret a 95% CI for the slope. From the output, \(SE_{b_1} = 0.03368\); with \(df = 251\), \(t^* = 1.970\).</div>
+      <div class="formula-box" style="font-size:18px;">
         \[
           \begin{aligned}
-            b_1 \pm t^* \cdot SE_{b_1} &amp;= 0.0831 \pm 1.970(0.03368) \\
-                                       &amp;= 0.0831 \pm 0.0664 \\
+            0.0831 \pm 1.970(0.03368) &amp;= 0.0831 \pm 0.0664 \\
                                        &amp;= 0.0167 \ \text{to}\ 0.1495
           \end{aligned}
         \]
       </div>
-    </div>
-    <div class="card card-accent">
-      <h3>Interpretation</h3>
-      <div class="callout" style="margin-top:0;">We are 95% sure that the slope of the linear model to predict classes missed from depression score, for all students at this college, is between 0.0167 and 0.1495.</div>
-      <ul class="small" style="margin-top:12px;">
-        <li>Every plausible slope is positive: each extra point of depression score is associated with somewhere between about 0.02 and 0.15 more classes missed.</li>
+      <ul class="small">
+        <li>We are 95% sure that the slope of the linear model to predict classes missed from depression score, for all students at this college, is between 0.0167 and 0.1495.</li>
         <li>The interval does not contain 0, which agrees with rejecting \(H_0: \beta_1 = 0\) at the 5% level.</li>
-        <li>The interval is wide relative to the estimate because the relationship is weak and the data are noisy.</li>
       </ul>
     </div>
   </div>
-</div>
-
-<div class="slide">
-  <h2>Example 1: Two p-values and \(R^2\)</h2>
-  <p class="subtitle">(i) Compare the two p-values, from the test for correlation and the test for slope. (j) What is \(R^2\) for this model? Interpret it in context.</p>
-  <div class="grid-3">
-    <div class="card card-green">
-      <div class="tag tag-green">Answer (i)</div>
-      <div class="big-number green">0.014</div>
-      <div class="stat-label">Both the correlation test and the slope test give p-value 0.014. They are the same, as expected: both test "no linear relationship."</div>
-    </div>
-    <div class="card card-accent">
-      <h3>Definition: \(R^2\)</h3>
-      <div class="formula-box" style="font-size:20px;">\[ R^2 = r^2 \]</div>
-      <div class="stat-label">The proportion of the variability in the response variable that is explained by the linear model. It is always between 0 and 1 (0% and 100%).</div>
-    </div>
-    <div class="card card-amber">
-      <div class="tag tag-green">Answer (j)</div>
-      <div class="big-number amber">2.4%</div>
-      <div class="stat-label">\(R^2 = 0.154^2 \approx 0.024\). Depression scores explain only 2.4% of the variability in the number of classes missed.</div>
-    </div>
-  </div>
-  <div class="callout">Statistically significant does not mean practically important. With \(n = 253\), even a weak relationship (\(r = 0.154\)) produces a small p-value. The tiny \(R^2\) reminds us that depression score alone is a poor predictor of classes missed.</div>
 </div>
 
 <div class="slide">
@@ -584,62 +495,6 @@
         <li>(g) The two p-values are the same, \(0.215\), as expected.</li>
         <li>(h) \(R^2 = 0.6\%\). The number of alcoholic drinks per week explains only 0.6% of the variability in number of classes missed.</li>
       </ul>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <span class="tag tag-amber">Your Turn</span>
-  <h2>Your Turn: Correlation Test from \(r\)</h2>
-  <p class="subtitle">A random sample of 30 students at a college reported their average daily hours on social media and their GPA. The scatterplot looks roughly linear with no outliers, and the sample correlation is \(r=-0.42\). There is no software output, only \(r\) and \(n\).</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <h3>StatKey for the t Distribution</h3>
-      <ul class="small">
-        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>t</strong>.</li>
-        <li><strong>2.</strong> Set df to \(n-2\).</li>
-        <li><strong>3.</strong> Check <strong>Two-Tail</strong> and type your \(t\) statistic into the axis box.</li>
-        <li><strong>4.</strong> Read the total area in both tails. That is the p-value.</li>
-      </ul>
-    </div>
-    <div class="card card-green">
-      <h3>Questions</h3>
-      <ul class="questions">
-        <li>(a) State \(H_0\) and \(H_a\) for testing whether social media time and GPA are correlated.</li>
-        <li>(b) Compute the \(t\) statistic and its df.</li>
-        <li>(c) Use StatKey to find the p-value. Give the conclusion in context at \(\alpha=0.05\).</li>
-        <li>(d) Find and interpret \(R^2\).</li>
-        <li>(e) Does this show that social media use lowers GPA? Why or why not?</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <span class="tag tag-green">Your Turn &mdash; Answers</span>
-  <h2>Answers: Correlation Test from \(r\)</h2>
-  <p class="subtitle">The same t-test works with only \(r\) and \(n\).</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <div class="tag tag-blue">(a) Hypotheses</div>
-      <div class="formula-box" style="font-size:19px;">\[ H_0:\ \rho = 0 \qquad H_a:\ \rho \neq 0 \]</div>
-      <div class="tag tag-purple">(b) Test Statistic</div>
-      <div class="formula-box" style="font-size:19px;">
-        \[
-          t=\frac{-0.42\sqrt{28}}{\sqrt{1-(-0.42)^2}}=\frac{-2.222}{0.908}\approx -2.45, \qquad df=28
-        \]
-      </div>
-      <div class="tag tag-green">(c) p-Value</div>
-      <div class="step-note">StatKey t with df 28, two tails beyond \(\pm 2.45\): p-value \(\approx 0.021\). Since \(0.021<0.05\), reject \(H_0\). There is evidence of a (negative) linear relationship between social media time and GPA for students at this college.</div>
-    </div>
-    <div class="card card-green">
-      <div class="tag tag-amber">(d) \(R^2\)</div>
-      <div class="step-note">\(R^2=(-0.42)^2=0.176\). Social media time explains about 17.6% of the variability in GPA.</div>
-      <div class="tag tag-rose">(e) Causation?</div>
-      <div class="step-note">No. This is an observational sample, so a confounding variable (such as work hours or study habits) could explain the association.</div>
-      <div class="callout">
-        <strong>With the raw data:</strong> in StatKey, choose <strong>Randomization Hypothesis Tests &rarr; Test for Slope/Correlation</strong>, click <strong>Edit Data</strong> and paste the \((x, y)\) pairs, click <strong>Generate 1000 Samples</strong>, check <strong>Two-Tail</strong>, and enter the observed \(r\) or slope. The randomization p-value should be close to the t-based one.
-      </div>
     </div>
   </div>
 </div>

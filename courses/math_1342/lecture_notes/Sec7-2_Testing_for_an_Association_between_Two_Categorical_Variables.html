@@ -500,65 +500,6 @@
 </div>
 
 <div class="slide">
-  <span class="tag tag-amber">Your Turn</span>
-  <h2>Your Turn: \(2\times 2\) Chi-Square</h2>
-  <p class="subtitle">This is the randomized treatment vs. placebo pain-relief experiment from Section 6.3, where the two-proportion test gave \(z\approx 2.52\).</p>
-  <div class="grid-2">
-    <div class="card card-accent table-card">
-      <table>
-        <tr><th></th><th>Treatment</th><th>Placebo</th><th>Total</th></tr>
-        <tr><td>Relieved pain</td><td>36</td><td>21</td><td>57</td></tr>
-        <tr><td>Not relieved</td><td>39</td><td>54</td><td>93</td></tr>
-        <tr><td>Total</td><td>75</td><td>75</td><td>150</td></tr>
-      </table>
-    </div>
-    <div class="card card-green">
-      <h3>Questions</h3>
-      <ul>
-        <li>(a) State \(H_0\) and \(H_a\) for a chi-square test.</li>
-        <li>(b) Find the four expected counts.</li>
-        <li>(c) Compute \(\chi^2\) and its df.</li>
-        <li>(d) Use StatKey (Chi-square, Right Tail) for the p-value. What do you conclude?</li>
-        <li>(e) Compare \(\chi^2\) with \(z^2=2.52^2\). What do you notice?</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <span class="tag tag-green">Your Turn &mdash; Answers</span>
-  <h2>Answers: \(2\times 2\) Chi-Square</h2>
-  <p class="subtitle">(a) \(H_0\): treatment and pain relief are not associated. \(H_a\): they are associated.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <div class="tag tag-blue">(b) Expected Counts</div>
-      <div class="step-note">Relieved: \(57\cdot 75/150=28.5\) in each column. Not relieved: \(93\cdot 75/150=46.5\) in each column.</div>
-      <div class="tag tag-purple">(c) Statistic</div>
-      <div class="formula-box">
-        \[
-          \chi^2=2\cdot\frac{(36-28.5)^2}{28.5}+2\cdot\frac{(39-46.5)^2}{46.5}
-          \approx 3.95+2.42=6.37
-        \]
-      </div>
-      <div class="step-note">\(df=(2-1)(2-1)=1\)</div>
-    </div>
-    <div class="card card-green">
-      <div class="tag tag-amber">(d) p-Value</div>
-      <div class="formula-box">
-        \[
-          \text{p-value}\approx 0.012
-        \]
-      </div>
-      <div class="step-note">Reject \(H_0\) at \(\alpha=0.05\): pain relief is associated with treatment. Since this was randomized, the treatment causes the difference.</div>
-      <div class="tag tag-rose">(e) \(\chi^2=z^2\)</div>
-      <div class="callout">
-        \(z^2=2.52^2\approx 6.37=\chi^2\). The chi-square p-value 0.012 equals the <strong>two-sided</strong> z p-value (\(2\times 0.0059\)). For a \(2\times 2\) table, the two tests are the same test.
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
   <h2>What You Can and Cannot Conclude</h2>
   <p class="subtitle">A significant result shows association, but it does not automatically show causation.</p>
   <div class="grid-3">

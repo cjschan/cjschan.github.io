@@ -522,73 +522,6 @@
 </div>
 
 <div class="slide">
-  <span class="tag tag-amber">Your Turn</span>
-  <h2>Your Turn: CI for \(p_1-p_2\)</h2>
-  <p class="subtitle">A gym randomly assigned 400 new members to two groups. Of the 200 members who got weekly text reminders, 50 were still working out at least twice a week after six months. Of the 200 members who got no reminders, 30 were.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <h3>Setup</h3>
-      <ul>
-        <li>Group 1: text reminders, \(n_1=200\), \(x_1=50\)</li>
-        <li>Group 2: no reminders, \(n_2=200\), \(x_2=30\)</li>
-        <li>Use a \(95\%\) confidence level (\(z^*=1.96\)).</li>
-      </ul>
-    </div>
-    <div class="card card-green">
-      <h3>Questions</h3>
-      <ul>
-        <li>(a) Find \(\hat{p}_1\), \(\hat{p}_2\), and \(\hat{p}_1-\hat{p}_2\).</li>
-        <li>(b) Check that every cell count is at least 10.</li>
-        <li>(c) Compute the standard error.</li>
-        <li>(d) Find the \(95\%\) confidence interval for \(p_1-p_2\).</li>
-        <li>(e) Interpret the interval. Does it suggest the reminders make a difference?</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <span class="tag tag-green">Your Turn &mdash; Answers</span>
-  <h2>Answers: CI for \(p_1-p_2\)</h2>
-  <p class="subtitle">Group 1 is text reminders and Group 2 is no reminders.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <div class="tag tag-blue">(a) Proportions</div>
-      <div class="formula-box">
-        \[
-          \hat{p}_1=\frac{50}{200}=0.25 \qquad \hat{p}_2=\frac{30}{200}=0.15 \qquad \hat{p}_1-\hat{p}_2=0.10
-        \]
-      </div>
-      <div class="tag tag-purple">(b) Cell Counts</div>
-      <div class="step-note">The counts are 50, 150, 30, and 170. All are at least 10, so the normal approximation is fine.</div>
-      <div class="tag tag-green">(c) Standard Error</div>
-      <div class="formula-box">
-        \[
-          SE=\sqrt{\frac{0.25(0.75)}{200}+\frac{0.15(0.85)}{200}}\approx 0.0397
-        \]
-      </div>
-    </div>
-    <div class="card card-green">
-      <div class="tag tag-amber">(d) Interval</div>
-      <div class="formula-box">
-        \[
-          0.10\pm 1.96(0.0397)=0.10\pm 0.078
-        \]
-      </div>
-      <div class="formula-box">
-        \[
-          (0.022,\ 0.178)
-        \]
-      </div>
-      <div class="tag tag-rose">(e) Interpretation</div>
-      <div class="callout">
-        We are \(95\%\) confident that the proportion still working out twice a week is between 2.2 and 17.8 percentage points higher with text reminders than without. The whole interval is above 0, so the reminders appear to help. Because members were randomly assigned, we can say the reminders <em>cause</em> the increase.
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
   <h2>Hypothesis Testing Uses a Pooled Proportion</h2>
   <p class="subtitle">Under the null hypothesis of no difference, both groups are treated as having the same population proportion.</p>
   <div class="grid-2">
@@ -791,10 +724,22 @@
 </div>
 
 <div class="slide">
-  <span class="tag tag-amber">Your Turn</span>
-  <h2>Your Turn: Two-Proportion Randomization</h2>
-  <p class="subtitle">Suppose group 1 has 18/30 successes and group 2 has 12/30. Click <strong>Run 1000</strong>, then answer: (a) State \(H_0\) and \(H_a\) for a two-tailed test. (b) What is the observed difference \(\hat{p}_1-\hat{p}_2\)? (c) What is your estimated p-value? (d) Is the difference real, or could it be from chance? Use \(\alpha=0.05\).</p>
-  <div id="sim-2prop"></div>
+  <h2>Example: Two-Proportion Randomization</h2>
+  <p class="subtitle">Group 1 has 18/30 successes and group 2 has 12/30. Click <strong>Run 1000</strong> to test whether the difference is real or could come from chance (\(\alpha=0.05\)).</p>
+  <div class="grid-2">
+    <div><div id="sim-2prop"></div></div>
+    <div class="card card-green">
+      <div class="tag tag-blue">Hypotheses</div>
+      <div class="formula-box" style="font-size:18px;">\(H_0:p_1-p_2=0 \qquad H_a:p_1-p_2\neq 0\)</div>
+      <div class="tag tag-purple">Observed Difference</div>
+      <div class="formula-box" style="font-size:18px;">\(\hat{p}_1-\hat{p}_2=0.60-0.40=0.20\)</div>
+      <div class="tag tag-amber">p-Value</div>
+      <div class="step-note">About 20% of the random reassignments give a difference at least 0.20 away from 0, so p-value \(\approx 0.20\) (yours will vary slightly).</div>
+      <div class="callout" style="margin-top:8px;">
+        <strong>Conclusion:</strong> \(0.20 > 0.05\), so we do not reject \(H_0\). A difference of 0.20 could easily come from chance with groups this small.
+      </div>
+    </div>
+  </div>
   <script>
     StatKey.create('#sim-2prop', {
       mode: 'two-prop-rand',
@@ -802,41 +747,6 @@
       direction: 'two-tailed',
     });
   </script>
-</div>
-
-<div class="slide">
-  <span class="tag tag-green">Your Turn &mdash; Answers</span>
-  <h2>Answers: Two-Proportion Randomization</h2>
-  <p class="subtitle">Your simulated p-value will vary a little because every set of 1000 randomizations is different.</p>
-  <div class="grid-2">
-    <div class="card card-accent">
-      <div class="tag tag-blue">(a) Hypotheses</div>
-      <div class="formula-box">
-        \[
-          H_0:p_1-p_2=0 \qquad H_a:p_1-p_2\neq 0
-        \]
-      </div>
-      <div class="tag tag-purple">(b) Observed Difference</div>
-      <div class="formula-box">
-        \[
-          \hat{p}_1-\hat{p}_2=\frac{18}{30}-\frac{12}{30}=0.60-0.40=0.20
-        \]
-      </div>
-    </div>
-    <div class="card card-green">
-      <div class="tag tag-amber">(c) p-Value</div>
-      <div class="formula-box">
-        \[
-          \text{p-value}\approx 0.20
-        \]
-      </div>
-      <div class="step-note">About 20% of the random reassignments give a difference at least 0.20 away from 0 in either direction.</div>
-      <div class="tag tag-rose">(d) Conclusion</div>
-      <div class="callout">
-        Since \(0.20 > 0.05\), we do not reject \(H_0\). A difference of 0.20 could easily come from chance alone with groups this small, so there is not enough evidence that the two proportions differ.
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="slide">

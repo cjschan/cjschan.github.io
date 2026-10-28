@@ -286,26 +286,7 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="slide">
-  <h2>Sample Size and Significance: See It</h2>
-  <p class="subtitle">Is a coin biased toward heads? Test \(H_0: p = 0.5\) vs. \(H_a: p &gt; 0.5\). Both samples have the <strong>same</strong> \(\hat{p} = 0.55\). Click <strong>Run 1000</strong> on each and compare the p-values.</p>
-  <div class="grid-2">
-    <div>
-      <span class="tag tag-amber">55 heads in 100 flips</span>
-      <div id="sim-n100"></div>
-    </div>
-    <div>
-      <span class="tag tag-green">550 heads in 1000 flips</span>
-      <div id="sim-n1000"></div>
-    </div>
-  </div>
-  <script>
-    StatKey.create('#sim-n100', { mode: 'one-prop-rand', n: 100, x: 55, p0: 0.5, direction: 'right' });
-    StatKey.create('#sim-n1000', { mode: 'one-prop-rand', n: 1000, x: 550, p0: 0.5, direction: 'right' });
-  </script>
-  <p class="step-note">With \(n = 100\), the p-value is about 0.18: not significant. With \(n = 1000\), the p-value is about 0.001 or less: very significant. The effect (55% heads) is identical; only the sample size changed. (Your simulated values will vary slightly from run to run.)</p>
+  <p class="step-note">Same effect, different \(n\): testing \(H_0: p = 0.5\) vs. \(H_a: p &gt; 0.5\) with \(\hat{p} = 0.55\) gives p-value \(\approx 0.18\) for 55 heads in 100 flips, but \(\approx 0.0009\) for 550 heads in 1000 flips.</p>
 </div>
 
 <div class="slide">
