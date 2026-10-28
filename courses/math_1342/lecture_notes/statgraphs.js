@@ -549,9 +549,9 @@ const StatGraphs = (() => {
     const xMax = opts.xMax !== undefined ? opts.xMax : mean + 4 * sd;
     const fr = frame(Object.assign({ height: 240 }, opts));
     const pdf = (x) => Math.exp(-((x - mean) ** 2) / (2 * sd * sd)) / (sd * Math.sqrt(2 * Math.PI));
-    const yMax = opts.yMax !== undefined ? opts.yMax : pdf(mean) * 1.05;  // set yMax to zoom in on a tail
+    const yMax = pdf(mean) * 1.05;
     const sx = (v) => fr.PL + ((v - xMin) / (xMax - xMin)) * fr.plotW;
-    const sy = (v) => fr.PT + fr.plotH - (Math.min(v, yMax) / yMax) * fr.plotH;
+    const sy = (v) => fr.PT + fr.plotH - (v / yMax) * fr.plotH;
 
     // Shading regions (array of {from, to, color})
     if (opts.shade) {
@@ -566,7 +566,7 @@ const StatGraphs = (() => {
         }
         path += ` L ${sx(b)} ${sy(0)} Z`;
         fr.svg.appendChild(el('path', {
-          d: path, fill: region.color || COLORS.amber, opacity: region.opacity || 0.35,
+          d: path, fill: region.color || COLORS.amber, opacity: 0.35,
         }));
       }
     }
@@ -599,14 +599,9 @@ const StatGraphs = (() => {
     }
 
     // X axis with mean and ±1, ±2, ±3 SD ticks (opts.tickLabels replaces the numbers, e.g. μ − σ)
-    const ticks = [], labels = [];
-    for (let k = -3; k <= 3; k++) {
-      const t = mean + k * sd;
-      if (t < xMin - 1e-9 || t > xMax + 1e-9) continue;
-      ticks.push(t);
-      if (opts.tickLabels) labels.push(opts.tickLabels[k + 3]);
-    }
-    axisX(fr.svg, sx, fr, ticks, opts.xLabel, opts.tickLabels && labels);
+    const ticks = [];
+    for (let k = -3; k <= 3; k++) ticks.push(mean + k * sd);
+    axisX(fr.svg, sx, fr, ticks, opts.xLabel, opts.tickLabels);
     host(target).innerHTML = ''; host(target).appendChild(fr.svg);
   }
 

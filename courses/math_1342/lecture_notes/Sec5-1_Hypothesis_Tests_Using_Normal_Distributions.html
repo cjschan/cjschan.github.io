@@ -8,7 +8,7 @@
   window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<script src="statgraphs.js?v=4"></script>
+<script src="statgraphs.js?v=3"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -110,8 +110,6 @@
       <span class="tag tag-green">New (Section 5.1)</span>
       <h3>Find the area in the tail</h3>
       <div id="chart-5-1-area"></div>
-      <div class="step-note" style="margin:8px 0 4px;">Zoomed in on the left tail:</div>
-      <div id="chart-5-1-zoom"></div>
       <div class="step-note" style="margin-top:8px;">The dotplot is bell-shaped, so replace it with the smooth curve \(N(0,\ 0.056)\). The shaded area left of \(-0.131\) is the p-value \(\approx 0.0096\).</div>
     </div>
   </div>
@@ -126,17 +124,10 @@
       width: 580, height: 280,
     });
     StatGraphs.normalCurve('#chart-5-1-area', {
-      mean: 0, sd: 0.056, xMin: -0.25, xMax: 0.25, width: 580, height: 150,
-      tickLabels: ['−0.168', '−0.112', '−0.056', '0', '0.056', '0.112', '0.168'],
-      shade: [{ from: -0.25, to: -0.131, color: '#fb7185', opacity: 0.7 }],
-      markers: [{ x: -0.131 }],
-    });
-    // Same curve, x-axis cut to the left tail and y-axis stretched so the shaded area is visible
-    StatGraphs.normalCurve('#chart-5-1-zoom', {
-      mean: 0, sd: 0.056, xMin: -0.22, xMax: -0.09, yMax: 2.1, width: 580, height: 150, padBottom: 44,
+      mean: 0, sd: 0.056, xMin: -0.25, xMax: 0.25, width: 580, height: 280, padBottom: 50,
       tickLabels: ['−0.168', '−0.112', '−0.056', '0', '0.056', '0.112', '0.168'],
       xLabel: 'Difference in proportions (exposed − unexposed)',
-      shade: [{ from: -0.22, to: -0.131, color: '#fb7185', opacity: 0.7 }],
+      shade: [{ from: -0.25, to: -0.131, color: '#fb7185' }],
       markers: [{ x: -0.131, label: 'observed = −0.131' }],
     });
   </script>
