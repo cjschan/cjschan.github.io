@@ -12,6 +12,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<script src="statkey.js?v=5"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -173,6 +174,31 @@
 </div>
 
 <div class="slide">
+  <h2>Simulate It: Could Paul Just Be Lucky?</h2>
+  <p class="subtitle">Pretend Paul is a fair coin: each "prediction" is right with probability 0.5. Simulate many 8-game World Cups and see how often pure luck gets <span class="accent">8 out of 8</span>.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>How to read the simulator</h3>
+      <ul class="small">
+        <li>Each dot is one imaginary octopus guessing 8 games at random; we record its proportion correct.</li>
+        <li>Click <strong>Generate One</strong> a few times, then <strong>Run 1000</strong>.</li>
+        <li>The gold line marks Paul's result: \( \hat{p} = 8/8 = 1.00 \).</li>
+        <li>The readout counts how often chance alone did <strong>at least as well</strong> as Paul.</li>
+      </ul>
+      <div class="step-note">Expect only about 4 out of 1000 (since \(1/256 \approx 0.0039\)) &mdash; your count will vary a little from run to run. Rare for one octopus, but with hundreds of animals guessing, someone gets lucky.</div>
+    </div>
+    <div id="sim-paul"></div>
+  </div>
+  <script>
+    StatKey.create('#sim-paul', {
+      mode: 'one-prop-rand',
+      n: 8, x: 8, p0: 0.5,
+      direction: 'right',
+    });
+  </script>
+</div>
+
+<div class="slide">
   <h2>The Most Important Habit This Semester</h2>
   <p class="subtitle">When you see an impressive result, don't just ask how striking it is.</p>
   <div class="grid-2">
@@ -270,6 +296,12 @@
     </div>
   </div>
   <div class="callout">Right there, from your own ages, you see why statisticians don't trust a single number to describe a group.</div>
+  <div class="card card-green" style="margin-top:14px;">
+    <h3>Check it with technology: StatKey</h3>
+    <ul class="small">
+      <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Descriptive Statistics and Graphs</strong>, choose <strong>One Quantitative Variable</strong>. <strong>2.</strong> Click <strong>Edit Data</strong>, paste the 22 ages (one per line), and click <strong>OK</strong>. <strong>3.</strong> Read off the summary: mean \(\approx 27.8\), median \(= 22.5\), standard deviation \(\approx 14.2\).</li>
+    </ul>
+  </div>
 </div>
 
 <div class="slide">

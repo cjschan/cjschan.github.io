@@ -154,6 +154,9 @@
     StatGraphs.histogram('#chart-2-2-hist', exam, { xLabel: 'score', width: 380, height: 220 });
     StatGraphs.dotplot('#chart-2-2-dot', exam, { xLabel: 'score', width: 380, height: 220 });
   </script>
+  <div class="callout">
+    <strong>Make these graphs yourself in StatKey:</strong> <strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Descriptive Statistics and Graphs</strong>, choose <strong>One Quantitative Variable</strong>. <strong>2.</strong> Click <strong>Edit Data</strong>, paste the 60 scores (one per line), and click <strong>OK</strong>. <strong>3.</strong> Toggle between the dotplot and histogram views, and read the summary statistics: mean \(\approx 84.8\), median \(= 85\), standard deviation \(\approx 8.4\).
+  </div>
 </div>
 
 <div class="slide">
@@ -292,6 +295,47 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Mean vs. Median with an Outlier</h2>
+  <p class="subtitle">Eight students reported their one-way commute time to campus, in minutes.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Data</h3>
+      <div class="formula-box" style="font-size:20px;">22, &nbsp; 15, &nbsp; 90, &nbsp; 12, &nbsp; 25, &nbsp; 20, &nbsp; 30, &nbsp; 18</div>
+      <div class="step-note">One student commutes from another city, 90 minutes away.</div>
+    </div>
+    <div class="card card-amber">
+      <h3>Questions</h3>
+      <ul class="small">
+        <li><strong>(a)</strong> Find the mean commute time.</li>
+        <li><strong>(b)</strong> Find the median commute time.</li>
+        <li><strong>(c)</strong> Remove the 90-minute commute. Find the new mean and median.</li>
+        <li><strong>(d)</strong> Which measure changed more? Which one better describes a "typical" commute for the full class?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Mean vs. Median with an Outlier</h2>
+  <p class="subtitle">Ordered data: 12, 15, 18, 20, 22, 25, 30, 90 &nbsp;(\(n = 8\))</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>With the outlier</h3>
+      <div class="step-note"><strong>(a)</strong> \(\bar{x} = \dfrac{12+15+18+20+22+25+30+90}{8} = \dfrac{232}{8} = 29\) minutes</div>
+      <div class="step-note"><strong>(b)</strong> \(n\) is even, so average the 4th and 5th values: \(m = \dfrac{20+22}{2} = 21\) minutes</div>
+    </div>
+    <div class="card card-green">
+      <h3>Without the outlier</h3>
+      <div class="step-note"><strong>(c)</strong> \(\bar{x} = \dfrac{142}{7} \approx 20.3\) minutes; with \(n = 7\), the median is the 4th value, \(m = 20\) minutes.</div>
+      <div class="step-note"><strong>(d)</strong> The mean dropped by about 8.7 minutes; the median moved only 1 minute. The median (21) better describes a typical commute &mdash; 6 of the 8 students commute less than the mean of 29 minutes, so the mean overstates a typical commute.</div>
+    </div>
+  </div>
+  <div class="callout">The single 90 pulls the mean to the right (mean 29 &gt; median 21), just as in a right-skewed distribution. The median is <strong>resistant</strong>; the mean is not.</div>
+</div>
+
+<div class="slide">
   <h2>A First Look at Spread: Standard Deviation</h2>
   <p class="subtitle">Two distributions can share the same center but look completely different. The standard deviation measures how spread out the data are around the mean.</p>
   <div class="grid-2">
@@ -380,6 +424,58 @@
         <h3>Step 3: Divide the width by 4</h3>
         <div class="formula-box" style="font-size:20px;">\[ s \approx \frac{76 - 60}{4} = \frac{16}{4} = 4 \]</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Estimate SD from a Dotplot</h2>
+  <p class="subtitle">The dotplot shows the resting heart rates (beats per minute) of 85 adults. Estimate without calculating.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Resting heart rate (bpm)</h3>
+      <div id="chart-2-2-yt-dot"></div>
+    </div>
+    <div class="card card-amber">
+      <h3>Questions</h3>
+      <ul class="small">
+        <li><strong>(a)</strong> Is the distribution roughly symmetric and bell-shaped? Why does that matter here?</li>
+        <li><strong>(b)</strong> Estimate the mean \(\bar{x}\).</li>
+        <li><strong>(c)</strong> Find an interval that contains about the middle 95% of the dots.</li>
+        <li><strong>(d)</strong> Use your interval to estimate the standard deviation \(s\).</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const vals = [54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90];
+      const counts = [1, 2, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 2, 1];
+      const hr = vals.flatMap((v, i) => Array(counts[i]).fill(v));
+      StatGraphs.dotplot('#chart-2-2-yt-dot', hr, { xLabel: 'beats per minute', width: 440, height: 240, min: 52, max: 92 });
+    })();
+  </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Estimate SD from a Dotplot</h2>
+  <p class="subtitle">Same three steps as the worked example: balance point, bracket the middle 95%, divide by 4.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>(a)&ndash;(b) Shape and center</h3>
+      <ul class="small">
+        <li><strong>(a)</strong> Yes &mdash; it rises to a single peak and falls off evenly on both sides. The 95% rule only applies to bell-shaped data.</li>
+        <li><strong>(b)</strong> The peak and balance point are at about \(\bar{x} \approx 72\) bpm.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>(c)&ndash;(d) Spread</h3>
+      <ul class="small">
+        <li><strong>(c)</strong> Trim the couple of dots at each end (54 and 90): nearly all the rest lie between about <strong>56</strong> and <strong>88</strong>.</li>
+      </ul>
+      <div class="formula-box" style="font-size:20px;">\[ s \approx \frac{88 - 56}{4} = \frac{32}{4} = 8 \text{ bpm} \]</div>
+      <div class="step-note">For these 85 values the actual \(s \approx 8.1\) &mdash; the estimate is very close. A bracket like 58 to 86 gives \(s \approx 7\), also reasonable.</div>
     </div>
   </div>
 </div>

@@ -268,6 +268,52 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Probabilities from a Table</h2>
+  <p class="subtitle">200 students at a community college were classified by enrollment status and whether they hold a paying job. Pick one student at random.</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <table>
+        <tr><th></th><th>Job</th><th>No Job</th><th>Total</th></tr>
+        <tr><td>Full-Time</td><td>48</td><td>72</td><td>120</td></tr>
+        <tr><td>Part-Time</td><td>60</td><td>20</td><td>80</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>108</strong></td><td><strong>92</strong></td><td><strong>200</strong></td></tr>
+      </table>
+    </div>
+    <div class="card card-amber">
+      <h3>Find each probability</h3>
+      <ul class="small">
+        <li><strong>(a)</strong> \(P(\text{job})\)</li>
+        <li><strong>(b)</strong> \(P(\text{job or part-time})\), using the addition rule</li>
+        <li><strong>(c)</strong> \(P(\text{neither a job nor part-time})\), using the complement rule</li>
+        <li><strong>(d)</strong> \(P(\text{job} \mid \text{part-time})\)</li>
+        <li><strong>(e)</strong> \(P(\text{part-time} \mid \text{job})\). Is it the same as (d)?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Probabilities from a Table</h2>
+  <p class="subtitle">For "given" questions, the condition picks the row or column you divide by.</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>Addition and complement</h3>
+      <div class="step-note"><strong>(a)</strong> \(P(\text{job}) = \dfrac{108}{200} = 0.54\)</div>
+      <div class="step-note"><strong>(b)</strong> \(P(\text{job or PT}) = \dfrac{108}{200} + \dfrac{80}{200} - \dfrac{60}{200} = \dfrac{128}{200} = 0.64\)</div>
+      <div class="step-note"><strong>(c)</strong> \(1 - 0.64 = 0.36\). Check: full-time with no job is \(72/200 = 0.36\). &#10003;</div>
+    </div>
+    <div class="card card-accent">
+      <h3>Conditional probability</h3>
+      <div class="step-note"><strong>(d)</strong> Within the 80 part-time students: \(P(\text{job} \mid \text{PT}) = \dfrac{60}{80} = 0.75\)</div>
+      <div class="step-note"><strong>(e)</strong> Within the 108 students with jobs: \(P(\text{PT} \mid \text{job}) = \dfrac{60}{108} \approx 0.556\)</div>
+      <div class="step-note">Not the same: same numerator (60), different denominators.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>The Multiplication Rule and Independence</h2>
   <p class="subtitle">Finding the probability that two events both happen.</p>
   <div class="grid-2">
@@ -388,6 +434,51 @@
           \frac{4}{52} \times \frac{3}{51} = \frac{12}{2652} \approx 0.0045
         \]
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: With/Without Replacement &amp; Independence</h2>
+  <p class="subtitle">A bag holds 8 marbles: 5 red and 3 blue. You draw two marbles at random.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>With replacement</h3>
+      <div class="step-note">Draw a marble, put it back, mix, and draw again.</div>
+      <ul class="small">
+        <li><strong>(a)</strong> Find \(P(\text{both red})\).</li>
+        <li><strong>(c)</strong> Find \(P(\text{at least one blue})\). <em>Hint:</em> use the complement.</li>
+      </ul>
+    </div>
+    <div class="card card-rose">
+      <h3>Without replacement</h3>
+      <div class="step-note">Draw a marble, keep it out, and draw again.</div>
+      <ul class="small">
+        <li><strong>(b)</strong> Find \(P(\text{both red})\).</li>
+        <li><strong>(d)</strong> Are the two draws independent? Compare \(P(\text{2nd red} \mid \text{1st red})\) with \(P(\text{2nd red})\).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: With/Without Replacement &amp; Independence</h2>
+  <p class="subtitle">Replacing the marble keeps the draws independent; keeping it out changes the second draw.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>With replacement (independent)</h3>
+      <div class="step-note"><strong>(a)</strong></div>
+      <div class="formula-box" style="font-size:20px;">\[ P(\text{both red}) = \frac{5}{8} \times \frac{5}{8} = \frac{25}{64} \approx 0.391 \]</div>
+      <div class="step-note"><strong>(c)</strong> "At least one blue" is the complement of "both red":</div>
+      <div class="formula-box" style="font-size:20px;">\[ 1 - \frac{25}{64} = \frac{39}{64} \approx 0.609 \]</div>
+    </div>
+    <div class="card card-rose">
+      <h3>Without replacement (not independent)</h3>
+      <div class="step-note"><strong>(b)</strong> After one red is removed, 4 of the 7 left are red:</div>
+      <div class="formula-box" style="font-size:20px;">\[ P(\text{both red}) = \frac{5}{8} \times \frac{4}{7} = \frac{20}{56} \approx 0.357 \]</div>
+      <div class="step-note"><strong>(d)</strong> <strong>Not independent.</strong> \(P(\text{2nd red} \mid \text{1st red}) = 4/7 \approx 0.571\), but \(P(\text{2nd red}) = \tfrac{5}{8}\cdot\tfrac{4}{7} + \tfrac{3}{8}\cdot\tfrac{5}{7} = \tfrac{35}{56} = 0.625\). Knowing the first draw changes the probability for the second.</div>
     </div>
   </div>
 </div>
