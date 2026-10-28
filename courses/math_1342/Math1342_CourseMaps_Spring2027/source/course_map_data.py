@@ -66,7 +66,7 @@ def part(topic):     return f"Participation: {topic}"
 def proposed(topic): return f"Participation: {topic}"
 
 # Take-Home Quizzes: due date and the sections each quiz covers (from quizzes_spring2027/).
-# Every quiz has StatKey problems personalized by the last digit of the student's ACC ID.
+# Every quiz has StatKey problems.
 QUIZZES = {
     1: ("Mon Feb 8", "Intro, 1.1–1.3"), 2: ("Mon Feb 15", "2.1–2.3"), 3: ("Wed Feb 24", "2.4–2.5"),
     4: ("Mon Mar 8", "P.1, 3.1–3.2"), 5: ("Mon Mar 22", "3.3–3.4"), 6: ("Wed Mar 31", "4.1–4.3"),

@@ -8,7 +8,7 @@ Layout follows the Apodaca/Forsythe "Map Your Way to a Quality Course" handout.
 
 CHANGES FROM FALL 2026
   - 10 take-home quizzes instead of 8 (quizzes_spring2027/). Every section is on a quiz, and every quiz has StatKey
-    problems personalized by the last digit of the student's ACC ID, with a screenshot of the student's own run.
+    problems; students include a screenshot of their StatKey output.
   - 2.5 is taught over two days (Part 1 Wed Feb 17, Part 2 Mon Feb 22), matching the two 2.5 Interactive Lectures.
   - 4.4 and 4.5 are on separate days. Review: Putting It All Together is Mon May 10; the final is Wed May 12 – Fri May 14.
   - Test 3 opens Fri Apr 30, after the withdrawal deadline (Mon Apr 26).
