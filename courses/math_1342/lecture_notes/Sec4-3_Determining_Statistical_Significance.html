@@ -55,6 +55,7 @@
   .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
   .table-card table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15px; }
   .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
+  .table-card.tight th, .table-card.tight td { padding: 6px 12px; }
   .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
   .table-card td:first-child, .table-card th:first-child { text-align: left; }
   @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
@@ -193,8 +194,8 @@
       <p class="step-note">Use a 5% significance level: \(\alpha = 0.05\).</p>
     </div>
   </div>
-  <div class="card table-card" style="flex: none;">
-    <table>
+  <div class="card table-card tight" style="flex: none; padding: 12px 18px;">
+    <table style="margin-top: 0;">
       <tr><th>Test</th><th style="white-space: nowrap;">p-value</th><th>Decision</th><th>Conclusion in context</th></tr>
       <tr><td>(a) Mean resting metabolic rate is <strong>higher</strong> after treatment</td><td>0.013</td><td style="color: var(--green); font-weight: 700;">Reject \(H_0\)</td><td>Evidence that mean resting metabolic rate is higher after treatment</td></tr>
       <tr><td>(b) Mean body mass is <strong>lower</strong> after treatment</td><td>0.007</td><td style="color: var(--green); font-weight: 700;">Reject \(H_0\)</td><td>Evidence that mean body mass is lower after treatment</td></tr>
@@ -202,7 +203,7 @@
       <tr><td>(d) Mean food intake <strong>changes</strong> after treatment</td><td>0.035</td><td style="color: var(--green); font-weight: 700;">Reject \(H_0\)</td><td>Evidence that mean food intake changes after treatment</td></tr>
     </table>
   </div>
-  <div class="callout">
+  <div class="callout" style="margin-top: 12px; padding: 12px 20px;">
     <strong>(e) At a 1% level</strong> (\(\alpha = 0.01\)), only test (b) is significant, since \(0.007 < 0.01\). Tests (a) and (d) are significant at 5% but not at 1%.
   </div>
 </div>
