@@ -41,7 +41,7 @@ HOW TO READ A PAGE (template revised Oct 27, 2026 to match the user's Week 2 sam
                            (updated Oct 28, 2026 from the decks).
   Take-Home Quizzes        listed in EVERY row whose objectives the quiz covers, in the week that teaches
                            them (e.g. Quiz 4, covering 3.1-3.3, appears in Week 6 row 2 and both Week 7
-                           rows), followed by "(all objectives)" or "(objectives 9-12)" in gray.
+                           rows), followed by "(all objectives)" or "(objectives 8-11)" in gray.
                            Coverage comes from quizzes_fall2026/; due dates from Blackboard.
   "Also this week"         a line under the table for test sittings and retakes that do not assess that
                            week's objectives. There is no catch-all row.
@@ -77,7 +77,7 @@ Course-level
 - CLO 2 is only addressed in Weeks 1, 3 and 4; CLO 7 only in Weeks 4, 5 and 15.
 Sections no Take-Home Quiz covers (assessed only by homework and tests)
 - P.1 (Wk 6), 3.4 (Wk 8), 5.1 (Wk 11), 6.4 (Wk 13), 7.2 (Wk 14), 8.1 and 9.1 (Wk 15).
-- Week 4 objectives 7-8 (side-by-side boxplots, difference in means): not on Quiz 2 or Quiz 3.
+- Week 4 objectives 6-7 (side-by-side boxplots, difference in means): not on Quiz 2 or Quiz 3.
 Rows missing a component
 - No Interactive Lecture: 2.4 (Wk 4), 3.2 and 3.3 (Wk 7) - Blackboard has only e-Text and Slides.
 - No Online Homework: Intro (Wk 1, row 1).
