@@ -59,6 +59,43 @@
 </div>
 
 <div class="slide">
+  <h2>Two Ways to Find a p-Value</h2>
+  <p class="subtitle">Malaria and mosquitoes: \(H_0: p_E - p_U = 0\) vs. \(H_a: p_E - p_U &lt; 0\), observed statistic \(= -0.131\). The p-value is the proportion of the distribution at or beyond the observed statistic.</p>
+  <div class="grid-2" style="flex:none;">
+    <div class="card card-accent">
+      <span class="tag tag-blue">So far (Chapter 4)</span>
+      <h3>Count the dots in the tail</h3>
+      <div id="chart-5-1-rand"></div>
+      <div class="step-note" style="margin-top:8px;">10 of the 1000 randomization statistics are at or below \(-0.131\), so p-value \(= 10/1000 = 0.010\).</div>
+    </div>
+    <div class="card card-green">
+      <span class="tag tag-green">New (Section 5.1)</span>
+      <h3>Find the area in the tail</h3>
+      <div id="chart-5-1-area"></div>
+      <div class="step-note" style="margin-top:8px;">The dotplot is bell-shaped, so replace it with the smooth curve \(N(0,\ 0.056)\). The shaded area left of \(-0.131\) is the p-value \(\approx 0.0096\).</div>
+    </div>
+  </div>
+  <div class="callout">Both methods give almost the same p-value. The normal curve does not need thousands of simulated samples; it only needs the null value and the standard error.</div>
+  <script>
+    StatGraphs.samplingDotplot('#chart-5-1-rand', {
+      centers: [-0.19, -0.18, -0.17, -0.16, -0.15, -0.14, -0.13, -0.12, -0.11, -0.10, -0.09, -0.08, -0.07, -0.06, -0.05, -0.04, -0.03, -0.02, -0.01, 0.00, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10, 0.11, 0.12, 0.13, 0.14, 0.15, 0.16],
+      counts: [1, 1, 1, 1, 4, 2, 5, 5, 10, 14, 20, 25, 30, 37, 53, 57, 62, 64, 64, 70, 66, 69, 57, 67, 51, 48, 27, 28, 18, 15, 8, 7, 4, 5, 3, 1],
+      samples: 1000, mean: 0.001, stdError: 0.056, statName: 'std. error', decimals: 3,
+      xMin: -0.25, xMax: 0.25, xStep: 0.05, xLabel: 'Difference in proportions (exposed − unexposed)',
+      highlightTo: -0.131, vline: -0.131, vlineLabel: '−0.131',
+      width: 580, height: 280,
+    });
+    StatGraphs.normalCurve('#chart-5-1-area', {
+      mean: 0, sd: 0.056, xMin: -0.25, xMax: 0.25, width: 580, height: 280, padBottom: 50,
+      tickLabels: ['−0.168', '−0.112', '−0.056', '0', '0.056', '0.112', '0.168'],
+      xLabel: 'Difference in proportions (exposed − unexposed)',
+      shade: [{ from: -0.25, to: -0.131, color: '#fb7185' }],
+      markers: [{ x: -0.131, label: 'observed = −0.131' }],
+    });
+  </script>
+</div>
+
+<div class="slide">
   <h2>Normal Distribution</h2>
   <p class="subtitle">The symmetric, bell-shaped curve that appears in nearly all sampling distributions.</p>
   <div class="grid-2" style="flex:none;">
