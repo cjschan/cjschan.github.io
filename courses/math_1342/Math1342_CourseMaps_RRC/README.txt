@@ -19,7 +19,7 @@ FILES
                                  into Blackboard (opens in Google Docs or Word). Rebuild with
                                  /usr/bin/python3 source/build_weekly_todo.py (python-docx is installed there, not in anaconda) after editing course_map_data.py.
   source/course_map_data.py      ALL content (Course Level Objectives, module objectives, materials,
-                                 activities, assessments, MO codes). Edit this file.
+                                 activities, assessments, rows). Edit this file.
   source/build_course_maps.py    renders HTML and prints PDFs with Google Chrome (headless)
   source/html/                   the generated HTML pages
 
@@ -29,23 +29,25 @@ HOW TO REBUILD AFTER EDITING
 (The script picks the largest font size that fits every week on one page and uses it for all pages.
  Requires Google Chrome in /Applications and pdfinfo from poppler; both are installed.)
 
-HOW TO READ A PAGE (template revised Oct 6, 2026)
+HOW TO READ A PAGE (template revised Oct 28, 2026 to the same row layout as the TTh/DIL maps)
+  Header: "Week N", then "Course Level Objectives:" with only the CLOs used that week.
   Columns: Module Objectives | Instructional Materials | Learning Activities | Assessments | Tools.
-  Module Objectives        written from what the slides actually teach; each ends with the Course Level
-                           Objective(s) it supports, e.g. (CLO 2, CLO 7). The 8 CLOs (revised Oct 6, 2026)
-                           match the syllabus Student Learning Outcomes; the ones used that week are
-                           spelled out under the table.
-  Rows                     objectives that share a learning material sit in one row, with the materials,
-                           activities, assessments and tools that align to them.
-  "Items that cover ..."   items aligned to objectives in more than one row; their objectives are in
-                           parentheses.
-  "Course resources ..."   items that do not teach or assess an objective of that week (e.g., Test 1 sits
-                           in the Week 6 module but covers Weeks 1–5). Those are the gaps/misalignments
-                           the handout asks you to look for.
-  Tools                    derived from each item's name: e-Text and Online Homework -> WileyPLUS;
-                           Interactive Lecture -> WileyPLUS + StatKey; Slides -> Blackboard; quizzes -> Assignment Tool in Blackboard;
-                           tests -> Assessment Tool in Blackboard + Respondus; Kahoot!, StatKey; other
-                           Participation -> LIVE_TOOL in course_map_data.py (None = no tool listed).
+  Module Objectives        one Bloom's-verb outcome each, numbered across the week, each ending with its
+                           CLO(s), e.g. (CLO 2, CLO 7).
+  Rows                     one row per section (rows are set explicitly in course_map_data.py), with the
+                           materials, activities, assessments and tools that align to that row.
+  Your Turn                each slide deck has one Your Turn; it is named in that section's Learning Activities.
+  Take-Home Quizzes        listed in every row whose objectives the quiz covers (coverage from quizzes_fall2026/),
+                           followed by "(all objectives)" or "(objectives 3-6)" in gray.
+  Tests                    Test N, Test N Study Guide and Practice Test N are listed in every row whose objectives
+                           the test covers (Test 1: Weeks 1-5, Test 2: Weeks 6-9, Test 3: Weeks 10-13).
+  "Also this week"         a line under the table for test sittings, retakes and the course evaluation, which do
+                           not assess that week's objectives (Test 1 in Week 6, Test 2 in Week 10).
+  Tools                    e-Text, Online Homework -> WileyPLUS; Interactive Lecture -> WileyPLUS + StatKey;
+                           Slides, quizzes, study guides -> Blackboard; tests -> Blackboard + Respondus; Kahoot!;
+                           StatKey; other Participation -> LIVE_TOOL in course_map_data.py (None = no tool listed).
+  Font size                one size for every page (the largest that fits); Week 10 (three sections) only fits
+                           below 9pt, so it gets its own smaller size.
 
 WEEK GROUPING (follows the Blackboard outline and the MW syllabus)
   W1 Intro, 1.1 | W2 1.2, 1.3 | W3 2.1 (Labor Day Mon) | W4 2.2, 2.3 | W5 2.4, 2.5 | W6 P.1, 3.1
@@ -54,8 +56,8 @@ WEEK GROUPING (follows the Blackboard outline and the MW syllabus)
 
 RESOURCE NAMES (new Blackboard convention, applied to every week)
   e-Text: x.x Title | Interactive Lecture: x.x Title | Slides: x.x Title | Online Homework: x.x Title
-  Participation: Topic | Take-Home Quiz N (Monday due dates; Quiz 1 is Wed Sep 9) | Practice Test N,
-  Test N, Test N Retake, Final Exam
+  Participation: Topic | Take-Home Quiz N (Monday due dates; Quiz 1 is Wed Sep 9) | Test N,
+  Test N Study Guide, Practice Test N, Test N Retake, Final Exam
 
 Blackboard (course _970761_1) vs. MW syllabus and maps, as read on Oct 8, 2026:
 - Weeks 1-5 and 9-15 match the maps. Weeks 9-16 are still hidden from students.

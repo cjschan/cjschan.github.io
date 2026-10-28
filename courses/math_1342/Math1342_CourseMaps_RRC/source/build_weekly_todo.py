@@ -41,7 +41,16 @@ def split_name(text):
     return (text[:m.start()], text[m.start():]) if m else (text, "")
 
 def clean(text):
-    return re.sub(r" \(Week \d+ objectives\)", "", text)
+    return re.sub(r" \((?:all objectives|objectives? [^()]+)\)$", "", text)
+
+def items(w, kind):
+    """One week's items of a kind, in row order, each listed once."""
+    out = []
+    for r in w["rows"]:
+        for text in r[kind]:
+            if text not in out:
+                out.append(text)
+    return out
 
 def bullet(doc, text, prefix=None):
     p = doc.add_paragraph(style="List Bullet")
@@ -73,19 +82,26 @@ def main():
     doc.add_paragraph("Each week has three parts: read and watch the materials, take part in the class "
                       "activities, and complete the assignments by their due dates. All times are 11:59 PM "
                       "unless noted.")
+    # Quizzes and test items sit in every week whose objectives they cover; students see each once, in the last of those weeks.
+    last_week = {clean(t): w["num"] for w in D.WEEKS for t in items(w, "assessments")}
+    # A test that sits on an "also" line (the week it happens) is listed there instead of in its last row week.
+    tests_in_also = {m.group(1) for w in D.WEEKS for a in w["also"] for m in [re.match(r"Test (\d+) –", a)] if m}
     for w in D.WEEKS:
         doc.add_heading(f"Week {w['num']}: {w['title']} ({w['dates']})", level=1)
         p = doc.add_paragraph()
         p.add_run("Topics: ").bold = True
         p.add_run("; ".join(w["sections"]))
         label(doc, "Read and watch")
-        for text, _ in w["materials"]:
+        for text in items(w, "materials"):
             bullet(doc, text, verb(text))
         label(doc, "Participate")
-        for text, _ in w["activities"]:
+        for text in items(w, "activities"):
             bullet(doc, text)
         label(doc, "Complete and submit")
-        for text, _ in w["assessments"]:
+        # Repeated items show only in their last week.
+        work = [t for t in items(w, "assessments") if last_week[clean(t)] == w["num"]
+                and not any(t.startswith(f"Test {n} (") for n in tests_in_also)]
+        for text in work + [a for a in w["also"] if a.startswith(ITEM_PREFIXES)]:
             bullet(doc, text)
     doc.save(OUT)
     print(f"Wrote {OUT}")
