@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1342 Quiz 9 — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../../lecture_notes/statgraphs.js?v=3"></script>
+<style>
+  :root { --primary:#38bdf8; --primary-light:#7dd3fc; --green:#34d399; --amber:#fbbf24; --bg:#0f172a; --card-bg:#1e293b; --text:#f1f5f9; --muted:#cbd5e1; --border:#475569; }
+  .quiz { max-width:860px; margin:40px auto; padding:36px 48px 60px; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.30); color:var(--text); font-family:'Work Sans',sans-serif; line-height:1.6; font-size:16px; }
+  .quiz .badge { display:inline-block; background:rgba(56,189,248,0.15); color:var(--primary); padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px; }
+  .quiz h1 { color:var(--text); border-bottom:3px solid var(--primary); padding-bottom:10px; margin:4px 0 6px; font-size:30px; font-weight:700; }
+  .quiz .version-tag { color:var(--green); font-size:13px; text-transform:uppercase; letter-spacing:0.8px; margin:0 0 12px; font-weight:600; }
+  .quiz .covers { color:var(--muted); font-size:14px; margin-bottom:18px; }
+  .quiz .total-pts { color:var(--amber); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:16px; }
+  .quiz .instructions { background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.20); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:14px 18px; margin:8px 0 22px; font-size:15px; }
+  .quiz .problem { border:1px solid var(--border); border-radius:10px; padding:16px 20px 14px; margin:16px 0; background:rgba(15,23,42,0.5); }
+  .quiz .problem h3 { margin:0 0 8px; color:var(--primary); font-size:15px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+  .quiz .problem h3 .pts { color:var(--amber); margin-left:8px; font-size:13px; }
+  .quiz .problem ol, .quiz .problem ul { padding-left:22px; margin:0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom:4px; }
+  .quiz .solution { border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.07); border-radius:8px; padding:12px 16px; margin-top:12px; }
+  .quiz .solution::before { content:'Solution'; display:block; font-weight:700; color:var(--green); font-size:11px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; }
+  .quiz .chart { margin:10px 0; }
+  .quiz .chart > div { background:#1e293b; border:1px solid var(--border); border-radius:8px; padding:10px; }
+  .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
+  .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+  @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
+  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; }
+  .quiz table.dtab th, .quiz table.dtab td { border:1px solid var(--border); padding:4px 10px; text-align:left; vertical-align:top; }
+  .quiz table.dtab th { color:var(--primary); background:rgba(56,189,248,0.08); }
+  .quiz .sk { display:inline-block; background:rgba(251,191,36,0.15); color:var(--amber); padding:1px 8px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:0.6px; margin-left:6px; vertical-align:middle; }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav><ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul></nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 9</span>
+<h1>Inference for Means</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections 6.2, 6.4, 6.5</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+<p><b>StatKey problems.</b> Problems marked <span class="sk">STATKEY</span> are done in <a href="https://www.lock5stat.com/StatKey/" target="_blank">StatKey (lock5stat.com/StatKey)</a>. Let <b>D</b> = the <b>last digit of your ACC student ID</b>, and use the row of each table that matches your D. For every StatKey problem, upload a screenshot of <i>your own</i> StatKey run that shows the graph and the summary panel (number of samples, mean, standard error, and any tail or percentile values you used). The numbers you report must match your screenshot. Answers that do not match your D or your screenshot receive no credit.</p>
+</div>
+
+<p class="total-pts">Total: 10 points</p>
+<div class="problem">
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>For each design, decide whether you should use a <b>paired</b> or an <b>independent two-sample</b> approach, and explain why. <i>(1 pt each)</i></p><ol type='a'><li>25 students take a statistics pretest in January and the same test again in May.</li><li>Commute times of 40 students at RRC are compared with commute times of 40 different students at Highland.</li></ol>
+<div class="solution"><p>(a) Paired &mdash; each student is measured twice, so the two scores come in natural pairs. (b) Independent &mdash; the two samples are different people with no pairing.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>A random sample of n ACC students reported their nightly sleep. Is the mean different from 7 hours?</p><table class='dtab'><tr><th>D</th><th>n</th><th>\(\bar{x}\) (hours)</th><th>s (hours)</th></tr><tr><td>0</td><td>15</td><td>6.15</td><td>1.4</td></tr><tr><td>1</td><td>18</td><td>6.25</td><td>1.45</td></tr><tr><td>2</td><td>21</td><td>6.35</td><td>1.5</td></tr><tr><td>3</td><td>24</td><td>6.45</td><td>1.55</td></tr><tr><td>4</td><td>27</td><td>6.55</td><td>1.6</td></tr><tr><td>5</td><td>30</td><td>6.65</td><td>1.65</td></tr><tr><td>6</td><td>33</td><td>6.75</td><td>1.7</td></tr><tr><td>7</td><td>36</td><td>6.85</td><td>1.75</td></tr><tr><td>8</td><td>39</td><td>6.95</td><td>1.8</td></tr><tr><td>9</td><td>42</td><td>7.05</td><td>1.85</td></tr></table><ol type='a'><li>Use <b>Theoretical Distributions &rarr; t</b> with df = n &minus; 1 to find \(t^*\) for 95% confidence, and construct a 95% CI for \(\mu\). <i>(1.5 pts)</i></li><li>Test \(H_0: \mu = 7\) vs. \(H_a: \mu \ne 7\): compute the t-statistic, find the p-value in StatKey, and give the conclusion at \(\alpha = 0.05\). <i>(1.5 pts)</i></li></ol>
+<div class="solution"><table class='dtab'><tr><th>D</th><th>df</th><th>\(t^*\)</th><th>95% CI</th><th>t</th><th>p-value</th></tr><tr><td>0</td><td>14</td><td>2.145</td><td>5.37 to 6.93</td><td>-2.35</td><td>0.0339</td></tr><tr><td>1</td><td>17</td><td>2.110</td><td>5.53 to 6.97</td><td>-2.19</td><td>0.0424</td></tr><tr><td>2</td><td>20</td><td>2.086</td><td>5.67 to 7.03</td><td>-1.99</td><td>0.0609</td></tr><tr><td>3</td><td>23</td><td>2.069</td><td>5.80 to 7.10</td><td>-1.74</td><td>0.0955</td></tr><tr><td>4</td><td>26</td><td>2.056</td><td>5.92 to 7.18</td><td>-1.46</td><td>0.1559</td></tr><tr><td>5</td><td>29</td><td>2.045</td><td>6.03 to 7.27</td><td>-1.16</td><td>0.2548</td></tr><tr><td>6</td><td>32</td><td>2.037</td><td>6.15 to 7.35</td><td>-0.84</td><td>0.4045</td></tr><tr><td>7</td><td>35</td><td>2.030</td><td>6.26 to 7.44</td><td>-0.51</td><td>0.6103</td></tr><tr><td>8</td><td>38</td><td>2.024</td><td>6.37 to 7.53</td><td>-0.17</td><td>0.8632</td></tr><tr><td>9</td><td>41</td><td>2.020</td><td>6.47 to 7.63</td><td>0.18</td><td>0.8618</td></tr></table><p>Accept \(t^*\) and p-values to within rounding. Reject \(H_0\) when the p-value &lt; 0.05; the CI should exclude 7 exactly when the test rejects.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 3 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>Exam scores were compared for students in sections that used weekly online quizzes (Q) and sections that did not (N). Summary statistics (n, \(\bar{x}\), s):</p><table class='dtab'><tr><th>D</th><th>Quizzes: n, \(\bar{x}\), s</th><th>No quizzes: n, \(\bar{x}\), s</th></tr><tr><td>0</td><td>20, 78.0, 9.0</td><td>18, 74.5, 10.0</td></tr><tr><td>1</td><td>21, 78.0, 9.0</td><td>19, 74.1, 10.2</td></tr><tr><td>2</td><td>22, 78.0, 9.0</td><td>20, 73.7, 10.4</td></tr><tr><td>3</td><td>23, 78.0, 9.0</td><td>21, 73.3, 10.6</td></tr><tr><td>4</td><td>24, 78.0, 9.0</td><td>22, 72.9, 10.8</td></tr><tr><td>5</td><td>25, 78.0, 9.0</td><td>23, 72.5, 11.0</td></tr><tr><td>6</td><td>26, 78.0, 9.0</td><td>24, 72.1, 11.2</td></tr><tr><td>7</td><td>27, 78.0, 9.0</td><td>25, 71.7, 11.4</td></tr><tr><td>8</td><td>28, 78.0, 9.0</td><td>26, 71.3, 11.6</td></tr><tr><td>9</td><td>29, 78.0, 9.0</td><td>27, 70.9, 11.8</td></tr></table><ol type='a'><li>Test \(H_0: \mu_Q = \mu_N\) vs. \(H_a: \mu_Q > \mu_N\). Compute SE and the t-statistic, use df = the smaller n &minus; 1, and find the p-value with StatKey&rsquo;s t distribution. <i>(2 pts)</i></li><li>Construct a 95% CI for \(\mu_Q - \mu_N\) and state your conclusion in context. <i>(1 pt)</i></li></ol>
+<div class="solution"><table class='dtab'><tr><th>D</th><th>\(\bar{x}_Q-\bar{x}_N\)</th><th>SE</th><th>df</th><th>t</th><th>p-value (right tail)</th><th>95% CI</th></tr><tr><td>0</td><td>3.5</td><td>3.099</td><td>17</td><td>1.13</td><td>0.1372</td><td>-3.04 to 10.04</td></tr><tr><td>1</td><td>3.9</td><td>3.055</td><td>18</td><td>1.28</td><td>0.1090</td><td>-2.52 to 10.32</td></tr><tr><td>2</td><td>4.3</td><td>3.015</td><td>19</td><td>1.43</td><td>0.0850</td><td>-2.01 to 10.61</td></tr><tr><td>3</td><td>4.7</td><td>2.979</td><td>20</td><td>1.58</td><td>0.0651</td><td>-1.51 to 10.91</td></tr><tr><td>4</td><td>5.1</td><td>2.946</td><td>21</td><td>1.73</td><td>0.0490</td><td>-1.03 to 11.23</td></tr><tr><td>5</td><td>5.5</td><td>2.916</td><td>22</td><td>1.89</td><td>0.0363</td><td>-0.55 to 11.55</td></tr><tr><td>6</td><td>5.9</td><td>2.888</td><td>23</td><td>2.04</td><td>0.0264</td><td>-0.07 to 11.87</td></tr><tr><td>7</td><td>6.3</td><td>2.863</td><td>24</td><td>2.20</td><td>0.0188</td><td>0.39 to 12.21</td></tr><tr><td>8</td><td>6.7</td><td>2.840</td><td>25</td><td>2.36</td><td>0.0132</td><td>0.85 to 12.55</td></tr><tr><td>9</td><td>7.1</td><td>2.820</td><td>26</td><td>2.52</td><td>0.0091</td><td>1.30 to 12.90</td></tr></table><p>Accept values to within rounding. Reject \(H_0\) when the p-value &lt; 0.05.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 4 <span class="pts">[2 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>Six students timed how long (minutes) it took them to finish a practice problem set before and after a study-skills workshop. The lists are in the same student order.</p><table class='dtab'><tr><th>D</th><th>Before</th><th>After</th></tr><tr><td>0</td><td>30.8, 26.8, 33.4, 33.1, 31.4, 26.4</td><td>30.7, 26.7, 32.9, 31.9, 29.5, 26.7</td></tr><tr><td>1</td><td>27.3, 27.9, 29.3, 36.6, 34.2, 34.5</td><td>26.0, 27.0, 29.2, 35.8, 33.9, 33.1</td></tr><tr><td>2</td><td>32.0, 31.4, 33.6, 34.3, 31.6, 28.2</td><td>32.2, 33.0, 33.5, 34.0, 30.7, 27.1</td></tr><tr><td>3</td><td>31.2, 33.0, 27.2, 32.2, 25.1, 27.5</td><td>30.3, 31.1, 27.5, 30.2, 22.7, 26.9</td></tr><tr><td>4</td><td>26.9, 30.9, 28.2, 35.5, 27.5, 29.7</td><td>27.5, 29.0, 26.3, 34.4, 26.5, 29.2</td></tr><tr><td>5</td><td>25.9, 33.8, 31.7, 31.8, 30.9, 32.7</td><td>25.5, 31.4, 29.5, 32.2, 29.9, 31.5</td></tr><tr><td>6</td><td>36.0, 33.8, 35.8, 26.6, 29.9, 31.4</td><td>34.6, 32.8, 35.2, 26.9, 28.2, 30.0</td></tr><tr><td>7</td><td>30.4, 26.0, 28.9, 33.0, 33.8, 35.8</td><td>30.6, 24.9, 27.4, 30.8, 32.3, 35.3</td></tr><tr><td>8</td><td>34.7, 31.0, 33.3, 37.6, 27.0, 28.4</td><td>32.8, 28.7, 32.6, 35.5, 23.8, 26.5</td></tr><tr><td>9</td><td>27.8, 33.4, 28.5, 26.4, 32.7, 29.3</td><td>26.6, 33.1, 26.9, 24.1, 31.4, 27.4</td></tr></table><p>Compute the differences \(d = \text{before} - \text{after}\), and use <b>Descriptive Statistics and Graphs &rarr; One Quantitative Variable</b> to find \(\bar{d}\) and \(s_d\). Then test \(H_0: \mu_d = 0\) vs. \(H_a: \mu_d > 0\) with a t-test (df = 5) using StatKey&rsquo;s t distribution. Give the conclusion at \(\alpha = 0.05\). <i>(0.5 differences and summary, 1 test, 0.5 conclusion)</i></p>
+<div class="solution"><table class='dtab'><tr><th>D</th><th>Differences</th><th>\(\bar{d}\)</th><th>\(s_d\)</th><th>t</th><th>p-value</th></tr><tr><td>0</td><td>0.1, 0.1, 0.5, 1.2, 1.9, -0.3</td><td>0.583</td><td>0.821</td><td>1.74</td><td>0.0711</td></tr><tr><td>1</td><td>1.3, 0.9, 0.1, 0.8, 0.3, 1.4</td><td>0.800</td><td>0.522</td><td>3.76</td><td>0.0066</td></tr><tr><td>2</td><td>-0.2, -1.6, 0.1, 0.3, 0.9, 1.1</td><td>0.100</td><td>0.965</td><td>0.25</td><td>0.4049</td></tr><tr><td>3</td><td>0.9, 1.9, -0.3, 2.0, 2.4, 0.6</td><td>1.250</td><td>1.025</td><td>2.99</td><td>0.0153</td></tr><tr><td>4</td><td>-0.6, 1.9, 1.9, 1.1, 1.0, 0.5</td><td>0.967</td><td>0.942</td><td>2.51</td><td>0.0268</td></tr><tr><td>5</td><td>0.4, 2.4, 2.2, -0.4, 1.0, 1.2</td><td>1.133</td><td>1.063</td><td>2.61</td><td>0.0238</td></tr><tr><td>6</td><td>1.4, 1.0, 0.6, -0.3, 1.7, 1.4</td><td>0.967</td><td>0.728</td><td>3.25</td><td>0.0113</td></tr><tr><td>7</td><td>-0.2, 1.1, 1.5, 2.2, 1.5, 0.5</td><td>1.100</td><td>0.846</td><td>3.18</td><td>0.0122</td></tr><tr><td>8</td><td>1.9, 2.3, 0.7, 2.1, 3.2, 1.9</td><td>2.017</td><td>0.806</td><td>6.13</td><td>0.0008</td></tr><tr><td>9</td><td>1.2, 0.3, 1.6, 2.3, 1.3, 1.9</td><td>1.433</td><td>0.686</td><td>5.12</td><td>0.0019</td></tr></table><p>Reject \(H_0\) (the workshop reduced mean completion time) when the p-value &lt; 0.05.</p></div>
+</div>
+
+</div>
+</body>
+</html>

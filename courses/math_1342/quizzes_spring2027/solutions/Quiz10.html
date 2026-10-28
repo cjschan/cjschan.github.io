@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1342 Quiz 10 — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../../lecture_notes/statgraphs.js?v=3"></script>
+<style>
+  :root { --primary:#38bdf8; --primary-light:#7dd3fc; --green:#34d399; --amber:#fbbf24; --bg:#0f172a; --card-bg:#1e293b; --text:#f1f5f9; --muted:#cbd5e1; --border:#475569; }
+  .quiz { max-width:860px; margin:40px auto; padding:36px 48px 60px; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.30); color:var(--text); font-family:'Work Sans',sans-serif; line-height:1.6; font-size:16px; }
+  .quiz .badge { display:inline-block; background:rgba(56,189,248,0.15); color:var(--primary); padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px; }
+  .quiz h1 { color:var(--text); border-bottom:3px solid var(--primary); padding-bottom:10px; margin:4px 0 6px; font-size:30px; font-weight:700; }
+  .quiz .version-tag { color:var(--green); font-size:13px; text-transform:uppercase; letter-spacing:0.8px; margin:0 0 12px; font-weight:600; }
+  .quiz .covers { color:var(--muted); font-size:14px; margin-bottom:18px; }
+  .quiz .total-pts { color:var(--amber); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:16px; }
+  .quiz .instructions { background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.20); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:14px 18px; margin:8px 0 22px; font-size:15px; }
+  .quiz .problem { border:1px solid var(--border); border-radius:10px; padding:16px 20px 14px; margin:16px 0; background:rgba(15,23,42,0.5); }
+  .quiz .problem h3 { margin:0 0 8px; color:var(--primary); font-size:15px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+  .quiz .problem h3 .pts { color:var(--amber); margin-left:8px; font-size:13px; }
+  .quiz .problem ol, .quiz .problem ul { padding-left:22px; margin:0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom:4px; }
+  .quiz .solution { border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.07); border-radius:8px; padding:12px 16px; margin-top:12px; }
+  .quiz .solution::before { content:'Solution'; display:block; font-weight:700; color:var(--green); font-size:11px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; }
+  .quiz .chart { margin:10px 0; }
+  .quiz .chart > div { background:#1e293b; border:1px solid var(--border); border-radius:8px; padding:10px; }
+  .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
+  .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+  @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
+  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; }
+  .quiz table.dtab th, .quiz table.dtab td { border:1px solid var(--border); padding:4px 10px; text-align:left; vertical-align:top; }
+  .quiz table.dtab th { color:var(--primary); background:rgba(56,189,248,0.08); }
+  .quiz .sk { display:inline-block; background:rgba(251,191,36,0.15); color:var(--amber); padding:1px 8px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:0.6px; margin-left:6px; vertical-align:middle; }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav><ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul></nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 10</span>
+<h1>Chi-Square Tests, ANOVA, and Inference for Regression</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections 7.2, 8.1, 9.1</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+<p><b>StatKey problems.</b> Problems marked <span class="sk">STATKEY</span> are done in <a href="https://www.lock5stat.com/StatKey/" target="_blank">StatKey (lock5stat.com/StatKey)</a>. Let <b>D</b> = the <b>last digit of your ACC student ID</b>, and use the row of each table that matches your D. For every StatKey problem, upload a screenshot of <i>your own</i> StatKey run that shows the graph and the summary panel (number of samples, mean, standard error, and any tail or percentile values you used). The numbers you report must match your screenshot. Answers that do not match your D or your screenshot receive no credit.</p>
+</div>
+
+<p class="total-pts">Total: 10 points</p>
+<div class="problem">
+<h3>Problem 1 <span class="pts">[4 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>A random sample of ACC students was asked which class format they prefer. Is preferred format associated with age group?</p><table class='dtab'><tr><th>D</th><th>Age &le; 24: In person</th><th>Age &le; 24: Hybrid</th><th>Age &le; 24: Online</th><th>Age 25+: In person</th><th>Age 25+: Hybrid</th><th>Age 25+: Online</th></tr><tr><td>0</td><td>40</td><td>25</td><td>35</td><td>30</td><td>20</td><td>45</td></tr><tr><td>1</td><td>42</td><td>25</td><td>34</td><td>30</td><td>21</td><td>47</td></tr><tr><td>2</td><td>44</td><td>25</td><td>33</td><td>30</td><td>22</td><td>49</td></tr><tr><td>3</td><td>46</td><td>25</td><td>32</td><td>30</td><td>23</td><td>51</td></tr><tr><td>4</td><td>48</td><td>25</td><td>31</td><td>30</td><td>24</td><td>53</td></tr><tr><td>5</td><td>50</td><td>25</td><td>30</td><td>30</td><td>25</td><td>55</td></tr><tr><td>6</td><td>52</td><td>25</td><td>29</td><td>30</td><td>26</td><td>57</td></tr><tr><td>7</td><td>54</td><td>25</td><td>28</td><td>30</td><td>27</td><td>59</td></tr><tr><td>8</td><td>56</td><td>25</td><td>27</td><td>30</td><td>28</td><td>61</td></tr><tr><td>9</td><td>58</td><td>25</td><td>26</td><td>30</td><td>29</td><td>63</td></tr></table><ol type='a'><li>State the hypotheses, and compute by hand the expected count for <i>Age &le; 24, In person</i>. <i>(1 pt)</i></li><li>Open <b>More Advanced Randomization Tests &rarr; &chi;<sup>2</sup> Test for Association</b>, click <b>Edit Data</b>, and enter your two-way table. Report the \(\chi^2\) statistic. <i>(1 pt)</i></li><li>Generate at least 5000 randomization samples and report the p-value (right tail). Then use <b>Theoretical Distributions &rarr; &chi;<sup>2</sup></b> with df = 2 to find the theoretical p-value. Do they agree? <i>(1 pt)</i></li><li>State your conclusion at \(\alpha = 0.05\) in context. <i>(1 pt)</i></li></ol>
+<div class="solution"><p>(a) \(H_0\): format preference is not associated with age group; \(H_a\): it is associated. Expected count = (row total)(column total)/(grand total).</p><table class='dtab'><tr><th>D</th><th>Expected (&le;24, In person)</th><th>\(\chi^2\)</th><th>Randomization p-value</th><th>\(\chi^2\) (df = 2) p-value</th><th>Decision</th></tr><tr><td>0</td><td>35.90</td><td>3.11</td><td>0.214 &plusmn; 0.017</td><td>0.2114</td><td>Do not reject \(H_0\)</td></tr><tr><td>1</td><td>36.54</td><td>4.39</td><td>0.113 &plusmn; 0.013</td><td>0.1114</td><td>Do not reject \(H_0\)</td></tr><tr><td>2</td><td>37.18</td><td>5.96</td><td>0.051 &plusmn; 0.010</td><td>0.0509</td><td>Do not reject \(H_0\)</td></tr><tr><td>3</td><td>37.82</td><td>7.80</td><td>0.019 &plusmn; 0.010</td><td>0.0203</td><td>Reject \(H_0\)</td></tr><tr><td>4</td><td>38.45</td><td>9.90</td><td>0.007 &plusmn; 0.010</td><td>0.0071</td><td>Reject \(H_0\)</td></tr><tr><td>5</td><td>39.07</td><td>12.24</td><td>0.001 &plusmn; 0.010</td><td>0.0022</td><td>Reject \(H_0\)</td></tr><tr><td>6</td><td>39.69</td><td>14.83</td><td>0.000 &plusmn; 0.010</td><td>0.0006</td><td>Reject \(H_0\)</td></tr><tr><td>7</td><td>40.30</td><td>17.65</td><td>0.000 &plusmn; 0.010</td><td>0.0001</td><td>Reject \(H_0\)</td></tr><tr><td>8</td><td>40.92</td><td>20.68</td><td>0.000 &plusmn; 0.010</td><td>0.0000</td><td>Reject \(H_0\)</td></tr><tr><td>9</td><td>41.52</td><td>23.93</td><td>0.000 &plusmn; 0.010</td><td>0.0000</td><td>Reject \(H_0\)</td></tr></table><p>The randomization and theoretical p-values should be close. The conclusion must match the student&rsquo;s own p-value.</p><p><i>Grading note: accept any value consistent with the student&rsquo;s screenshot and within the range.</i></p></div>
+</div>
+<div class="problem">
+<h3>Problem 2 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>Fifteen students were randomly assigned to one of three study methods (flashcards, practice tests, or rereading notes), and then took the same exam.</p><table class='dtab'><tr><th>D</th><th>Flashcards</th><th>Practice tests</th><th>Rereading</th></tr><tr><td>0</td><td>72, 71, 86, 88, 75</td><td>67, 77, 76, 70, 87</td><td>86, 69, 85, 69, 76</td></tr><tr><td>1</td><td>81, 73, 66, 82, 63</td><td>74, 77, 72, 74, 81</td><td>81, 95, 79, 80, 88</td></tr><tr><td>2</td><td>75, 63, 83, 75, 66</td><td>85, 84, 67, 85, 73</td><td>74, 86, 76, 70, 77</td></tr><tr><td>3</td><td>67, 73, 64, 71, 74</td><td>88, 88, 82, 82, 80</td><td>85, 80, 74, 94, 84</td></tr><tr><td>4</td><td>74, 74, 76, 74, 82</td><td>88, 78, 76, 82, 71</td><td>84, 76, 86, 80, 86</td></tr><tr><td>5</td><td>69, 73, 70, 73, 81</td><td>75, 75, 93, 65, 75</td><td>89, 80, 80, 71, 70</td></tr><tr><td>6</td><td>82, 60, 80, 87, 79</td><td>90, 76, 67, 77, 90</td><td>94, 82, 73, 93, 79</td></tr><tr><td>7</td><td>66, 65, 75, 80, 78</td><td>82, 71, 90, 66, 75</td><td>81, 99, 89, 89, 99</td></tr><tr><td>8</td><td>71, 67, 90, 85, 57</td><td>88, 78, 79, 83, 70</td><td>76, 81, 80, 73, 93</td></tr><tr><td>9</td><td>79, 82, 79, 73, 79</td><td>90, 87, 98, 79, 80</td><td>94, 92, 86, 84, 88</td></tr></table><ol type='a'><li>Open <b>More Advanced Randomization Tests &rarr; ANOVA for Difference in Means</b>, click <b>Edit Data</b>, and enter your data with a group label for each student. Report the three group means and the F-statistic. <i>(1 pt)</i></li><li>Generate at least 5000 randomization samples. Report how many had an F-statistic at least as large as yours, and the p-value. <i>(1 pt)</i></li><li>State the hypotheses and your conclusion at \(\alpha = 0.05\) in context. <i>(1 pt)</i></li></ol>
+<div class="solution"><table class='dtab'><tr><th>D</th><th>Group means</th><th>F</th><th>Randomization p-value</th><th>Theoretical F (df 2, 12) p-value</th></tr><tr><td>0</td><td>78.4, 75.4, 77.0</td><td>0.18</td><td>0.846 &plusmn; 0.015</td><td>0.8408</td></tr><tr><td>1</td><td>73.0, 75.6, 84.6</td><td>4.21</td><td>0.041 &plusmn; 0.010</td><td>0.0412</td></tr><tr><td>2</td><td>72.4, 78.8, 76.6</td><td>0.95</td><td>0.402 &plusmn; 0.021</td><td>0.4157</td></tr><tr><td>3</td><td>69.8, 84.0, 83.4</td><td>11.31</td><td>0.003 &plusmn; 0.010</td><td>0.0017</td></tr><tr><td>4</td><td>76.0, 79.0, 82.4</td><td>2.14</td><td>0.162 &plusmn; 0.016</td><td>0.1601</td></tr><tr><td>5</td><td>73.2, 76.6, 78.0</td><td>0.49</td><td>0.626 &plusmn; 0.021</td><td>0.6228</td></tr><tr><td>6</td><td>77.6, 80.0, 84.2</td><td>0.58</td><td>0.571 &plusmn; 0.021</td><td>0.5737</td></tr><tr><td>7</td><td>72.8, 76.8, 91.4</td><td>7.37</td><td>0.012 &plusmn; 0.010</td><td>0.0082</td></tr><tr><td>8</td><td>74.0, 79.6, 80.6</td><td>0.67</td><td>0.538 &plusmn; 0.021</td><td>0.5302</td></tr><tr><td>9</td><td>78.4, 86.8, 88.8</td><td>5.15</td><td>0.028 &plusmn; 0.010</td><td>0.0243</td></tr></table><p>(c) \(H_0: \mu_1 = \mu_2 = \mu_3\); \(H_a\): at least one mean differs. The conclusion must match the student&rsquo;s own p-value.</p><p><i>Grading note: accept any value consistent with the student&rsquo;s screenshot and within the range.</i></p></div>
+</div>
+<div class="problem">
+<h3>Problem 3 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>For 8 students, \(x\) = hours per week spent in the Learning Lab and \(y\) = GPA (same order). Is there evidence of a <b>positive</b> association?</p><table class='dtab'><tr><th>D</th><th>Hours \(x\)</th><th>GPA \(y\)</th></tr><tr><td>0</td><td>3, 3, 9, 1, 3, 7, 4, 4</td><td>2.23, 2.13, 2.65, 2.58, 2.44, 2.39, 2.12, 2.40</td></tr><tr><td>1</td><td>11, 2, 10, 11, 6, 7, 9, 10</td><td>2.61, 2.27, 2.72, 2.73, 2.17, 2.37, 2.65, 2.19</td></tr><tr><td>2</td><td>7, 2, 10, 4, 6, 2, 7, 2</td><td>2.84, 2.20, 2.42, 2.35, 2.48, 2.40, 2.50, 2.57</td></tr><tr><td>3</td><td>4, 9, 7, 3, 10, 7, 2, 10</td><td>2.12, 2.54, 2.23, 2.40, 2.71, 2.56, 2.34, 2.84</td></tr><tr><td>4</td><td>2, 1, 8, 9, 6, 1, 2, 11</td><td>2.65, 2.73, 2.64, 2.76, 3.18, 2.81, 2.57, 3.04</td></tr><tr><td>5</td><td>8, 7, 6, 6, 9, 6, 7, 3</td><td>3.01, 3.05, 2.33, 2.70, 2.99, 2.12, 2.71, 2.16</td></tr><tr><td>6</td><td>10, 11, 3, 5, 8, 12, 10, 11</td><td>2.86, 3.41, 2.68, 2.95, 2.74, 3.58, 3.11, 3.26</td></tr><tr><td>7</td><td>9, 7, 3, 8, 10, 9, 10, 11</td><td>2.89, 3.31, 2.01, 2.88, 3.12, 3.12, 2.75, 2.52</td></tr><tr><td>8</td><td>6, 8, 3, 8, 8, 1, 1, 9</td><td>2.73, 3.08, 2.53, 3.00, 3.80, 2.29, 2.22, 3.16</td></tr><tr><td>9</td><td>6, 3, 1, 9, 2, 7, 10, 10</td><td>2.83, 2.66, 2.25, 3.35, 2.56, 2.94, 3.49, 3.56</td></tr></table><ol type='a'><li>Open <b>Randomization Hypothesis Tests &rarr; Test for Slope, Correlation</b>, click <b>Edit Data</b>, and enter your pairs. Report the sample correlation \(r\) and the regression line. <i>(1 pt)</i></li><li>Test \(H_0: \rho = 0\) vs. \(H_a: \rho > 0\). Generate at least 5000 randomization samples and report the p-value. <i>(1 pt)</i></li><li>State your conclusion in context. Would it be fair to say that Learning Lab hours <i>cause</i> a higher GPA? <i>(1 pt)</i></li></ol>
+<div class="solution"><table class='dtab'><tr><th>D</th><th>r</th><th>Regression line</th><th>Randomization p-value</th></tr><tr><td>0</td><td>0.328</td><td>\(\hat{y} = 2.261 + 0.025x\)</td><td>0.219 &plusmn; 0.018</td></tr><tr><td>1</td><td>0.622</td><td>\(\hat{y} = 2.069 + 0.048x\)</td><td>0.046 &plusmn; 0.010</td></tr><tr><td>2</td><td>0.361</td><td>\(\hat{y} = 2.357 + 0.023x\)</td><td>0.199 &plusmn; 0.017</td></tr><tr><td>3</td><td>0.736</td><td>\(\hat{y} = 2.102 + 0.056x\)</td><td>0.022 &plusmn; 0.010</td></tr><tr><td>4</td><td>0.435</td><td>\(\hat{y} = 2.683 + 0.023x\)</td><td>0.145 &plusmn; 0.015</td></tr><tr><td>5</td><td>0.784</td><td>\(\hat{y} = 1.530 + 0.170x\)</td><td>0.007 &plusmn; 0.010</td></tr><tr><td>6</td><td>0.771</td><td>\(\hat{y} = 2.391 + 0.078x\)</td><td>0.007 &plusmn; 0.010</td></tr><tr><td>7</td><td>0.483</td><td>\(\hat{y} = 2.162 + 0.079x\)</td><td>0.143 &plusmn; 0.015</td></tr><tr><td>8</td><td>0.863</td><td>\(\hat{y} = 2.111 + 0.135x\)</td><td>0.002 &plusmn; 0.010</td></tr><tr><td>9</td><td>0.977</td><td>\(\hat{y} = 2.191 + 0.127x\)</td><td>0.000 &plusmn; 0.010</td></tr></table><p>(c) The conclusion must match the student&rsquo;s own p-value. Even if the result is significant, this is observational data, so we cannot conclude causation (motivated students may both visit the lab more and earn higher GPAs).</p><p><i>Grading note: accept any value consistent with the student&rsquo;s screenshot and within the range.</i></p></div>
+</div>
+
+</div>
+</body>
+</html>

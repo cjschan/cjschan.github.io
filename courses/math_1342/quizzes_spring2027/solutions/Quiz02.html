@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1342 Quiz 2 — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../../lecture_notes/statgraphs.js?v=3"></script>
+<style>
+  :root { --primary:#38bdf8; --primary-light:#7dd3fc; --green:#34d399; --amber:#fbbf24; --bg:#0f172a; --card-bg:#1e293b; --text:#f1f5f9; --muted:#cbd5e1; --border:#475569; }
+  .quiz { max-width:860px; margin:40px auto; padding:36px 48px 60px; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.30); color:var(--text); font-family:'Work Sans',sans-serif; line-height:1.6; font-size:16px; }
+  .quiz .badge { display:inline-block; background:rgba(56,189,248,0.15); color:var(--primary); padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px; }
+  .quiz h1 { color:var(--text); border-bottom:3px solid var(--primary); padding-bottom:10px; margin:4px 0 6px; font-size:30px; font-weight:700; }
+  .quiz .version-tag { color:var(--green); font-size:13px; text-transform:uppercase; letter-spacing:0.8px; margin:0 0 12px; font-weight:600; }
+  .quiz .covers { color:var(--muted); font-size:14px; margin-bottom:18px; }
+  .quiz .total-pts { color:var(--amber); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:16px; }
+  .quiz .instructions { background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.20); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:14px 18px; margin:8px 0 22px; font-size:15px; }
+  .quiz .problem { border:1px solid var(--border); border-radius:10px; padding:16px 20px 14px; margin:16px 0; background:rgba(15,23,42,0.5); }
+  .quiz .problem h3 { margin:0 0 8px; color:var(--primary); font-size:15px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+  .quiz .problem h3 .pts { color:var(--amber); margin-left:8px; font-size:13px; }
+  .quiz .problem ol, .quiz .problem ul { padding-left:22px; margin:0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom:4px; }
+  .quiz .solution { border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.07); border-radius:8px; padding:12px 16px; margin-top:12px; }
+  .quiz .solution::before { content:'Solution'; display:block; font-weight:700; color:var(--green); font-size:11px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; }
+  .quiz .chart { margin:10px 0; }
+  .quiz .chart > div { background:#1e293b; border:1px solid var(--border); border-radius:8px; padding:10px; }
+  .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
+  .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+  @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
+  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; }
+  .quiz table.dtab th, .quiz table.dtab td { border:1px solid var(--border); padding:4px 10px; text-align:left; vertical-align:top; }
+  .quiz table.dtab th { color:var(--primary); background:rgba(56,189,248,0.08); }
+  .quiz .sk { display:inline-block; background:rgba(251,191,36,0.15); color:var(--amber); padding:1px 8px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:0.6px; margin-left:6px; vertical-align:middle; }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav><ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul></nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 2</span>
+<h1>Describing Data</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections 2.1, 2.2, 2.3</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+<p><b>StatKey problems.</b> Problems marked <span class="sk">STATKEY</span> are done in <a href="https://www.lock5stat.com/StatKey/" target="_blank">StatKey (lock5stat.com/StatKey)</a>. Let <b>D</b> = the <b>last digit of your ACC student ID</b>, and use the row of each table that matches your D. For every StatKey problem, upload a screenshot of <i>your own</i> StatKey run that shows the graph and the summary panel (number of samples, mean, standard error, and any tail or percentile values you used). The numbers you report must match your screenshot. Answers that do not match your D or your screenshot receive no credit.</p>
+</div>
+
+<p class="total-pts">Total: 10 points</p>
+<div class="problem">
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>A survey asked 240 ACC students whether they attend full-time or part-time and whether they have a job.</p><table class='dtab'><tr><th></th><th>Has a job</th><th>No job</th><th>Total</th></tr><tr><td>Full-time</td><td>48</td><td>72</td><td>120</td></tr><tr><td>Part-time</td><td>90</td><td>30</td><td>120</td></tr><tr><td>Total</td><td>138</td><td>102</td><td>240</td></tr></table><ol type='a'><li>What proportion of all surveyed students have a job? <i>(1 pt)</i></li><li>Compare the proportion of full-time students with a job to the proportion of part-time students with a job. <i>(1 pt)</i></li></ol>
+<div class="solution"><p>(a) \(138/240 = 0.575\).</p><p>(b) Full-time: \(48/120 = 0.40\); part-time: \(90/120 = 0.75\). Part-time students are much more likely to have a job (0.75 vs. 0.40).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
+<p>Find the mean and the median of \(3, 6, 6, 8, 10, 12, 15, 24\). Which one changes more if we replace 24 with 240? <i>(1 mean, 0.5 median, 0.5 explain)</i></p>
+<div class="solution"><p>Mean \(= 84/8 = 10.5\). Median \(= (8+10)/2 = 9\).</p><p>With 240: mean \(= 300/8 = 37.5\); median stays 9. The <b>mean</b> is affected much more because it uses the value of every data point; the median is resistant to outliers.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 3 <span class="pts">[4 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>Your data below are the number of minutes 12 students spent on their phones after getting into bed last night. In StatKey, open <b>Descriptive Statistics and Graphs &rarr; One Quantitative Variable</b>, click <b>Edit Data</b>, and enter your 12 values.</p><table class='dtab'><tr><th>D</th><th>Minutes on phone (12 students)</th></tr><tr><td>0</td><td>16, 24, 19, 16, 13, 35, 26, 22, 120, 11, 33, 25</td></tr><tr><td>1</td><td>53, 23, 15, 58, 26, 61, 15, 4, 127, 7, 18, 40</td></tr><tr><td>2</td><td>51, 9, 42, 17, 134, 11, 39, 62, 29, 29, 11, 33</td></tr><tr><td>3</td><td>74, 45, 57, 15, 14, 79, 19, 5, 13, 45, 141, 19</td></tr><tr><td>4</td><td>93, 17, 30, 91, 38, 50, 7, 148, 49, 12, 23, 35</td></tr><tr><td>5</td><td>155, 41, 85, 17, 34, 28, 46, 18, 39, 26, 8, 26</td></tr><tr><td>6</td><td>73, 15, 162, 59, 34, 27, 59, 31, 54, 52, 24, 23</td></tr><tr><td>7</td><td>58, 26, 169, 53, 27, 37, 22, 41, 86, 50, 62, 19</td></tr><tr><td>8</td><td>106, 27, 32, 88, 46, 82, 61, 34, 15, 176, 20, 25</td></tr><tr><td>9</td><td>14, 183, 41, 51, 12, 60, 58, 40, 82, 42, 35, 57</td></tr></table><ol type='a'><li>Report the mean, median, standard deviation, \(Q_1\), and \(Q_3\) from StatKey. <i>(1.5 pts)</i></li><li>Compute the IQR and the outlier fences \(Q_1 - 1.5\,\text{IQR}\) and \(Q_3 + 1.5\,\text{IQR}\). Which values, if any, are outliers? <i>(1 pt)</i></li><li>Find the z-score of your largest value. <i>(0.5 pt)</i></li><li>Describe the shape of your distribution from StatKey&rsquo;s graph, and say whether the mean or the median is a better summary of a typical student. Refer to your own graph. <i>(1 pt)</i></li></ol>
+<div class="solution"><p>Exact values by D. Quartiles below use the lecture (halves) rule; StatKey may use a slightly different rule &mdash; accept StatKey&rsquo;s \(Q_1\), \(Q_3\) and fences computed from them.</p><table class='dtab'><tr><th>D</th><th>Mean</th><th>Median</th><th>SD</th><th>\(Q_1, Q_3\)</th><th>IQR; fences</th><th>Outliers</th><th>z of max</th></tr><tr><td>0</td><td>30.00</td><td>23.0</td><td>29.29</td><td>16, 29.5</td><td>13.5; fences -4.25, 49.75</td><td>120</td><td>3.07</td></tr><tr><td>1</td><td>37.25</td><td>24.5</td><td>34.40</td><td>15, 55.5</td><td>40.5; fences -45.75, 116.25</td><td>127</td><td>2.61</td></tr><tr><td>2</td><td>38.92</td><td>31.0</td><td>34.24</td><td>14, 46.5</td><td>32.5; fences -34.75, 95.25</td><td>134</td><td>2.78</td></tr><tr><td>3</td><td>43.83</td><td>32.0</td><td>39.52</td><td>14.5, 65.5</td><td>51; fences -62, 142</td><td>none</td><td>2.46</td></tr><tr><td>4</td><td>49.42</td><td>36.5</td><td>41.57</td><td>20, 70.5</td><td>50.5; fences -55.75, 146.25</td><td>148</td><td>2.37</td></tr><tr><td>5</td><td>43.58</td><td>31.0</td><td>40.16</td><td>22, 43.5</td><td>21.5; fences -10.25, 75.75</td><td>85, 155</td><td>2.77</td></tr><tr><td>6</td><td>51.08</td><td>43.0</td><td>39.33</td><td>25.5, 59</td><td>33.5; fences -24.75, 109.25</td><td>162</td><td>2.82</td></tr><tr><td>7</td><td>54.17</td><td>45.5</td><td>41.08</td><td>26.5, 60</td><td>33.5; fences -23.75, 110.25</td><td>169</td><td>2.80</td></tr><tr><td>8</td><td>59.33</td><td>40.0</td><td>47.13</td><td>26, 85</td><td>59; fences -62.5, 173.5</td><td>176</td><td>2.48</td></tr><tr><td>9</td><td>56.25</td><td>46.5</td><td>44.38</td><td>37.5, 59</td><td>21.5; fences 5.25, 91.25</td><td>183</td><td>2.86</td></tr></table><p>(d) Every data set is <b>skewed right</b> with one very large value (an outlier in most versions), so the <b>median</b> is the better summary of a typical student (the large value pulls the mean up).</p><p><i>Grading note: accept any value consistent with the student&rsquo;s screenshot and within the range.</i></p></div>
+</div>
+<div class="problem">
+<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
+<p>Scores on a placement test are roughly bell-shaped with mean 72 and standard deviation 6. <i>(1 pt each)</i></p><ol type='a'><li>Use the 95% rule to give the interval that contains about 95% of scores.</li><li>A student&rsquo;s score is at the 90th percentile. Explain what this means in context.</li></ol>
+<div class="solution"><p>(a) \(72 \pm 2(6) = (60, 84)\).</p><p>(b) About 90% of test takers scored at or below this student&rsquo;s score (and about 10% scored higher).</p></div>
+</div>
+
+</div>
+</body>
+</html>

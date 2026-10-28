@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1342 Quiz 8</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../../lecture_notes/statgraphs.js?v=3"></script>
+<style>
+  :root { --primary:#38bdf8; --primary-light:#7dd3fc; --green:#34d399; --amber:#fbbf24; --bg:#0f172a; --card-bg:#1e293b; --text:#f1f5f9; --muted:#cbd5e1; --border:#475569; }
+  .quiz { max-width:860px; margin:40px auto; padding:36px 48px 60px; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.30); color:var(--text); font-family:'Work Sans',sans-serif; line-height:1.6; font-size:16px; }
+  .quiz .badge { display:inline-block; background:rgba(56,189,248,0.15); color:var(--primary); padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px; }
+  .quiz h1 { color:var(--text); border-bottom:3px solid var(--primary); padding-bottom:10px; margin:4px 0 6px; font-size:30px; font-weight:700; }
+  .quiz .version-tag { color:var(--muted); font-size:13px; text-transform:uppercase; letter-spacing:0.8px; margin:0 0 12px;  }
+  .quiz .covers { color:var(--muted); font-size:14px; margin-bottom:18px; }
+  .quiz .total-pts { color:var(--amber); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:16px; }
+  .quiz .instructions { background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.20); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:14px 18px; margin:8px 0 22px; font-size:15px; }
+  .quiz .problem { border:1px solid var(--border); border-radius:10px; padding:16px 20px 14px; margin:16px 0; background:rgba(15,23,42,0.5); }
+  .quiz .problem h3 { margin:0 0 8px; color:var(--primary); font-size:15px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+  .quiz .problem h3 .pts { color:var(--amber); margin-left:8px; font-size:13px; }
+  .quiz .problem ol, .quiz .problem ul { padding-left:22px; margin:0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom:4px; }
+  .quiz .solution { border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.07); border-radius:8px; padding:12px 16px; margin-top:12px; }
+  .quiz .solution::before { content:'Solution'; display:block; font-weight:700; color:var(--green); font-size:11px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; }
+  .quiz .chart { margin:10px 0; }
+  .quiz .chart > div { background:#1e293b; border:1px solid var(--border); border-radius:8px; padding:10px; }
+  .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
+  .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+  @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
+  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; }
+  .quiz table.dtab th, .quiz table.dtab td { border:1px solid var(--border); padding:4px 10px; text-align:left; vertical-align:top; }
+  .quiz table.dtab th { color:var(--primary); background:rgba(56,189,248,0.08); }
+  .quiz .sk { display:inline-block; background:rgba(251,191,36,0.15); color:var(--amber); padding:1px 8px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:0.6px; margin-left:6px; vertical-align:middle; }
+</style>
+</head>
+<body>
+<div class="quiz">
+<span class="badge">Quiz 8</span>
+<h1>Inference for Proportions</h1>
+<p class="version-tag">Student Version</p>
+<p class="covers">Covers Sections 6.1, 6.3</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+<p><b>StatKey problems.</b> Problems marked <span class="sk">STATKEY</span> are done in <a href="https://www.lock5stat.com/StatKey/" target="_blank">StatKey (lock5stat.com/StatKey)</a>. Let <b>D</b> = the <b>last digit of your ACC student ID</b>, and use the row of each table that matches your D. For every StatKey problem, upload a screenshot of <i>your own</i> StatKey run that shows the graph and the summary panel (number of samples, mean, standard error, and any tail or percentile values you used). The numbers you report must match your screenshot. Answers that do not match your D or your screenshot receive no credit.</p>
+</div>
+
+<p class="total-pts">Total: 10 points</p>
+<div class="problem">
+<h3>Problem 1 <span class="pts">[5 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>In a random sample of n Austin adults, x said they ride public transit at least once a month.</p><table class='dtab'><tr><th>D</th><th>Count x</th><th>Sample size n</th><th>Confidence level</th><th>Null value \(p_0\)</th></tr><tr><td>0</td><td>64</td><td>150</td><td>90%</td><td>0.40</td></tr><tr><td>1</td><td>67</td><td>175</td><td>95%</td><td>0.35</td></tr><tr><td>2</td><td>107</td><td>200</td><td>99%</td><td>0.50</td></tr><tr><td>3</td><td>111</td><td>225</td><td>90%</td><td>0.45</td></tr><tr><td>4</td><td>87</td><td>250</td><td>95%</td><td>0.30</td></tr><tr><td>5</td><td>125</td><td>275</td><td>99%</td><td>0.40</td></tr><tr><td>6</td><td>183</td><td>300</td><td>90%</td><td>0.55</td></tr><tr><td>7</td><td>136</td><td>325</td><td>95%</td><td>0.35</td></tr><tr><td>8</td><td>183</td><td>350</td><td>99%</td><td>0.45</td></tr><tr><td>9</td><td>217</td><td>375</td><td>95%</td><td>0.50</td></tr></table><ol type='a'><li>Compute \(\hat{p}\) and \(SE = \sqrt{\hat{p}(1-\hat{p})/n}\). <i>(1 pt)</i></li><li>Use <b>Theoretical Distributions &rarr; Normal</b> (mean 0, SD 1) with <b>Two-Tail</b> to find \(z^*\) for your confidence level. Screenshot it. <i>(1 pt)</i></li><li>Construct the confidence interval and interpret it in context. <i>(1 pt)</i></li><li>Test \(H_0: p = p_0\) vs. \(H_a: p \ne p_0\). Compute \(z = (\hat{p} - p_0)/\sqrt{p_0(1-p_0)/n}\) and use StatKey&rsquo;s Normal distribution to find the p-value. Screenshot it. <i>(1.5 pts)</i></li><li>State your conclusion at \(\alpha = 0.05\). <i>(0.5 pt)</i></li></ol>
+</div>
+<div class="problem">
+<h3>Problem 2 <span class="pts">[5 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>Students were randomly assigned to get either text-message reminders or no reminders about a FAFSA deadline. The table gives how many in each group finished the FAFSA on time.</p><table class='dtab'><tr><th>D</th><th>Text reminders: finished</th><th>No reminders: finished</th></tr><tr><td>0</td><td>62 of 120</td><td>50 of 110</td></tr><tr><td>1</td><td>69 of 130</td><td>54 of 120</td></tr><tr><td>2</td><td>76 of 140</td><td>58 of 130</td></tr><tr><td>3</td><td>82 of 150</td><td>63 of 140</td></tr><tr><td>4</td><td>90 of 160</td><td>68 of 150</td></tr><tr><td>5</td><td>97 of 170</td><td>72 of 160</td></tr><tr><td>6</td><td>104 of 180</td><td>76 of 170</td></tr><tr><td>7</td><td>112 of 190</td><td>81 of 180</td></tr><tr><td>8</td><td>120 of 200</td><td>86 of 190</td></tr><tr><td>9</td><td>128 of 210</td><td>90 of 200</td></tr></table><ol type='a'><li>Compute \(\hat{p}_T - \hat{p}_N\). <i>(0.5 pt)</i></li><li>Construct a 95% confidence interval for \(p_T - p_N\) using the formula. <i>(1.5 pts)</i></li><li>Test \(H_0: p_T = p_N\) vs. \(H_a: p_T \ne p_N\) with the pooled z-test, using StatKey&rsquo;s Normal distribution for the p-value. <i>(1.5 pts)</i></li><li>Now open <b>Randomization Hypothesis Tests &rarr; Test for Difference In Proportions</b>, enter your counts, generate at least 5000 samples, and find the two-tailed p-value. Does it agree with (c)? <i>(1 pt)</i></li><li>Can we conclude that reminders <i>cause</i> a change in on-time completion? Explain. <i>(0.5 pt)</i></li></ol>
+</div>
+
+</div>
+</body>
+</html>

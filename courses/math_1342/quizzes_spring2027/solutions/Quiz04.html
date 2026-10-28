@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1342 Quiz 4 — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../../lecture_notes/statgraphs.js?v=3"></script>
+<style>
+  :root { --primary:#38bdf8; --primary-light:#7dd3fc; --green:#34d399; --amber:#fbbf24; --bg:#0f172a; --card-bg:#1e293b; --text:#f1f5f9; --muted:#cbd5e1; --border:#475569; }
+  .quiz { max-width:860px; margin:40px auto; padding:36px 48px 60px; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.30); color:var(--text); font-family:'Work Sans',sans-serif; line-height:1.6; font-size:16px; }
+  .quiz .badge { display:inline-block; background:rgba(56,189,248,0.15); color:var(--primary); padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px; }
+  .quiz h1 { color:var(--text); border-bottom:3px solid var(--primary); padding-bottom:10px; margin:4px 0 6px; font-size:30px; font-weight:700; }
+  .quiz .version-tag { color:var(--green); font-size:13px; text-transform:uppercase; letter-spacing:0.8px; margin:0 0 12px; font-weight:600; }
+  .quiz .covers { color:var(--muted); font-size:14px; margin-bottom:18px; }
+  .quiz .total-pts { color:var(--amber); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:16px; }
+  .quiz .instructions { background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.20); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:14px 18px; margin:8px 0 22px; font-size:15px; }
+  .quiz .problem { border:1px solid var(--border); border-radius:10px; padding:16px 20px 14px; margin:16px 0; background:rgba(15,23,42,0.5); }
+  .quiz .problem h3 { margin:0 0 8px; color:var(--primary); font-size:15px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+  .quiz .problem h3 .pts { color:var(--amber); margin-left:8px; font-size:13px; }
+  .quiz .problem ol, .quiz .problem ul { padding-left:22px; margin:0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom:4px; }
+  .quiz .solution { border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.07); border-radius:8px; padding:12px 16px; margin-top:12px; }
+  .quiz .solution::before { content:'Solution'; display:block; font-weight:700; color:var(--green); font-size:11px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; }
+  .quiz .chart { margin:10px 0; }
+  .quiz .chart > div { background:#1e293b; border:1px solid var(--border); border-radius:8px; padding:10px; }
+  .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
+  .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+  @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
+  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; }
+  .quiz table.dtab th, .quiz table.dtab td { border:1px solid var(--border); padding:4px 10px; text-align:left; vertical-align:top; }
+  .quiz table.dtab th { color:var(--primary); background:rgba(56,189,248,0.08); }
+  .quiz .sk { display:inline-block; background:rgba(251,191,36,0.15); color:var(--amber); padding:1px 8px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:0.6px; margin-left:6px; vertical-align:middle; }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav><ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul></nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 4</span>
+<h1>Probability, Sampling Distributions, and Confidence Intervals</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections P.1, 3.1, 3.2</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+<p><b>StatKey problems.</b> Problems marked <span class="sk">STATKEY</span> are done in <a href="https://www.lock5stat.com/StatKey/" target="_blank">StatKey (lock5stat.com/StatKey)</a>. Let <b>D</b> = the <b>last digit of your ACC student ID</b>, and use the row of each table that matches your D. For every StatKey problem, upload a screenshot of <i>your own</i> StatKey run that shows the graph and the summary panel (number of samples, mean, standard error, and any tail or percentile values you used). The numbers you report must match your screenshot. Answers that do not match your D or your screenshot receive no credit.</p>
+</div>
+
+<p class="total-pts">Total: 10 points</p>
+<div class="problem">
+<h3>Problem 1 <span class="pts">[3 pts]</span></h3>
+<p>A survey of 400 ACC students recorded whether each student has math anxiety (A) and whether they took a developmental math course (D).</p><table class='dtab'><tr><th></th><th>Math anxiety</th><th>No math anxiety</th><th>Total</th></tr><tr><td>Took developmental math</td><td>54</td><td>66</td><td>120</td></tr><tr><td>Did not</td><td>84</td><td>196</td><td>280</td></tr><tr><td>Total</td><td>138</td><td>262</td><td>400</td></tr></table><p>Find each probability for a randomly selected student. <i>(0.5 pt each)</i></p><ol type='a'><li>\(P(A)\)</li><li>\(P(A \text{ and } D)\)</li><li>\(P(A \text{ or } D)\)</li><li>\(P(A \mid D)\)</li><li>\(P(D \mid A)\)</li><li>Are math anxiety and taking developmental math independent? Justify with your probabilities.</li></ol>
+<div class="solution"><p>(a) \(138/400 = 0.345\). (b) \(54/400 = 0.135\). (c) \(P(A)+P(D)-P(A \text{ and } D) = (138+120-54)/400 = 204/400 = 0.51\). (d) \(54/120 = 0.45\). (e) \(54/138 \approx 0.391\). (f) Not independent: \(P(A \mid D) = 0.45 \ne P(A) = 0.345\).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2 <span class="pts">[4 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>About 40% of ACC students are first-generation college students, so \(p = 0.40\). In StatKey, open <b>Sampling Distributions &rarr; Proportion</b>, set the population proportion to 0.40 and the sample size to your n below.</p><table class='dtab'><tr><th>D</th><th>Sample size n</th><th>Larger sample size 4n</th></tr><tr><td>0</td><td>25</td><td>100</td></tr><tr><td>1</td><td>40</td><td>160</td></tr><tr><td>2</td><td>50</td><td>200</td></tr><tr><td>3</td><td>60</td><td>240</td></tr><tr><td>4</td><td>75</td><td>300</td></tr><tr><td>5</td><td>80</td><td>320</td></tr><tr><td>6</td><td>100</td><td>400</td></tr><tr><td>7</td><td>120</td><td>480</td></tr><tr><td>8</td><td>150</td><td>600</td></tr><tr><td>9</td><td>200</td><td>800</td></tr></table><ol type='a'><li>Click <b>Generate 1000 Samples</b>. Report the mean and the standard error (SE) from the summary panel. <i>(1 pt)</i></li><li>Click the dot that is farthest from 0.40 in your dotplot. Report the \(\hat{p}\) of that sample and how many first-generation students it contained. <i>(1 pt)</i></li><li>Compute \(0.40 \pm 2\,SE\) using your SE. Then check <b>Two-Tail</b> and set the tails at those two values. What proportion of your 1000 samples fall outside the interval? Is this close to what the 95% rule predicts? <i>(1 pt)</i></li><li>Change the sample size to 4n and generate 1000 samples. Report the new SE and describe how it compares with your SE from (a). <i>(1 pt)</i></li></ol>
+<div class="solution"><p>Expected values by D (SE \(\approx \sqrt{0.4 \cdot 0.6 / n}\)). The tail proportion is near 5% but exact values vary because \(\hat{p}\) can only take values \(k/n\).</p><table class='dtab'><tr><th>D</th><th>n</th><th>SE at n</th><th>\(0.40 \pm 2SE\)</th><th>Proportion outside</th><th>SE at 4n</th></tr><tr><td>0</td><td>25</td><td>0.098 &plusmn; 0.010</td><td>0.204 to 0.596</td><td>0.044&ndash;0.084</td><td>0.049 &plusmn; 0.005</td></tr><tr><td>1</td><td>40</td><td>0.077 &plusmn; 0.008</td><td>0.245 to 0.555</td><td>0.014&ndash;0.054</td><td>0.039 &plusmn; 0.004</td></tr><tr><td>2</td><td>50</td><td>0.069 &plusmn; 0.007</td><td>0.261 to 0.539</td><td>0.039&ndash;0.079</td><td>0.035 &plusmn; 0.003</td></tr><tr><td>3</td><td>60</td><td>0.063 &plusmn; 0.006</td><td>0.274 to 0.526</td><td>0.027&ndash;0.067</td><td>0.032 &plusmn; 0.003</td></tr><tr><td>4</td><td>75</td><td>0.057 &plusmn; 0.006</td><td>0.287 to 0.513</td><td>0.024&ndash;0.064</td><td>0.028 &plusmn; 0.003</td></tr><tr><td>5</td><td>80</td><td>0.055 &plusmn; 0.005</td><td>0.290 to 0.510</td><td>0.032&ndash;0.072</td><td>0.027 &plusmn; 0.003</td></tr><tr><td>6</td><td>100</td><td>0.049 &plusmn; 0.005</td><td>0.302 to 0.498</td><td>0.032&ndash;0.072</td><td>0.024 &plusmn; 0.002</td></tr><tr><td>7</td><td>120</td><td>0.045 &plusmn; 0.004</td><td>0.311 to 0.489</td><td>0.030&ndash;0.070</td><td>0.022 &plusmn; 0.002</td></tr><tr><td>8</td><td>150</td><td>0.040 &plusmn; 0.004</td><td>0.320 to 0.480</td><td>0.017&ndash;0.075</td><td>0.020 &plusmn; 0.002</td></tr><tr><td>9</td><td>200</td><td>0.035 &plusmn; 0.003</td><td>0.331 to 0.469</td><td>0.031&ndash;0.071</td><td>0.017 &plusmn; 0.002</td></tr></table><p>(b) Any value is fine if it matches the screenshot and is one of the extreme dots; count \(= \hat{p} \times n\).</p><p>(c) About 5%, matching the 95% rule. (d) The SE is cut about in half: quadrupling the sample size halves the standard error.</p><p><i>Grading note: accept any value consistent with the student&rsquo;s screenshot and within the range.</i></p></div>
+</div>
+<div class="problem">
+<h3>Problem 3 <span class="pts">[3 pts]</span></h3>
+<p>A random sample of ACC students gives a 95% confidence interval of \((18.2,\ 23.8)\) for the mean number of hours worked per week. <i>(1 pt each)</i></p><ol type='a'><li>Find the point estimate and the margin of error.</li><li>Interpret the interval in context.</li><li>A classmate says, &ldquo;95% of ACC students work between 18.2 and 23.8 hours a week.&rdquo; Explain what is wrong with this statement.</li></ol>
+<div class="solution"><p>(a) Point estimate \(= (18.2+23.8)/2 = 21.0\) hours; margin of error \(= 2.8\) hours.</p><p>(b) We are 95% confident that the mean number of hours worked per week by <i>all</i> ACC students is between 18.2 and 23.8 hours.</p><p>(c) The interval estimates the population <b>mean</b>, not where individual students fall. Individual students vary far more widely than the interval.</p></div>
+</div>
+
+</div>
+</body>
+</html>

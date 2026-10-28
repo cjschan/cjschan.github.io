@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math 1342 Quiz 5 — Solutions</title>
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="../../lecture_notes/statgraphs.js?v=3"></script>
+<style>
+  :root { --primary:#38bdf8; --primary-light:#7dd3fc; --green:#34d399; --amber:#fbbf24; --bg:#0f172a; --card-bg:#1e293b; --text:#f1f5f9; --muted:#cbd5e1; --border:#475569; }
+  .quiz { max-width:860px; margin:40px auto; padding:36px 48px 60px; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; box-shadow:0 6px 24px rgba(0,0,0,0.30); color:var(--text); font-family:'Work Sans',sans-serif; line-height:1.6; font-size:16px; }
+  .quiz .badge { display:inline-block; background:rgba(56,189,248,0.15); color:var(--primary); padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px; }
+  .quiz h1 { color:var(--text); border-bottom:3px solid var(--primary); padding-bottom:10px; margin:4px 0 6px; font-size:30px; font-weight:700; }
+  .quiz .version-tag { color:var(--green); font-size:13px; text-transform:uppercase; letter-spacing:0.8px; margin:0 0 12px; font-weight:600; }
+  .quiz .covers { color:var(--muted); font-size:14px; margin-bottom:18px; }
+  .quiz .total-pts { color:var(--amber); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:16px; }
+  .quiz .instructions { background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.20); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:14px 18px; margin:8px 0 22px; font-size:15px; }
+  .quiz .problem { border:1px solid var(--border); border-radius:10px; padding:16px 20px 14px; margin:16px 0; background:rgba(15,23,42,0.5); }
+  .quiz .problem h3 { margin:0 0 8px; color:var(--primary); font-size:15px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+  .quiz .problem h3 .pts { color:var(--amber); margin-left:8px; font-size:13px; }
+  .quiz .problem ol, .quiz .problem ul { padding-left:22px; margin:0.4em 0; }
+  .quiz .problem ol li, .quiz .problem ul li { margin-bottom:4px; }
+  .quiz .solution { border:1px solid rgba(52,211,153,0.30); background:rgba(52,211,153,0.07); border-radius:8px; padding:12px 16px; margin-top:12px; }
+  .quiz .solution::before { content:'Solution'; display:block; font-weight:700; color:var(--green); font-size:11px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; }
+  .quiz .chart { margin:10px 0; }
+  .quiz .chart > div { background:#1e293b; border:1px solid var(--border); border-radius:8px; padding:10px; }
+  .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
+  .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+  @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
+  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; }
+  .quiz table.dtab th, .quiz table.dtab td { border:1px solid var(--border); padding:4px 10px; text-align:left; vertical-align:top; }
+  .quiz table.dtab th { color:var(--primary); background:rgba(56,189,248,0.08); }
+  .quiz .sk { display:inline-block; background:rgba(251,191,36,0.15); color:var(--amber); padding:1px 8px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:0.6px; margin-left:6px; vertical-align:middle; }
+</style>
+</head>
+<body>
+<header>
+<div class="navcontainer">
+<nav><ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul></nav>
+</div>
+</header>
+
+<div class="quiz">
+<span class="badge">Quiz 5</span>
+<h1>Bootstrap Confidence Intervals</h1>
+<p class="version-tag">Worked Solutions</p>
+<p class="covers">Covers Sections 3.3, 3.4</p>
+<div class="instructions">
+<p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
+<p><b>StatKey problems.</b> Problems marked <span class="sk">STATKEY</span> are done in <a href="https://www.lock5stat.com/StatKey/" target="_blank">StatKey (lock5stat.com/StatKey)</a>. Let <b>D</b> = the <b>last digit of your ACC student ID</b>, and use the row of each table that matches your D. For every StatKey problem, upload a screenshot of <i>your own</i> StatKey run that shows the graph and the summary panel (number of samples, mean, standard error, and any tail or percentile values you used). The numbers you report must match your screenshot. Answers that do not match your D or your screenshot receive no credit.</p>
+</div>
+
+<p class="total-pts">Total: 10 points</p>
+<div class="problem">
+<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
+<p>Briefly describe how to construct one bootstrap sample from an original sample of size \(n = 40\). Why must we sample <b>with replacement</b>? <i>(1 pt each)</i></p>
+<div class="solution"><p>Draw 40 values at random from the original 40, putting each value back after it is chosen, so a value can appear more than once. Without replacement, every bootstrap sample would just be the original sample in a different order and would always have the same mean, so there would be no variability to measure.</p></div>
+</div>
+<div class="problem">
+<h3>Problem 2 <span class="pts">[5 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>Your data are the one-way commute times (minutes) of 12 randomly selected ACC students. In StatKey, open <b>Bootstrap Confidence Intervals &rarr; CI for Single Mean, Median, St.Dev.</b>, click <b>Edit Data</b>, and enter your 12 values.</p><table class='dtab'><tr><th>D</th><th>Commute times (minutes)</th></tr><tr><td>0</td><td>30, 17, 22, 29, 40, 13, 15, 27, 14, 14, 31, 25</td></tr><tr><td>1</td><td>16, 27, 23, 23, 31, 30, 34, 22, 22, 33, 35, 11</td></tr><tr><td>2</td><td>27, 26, 22, 16, 20, 8, 22, 6, 21, 25, 21, 25</td></tr><tr><td>3</td><td>29, 10, 17, 25, 26, 25, 34, 19, 39, 46, 39, 26</td></tr><tr><td>4</td><td>27, 24, 43, 18, 32, 30, 20, 35, 29, 29, 26, 32</td></tr><tr><td>5</td><td>42, 16, 33, 13, 27, 27, 36, 22, 36, 20, 22, 18</td></tr><tr><td>6</td><td>33, 27, 37, 24, 36, 33, 20, 20, 37, 28, 23, 58</td></tr><tr><td>7</td><td>27, 48, 46, 57, 29, 51, 23, 22, 38, 43, 32, 24</td></tr><tr><td>8</td><td>47, 19, 42, 38, 43, 28, 24, 23, 30, 23, 59, 47</td></tr><tr><td>9</td><td>33, 46, 33, 35, 22, 22, 29, 29, 33, 46, 35, 50</td></tr></table><ol type='a'><li>Report the original sample mean \(\bar{x}\). <i>(0.5 pt)</i></li><li>Click <b>Generate 1 Sample</b>. Report the mean of your bootstrap sample, and name one value that appears more than once in it (or say that none does). <i>(1 pt)</i></li><li>Generate at least 5000 bootstrap samples. Report the SE, and compute a 95% confidence interval using \(\bar{x} \pm 2\,SE\). <i>(1 pt)</i></li><li>Check <b>Two-Tail</b> with 0.95 in the middle. Report the 95% percentile interval and compare it with your interval from (c). <i>(1 pt)</i></li><li>Change the middle to 0.90 and then 0.99. Report both intervals, say which is widest, and interpret your 95% interval from (d) in context. <i>(1.5 pts)</i></li></ol>
+<div class="solution"><p>Expected values by D (from 20,000 bootstrap samples).</p><table class='dtab'><tr><th>D</th><th>\(\bar{x}\)</th><th>SE</th><th>\(\bar{x} \pm 2SE\)</th><th>95% percentile CI</th><th>90% percentile CI</th><th>99% percentile CI</th></tr><tr><td>0</td><td>23.08</td><td>2.38 &plusmn; 0.29</td><td>18.32 to 27.85</td><td>18.58 to 27.92 (&plusmn; 0.36)</td><td>19.25 to 27.08</td><td>17.33 to 29.33</td></tr><tr><td>1</td><td>25.58</td><td>2.06 &plusmn; 0.25</td><td>21.46 to 29.70</td><td>21.42 to 29.42 (&plusmn; 0.31)</td><td>22.08 to 28.83</td><td>20.00 to 30.50</td></tr><tr><td>2</td><td>19.92</td><td>1.86 &plusmn; 0.22</td><td>16.19 to 23.65</td><td>16.00 to 23.25 (&plusmn; 0.28)</td><td>16.75 to 22.83</td><td>14.83 to 24.00</td></tr><tr><td>3</td><td>27.92</td><td>2.83 &plusmn; 0.34</td><td>22.25 to 33.58</td><td>22.33 to 33.42 (&plusmn; 0.42)</td><td>23.25 to 32.58</td><td>20.75 to 35.17</td></tr><tr><td>4</td><td>28.75</td><td>1.84 &plusmn; 0.22</td><td>25.07 to 32.43</td><td>25.25 to 32.42 (&plusmn; 0.28)</td><td>25.75 to 31.83</td><td>24.17 to 33.67</td></tr><tr><td>5</td><td>26.00</td><td>2.51 &plusmn; 0.30</td><td>20.99 to 31.01</td><td>21.25 to 31.00 (&plusmn; 0.38)</td><td>21.92 to 30.17</td><td>19.83 to 32.58</td></tr><tr><td>6</td><td>31.33</td><td>2.89 &plusmn; 0.35</td><td>25.55 to 37.11</td><td>26.25 to 37.50 (&plusmn; 0.43)</td><td>26.92 to 36.42</td><td>25.08 to 39.75</td></tr><tr><td>7</td><td>36.67</td><td>3.36 &plusmn; 0.40</td><td>29.94 to 43.39</td><td>30.17 to 43.42 (&plusmn; 0.50)</td><td>31.17 to 42.33</td><td>28.33 to 45.42</td></tr><tr><td>8</td><td>35.25</td><td>3.46 &plusmn; 0.42</td><td>28.33 to 42.17</td><td>28.67 to 42.25 (&plusmn; 0.52)</td><td>29.67 to 41.08</td><td>26.83 to 44.50</td></tr><tr><td>9</td><td>34.42</td><td>2.48 &plusmn; 0.30</td><td>29.46 to 39.37</td><td>29.67 to 39.42 (&plusmn; 0.37)</td><td>30.42 to 38.58</td><td>28.33 to 40.92</td></tr></table><p>(b) Any bootstrap mean that matches the screenshot. (d) The SE and percentile intervals should be close to each other. (e) The 99% interval is widest; to be more confident we need a wider interval. Interpretation: we are 95% confident that the mean commute time of all ACC students is between the two endpoints.</p><p><i>Grading note: accept any value consistent with the student&rsquo;s screenshot and within the range.</i></p></div>
+</div>
+<div class="problem">
+<h3>Problem 3 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>In a random sample of n ACC students, x said they prefer morning classes. In StatKey, open <b>Bootstrap Confidence Intervals &rarr; CI for Single Proportion</b>, click <b>Edit Data</b>, and enter your count and sample size.</p><table class='dtab'><tr><th>D</th><th>Count x</th><th>Sample size n</th></tr><tr><td>0</td><td>38</td><td>80</td></tr><tr><td>1</td><td>44</td><td>90</td></tr><tr><td>2</td><td>51</td><td>100</td></tr><tr><td>3</td><td>58</td><td>110</td></tr><tr><td>4</td><td>66</td><td>120</td></tr><tr><td>5</td><td>74</td><td>130</td></tr><tr><td>6</td><td>83</td><td>140</td></tr><tr><td>7</td><td>92</td><td>150</td></tr><tr><td>8</td><td>101</td><td>160</td></tr><tr><td>9</td><td>110</td><td>170</td></tr></table><ol type='a'><li>Report \(\hat{p}\). <i>(0.5 pt)</i></li><li>Generate at least 5000 bootstrap samples and report a 99% percentile confidence interval. <i>(1.5 pts)</i></li><li>Based on your interval, is it plausible that exactly half of all ACC students prefer morning classes? Explain. <i>(1 pt)</i></li></ol>
+<div class="solution"><table class='dtab'><tr><th>D</th><th>\(\hat{p}\)</th><th>99% percentile CI</th><th>Is 0.5 plausible?</th></tr><tr><td>0</td><td>0.475</td><td>0.337 to 0.625 (&plusmn; 0.012)</td><td>Yes</td></tr><tr><td>1</td><td>0.489</td><td>0.356 to 0.622 (&plusmn; 0.012)</td><td>Yes</td></tr><tr><td>2</td><td>0.510</td><td>0.380 to 0.640 (&plusmn; 0.012)</td><td>Yes</td></tr><tr><td>3</td><td>0.527</td><td>0.409 to 0.645 (&plusmn; 0.012)</td><td>Yes</td></tr><tr><td>4</td><td>0.550</td><td>0.433 to 0.667 (&plusmn; 0.012)</td><td>Yes</td></tr><tr><td>5</td><td>0.569</td><td>0.462 to 0.677 (&plusmn; 0.012)</td><td>Yes</td></tr><tr><td>6</td><td>0.593</td><td>0.486 to 0.700 (&plusmn; 0.012)</td><td>Yes</td></tr><tr><td>7</td><td>0.613</td><td>0.507 to 0.713 (&plusmn; 0.012)</td><td>No</td></tr><tr><td>8</td><td>0.631</td><td>0.531 to 0.725 (&plusmn; 0.012)</td><td>No</td></tr><tr><td>9</td><td>0.647</td><td>0.553 to 0.741 (&plusmn; 0.012)</td><td>No</td></tr></table><p>(c) 0.5 is plausible exactly when it is inside the student&rsquo;s own interval. Grade against the screenshot when the interval ends near 0.5.</p><p><i>Grading note: accept any value consistent with the student&rsquo;s screenshot and within the range.</i></p></div>
+</div>
+
+</div>
+</body>
+</html>
