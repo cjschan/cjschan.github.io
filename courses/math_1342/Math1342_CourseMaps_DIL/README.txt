@@ -36,7 +36,8 @@ HOW TO READ A PAGE (template revised Oct 27, 2026 to match the user's Week 2 sam
                            the test covers (Test 1: Weeks 1-5, Test 2: Weeks 6-9, Test 3: Weeks 10-13). The test
                            itself also sits on the "Also this week" line of the week it happens when that week's rows
                            don't cover it (Test 1 in Week 6, Test 2 in Week 10).
-  Your Turn                each slide deck has one Your Turn; it is named in that section's Learning Activities
+  Your Turn                each slide deck has one Your Turn; it is its own line in that section's Learning Activities,
+                           separate from the Participation item (2.2 also lists the estimation activity as a Your Turn)
                            (updated Oct 28, 2026 from the decks).
   Take-Home Quizzes        listed in EVERY row whose objectives the quiz covers, in the week that teaches
                            them (e.g. Quiz 4, covering 3.1-3.3, appears in Week 6 row 2 and both Week 7

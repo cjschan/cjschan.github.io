@@ -31,7 +31,7 @@ def verb(text):
 
 ITEM_PREFIXES = ("e-Text", "Interactive Lecture", "Slides", "Online Homework", "Participation", "Take-Home Quiz",
                  "Test", "Practice Test", "Final Exam", "START HERE", "Introduction Slides", "Review Slides",
-                 "StatKey", "All ", "Course Evaluation")
+                 "StatKey", "All ", "Course Evaluation", "Your Turn")
 
 def split_name(text):
     """Bold the Blackboard item name; keep due dates and descriptions in regular type."""

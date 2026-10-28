@@ -36,7 +36,8 @@ HOW TO READ A PAGE (template revised Oct 28, 2026 to the same row layout as the 
                            CLO(s), e.g. (CLO 2, CLO 7).
   Rows                     one row per section (rows are set explicitly in course_map_data.py), with the
                            materials, activities, assessments and tools that align to that row.
-  Your Turn                each slide deck has one Your Turn; it is named in that section's Learning Activities.
+  Your Turn                each slide deck has one Your Turn; it is its own line in that section's Learning Activities,
+                           separate from the Participation item (2.2 also lists the estimation activity as a Your Turn).
   Take-Home Quizzes        listed in every row whose objectives the quiz covers (coverage from quizzes_fall2026/),
                            followed by "(all objectives)" or "(objectives 3-6)" in gray.
   Tests                    Test N, Test N Study Guide and Practice Test N are listed in every row whose objectives
