@@ -203,6 +203,21 @@ const StatGraphs = (() => {
     return { min: s[0], q1: q(0.25), median: q(0.5), q3: q(0.75), max: s[s.length - 1] };
   }
 
+  // Textbook quartiles: Q1/Q3 are the medians of the lower/upper halves
+  // (the overall median is excluded from both halves when n is odd).
+  function quartilesHalves(data) {
+    const s = [...data].sort((a, b) => a - b);
+    const med = (a) => {
+      const m = Math.floor(a.length / 2);
+      return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2;
+    };
+    const h = Math.floor(s.length / 2);
+    return {
+      min: s[0], q1: med(s.slice(0, h)), median: med(s),
+      q3: med(s.slice(s.length - h)), max: s[s.length - 1],
+    };
+  }
+
   function boxplot(target, data, opts = {}) {
     return boxplots(target, [data], [opts.label || ''], opts);
   }
@@ -221,15 +236,31 @@ const StatGraphs = (() => {
     const boxH = Math.min(slotH * 0.55, 36);
     const palette = [COLORS.primary, COLORS.amber, COLORS.green, COLORS.purple, COLORS.rose];
     for (let i = 0; i < N; i++) {
-      const stats = quartiles(datasets[i]);
+      // opts.quartiles: 'halves' uses median-of-halves quartiles (default: interpolated).
+      const stats = (opts.quartiles === 'halves' ? quartilesHalves : quartiles)(datasets[i]);
       const yMid = fr.PT + slotH * (i + 0.5);
       const color = palette[i % palette.length];
+      // opts.outliers: true draws whiskers to the most extreme values inside the
+      // 1.5 x IQR fences and plots values beyond the fences as separate points.
+      let outs = [];
+      if (opts.outliers) {
+        const iqr = stats.q3 - stats.q1;
+        const loF = stats.q1 - 1.5 * iqr, hiF = stats.q3 + 1.5 * iqr;
+        const inside = datasets[i].filter((v) => v >= loF && v <= hiF);
+        outs = datasets[i].filter((v) => v < loF || v > hiF);
+        stats.min = Math.min(...inside);
+        stats.max = Math.max(...inside);
+      }
       // Whiskers
       fr.svg.appendChild(el('line', { x1: sx(stats.min), y1: yMid, x2: sx(stats.q1), y2: yMid, stroke: color, 'stroke-width': 1.5 }));
       fr.svg.appendChild(el('line', { x1: sx(stats.q3), y1: yMid, x2: sx(stats.max), y2: yMid, stroke: color, 'stroke-width': 1.5 }));
       // Whisker caps
       for (const x of [stats.min, stats.max]) {
         fr.svg.appendChild(el('line', { x1: sx(x), y1: yMid - boxH * 0.4, x2: sx(x), y2: yMid + boxH * 0.4, stroke: color, 'stroke-width': 1.5 }));
+      }
+      // Outliers (only when opts.outliers is set)
+      for (const v of outs) {
+        fr.svg.appendChild(el('circle', { cx: sx(v), cy: yMid, r: 4.5, fill: COLORS.rose }));
       }
       // Box
       fr.svg.appendChild(el('rect', {

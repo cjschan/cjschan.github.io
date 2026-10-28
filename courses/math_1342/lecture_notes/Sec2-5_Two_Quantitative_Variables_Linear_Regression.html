@@ -8,7 +8,7 @@
   window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<script src="statgraphs.js?v=6"></script>
+<script src="statgraphs.js?v=7"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -365,6 +365,43 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-green">Solution</span>
+  <h2>Solution: Length of Baseball Games</h2>
+  <p class="subtitle">\(\widehat{\text{Time}} = 139.2 + 2.32 \times \text{Runs}\)</p>
+  <div class="grid-2">
+    <div class="chart-box">
+      <div id="chart-2-5-baseball-sol"></div>
+      <div class="chart-caption">(c) The circled point is (5, 189). The square marks the predicted value on the line, (5, 150.8). The residual is the vertical gap between them.</div>
+    </div>
+    <div class="card card-green">
+      <h3>(a)&ndash;(b) Predict, Then Subtract</h3>
+      <div class="formula-box" style="font-size: 18px;">
+        \[ \hat{y} = 139.2 + 2.32(5) = 150.8 \text{ minutes} \]
+      </div>
+      <div class="formula-box" style="font-size: 18px;">
+        \[ y - \hat{y} = 189 - 150.8 = +38.2 \text{ minutes} \]
+      </div>
+      <ul class="questions">
+        <li>The game lasted 38.2 minutes longer than predicted, so the point is above the line.</li>
+        <li>(d) <strong>Slope:</strong> for each additional run scored, the predicted length of the game increases by <strong>2.32 minutes</strong>.</li>
+        <li>(e) <strong>Intercept:</strong> a game with 0 runs has a predicted length of <strong>139.2 minutes</strong>. This is not meaningful: the data start at 3 runs, and a game cannot end 0&ndash;0.</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const runs = [3, 3, 3, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 11, 11, 11, 12, 13, 13, 13, 14, 16, 16, 16, 18, 20, 22];
+      const time = [171, 155, 147, 141, 134, 152, 129, 180, 180, 170, 147, 132, 115, 172, 152, 146, 179, 171, 160, 160, 155, 144, 144, 127, 157, 157, 146, 181, 168, 161, 157, 139, 173, 161, 153, 180, 173, 146, 153, 188, 165, 159, 147, 175, 166, 159, 188, 191, 216];
+      runs.push(5); time.push(189);
+      StatGraphs.scatter('#chart-2-5-baseball-sol', runs, time,
+        { width: 560, height: 320, padBottom: 48, padLeft: 46, xMin: 0, xMax: 25, yMin: 100, yMax: 225, xLabel: 'runs scored', yLabel: 'time (minutes)', dotR: 4.5,
+          line: { intercept: 139.2, slope: 2.32, xFrom: 2, xTo: 23, color: '#fb7185' },
+          marks: [{ x: 5, y: 189, shape: 'circle', color: '#34d399' }, { x: 5, y: 150.8, shape: 'square', color: '#fbbf24' }] });
+    })();
+  </script>
+</div>
+
+<div class="slide">
   <h2>Example 2: Commute Distance and Time</h2>
   <p class="subtitle">How long does it take to drive to campus? The table shows the one-way commute distance (in miles) and the commute time (in minutes) reported by 7 students on a typical weekday morning.</p>
   <div class="grid-2">
@@ -393,6 +430,98 @@
         { width: 560, height: 320, padBottom: 48, xMin: 0, xMax: 25, yMin: 10, yMax: 60, xLabel: 'distance (miles)', yLabel: 'time (minutes)', dotR: 5.5, color: '#fbbf24' });
     })();
   </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Solution</span>
+  <h2>Solution: Commute Distance and Time</h2>
+  <p class="subtitle">Use StatKey to find the regression line, then use the line to predict.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>StatKey Steps</h3>
+      <ul class="small">
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Descriptive Statistics and Graphs</strong>, choose <strong>Two Quantitative Variables</strong></li>
+        <li><strong>2.</strong> Click <strong>Edit Data</strong>, delete the existing data, and paste one (distance, time) pair per line: <code>3,14</code> <code>5,15</code> <code>8,22</code> <code>10,23</code> <code>14,35</code> <code>18,38</code> <code>22,49</code>. Click <strong>OK</strong></li>
+        <li><strong>3.</strong> Check <strong>Show Regression Line</strong> to see the line and its equation</li>
+        <li><strong>4.</strong> Read the slope, intercept, and correlation \(r\)</li>
+      </ul>
+      <div class="step-note" style="margin-top: 8px;">StatKey reports \(\hat{y} \approx 6.75 + 1.86x\) and \(r \approx 0.990\).</div>
+    </div>
+    <div class="card card-green">
+      <h3>(a) The Regression Line</h3>
+      <div class="formula-box" style="font-size: 18px;">
+        \[ \widehat{\text{Time}} = 6.75 + 1.86 \times \text{Distance} \]
+      </div>
+      <h3>(b) Prediction at 12 Miles</h3>
+      <div class="formula-box" style="font-size: 18px;">
+        \[ \hat{y} = 6.75 + 1.86(12) = 29.07 \approx 29.1 \text{ minutes} \]
+      </div>
+      <h3>(c) Slope in Context</h3>
+      <div class="step-note">For each additional mile of distance, the predicted commute time increases by about <strong>1.86 minutes</strong>.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Regression with Technology</h2>
+  <p class="subtitle">Does working more hours at a job go with a lower GPA? Nine students reported the hours they work per week and their GPA.</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <h3>The Data</h3>
+      <table>
+        <tbody>
+          <tr><th>Hours</th><td>0</td><td>4</td><td>6</td><td>10</td><td>12</td><td>15</td><td>20</td><td>25</td><td>30</td></tr>
+          <tr><th>GPA</th><td>3.70</td><td>3.48</td><td>3.55</td><td>3.32</td><td>3.36</td><td>3.10</td><td>3.12</td><td>2.90</td><td>2.80</td></tr>
+        </tbody>
+      </table>
+      <div id="chart-2-5-gpa" style="margin-top: 12px;"></div>
+    </div>
+    <div class="card card-green">
+      <h3>Your Tasks</h3>
+      <ul class="questions">
+        <li>(a) Use StatKey to find the regression line to predict GPA from hours worked, and the correlation \(r\).</li>
+        <li>(b) Interpret the slope in context.</li>
+        <li>(c) Predict the GPA of a student who works 12 hours per week.</li>
+        <li>(d) The student who works 15 hours has a GPA of 3.10. Find the residual. Is the point above or below the line?</li>
+        <li>(e) Does this show that working more hours <em>causes</em> a lower GPA? Explain.</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    (function () {
+      StatGraphs.scatter('#chart-2-5-gpa', [0, 4, 6, 10, 12, 15, 20, 25, 30], [3.70, 3.48, 3.55, 3.32, 3.36, 3.10, 3.12, 2.90, 2.80],
+        { width: 480, height: 220, padBottom: 44, xMin: 0, xMax: 30, yMin: 2.6, yMax: 3.8, xLabel: 'hours worked per week', yLabel: 'GPA', dotR: 5 });
+    })();
+  </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Regression with Technology</h2>
+  <p class="subtitle">(a) From StatKey: \(\widehat{\text{GPA}} = 3.660 - 0.0296 \times \text{Hours}\), with \(r \approx -0.978\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>(b) Slope in Context</h3>
+      <div class="step-note">For each additional hour worked per week, the predicted GPA <strong>decreases by about 0.03</strong> grade points.</div>
+      <h3>(c) Prediction at 12 Hours</h3>
+      <div class="formula-box" style="font-size: 18px;">
+        \[ \hat{y} = 3.660 - 0.0296(12) = 3.305 \approx 3.30 \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <h3>(d) Residual at 15 Hours</h3>
+      <div class="formula-box" style="font-size: 18px;">
+        \[ \hat{y} = 3.660 - 0.0296(15) = 3.216 \]
+      </div>
+      <div class="formula-box" style="font-size: 18px;">
+        \[ y - \hat{y} = 3.10 - 3.216 \approx -0.12 \]
+      </div>
+      <div class="step-note">Negative, so the point is <strong>below</strong> the line: this student's GPA is lower than predicted.</div>
+      <h3>(e) Causation?</h3>
+      <div class="step-note"><strong>No.</strong> This is observational data. Other variables, such as family finances or course load, could affect both hours worked and GPA.</div>
+    </div>
+  </div>
 </div>
 
 <div class="slide">

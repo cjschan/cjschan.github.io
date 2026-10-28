@@ -8,7 +8,7 @@
   window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<script src="statgraphs.js?v=2"></script>
+<script src="statgraphs.js?v=7"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -163,6 +163,69 @@
       <ul>
         <li>If \(\mu = 100\) and \(\sigma = 15\), then about 95% of values are between 70 and 130.</li>
         <li>Values outside this range are unusual.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber" style="align-self: flex-start;">Your Turn</span>
+  <h2>Your Turn: SD and the 95% Rule</h2>
+  <p class="subtitle">Practice both skills from the review: computing a standard deviation by hand and using the 95% rule.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Part 1: Compute the SD</h3>
+      <div class="step-note">A student records how many text messages she sent on five randomly chosen days:</div>
+      <div class="formula-box" style="text-align:center;">2, &nbsp;5, &nbsp;6, &nbsp;9, &nbsp;13</div>
+      <ul class="small">
+        <li>(a) Find the mean \(\bar{x}\).</li>
+        <li>(b) Build the table of deviations \(x - \bar{x}\) and squared deviations.</li>
+        <li>(c) Find the sample standard deviation \(s\).</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Part 2: Use the 95% Rule</h3>
+      <div class="step-note">Systolic blood pressure of healthy adults is approximately bell-shaped with mean \(\mu = 120\) mmHg and standard deviation \(\sigma = 12\) mmHg.</div>
+      <ul class="small">
+        <li>(d) Between what two values do about 95% of systolic blood pressures fall?</li>
+        <li>(e) Would a reading of 150 mmHg be unusual? Explain.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green" style="align-self: flex-start;">Your Turn &mdash; Answers</span>
+  <h2>Answers: SD and the 95% Rule</h2>
+  <p class="subtitle">(a) \(\bar{x} = \frac{2+5+6+9+13}{5} = \frac{35}{5} = 7\)</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <h3>(b)&ndash;(c) Deviations and SD</h3>
+      <table>
+        <thead>
+          <tr><th>\(x\)</th><th>\(x - \bar{x}\)</th><th>\((x - \bar{x})^2\)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td><td>\(-5\)</td><td>25</td></tr>
+          <tr><td>5</td><td>\(-2\)</td><td>4</td></tr>
+          <tr><td>6</td><td>\(-1\)</td><td>1</td></tr>
+          <tr><td>9</td><td>2</td><td>4</td></tr>
+          <tr><td>13</td><td>6</td><td>36</td></tr>
+          <tr><td><strong>Sum</strong></td><td>0</td><td><strong>70</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="formula-box" style="font-size: 20px;">
+        \[ s = \sqrt{\frac{70}{5 - 1}} = \sqrt{17.5} \approx 4.18 \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <h3>(d)&ndash;(e) The 95% Rule</h3>
+      <div class="formula-box" style="font-size: 20px;">
+        \[ 120 \pm 2(12) = 120 \pm 24 \]
+      </div>
+      <ul class="small">
+        <li>(d) About 95% of systolic blood pressures fall between <strong>96 and 144 mmHg</strong>.</li>
+        <li>(e) <strong>Yes.</strong> 150 is above 144, so it is more than 2 standard deviations above the mean: \(z = (150 - 120)/12 = 2.5\). Fewer than about 2.5% of healthy adults have a reading this high.</li>
       </ul>
     </div>
   </div>
@@ -394,12 +457,56 @@
 
 <div class="slide">
   <h2>Example: Five-Number Summary as a Boxplot</h2>
-  <p class="subtitle">Daily caffeine intake (mg) for 40 college students. Median, Q1, Q3 and the whiskers show the spread.</p>
+  <p class="subtitle">Daily caffeine intake (mg) for 40 college students. The box shows Q1, the median, and Q3; the whiskers stop at the most extreme values inside the fences.</p>
   <div id="chart-2-3-box" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:18px; max-width:600px; margin:8px auto;"></div>
+  <div class="grid-2" style="flex: 0 0 auto; margin-top: 8px;">
+    <div class="card card-accent">
+      <h3>Five-Number Summary</h3>
+      <div class="step-note">(Min, Q1, Median, Q3, Max) = (0, 115, 167.5, 222.5, 450)</div>
+      <ul class="small">
+        <li>IQR = 222.5 &minus; 115 = 107.5</li>
+        <li>Fences: 115 &minus; 1.5(107.5) = &minus;46.25 and 222.5 + 1.5(107.5) = 383.75</li>
+      </ul>
+    </div>
+    <div class="card card-rose">
+      <h3>Reading the Boxplot</h3>
+      <ul class="small">
+        <li><strong>450 mg</strong> is above 383.75, so it is an <strong>outlier</strong> and is drawn as a separate dot.</li>
+        <li>The upper whisker stops at <strong>380</strong>, the largest value inside the fence. The lower whisker reaches the minimum, 0.</li>
+      </ul>
+    </div>
+  </div>
   <script>
     const caffeine = [0, 30, 50, 60, 80, 90, 90, 100, 105, 110, 120, 120, 130, 140, 145, 150, 155, 160, 160, 165, 170, 175, 180, 180, 190, 195, 200, 210, 215, 220, 225, 230, 240, 250, 260, 280, 300, 320, 380, 450];
-    StatGraphs.boxplot('#chart-2-3-box', caffeine, { width: 540, height: 160, xLabel: 'mg' });
+    StatGraphs.boxplot('#chart-2-3-box', caffeine, { width: 540, height: 150, xLabel: 'mg', outliers: true, quartiles: 'halves' });
   </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-blue" style="align-self: flex-start;">Technology</span>
+  <h2>Caffeine Data in StatKey</h2>
+  <p class="subtitle">StatKey draws the boxplot and reports the five-number summary for you.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Steps</h3>
+      <ul>
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Descriptive Statistics and Graphs</strong>, choose <strong>One Quantitative Variable</strong></li>
+        <li><strong>2.</strong> Click <strong>Edit Data</strong>, delete the existing values, paste the 40 caffeine values (one per line), and click <strong>OK</strong></li>
+        <li><strong>3.</strong> Read the mean, standard deviation, and five-number summary from the summary statistics</li>
+        <li><strong>4.</strong> Switch the graph to the <strong>boxplot</strong> view and find the outlier at 450</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>What You Should See</h3>
+      <ul class="small">
+        <li>\(n = 40\), \(\bar{x} = 175.75\) mg, \(s \approx 91.2\) mg</li>
+        <li>Median = 167.5 mg, minimum = 0, maximum = 450</li>
+        <li>Q1 and Q3 near 115 and 222.5. Software may use a slightly different rule for quartiles, so its values can differ a little from the hand calculation.</li>
+        <li>The mean is larger than the median, another sign of right skew.</li>
+      </ul>
+      <div class="callout" style="font-size: 14px;">Caffeine data (mg): 0, 30, 50, 60, 80, 90, 90, 100, 105, 110, 120, 120, 130, 140, 145, 150, 155, 160, 160, 165, 170, 175, 180, 180, 190, 195, 200, 210, 215, 220, 225, 230, 240, 250, 260, 280, 300, 320, 380, 450</div>
+    </div>
+  </div>
 </div>
 
 <div class="slide">
@@ -434,7 +541,7 @@
       </ul>
     </div>
   </div>
-  <div class="callout">Look back at the caffeine boxplot: the whisker from \(Q_3\) to the maximum is roughly twice as long as the whisker from the minimum to \(Q_1\), so that distribution is right-skewed.</div>
+  <div class="callout">Look back at the caffeine boxplot: the upper whisker (222.5 to 380) is longer than the lower whisker (0 to 115), and there is a high outlier at 450. The long right side means that distribution is right-skewed.</div>
   <script>
     (function () {
       const ns = 'http://www.w3.org/2000/svg';
@@ -468,6 +575,53 @@
       schematic('#skew-left',  [0, 60, 78, 88, 100], '#fbbf24');
     })();
   </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber" style="align-self: flex-start;">Your Turn</span>
+  <h2>Your Turn: Five-Number Summary and Outliers</h2>
+  <p class="subtitle">The number of minutes 30 students spent on a statistics homework assignment has this five-number summary:</p>
+  <div class="formula-box" style="text-align:center; max-width: 640px; margin: 0 auto 12px;">(Min, Q1, Median, Q3, Max) = (12, 30, 38, 50, 95)</div>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Spread and Fences</h3>
+      <ul class="small">
+        <li>(a) Find the range and the IQR.</li>
+        <li>(b) Find the lower and upper fences.</li>
+        <li>(c) Is the minimum an outlier? Is the maximum an outlier?</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Boxplot and Shape</h3>
+      <ul class="small">
+        <li>(d) The second-largest time is 72 minutes. Where does the upper whisker end on the boxplot?</li>
+        <li>(e) Is the distribution symmetric, right-skewed, or left-skewed? Use the five numbers to explain.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green" style="align-self: flex-start;">Your Turn &mdash; Answers</span>
+  <h2>Answers: Five-Number Summary and Outliers</h2>
+  <p class="subtitle">Five-number summary: (12, 30, 38, 50, 95)</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>(a)&ndash;(c) Spread and Fences</h3>
+      <ul class="small">
+        <li>(a) Range = 95 &minus; 12 = <strong>83</strong>; IQR = 50 &minus; 30 = <strong>20</strong></li>
+        <li>(b) Lower fence = 30 &minus; 1.5(20) = <strong>0</strong>; upper fence = 50 + 1.5(20) = <strong>80</strong></li>
+        <li>(c) The minimum, 12, is above 0, so it is <strong>not</strong> an outlier. The maximum, 95, is above 80, so it <strong>is</strong> an outlier.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>(d)&ndash;(e) Boxplot and Shape</h3>
+      <ul class="small">
+        <li>(d) The upper whisker ends at <strong>72</strong>, the largest value inside the fence. The value 95 is drawn as a separate dot.</li>
+        <li>(e) <strong>Right-skewed.</strong> The median is closer to Q1 (38 &minus; 30 = 8) than to Q3 (50 &minus; 38 = 12), and Q3 to the max (45) is much longer than the min to Q1 (18).</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <div class="slide">

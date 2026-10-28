@@ -8,7 +8,7 @@
   window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<script src="statgraphs.js?v=2"></script>
+<script src="statgraphs.js?v=7"></script>
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -155,6 +155,90 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-green">Solution</span>
+  <h2>Solution: Smokers by Region of the Country</h2>
+  <p class="subtitle">Read each boxplot's five-number summary (Min, \(Q_1\), Median, \(Q_3\), Max) and compare the groups.</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <h3>Five-Number Summaries (percent who smoke)</h3>
+      <table>
+        <thead><tr><th>Region</th><th>Min</th><th>\(Q_1\)</th><th>Median</th><th>\(Q_3\)</th><th>Max</th><th>IQR</th></tr></thead>
+        <tbody>
+          <tr><td>Midwest</td><td>14.7</td><td>15.8</td><td>18.3</td><td>21.0</td><td>24.6</td><td>5.2</td></tr>
+          <tr><td>Northeast</td><td>13.0</td><td>13.7</td><td>15.0</td><td>17.0</td><td>18.7</td><td>3.3</td></tr>
+          <tr><td>South</td><td>16.8</td><td>17.3</td><td>20.2</td><td>22.5</td><td>26.1</td><td>5.2</td></tr>
+          <tr><td>West</td><td>9.0</td><td>13.2</td><td>15.7</td><td>17.6</td><td>21.0</td><td>4.4</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card card-green">
+      <h3>Answers</h3>
+      <ul class="questions">
+        <li>(a) The <strong>South</strong>: its median (20.2%) is the highest, and its whole box sits farthest right.</li>
+        <li>(b) The <strong>West</strong>: its minimum, 9.0%, is the lowest value of any state.</li>
+        <li>(c) The <strong>Northeast</strong>: it has the smallest IQR (3.3) and the smallest range (18.7 &minus; 13.0 = 5.7).</li>
+        <li>(d) <strong>No.</strong> No points are plotted beyond the whiskers. For example, the West's lower fence is \(13.2 - 1.5(4.4) = 6.6\), and its minimum, 9.0, is above it.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Comparing Groups with Boxplots</h2>
+  <p class="subtitle">A survey asked students how many hours they work at a paid job each week. The side-by-side boxplots compare students who live on campus with students who live off campus.</p>
+  <div class="grid-2">
+    <div class="chart-box">
+      <div id="chart-2-4-work"></div>
+    </div>
+    <div class="card card-green">
+      <h3>Questions</h3>
+      <ul class="questions">
+        <li>(a) Which group tends to work more hours? Use the medians.</li>
+        <li>(b) Which group has more variability? Compare the IQRs.</li>
+        <li>(c) Is the maximum for off-campus students (40 hours) an outlier? Use the fences.</li>
+        <li>(d) The mean weekly hours are 9.1 for on-campus students and 17.6 for off-campus students. Give notation for and find the difference in means (off campus minus on campus).</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const onCampus  = [0, 4, 8, 12, 20];
+      const offCampus = [0, 10, 18, 25, 40];
+      StatGraphs.boxplots('#chart-2-4-work', [onCampus, offCampus], ['On campus', 'Off campus'],
+        { width: 560, height: 260, padBottom: 48, min: 0, max: 45, xLabel: 'hours worked per week' });
+    })();
+  </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Comparing Groups with Boxplots</h2>
+  <p class="subtitle">On campus: (0, 4, 8, 12, 20). Off campus: (0, 10, 18, 25, 40).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>(a)&ndash;(b) Center and Spread</h3>
+      <ul class="questions">
+        <li>(a) <strong>Off-campus</strong> students: median 18 hours vs. 8 hours on campus.</li>
+        <li>(b) <strong>Off-campus</strong> students: IQR = 25 &minus; 10 = 15 hours vs. 12 &minus; 4 = 8 hours on campus.</li>
+      </ul>
+      <h3 style="margin-top: 14px;">(c) Outlier Check</h3>
+      <div class="formula-box" style="font-size: 18px;">
+        \[ Q_3 + 1.5 \times \text{IQR} = 25 + 1.5(15) = 47.5 \]
+      </div>
+      <div class="step-note">40 is below 47.5, so it is <strong>not</strong> an outlier.</div>
+    </div>
+    <div class="card card-green">
+      <h3>(d) Difference in Means</h3>
+      <div class="formula-box">
+        \[ \bar{x}_{\text{off}} - \bar{x}_{\text{on}} = 17.6 - 9.1 = 8.5 \text{ hours} \]
+      </div>
+      <div class="step-note">On average, students in this sample who live off campus work about 8.5 more hours per week than students who live on campus.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <span class="tag tag-amber">Quick Self-Quiz</span>
   <h2>Quantitative/Categorical Relationship</h2>
   <p class="subtitle">In a recent study, participants were randomized to drink either tea or coffee every day for two weeks. After two weeks, blood samples were exposed to an antigen and an immune system response was measured, with higher values representing a stronger immune system.</p>
@@ -182,6 +266,29 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-green">Solution</span>
+  <h2>Solution: Quantitative/Categorical Relationship</h2>
+  <p class="subtitle">Coffee: (0, 2.25, 15.5, 25.25, 52). Tea: (5, 13, 47, 55, 58).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>(a)&ndash;(b) Relationship</h3>
+      <ul class="questions">
+        <li>(a) <strong>Yes.</strong> The two boxplots are in quite different places, so the immune response seems to depend on which drink a person had.</li>
+        <li>(b) The <strong>tea</strong> group. Its median (47) is far above the coffee median (15.5), and the tea \(Q_1\) of 13 is close to the coffee median.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>(c) Outliers</h3>
+      <ul class="questions">
+        <li><strong>No.</strong> Neither boxplot shows points beyond the whiskers.</li>
+        <li>Coffee: IQR = 25.25 &minus; 2.25 = 23, upper fence = 25.25 + 1.5(23) = 59.75. The maximum, 52, is inside.</li>
+        <li>Tea: IQR = 55 &minus; 13 = 42, fences = &minus;50 and 118. Every value is inside.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <span class="tag tag-amber">Quick Self-Quiz</span>
   <h2>Tea vs. Coffee: Descriptive Statistics</h2>
   <p class="subtitle">Descriptive statistics for the immune response (interferon gamma) in the two groups are shown.</p>
@@ -204,6 +311,53 @@
     <div class="card card-amber">
       <h3>(e) Causation</h3>
       <div class="step-note">Can we conclude that tea causes an increase in this aspect of the immune response? Why or why not?</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Solution</span>
+  <h2>Solution: Tea vs. Coffee: Descriptive Statistics</h2>
+  <p class="subtitle">Tea: \(n = 11\), \(\bar{x}_T = 34.82\). Coffee: \(n = 10\), \(\bar{x}_C = 17.70\).</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>(d) Difference in Means</h3>
+      <div class="formula-box">
+        \[ \bar{x}_T - \bar{x}_C = 34.82 - 17.70 = 17.12 \]
+      </div>
+      <div class="step-note">On average, the tea drinkers' immune response was 17.12 units higher than the coffee drinkers'.</div>
+    </div>
+    <div class="card card-amber">
+      <h3>(e) Causation</h3>
+      <ul class="questions">
+        <li><strong>Possibly, yes.</strong> Participants were <strong>randomly assigned</strong> to tea or coffee, so this is a randomized experiment, and other variables should be balanced between the groups.</li>
+        <li>The samples are small, though. A difference of 17.12 could partly be random chance. In Chapter 4 we will test whether a difference this large is statistically significant.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-blue">Technology</span>
+  <h2>Tea vs. Coffee in StatKey</h2>
+  <p class="subtitle">StatKey makes the side-by-side boxplots and the summary statistics for each group.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Steps</h3>
+      <ul>
+        <li><strong>1.</strong> Download <strong>ImmuneTea.csv</strong> from the 4th-edition datasets page: <a href="https://www.lock5stat.com/datapage4e.html" target="_blank" style="color:var(--accent);">lock5stat.com/datapage4e.html</a></li>
+        <li><strong>2.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Descriptive Statistics and Graphs</strong>, choose <strong>One Quantitative and One Categorical</strong></li>
+        <li><strong>3.</strong> Click <strong>Upload File</strong> and choose <strong>ImmuneTea.csv</strong></li>
+        <li><strong>4.</strong> Read the mean, standard deviation, and five-number summary for each drink</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>What to Check</h3>
+      <ul class="questions">
+        <li>The group means should match the table: 34.82 (tea) and 17.70 (coffee).</li>
+        <li>Compare the boxplots for the two groups: the tea box sits farther right.</li>
+        <li>StatKey may compute \(Q_1\) and \(Q_3\) with a slightly different rule, so they can differ a little from the table.</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -249,6 +403,27 @@
       <div class="scenario"><span class="letter">(d)</span>Age of the husband and age of the wife, for married couples.</div>
     </div>
   </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Solution</span>
+  <h2>Solution: Positive or Negative Association?</h2>
+  <p class="subtitle">Ask: as the first variable goes up, does the second tend to go up (positive) or down (negative)?</p>
+  <div class="grid-2" style="flex: 0 0 auto;">
+    <div class="card card-accent">
+      <div class="scenario"><span class="letter">(a)</span><span class="green">Positive.</span> Adults with more years of education tend to have higher salaries.</div>
+    </div>
+    <div class="card card-green">
+      <div class="scenario"><span class="letter">(b)</span><span class="rose">Negative.</span> Adults tend to get slower as they get older.</div>
+    </div>
+    <div class="card card-amber">
+      <div class="scenario"><span class="letter">(c)</span><span class="green">Positive.</span> Children tend to run faster as they grow older.</div>
+    </div>
+    <div class="card card-accent2">
+      <div class="scenario"><span class="letter">(d)</span><span class="green">Positive.</span> Older husbands tend to have older wives.</div>
+    </div>
+  </div>
+  <div class="callout">Parts (b) and (c) use the same two variables but give opposite directions. The association depends on the population being studied.</div>
 </div>
 
 <div class="slide">
@@ -327,6 +502,30 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-green">Solution</span>
+  <h2>Solution: Scatterplots and Correlation</h2>
+  <p class="subtitle">Judge the direction first (sign of \(r\)), then how tightly the points hug a line (size of \(r\)).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Scatterplot A: \(r \approx 0.5\)</h3>
+      <ul class="questions">
+        <li>The points trend <strong>upward</strong>, so \(r\) is positive.</li>
+        <li>There is a lot of scatter around the trend, so the relationship is only <strong>moderate</strong>.</li>
+        <li>The actual correlation is \(r \approx 0.62\), closest to 0.5.</li>
+      </ul>
+    </div>
+    <div class="card card-rose">
+      <h3>Scatterplot B: \(r \approx -0.9\)</h3>
+      <ul class="questions">
+        <li>The points trend <strong>downward</strong>, so \(r\) is negative.</li>
+        <li>They cluster tightly around a line, so the relationship is <strong>strong</strong>.</li>
+        <li>Not \(-1\): that would require every point to lie exactly on a line. The actual correlation is \(r \approx -0.96\).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <span class="tag tag-amber">Quick Self-Quiz</span>
   <h2>Understanding Scatterplots</h2>
   <p class="subtitle">The scatterplot shows the relationship between number of rebounds in a season and free throw percentage for players in the National Basketball Association.</p>
@@ -344,6 +543,30 @@
         <li>(d) Which value is the best guess at the correlation? &nbsp;&minus;20, &minus;2, &minus;1, &minus;0.9, &minus;0.4, 0, 0.4, 0.9, 1, 2, 20</li>
         <li>(e) Which of the values listed in part (d) are impossible values for a correlation?</li>
         <li>(f) Are there any outliers in the scatterplot?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Solution</span>
+  <h2>Solution: Understanding Scatterplots</h2>
+  <p class="subtitle">Rebounds are on the x-axis and free throw percentage is on the y-axis.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>(a)&ndash;(c) Reading the Plot</h3>
+      <ul class="questions">
+        <li>(a) <strong>Top left:</strong> few rebounds and a high free throw percentage. <strong>Bottom right:</strong> many rebounds and a low free throw percentage.</li>
+        <li>(b) <strong>Negative.</strong> The points drift downward from left to right.</li>
+        <li>(c) Players who get more rebounds tend to have <strong>lower</strong> free throw percentages. (Rebounders are often taller players who play near the basket.)</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>(d)&ndash;(f) Correlation and Outliers</h3>
+      <ul class="questions">
+        <li>(d) <strong>&minus;0.4.</strong> The trend is negative but weak to moderate, with a lot of scatter.</li>
+        <li>(e) <strong>&minus;20, &minus;2, 2, and 20</strong> are impossible, since \(-1 \le r \le 1\).</li>
+        <li>(f) <strong>Yes, a few.</strong> The two players with free throw percentages below 0.5 (near 580 and 720 rebounds) are far below the rest, and the few players with about 1,000 or more rebounds are far to the right of the rest.</li>
       </ul>
     </div>
   </div>
@@ -400,6 +623,90 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-green">Solution</span>
+  <h2>Solution: Correlation and Outliers</h2>
+  <p class="subtitle">Use StatKey to find each correlation.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>StatKey Steps</h3>
+      <ul class="small">
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Descriptive Statistics and Graphs</strong>, choose <strong>Two Quantitative Variables</strong></li>
+        <li><strong>2.</strong> Click <strong>Edit Data</strong>, delete the existing data, and paste one \(x, y\) pair per line: <code>1,5</code> <code>2,8</code> <code>3,6</code> <code>4,4</code> <code>5,9</code> <code>15,50</code>. Click <strong>OK</strong></li>
+        <li><strong>3.</strong> Read the correlation \(r\) under the scatterplot</li>
+        <li><strong>4.</strong> Click <strong>Edit Data</strong> again, delete the line <code>15,50</code>, and click <strong>OK</strong> to get the new \(r\)</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Answers</h3>
+      <ul class="questions">
+        <li>(a) All six points: \(r \approx 0.964\)</li>
+        <li>(b) Without \((15, 50)\): \(r \approx 0.305\)</li>
+        <li>(c) The single outlier turns a <strong>weak</strong> positive relationship into what looks like a <strong>very strong</strong> one. One point far from the others can control the correlation, so always plot the data first.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Correlation with Technology</h2>
+  <p class="subtitle">Eight students reported the hours they studied for an exam and their exam score. A ninth student studied 10 hours but scored only 55 (circled).</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <h3>The Data</h3>
+      <table>
+        <tbody>
+          <tr><th>Hours</th><td>1</td><td>2</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>10</td></tr>
+          <tr><th>Score</th><td>62</td><td>65</td><td>70</td><td>68</td><td>75</td><td>80</td><td>78</td><td>88</td><td>55</td></tr>
+        </tbody>
+      </table>
+      <div id="chart-2-4-study" style="margin-top: 12px;"></div>
+    </div>
+    <div class="card card-green">
+      <h3>Your Tasks</h3>
+      <ul class="questions">
+        <li>(a) Use StatKey to find the correlation for the <strong>first eight</strong> students.</li>
+        <li>(b) Add the ninth student, \((10, 55)\), and find the correlation for all nine.</li>
+        <li>(c) How did the outlier change the correlation? Compare with Example 4.</li>
+        <li>(d) Describe the relationship for the first eight students in context (direction and strength).</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    (function () {
+      StatGraphs.scatter('#chart-2-4-study', [1, 2, 2, 3, 4, 5, 6, 7, 10], [62, 65, 70, 68, 75, 80, 78, 88, 55],
+        { width: 480, height: 220, padBottom: 44, xMin: 0, xMax: 10, yMin: 50, yMax: 90, xLabel: 'hours studied', yLabel: 'exam score', dotR: 5,
+          marks: [{ x: 10, y: 55, shape: 'circle', color: '#fb7185' }] });
+    })();
+  </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Correlation with Technology</h2>
+  <p class="subtitle">In StatKey: <strong>Descriptive Statistics and Graphs</strong> &rarr; <strong>Two Quantitative Variables</strong> &rarr; <strong>Edit Data</strong>, paste the pairs, and read \(r\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>(a)&ndash;(b) The Correlations</h3>
+      <ul class="questions">
+        <li>(a) First eight students: \(r \approx 0.956\)</li>
+        <li>(b) All nine students: \(r \approx 0.091\)</li>
+      </ul>
+      <h3 style="margin-top: 14px;">(d) In Context</h3>
+      <div class="step-note">For the first eight students there is a <strong>strong positive</strong> linear relationship: students who studied more hours tended to score higher.</div>
+    </div>
+    <div class="card card-green">
+      <h3>(c) Effect of the Outlier</h3>
+      <ul class="questions">
+        <li>One point dropped \(r\) from a strong 0.956 to nearly 0 (0.091).</li>
+        <li>In Example 4 the outlier <strong>followed</strong> the trend and made \(r\) larger. Here the outlier goes <strong>against</strong> the trend and makes \(r\) much smaller.</li>
+        <li>Either way, a single outlier can change \(r\) dramatically.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Example 5: TV and Life Expectancy</h2>
   <p class="subtitle">For a sample of 22 countries, we have values for the average life expectancy (in years) and the prevalence of television sets (number of TVs per 1000 people). The results are displayed in the scatterplot.</p>
   <div class="grid-2">
@@ -423,6 +730,31 @@
         { width: 560, height: 320, padBottom: 48, xMin: 0, xMax: 1000, yMin: 35, yMax: 85, xLabel: 'TVs per 1000 people', yLabel: 'life expectancy (years)', dotR: 4.5, color: '#34d399' });
     })();
   </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Solution</span>
+  <h2>Solution: TV and Life Expectancy</h2>
+  <p class="subtitle">Correlation: \(r = 0.74\) for the 22 countries.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>(a) Association</h3>
+      <ul class="questions">
+        <li><strong>Yes, a positive association.</strong> Countries with more TVs per 1000 people tend to have higher life expectancies.</li>
+        <li>\(r = 0.74\) is a fairly strong positive linear relationship.</li>
+      </ul>
+      <h3 style="margin-top: 14px;">Check It in StatKey</h3>
+      <div class="step-note"><strong>Two Quantitative Variables</strong> &rarr; <strong>Edit Data</strong>, paste the 22 (TVs, life expectancy) pairs, and confirm \(r \approx 0.74\).</div>
+    </div>
+    <div class="card card-amber">
+      <h3>(b) Send More TVs?</h3>
+      <ul class="questions">
+        <li><strong>No.</strong> These are observational data, so correlation does not imply causation.</li>
+        <li>A <strong>confounding variable</strong>, the wealth of the country, likely explains the pattern. Wealthier countries can afford more TVs <em>and</em> better health care, food, and sanitation.</li>
+        <li>Sending TVs would not change those underlying causes.</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <div class="slide">
