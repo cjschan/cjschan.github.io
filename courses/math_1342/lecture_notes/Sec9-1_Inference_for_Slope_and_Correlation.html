@@ -423,7 +423,7 @@
 <div class="slide">
   <span class="tag tag-amber">Your Turn</span>
   <h2>Your Turn: Alcohol and Missed Classes</h2>
-  <p class="subtitle">Another possible explanatory variable for ClassesMissed in the SleepStudy data is <b>Drinks</b>, the number of alcoholic drinks per week the students say they have. Output for predicting classes missed from drinks is shown.</p>
+  <p class="subtitle" style="margin-bottom:16px;">Another possible explanatory variable for ClassesMissed in the SleepStudy data is <b>Drinks</b>, the number of alcoholic drinks per week the students say they have. Output for predicting classes missed from drinks is shown.</p>
   <div class="grid-2">
     <div>
       <div class="chart-box">
@@ -457,7 +457,7 @@
   <script>
     (function () {
       StatGraphs.scatter('#chart-9-1-drinks', jitter(DRINKS, 31, 0.35), jitter(MISSED, 32, 0.35),
-        { width: 560, height: 260, padBottom: 44, padLeft: 46, xMin: 0, xMax: 24, yMin: 0, yMax: 20,
+        { width: 560, height: 200, padBottom: 44, padLeft: 46, xMin: 0, xMax: 24, yMin: 0, yMax: 20,
           xLabel: 'alcoholic drinks per week', yLabel: 'classes missed', dotR: 3.5,
           line: { intercept: 1.8644, slope: 0.06196, xFrom: 0, xTo: 24, color: '#fb7185' } });
     })();

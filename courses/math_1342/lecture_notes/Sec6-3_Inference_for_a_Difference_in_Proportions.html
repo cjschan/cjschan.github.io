@@ -571,6 +571,9 @@
           \hat{p}=\frac{33+68}{167+189}\approx 0.284
         \]
       </div>
+      <div class="callout">
+        The left-tail p-value is very small, so there is very strong evidence that metal tags are detrimental to penguins.
+      </div>
     </div>
     <div class="card card-green">
       <div class="tag tag-green">Step 3</div>
@@ -589,9 +592,6 @@
       <ul class="small">
         <li><strong>StatKey:</strong> In <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>, under <strong>Theoretical Distributions</strong>, choose <strong>Normal</strong> (mean 0, SD 1). Check <strong>Left Tail</strong> and change the axis box to <strong>&minus;3.39</strong>. The tail area is about 0.00035.</li>
       </ul>
-      <div class="callout">
-        The left-tail p-value is very small, so there is very strong evidence that metal tags are detrimental to penguins.
-      </div>
     </div>
   </div>
 </div>
@@ -645,8 +645,8 @@
 <div class="slide">
   <span class="tag tag-green">Your Turn &mdash; Answers</span>
   <h2>Answers: Treatment vs Placebo</h2>
-  <p class="subtitle">Group 1 is treatment and Group 2 is placebo.</p>
-  <div class="grid-2">
+  <p class="subtitle" style="margin-bottom:16px;">Group 1 is treatment and Group 2 is placebo.</p>
+  <div class="grid-2" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);">
     <div class="card card-accent">
       <div class="tag tag-blue">(a) Hypotheses</div>
       <div class="formula-box">
@@ -655,9 +655,9 @@
         \]
       </div>
       <div class="tag tag-purple">(b) Proportions</div>
-      <div class="formula-box">
+      <div class="formula-box" style="font-size:18px;">
         \[
-          \hat{p}_1=\frac{36}{75}=0.48 \qquad \hat{p}_2=\frac{21}{75}=0.28 \qquad \hat{p}=\frac{57}{150}=0.38
+          \hat{p}_1=\frac{36}{75}=0.48 \quad\; \hat{p}_2=\frac{21}{75}=0.28 \quad\; \hat{p}=\frac{57}{150}=0.38
         \]
       </div>
     </div>
@@ -675,10 +675,10 @@
           \text{p-value}\approx 0.0059
         \]
       </div>
-      <div class="callout">
-        The right-tail p-value is very small, so there is strong evidence that the treatment relieves pain more often than the placebo. Because this was a randomized experiment, we can conclude the treatment <em>causes</em> the higher relief rate.
-      </div>
     </div>
+  </div>
+  <div class="callout" style="flex:none;">
+    The right-tail p-value is very small, so there is strong evidence that the treatment relieves pain more often than the placebo. Because this was a randomized experiment, we can conclude the treatment <em>causes</em> the higher relief rate.
   </div>
 </div>
 
@@ -688,15 +688,15 @@
   <div class="stack-20">
     <div class="grid-3">
       <div class="card card-accent">
-        <div class="big-number accent">Simulation</div>
+        <div style="font-size:40px;" class="big-number accent">Simulation</div>
         <div class="stat-label">Bootstrap and randomization results improve when you run more simulations.</div>
       </div>
       <div class="card card-amber">
-        <div class="big-number amber">Formulas</div>
+        <div style="font-size:40px;" class="big-number amber">Formulas</div>
         <div class="stat-label">Normal-approximation intervals and p-values improve as the sample sizes get larger.</div>
       </div>
       <div class="card card-green">
-        <div class="big-number green">Match</div>
+        <div style="font-size:40px;" class="big-number green">Match</div>
         <div class="stat-label">If the sampling distribution is close to normal and the simulation uses many repetitions, the answers should be very close.</div>
       </div>
     </div>
@@ -706,8 +706,8 @@
           <div class="tag tag-blue">Bootstrap CI</div>
           <div class="stat-label">The bootstrap dot plot shows the simulated distribution used to form the confidence interval for the difference in proportions.</div>
         </div>
-        <div class="curve-frame">
-          <img src="images/ci_diff_prop.png" alt="Bootstrap dot plot for a confidence interval for the difference in proportions">
+        <div class="curve-frame" style="padding:8px;">
+          <img style="max-height:190px;width:auto;margin:0 auto;" src="images/ci_diff_prop.png" alt="Bootstrap dot plot for a confidence interval for the difference in proportions">
         </div>
       </div>
       <div class="card card-green curve-card">
@@ -715,8 +715,8 @@
           <div class="tag tag-green">Randomization Test</div>
           <div class="stat-label">The randomization dot plot shows the null distribution used for the hypothesis test and p-value.</div>
         </div>
-        <div class="curve-frame">
-          <img src="images/ht_diff_prop.png" alt="Randomization dot plot for a hypothesis test for the difference in proportions">
+        <div class="curve-frame" style="padding:8px;">
+          <img style="max-height:190px;width:auto;margin:0 auto;" src="images/ht_diff_prop.png" alt="Randomization dot plot for a hypothesis test for the difference in proportions">
         </div>
       </div>
     </div>

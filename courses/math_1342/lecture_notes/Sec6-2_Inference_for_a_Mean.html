@@ -398,7 +398,7 @@
       <div class="tag tag-purple">t vs z</div>
       <div class="stat-label">As the degrees of freedom increase, the \(t\)-distribution gets closer to the standard normal distribution.</div>
       <div class="curve-frame compact" style="margin-top: 12px;">
-        <img src="images/t_vs_z.png" alt="Comparison of t-distributions and the standard normal distribution, showing that the t-distribution approaches z as sample size increases">
+        <img style="max-height:200px;width:auto;margin:0 auto;" src="images/t_vs_z.png" alt="Comparison of t-distributions and the standard normal distribution, showing that the t-distribution approaches z as sample size increases">
       </div>
     </div>
   </div>
@@ -549,7 +549,7 @@
 
 <div class="slide">
   <h2>Hypothesis Test Example</h2>
-  <p class="subtitle">Chips Ahoy! advertised at least \(1000\) chocolate chips per bag. A sample of \(42\) bags was counted.</p>
+  <p class="subtitle" style="margin-bottom:16px;">Chips Ahoy! advertised at least \(1000\) chocolate chips per bag. A sample of \(42\) bags was counted.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <div class="tag tag-blue">Step 1</div>
@@ -567,15 +567,14 @@
     </div>
     <div class="card card-green">
       <div class="tag tag-green">Step 3</div>
-      <div class="step-note">Compute the t statistic.</div>
-      <div class="formula-box">
+      <div class="formula-box" style="padding:8px 16px;">
         \[
           t=\frac{1261.6-1000}{117.6/\sqrt{42}} \approx 14.42
         \]
       </div>
       <div class="tag tag-amber">Steps 4-5</div>
       <div class="step-note">Find the right-tail p-value from a t-distribution with \(df=41\), then interpret in context.</div>
-      <div class="formula-box">
+      <div class="formula-box" style="padding:8px 16px;">
         \[
           \text{p-value}\approx 0 \quad (\text{far less than } 0.0001)
         \]
