@@ -32,7 +32,7 @@ table.map { width: calc(100%% - 3px); margin-left: 1px; border-collapse: collaps
 table.map th { border: 1.5px solid #000; background: #d9d9d9; font-weight: 700; padding: 6px 4px; text-align: center; vertical-align: middle; }
 table.map td { border: 1.5px solid #000; vertical-align: top; padding: 4px 6px; line-height: 1.25; }
 table.map td p { margin: 0; }
-table.map td.assess p + p { margin-top: 0.9em; }
+table.map td.items p + p { margin-top: 0.9em; }
 .mo-n { font-weight: 700; }
 .gray { color: #555; }
 .also { margin-top: 6px; line-height: 1.25; }
@@ -91,8 +91,8 @@ def week_rows(w):
             n += 1
             tag = ", ".join(f"CLO {c}" for c in clos)
             mo_html.append(f'<p><span class="mo-n">{n}.</span> {esc(text)} ({tag})</p>')
-        html.append(f"<tr><td>{''.join(mo_html)}</td><td>{item_cell(r['materials'])}</td>"
-                    f"<td>{item_cell(r['activities'])}</td><td class=\"assess\">{item_cell(r['assessments'])}</td>"
+        html.append(f"<tr><td>{''.join(mo_html)}</td><td class=\"items\">{item_cell(r['materials'])}</td>"
+                    f"<td class=\"items\">{item_cell(r['activities'])}</td><td class=\"items\">{item_cell(r['assessments'])}</td>"
                     f"<td>{tools_cell(r)}</td></tr>")
     return "".join(html)
 
