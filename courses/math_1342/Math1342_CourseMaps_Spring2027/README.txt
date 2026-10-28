@@ -33,8 +33,7 @@ HOW TO REBUILD AFTER EDITING
 HOW TO READ A PAGE (same template as the Fall 2026 RRC/DIL maps)
   Rows                     one row per section (2.5 has one row per day), with the materials, activities and
                            assessments that align to that row.
-  Take-Home Quizzes        listed in every row the quiz covers. Every quiz is due on a Monday and covers only sections
-                           finished by the Wednesday before (Quizzes 3, 6 and 9 come the Monday after a test).
+  Take-Home Quizzes        listed in every row the quiz covers. Quizzes 3, 6 and 9 are due Wednesday, before a test.
   Tests                    Test N, Test N Study Guide and Practice Test N are listed in every row the test covers
                            (Test 1: Intro–2.5, Test 2: P.1–4.3, Test 3: 4.4–6.5). Every test window falls in a week
                            whose rows it covers, so no test sitting is on an "Also this week" line.
