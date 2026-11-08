@@ -227,6 +227,26 @@ const TRIPS = [
   {name:"Managua",lon:-86.25,lat:12.13,by:"flight",via:"Aeromexico, arrived Aug 5"},
   {name:"San José",lon:-84.08,lat:9.93,by:"bus",via:"bus, Aug 7; Costa Rica Backpackers, Aug 7 to 9"},
   {name:"Monteverde Cloud Forest",lon:-84.83,lat:10.30,by:"ground",via:"with my parents"},
+  {name:"San José",lon:-84.08,lat:9.93,by:"ground"},
+  {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
+ ]},
+ {name:"Australia and New Zealand, Oct to Dec 2016", when:"Oct to Dec 2016", stops:[
+  {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
+  {name:"Sydney",lon:151.21,lat:-33.87,by:"flight",part:"Australia"},
+  {name:"Byron Bay",lon:153.61,lat:-28.64,by:"bus",part:"Australia"},
+  {name:"Brisbane",lon:153.03,lat:-27.47,by:"bus",part:"Australia"},
+  {name:"Fraser Island",lon:153.13,lat:-25.25,by:"bus",part:"Australia"},
+  {name:"Airlie Beach",lon:148.72,lat:-20.27,by:"bus",part:"Australia"},
+  {name:"Whitsundays",lon:149.04,lat:-20.28,by:"boat",part:"Australia"},
+  {name:"Cairns",lon:145.77,lat:-16.92,by:"bus",part:"Australia"},
+  {name:"Sydney",lon:151.21,lat:-33.87,by:"flight",part:"Australia"},
+  {name:"Auckland",lon:174.76,lat:-36.85,by:"flight",part:"New Zealand"},
+  {name:"Hot Water Beach",lon:175.82,lat:-36.89,by:"bus",part:"New Zealand"},
+  {name:"Waitomo",lon:175.10,lat:-38.26,by:"bus",part:"New Zealand"},
+  {name:"Rotorua",lon:176.25,lat:-38.14,by:"bus",part:"New Zealand"},
+  {name:"Taupō",lon:176.07,lat:-38.69,by:"bus",part:"New Zealand"},
+  {name:"Wellington",lon:174.78,lat:-41.29,by:"bus",part:"New Zealand"},
+  {name:"Auckland",lon:174.76,lat:-36.85,by:"bus",part:"New Zealand"},
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
  ]}
 ];
