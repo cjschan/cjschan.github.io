@@ -88,14 +88,21 @@ svg.focus .route-line.bus { stroke: var(--bus); }
 svg.focus .route-line.train { stroke: var(--train); stroke-width: 2.8; }
 svg.focus .route-line.boat { stroke: var(--boat); stroke-width: 2.6; stroke-dasharray: 6 5; }
 svg.focus .route-line.flight { stroke: var(--flight); stroke-opacity: .75; stroke-width: 1.8; stroke-dasharray: 2 6; }
+.route-glow { fill: none; stroke-width: 8; stroke-opacity: .16; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; pointer-events: none; }
+svg:not(.focus) .route-glow { stroke: var(--faint); stroke-opacity: .06; stroke-width: 5; }
+svg:not(.focus) .route.peek .route-glow { stroke: var(--city); stroke-opacity: .25; }
+svg:not(.focus) .route-glow.flight, svg.focus .route-glow.flight { display: none; }
+svg.focus .route-glow.bus { stroke: var(--bus); }
+svg.focus .route-glow.train { stroke: var(--train); }
+svg.focus .route-glow.boat { stroke: var(--boat); }
 .route-hit { fill: none; stroke: transparent; stroke-width: 12; vector-effect: non-scaling-stroke; }
 svg.focus .route:not(.on) .route-hit, svg.focus .route:not(.on) .wstop { pointer-events: none; }
 
 /* Stops: warm city lights; numbered badges on the chosen trip. */
-.wstop circle { fill: var(--city); }
+.wstop circle { fill: var(--city); stroke: var(--city); stroke-opacity: .3; stroke-width: 4; vector-effect: non-scaling-stroke; }
 svg:not(.focus) .wstop circle { fill-opacity: .85; }
 svg:not(.focus) .route.peek .wstop circle { fill-opacity: 1; }
-.wstop.far circle { fill: #e2e8f0; }
+.wstop.far circle { fill: #e2e8f0; stroke: #e2e8f0; }
 .wstop .num { display: none; fill: #0b1220; font-family: 'Work Sans', sans-serif; font-weight: 700; text-anchor: middle; pointer-events: none; }
 svg.focus .route.on .wstop:not(.far) .num { display: inline; }
 .route.on .wstop { opacity: 0; transition: opacity .25s; }

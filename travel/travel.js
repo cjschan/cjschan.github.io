@@ -78,15 +78,6 @@
   const projection = d3.geoNaturalEarth1();
   const path = d3.geoPath(projection);
 
-  // Soft glow used by routes and city lights.
-  const defs = svg.append("defs");
-  const glow = defs.append("filter").attr("id", "glow").attr("filterUnits", "userSpaceOnUse")
-    .attr("x", -5000).attr("y", -5000).attr("width", 20000).attr("height", 20000);
-  const blur = glow.append("feGaussianBlur").attr("stdDeviation", 2.2).attr("result", "b");
-  const merge = glow.append("feMerge");
-  merge.append("feMergeNode").attr("in", "b");
-  merge.append("feMergeNode").attr("in", "SourceGraphic");
-
   const g = svg.append("g");
   const gBase = g.append("g"), gLand = g.append("g"), gPins = g.append("g"), gRoutes = g.append("g");
   let W, H, current = null; // current = {trip} | {place} | null
@@ -150,12 +141,15 @@
       .on("click", (e, d) => go("country=" + encodeURIComponent(d.name)));
 
     gRoutes.selectAll("g.route").data(trips.filter(t => t.stops.length > 1), d => d.id).join("g")
-      .attr("class", "route").attr("filter", "url(#glow)").each(function (t) {
+      .attr("class", "route").each(function (t) {
         const s = d3.select(this);
         const legs = t.stops.slice(1).map((to, i) => {
           const from = t.stops[i];
           return { from, to, by: mode(to), geo: legGeom(from, to) };
         });
+        // Glow = a wide, faint stroke under each line (SVG blur filters break in Safari when zoomed).
+        s.selectAll("path.route-glow").data(legs).join("path")
+          .attr("class", d => "route-glow " + d.by).attr("d", d => partialD(d.geo, 1));
         s.selectAll("path.route-line").data(legs).join("path")
           .attr("class", d => "route-line " + d.by).attr("d", d => partialD(d.geo, 1));
         s.selectAll("path.route-hit").data(legs).join("path")
@@ -187,7 +181,6 @@
   }
 
   function scaleMarks(k) {
-    blur.attr("stdDeviation", 2.2 / k);
     gPins.selectAll("circle").attr("r", 3 / k);
     gRoutes.selectAll("g.route").each(function (t) {
       const on = current && current.trip === t;
@@ -274,8 +267,7 @@
     const t = current && current.trip, p = current && current.place;
     const hlPlaces = new Set(t ? t.places : p ? [p] : []);
     svg.classed("focus", !!t).classed("place", !!p);
-    gRoutes.selectAll("g.route").classed("on", d => d === t)
-      .attr("filter", d => (!t || d === t) ? "url(#glow)" : null);
+    gRoutes.selectAll("g.route").classed("on", d => d === t);
     gRoutes.selectAll("g.route.on").raise();
     gLand.selectAll("path").classed("hl", d => {
       const pl = placeByAtlas.get(d.properties.name);
@@ -292,7 +284,7 @@
     stopButtons.forEach((b, j) => b && b.classList.toggle("now", j === i));
   }
   function showAll() {
-    gRoutes.selectAll("path.route-line").interrupt().attr("d", d => partialD(d.geo, 1));
+    gRoutes.selectAll("path.route-line, path.route-glow").interrupt().attr("d", d => partialD(d.geo, 1));
     gRoutes.selectAll("g.wstop").classed("seen", true);
   }
   function stopAnimation() { playToken++; showAll(); markNow(-1); cullLabels(); }
@@ -303,10 +295,12 @@
     if (reduceMotion) { zoomToTrip(t); cullLabels(); return; }
     const route = gRoutes.selectAll("g.route").filter(d => d === t);
     const lines = route.selectAll("path.route-line");
-    const legs = lines.data(), nodes = lines.nodes();
+    const glows = route.selectAll("path.route-glow");
+    const legs = lines.data(), nodes = lines.nodes(), glowNodes = glows.nodes();
     const stopSel = route.selectAll("g.wstop");
     const reveal = name => stopSel.filter(d => d.name === name).classed("seen", true);
     lines.attr("d", d => partialD(d.geo, 0));
+    glows.attr("d", d => partialD(d.geo, 0));
     stopSel.classed("seen", false);
     reveal(t.stops[0].name); markNow(0);
 
@@ -325,7 +319,7 @@
       }
       const dur = leg.by === "flight" ? per * 1.6 : per;
       try {
-        await d3.select(nodes[i]).transition().duration(dur).ease(d3.easeCubicInOut)
+        await d3.selectAll([nodes[i], glowNodes[i]]).transition().duration(dur).ease(d3.easeCubicInOut)
           .attrTween("d", d => tt => partialD(d.geo, tt)).end();
       } catch (e) { return; }
       if (my !== playToken) return;
