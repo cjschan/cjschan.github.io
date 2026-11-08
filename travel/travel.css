@@ -1,15 +1,18 @@
 /* Travel page. Builds on the tokens in css/styles.css. */
 .travel {
-	--ocean: #0b1220;
-	--land: #243044;
-	--land-line: #334155;
-	--visited: #d9a22a;
-	--visited-line: #fbbf24;
-	--hl: #fde68a;
-	--bus: #38bdf8;
-	--train: #a78bfa;
-	--boat: #34d399;
-	--flight: #e2e8f0;
+	--ocean-hi: #0b1526;
+	--ocean-lo: #03060c;
+	--land: #0f1726;
+	--land-line: #18233a;
+	--visited: #172a46;
+	--visited-line: #2c4a75;
+	--visited-hl: #24467a;
+	--city: #ffe2a0;
+	--bus: #7dd3fc;
+	--train: #c4b5fd;
+	--boat: #5eead4;
+	--flight: #f1f5f9;
+	--faint: #8fb8e8;
 	max-width: 1400px;
 	margin: 0 auto;
 	padding: 32px clamp(16px, 4vw, 50px) 64px;
@@ -53,7 +56,7 @@
 }
 .map {
 	position: relative;
-	background: var(--ocean);
+	background: radial-gradient(ellipse at 50% 45%, var(--ocean-hi) 0%, var(--ocean-lo) 75%);
 	border-radius: 10px;
 	overflow: hidden;
 	aspect-ratio: 1.75 / 1;
@@ -62,28 +65,43 @@
 .map svg { display: block; width: 100%; height: 100%; cursor: grab; touch-action: none; }
 .map svg:active { cursor: grabbing; }
 
-.country { fill: var(--land); stroke: var(--land-line); stroke-width: .4; vector-effect: non-scaling-stroke; transition: fill .15s, opacity .2s; }
-.country.v { fill: var(--visited); stroke: var(--visited-line); fill-opacity: .8; cursor: pointer; }
-.country.v:hover, .country.v.hl { fill: var(--hl); fill-opacity: 1; }
-svg.focus .country.v:not(.hl) { fill-opacity: .4; }
+.sphere { fill: none; stroke: rgba(125, 211, 252, .12); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.grat { fill: none; stroke: rgba(148, 163, 184, .06); stroke-width: .6; vector-effect: non-scaling-stroke; }
 
-.pin { fill: var(--visited); stroke: var(--visited-line); stroke-width: 1.2; vector-effect: non-scaling-stroke; cursor: pointer; }
-.pin:hover, .pin.hl { fill: var(--hl); }
+.country { fill: var(--land); stroke: var(--land-line); stroke-width: .5; vector-effect: non-scaling-stroke; transition: fill .2s, stroke .2s; }
+.country.v { fill: var(--visited); stroke: var(--visited-line); cursor: pointer; }
+.country.v:hover, .country.v.hl { fill: var(--visited-hl); stroke: #5b8fd1; }
 
-.route { transition: opacity .25s; opacity: .55; cursor: pointer; }
-svg.focus .route { opacity: .1; }
+.pin { fill: var(--visited-hl); stroke: #5b8fd1; stroke-width: 1; vector-effect: non-scaling-stroke; cursor: pointer; }
+.pin:hover, .pin.hl { fill: #5b8fd1; }
+
+/* Routes: faint threads of light overall; the chosen trip glows in colour. */
+.route { transition: opacity .3s; cursor: pointer; }
+.route-line { fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+svg:not(.focus) .route-line { stroke: var(--faint); stroke-opacity: .35; }
+svg:not(.focus) .route-line.flight { stroke-dasharray: 2 5; stroke-opacity: .25; }
+svg:not(.focus) .route.peek .route-line { stroke: var(--city); stroke-opacity: .95; }
+svg.focus .route { opacity: .07; }
 svg.focus .route.on { opacity: 1; cursor: default; }
-.route-line { fill: none; stroke: var(--bus); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.route-line.train { stroke: var(--train); stroke-width: 2.6; }
-.route-line.boat { stroke: var(--boat); stroke-dasharray: 7 5; stroke-width: 2.6; }
-.route-line.flight { stroke: var(--flight); stroke-dasharray: 1 6; stroke-width: 2.4; opacity: .8; }
+svg.focus .route-line { stroke-width: 2.4; }
+svg.focus .route-line.bus { stroke: var(--bus); }
+svg.focus .route-line.train { stroke: var(--train); stroke-width: 2.8; }
+svg.focus .route-line.boat { stroke: var(--boat); stroke-width: 2.6; stroke-dasharray: 6 5; }
+svg.focus .route-line.flight { stroke: var(--flight); stroke-opacity: .75; stroke-width: 1.8; stroke-dasharray: 2 6; }
 .route-hit { fill: none; stroke: transparent; stroke-width: 12; vector-effect: non-scaling-stroke; }
-svg.focus .route:not(.on) .route-hit { pointer-events: none; }
-.route-stop { fill: var(--ocean); stroke: var(--bus); stroke-width: 1.6; vector-effect: non-scaling-stroke; }
-.route-stop.hl { fill: var(--hl); stroke: var(--hl); }
-.route-label { fill: var(--text); font-family: 'Work Sans', sans-serif; font-weight: 600; paint-order: stroke; stroke: var(--ocean); stroke-width: 3px; stroke-linejoin: round; vector-effect: non-scaling-stroke; pointer-events: none; }
-.route:not(.on) .route-label { display: none; }
-svg:not(.focus) .route-stop { display: none; }
+svg.focus .route:not(.on) .route-hit, svg.focus .route:not(.on) .wstop { pointer-events: none; }
+
+/* Stops: warm city lights; numbered badges on the chosen trip. */
+.wstop circle { fill: var(--city); }
+svg:not(.focus) .wstop circle { fill-opacity: .85; }
+svg:not(.focus) .route.peek .wstop circle { fill-opacity: 1; }
+.wstop.far circle { fill: #e2e8f0; }
+.wstop .num { display: none; fill: #0b1220; font-family: 'Work Sans', sans-serif; font-weight: 700; text-anchor: middle; pointer-events: none; }
+svg.focus .route.on .wstop:not(.far) .num { display: inline; }
+.route.on .wstop { opacity: 0; transition: opacity .25s; }
+.route.on .wstop.seen { opacity: 1; }
+.route.on .wstop.hl circle { fill: #fff; }
+.route-label { fill: #f8fafc; font-family: 'Work Sans', sans-serif; font-weight: 600; paint-order: stroke; stroke: var(--ocean-lo); stroke-width: 3.5px; stroke-linejoin: round; vector-effect: non-scaling-stroke; pointer-events: none; }
 
 .tip {
 	position: absolute; pointer-events: none;
@@ -94,21 +112,23 @@ svg:not(.focus) .route-stop { display: none; }
 .controls { position: absolute; right: 12px; bottom: 12px; display: flex; flex-direction: column; gap: 6px; }
 .controls button {
 	display: block; padding: 0; text-align: center;
-	width: 36px; height: 36px; border-radius: 8px;
-	border: 1px solid var(--border); background: var(--card-bg); color: var(--text);
-	font: 600 18px/1 'Work Sans', sans-serif; cursor: pointer;
+	width: 34px; height: 34px; border-radius: 8px;
+	border: 1px solid rgba(148, 163, 184, .25); background: rgba(15, 23, 42, .75); color: var(--text);
+	font: 600 17px/1 'Work Sans', sans-serif; cursor: pointer;
 }
-.travel .controls button:hover { border-color: var(--primary); background: var(--card-bg); }
+.travel .controls button:hover { border-color: var(--primary); background: rgba(15, 23, 42, .95); }
 
 .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--muted); font-size: 13px; padding: 10px 4px 0; }
 .legend span { display: inline-flex; align-items: center; gap: 7px; }
 .legend svg { width: 30px; height: 8px; }
-.legend .sw.visited { width: 14px; height: 10px; border-radius: 3px; background: var(--visited); display: inline-block; }
-.lg { stroke-linecap: round; stroke-width: 2.6; }
+.legend .sw { display: inline-block; }
+.legend .sw.visited { width: 14px; height: 10px; border-radius: 3px; background: var(--visited-hl); border: 1px solid #5b8fd1; }
+.legend .sw.city { width: 9px; height: 9px; border-radius: 50%; background: var(--city); box-shadow: 0 0 6px var(--city); }
+.lg { stroke-linecap: round; stroke-width: 2.4; }
 .lg.bus { stroke: var(--bus); }
 .lg.train { stroke: var(--train); }
-.lg.boat { stroke: var(--boat); stroke-dasharray: 7 5; }
-.lg.flight { stroke: var(--flight); stroke-dasharray: 1 6; }
+.lg.boat { stroke: var(--boat); stroke-dasharray: 6 5; }
+.lg.flight { stroke: var(--flight); stroke-dasharray: 2 6; }
 
 /* ---------- side panel ---------- */
 .panel {
@@ -191,7 +211,20 @@ svg:not(.focus) .route-stop { display: none; }
 }
 .travel .stop:hover, .stop.on { background: rgba(56, 189, 248, .12); }
 .stop .by { width: 18px; text-align: center; color: var(--muted); font-size: 13px; flex: none; }
-.stop .dot { color: var(--accent); }
+.stop .n {
+	flex: none; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 999px;
+	background: var(--city); color: #0b1220; font-size: 12px; font-weight: 700;
+	display: inline-flex; align-items: center; justify-content: center;
+}
+.stop .n.home { background: #e2e8f0; }
+.stop .nm { flex: 1; }
+.travel .stop.now { background: rgba(255, 226, 160, .16); }
+.route-head { display: flex; justify-content: space-between; align-items: baseline; }
+.replay {
+	border: 1px solid var(--border); border-radius: 999px; padding: 3px 12px;
+	color: var(--text); font-size: 13px; cursor: pointer;
+}
+.travel .replay:hover { border-color: var(--city); color: var(--city); }
 
 .empty { color: var(--muted); font-size: 15px; }
 

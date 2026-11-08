@@ -18,6 +18,7 @@
   const mode = s => (s.by === "flight" || s.by === "train" || s.by === "boat") ? s.by : "bus";
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
   const filledLinks = links => LINK_KINDS.filter(([k]) => links && links[k]);
+  const wait = ms => new Promise(r => setTimeout(r, ms));
 
   // ---------- data ----------
   const trips = TRIPS.map((t, i) => ({
@@ -28,6 +29,12 @@
     order: i,
   }));
   const tripById = new Map(trips.map(t => [t.id, t]));
+  // Number each trip's places in the order they were first reached (start/end points like home aren't numbered).
+  trips.forEach(t => {
+    t.num = new Map();
+    t.stops.forEach(s => { if (!s.far && !t.num.has(s.name)) t.num.set(s.name, t.num.size + 1); });
+    t.uniq = [...new Map(t.stops.map(s => [s.name, s])).values()];
+  });
 
   const svg = d3.select("#svg"), mapEl = document.getElementById("map"), tip = document.getElementById("tip");
   const panel = document.getElementById("panel");
@@ -41,8 +48,7 @@
   const placeByName = new Map(places.map(p => [p.name, p]));
   trips.forEach(t => (t.countries || []).forEach(name => {
     if (placeByName.has(name)) return;
-    const atlas = byAtlas.has(name) ? name : null;
-    const p = { name, region: null, atlas };
+    const p = { name, region: null, atlas: byAtlas.has(name) ? name : null };
     places.push(p); placeByName.set(name, p);
   }));
   const placeByAtlas = new Map(places.filter(p => p.atlas).map(p => [p.atlas, p]));
@@ -71,9 +77,20 @@
   // ---------- map ----------
   const projection = d3.geoNaturalEarth1();
   const path = d3.geoPath(projection);
+
+  // Soft glow used by routes and city lights.
+  const defs = svg.append("defs");
+  const glow = defs.append("filter").attr("id", "glow").attr("filterUnits", "userSpaceOnUse")
+    .attr("x", -5000).attr("y", -5000).attr("width", 20000).attr("height", 20000);
+  const blur = glow.append("feGaussianBlur").attr("stdDeviation", 2.2).attr("result", "b");
+  const merge = glow.append("feMerge");
+  merge.append("feMergeNode").attr("in", "b");
+  merge.append("feMergeNode").attr("in", "SourceGraphic");
+
   const g = svg.append("g");
-  const gLand = g.append("g"), gRoutes = g.append("g"), gPins = g.append("g");
-  let W, H, current = null; // current = {type:"trip"|"place", ...}
+  const gBase = g.append("g"), gLand = g.append("g"), gPins = g.append("g"), gRoutes = g.append("g");
+  let W, H, current = null; // current = {trip} | {place} | null
+  let playToken = 0;
 
   function showTip(e, text) {
     const r = mapEl.getBoundingClientRect();
@@ -81,7 +98,39 @@
   }
   function hideTip() { tip.style.opacity = 0; }
 
+  // A leg is drawn along the great circle, split where it wraps around the map edge.
+  function legGeom(a, b) {
+    const A = [a.lon, a.lat], B = [b.lon, b.lat];
+    const n = Math.max(2, Math.ceil(d3.geoDistance(A, B) * 180 / Math.PI / 1.5));
+    const ip = d3.geoInterpolate(A, B);
+    const pts = []; let prev = null, total = 0;
+    for (let i = 0; i <= n; i++) {
+      const [x, y] = projection(ip(i / n));
+      const brk = !prev || Math.abs(x - prev[0]) > W * 0.4;
+      const len = brk ? 0 : Math.hypot(x - prev[0], y - prev[1]);
+      total += len; pts.push({ x, y, brk, len }); prev = [x, y];
+    }
+    return { pts, total };
+  }
+  function partialD(geo, t) {
+    if (t <= 0) return "";
+    const target = t * geo.total; let acc = 0, d = "", last = null;
+    for (const p of geo.pts) {
+      if (p.brk) { d += `M${p.x},${p.y}`; last = p; continue; }
+      if (acc + p.len >= target) {
+        const f = p.len ? (target - acc) / p.len : 1;
+        d += `L${last.x + (p.x - last.x) * f},${last.y + (p.y - last.y) * f}`;
+        return d;
+      }
+      acc += p.len; d += `L${p.x},${p.y}`; last = p;
+    }
+    return d;
+  }
+
   function draw() {
+    gBase.selectAll("path.sphere").data([{ type: "Sphere" }]).join("path").attr("class", "sphere").attr("d", path);
+    gBase.selectAll("path.grat").data([d3.geoGraticule10()]).join("path").attr("class", "grat").attr("d", path);
+
     gLand.selectAll("path").data(countries, d => d.properties.name).join("path")
       .attr("class", d => "country" + (visitedAtlas.has(d.properties.name) ? " v" : ""))
       .attr("d", path)
@@ -91,7 +140,7 @@
       })
       .on("pointerleave", hideTip)
       .on("click", (e, d) => {
-        const p = placeByAtlas.get(d.properties.name) || (d.properties.name === "United Kingdom" && placeByName.get("United Kingdom"));
+        const p = placeByAtlas.get(d.properties.name);
         if (p) go("country=" + encodeURIComponent(p.name));
       });
 
@@ -101,36 +150,84 @@
       .on("click", (e, d) => go("country=" + encodeURIComponent(d.name)));
 
     gRoutes.selectAll("g.route").data(trips.filter(t => t.stops.length > 1), d => d.id).join("g")
-      .attr("class", "route").each(function (t) {
+      .attr("class", "route").attr("filter", "url(#glow)").each(function (t) {
         const s = d3.select(this);
-        const legs = t.stops.slice(1).map((to, i) => ({ from: t.stops[i], to, by: mode(to), trip: t }));
-        const legPath = d => path({ type: "LineString", coordinates: [[d.from.lon, d.from.lat], [d.to.lon, d.to.lat]] });
+        const legs = t.stops.slice(1).map((to, i) => {
+          const from = t.stops[i];
+          return { from, to, by: mode(to), geo: legGeom(from, to) };
+        });
         s.selectAll("path.route-line").data(legs).join("path")
-          .attr("class", d => "route-line " + d.by).attr("d", legPath);
+          .attr("class", d => "route-line " + d.by).attr("d", d => partialD(d.geo, 1));
         s.selectAll("path.route-hit").data(legs).join("path")
-          .attr("class", "route-hit").attr("d", legPath)
+          .attr("class", "route-hit").attr("d", d => partialD(d.geo, 1))
           .on("pointermove", (e, d) => showTip(e, current && current.trip === t
             ? `${d.from.name} → ${d.to.name} (${d.to.via || MODE_WORD[d.by]})`
             : t.name))
           .on("pointerleave", hideTip)
           .on("click", () => { if (!(current && current.trip === t)) go(t.id); });
-        const uniq = [...new Map(t.stops.map(p => [p.name, p])).values()];
-        s.selectAll("circle").data(uniq).join("circle").attr("class", "route-stop")
-          .attr("cx", d => projection([d.lon, d.lat])[0]).attr("cy", d => projection([d.lon, d.lat])[1])
-          .on("pointermove", (e, d) => showTip(e, d.name)).on("pointerleave", hideTip);
-        s.selectAll("text").data(uniq).join("text").attr("class", "route-label").text(d => d.name)
-          .attr("x", d => projection([d.lon, d.lat])[0]).attr("y", d => projection([d.lon, d.lat])[1]);
+        s.selectAll("g.wstop").data(t.uniq, d => d.name).join(enter => {
+          const e = enter.append("g").attr("class", "wstop seen");
+          e.append("circle");
+          e.append("text").attr("class", "num");
+          e.append("text").attr("class", "route-label");
+          return e;
+        })
+          .classed("far", d => !t.num.has(d.name))
+          .attr("transform", d => `translate(${projection([d.lon, d.lat])})`)
+          .on("pointermove", (e, d) => showTip(e, d.name)).on("pointerleave", hideTip)
+          .each(function (d) {
+            const n = t.num.get(d.name);
+            d3.select(this).select(".num").text(n || "");
+            d3.select(this).select(".route-label").text(d.name);
+          });
       });
     scaleMarks(d3.zoomTransform(svg.node()).k);
     applyFocus();
+    cullLabels();
   }
+
   function scaleMarks(k) {
-    gPins.selectAll("circle").attr("r", 5 / k);
-    gRoutes.selectAll("circle").attr("r", 4 / k);
-    gRoutes.selectAll("text").attr("font-size", 12 / k).attr("dx", 7 / k).attr("dy", 4 / k)
-      .attr("display", k >= 3 ? null : "none");
+    blur.attr("stdDeviation", 2.2 / k);
+    gPins.selectAll("circle").attr("r", 3 / k);
+    gRoutes.selectAll("g.route").each(function (t) {
+      const on = current && current.trip === t;
+      d3.select(this).selectAll("g.wstop").each(function (d) {
+        const badge = on && t.num.has(d.name);
+        const s = d3.select(this);
+        s.select("circle").attr("r", (badge ? 8 : on ? 3 : 1.8) / k);
+        s.select(".num").attr("font-size", 9.5 / k).attr("dy", "0.36em");
+        s.select(".route-label").attr("font-size", 12 / k).attr("dx", (badge ? 11 : 7) / k).attr("dy", 4 / k);
+      });
+    });
   }
-  const zoom = d3.zoom().scaleExtent([1, 40]).on("zoom", e => { g.attr("transform", e.transform); scaleMarks(e.transform.k); });
+
+  // Show as many stop names as fit without overlapping, in visit order.
+  function cullLabels() {
+    const t = current && current.trip;
+    gRoutes.selectAll(".route-label").attr("display", "none");
+    if (!t) return;
+    const tf = d3.zoomTransform(svg.node());
+    const sel = gRoutes.selectAll("g.route").filter(d => d === t).selectAll("g.wstop.seen");
+    const items = sel.nodes().map(n => {
+      const d = d3.select(n).datum();
+      const [x, y] = projection([d.lon, d.lat]);
+      return { n, d, sx: tf.applyX(x), sy: tf.applyY(y), badge: t.num.has(d.name) };
+    });
+    const taken = items.map(i => ({ x0: i.sx - 9, y0: i.sy - 9, x1: i.sx + 9, y1: i.sy + 9 }));
+    const hit = (a, b) => a.x0 < b.x1 && a.x1 > b.x0 && a.y0 < b.y1 && a.y1 > b.y0;
+    items.sort((a, b) => (t.num.get(a.d.name) || 999) - (t.num.get(b.d.name) || 999)).forEach(i => {
+      const x0 = i.sx + (i.badge ? 11 : 7), w = i.d.name.length * 6.6 + 4;
+      const r = { x0, y0: i.sy - 9, x1: x0 + w, y1: i.sy + 7 };
+      if (r.x1 > W || r.y0 < 0 || r.y1 > H || i.sx < 0) return;
+      if (taken.some((o, j) => items[j] !== i && hit(r, o))) return;
+      taken.push(r);
+      d3.select(i.n).select(".route-label").attr("display", null);
+    });
+  }
+
+  const zoom = d3.zoom().scaleExtent([1, 60])
+    .on("zoom", e => { g.attr("transform", e.transform); scaleMarks(e.transform.k); })
+    .on("end", cullLabels);
   svg.call(zoom).on("dblclick.zoom", null);
 
   function zoomToBounds([[x0, y0], [x1, y1]], maxK = 12) {
@@ -150,7 +247,7 @@
   function boundsOf(stops) {
     const pts = stops.map(s => projection([s.lon, s.lat]));
     const b = [[d3.min(pts, p => p[0]), d3.min(pts, p => p[1])], [d3.max(pts, p => p[0]), d3.max(pts, p => p[1])]];
-    const pad = Math.max(6, (b[1][0] - b[0][0]) * 0.08);
+    const pad = Math.max(0.8, Math.max(b[1][0] - b[0][0], b[1][1] - b[0][1]) * 0.12);
     return [[b[0][0] - pad, b[0][1] - pad], [b[1][0] + pad, b[1][1] + pad]];
   }
   function zoomToPlaces(ps) {
@@ -160,8 +257,8 @@
   }
   function zoomToTrip(t) {
     const near = t.stops.filter(s => !s.far);
-    if (near.length) zoomToBounds(boundsOf(near), 20);
-    else if (t.stops.length) zoomToBounds(boundsOf(t.stops), 20);
+    if (near.length) zoomToBounds(boundsOf(near), 40);
+    else if (t.stops.length) zoomToBounds(boundsOf(t.stops), 40);
     else zoomToPlaces(t.places);
   }
   function zoomToPlace(p) {
@@ -176,14 +273,66 @@
   function applyFocus() {
     const t = current && current.trip, p = current && current.place;
     const hlPlaces = new Set(t ? t.places : p ? [p] : []);
-    svg.classed("focus", !!(t || p));
-    gRoutes.selectAll("g.route").classed("on", d => d === t);
+    svg.classed("focus", !!t).classed("place", !!p);
+    gRoutes.selectAll("g.route").classed("on", d => d === t)
+      .attr("filter", d => (!t || d === t) ? "url(#glow)" : null);
+    gRoutes.selectAll("g.route.on").raise();
     gLand.selectAll("path").classed("hl", d => {
       const pl = placeByAtlas.get(d.properties.name);
       return !!pl && hlPlaces.has(pl);
     });
     gPins.selectAll("circle").classed("hl", d => hlPlaces.has(d));
-    gRoutes.selectAll("circle").classed("hl", false);
+    gRoutes.selectAll("g.wstop").classed("hl", false);
+    scaleMarks(d3.zoomTransform(svg.node()).k);
+  }
+
+  // ---------- route animation ----------
+  let stopButtons = [];   // panel buttons, one per stop index
+  function markNow(i) {
+    stopButtons.forEach((b, j) => b && b.classList.toggle("now", j === i));
+  }
+  function showAll() {
+    gRoutes.selectAll("path.route-line").interrupt().attr("d", d => partialD(d.geo, 1));
+    gRoutes.selectAll("g.wstop").classed("seen", true);
+  }
+  function stopAnimation() { playToken++; showAll(); markNow(-1); cullLabels(); }
+
+  async function play(t) {
+    const my = ++playToken;
+    showAll();
+    if (reduceMotion) { zoomToTrip(t); cullLabels(); return; }
+    const route = gRoutes.selectAll("g.route").filter(d => d === t);
+    const lines = route.selectAll("path.route-line");
+    const legs = lines.data(), nodes = lines.nodes();
+    const stopSel = route.selectAll("g.wstop");
+    const reveal = name => stopSel.filter(d => d.name === name).classed("seen", true);
+    lines.attr("d", d => partialD(d.geo, 0));
+    stopSel.classed("seen", false);
+    reveal(t.stops[0].name); markNow(0);
+
+    const hasParts = t.stops.some(s => s.part);
+    if (!hasParts) { zoomToTrip(t); await wait(DUR + 100); }
+    let part;
+    const per = Math.max(160, Math.min(650, 16000 / legs.length));
+    for (let i = 0; i < legs.length; i++) {
+      if (my !== playToken) return;
+      const leg = legs[i];
+      if (hasParts && leg.to.part && leg.to.part !== part) {
+        part = leg.to.part;
+        zoomToBounds(boundsOf(t.stops.filter(s => s.part === part)), 40);
+        await wait(DUR + 150);
+        if (my !== playToken) return;
+      }
+      const dur = leg.by === "flight" ? per * 1.6 : per;
+      try {
+        await d3.select(nodes[i]).transition().duration(dur).ease(d3.easeCubicInOut)
+          .attrTween("d", d => tt => partialD(d.geo, tt)).end();
+      } catch (e) { return; }
+      if (my !== playToken) return;
+      reveal(leg.to.name); markNow(i + 1); cullLabels();
+    }
+    if (hasParts) { await wait(500); if (my === playToken) zoomToTrip(t); }
+    setTimeout(() => { if (my === playToken) markNow(-1); }, 1500);
   }
 
   // ---------- panel ----------
@@ -207,6 +356,9 @@
     if (!t.stops.length) bits.push("route to come");
     b.appendChild(el("span", "m", bits.filter(Boolean).join(" · ")));
     b.addEventListener("click", () => go(t.id));
+    const peek = on => gRoutes.selectAll("g.route").filter(d => d === t).classed("peek", on);
+    b.addEventListener("mouseenter", () => peek(true));
+    b.addEventListener("mouseleave", () => peek(false));
     return b;
   }
   function backButton() {
@@ -225,9 +377,10 @@
   }
 
   function renderHome() {
+    stopButtons = [];
     panel.replaceChildren();
     panel.appendChild(el("h2", null, "Trips"));
-    panel.appendChild(el("p", "intro", "Pick a trip to follow its route, or tap a highlighted country on the map."));
+    panel.appendChild(el("p", "intro", "Pick a trip to watch the route unfold, or tap a lit-up country on the map."));
     const sorted = [...trips].sort((a, b) => (b.year ?? -1) - (a.year ?? -1) || b.order - a.order);
     let lastYear;
     sorted.forEach(t => {
@@ -240,6 +393,7 @@
   }
 
   function renderTrip(t) {
+    stopButtons = [];
     panel.replaceChildren(backButton());
     panel.appendChild(el("h2", null, t.name));
     if (t.when) panel.appendChild(el("p", "when", t.when));
@@ -254,7 +408,13 @@
       panel.appendChild(el("p", "empty", "Route still to be remembered."));
       return;
     }
-    panel.appendChild(el("h3", null, "Route"));
+    const rh = el("div", "route-head");
+    rh.appendChild(el("h3", null, "Route"));
+    const replay = el("button", "replay", reduceMotion ? "Show whole route" : "▶ Replay");
+    replay.addEventListener("click", () => play(t));
+    rh.appendChild(replay);
+    panel.appendChild(rh);
+
     // Group consecutive stops by `part` (legs).
     const groups = [];
     t.stops.forEach((s, i) => {
@@ -262,34 +422,35 @@
       const last = groups[groups.length - 1];
       if (last && last.key === key) last.stops.push([s, i]); else groups.push({ key, stops: [[s, i]] });
     });
-    let activeBtn = null;
     groups.forEach(gr => {
       if (gr.key) {
         const h = el("button", "leg-head");
         h.appendChild(el("span", null, gr.key));
         const info = t.partInfo && t.partInfo[gr.key];
         if (info) h.appendChild(el("small", null, info));
-        h.addEventListener("click", () => zoomToBounds(boundsOf(t.stops.filter(s => s.part === gr.key)), 24));
+        h.addEventListener("click", () => { stopAnimation(); zoomToBounds(boundsOf(t.stops.filter(s => s.part === gr.key)), 40); });
         panel.appendChild(h);
       }
       const ul = el("ul", "stops");
       gr.stops.forEach(([s, i]) => {
         const li = el("li");
         const b = el("button", "stop");
-        const by = el("span", "by", i ? MODE_ICON[mode(s)] : "●");
-        if (!i) by.classList.add("dot");
-        if (i) by.title = s.via || MODE_WORD[mode(s)];
+        const by = el("span", "by", i ? MODE_ICON[mode(s)] : "");
+        if (i) by.title = "by " + (s.via || MODE_WORD[mode(s)]);
         b.appendChild(by);
-        b.appendChild(el("span", null, s.name));
+        const n = t.num.get(s.name);
+        b.appendChild(el("span", n ? "n" : "n home", n || "⌂"));
+        b.appendChild(el("span", "nm", s.name));
         const icons = filledLinks(s.links).map(([, ic]) => ic).join(" ");
         if (icons) b.appendChild(el("span", "by", icons));
         b.addEventListener("click", () => {
-          if (activeBtn) activeBtn.classList.remove("on");
-          b.classList.add("on"); activeBtn = b;
-          gRoutes.selectAll("g.route.on circle").classed("hl", d => d.name === s.name);
+          stopAnimation();
+          markNow(i);
+          gRoutes.selectAll("g.route.on g.wstop").classed("hl", d => d.name === s.name);
           zoomToPoint([s.lon, s.lat], 24);
           if (matchMedia("(max-width: 900px)").matches) mapEl.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
         });
+        stopButtons[i] = b;
         li.appendChild(b);
         const sl = linksRow(s.links, true); if (sl) li.appendChild(sl);
         ul.appendChild(li);
@@ -299,6 +460,7 @@
   }
 
   function renderPlace(p) {
+    stopButtons = [];
     panel.replaceChildren(backButton());
     panel.appendChild(el("h2", null, p.name));
     if (p.region) panel.appendChild(el("p", "when", p.region));
@@ -310,19 +472,22 @@
 
   // ---------- routing (URL hash) ----------
   function go(hash) {
-    const target = hash ? "#" + hash : location.pathname + location.search;
-    if (("#" + hash) === location.hash || (!hash && !location.hash)) route();
-    else history.pushState(null, "", target), route();
+    if (("#" + hash) === location.hash || (!hash && !location.hash)) return route();
+    history.pushState(null, "", hash ? "#" + hash : location.pathname + location.search);
+    route();
   }
   function route() {
     const h = decodeURIComponent(location.hash.slice(1));
     hideTip();
+    stopAnimation();
     if (h.startsWith("country=")) {
       const p = placeByName.get(h.slice(8));
       if (p) { current = { place: p }; renderPlace(p); applyFocus(); zoomToPlace(p); return; }
     } else if (tripById.has(h)) {
       const t = tripById.get(h);
-      current = { trip: t }; renderTrip(t); applyFocus(); zoomToTrip(t); return;
+      current = { trip: t }; renderTrip(t); applyFocus();
+      if (t.stops.length > 1) play(t); else zoomToTrip(t);
+      return;
     }
     current = null; renderHome(); applyFocus(); resetZoom();
   }
@@ -349,6 +514,6 @@
   new ResizeObserver(() => {
     const r = mapEl.getBoundingClientRect();
     if (Math.abs(r.width - W) < 1 && Math.abs(r.height - H) < 1) return;
-    const k = d3.zoomTransform(svg.node()); size(); svg.call(zoom.transform, k);
+    const k = d3.zoomTransform(svg.node()); playToken++; size(); svg.call(zoom.transform, k);
   }).observe(mapEl);
 })();
