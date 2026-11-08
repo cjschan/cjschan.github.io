@@ -284,3 +284,28 @@ button:hover {
 		margin-left: 24px;
 	}
 }
+
+@media (max-width: 640px) {
+	.navcontainer {
+		width: 92%;
+	}
+
+	nav {
+		float: none;
+		text-align: center;
+	}
+
+	nav li {
+		margin: 0 7px;
+		padding: 16px 0;
+	}
+
+	nav a {
+		font-size: 12px;
+		letter-spacing: 0.5px;
+	}
+
+	nav a::before {
+		bottom: 11px;
+	}
+}

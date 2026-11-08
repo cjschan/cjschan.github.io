@@ -1,0 +1,205 @@
+/* Travel page. Builds on the tokens in css/styles.css. */
+.travel {
+	--ocean: #0b1220;
+	--land: #243044;
+	--land-line: #334155;
+	--visited: #d9a22a;
+	--visited-line: #fbbf24;
+	--hl: #fde68a;
+	--bus: #38bdf8;
+	--train: #a78bfa;
+	--boat: #34d399;
+	--flight: #e2e8f0;
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 32px clamp(16px, 4vw, 50px) 64px;
+	box-sizing: border-box;
+}
+.travel *, .travel *::before, .travel *::after { box-sizing: border-box; }
+
+/* Undo the site-wide button style (full width, centered, filled) for this page. */
+.travel :where(button) {
+	width: auto; display: inline-block; padding: 0; margin: 0;
+	background: none; color: inherit; text-align: left;
+	font: inherit; border-radius: 0; opacity: 1;
+}
+.travel button:hover { background-color: transparent; }
+
+.travel-head h1 {
+	margin: 0;
+	display: inline-block;
+	border-bottom: 3px solid var(--primary);
+	padding-bottom: 8px;
+}
+.travel-summary { color: var(--muted); margin: 12px 0 0; }
+
+.travel-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+	gap: 24px;
+	margin-top: 24px;
+	align-items: start;
+}
+
+/* ---------- map ---------- */
+.mapcard {
+	background: var(--card-bg);
+	border: 1px solid var(--border);
+	border-radius: 16px;
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+	padding: 12px;
+	position: sticky;
+	top: 16px;
+}
+.map {
+	position: relative;
+	background: var(--ocean);
+	border-radius: 10px;
+	overflow: hidden;
+	aspect-ratio: 1.75 / 1;
+	min-height: 260px;
+}
+.map svg { display: block; width: 100%; height: 100%; cursor: grab; touch-action: none; }
+.map svg:active { cursor: grabbing; }
+
+.country { fill: var(--land); stroke: var(--land-line); stroke-width: .4; vector-effect: non-scaling-stroke; transition: fill .15s, opacity .2s; }
+.country.v { fill: var(--visited); stroke: var(--visited-line); fill-opacity: .8; cursor: pointer; }
+.country.v:hover, .country.v.hl { fill: var(--hl); fill-opacity: 1; }
+svg.focus .country.v:not(.hl) { fill-opacity: .4; }
+
+.pin { fill: var(--visited); stroke: var(--visited-line); stroke-width: 1.2; vector-effect: non-scaling-stroke; cursor: pointer; }
+.pin:hover, .pin.hl { fill: var(--hl); }
+
+.route { transition: opacity .25s; opacity: .55; cursor: pointer; }
+svg.focus .route { opacity: .1; }
+svg.focus .route.on { opacity: 1; cursor: default; }
+.route-line { fill: none; stroke: var(--bus); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.route-line.train { stroke: var(--train); stroke-width: 2.6; }
+.route-line.boat { stroke: var(--boat); stroke-dasharray: 7 5; stroke-width: 2.6; }
+.route-line.flight { stroke: var(--flight); stroke-dasharray: 1 6; stroke-width: 2.4; opacity: .8; }
+.route-hit { fill: none; stroke: transparent; stroke-width: 12; vector-effect: non-scaling-stroke; }
+svg.focus .route:not(.on) .route-hit { pointer-events: none; }
+.route-stop { fill: var(--ocean); stroke: var(--bus); stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+.route-stop.hl { fill: var(--hl); stroke: var(--hl); }
+.route-label { fill: var(--text); font-family: 'Work Sans', sans-serif; font-weight: 600; paint-order: stroke; stroke: var(--ocean); stroke-width: 3px; stroke-linejoin: round; vector-effect: non-scaling-stroke; pointer-events: none; }
+.route:not(.on) .route-label { display: none; }
+svg:not(.focus) .route-stop { display: none; }
+
+.tip {
+	position: absolute; pointer-events: none;
+	background: var(--text); color: var(--bg);
+	padding: 5px 10px; border-radius: 8px; font-size: 13px; font-weight: 600;
+	white-space: nowrap; opacity: 0; transform: translate(-50%, -135%); transition: opacity .1s;
+}
+.controls { position: absolute; right: 12px; bottom: 12px; display: flex; flex-direction: column; gap: 6px; }
+.controls button {
+	display: block; padding: 0; text-align: center;
+	width: 36px; height: 36px; border-radius: 8px;
+	border: 1px solid var(--border); background: var(--card-bg); color: var(--text);
+	font: 600 18px/1 'Work Sans', sans-serif; cursor: pointer;
+}
+.travel .controls button:hover { border-color: var(--primary); background: var(--card-bg); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--muted); font-size: 13px; padding: 10px 4px 0; }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend svg { width: 30px; height: 8px; }
+.legend .sw.visited { width: 14px; height: 10px; border-radius: 3px; background: var(--visited); display: inline-block; }
+.lg { stroke-linecap: round; stroke-width: 2.6; }
+.lg.bus { stroke: var(--bus); }
+.lg.train { stroke: var(--train); }
+.lg.boat { stroke: var(--boat); stroke-dasharray: 7 5; }
+.lg.flight { stroke: var(--flight); stroke-dasharray: 1 6; }
+
+/* ---------- side panel ---------- */
+.panel {
+	background: var(--card-bg);
+	border: 1px solid var(--border);
+	border-top: 5px solid var(--accent);
+	border-radius: 16px;
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+	padding: 22px 22px 26px;
+	min-width: 0;
+}
+.panel h2 { margin: 0; font-size: 22px; line-height: 1.25; color: var(--text); }
+.panel h3 {
+	margin: 22px 0 8px; font-size: 13px; font-weight: 600;
+	text-transform: uppercase; letter-spacing: 1px; color: var(--primary);
+}
+.panel .when { color: var(--accent-light); margin: 4px 0 0; font-size: 15px; }
+.panel .note { color: var(--muted); margin: 8px 0 0; font-size: 15px; }
+.panel .intro { color: var(--muted); margin: 0 0 4px; font-size: 15px; }
+.panel button { font-family: inherit; }
+.panel :focus-visible, .controls button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.back {
+	border: 0; background: none; color: var(--primary); cursor: pointer;
+	padding: 0; margin: 0 0 14px; font-size: 14px; font-weight: 500;
+}
+.back:hover { color: var(--accent-light); }
+
+/* trip list */
+.year { margin: 18px 0 6px; font-size: 13px; font-weight: 600; letter-spacing: 1px; color: var(--muted); }
+.year:first-of-type { margin-top: 10px; }
+.trip-item {
+	display: block; width: 100%; text-align: left; cursor: pointer;
+	background: rgba(15, 23, 42, .5); color: var(--text);
+	border: 1px solid var(--border); border-left: 4px solid var(--primary);
+	border-radius: 10px; padding: 10px 12px; margin-bottom: 8px;
+	transition: border-color .15s, background .15s, transform .15s;
+}
+.travel .trip-item:hover { border-color: var(--accent); background: rgba(15, 23, 42, .9); transform: translateX(2px); }
+.trip-item.sketch { border-left-color: var(--border); border-left-style: dashed; }
+.trip-item .t { font-weight: 600; font-size: 16px; display: block; }
+.trip-item .m { color: var(--muted); font-size: 13px; display: block; margin-top: 2px; }
+.trip-item .ic { float: right; margin-left: 6px; font-size: 14px; }
+
+/* chips */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+	border: 1px solid var(--border); background: transparent; color: var(--text);
+	padding: 4px 11px; border-radius: 999px; font-size: 14px; cursor: pointer;
+	transition: border-color .15s, color .15s;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent-light); }
+.travel .chip.on, .travel .chip.on:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+.links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.links a {
+	display: inline-flex; align-items: center; gap: 6px;
+	background: var(--primary); color: var(--bg); text-decoration: none;
+	padding: 6px 13px; border-radius: 999px; font-size: 14px; font-weight: 600;
+	transition: background .15s;
+}
+.links a:hover { background: var(--accent); }
+.links.small { margin: 6px 0 2px 26px; gap: 6px; }
+.links.small a { padding: 3px 10px; font-size: 13px; }
+
+/* stop list */
+.leg-head {
+	display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+	width: 100%; border: 0; background: none; padding: 0; cursor: pointer;
+	color: var(--text); font-size: 15px; font-weight: 600; margin: 16px 0 4px; text-align: left;
+}
+.leg-head small { color: var(--muted); font-weight: 400; font-size: 13px; white-space: nowrap; }
+.leg-head:hover { color: var(--accent-light); }
+.stops { list-style: none; margin: 0; padding: 0; }
+.stops li { margin: 0; }
+.stop {
+	display: flex; align-items: center; gap: 8px; width: 100%;
+	border: 0; background: none; color: var(--text); cursor: pointer;
+	padding: 4px 6px; border-radius: 6px; font-size: 14.5px; text-align: left;
+}
+.travel .stop:hover, .stop.on { background: rgba(56, 189, 248, .12); }
+.stop .by { width: 18px; text-align: center; color: var(--muted); font-size: 13px; flex: none; }
+.stop .dot { color: var(--accent); }
+
+.empty { color: var(--muted); font-size: 15px; }
+
+@media (max-width: 900px) {
+	.travel-grid { grid-template-columns: 1fr; }
+	.mapcard { position: static; }
+	.map { aspect-ratio: 1.3 / 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.travel * { transition: none !important; }
+}

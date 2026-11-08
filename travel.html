@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='https://fonts.googleapis.com/css?family=Work Sans:300' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='css/styles.css' rel='stylesheet' type='text/css'>
+<link href='travel/travel.css' rel='stylesheet' type='text/css'>
+<title>Chris Chan · Travel</title>
+</head>
+
+<body>
+<header>
+<div class="navcontainer">
+<nav>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/cv.html">CV</a></li>
+<li><a href="/teaching.html">Teaching</a></li>
+<li><a href="/travel.html">Travel</a></li>
+<li><a href="http://www.seasonlearning.com" target="_blank">Tutoring</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main class="travel">
+  <div class="travel-head">
+    <h1>Travel</h1>
+    <p class="travel-summary" id="summary"></p>
+  </div>
+
+  <div class="travel-grid">
+    <div class="mapcard">
+      <div class="map" id="map">
+        <svg id="svg" role="img" aria-label="World map of places Chris has visited, with trip routes"></svg>
+        <div class="tip" id="tip"></div>
+        <div class="controls">
+          <button id="zin" aria-label="Zoom in">+</button>
+          <button id="zout" aria-label="Zoom out">−</button>
+          <button id="zreset" aria-label="Reset view">⟲</button>
+        </div>
+      </div>
+      <div class="legend" aria-hidden="true">
+        <span><i class="sw visited"></i>Visited</span>
+        <span><svg viewBox="0 0 34 8"><line x1="2" y1="4" x2="32" y2="4" class="lg bus"/></svg>Bus</span>
+        <span><svg viewBox="0 0 34 8"><line x1="2" y1="4" x2="32" y2="4" class="lg train"/></svg>Train</span>
+        <span><svg viewBox="0 0 34 8"><line x1="2" y1="4" x2="32" y2="4" class="lg boat"/></svg>Boat</span>
+        <span><svg viewBox="0 0 34 8"><line x1="2" y1="4" x2="32" y2="4" class="lg flight"/></svg>Flight</span>
+      </div>
+    </div>
+
+    <aside class="panel" id="panel" aria-live="polite"></aside>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="travel/trips.js"></script>
+<script src="travel/travel.js"></script>
+</body>
+</html>
