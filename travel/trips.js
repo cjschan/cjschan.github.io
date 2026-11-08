@@ -220,5 +220,13 @@ const TRIPS = [
   {name:"Cartagena",lon:-75.51,lat:10.39,by:"bus",part:"Ecuador and Colombia"},
   {name:"Fort Lauderdale",lon:-80.15,lat:26.07,by:"flight",via:"flight, layover",far:true},
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
+ ]},
+ {name:"Nicaragua and Costa Rica, Aug 2016", when:"Aug 2016", note:"Met my parents in San José", stops:[
+  {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
+  {name:"Mexico City",lon:-99.13,lat:19.43,by:"flight",via:"Aeromexico overnight, Aug 4 to 5, layover",far:true},
+  {name:"Managua",lon:-86.25,lat:12.13,by:"flight",via:"Aeromexico, arrived Aug 5"},
+  {name:"San José",lon:-84.08,lat:9.93,by:"bus",via:"bus, Aug 7; Costa Rica Backpackers, Aug 7 to 9"},
+  {name:"Monteverde Cloud Forest",lon:-84.83,lat:10.30,by:"ground",via:"with my parents"},
+  {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
  ]}
 ];
