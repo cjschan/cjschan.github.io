@@ -35,6 +35,12 @@
 	padding-bottom: 8px;
 }
 .travel-summary { color: var(--muted); margin: 12px 0 0; }
+.travel-intro { max-width: 72ch; margin-top: 18px; }
+.travel-intro p { margin: 0 0 12px; font-size: 17px; line-height: 1.6; color: var(--text); }
+.travel-intro p:last-child { margin-bottom: 0; }
+.travel-intro cite { font-style: italic; }
+.travel-intro a { font: inherit; color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+.travel-intro a:hover { color: var(--accent-light); }
 
 .travel-grid {
 	display: grid;
