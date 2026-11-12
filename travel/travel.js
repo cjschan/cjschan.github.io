@@ -29,6 +29,14 @@
     order: i,
   }));
   const tripById = new Map(trips.map(t => [t.id, t]));
+
+  // Photo albums (travel/photos.js). A stop's `photos` is a slug or a list of slugs.
+  const ALB = typeof ALBUMS === "undefined" ? {} : ALBUMS;
+  const ownAlbums = s => [].concat(s.photos || []).filter(k => ALB[k]);
+  // The gallery for a place on a trip gathers the albums from every visit to it.
+  const placeAlbums = (t, name) => [...new Set(t.stops.filter(s => s.name === name).flatMap(ownAlbums))];
+  const photoCount = slugs => slugs.reduce((n, k) => n + ALB[k].photos.length, 0);
+  trips.forEach(t => { t.hasPhotos = t.stops.some(s => ownAlbums(s).length); });
   // Number each trip's places in the order they were first reached (start/end points like home aren't numbered).
   trips.forEach(t => {
     t.num = new Map();
@@ -167,8 +175,17 @@
           return e;
         })
           .classed("far", d => !t.num.has(d.name))
+          .classed("has-photos", d => placeAlbums(t, d.name).length > 0)
           .attr("transform", d => `translate(${projection([d.lon, d.lat])})`)
-          .on("pointermove", (e, d) => showTip(e, d.name)).on("pointerleave", hideTip)
+          .on("pointermove", (e, d) => {
+            const n = current && current.trip === t ? photoCount(placeAlbums(t, d.name)) : 0;
+            showTip(e, n ? `${d.name} · 📷 ${n} photos` : d.name);
+          }).on("pointerleave", hideTip)
+          .on("click", (e, d) => {
+            if (!(current && current.trip === t)) return;
+            const a = placeAlbums(t, d.name);
+            if (a.length) { e.stopPropagation(); hideTip(); go(`${t.id}/photos/${a[0]}`); }
+          })
           .each(function (d) {
             const n = t.num.get(d.name);
             d3.select(this).select(".num").text(n || "");
@@ -342,8 +359,8 @@
   }
   function tripButton(t) {
     const b = el("button", "trip-item" + (t.stops.length ? "" : " sketch"));
-    const icons = filledLinks(t.links).map(([, i]) => i).join(" ");
-    if (icons) b.appendChild(el("span", "ic", icons));
+    const icons = filledLinks(t.links).map(([, i]) => i).concat(t.hasPhotos ? ["📷"] : []);
+    if (icons.length) b.appendChild(el("span", "ic", [...new Set(icons)].join(" ")));
     b.appendChild(el("span", "t", t.name));
     const bits = [t.when];
     if (t.places.length) bits.push(t.places.length === 1 ? t.places[0].name : `${t.places.length} countries`);
@@ -445,7 +462,16 @@
           if (matchMedia("(max-width: 900px)").matches) mapEl.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
         });
         stopButtons[i] = b;
-        li.appendChild(b);
+        const row = el("div", "stop-row");
+        row.appendChild(b);
+        if (ownAlbums(s).length) {
+          const all = placeAlbums(t, s.name);
+          const pb = el("button", "photos-btn", `📷 ${photoCount(all)}`);
+          pb.setAttribute("aria-label", `Photos from ${s.name} (${photoCount(all)})`);
+          pb.addEventListener("click", () => go(`${t.id}/photos/${ownAlbums(s)[0]}`));
+          row.appendChild(pb);
+        }
+        li.appendChild(row);
         const sl = linksRow(s.links, true); if (sl) li.appendChild(sl);
         ul.appendChild(li);
       });
@@ -464,15 +490,139 @@
     else panel.appendChild(el("p", "empty", "Been here. The trip details are still to come."));
   }
 
+  // ---------- photo gallery ----------
+  // URL: #<trip>/photos/<album>[/<n>]. One gallery per place on a trip, one section per album.
+  const dlg = el("dialog", "gallery");
+  dlg.innerHTML = `
+    <div class="g-head"><div><h2></h2><p class="when"></p></div>
+      <button class="g-close" aria-label="Close photos">✕</button></div>
+    <div class="g-body"></div>
+    <div class="g-viewer" hidden>
+      <div class="g-bar"><button class="g-back">← All photos</button><span class="g-count"></span>
+        <button class="g-close" aria-label="Close photos">✕</button></div>
+      <figure><img alt=""><figcaption><span class="g-cap"></span><span class="g-date"></span></figcaption></figure>
+      <button class="g-prev" aria-label="Previous photo">‹</button>
+      <button class="g-next" aria-label="Next photo">›</button>
+    </div>`;
+  dlg.setAttribute("aria-label", "Photos");
+  document.querySelector("main.travel").appendChild(dlg);
+  const $ = sel => dlg.querySelector(sel);
+  const viewer = $(".g-viewer"), vImg = $(".g-viewer img");
+  let gal = null; // {trip, name, flat:[{k, i, p}], idx}
+  let justClosed = false;
+  const fmtDate = iso => new Date(iso + "T12:00:00Z")
+    .toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
+  const galHash = (k, n) => `#${gal.trip.id}/photos/${k}` + (n ? "/" + n : "");
+  const setHash = h => history.replaceState(history.state, "", h);
+
+  function buildGallery(t, name, slugs) {
+    gal = { trip: t, name, flat: slugs.flatMap(k => ALB[k].photos.map((p, i) => ({ k, i, p }))), idx: -1 };
+    $(".g-head h2").textContent = name;
+    $(".g-head .when").textContent = t.name;
+    const body = $(".g-body"); body.replaceChildren(); body.scrollTop = 0;
+    slugs.forEach(k => {
+      const a = ALB[k], sec = el("section"); sec.id = "album-" + k;
+      const h = el("h3", null, a.title);
+      h.appendChild(el("small", null, [a.dates, `${a.photos.length} photos`].filter(Boolean).join(" · ")));
+      sec.appendChild(h);
+      if (a.note) sec.appendChild(el("p", "note", a.note));
+      const grid = el("div", "g-grid");
+      a.photos.forEach((p, i) => {
+        const b = el("button", "g-thumb");
+        const img = el("img"); img.src = p.src; img.loading = "lazy"; img.decoding = "async";
+        img.width = p.w; img.height = p.h; img.alt = p.caption || `${a.title}, photo ${i + 1}`;
+        b.appendChild(img);
+        b.addEventListener("click", () => showPhoto(gal.flat.findIndex(f => f.k === k && f.i === i)));
+        grid.appendChild(b);
+      });
+      sec.appendChild(grid);
+      body.appendChild(sec);
+    });
+  }
+  function showPhoto(idx) {
+    const n = gal.flat.length;
+    gal.idx = (idx + n) % n;
+    const { k, i, p } = gal.flat[gal.idx];
+    vImg.src = p.src; vImg.width = p.w; vImg.height = p.h; vImg.alt = p.caption || `${ALB[k].title}, photo ${i + 1}`;
+    $(".g-cap").textContent = p.caption || (gal.flat.filter(f => f.k === k).length < gal.flat.length ? ALB[k].title : "");
+    $(".g-date").textContent = p.date ? fmtDate(p.date) : "";
+    $(".g-count").textContent = `${gal.idx + 1} / ${n}`;
+    viewer.hidden = false;
+    [1, -1].forEach(d => { const f = gal.flat[(gal.idx + d + n) % n]; if (f) new Image().src = f.p.src; });
+    setHash(galHash(k, i + 1));
+  }
+  function hideViewer() {
+    if (viewer.hidden) return;
+    viewer.hidden = true;
+    const f = gal.flat[gal.idx];
+    if (f) {
+      setHash(galHash(f.k));
+      const th = dlg.querySelectorAll(`#album-${f.k} .g-thumb`)[f.i];
+      if (th) th.focus({ preventScroll: true }), th.scrollIntoView({ block: "nearest" });
+    }
+  }
+  function openGallery(t, slug, n) {
+    const stop = t.stops.find(s => ownAlbums(s).includes(slug));
+    if (!stop) return false;
+    if (!gal || gal.trip !== t || gal.name !== stop.name) buildGallery(t, stop.name, placeAlbums(t, stop.name));
+    if (!dlg.open) dlg.showModal();
+    const idx = n ? gal.flat.findIndex(f => f.k === slug && f.i === n - 1) : -1;
+    if (idx >= 0) showPhoto(idx);
+    else {
+      viewer.hidden = true;
+      const sec = dlg.querySelector("#album-" + slug);
+      if (sec && sec.previousElementSibling) sec.scrollIntoView({ block: "start" });
+    }
+    return true;
+  }
+  dlg.querySelectorAll(".g-close").forEach(b => b.addEventListener("click", () => dlg.close()));
+  $(".g-back").addEventListener("click", hideViewer);
+  $(".g-prev").addEventListener("click", () => showPhoto(gal.idx - 1));
+  $(".g-next").addEventListener("click", () => showPhoto(gal.idx + 1));
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); }); // backdrop
+  dlg.addEventListener("cancel", e => { if (!viewer.hidden) { e.preventDefault(); hideViewer(); } });
+  dlg.addEventListener("keydown", e => {
+    if (viewer.hidden) return;
+    if (e.key === "ArrowLeft") { e.preventDefault(); showPhoto(gal.idx - 1); }
+    if (e.key === "ArrowRight") { e.preventDefault(); showPhoto(gal.idx + 1); }
+  });
+  let swipeX = null;
+  const fig = $(".g-viewer figure");
+  fig.addEventListener("pointerdown", e => { swipeX = e.clientX; });
+  fig.addEventListener("pointerup", e => {
+    if (swipeX == null) return;
+    const dx = e.clientX - swipeX; swipeX = null;
+    if (Math.abs(dx) > 50) showPhoto(gal.idx + (dx < 0 ? 1 : -1));
+  });
+  // Closing returns to the trip: step back if we opened it, otherwise rewrite the URL.
+  dlg.addEventListener("close", () => {
+    if (!location.hash.includes("/photos/")) return;
+    if (history.state && history.state.gallery) { justClosed = true; history.back(); }
+    else setHash("#" + gal.trip.id);
+  });
+
   // ---------- routing (URL hash) ----------
   function go(hash) {
     if (("#" + hash) === location.hash || (!hash && !location.hash)) return route();
-    history.pushState(null, "", hash ? "#" + hash : location.pathname + location.search);
+    history.pushState(hash.includes("/photos/") ? { gallery: true } : null, "", hash ? "#" + hash : location.pathname + location.search);
     route();
   }
   function route() {
     const h = decodeURIComponent(location.hash.slice(1));
     hideTip();
+    const [tripId, photoPart] = h.split("/photos/");
+    if (photoPart !== undefined && tripById.has(tripId)) {
+      const t = tripById.get(tripId);
+      if (!(current && current.trip === t)) {
+        stopAnimation(); current = { trip: t }; renderTrip(t); applyFocus(); zoomToTrip(t);
+      }
+      const [k, n] = photoPart.split("/");
+      if (openGallery(t, k, parseInt(n, 10) || 0)) return;
+    }
+    const fromGallery = dlg.open || justClosed;
+    justClosed = false;
+    if (dlg.open) dlg.close();
+    if (fromGallery && current && current.trip && current.trip.id === h) return; // back to the trip as it was
     stopAnimation();
     if (h.startsWith("country=")) {
       const p = placeByName.get(h.slice(8));
@@ -486,7 +636,7 @@
     current = null; renderHome(); applyFocus(); resetZoom();
   }
   window.addEventListener("popstate", route);
-  document.addEventListener("keydown", e => { if (e.key === "Escape" && current) go(""); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && current && !dlg.open) go(""); });
 
   // ---------- summary + start ----------
   const years = trips.flatMap(t => [t.year, lastYearOf(t.when)]).filter(Boolean);
