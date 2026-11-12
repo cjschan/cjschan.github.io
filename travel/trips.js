@@ -22,7 +22,7 @@
 //  Photo albums live in travel/photos.js, generated from a Facebook export by
 //  tools/import_fb_albums.py; it prints the album slugs and which ones aren't used yet.
 //  Countries listed in `countries` are added to the map; for small places,
-//  add them to PLACES with a [lon, lat] pin.
+//  add them to PLACES with a [lon, lat] pin. Cities that aren't on a route go in CITIES.
 // ============================================================================
 
 // Visited places, in the order listed. atlas = name in the map data; pin = [lon, lat] for small places/territories
@@ -46,6 +46,33 @@ const PLACES = [
  ["Israel","Asia"],["Honduras","North America"],["Cyprus","Europe"],["Romania","Europe"],["Cambodia","Asia"],["Laos","Asia"],
  ["Malaysia","Asia"],["Uruguay","South America"],["Paraguay","South America"]
 ].map(([name,region,atlas,pin])=>({name,region,atlas:atlas===undefined?name:atlas,pin}));
+
+// Other cities and towns visited (check-ins etc.) that aren't stops on a mapped route.
+// [name, country (as in PLACES), lon, lat]. Shown as small pins on the map.
+const CITIES = [
+ ["Paraty","Brazil",-44.71,-23.22],
+ ["Banff","Canada",-115.57,51.18],["Halifax","Canada",-63.57,44.65],["Mississauga","Canada",-79.64,43.59],
+ ["Hvar","Croatia",16.44,43.17],["Šipan","Croatia",17.86,42.73],
+ ["Larnaca","Cyprus",33.63,34.92],
+ ["Český Krumlov","Czech Republic",14.32,48.81],
+ ["Bayahibe","Dominican Republic",-68.84,18.37],["Bávaro","Dominican Republic",-68.45,18.68],
+ ["Guayaquil","Ecuador",-79.88,-2.14],["Montañita","Ecuador",-80.75,-1.83],
+ ["Badung, Bali","Indonesia",115.17,-8.72],["Ubud (Gianyar), Bali","Indonesia",115.26,-8.51],
+ ["Naha, Okinawa","Japan",127.68,26.21],
+ ["Acapulco","Mexico",-99.88,16.85],["Bucerías","Mexico",-105.33,20.76],["Chichén Itzá","Mexico",-88.57,20.68],["Guadalajara","Mexico",-103.35,20.67],["Guanajuato","Mexico",-101.26,21.02],["Lake Chapala","Mexico",-103.19,20.3],["Oaxaca","Mexico",-96.73,17.07],["Puebla","Mexico",-98.21,19.04],["Puerto Escondido","Mexico",-97.07,15.86],["Puerto Vallarta","Mexico",-105.23,20.61],["Querétaro","Mexico",-100.39,20.59],["Teotihuacán","Mexico",-98.84,19.69],["Tequila","Mexico",-103.84,20.88],
+ ["Hobbiton (Matamata)","New Zealand",175.68,-37.87],["Karangahake Gorge","New Zealand",175.8,-37.43],
+ ["Belfast","Northern Ireland",-5.93,54.6],
+ ["Poznań","Poland",16.93,52.41],
+ ["Lisbon","Portugal",-9.14,38.72],["Porto (Maia)","Portugal",-8.62,41.24],
+ ["Carolina, Puerto Rico","Puerto Rico",-65.96,18.38],
+ ["Bucharest","Romania",26.1,44.43],
+ ["Seoul","South Korea",126.98,37.57],
+ ["Chiang Rai","Thailand",99.83,19.91],
+ ["Bristol","United Kingdom",-2.59,51.45],
+ ["Buda, Texas","United States",-97.84,30.08],["Haleʻiwa","United States",-158.1,21.59],["Honolulu","United States",-157.86,21.31],["Houston","United States",-95.37,29.76],["Incline Village, Lake Tahoe","United States",-119.95,39.25],["Kahului, Maui","United States",-156.47,20.89],["Keauhou, Hawaii","United States",-155.96,19.56],["Kihei, Maui","United States",-156.45,20.76],["Lahaina, Maui","United States",-156.68,20.88],["Las Vegas","United States",-115.15,36.11],["Long Beach","United States",-118.19,33.77],["Los Angeles","United States",-118.24,34.05],["New Braunfels, Texas","United States",-98.12,29.7],["New Orleans","United States",-90.07,29.95],["Newark","United States",-74.17,40.74],["Orem, Utah","United States",-111.69,40.3],["Pearl City / Pearl Harbor","United States",-157.97,21.39],["Reno","United States",-119.81,39.53],["Santa Monica","United States",-118.49,34.02],["Seattle","United States",-122.33,47.61],["South Lake Tahoe","United States",-119.98,38.94],["Washington, DC","United States",-77.04,38.9],
+ ["Colonia del Sacramento","Uruguay",-57.84,-34.47],
+ ["Da Nang","Vietnam",108.22,16.05]
+];
 
 // Trips, oldest first. Each one needs a name and when; stops and links are optional.
 const TRIPS = [

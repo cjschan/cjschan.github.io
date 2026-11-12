@@ -82,13 +82,17 @@
     t.places = [...seen.values()];
   });
   const tripsForPlace = p => trips.filter(t => t.places.includes(p));
+  // Other cities visited that aren't stops on a route (CITIES in trips.js).
+  const cities = (typeof CITIES === "undefined" ? [] : CITIES)
+    .map(([name, country, lon, lat]) => ({ name, place: placeByName.get(country), lon, lat }));
+  const citiesForPlace = p => cities.filter(c => c.place === p).sort((a, b) => a.name.localeCompare(b.name));
 
   // ---------- map ----------
   const projection = d3.geoNaturalEarth1();
   const path = d3.geoPath(projection);
 
   const g = svg.append("g");
-  const gBase = g.append("g"), gLand = g.append("g"), gPins = g.append("g"), gRoutes = g.append("g");
+  const gBase = g.append("g"), gLand = g.append("g"), gPins = g.append("g"), gCities = g.append("g"), gRoutes = g.append("g");
   let W, H, current = null; // current = {trip} | {place} | null
   let playToken = 0;
 
@@ -149,6 +153,11 @@
       .on("pointermove", (e, d) => showTip(e, d.name)).on("pointerleave", hideTip)
       .on("click", (e, d) => go("country=" + encodeURIComponent(d.name)));
 
+    gCities.selectAll("circle").data(cities, d => d.name).join("circle")
+      .attr("class", "city-pin").attr("cx", d => projection([d.lon, d.lat])[0]).attr("cy", d => projection([d.lon, d.lat])[1])
+      .on("pointermove", (e, d) => showTip(e, d.place ? `${d.name} · ${d.place.name}` : d.name)).on("pointerleave", hideTip)
+      .on("click", (e, d) => { if (d.place && !(current && current.place === d.place)) go("country=" + encodeURIComponent(d.place.name)); });
+
     gRoutes.selectAll("g.route").data(trips.filter(t => t.stops.length > 1), d => d.id).join("g")
       .attr("class", "route").each(function (t) {
         const s = d3.select(this);
@@ -200,6 +209,7 @@
 
   function scaleMarks(k) {
     gPins.selectAll("circle").attr("r", 3 / k);
+    gCities.selectAll("circle").attr("r", 2.4 / k);
     gRoutes.selectAll("g.route").each(function (t) {
       const on = current && current.trip === t;
       d3.select(this).selectAll("g.wstop").each(function (d) {
@@ -292,6 +302,7 @@
       return !!pl && hlPlaces.has(pl);
     });
     gPins.selectAll("circle").classed("hl", d => hlPlaces.has(d));
+    gCities.selectAll("circle").classed("hl", d => !!p && d.place === p).classed("on", false);
     gRoutes.selectAll("g.wstop").classed("hl", false);
     scaleMarks(d3.zoomTransform(svg.node()).k);
   }
@@ -499,6 +510,21 @@
     panel.appendChild(el("h3", null, ts.length ? (ts.length === 1 ? "On this trip" : `On ${ts.length} trips`) : "Trips"));
     if (ts.length) ts.forEach(t => panel.appendChild(tripButton(t)));
     else panel.appendChild(el("p", "empty", "Been here. The trip details are still to come."));
+    const cs = citiesForPlace(p);
+    if (cs.length) {
+      panel.appendChild(el("h3", null, "Other places"));
+      const c = el("div", "chips");
+      cs.forEach(city => {
+        const b = el("button", "chip", city.name);
+        b.addEventListener("click", () => {
+          c.querySelectorAll(".chip.on").forEach(x => x.classList.remove("on")); b.classList.add("on");
+          gCities.selectAll("circle").classed("on", d => d === city);
+          zoomToPoint([city.lon, city.lat], 8);
+        });
+        c.appendChild(b);
+      });
+      panel.appendChild(c);
+    }
   }
 
   // ---------- photo gallery ----------

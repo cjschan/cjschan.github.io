@@ -80,6 +80,10 @@
 
 .pin { fill: var(--visited-hl); stroke: #5b8fd1; stroke-width: 1; vector-effect: non-scaling-stroke; cursor: pointer; }
 .pin:hover, .pin.hl { fill: #5b8fd1; }
+.city-pin { fill: #f0abfc; fill-opacity: .8; stroke: #f0abfc; stroke-opacity: .3; stroke-width: 3; vector-effect: non-scaling-stroke; cursor: pointer; transition: opacity .3s; }
+.city-pin:hover, .city-pin.hl { fill-opacity: 1; stroke-opacity: .5; }
+.city-pin.on { fill: #fff; stroke: #f0abfc; stroke-opacity: .8; }
+svg.focus .city-pin { opacity: .15; pointer-events: none; }
 
 /* Routes: faint threads of light overall; the chosen trip glows in colour. */
 .route { transition: opacity .3s; cursor: pointer; }
@@ -137,6 +141,7 @@ svg.focus .route.on .wstop:not(.far) .num { display: inline; }
 .legend .sw { display: inline-block; }
 .legend .sw.visited { width: 14px; height: 10px; border-radius: 3px; background: var(--visited-hl); border: 1px solid #5b8fd1; }
 .legend .sw.city { width: 9px; height: 9px; border-radius: 50%; background: var(--city); box-shadow: 0 0 6px var(--city); }
+.legend .sw.other { width: 7px; height: 7px; border-radius: 50%; background: #f0abfc; box-shadow: 0 0 5px #f0abfc; }
 .lg { stroke-linecap: round; stroke-width: 2.4; }
 .lg.bus { stroke: var(--bus); }
 .lg.train { stroke: var(--train); }
