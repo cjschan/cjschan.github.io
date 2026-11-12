@@ -4,6 +4,7 @@
 //
 //  QUICK SKETCH (just remembered a trip? one line is enough):
 //    {name:"Iceland ring road", when:"2018", countries:["Iceland"]},
+//    {name:"Maui, Nov 2013", when:"Nov 2013", countries:["United States"], photos:["lahaina","kihei"]},
 //
 //  FULL TRIP:
 //    {name:"Trip name", when:"Summer 2013", note:"optional one-liner",
@@ -75,6 +76,9 @@ const TRIPS = [
   {name:"London",lon:-0.128,lat:51.507,by:"flight"},
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
  ]},
+ {name:"Cancún and Chichén Itzá, Aug to Sep 2013", when:"Aug to Sep 2013", note:"With my parents, a week after Europe; drove from Cancún to Chichén Itzá and back", countries:["Mexico"], photos:["chichen-itza-2013","playa-del-carmen"]},
+ {name:"Maui, Nov 2013", when:"Nov 2013", note:"Veterans Day weekend on the cheap: a hostel, a rented subcompact, and a disposable camera", countries:["United States"], photos:["lahaina","haleakala-national-park","iao-valley-state-monument","kihei"]},
+ {name:"Los Angeles, Nov 2013", when:"Nov 2013", note:"A last-minute Thanksgiving weekend trip", countries:["United States"], photos:["out-and-about-in-the-los-angeles-area"]},
  {name:"Yucatán, Dec 2013 to Jan 2014", when:"Dec 2013 to Jan 2014", stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
   {name:"Cancún",lon:-86.877,lat:21.037,by:"flight"},
@@ -87,6 +91,7 @@ const TRIPS = [
   {name:"Cancún",lon:-86.877,lat:21.037,by:"bus"},
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
  ]},
+ {name:"Seattle, Mar 2014", when:"Mar 2014", note:"My second time in the city", countries:["United States"], photos:["out-and-about-in-seattle"]},
  {name:"Europe, Egypt and Asia, summer 2014", when:"Summer 2014", note:"Student Agency, Busabout, Sail Croatia and Sail Turkey", partInfo:{"Egypt":"Jul 19 to 26"}, stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
   {name:"Dublin",lon:-6.26,lat:53.35,by:"flight",part:"Europe and Turkey",photos:["blarney-castle","cliffs-of-moher","burren"]},
@@ -131,6 +136,7 @@ const TRIPS = [
   {name:"Tokyo",lon:139.69,lat:35.68,by:"train",part:"Japan",photos:"mount-fuji"},
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
  ]},
+ {name:"Washington, DC, Nov 2014", when:"Thanksgiving weekend, Nov 2014", note:"With my parents", countries:["United States"], photos:["washington-dc"]},
  {name:"Central America, Dec 2014 to Jan 2015", when:"Starting Dec 27, 2014", note:"New Year’s Eve in Santa Ana", stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
   {name:"San Salvador",lon:-89.19,lat:13.69,by:"flight"},
@@ -152,6 +158,8 @@ const TRIPS = [
   {name:"San Salvador",lon:-89.19,lat:13.69,by:"flight",via:"flight, layover"},
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
  ]},
+ {name:"Jalisco and Mexico City, Mar to Apr 2015", when:"Mar 27 to Apr 5, 2015", countries:["Mexico"], photos:["tequila","guadalajara","chapala","puerto-vallarta","teotihuacan","ciudad-de-mexico"]},
+ {name:"Querétaro, Guanajuato and Acapulco, May to Jun 2015", when:"May to Jun 2015", countries:["Mexico"], photos:["guanajuato","queretaro","acapulco"]},
  {name:"Around the world, 2015 to 2016", when:"2015 to 2016", note:"Peru Hop from Lima to La Paz", partInfo:{"Buenos Aires and Iguazú":"Mar 9 to 26, 2016","Ecuador and Colombia":"from Mar 26, 2016"}, stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
   {name:"Manila",lon:120.98,lat:14.60,by:"flight",part:"Philippines"},
@@ -166,7 +174,8 @@ const TRIPS = [
   {name:"Delhi",lon:77.21,lat:28.61,by:"flight",part:"Thailand and India"},
   {name:"Agra",lon:78.01,lat:27.18,by:"train",part:"Thailand and India",photos:"agra"},
   {name:"Delhi",lon:77.21,lat:28.61,by:"train",part:"Thailand and India"},
-  {name:"Amsterdam",lon:4.90,lat:52.37,by:"flight",part:"Europe",photos:"leiden"},
+  {name:"London",lon:-0.128,lat:51.507,by:"flight",via:"flight via Mumbai, Aug 20",part:"Europe",photos:"london-2015"},
+  {name:"Amsterdam",lon:4.90,lat:52.37,by:"flight",via:"flight from Luton, Aug 23",part:"Europe",photos:"leiden"},
   {name:"Maastricht",lon:5.69,lat:50.85,by:"train",via:"side trip from Amsterdam",part:"Europe",photos:"maastricht"},
   {name:"Amsterdam",lon:4.90,lat:52.37,by:"train",part:"Europe"},
   {name:"Veluwe forest",lon:5.84,lat:52.08,by:"train",via:"side trip from Amsterdam",part:"Europe",photos:"hoge-veluwe-national-park"},
@@ -174,6 +183,7 @@ const TRIPS = [
   {name:"Rotterdam",lon:4.48,lat:51.92,by:"train",via:"side trip from Amsterdam",part:"Europe",photos:"rotterdam"},
   {name:"Amsterdam",lon:4.90,lat:52.37,by:"train",part:"Europe"},
   {name:"Cologne",lon:6.96,lat:50.94,by:"train",part:"Europe",photos:"cologne"},
+  {name:"Hamburg",lon:9.99,lat:53.55,by:"bus",via:"Megabus, Sep 28",part:"Europe",photos:"hamburg"},
   {name:"Berlin",lon:13.405,lat:52.52,by:"train",part:"Europe",photos:"berlin-2015"},
   {name:"Kraków",lon:19.94,lat:50.06,by:"train",part:"Europe",photos:"krakow"},
   {name:"Berlin",lon:13.405,lat:52.52,by:"train",part:"Europe"},
@@ -211,11 +221,13 @@ const TRIPS = [
   {name:"Buenos Aires",lon:-58.38,lat:-34.60,by:"flight",via:"Aerolíneas Argentinas AR1733, Mar 17",part:"Buenos Aires and Iguazú",photos:"buenos-aires"},
   {name:"Panama City",lon:-79.52,lat:8.98,by:"flight",via:"Copa 278, Mar 26, layover",far:true},
   {name:"Quito",lon:-78.47,lat:-0.18,by:"flight",via:"Copa 674, Mar 26",part:"Ecuador and Colombia",photos:"quito"},
+  {name:"Cuenca",lon:-79.00,lat:-2.90,by:"bus",part:"Ecuador and Colombia",photos:"cuenca"},
   {name:"Vilcabamba",lon:-79.22,lat:-4.26,by:"bus",part:"Ecuador and Colombia",photos:"vilcabamba"},
   {name:"Baños",lon:-78.42,lat:-1.40,by:"bus",part:"Ecuador and Colombia",photos:"banos"},
   {name:"Otavalo",lon:-78.26,lat:0.23,by:"bus",part:"Ecuador and Colombia"},
   {name:"Pasto",lon:-77.28,lat:1.21,by:"bus",part:"Ecuador and Colombia"},
   {name:"Popayán",lon:-76.61,lat:2.44,by:"bus",part:"Ecuador and Colombia",photos:"popayan"},
+  {name:"Cali",lon:-76.53,lat:3.45,by:"bus",part:"Ecuador and Colombia",photos:"cali"},
   {name:"Salento",lon:-75.57,lat:4.64,by:"bus",part:"Ecuador and Colombia",photos:"salento"},
   {name:"Bogotá",lon:-74.07,lat:4.71,by:"bus",part:"Ecuador and Colombia",photos:"bogota"},
   {name:"Cartagena",lon:-75.51,lat:10.39,by:"flight",part:"Ecuador and Colombia",photos:"cartagena"},

@@ -246,6 +246,8 @@ svg.focus .route.on .wstop:not(.far) .num { display: inline; }
 .travel .photos-btn:hover { border-color: var(--city); color: var(--city); }
 .travel .photos-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .wstop.has-photos { cursor: pointer; }
+.album-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.album-pills .photos-btn { padding: 4px 11px; font-size: 13.5px; color: var(--text); }
 
 /* ---------- photo gallery ---------- */
 body:has(dialog.gallery[open]) { overflow: hidden; }

@@ -36,7 +36,8 @@
   // The gallery for a place on a trip gathers the albums from every visit to it.
   const placeAlbums = (t, name) => [...new Set(t.stops.filter(s => s.name === name).flatMap(ownAlbums))];
   const photoCount = slugs => slugs.reduce((n, k) => n + ALB[k].photos.length, 0);
-  trips.forEach(t => { t.hasPhotos = t.stops.some(s => ownAlbums(s).length); });
+  // A trip can also carry its own albums (e.g. a sketch trip with no route).
+  trips.forEach(t => { t.hasPhotos = ownAlbums(t).length > 0 || t.stops.some(s => ownAlbums(s).length); });
   // Number each trip's places in the order they were first reached (start/end points like home aren't numbered).
   trips.forEach(t => {
     t.num = new Map();
@@ -364,7 +365,7 @@
     b.appendChild(el("span", "t", t.name));
     const bits = [t.when];
     if (t.places.length) bits.push(t.places.length === 1 ? t.places[0].name : `${t.places.length} countries`);
-    if (!t.stops.length) bits.push("route to come");
+    if (!t.stops.length && !ownAlbums(t).length) bits.push("route to come");
     b.appendChild(el("span", "m", bits.filter(Boolean).join(" · ")));
     b.addEventListener("click", () => go(t.id));
     const peek = on => gRoutes.selectAll("g.route").filter(d => d === t).classed("peek", on);
@@ -415,8 +416,18 @@
       panel.appendChild(el("h3", null, "Countries"));
       panel.appendChild(placeChips(t.places, p => go("country=" + encodeURIComponent(p.name))));
     }
+    if (ownAlbums(t).length) {
+      panel.appendChild(el("h3", null, "Photos"));
+      const pills = el("div", "album-pills");
+      ownAlbums(t).forEach(k => {
+        const b = el("button", "photos-btn", `📷 ${ALB[k].title} · ${ALB[k].photos.length}`);
+        b.addEventListener("click", () => go(`${t.id}/photos/${k}`));
+        pills.appendChild(b);
+      });
+      panel.appendChild(pills);
+    }
     if (!t.stops.length) {
-      panel.appendChild(el("p", "empty", "Route still to be remembered."));
+      if (!ownAlbums(t).length) panel.appendChild(el("p", "empty", "Route still to be remembered."));
       return;
     }
     const rh = el("div", "route-head");
@@ -515,10 +526,12 @@
   const galHash = (k, n) => `#${gal.trip.id}/photos/${k}` + (n ? "/" + n : "");
   const setHash = h => history.replaceState(history.state, "", h);
 
-  function buildGallery(t, name, slugs) {
-    gal = { trip: t, name, flat: slugs.flatMap(k => ALB[k].photos.map((p, i) => ({ k, i, p }))), idx: -1 };
-    $(".g-head h2").textContent = name;
-    $(".g-head .when").textContent = t.name;
+  // key = the stop name, or TRIP_KEY for the trip's own albums.
+  const TRIP_KEY = "\u0000trip";
+  function buildGallery(t, key, slugs) {
+    gal = { trip: t, key, flat: slugs.flatMap(k => ALB[k].photos.map((p, i) => ({ k, i, p }))), idx: -1 };
+    $(".g-head h2").textContent = key === TRIP_KEY ? t.name : key;
+    $(".g-head .when").textContent = key === TRIP_KEY ? (t.when || "") : t.name;
     const body = $(".g-body"); body.replaceChildren(); body.scrollTop = 0;
     slugs.forEach(k => {
       const a = ALB[k], sec = el("section"); sec.id = "album-" + k;
@@ -563,8 +576,10 @@
   }
   function openGallery(t, slug, n) {
     const stop = t.stops.find(s => ownAlbums(s).includes(slug));
-    if (!stop) return false;
-    if (!gal || gal.trip !== t || gal.name !== stop.name) buildGallery(t, stop.name, placeAlbums(t, stop.name));
+    const key = stop ? stop.name : ownAlbums(t).includes(slug) ? TRIP_KEY : null;
+    if (key === null) return false;
+    if (!gal || gal.trip !== t || gal.key !== key)
+      buildGallery(t, key, stop ? placeAlbums(t, stop.name) : ownAlbums(t));
     if (!dlg.open) dlg.showModal();
     const idx = n ? gal.flat.findIndex(f => f.k === slug && f.i === n - 1) : -1;
     if (idx >= 0) showPhoto(idx);
