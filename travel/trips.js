@@ -287,7 +287,7 @@ const TRIPS = [
   {name:"Auckland",lon:174.76,lat:-36.85,by:"bus",part:"New Zealand",photos:"auckland"},
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
  ]},
- {name:"Asia, Europe and North America, 2017", when:"Feb 16 to Sep 16, 2017", partInfo:{"Korea and Taiwan":"Feb 16 to Apr 17","Okinawa and Thailand":"Apr 17 to May 30","Europe":"from May 30","North America":"until Sep 16"}, stops:[
+ {name:"Asia, Europe and North America, 2017", when:"Feb 16 to Sep 16, 2017", countries:["Denmark"], partInfo:{"Korea and Taiwan":"Feb 16 to Apr 17","Okinawa and Thailand":"Apr 17 to May 30","Europe":"from May 30","North America":"until Sep 16"}, stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
   {name:"Seoul",lon:126.98,lat:37.57,by:"flight",via:"Korean Air 24, Feb 16",part:"Korea and Taiwan"},
   {name:"Taipei",lon:121.56,lat:25.04,by:"flight",via:"Korean Air 693, Mar 16",part:"Korea and Taiwan"},
