@@ -405,12 +405,22 @@ const TRIPS = [
   {name:"San Jose",lon:-121.89,lat:37.34,by:"flight",via:"Jan 31",far:true}
  ]},
  {name:"New York, Apr 2024", when:"Apr 2024", countries:["United States"]},
- {name:"Greece, Cyprus, Romania and Hungary, Sep to Oct 2024", when:"Sep to Oct 12, 2024", stops:[
-  {name:"Athens",lon:23.73,lat:37.98},
-  {name:"Larnaca",lon:33.63,lat:34.92,by:"flight",via:"Sep 26"},
-  {name:"Bucharest",lon:26.10,lat:44.43,by:"flight"},
-  {name:"Budapest",lon:19.04,lat:47.50,by:"flight",via:"from Henri Coandă, Oct 5"},
-  {name:"Newark",lon:-74.17,lat:40.74,by:"flight",via:"Oct 12",far:true}
+ {name:"Europe, Sep to Oct 2024", when:"Sep 11 to Oct 12, 2024", note:"SWISS business class from Montreal on United miles", partInfo:{"Switzerland":"from Sep 12","Romania, Hungary and Poland":"until Oct 12"}, stops:[
+  {name:"Austin",lon:-97.74,lat:30.27,far:true},
+  {name:"Montreal",lon:-73.57,lat:45.50,by:"flight",via:"Air Canada 1050, Sep 11; layover"},
+  {name:"Zürich",lon:8.54,lat:47.37,by:"flight",via:"SWISS LX 87 overnight, arriving Sep 12",part:"Switzerland"},
+  {name:"Lucerne",lon:8.31,lat:47.05,by:"train",part:"Switzerland"},
+  {name:"Interlaken / Iseltwald",lon:7.86,lat:46.69,by:"train",part:"Switzerland"},
+  {name:"Geneva",lon:6.14,lat:46.20,by:"train",part:"Switzerland"},
+  {name:"Athens",lon:23.73,lat:37.98,by:"flight",part:"Greece and Cyprus"},
+  {name:"Santorini",lon:25.43,lat:36.42,by:"flight",part:"Greece and Cyprus"},
+  {name:"Athens",lon:23.73,lat:37.98,by:"flight",part:"Greece and Cyprus"},
+  {name:"Larnaca",lon:33.63,lat:34.92,by:"flight",via:"Sep 26",part:"Greece and Cyprus"},
+  {name:"Bucharest",lon:26.10,lat:44.43,by:"flight",via:"by Sep 30",part:"Romania, Hungary and Poland"},
+  {name:"Budapest",lon:19.04,lat:47.50,by:"flight",via:"Oct 5",part:"Romania, Hungary and Poland"},
+  {name:"Warsaw",lon:21.01,lat:52.23,by:"flight",part:"Romania, Hungary and Poland"},
+  {name:"New York (Newark)",lon:-74.17,lat:40.74,by:"flight",via:"Oct 12"},
+  {name:"Austin",lon:-97.74,lat:30.27,by:"flight",far:true}
  ]},
  {name:"Tulum, Dec 2025", when:"Dec 2025", countries:["Mexico"]},
  {name:"Thailand, Laos, Cambodia and Malaysia, Dec 2025 to Jan 2026", when:"Dec 29, 2025 to Jan 2026", note:"The slow boat down the Mekong", stops:[
