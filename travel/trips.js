@@ -62,7 +62,6 @@ const CITIES = [
  ["Carolina, Puerto Rico","Puerto Rico",-65.96,18.38],
  ["Palma de Mallorca","Spain",2.65,39.57],["Tarragona","Spain",1.25,41.12],
  ["Atlanta","United States",-84.39,33.75],["Buda, Texas","United States",-97.84,30.08],["Charleston, South Carolina","United States",-79.93,32.78],["Chicago","United States",-87.63,41.88],["Denver","United States",-104.99,39.74],["Haleʻiwa","United States",-158.1,21.59],["Honolulu","United States",-157.86,21.31],["Houston","United States",-95.37,29.76],["Incline Village, Lake Tahoe","United States",-119.95,39.25],["Kahului, Maui","United States",-156.47,20.89],["Keauhou, Hawaii","United States",-155.96,19.56],["Kihei, Maui","United States",-156.45,20.76],["Lahaina, Maui","United States",-156.68,20.88],["Las Vegas","United States",-115.15,36.11],["Long Beach","United States",-118.19,33.77],["Los Angeles","United States",-118.24,34.05],["New Braunfels, Texas","United States",-98.12,29.7],["New Orleans","United States",-90.07,29.95],["Newark","United States",-74.17,40.74],["Orem, Utah","United States",-111.69,40.3],["Philadelphia","United States",-75.17,39.95],["Pearl City / Pearl Harbor","United States",-157.97,21.39],["Reno","United States",-119.81,39.53],["Salt Lake City","United States",-111.89,40.76],["Santa Monica","United States",-118.49,34.02],["Seattle","United States",-122.33,47.61],["Tucson","United States",-110.97,32.22],["South Lake Tahoe","United States",-119.98,38.94],["Washington, DC","United States",-77.04,38.9],
- ["Colonia del Sacramento","Uruguay",-57.84,-34.47],
  ["Da Nang","Vietnam",108.22,16.05]
 ];
 
@@ -430,6 +429,17 @@ const TRIPS = [
   {name:"Hong Kong",lon:114.17,lat:22.32,by:"flight",via:"layover"},
   {name:"Dallas",lon:-96.80,lat:32.78,by:"flight",far:true}
  ]},
- {name:"Buenos Aires and Colonia, May to Jun 2026", when:"May to Jun 2026", countries:["Argentina","Uruguay"]},
+ {name:"Buenos Aires, Uruguay and Asunción, May to Jun 2026", when:"May to Jun 2026", stops:[
+  {name:"Austin",lon:-97.74,lat:30.27,far:true},
+  {name:"Houston",lon:-95.37,lat:29.76,by:"flight",via:"layover"},
+  {name:"Buenos Aires",lon:-58.38,lat:-34.60,by:"flight",via:"by May 30"},
+  {name:"Colonia del Sacramento",lon:-57.84,lat:-34.47,by:"boat",via:"Jun 5"},
+  {name:"Montevideo",lon:-56.16,lat:-34.90,by:"boat"},
+  {name:"Buenos Aires",lon:-58.38,lat:-34.60,by:"boat"},
+  {name:"Asunción",lon:-57.58,lat:-25.26,by:"flight"},
+  {name:"Buenos Aires",lon:-58.38,lat:-34.60,by:"flight"},
+  {name:"Houston",lon:-95.37,lat:29.76,by:"flight",via:"layover"},
+  {name:"Austin",lon:-97.74,lat:30.27,by:"flight",far:true}
+ ]},
  {name:"Chicago, Oct 2026", when:"Oct 2026", note:"Two games at Soldier Field", countries:["United States"]}
 ];
