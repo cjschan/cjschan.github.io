@@ -414,13 +414,21 @@ const TRIPS = [
   {name:"Newark",lon:-74.17,lat:40.74,by:"flight",via:"Oct 12",far:true}
  ]},
  {name:"Tulum, Dec 2025", when:"Dec 2025", countries:["Mexico"]},
- {name:"Thailand, Laos and Cambodia, Jan 2026", when:"Dec 29, 2025 to Jan 2026", note:"The slow boat down the Mekong", stops:[
+ {name:"Thailand, Laos, Cambodia and Malaysia, Dec 2025 to Jan 2026", when:"Dec 29, 2025 to Jan 2026", note:"The slow boat down the Mekong", stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
-  {name:"Chiang Rai",lon:99.83,lat:19.91,by:"flight",via:"Dec 29"},
-  {name:"Huay Xai",lon:100.41,lat:20.27,by:"ground",via:"Jan 5"},
-  {name:"Pak Beng",lon:101.13,lat:19.89,by:"boat",via:"slow boat, Jan 5 to 6"},
-  {name:"Luang Prabang",lon:102.13,lat:19.89,by:"boat",via:"slow boat"},
-  {name:"Siem Reap",lon:103.86,lat:13.36,by:"flight",via:"Jan 10"}
+  {name:"Frankfurt",lon:8.68,lat:50.11,by:"flight",via:"Dec 29; a layover at the Römerberg"},
+  {name:"Bangkok",lon:100.50,lat:13.76,by:"flight"},
+  {name:"Chiang Rai",lon:99.83,lat:19.91,by:"ground",via:"by Jan 3"},
+  {name:"Huay Xai",lon:100.41,lat:20.27,by:"bus",via:"Jan 5"},
+  {name:"Pak Beng",lon:101.13,lat:19.89,by:"boat",via:"Mekong slow boat, Jan 5 to 6"},
+  {name:"Luang Prabang",lon:102.13,lat:19.89,by:"boat",via:"Mekong slow boat"},
+  {name:"Siem Reap",lon:103.86,lat:13.36,by:"flight",via:"Jan 10"},
+  {name:"Kuala Lumpur",lon:101.69,lat:3.14,by:"flight",via:"Jan 14"},
+  {name:"Malacca",lon:102.25,lat:2.19,by:"bus"},
+  {name:"Kuala Lumpur",lon:101.69,lat:3.14,by:"bus"},
+  {name:"Bangkok",lon:100.50,lat:13.76,by:"flight"},
+  {name:"Hong Kong",lon:114.17,lat:22.32,by:"flight",via:"layover"},
+  {name:"Dallas",lon:-96.80,lat:32.78,by:"flight",far:true}
  ]},
  {name:"Buenos Aires and Colonia, May to Jun 2026", when:"May to Jun 2026", countries:["Argentina","Uruguay"]},
  {name:"Chicago, Oct 2026", when:"Oct 2026", note:"Two games at Soldier Field", countries:["United States"]}
