@@ -2,7 +2,10 @@
 """Import Facebook photo albums into the Travel page.
 
 Usage (from the repo root):
-    python3 -I tools/import_fb_albums.py ~/Downloads/facebook-<you>-<date>-<id>
+    python3 -I tools/import_fb_albums.py EXPORT [EXPORT ...]
+
+Pass every export at once (oldest first); each run rebuilds travel/photos/ from
+scratch, so an export left off the command line loses its albums.
 
 Reads <export>/your_facebook_activity/posts/album/*.html, copies each travel
 album's photos to travel/photos/<slug>/NN.<ext>, and writes travel/photos.js.
@@ -117,15 +120,18 @@ def parse_album(path, export):
 
 
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         sys.exit(__doc__)
-    export = os.path.abspath(os.path.expanduser(sys.argv[1]))
-    pages = glob.glob(os.path.join(export, "your_facebook_activity/posts/album/*.html"))
-    if not pages:
-        sys.exit("No album pages found under " + export)
+    pages = []
+    for arg in sys.argv[1:]:
+        export = os.path.abspath(os.path.expanduser(arg))
+        found = sorted(glob.glob(os.path.join(export, "your_facebook_activity/posts/album/*.html")))
+        if not found:
+            sys.exit("No album pages found under " + export)
+        pages += [(p, export) for p in found]
 
     albums = []
-    for p in pages:
+    for p, export in pages:
         title, note, folder, photos = parse_album(p, export)
         if not photos or folder.rsplit("_", 1)[0] in SKIP:
             continue
