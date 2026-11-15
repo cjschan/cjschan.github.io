@@ -61,8 +61,7 @@ const CITIES = [
  ["Poznań","Poland",16.93,52.41],
  ["Carolina, Puerto Rico","Puerto Rico",-65.96,18.38],
  ["Palma de Mallorca","Spain",2.65,39.57],["Tarragona","Spain",1.25,41.12],
- ["Atlanta","United States",-84.39,33.75],["Buda, Texas","United States",-97.84,30.08],["Charleston, South Carolina","United States",-79.93,32.78],["Chicago","United States",-87.63,41.88],["Denver","United States",-104.99,39.74],["Haleʻiwa","United States",-158.1,21.59],["Honolulu","United States",-157.86,21.31],["Houston","United States",-95.37,29.76],["Incline Village, Lake Tahoe","United States",-119.95,39.25],["Kahului, Maui","United States",-156.47,20.89],["Keauhou, Hawaii","United States",-155.96,19.56],["Kihei, Maui","United States",-156.45,20.76],["Lahaina, Maui","United States",-156.68,20.88],["Las Vegas","United States",-115.15,36.11],["Long Beach","United States",-118.19,33.77],["Los Angeles","United States",-118.24,34.05],["New Braunfels, Texas","United States",-98.12,29.7],["New Orleans","United States",-90.07,29.95],["Newark","United States",-74.17,40.74],["Orem, Utah","United States",-111.69,40.3],["Philadelphia","United States",-75.17,39.95],["Pearl City / Pearl Harbor","United States",-157.97,21.39],["Reno","United States",-119.81,39.53],["Salt Lake City","United States",-111.89,40.76],["Santa Monica","United States",-118.49,34.02],["Seattle","United States",-122.33,47.61],["Tucson","United States",-110.97,32.22],["South Lake Tahoe","United States",-119.98,38.94],["Washington, DC","United States",-77.04,38.9],
- ["Da Nang","Vietnam",108.22,16.05]
+ ["Atlanta","United States",-84.39,33.75],["Buda, Texas","United States",-97.84,30.08],["Charleston, South Carolina","United States",-79.93,32.78],["Chicago","United States",-87.63,41.88],["Denver","United States",-104.99,39.74],["Haleʻiwa","United States",-158.1,21.59],["Honolulu","United States",-157.86,21.31],["Houston","United States",-95.37,29.76],["Incline Village, Lake Tahoe","United States",-119.95,39.25],["Kahului, Maui","United States",-156.47,20.89],["Keauhou, Hawaii","United States",-155.96,19.56],["Kihei, Maui","United States",-156.45,20.76],["Lahaina, Maui","United States",-156.68,20.88],["Las Vegas","United States",-115.15,36.11],["Long Beach","United States",-118.19,33.77],["Los Angeles","United States",-118.24,34.05],["New Braunfels, Texas","United States",-98.12,29.7],["New Orleans","United States",-90.07,29.95],["Newark","United States",-74.17,40.74],["Orem, Utah","United States",-111.69,40.3],["Philadelphia","United States",-75.17,39.95],["Pearl City / Pearl Harbor","United States",-157.97,21.39],["Reno","United States",-119.81,39.53],["Salt Lake City","United States",-111.89,40.76],["Santa Monica","United States",-118.49,34.02],["Seattle","United States",-122.33,47.61],["Tucson","United States",-110.97,32.22],["South Lake Tahoe","United States",-119.98,38.94],["Washington, DC","United States",-77.04,38.9]
 ];
 
 // Trips, oldest first. Each one needs a name and when; stops and links are optional.
@@ -396,13 +395,19 @@ const TRIPS = [
  {name:"Barcelona and Tarragona, Feb 2023", when:"Feb 2023", countries:["Spain"]},
  {name:"London, Apr 2023", when:"Apr 2023", countries:["United Kingdom"]},
  {name:"Banff, Oct 2023", when:"Oct 2023", countries:["Canada"]},
- {name:"Vietnam, Jan 2024", when:"Jan 3 to 31, 2024", stops:[
+ {name:"Vietnam, Jan 2024", when:"Jan 3 to 25, 2024", stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
-  {name:"Hanoi",lon:105.85,lat:21.03,by:"flight",via:"Jan 3"},
-  {name:"Hội An",lon:108.33,lat:15.88,by:"flight",via:"to Da Nang, Jan 13"},
+  {name:"Seoul (Incheon)",lon:126.45,lat:37.46,by:"flight",via:"Korean Air 24, Jan 3; layover"},
+  {name:"Hanoi",lon:105.85,lat:21.03,by:"flight",via:"Korean Air 455, Jan 4"},
+  {name:"Hà Giang",lon:104.98,lat:22.82,by:"bus"},
+  {name:"Hanoi",lon:105.85,lat:21.03,by:"bus"},
+  {name:"Da Nang",lon:108.22,lat:16.05,by:"flight",via:"Jan 13"},
+  {name:"Hội An",lon:108.33,lat:15.88,by:"ground"},
   {name:"Hanoi",lon:105.85,lat:21.03,by:"flight",via:"from Da Nang, Jan 19"},
-  {name:"Seoul (Incheon)",lon:126.45,lat:37.46,by:"flight",via:"Jan 24"},
-  {name:"San Jose",lon:-121.89,lat:37.34,by:"flight",via:"Jan 31",far:true}
+  {name:"Hạ Long Bay",lon:107.08,lat:20.95,by:"ground"},
+  {name:"Hanoi",lon:105.85,lat:21.03,by:"ground"},
+  {name:"Seoul (Incheon)",lon:126.45,lat:37.46,by:"flight",via:"Korean Air 456 overnight, Jan 24; 11-hour layover"},
+  {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",via:"Korean Air 23, Jan 25",far:true}
  ]},
  {name:"New York, Apr 2024", when:"Apr 2024", countries:["United States"]},
  {name:"Europe, Sep to Oct 2024", when:"Sep 11 to Oct 12, 2024", note:"SWISS business class from Montreal on United miles", partInfo:{"Switzerland":"from Sep 12","Romania, Hungary and Poland":"until Oct 12"}, stops:[
