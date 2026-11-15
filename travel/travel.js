@@ -84,7 +84,13 @@
   const tripsForPlace = p => trips.filter(t => t.places.includes(p));
   // Other cities visited that aren't stops on a route (CITIES in trips.js).
   const cities = (typeof CITIES === "undefined" ? [] : CITIES)
-    .map(([name, country, lon, lat, photos]) => ({ name, place: placeByName.get(country), lon, lat, albums: ownAlbums({ photos }) }));
+    .map(([name, country, lon, lat, extra]) => {
+      const opt = extra && typeof extra === "object" && !Array.isArray(extra) ? extra : { photos: extra };
+      const albums = ownAlbums(opt);
+      // Visit dates: as written, or else the photo albums' dates.
+      const when = opt.when || [...new Set(albums.map(k => ALB[k].dates).filter(Boolean))].join(", ");
+      return { name, place: placeByName.get(country), lon, lat, albums, when };
+    });
   // A city with photos gets a small gallery "trip" of its own: #city-<name>/photos/<album>.
   const cityGalById = new Map();
   cities.filter(c => c.albums.length && c.place).forEach(c => {
@@ -163,7 +169,7 @@
     gCities.selectAll("circle").data(cities, d => d.name).join("circle")
       .attr("class", "city-pin").classed("has-photos", d => !!d.gal)
       .attr("cx", d => projection([d.lon, d.lat])[0]).attr("cy", d => projection([d.lon, d.lat])[1])
-      .on("pointermove", (e, d) => showTip(e, (d.place ? `${d.name} · ${d.place.name}` : d.name) + (d.gal ? ` · 📷 ${photoCount(d.albums)} photos` : "")))
+      .on("pointermove", (e, d) => showTip(e, [d.name, d.place && d.place.name, d.when, d.gal && `📷 ${photoCount(d.albums)} photos`].filter(Boolean).join(" · ")))
       .on("pointerleave", hideTip)
       .on("click", (e, d) => {
         if (d.gal) { hideTip(); go(`${d.gal.id}/photos/${d.albums[0]}`); return; }
@@ -528,6 +534,7 @@
       const c = el("div", "chips");
       cs.forEach(city => {
         const b = el("button", "chip", city.name);
+        if (city.when) b.appendChild(el("small", null, city.when));
         b.addEventListener("click", () => {
           c.querySelectorAll(".chip.on").forEach(x => x.classList.remove("on")); b.classList.add("on");
           gCities.selectAll("circle").classed("on", d => d === city);

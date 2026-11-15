@@ -199,6 +199,7 @@ svg.focus .route.on .wstop:not(.far) .num { display: inline; }
 	padding: 4px 11px; border-radius: 999px; font-size: 14px; cursor: pointer;
 	transition: border-color .15s, color .15s;
 }
+.chip small { margin-left: 6px; font-size: 12px; opacity: .65; }
 .chip:hover { border-color: var(--accent); color: var(--accent-light); }
 .travel .chip.on, .travel .chip.on:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 
