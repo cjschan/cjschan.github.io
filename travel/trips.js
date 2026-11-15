@@ -60,7 +60,7 @@ const CITIES = [
  ["Bayahibe","Dominican Republic",-68.84,18.37],["Bávaro","Dominican Republic",-68.45,18.68,{when:"Nov 2021"}],
  ["Guayaquil","Ecuador",-79.88,-2.14],["Montañita","Ecuador",-80.75,-1.83],
  ["Badung, Bali","Indonesia",115.17,-8.72],
- ["Acapulco","Mexico",-99.88,16.85],["Bucerías","Mexico",-105.33,20.76],["Chichén Itzá","Mexico",-88.57,20.68],["Guadalajara","Mexico",-103.35,20.67],["Guanajuato","Mexico",-101.26,21.02],["Lake Chapala","Mexico",-103.19,20.3],["Oaxaca","Mexico",-96.73,17.07],["Puebla","Mexico",-98.21,19.04],["Puerto Escondido","Mexico",-97.07,15.86,{when:"May 2018"}],["Playa Mujeres","Mexico",-86.80,21.24,{when:"May 2022"}],["Puerto Vallarta","Mexico",-105.23,20.61,{when:"Mar 2019, Jan 2022, Jul 2022, Dec 2022"}],["Querétaro","Mexico",-100.39,20.59],["Teotihuacán","Mexico",-98.84,19.69],["Tequila","Mexico",-103.84,20.88],["Cancún","Mexico",-86.877,21.037,{when:"Nov 2019, Apr 2021"}],["Mérida","Mexico",-89.62,20.97,{when:"Feb to Mar 2022"}],["Mexico City","Mexico",-99.13,19.43,{when:"Mar 2022"}],["Playa del Carmen","Mexico",-87.07,20.63,{when:"Sep 2021"}],["Tulum","Mexico",-87.47,20.21,{when:"Dec 2025"}],
+ ["Acapulco","Mexico",-99.88,16.85],["Bucerías","Mexico",-105.33,20.76],["Chichén Itzá","Mexico",-88.57,20.68,{when:"Sep 2013",photos:"chichen-itza-2013"}],["Guadalajara","Mexico",-103.35,20.67],["Guanajuato","Mexico",-101.26,21.02],["Lake Chapala","Mexico",-103.19,20.3],["Oaxaca","Mexico",-96.73,17.07],["Puebla","Mexico",-98.21,19.04],["Puerto Escondido","Mexico",-97.07,15.86,{when:"May 2018"}],["Playa Mujeres","Mexico",-86.80,21.24,{when:"May 2022"}],["Puerto Vallarta","Mexico",-105.23,20.61,{when:"Mar 2019, Jan 2022, Jul 2022, Dec 2022"}],["Querétaro","Mexico",-100.39,20.59],["Teotihuacán","Mexico",-98.84,19.69],["Tequila","Mexico",-103.84,20.88],["Cancún","Mexico",-86.877,21.037,{when:"Aug to Sep 2013, Nov 2019, Apr 2021"}],["Mérida","Mexico",-89.62,20.97,{when:"Feb to Mar 2022"}],["Mexico City","Mexico",-99.13,19.43,{when:"Mar 2022"}],["Playa del Carmen","Mexico",-87.07,20.63,{when:"Sep 2013, Sep 2021",photos:"playa-del-carmen"}],["Tulum","Mexico",-87.47,20.21,{when:"Dec 2025"}],
  ["Hobbiton (Matamata)","New Zealand",175.68,-37.87],["Karangahake Gorge","New Zealand",175.8,-37.43],
  ["Poznań","Poland",16.93,52.41],
  ["London","United Kingdom",-0.128,51.507,{when:"Apr 2023"}],
@@ -98,7 +98,6 @@ const TRIPS = [
   {name:"London",lon:-0.128,lat:51.507,by:"flight"},
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
  ]},
- {name:"Cancún and Chichén Itzá, Aug to Sep 2013", when:"Aug to Sep 2013", note:"With my parents, a week after Europe; drove from Cancún to Chichén Itzá and back", countries:["Mexico"], photos:["chichen-itza-2013","playa-del-carmen"]},
  {name:"Yucatán, Dec 2013 to Jan 2014", when:"Dec 2013 to Jan 2014", stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
   {name:"Cancún",lon:-86.877,lat:21.037,by:"flight"},
