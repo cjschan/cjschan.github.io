@@ -4,7 +4,8 @@
 //
 //  QUICK SKETCH (just remembered a trip? one line is enough):
 //    {name:"Iceland ring road", when:"2018", countries:["Iceland"]},
-//    {name:"Maui, Nov 2013", when:"Nov 2013", countries:["United States"], photos:["lahaina","kihei"]},
+//    {name:"Jalisco, 2015", when:"2015", countries:["Mexico"], photos:["tequila","guadalajara"]},
+//    (A trip to just one place? Add it to CITIES instead.)
 //
 //  FULL TRIP:
 //    {name:"Trip name", when:"Summer 2013", note:"optional one-liner",
@@ -48,7 +49,8 @@ const PLACES = [
 ].map(([name,region,atlas,pin])=>({name,region,atlas:atlas===undefined?name:atlas,pin}));
 
 // Other cities and towns visited (check-ins etc.) that aren't stops on a mapped route.
-// [name, country (as in PLACES), lon, lat]. Shown as small pins on the map.
+// [name, country (as in PLACES), lon, lat, photos?]. Shown as small pins on the map.
+// Single-place trips go here too; photos (an album slug or a list) opens a gallery from the pin.
 const CITIES = [
  ["Paraty","Brazil",-44.71,-23.22],["Rio de Janeiro","Brazil",-43.18,-22.91],
  ["Banff","Canada",-115.57,51.18],["Halifax","Canada",-63.57,44.65],["Mississauga","Canada",-79.64,43.59],
@@ -56,12 +58,12 @@ const CITIES = [
  ["Bayahibe","Dominican Republic",-68.84,18.37],["Bávaro","Dominican Republic",-68.45,18.68],
  ["Guayaquil","Ecuador",-79.88,-2.14],["Montañita","Ecuador",-80.75,-1.83],
  ["Badung, Bali","Indonesia",115.17,-8.72],
- ["Acapulco","Mexico",-99.88,16.85],["Bucerías","Mexico",-105.33,20.76],["Chichén Itzá","Mexico",-88.57,20.68],["Guadalajara","Mexico",-103.35,20.67],["Guanajuato","Mexico",-101.26,21.02],["Lake Chapala","Mexico",-103.19,20.3],["Oaxaca","Mexico",-96.73,17.07],["Puebla","Mexico",-98.21,19.04],["Puerto Escondido","Mexico",-97.07,15.86],["Puerto Vallarta","Mexico",-105.23,20.61],["Querétaro","Mexico",-100.39,20.59],["Teotihuacán","Mexico",-98.84,19.69],["Tequila","Mexico",-103.84,20.88],
+ ["Acapulco","Mexico",-99.88,16.85],["Bucerías","Mexico",-105.33,20.76],["Chichén Itzá","Mexico",-88.57,20.68],["Guadalajara","Mexico",-103.35,20.67],["Guanajuato","Mexico",-101.26,21.02],["Lake Chapala","Mexico",-103.19,20.3],["Oaxaca","Mexico",-96.73,17.07],["Puebla","Mexico",-98.21,19.04],["Puerto Escondido","Mexico",-97.07,15.86],["Playa Mujeres","Mexico",-86.80,21.24],["Puerto Vallarta","Mexico",-105.23,20.61],["Querétaro","Mexico",-100.39,20.59],["Teotihuacán","Mexico",-98.84,19.69],["Tequila","Mexico",-103.84,20.88],
  ["Hobbiton (Matamata)","New Zealand",175.68,-37.87],["Karangahake Gorge","New Zealand",175.8,-37.43],
  ["Poznań","Poland",16.93,52.41],
  ["Carolina, Puerto Rico","Puerto Rico",-65.96,18.38],
  ["Palma de Mallorca","Spain",2.65,39.57],["Tarragona","Spain",1.25,41.12],
- ["Atlanta","United States",-84.39,33.75],["Buda, Texas","United States",-97.84,30.08],["Charleston, South Carolina","United States",-79.93,32.78],["Chicago","United States",-87.63,41.88],["Denver","United States",-104.99,39.74],["Haleʻiwa","United States",-158.1,21.59],["Honolulu","United States",-157.86,21.31],["Houston","United States",-95.37,29.76],["Incline Village, Lake Tahoe","United States",-119.95,39.25],["Kahului, Maui","United States",-156.47,20.89],["Keauhou, Hawaii","United States",-155.96,19.56],["Kihei, Maui","United States",-156.45,20.76],["Lahaina, Maui","United States",-156.68,20.88],["Las Vegas","United States",-115.15,36.11],["Long Beach","United States",-118.19,33.77],["Los Angeles","United States",-118.24,34.05],["New Braunfels, Texas","United States",-98.12,29.7],["New Orleans","United States",-90.07,29.95],["Newark","United States",-74.17,40.74],["Orem, Utah","United States",-111.69,40.3],["Philadelphia","United States",-75.17,39.95],["Pearl City / Pearl Harbor","United States",-157.97,21.39],["Reno","United States",-119.81,39.53],["Salt Lake City","United States",-111.89,40.76],["Santa Monica","United States",-118.49,34.02],["Seattle","United States",-122.33,47.61],["Tucson","United States",-110.97,32.22],["South Lake Tahoe","United States",-119.98,38.94],["Washington, DC","United States",-77.04,38.9]
+ ["Atlanta","United States",-84.39,33.75,"atlanta"],["Buda, Texas","United States",-97.84,30.08],["Charleston, South Carolina","United States",-79.93,32.78],["Chicago","United States",-87.63,41.88],["Denver","United States",-104.99,39.74],["Haleakalā, Maui","United States",-156.25,20.72,"haleakala-national-park"],["Haleʻiwa","United States",-158.1,21.59],["Honolulu","United States",-157.86,21.31],["Houston","United States",-95.37,29.76],["ʻĪao Valley, Maui","United States",-156.55,20.88,"iao-valley-state-monument"],["Incline Village, Lake Tahoe","United States",-119.95,39.25],["Kahului, Maui","United States",-156.47,20.89],["Keauhou, Hawaii","United States",-155.96,19.56],["Kihei, Maui","United States",-156.45,20.76,"kihei"],["Lahaina, Maui","United States",-156.68,20.88,"lahaina"],["Las Vegas","United States",-115.15,36.11],["Long Beach","United States",-118.19,33.77],["Los Angeles","United States",-118.24,34.05,"out-and-about-in-the-los-angeles-area"],["New Braunfels, Texas","United States",-98.12,29.7],["New Orleans","United States",-90.07,29.95],["Newark","United States",-74.17,40.74],["Orem, Utah","United States",-111.69,40.3],["Philadelphia","United States",-75.17,39.95],["Pearl City / Pearl Harbor","United States",-157.97,21.39],["Reno","United States",-119.81,39.53],["Salt Lake City","United States",-111.89,40.76],["Santa Monica","United States",-118.49,34.02],["Seattle","United States",-122.33,47.61,"out-and-about-in-seattle"],["Tucson","United States",-110.97,32.22],["South Lake Tahoe","United States",-119.98,38.94],["Washington, DC","United States",-77.04,38.9,"washington-dc"]
 ];
 
 // Trips, oldest first. Each one needs a name and when; stops and links are optional.
@@ -94,8 +96,6 @@ const TRIPS = [
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
  ]},
  {name:"Cancún and Chichén Itzá, Aug to Sep 2013", when:"Aug to Sep 2013", note:"With my parents, a week after Europe; drove from Cancún to Chichén Itzá and back", countries:["Mexico"], photos:["chichen-itza-2013","playa-del-carmen"]},
- {name:"Maui, Nov 2013", when:"Nov 2013", note:"Veterans Day weekend on the cheap: a hostel, a rented subcompact, and a disposable camera", countries:["United States"], photos:["lahaina","haleakala-national-park","iao-valley-state-monument","kihei"]},
- {name:"Los Angeles, Nov 2013", when:"Nov 2013", note:"A last-minute Thanksgiving weekend trip", countries:["United States"], photos:["out-and-about-in-the-los-angeles-area"]},
  {name:"Yucatán, Dec 2013 to Jan 2014", when:"Dec 2013 to Jan 2014", stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
   {name:"Cancún",lon:-86.877,lat:21.037,by:"flight"},
@@ -108,7 +108,6 @@ const TRIPS = [
   {name:"Cancún",lon:-86.877,lat:21.037,by:"bus"},
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
  ]},
- {name:"Seattle, Mar 2014", when:"Mar 2014", note:"My second time in the city", countries:["United States"], photos:["out-and-about-in-seattle"]},
  {name:"Europe, Egypt and Asia, summer 2014", when:"Summer 2014", note:"Student Agency, Busabout, Sail Croatia and Sail Turkey", partInfo:{"Egypt":"Jul 19 to 26"}, stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
   {name:"Dublin",lon:-6.26,lat:53.35,by:"flight",part:"Europe and Turkey",photos:["blarney-castle","cliffs-of-moher","burren"]},
@@ -153,7 +152,6 @@ const TRIPS = [
   {name:"Tokyo",lon:139.69,lat:35.68,by:"train",part:"Japan",photos:"mount-fuji"},
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
  ]},
- {name:"Washington, DC, Nov 2014", when:"Thanksgiving weekend, Nov 2014", note:"With my parents", countries:["United States"], photos:["washington-dc"]},
  {name:"Central America, Dec 2014 to Jan 2015", when:"Starting Dec 27, 2014", note:"New Year’s Eve in Santa Ana", stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
   {name:"San Salvador",lon:-89.19,lat:13.69,by:"flight"},
@@ -281,7 +279,6 @@ const TRIPS = [
   {name:"Auckland",lon:174.76,lat:-36.85,by:"bus",part:"New Zealand",photos:"auckland"},
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
  ]},
- {name:"Atlanta, Jan 2017", when:"Jan 3 to 9, 2017", note:"The Joint Math Meetings, where Margot Lee Shetterly and Christine Darden of Hidden Figures spoke", countries:["United States"], photos:["atlanta"]},
  {name:"Asia, Europe and North America, 2017", when:"Feb 16 to Sep 16, 2017", note:"Seven months on the road; Taiwan was my 50th country", countries:["Denmark"], partInfo:{"Korea and Taiwan":"Feb 16 to Apr 17","Okinawa and Thailand":"Apr 17 to May 30","Europe":"from May 30","North America":"until Sep 16"}, stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
   {name:"Seoul",lon:126.98,lat:37.57,by:"flight",via:"Korean Air 24, Feb 16",part:"Korea and Taiwan",photos:"seoul"},
@@ -345,9 +342,6 @@ const TRIPS = [
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",via:"Sep 16",far:true}
  ]},
  {name:"Mexico City and Oaxaca, Oct to Nov 2017", when:"Oct 14 to Nov 8, 2017", note:"Booked two weeks out; a week with a friend in Mexico City, then a luxury bus to Oaxaca", countries:["Mexico"], photos:["oaxaca","monte-alban"]},
- {name:"Maui, Dec 2017", when:"Dec 4 to 13, 2017", note:"A hostel in Wailuku and a dinner cruise with a view of Lānaʻi", countries:["United States"]},
- {name:"Puerto Escondido, May 2018", when:"May 2018", countries:["Mexico"]},
- {name:"Utah, Jun 2018", when:"Jun 2018", countries:["United States"]},
  {name:"Europe and Asia, Jul to Nov 2018", when:"Jul to Nov 2018", note:"From check-ins only, so the order is right but most legs are approximate", partInfo:{"Europe":"Jul to Oct 16","Asia":"Oct 16 to Nov 20"}, stops:[
   {name:"San Jose",lon:-121.89,lat:37.34,far:true},
   {name:"Belfast",lon:-5.93,lat:54.60,by:"flight",part:"Europe"},
@@ -369,32 +363,12 @@ const TRIPS = [
   {name:"Seoul",lon:126.98,lat:37.57,by:"flight",via:"Nov 5 to 8",part:"Asia"},
   {name:"Los Angeles",lon:-118.24,lat:34.05,by:"flight",via:"Nov 20",far:true}
  ]},
- {name:"Puerto Vallarta, Mar 2019", when:"Mar 2019", countries:["Mexico"]},
  {name:"London, Madrid, Kraków and Berlin, Jul 2019", when:"Jul 2019", countries:["United Kingdom","Spain","Poland","Germany"]},
  {name:"Puebla and Mexico City, Sep 2019", when:"Sep 9 to 23, 2019", countries:["Mexico"]},
- {name:"Tucson, Nov 2019", when:"Nov 2019", countries:["United States"]},
- {name:"Cancún, Nov 2019", when:"Nov 2019", countries:["Mexico"]},
- {name:"Charleston, Dec 2019", when:"Dec 2019", countries:["United States"]},
- {name:"Denver, Jan 2020", when:"Jan 2020", note:"At the Colorado Convention Center", countries:["United States"]},
  {name:"Mallorca and Germany, Feb 2020", when:"Feb 2020", note:"Cologne, then Mallorca, then Berlin", countries:["Spain","Germany"]},
  {name:"Rio de Janeiro and Paraty, Mar 2020", when:"Mar 8 to 28, 2020", countries:["Brazil"]},
- {name:"Chicago, Aug 2020", when:"Aug 2020", countries:["United States"]},
- {name:"Cancún, Apr 2021", when:"Apr 2021", countries:["Mexico"]},
- {name:"Belize, Jun to Jul 2021", when:"Jun 28 to Jul 8, 2021", note:"Caye Caulker", countries:["Belize"]},
- {name:"Playa del Carmen, Sep 2021", when:"Sep 2021", countries:["Mexico"]},
- {name:"Punta Cana, Nov 2021", when:"Nov 10 to 17, 2021", countries:["Dominican Republic"]},
- {name:"Philadelphia, Nov 2021", when:"Thanksgiving, Nov 2021", countries:["United States"]},
- {name:"Puerto Vallarta, Jan 2022", when:"Jan 2022", countries:["Mexico"]},
- {name:"Mérida, Feb to Mar 2022", when:"Feb to Mar 2022", countries:["Mexico"]},
- {name:"Los Angeles, Mar 2022", when:"Mar 2022", note:"The Getty and the Mosaic Tile House", countries:["United States"]},
- {name:"Mexico City, Mar 2022", when:"Mar 2022", note:"Xochimilco", countries:["Mexico"]},
- {name:"Playa Mujeres, May 2022", when:"May 2022", countries:["Mexico"]},
- {name:"Puerto Vallarta, Jul 2022", when:"Jul 2022", countries:["Mexico"]},
  {name:"Kraków, Istanbul and London, Sep 2022", when:"Sep 2022", countries:["Poland","Turkey","United Kingdom"]},
- {name:"Puerto Vallarta, Dec 2022", when:"Dec 2022", countries:["Mexico"]},
  {name:"Barcelona and Tarragona, Feb 2023", when:"Feb 2023", countries:["Spain"]},
- {name:"London, Apr 2023", when:"Apr 2023", countries:["United Kingdom"]},
- {name:"Banff, Oct 2023", when:"Oct 2023", countries:["Canada"]},
  {name:"Vietnam, Jan 2024", when:"Jan 3 to 25, 2024", stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
   {name:"Seoul (Incheon)",lon:126.45,lat:37.46,by:"flight",via:"Korean Air 24, Jan 3; layover"},
@@ -409,7 +383,6 @@ const TRIPS = [
   {name:"Seoul (Incheon)",lon:126.45,lat:37.46,by:"flight",via:"Korean Air 456 overnight, Jan 24; 11-hour layover"},
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",via:"Korean Air 23, Jan 25",far:true}
  ]},
- {name:"New York, Apr 2024", when:"Apr 2024", countries:["United States"]},
  {name:"Europe, Sep to Oct 2024", when:"Sep 11 to Oct 12, 2024", note:"SWISS business class from Montreal on United miles", partInfo:{"Switzerland":"from Sep 12","Romania, Hungary and Poland":"until Oct 12"}, stops:[
   {name:"Austin",lon:-97.74,lat:30.27,far:true},
   {name:"Montreal",lon:-73.57,lat:45.50,by:"flight",via:"Air Canada 1050, Sep 11; layover"},
@@ -427,7 +400,6 @@ const TRIPS = [
   {name:"New York (Newark)",lon:-74.17,lat:40.74,by:"flight",via:"Oct 12"},
   {name:"Austin",lon:-97.74,lat:30.27,by:"flight",far:true}
  ]},
- {name:"Tulum, Dec 2025", when:"Dec 2025", countries:["Mexico"]},
  {name:"Thailand, Laos, Cambodia and Malaysia, Dec 2025 to Jan 2026", when:"Dec 29, 2025 to Jan 2026", note:"The slow boat down the Mekong", stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
   {name:"Frankfurt",lon:8.68,lat:50.11,by:"flight",via:"Dec 29; a layover at the Römerberg"},
@@ -455,6 +427,5 @@ const TRIPS = [
   {name:"Buenos Aires",lon:-58.38,lat:-34.60,by:"flight"},
   {name:"Houston",lon:-95.37,lat:29.76,by:"flight",via:"layover"},
   {name:"Austin",lon:-97.74,lat:30.27,by:"flight",far:true}
- ]},
- {name:"Chicago, Oct 2026", when:"Oct 2026", note:"Two games at Soldier Field", countries:["United States"]}
+ ]}
 ];

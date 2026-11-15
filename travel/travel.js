@@ -84,7 +84,14 @@
   const tripsForPlace = p => trips.filter(t => t.places.includes(p));
   // Other cities visited that aren't stops on a route (CITIES in trips.js).
   const cities = (typeof CITIES === "undefined" ? [] : CITIES)
-    .map(([name, country, lon, lat]) => ({ name, place: placeByName.get(country), lon, lat }));
+    .map(([name, country, lon, lat, photos]) => ({ name, place: placeByName.get(country), lon, lat, albums: ownAlbums({ photos }) }));
+  // A city with photos gets a small gallery "trip" of its own: #city-<name>/photos/<album>.
+  const cityGalById = new Map();
+  cities.filter(c => c.albums.length && c.place).forEach(c => {
+    c.gal = { id: "city-" + slug(c.name), name: c.name, when: c.place.name, stops: [], photos: c.albums,
+              back: "country=" + c.place.name, place: c.place };
+    cityGalById.set(c.gal.id, c.gal);
+  });
   const citiesForPlace = p => cities.filter(c => c.place === p).sort((a, b) => a.name.localeCompare(b.name));
 
   // ---------- map ----------
@@ -154,9 +161,14 @@
       .on("click", (e, d) => go("country=" + encodeURIComponent(d.name)));
 
     gCities.selectAll("circle").data(cities, d => d.name).join("circle")
-      .attr("class", "city-pin").attr("cx", d => projection([d.lon, d.lat])[0]).attr("cy", d => projection([d.lon, d.lat])[1])
-      .on("pointermove", (e, d) => showTip(e, d.place ? `${d.name} · ${d.place.name}` : d.name)).on("pointerleave", hideTip)
-      .on("click", (e, d) => { if (d.place && !(current && current.place === d.place)) go("country=" + encodeURIComponent(d.place.name)); });
+      .attr("class", "city-pin").classed("has-photos", d => !!d.gal)
+      .attr("cx", d => projection([d.lon, d.lat])[0]).attr("cy", d => projection([d.lon, d.lat])[1])
+      .on("pointermove", (e, d) => showTip(e, (d.place ? `${d.name} · ${d.place.name}` : d.name) + (d.gal ? ` · 📷 ${photoCount(d.albums)} photos` : "")))
+      .on("pointerleave", hideTip)
+      .on("click", (e, d) => {
+        if (d.gal) { hideTip(); go(`${d.gal.id}/photos/${d.albums[0]}`); return; }
+        if (d.place && !(current && current.place === d.place)) go("country=" + encodeURIComponent(d.place.name));
+      });
 
     gRoutes.selectAll("g.route").data(trips.filter(t => t.stops.length > 1), d => d.id).join("g")
       .attr("class", "route").each(function (t) {
@@ -524,6 +536,11 @@
         c.appendChild(b);
       });
       panel.appendChild(c);
+      cs.filter(city => city.gal).forEach(city => {
+        const pb = el("button", "photos-btn", `📷 ${city.name} · ${photoCount(city.albums)}`);
+        pb.addEventListener("click", () => go(`${city.gal.id}/photos/${city.albums[0]}`));
+        panel.appendChild(pb);
+      });
     }
   }
 
@@ -639,7 +656,7 @@
   dlg.addEventListener("close", () => {
     if (!location.hash.includes("/photos/")) return;
     if (history.state && history.state.gallery) { justClosed = true; history.back(); }
-    else setHash("#" + gal.trip.id);
+    else setHash("#" + (gal.trip.back || gal.trip.id));
   });
 
   // ---------- routing (URL hash) ----------
@@ -652,6 +669,14 @@
     const h = decodeURIComponent(location.hash.slice(1));
     hideTip();
     const [tripId, photoPart] = h.split("/photos/");
+    if (photoPart !== undefined && cityGalById.has(tripId)) {
+      const cg = cityGalById.get(tripId);
+      if (!(current && current.place === cg.place)) {
+        stopAnimation(); current = { place: cg.place }; renderPlace(cg.place); applyFocus(); zoomToPlace(cg.place);
+      }
+      const [k, n] = photoPart.split("/");
+      if (openGallery(cg, k, parseInt(n, 10) || 0)) return;
+    }
     if (photoPart !== undefined && tripById.has(tripId)) {
       const t = tripById.get(tripId);
       if (!(current && current.trip === t)) {
@@ -664,6 +689,7 @@
     justClosed = false;
     if (dlg.open) dlg.close();
     if (fromGallery && current && current.trip && current.trip.id === h) return; // back to the trip as it was
+    if (fromGallery && current && current.place && h === "country=" + current.place.name) return;
     stopAnimation();
     if (h.startsWith("country=")) {
       const p = placeByName.get(h.slice(8));

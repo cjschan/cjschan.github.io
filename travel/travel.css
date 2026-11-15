@@ -82,6 +82,7 @@
 .pin:hover, .pin.hl { fill: #5b8fd1; }
 .city-pin { fill: #f0abfc; fill-opacity: .8; stroke: #f0abfc; stroke-opacity: .3; stroke-width: 3; vector-effect: non-scaling-stroke; cursor: pointer; transition: opacity .3s; }
 .city-pin:hover, .city-pin.hl { fill-opacity: 1; stroke-opacity: .5; }
+.city-pin.has-photos { stroke: #fff; stroke-opacity: .55; }
 .city-pin.on { fill: #fff; stroke: #f0abfc; stroke-opacity: .8; }
 svg.focus .city-pin { opacity: .15; pointer-events: none; }
 
