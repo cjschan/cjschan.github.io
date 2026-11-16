@@ -376,7 +376,15 @@ const TRIPS = [
   {name:"Fort Lauderdale",lon:-80.14,lat:26.12,by:"flight",far:true},
   {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
  ]},
- {name:"Kraków, Istanbul and London, Sep 2022", when:"Sep 2022", countries:["Poland","Turkey","United Kingdom"]},
+ {name:"Kraków, Istanbul and London, Sep 2022", when:"Sep 2022", stops:[
+  {name:"Austin",lon:-97.74,lat:30.27,far:true},
+  {name:"Chicago",lon:-87.63,lat:41.88,by:"flight",via:"layover",far:true},
+  {name:"Kraków",lon:19.94,lat:50.06,by:"flight"},
+  {name:"Tel Aviv",lon:34.78,lat:32.09,by:"flight"},
+  {name:"Istanbul",lon:28.98,lat:41.01,by:"flight"},
+  {name:"London",lon:-0.128,lat:51.507,by:"flight",via:"layover"},
+  {name:"Austin",lon:-97.74,lat:30.27,by:"flight",far:true}
+ ]},
  {name:"Barcelona and Tarragona, Feb 2023", when:"Feb 2023", countries:["Spain"]},
  {name:"Vietnam, Jan 2024", when:"Jan 3 to 25, 2024", stops:[
   {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
