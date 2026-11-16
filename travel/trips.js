@@ -53,7 +53,6 @@ const PLACES = [
 // Single-place trips go here too. `when` lists the visits; `photos` (an album slug or a list) opens a gallery
 // from the pin. A place that's also a route stop can be listed here for its other, single-place visits.
 const CITIES = [
- ["Paraty","Brazil",-44.71,-23.22],["Rio de Janeiro","Brazil",-43.18,-22.91],
  ["Banff","Canada",-115.57,51.18,{when:"Oct 2023"}],["Halifax","Canada",-63.57,44.65],["Mississauga","Canada",-79.64,43.59],
  ["Hvar","Croatia",16.44,43.17],["Šipan","Croatia",17.86,42.73],
  ["Caye Caulker","Belize",-88.03,17.75,{when:"Jun to Jul 2021"}],
@@ -369,7 +368,14 @@ const TRIPS = [
  {name:"London, Madrid, Kraków and Berlin, Jul 2019", when:"Jul 2019", countries:["United Kingdom","Spain","Poland","Germany"]},
  {name:"Puebla and Mexico City, Sep 2019", when:"Sep 9 to 23, 2019", countries:["Mexico"]},
  {name:"Mallorca and Germany, Feb 2020", when:"Feb 2020", note:"Cologne, then Mallorca, then Berlin", countries:["Spain","Germany"]},
- {name:"Rio de Janeiro and Paraty, Mar 2020", when:"Mar 8 to 28, 2020", countries:["Brazil"]},
+ {name:"Rio de Janeiro and Paraty, Mar 2020", when:"Mar 8 to 28, 2020", stops:[
+  {name:"San Francisco",lon:-122.42,lat:37.77,far:true},
+  {name:"São Paulo",lon:-46.63,lat:-23.55,by:"flight"},
+  {name:"Paraty",lon:-44.71,lat:-23.22,by:"bus"},
+  {name:"Rio de Janeiro",lon:-43.18,lat:-22.91,by:"bus"},
+  {name:"Fort Lauderdale",lon:-80.14,lat:26.12,by:"flight",far:true},
+  {name:"San Francisco",lon:-122.42,lat:37.77,by:"flight",far:true}
+ ]},
  {name:"Kraków, Istanbul and London, Sep 2022", when:"Sep 2022", countries:["Poland","Turkey","United Kingdom"]},
  {name:"Barcelona and Tarragona, Feb 2023", when:"Feb 2023", countries:["Spain"]},
  {name:"Vietnam, Jan 2024", when:"Jan 3 to 25, 2024", stops:[
