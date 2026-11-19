@@ -454,7 +454,7 @@
       <tbody>
         <tr><td>One categorical variable, one group (a count out of \(n\))</td><td>\(p\)</td><td>One-proportion \(z\)</td><td>\(z=\dfrac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)/n}}\)</td></tr>
         <tr><td>One quantitative variable, one group (\(\bar{x}\), \(s\))</td><td>\(\mu\)</td><td>One-mean \(t\)</td><td>\(t=\dfrac{\bar{x}-\mu_0}{s/\sqrt{n}}\), \(df=n-1\)</td></tr>
-        <tr><td>Two <strong>separate</strong> groups, categorical response</td><td>\(p_1-p_2\)</td><td>Two-proportion \(z\) (pooled)</td><td>\(z=\dfrac{\hat{p}_1-\hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}\)</td></tr>
+        <tr><td>Two <strong>separate</strong> groups, categorical response</td><td>\(p_1-p_2\)</td><td>Two-proportion \(z\) (pooled: \(\hat{p}\) = both groups combined)</td><td>\(z=\dfrac{\hat{p}_1-\hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}\)</td></tr>
         <tr><td>Two <strong>separate</strong> groups, quantitative response</td><td>\(\mu_1-\mu_2\)</td><td>Two-sample \(t\)</td><td>\(t=\dfrac{\bar{x}_1-\bar{x}_2}{\sqrt{s_1^2/n_1+s_2^2/n_2}}\), \(df=\min(n_1-1,n_2-1)\)</td></tr>
         <tr><td>Two quantitative measurements <strong>on the same unit</strong> (or matched pairs)</td><td>\(\mu_d\) (population mean difference)</td><td>Paired \(t\)</td><td>\(t=\dfrac{\bar{x}_d-0}{s_d/\sqrt{n_d}}\), \(df=n_d-1\)</td></tr>
         <tr><td>Two categorical variables, an \(r\times c\) table (rows \(\times\) columns)</td><td>association</td><td>\(\chi^2\) test for association</td><td>\(\chi^2=\sum\dfrac{(O-E)^2}{E}\), \(df=(r-1)(c-1)\)</td></tr>
@@ -506,7 +506,7 @@
     <div class="card card-green">
       <ol class="steps" style="counter-reset: st 3;">
         <li><strong>Compute.</strong> Statistic, SE, then \(z\), \(t\), or \(\chi^2\). Report \(df\) if you used one.</li>
-        <li><strong>p-value.</strong> Tail area beyond your statistic, doubled if \(H_a\) is two-sided.</li>
+        <li><strong>p-value.</strong> Tail area beyond your statistic, doubled for a two-tail test.</li>
         <li><strong>Decide and conclude in context.</strong> Compare to \(\alpha\), then one sentence about the actual variables &mdash; no symbols.</li>
       </ol>
     </div>
@@ -640,7 +640,7 @@
       <div class="step-note">\(T_{63}\) = a t value with df 63; \(Z\) = standard normal.</div>
       <div class="formula-box">\[p\text{-value}=2(0.0114)\approx \mathbf{0.0228}\]</div>
       <ul class="small">
-        <li>\(H_a\) is two-sided, so we <strong>double</strong> the tail area &mdash; a result \$28 <em>above</em> \$300 would have been just as surprising.</li>
+        <li>This is a two-tail test, so we <strong>double</strong> the tail area &mdash; a result \$28 <em>above</em> \$300 would have been just as surprising.</li>
         <li>In words: if the true mean really were \$300, we would see a sample mean this far off in either direction only about <strong>2.3%</strong> of the time.</li>
       </ul>
     </div>
@@ -683,7 +683,7 @@
     </div>
   </div>
   <div class="callout amber">
-    <strong>Four ways to lose points on this problem.</strong> Forgetting to double the tail area (\(0.0114\) is not the answer). Dividing by \(s=96\) instead of \(SE=12\). Switching to a one-sided \(H_a\) after noticing \(\bar{x}<300\). And writing "the mean is \$272" &mdash; that is the sample mean, and it is exactly the thing we do <em>not</em> get to claim about the population.
+    <strong>Four ways to lose points on this problem.</strong> Forgetting to double the tail area (\(0.0114\) is not the answer). Dividing by \(s=96\) instead of \(SE=12\). Switching to a one-tail test after noticing \(\bar{x}<300\). And writing "the mean is \$272" &mdash; that is the sample mean, and it is exactly the thing we do <em>not</em> get to claim about the population.
   </div>
 </div>
 
@@ -714,7 +714,7 @@
         <li>Before computing anything, both of you say out loud which of the six tests it is and <em>why</em>. Most lost points live in that sentence.</li>
         <li>If you disagree about the tail, reread the question's last sentence. The question wording, not your sample, sets the tail.</li>
         <li>Round SE to at least 4 decimals so your test statistic lands where mine did.</li>
-        <li>Finish early? Build the matching 95% confidence interval and check that it agrees with your two-sided decision.</li>
+        <li>Finish early? Build the matching 95% confidence interval and check that it agrees with your two-tail decision.</li>
       </ul>
       <div class="step-note" style="margin-top:8px;">You have about 12 minutes. Answers follow the problem slides &mdash; do not peek until your pair has a conclusion written down.</div>
     </div>
