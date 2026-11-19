@@ -8,6 +8,7 @@
   window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -704,6 +705,7 @@
       </ol>
     </div>
     <div class="card card-green">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of two pencils crossed, one for each partner"><g transform="rotate(35 60 60)"><rect x="52" y="10" width="16" height="80" rx="2" fill="#fbbf24"/><rect x="52" y="10" width="16" height="12" rx="2" fill="#fb7185"/><path d="M52 90h16l-8 18z" fill="#f1f5f9"/><path d="M57 101h6l-3 7z" fill="#334155"/></g><g transform="rotate(-35 60 60)"><rect x="52" y="10" width="16" height="80" rx="2" fill="#38bdf8"/><rect x="52" y="10" width="16" height="12" rx="2" fill="#a78bfa"/><path d="M52 90h16l-8 18z" fill="#f1f5f9"/><path d="M57 101h6l-3 7z" fill="#334155"/></g></svg>
       <h3>How to work it</h3>
       <ul class="small">
         <li>One of you narrates the reasoning, the other writes and checks the arithmetic &mdash; then swap at step 4.</li>
@@ -725,11 +727,13 @@
   <p class="subtitle sm">Each problem is a complete hypothesis test. Run all seven steps.</p>
   <div class="grid-2">
     <div class="card card-accent">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a briefcase" style="width:80px;"><path d="M44 36v-8a6 6 0 0 1 6-6h20a6 6 0 0 1 6 6v8" stroke="#f1f5f9" stroke-width="5" fill="none"/><rect x="14" y="36" width="92" height="64" rx="8" fill="#fbbf24"/><rect x="14" y="60" width="92" height="6" fill="#f59e0b" opacity=".6"/><rect x="52" y="56" width="16" height="14" rx="3" fill="#f1f5f9"/></svg>
       <span class="tag tag-blue">Problem 1</span>
       <p class="ans">A college advertises that <strong>more than 60%</strong> of its students work while enrolled. In a random sample of <strong>300</strong> students from the college, <strong>198</strong> said they work.</p>
       <p class="ans muted">Is there evidence for the college's claim?</p>
     </div>
     <div class="card card-accent2">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a bag of chips" style="width:80px;"><path d="M28 22l8 6 8-6 8 6 8-6 8 6 8-6 8 6 8-6v80l-8 6-8-6-8 6-8-6-8 6-8-6-8 6-8-6z" fill="#fb7185"/><ellipse cx="60" cy="64" rx="22" ry="16" fill="#fbbf24"/><circle cx="54" cy="60" r="2.5" fill="#fb7185"/><circle cx="66" cy="68" r="2.5" fill="#fb7185"/></svg>
       <span class="tag tag-purple">Problem 2</span>
       <p class="ans">A snack bag is labeled <strong>28.0 grams</strong>. A quality inspector weighs a random sample of <strong>36</strong> bags and finds \(\bar{x}=27.6\) g with \(s=1.2\) g.</p>
       <p class="ans muted">Is there evidence that the mean net weight <strong>differs</strong> from 28.0 g?</p>
@@ -742,11 +746,13 @@
   <h2>Ten Problems &mdash; Use \(\alpha=0.05\) Throughout</h2>
   <div class="grid-2">
     <div class="card card-accent">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a syringe for a flu shot" style="width:80px;"><g transform="rotate(-40 60 60)"><rect x="36" y="48" width="56" height="24" rx="4" fill="#f1f5f9"/><rect x="40" y="52" width="34" height="16" rx="2" fill="#38bdf8"/><rect x="92" y="54" width="8" height="12" fill="#cbd5e1"/><rect x="100" y="58" width="18" height="4" fill="#cbd5e1"/><rect x="16" y="56" width="20" height="8" fill="#818cf8"/><rect x="10" y="46" width="8" height="28" rx="3" fill="#818cf8"/></g></svg>
       <span class="tag tag-blue">Problem 3</span>
       <p class="ans">A health office takes independent random samples at two campuses to compare flu-shot rates. At Campus&nbsp;A, <strong>120 of 250</strong> students had a flu shot. At Campus&nbsp;B, <strong>96 of 250</strong> did.</p>
       <p class="ans muted">Is there evidence the two campuses <strong>differ</strong> in flu-shot rate?</p>
     </div>
     <div class="card card-accent2">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a stack of flashcards" style="width:80px;"><rect x="24" y="24" width="76" height="52" rx="6" fill="#818cf8" transform="rotate(-8 62 50)"/><rect x="18" y="42" width="80" height="54" rx="6" fill="#f1f5f9"/><text x="58" y="82" text-anchor="middle" fill="#a78bfa" font-size="34" font-weight="800" font-family="sans-serif">?</text></svg>
       <span class="tag tag-purple">Problem 4</span>
       <p class="ans">Students in a study-skills course were <strong>randomly assigned</strong> to one of two review methods before a common final exam.</p>
       <ul class="small">
@@ -763,11 +769,13 @@
   <h2>Ten Problems &mdash; Use \(\alpha=0.05\) Throughout</h2>
   <div class="grid-2">
     <div class="card card-accent">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a running shoe with speed lines" style="width:80px;"><path d="M30 54c10 4 20 0 26-10l14 4c8 18 26 20 38 26 6 4 6 14 0 14H30c-6 0-8-6-8-12z" fill="#34d399"/><rect x="22" y="84" width="92" height="8" rx="4" fill="#f1f5f9"/><path d="M44 54l6 8M52 50l6 8M60 47l6 8" stroke="#f1f5f9" stroke-width="3" stroke-linecap="round"/><path d="M4 60h14M8 72h12M4 84h14" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/></svg>
       <span class="tag tag-blue">Problem 5</span>
       <p class="ans"><strong>25</strong> runners ran a timed 5K, trained for six weeks of interval workouts, then ran a second timed 5K. For \(d=\)&nbsp;(after \(-\) before) in seconds, \(\bar{d}=-34.0\) and \(s_d=68.0\).</p>
       <p class="ans muted">Is there evidence the training <strong>reduces</strong> mean 5K time?</p>
     </div>
     <div class="card card-accent2">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a steaming coffee cup" style="width:80px;"><path d="M44 20c-6 8 6 10 0 18M60 18c-6 8 6 10 0 18M76 20c-6 8 6 10 0 18" stroke="#cbd5e1" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M24 46h68v30a20 20 0 0 1-20 20H44a20 20 0 0 1-20-20z" fill="#fbbf24"/><path d="M92 54h6a10 10 0 0 1 0 20h-6" stroke="#fbbf24" stroke-width="6" fill="none"/><rect x="16" y="98" width="84" height="6" rx="3" fill="#a78bfa"/></svg>
       <span class="tag tag-purple">Problem 6</span>
       <p class="ans">A survey of <strong>240 randomly selected</strong> students recorded whether the student commutes and where they usually study.</p>
       <div class="table-card compact">
@@ -790,11 +798,13 @@
   <h2>Ten Problems &mdash; Use \(\alpha=0.05\) Throughout</h2>
   <div class="grid-2">
     <div class="card card-accent">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a graded paper with a check mark" style="width:80px;"><rect x="24" y="14" width="72" height="92" rx="6" fill="#f1f5f9"/><rect x="34" y="28" width="40" height="5" rx="2" fill="#cbd5e1"/><rect x="34" y="40" width="50" height="5" rx="2" fill="#cbd5e1"/><rect x="34" y="52" width="30" height="5" rx="2" fill="#cbd5e1"/><path d="M40 80l12 12 26-28" stroke="#34d399" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span class="tag tag-blue">Problem 7</span>
       <p class="ans">Historically <strong>75%</strong> of students pass a gateway math course. After a curriculum change, <strong>210</strong> students in a random sample of <strong>300</strong> passed.</p>
       <p class="ans muted">Is there evidence the pass rate has <strong>dropped</strong>?</p>
     </div>
     <div class="card card-accent2">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a wall clock" style="width:80px;"><circle cx="60" cy="60" r="44" fill="#334155" stroke="#38bdf8" stroke-width="8"/><circle cx="60.0" cy="26.0" r="3" fill="#cbd5e1"/><circle cx="94.0" cy="60.0" r="3" fill="#cbd5e1"/><circle cx="60.0" cy="94.0" r="3" fill="#cbd5e1"/><circle cx="26.0" cy="60.0" r="3" fill="#cbd5e1"/><path d="M60 60V32M60 60l18 10" stroke="#f1f5f9" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="60" r="5" fill="#fb7185"/></svg>
       <span class="tag tag-purple">Problem 8</span>
       <p class="ans">A clinic advertises a mean wait time of <strong>20 minutes</strong>. Patients complain it is longer. A random sample of <strong>49</strong> visits gives \(\bar{x}=22.4\) minutes with \(s=8.4\) minutes.</p>
       <p class="ans muted">Is there evidence the mean wait is <strong>longer</strong> than advertised?</p>
@@ -807,6 +817,7 @@
   <h2>Ten Problems &mdash; Use \(\alpha=0.05\) Throughout</h2>
   <div class="grid-2">
     <div class="card card-accent">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a crescent moon and stars" style="width:80px;"><path d="M66 16a40 40 0 1 0 38 54 32 32 0 1 1-38-54z" fill="#fbbf24"/><path d="M26 22l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#a78bfa"/><path d="M98 24l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#38bdf8"/></svg>
       <span class="tag tag-blue">Problem 9</span>
       <p class="ans">Independent random samples of first-year and returning students reported hours of sleep on a typical weeknight.</p>
       <ul class="small">
@@ -816,6 +827,7 @@
       <p class="ans muted">Is there evidence the mean hours of sleep <strong>differ</strong>?</p>
     </div>
     <div class="card card-accent2">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a phone showing a text message reminder" style="width:80px;"><rect x="30" y="8" width="60" height="104" rx="10" fill="#818cf8"/><rect x="36" y="20" width="48" height="80" rx="4" fill="#0f172a"/><rect x="40" y="30" width="38" height="20" rx="6" fill="#34d399"/><path d="M46 50l-4 8 10-8z" fill="#34d399"/><rect x="45" y="36" width="26" height="3" rx="1.5" fill="#0f172a"/><rect x="45" y="42" width="18" height="3" rx="1.5" fill="#0f172a"/><rect x="52" y="104" width="16" height="4" rx="2" fill="#f1f5f9"/></svg>
       <span class="tag tag-purple">Problem 10</span>
       <p class="ans"><strong>400</strong> students with an upcoming advising appointment were <strong>randomly assigned</strong> to receive a text reminder or no reminder. <strong>130 of the 200</strong> who got a reminder kept the appointment; <strong>108 of the 200</strong> who got none did.</p>
       <p class="ans muted">Is there evidence the reminder <strong>increases</strong> the proportion who keep the appointment?</p>
