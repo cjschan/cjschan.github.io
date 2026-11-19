@@ -9,6 +9,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -209,7 +210,7 @@
 <div class="slide">
   <h2>Outliers and Resistance</h2>
   <p class="subtitle">An outlier is a value notably distinct from the rest of the data.</p>
-  <div class="grid-2">
+  <div class="grid-2" style="flex: 0 0 auto;">
     <div class="card card-rose">
       <h3>Outliers</h3>
       <ul>
@@ -227,6 +228,7 @@
       </ul>
     </div>
   </div>
+  <div class="fun-fact"><span class="ff-label">Did you know?</span>Around 1950, the U.S. Air Force designed cockpits for the "average pilot." Lt. Gilbert Daniels measured <strong>4,063 pilots</strong> on 10 body dimensions and found that <strong>not one</strong> was close to average on all ten. The fix: adjustable seats and pedals. A mean summarizes a group; it may not describe anyone in it.<div class="source" style="margin-top:4px;">Source: Todd Rose, <em>The End of Average</em> (2016), excerpted in the <em>Toronto Star</em>, Jan. 16, 2016.</div></div>
 </div>
 
 <div class="slide">
@@ -263,6 +265,18 @@
     </div>
     <div class="card card-amber">
       <h3>Questions</h3>
+      <svg class="doodle" viewBox="0 0 130 90" role="img" aria-label="Doodle of a commuter bus with a clock above it">
+        <rect x="10" y="34" width="96" height="40" rx="8" fill="#fbbf24"/>
+        <rect x="18" y="42" width="16" height="14" rx="2" fill="#f1f5f9" opacity="0.85"/>
+        <rect x="40" y="42" width="16" height="14" rx="2" fill="#f1f5f9" opacity="0.85"/>
+        <rect x="62" y="42" width="16" height="14" rx="2" fill="#f1f5f9" opacity="0.85"/>
+        <rect x="84" y="42" width="14" height="24" rx="2" fill="#38bdf8"/>
+        <circle cx="30" cy="76" r="8" fill="#0f172a" stroke="#f1f5f9" stroke-width="3"/>
+        <circle cx="86" cy="76" r="8" fill="#0f172a" stroke="#f1f5f9" stroke-width="3"/>
+        <circle cx="112" cy="20" r="15" fill="#f1f5f9"/>
+        <path d="M112 20 V10 M112 20 L119 24" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M2 86 h126" stroke="#475569" stroke-width="2"/>
+      </svg>
       <ul class="small">
         <li><strong>(a)</strong> Find the mean commute time.</li>
         <li><strong>(b)</strong> Find the median commute time.</li>
