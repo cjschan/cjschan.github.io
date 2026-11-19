@@ -13,6 +13,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
 <script src="statkey.js?v=5"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -229,6 +230,29 @@
   </div>
 </div>
 
+<!-- Story: Atlanta commuters and Spaghetti Junction -->
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the data</span>
+  <h2>Atlanta Commuters and &ldquo;Spaghetti Junction&rdquo;</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/spaghetti_junction_atlanta.jpg" alt="Aerial view of the Tom Moreland Interchange in Atlanta, where curving ramps of I-85 and I-285 loop over each other like a plate of spaghetti">
+      <span class="credit">Photo: aerial image, Public domain, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:SpaghettiJunctionGA.jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-accent">
+      <ul>
+        <li>Our 500 commuters come from the U.S. Census Bureau&rsquo;s <strong>American Housing Survey</strong>: people in the Atlanta metro area who work somewhere other than home.</li>
+        <li>Atlanta&rsquo;s most famous traffic landmark is the <strong>Tom Moreland Interchange</strong>, where I-85 meets I-285. It is better known as <strong>&ldquo;Spaghetti Junction.&rdquo;</strong></li>
+        <li>Built 1983&ndash;1987 to replace a 1958 cloverleaf nicknamed &ldquo;Malfunction Junction,&rdquo; it has 5 levels and 14 bridges and carries about <strong>300,000 vehicles a day</strong>.</li>
+        <li>It still ranks among the worst truck bottlenecks in the U.S., and was No.&nbsp;1 on the American Transportation Research Institute&rsquo;s 2017 list.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> we can&rsquo;t time every Atlanta commute, but a bootstrap distribution built from 500 of them shows where the mean commute plausibly lies.</div>
+      <div class="source">Sources: Lock5 dataset <em>CommuteAtlanta</em> (U.S. Census Bureau, American Housing Survey); Wikipedia, &ldquo;Tom Moreland Interchange&rdquo;; ATRI 2017 bottleneck report.</div>
+    </div>
+  </div>
+</div>
+
 <!-- Slide 6b: Worked example, percentile CIs in StatKey -->
 <div class="slide">
   <span class="tag tag-green">Worked Example</span>
@@ -310,6 +334,14 @@
   <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 12px;">In a random sample of <strong>200</strong> community college students, <strong>124</strong> said they work at least part-time.</p>
   <div class="grid-2" style="grid-template-columns: 1fr 1fr;">
     <div class="card card-amber">
+      <svg class="doodle" style="width:90px;" viewBox="0 0 120 100" role="img" aria-label="Doodle of a work name tag and a stack of textbooks">
+        <rect x="8" y="64" width="54" height="11" rx="3" fill="#818cf8"/>
+        <rect x="12" y="75" width="50" height="11" rx="3" fill="#a78bfa"/>
+        <rect x="6" y="86" width="58" height="11" rx="3" fill="#38bdf8"/>
+        <rect x="56" y="12" width="58" height="42" rx="7" fill="#fb7185" transform="rotate(8 85 33)"/>
+        <rect x="62" y="30" width="46" height="18" rx="3" fill="#f1f5f9" transform="rotate(8 85 39)"/>
+        <rect x="80" y="4" width="12" height="9" rx="2" fill="#f1f5f9" opacity="0.8" transform="rotate(8 86 8)"/>
+      </svg>
       <h3>Questions</h3>
       <ul class="small">
         <li><strong>(a)</strong> What is the sample statistic \(\hat{p}\)?</li>
