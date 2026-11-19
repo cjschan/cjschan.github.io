@@ -10,6 +10,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
 <script src="statkey.js?v=5"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -81,7 +82,7 @@
       <h3>Randomized Experiment</h3>
       <ul>
         <li>Re-randomize cases to treatment groups, keeping response values fixed.</li>
-        <li>Example: cocaine addiction study.</li>
+        <li>Example: cocaine addiction study (Gawin et al., 1989: 72 cocaine users randomly assigned to desipramine, lithium, or a placebo).</li>
       </ul>
     </div>
     <div class="card card-green">
@@ -443,6 +444,27 @@
 
 
 <div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Study</span>
+  <h2>Is 98.6&deg;F Really Normal?</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/wunderlich_portrait.jpg" alt="Oval black-and-white portrait of the German physician Carl Wunderlich, with a gray beard and dark coat" style="width:auto; max-width:100%; margin:0 auto;">
+      <span class="credit">Photo: Wilhelm H&ouml;ffert, Public domain, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Carl_August_Wunderlich_-_Foto.jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-rose">
+      <ul>
+        <li>German physician <strong>Carl Wunderlich</strong> took the temperatures of some <strong>25,000 patients</strong> in Leipzig &mdash; millions of readings &mdash; and in 1868 declared the normal average to be <strong>37&deg;C (98.6&deg;F)</strong>.</li>
+        <li>His method: a <strong>foot-long thermometer</strong> held in the armpit for about 20 minutes per reading.</li>
+        <li>In 1992, <strong>Philip Mackowiak</strong> and colleagues at the University of Maryland checked <strong>148 healthy adults</strong> (ages 18&ndash;40) with electronic oral thermometers. Their mean: about <strong>98.2&deg;F</strong>.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> a number everyone &ldquo;knows&rdquo; is really a claim we can test. The next slide checks \(\mu = 98.6\) against data.</div>
+      <div class="source">Sources: Mackowiak, Wasserman &amp; Levine, &ldquo;A critical appraisal of 98.6&deg;F,&rdquo; <em>JAMA</em> 268(12), 1992; Mental Floss, &ldquo;The 98.6&deg;F Myth.&rdquo;</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Example: Body Temperature</h2>
   <p class="subtitle">Using a sample of healthy adults, a 95% confidence interval for the mean body temperature is \((98.05,\ 98.47)\) degrees Fahrenheit. Use the interval to draw test conclusions — no new calculations needed.</p>
   <div class="grid-2" style="flex:0;">
@@ -473,6 +495,17 @@
   <p class="subtitle">A random sample of 1,000 U.S. adults gives a 95% confidence interval of \((0.33,\ 0.39)\) for \(p\), the proportion of all U.S. adults who own a smart speaker.</p>
   <div class="grid-2">
     <div class="card card-accent">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a smart speaker with a glowing light ring sending out sound waves">
+  <path d="M26 30 h52 v66 a8 8 0 0 1 -8 8 h-36 a8 8 0 0 1 -8 -8 z" fill="#818cf8"/>
+  <ellipse cx="52" cy="30" rx="26" ry="8" fill="#a78bfa"/>
+  <ellipse cx="52" cy="30" rx="18" ry="4.5" fill="none" stroke="#38bdf8" stroke-width="3"/>
+  <g fill="#475569"><circle cx="40" cy="56" r="2.5"/><circle cx="52" cy="56" r="2.5"/><circle cx="64" cy="56" r="2.5"/>
+  <circle cx="46" cy="66" r="2.5"/><circle cx="58" cy="66" r="2.5"/><circle cx="40" cy="76" r="2.5"/><circle cx="52" cy="76" r="2.5"/><circle cx="64" cy="76" r="2.5"/>
+  <circle cx="46" cy="86" r="2.5"/><circle cx="58" cy="86" r="2.5"/></g>
+  <path d="M88 52 q8 10 0 20" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round"/>
+  <path d="M98 44 q14 18 0 36" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round"/>
+  <path d="M108 36 q20 26 0 52" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+</svg>
       <h3>Use the Interval</h3>
       <ul>
         <li>(a) Test \(H_0: p = 0.35\) vs. \(H_a: p \neq 0.35\) at \(\alpha = 0.05\). What is your decision?</li>
