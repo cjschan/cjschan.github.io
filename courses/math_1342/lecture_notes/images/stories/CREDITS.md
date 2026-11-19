@@ -21,7 +21,6 @@ Every photo here is public domain or Creative Commons, downloaded from Wikimedia
 | dried_tear_micrograph.jpg | Nicola Swietkowiak Allismicro Microla | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Allismicro_crystalized_sad_tear_drop_2.jpeg |
 | bottlenose_dolphin_wake.jpg | NASA | Public domain | https://commons.wikimedia.org/wiki/File:Tursiops_truncatus_01.jpg |
 | king_penguin_crozet.jpg | Antoine Lamielle | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:2020-11_Crozet_Islands_-_King_Penguin_11.jpg |
-| nodoz_caffeine_tablets.jpg | Ragesoss | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:NoDoz_caffeine_tablets_on_black.jpg |
 | lady_justice_old_bailey.jpg | Philip Halling | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Lady_Justice,_the_Old_Bailey_-_geograph.org.uk_-_7017758.jpg |
 | chocolate_chip_cookies.jpg | Mshuang2 | CC0 | https://commons.wikimedia.org/wiki/File:Chocolate_chip_cookies_on_cutting_board.jpg |
 | hollywood_sign.jpg | Thomas Wolf, www.foto-tw.de | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Hollywood_Sign_(Zuschnitt).jpg |
