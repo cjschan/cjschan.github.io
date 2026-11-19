@@ -117,7 +117,7 @@
       <h3>2. Describe (Ch. 2)</h3>
       <ul class="small">
         <li>Shape, center, spread; graphs before formulas.</li>
-        <li>Produce a statistic: \(\hat{p},\ \bar{x},\ \bar{d},\ \hat{p}_1-\hat{p}_2,\ \bar{x}_1-\bar{x}_2\).</li>
+        <li>Produce a statistic: \(\hat{p},\ \bar{x},\ \bar{x}_d,\ \hat{p}_1-\hat{p}_2,\ \bar{x}_1-\bar{x}_2\) (\(\bar{x}_d\) = mean of paired differences).</li>
       </ul>
     </div>
     <div class="card card-green">
@@ -329,7 +329,7 @@
 <line x1="906" y1="278" x2="1090" y2="278" stroke="#38bdf8" stroke-width="3.4"/>
 <line x1="906" y1="270" x2="906" y2="286" stroke="#38bdf8" stroke-width="3.4"/>
 <line x1="1090" y1="270" x2="1090" y2="286" stroke="#38bdf8" stroke-width="3.4"/>
-<text x="998" y="304" text-anchor="middle" style="font-family:Inter,-apple-system,Segoe UI,sans-serif" font-size="13" font-weight="800" fill="#38bdf8">statistic &#177; (crit. value)(SE)</text>
+<text x="998" y="304" text-anchor="middle" style="font-family:Inter,-apple-system,Segoe UI,sans-serif" font-size="13" font-weight="800" fill="#38bdf8">Statistic &#177; (z* or t*)(SE)</text>
 <text x="996" y="323" text-anchor="middle" style="font-family:Inter,-apple-system,Segoe UI,sans-serif" font-size="12.5" fill="#cbd5e1">95% of intervals built this way catch it.</text>
 <rect x="800" y="358" width="392" height="266" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="1.6"/>
 <rect x="800" y="358" width="4" height="266" rx="2" fill="#fbbf24"/>
@@ -402,7 +402,7 @@
     <div class="card card-green">
       <h3>Two ways to use it</h3>
       <ul class="small">
-        <li><span class="accent">CI:</span> statistic \(\pm\) (critical value)(SE). Centered at the <strong>statistic</strong>.</li>
+        <li><span class="accent">CI:</span> Statistic \(\pm\, z^*\cdot SE\) (or \(t^*\cdot SE\) for means). Centered at the <strong>statistic</strong>.</li>
         <li><span class="green">Test:</span> how many SEs is the statistic from the null value? Centered at the <strong>null value</strong>.</li>
       </ul>
     </div>
@@ -417,7 +417,7 @@
   <p class="subtitle sm">There are six tests on your exam. Five of them are this single idea with a different SE.</p>
   <div class="formula-box" style="font-size: 24px; text-align: center;">
     \[
-      \text{test statistic}=\frac{\text{sample statistic}-\text{null value}}{SE}
+      \text{test statistic}=\frac{\text{Statistic}-\text{Null}}{SE}
     \]
   </div>
   <div class="grid-2">
@@ -425,14 +425,14 @@
       <h3>What it means in words</h3>
       <ul class="small">
         <li>"My sample came out <strong>this many standard errors</strong> away from what \(H_0\) claimed."</li>
-        <li>Far away (big \(|z|\) or \(|t|\)) &rarr; small p-value &rarr; \(H_0\) looks wrong.</li>
+        <li>Far away (big \(|z|\) or \(|t|\): size, ignoring the sign) &rarr; small p-value &rarr; \(H_0\) looks wrong.</li>
         <li>Close to 0 &rarr; large p-value &rarr; ordinary sampling variation explains it.</li>
       </ul>
     </div>
     <div class="card card-amber">
       <h3>Only four things change</h3>
       <ul class="small">
-        <li>The <strong>statistic</strong> (\(\hat{p}\), \(\bar{x}\), \(\bar{d}\), a difference).</li>
+        <li>The <strong>statistic</strong> (\(\hat{p}\), \(\bar{x}\), \(\bar{x}_d\), a difference).</li>
         <li>The <strong>SE formula</strong>.</li>
         <li>The <strong>distribution</strong>: \(z\) for proportions, \(t\) for means.</li>
         <li>The <strong>df</strong>, when it is a \(t\).</li>
@@ -455,8 +455,8 @@
         <tr><td>One quantitative variable, one group (\(\bar{x}\), \(s\))</td><td>\(\mu\)</td><td>One-mean \(t\)</td><td>\(t=\dfrac{\bar{x}-\mu_0}{s/\sqrt{n}}\), \(df=n-1\)</td></tr>
         <tr><td>Two <strong>separate</strong> groups, categorical response</td><td>\(p_1-p_2\)</td><td>Two-proportion \(z\) (pooled)</td><td>\(z=\dfrac{\hat{p}_1-\hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}\)</td></tr>
         <tr><td>Two <strong>separate</strong> groups, quantitative response</td><td>\(\mu_1-\mu_2\)</td><td>Two-sample \(t\)</td><td>\(t=\dfrac{\bar{x}_1-\bar{x}_2}{\sqrt{s_1^2/n_1+s_2^2/n_2}}\), \(df=\min(n_1-1,n_2-1)\)</td></tr>
-        <tr><td>Two quantitative measurements <strong>on the same unit</strong> (or matched pairs)</td><td>\(\mu_d\)</td><td>Paired \(t\)</td><td>\(t=\dfrac{\bar{d}-0}{s_d/\sqrt{n_d}}\), \(df=n_d-1\)</td></tr>
-        <tr><td>Two categorical variables, an \(r\times c\) table</td><td>association</td><td>\(\chi^2\) test for association</td><td>\(\chi^2=\sum\dfrac{(O-E)^2}{E}\), \(df=(r-1)(c-1)\)</td></tr>
+        <tr><td>Two quantitative measurements <strong>on the same unit</strong> (or matched pairs)</td><td>\(\mu_d\) (population mean difference)</td><td>Paired \(t\)</td><td>\(t=\dfrac{\bar{x}_d-0}{s_d/\sqrt{n_d}}\), \(df=n_d-1\)</td></tr>
+        <tr><td>Two categorical variables, an \(r\times c\) table (rows \(\times\) columns)</td><td>association</td><td>\(\chi^2\) test for association</td><td>\(\chi^2=\sum\dfrac{(O-E)^2}{E}\), \(df=(r-1)(c-1)\)</td></tr>
       </tbody>
     </table>
   </div>
@@ -472,7 +472,7 @@
     <div class="card card-green">
       <h3>Conditions to check out loud</h3>
       <ul class="small">
-        <li><strong>Proportions:</strong> random sample, and the relevant counts are at least 10. For a test use \(np_0\ge 10\) and \(n(1-p_0)\ge 10\); for a \(2\times\) table, all four cell counts \(\ge 10\).</li>
+        <li><strong>Proportions:</strong> random sample, and the relevant counts are at least 10. For a test use \(np_0\ge 10\) and \(n(1-p_0)\ge 10\); for a \(2\times 2\) table, all four cell counts \(\ge 10\).</li>
         <li><strong>Means:</strong> random sample, and \(n\ge 30\) <em>or</em> the data are roughly normal with no strong outliers.</li>
         <li><strong>Paired:</strong> the same conditions, applied to the \(n_d\) <em>differences</em>.</li>
         <li><strong>\(\chi^2\):</strong> random sample, and every <em>expected</em> count is at least 5.</li>
@@ -586,7 +586,7 @@
       <div class="formula-box">\[H_0: \mu=300 \qquad H_a: \mu\neq 300\]</div>
       <ul class="small">
         <li>\(H_0\) gets the equal sign and the claimed value, $300.</li>
-        <li>The question says <strong>"differs from"</strong> &rarr; two-tailed.</li>
+        <li>The question says <strong>"differs from"</strong> &rarr; two-tail test.</li>
         <li>\(\alpha=0.05\), stated up front.</li>
       </ul>
       <div class="callout amber" style="margin-top:8px;">
@@ -636,6 +636,7 @@
     <div class="card card-accent">
       <h3>Step 5 &mdash; the p-value</h3>
       <div class="formula-box">\[P(T_{63}<-2.33)\approx 0.0114\]</div>
+      <div class="step-note">\(T_{63}\) = a t value with df 63; \(Z\) = standard normal.</div>
       <div class="formula-box">\[p\text{-value}=2(0.0114)\approx \mathbf{0.0228}\]</div>
       <ul class="small">
         <li>\(H_a\) is two-sided, so we <strong>double</strong> the tail area &mdash; a result \$28 <em>above</em> \$300 would have been just as surprising.</li>
@@ -674,7 +675,7 @@
       <h3>The two agree</h3>
       <ul class="small">
         <li>\$300 is <strong>outside</strong> \((248,296)\).</li>
-        <li>So a two-tailed test at \(\alpha=0.05\) must reject \$300 &mdash; and it did.</li>
+        <li>So a two-tail test at \(\alpha=0.05\) must reject \$300 &mdash; and it did.</li>
         <li>The test answers <em>"is it \$300?"</em> The interval answers <em>"then what is it?"</em></li>
       </ul>
       <div class="step-note" style="margin-top:8px;">If your CI and your test ever disagree, you have made an arithmetic error. Use this as a free check.</div>
@@ -771,7 +772,7 @@
     <div class="card card-accent">
       <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a running shoe with speed lines" style="width:80px;"><path d="M30 54c10 4 20 0 26-10l14 4c8 18 26 20 38 26 6 4 6 14 0 14H30c-6 0-8-6-8-12z" fill="#34d399"/><rect x="22" y="84" width="92" height="8" rx="4" fill="#f1f5f9"/><path d="M44 54l6 8M52 50l6 8M60 47l6 8" stroke="#f1f5f9" stroke-width="3" stroke-linecap="round"/><path d="M4 60h14M8 72h12M4 84h14" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/></svg>
       <span class="tag tag-blue">Problem 5</span>
-      <p class="ans"><strong>25</strong> runners ran a timed 5K, trained for six weeks of interval workouts, then ran a second timed 5K. For \(d=\)&nbsp;(after \(-\) before) in seconds, \(\bar{d}=-34.0\) and \(s_d=68.0\).</p>
+      <p class="ans"><strong>25</strong> runners ran a timed 5K, trained for six weeks of interval workouts, then ran a second timed 5K. For \(d=\)&nbsp;(after \(-\) before) in seconds, \(\bar{x}_d=-34.0\) and \(s_d=68.0\).</p>
       <p class="ans muted">Is there evidence the training <strong>reduces</strong> mean 5K time?</p>
     </div>
     <div class="card card-accent2">
@@ -860,7 +861,7 @@
     <div class="card card-green">
       <h3>It is always one ratio</h3>
       <ul class="small">
-        <li>\(\dfrac{\text{statistic}-\text{null value}}{SE}\)</li>
+        <li>\(\dfrac{\text{Statistic}-\text{Null}}{SE}\)</li>
         <li>Only the SE and the distribution change.</li>
         <li>\(\chi^2\) compares observed to expected counts.</li>
       </ul>
@@ -878,7 +879,7 @@
       <ul class="small">
         <li>Set \(H_a\) before looking at your sample.</li>
         <li>"Differs" &rarr; two tails, so double the area.</li>
-        <li>\(\chi^2\) p-values are always right-tailed.</li>
+        <li>\(\chi^2\) p-values are always right-tail.</li>
       </ul>
     </div>
     <div class="card card-accent3">
