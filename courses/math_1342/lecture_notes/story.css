@@ -1,0 +1,43 @@
+/* Shared styles for "Meet the study" story slides, photos, doodles and fun-fact callouts.
+   Uses each deck's own :root color variables (--surface, --border, --muted, --amber, ...). */
+
+/* Story slide: photo on the left, the story card on the right */
+.story { display: grid; grid-template-columns: 1fr 1.1fr; gap: 26px; flex: 1; align-items: center; min-height: 0; }
+.story figure { margin: 0; display: flex; flex-direction: column; gap: 6px; min-height: 0; }
+.story .card { align-self: center; }
+.story .card ul li { font-size: 17px; padding: 5px 0 5px 20px; }
+.story .card ul li::before { top: 13px; }
+.story .why { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 16px; line-height: 1.45; }
+.story .why b { color: var(--amber); }
+
+/* Tag above a story slide's title: hug its text instead of stretching across the flex column */
+.story-tag { align-self: flex-start; }
+
+/* Photos */
+.photo { display: block; width: 100%; max-height: 52vh; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); }
+.photo.contain { object-fit: contain; background: #fff; }
+.photo-row { display: flex; gap: 10px; }
+.photo-row .photo { max-height: 25vh; min-width: 0; flex: 1; }
+
+/* Small print */
+.credit { font-size: 11px; line-height: 1.35; color: var(--muted); opacity: 0.8; }
+.credit a { color: inherit; }
+.source { font-size: 12px; line-height: 1.4; color: var(--muted); margin-top: 8px; font-style: italic; }
+.timing { position: absolute; top: 18px; right: 32px; font-size: 12px; color: var(--muted); opacity: 0.7; }
+
+/* Doodles: small inline SVG drawings that sit in a card's corner */
+.doodle { float: right; width: 110px; height: auto; margin: -4px -4px 6px 12px; }
+.doodle.lg { width: 150px; }
+.doodle-center { display: block; width: 160px; height: auto; margin: 6px auto 0; }
+
+/* "Did you know?" callout */
+.fun-fact { background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.28); border-left: 4px solid var(--amber); border-radius: 10px; padding: 12px 16px; font-size: 16px; line-height: 1.45; margin-top: 12px; }
+.fun-fact .ff-label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--amber); margin-bottom: 4px; }
+.fun-fact img.ff-photo { float: right; width: 130px; height: 90px; object-fit: cover; border-radius: 8px; margin: 0 0 6px 12px; }
+
+@media (max-width: 900px) {
+  .story { grid-template-columns: 1fr; gap: 14px; flex: none; }
+  .story .card { align-self: stretch; }
+  .photo { max-height: 32vh; }
+  .doodle { width: 80px; }
+}
