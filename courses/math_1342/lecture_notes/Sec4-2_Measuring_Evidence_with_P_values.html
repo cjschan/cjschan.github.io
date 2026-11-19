@@ -160,7 +160,7 @@
         <li>Statistics from many samples simulated <strong>assuming \(H_0\) is true</strong></li>
         <li>Centered at the <strong>null hypothesis value</strong></li>
         <li>Answers "what would happen by chance if \(H_0\) were true?"</li>
-        <li>Used to find <strong>p-values</strong> in hypothesis tests</li>
+        <li>Used to find <strong>p-values</strong> (defined shortly) in hypothesis tests</li>
       </ul>
     </div>
   </div>
@@ -263,8 +263,8 @@
     <div class="card card-accent2">
       <h3>Direction Matters</h3>
       <ul>
-        <li>If \(H_a\) uses \(>\): count simulated values <strong>&ge; observed</strong> (upper tail)</li>
-        <li>If \(H_a\) uses \(<\): count simulated values <strong>&le; observed</strong> (lower tail)</li>
+        <li>If \(H_a\) uses \(>\): count simulated values <strong>&ge; observed</strong> (right tail)</li>
+        <li>If \(H_a\) uses \(<\): count simulated values <strong>&le; observed</strong> (left tail)</li>
         <li>If \(H_a\) uses \(\neq\): count values <strong>in both tails</strong> beyond the observed</li>
       </ul>
     </div>
@@ -283,7 +283,7 @@
       <h3>The Study</h3>
       <ul>
         <li>Subjects randomly assigned to drink tea or coffee for several weeks</li>
-        <li>Immune response measured via interferon gamma production</li>
+        <li>Immune response measured via production of interferon gamma (an immune-system protein)</li>
         <li>\(H_0: \mu_t = \mu_c\) (no difference in mean immune response)</li>
         <li>\(H_a: \mu_t > \mu_c\) (tea drinkers have higher immune response)</li>
       </ul>
@@ -292,7 +292,7 @@
       <h3>Results</h3>
       <ul>
         <li>Observed difference in means: \(\bar{x}_t - \bar{x}_c = 3.5\)</li>
-        <li>Randomization distribution built by reassigning groups randomly 1000 times</li>
+        <li>Randomization distribution built by shuffling all the responses into new tea and coffee groups, 1000 times</li>
         <li>333 out of 1000 simulations produced a difference &ge; 3.5</li>
       </ul>
       <div class="formula-box" style="font-size:18px;">
@@ -376,7 +376,7 @@
   <p class="subtitle">How the direction of \(H_a\) affects the p-value calculation</p>
   <div class="grid-3">
     <div class="card card-accent">
-      <h3>Upper-Tail Test</h3>
+      <h3>Right-Tail Test</h3>
       <p class="step-note">\(H_a: \text{parameter} > \text{value}\)</p>
       <ul class="small">
         <li>p-value = proportion in <strong>right tail</strong> beyond the observed statistic</li>
@@ -384,7 +384,7 @@
       </ul>
     </div>
     <div class="card card-accent2">
-      <h3>Lower-Tail Test</h3>
+      <h3>Left-Tail Test</h3>
       <p class="step-note">\(H_a: \text{parameter} < \text{value}\)</p>
       <ul class="small">
         <li>p-value = proportion in <strong>left tail</strong> beyond the observed statistic</li>
@@ -392,7 +392,7 @@
       </ul>
     </div>
     <div class="card card-rose">
-      <h3>Two-Tailed Test</h3>
+      <h3>Two-Tail Test</h3>
       <p class="step-note">\(H_a: \text{parameter} \neq \text{value}\)</p>
       <ul class="small">
         <li>p-value = proportion in <strong>both tails</strong> beyond the observed statistic</li>
@@ -404,13 +404,13 @@
     For a two-sided test: &nbsp; p-value \(= 2 \times\) (proportion in the smallest tail)
   </div>
   <div class="callout">
-    <strong>Example (Green Tea & Prostate Cancer):</strong> Researchers found a significant reduction in cancer risk among green tea drinkers. With a one-sided test, the p-value was <strong>0.0005</strong> -- extremely strong evidence. <span style="color:var(--muted);">(Bettuzzi et al., <em>Cancer Research</em>, 2006: of 60 men with precancerous prostate changes, only 1 of 30 taking green tea extract capsules developed cancer within a year, vs. 9 of 30 on placebo.)</span>
+    <strong>Example (Green Tea & Prostate Cancer):</strong> Researchers found a significant (too big to blame on chance; see 4.3) reduction in cancer risk among green tea drinkers. With a one-sided test, the p-value was <strong>0.0005</strong> -- extremely strong evidence. <span style="color:var(--muted);">(Bettuzzi et al., <em>Cancer Research</em>, 2006: of 60 men with precancerous (could turn into cancer) prostate changes, only 1 of 30 taking green tea extract capsules developed cancer within a year, vs. 9 of 30 on placebo.)</span>
   </div>
 </div>
 
 <!-- Slide 8b: Worked example, lower tail (setup + distribution) -->
 <div class="slide">
-  <h2>Worked Example: A Lower-Tail Test</h2>
+  <h2>Worked Example: A Left-Tail Test</h2>
   <p class="subtitle">Are there fewer orange candies than the company claims?</p>
   <div class="grid-2" style="grid-template-columns: 0.85fr 1.15fr; flex:none;">
     <div class="card card-amber">
@@ -462,13 +462,13 @@
   })();
   </script>
   <div class="callout">
-    Count the simulated proportions <strong>at or below 0.12</strong>: \(1 + 1 + 5 + 6 + 11 = 24\), so &nbsp; p-value \(= \frac{24}{1000} = 0.024\). If 20% of the candies really were orange, a bag this short on orange would happen only about 2.4% of the time &mdash; fairly strong evidence that the true proportion is less than 0.20.
+    Count the simulated proportions <strong>at or below 0.12</strong>: \(1 + 1 + 5 + 6 + 11 = 24\), so &nbsp; p-value \(= \frac{24}{1000} = 0.024\). If 20% of the candies really were orange, a bag this short on orange would happen only about 2.4% of the time &mdash; fairly strong evidence (the evidence scale comes in 4.3) that the true proportion is less than 0.20.
   </div>
 </div>
 
 <!-- Slide 8c: Worked example, two tails (setup + distribution) -->
 <div class="slide">
-  <h2>Worked Example: A Two-Tailed Test</h2>
+  <h2>Worked Example: A Two-Tail Test</h2>
   <p class="subtitle">Sleep or caffeine for memory?</p>
   <div class="grid-2" style="grid-template-columns: 0.85fr 1.15fr; flex:none;">
     <div class="card card-amber">
@@ -529,7 +529,7 @@
       <h3>Computing p-values</h3>
       <ul>
         <li>p-value = proportion of randomization statistics as extreme as observed</li>
-        <li>Direction depends on \(H_a\): upper, lower, or two-tailed</li>
+        <li>Direction depends on \(H_a\): right-tail, left-tail, or two-tail</li>
         <li>For two-sided: p-value = \(2 \times\) smallest tail proportion</li>
         <li>The p-value is <strong>not</strong> the probability that \(H_0\) is true</li>
       </ul>
