@@ -13,6 +13,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
 <script src="statkey.js?v=5"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -108,6 +109,28 @@
   </div>
   <div class="callout">
     The goal of a hypothesis test is to determine whether the sample data provide enough evidence to refute a claim about a population.
+  </div>
+</div>
+
+<!-- Story: Doris and Buzz -->
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the study</span>
+  <h2>Doris and Buzz, the Talking Dolphins?</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/bottlenose_dolphin_wake.jpg" alt="A gray bottlenose dolphin leaping through the white wake of a boat">
+      <span class="credit">Photo: NASA, Public domain, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Tursiops_truncatus_01.jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-accent">
+      <ul>
+        <li>In <strong>1964&ndash;65</strong>, researcher <strong>Jarvis Bastian</strong> worked with two young bottlenose dolphins: <strong>Doris</strong> (female) and <strong>Buzz</strong> (male).</li>
+        <li>The work was done under a U.S. Navy contract, at a time when the Navy was very curious about how dolphins use sound.</li>
+        <li>The big question: could one dolphin pass along information that only she could see?</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> it&rsquo;s easy to tell a great story about &ldquo;talking&rdquo; dolphins. A hypothesis test asks the boring but crucial question first: could Buzz just be guessing?</div>
+      <div class="source">Sources: J. Bastian (1967), in <em>Animal Sonar Systems</em>, R.-G. Busnel, ed.; K. LeVasseur, &ldquo;Dolphin Mental Abilities&rdquo; (Whale and Dolphin Conservation).</div>
+    </div>
   </div>
 </div>
 
@@ -265,6 +288,29 @@
   </div>
 </div>
 
+<!-- Story: Mednick sleep vs. caffeine -->
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the study</span>
+  <h2>Nap or Caffeine? (Mednick, 2008)</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/cat_nap_window.jpg" alt="An orange cat napping with its eyes closed on a wooden windowsill">
+      <span class="credit">Photo: Yanko Peyankov, CC0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Cat_napping_by_the_window_(Unsplash).jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>Sleep scientist <strong>Sara Mednick</strong> and colleagues at the University of California, San Diego tested <strong>61 adults</strong>.</li>
+        <li>After lunch, each person was randomly given a <strong>60&ndash;90 minute nap</strong>, a <strong>200 mg caffeine pill</strong> (a bit less than a tall Starbucks brewed coffee), or a <strong>placebo</strong> pill.</li>
+        <li>Then they took memory tests: recalling words, a finger-tapping sequence, and spotting textures.</li>
+        <li>The nappers beat the caffeine group on word recall and finger tapping. The headline from the National Institute of Mental Health: <strong>&ldquo;Caffeine No Substitute for a Nap.&rdquo;</strong></li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> random assignment lets us compare the groups fairly. Next we write hypotheses for &ldquo;is there a difference in mean memory scores?&rdquo;</div>
+      <div class="source">Sources: Mednick et al. (2008), <em>Behavioural Brain Research</em> 193(1), 79&ndash;86; NIMH Science News, December 2008. Photo: a stand-in napper.</div>
+    </div>
+  </div>
+</div>
+
 <!-- Slide 5: Writing Hypotheses (with Sleep vs. Caffeine example) -->
 <div class="slide">
   <h2>Writing Hypotheses</h2>
@@ -348,6 +394,14 @@
   <p class="subtitle">A coffee shop advertises that its medium cup holds <strong>12 ounces</strong> of coffee. A customer suspects the cups are <strong>underfilled</strong>, so they measure <strong>25 randomly selected medium cups</strong>. The sample mean is <strong>\(\bar{x} = 11.8\) ounces</strong> with standard deviation \(s = 0.4\) ounces.</p>
   <div class="grid-2">
     <div class="card card-green">
+      <svg class="doodle" style="width:80px;" viewBox="0 0 110 110" role="img" aria-label="Doodle of a coffee cup with a dashed fill line above the coffee level">
+        <path d="M40 6 Q34 14 40 22 M54 6 Q48 14 54 22" stroke="#cbd5e1" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <rect x="16" y="28" width="68" height="10" rx="4" fill="#f1f5f9"/>
+        <path d="M20 38 H80 L72 104 H28 Z" fill="#f1f5f9" opacity="0.25"/>
+        <path d="M24 60 H76 L72 104 H28 Z" fill="#fbbf24" opacity="0.85"/>
+        <path d="M22 50 H78" stroke="#fb7185" stroke-width="3" stroke-dasharray="6 4"/>
+        <text x="96" y="55" font-size="12" font-weight="700" text-anchor="middle" fill="#fb7185" font-family="Inter, sans-serif">12</text>
+      </svg>
       <h3>Setting Up the Test</h3>
       <ul class="small">
         <li><strong>Parameter:</strong> \(\mu\) = the mean amount of coffee in <em>all</em> medium cups this shop serves</li>
@@ -382,6 +436,14 @@
   <p class="subtitle" style="font-size:18px; margin-bottom:16px;">A student claims to be <strong>unusually good at rock paper scissors</strong>. To test this, they play <strong>11 games</strong> against a classmate (any tie is replayed, so every game has a winner). The student <strong>wins 9 of the 11 games</strong>.</p>
   <div class="grid-2">
     <div class="card card-green">
+      <svg class="doodle" style="width:120px;" viewBox="0 0 140 70" role="img" aria-label="Doodle of rock, paper and scissors">
+        <path d="M6 54 Q4 34 20 28 Q34 22 40 38 Q46 54 30 60 Q12 64 6 54 Z" fill="#818cf8"/>
+        <rect x="52" y="14" width="30" height="40" rx="3" fill="#f1f5f9" transform="rotate(-6 67 34)"/>
+        <path d="M59 26 H76 M59 34 H76 M59 42 H72" stroke="#38bdf8" stroke-width="2" transform="rotate(-6 67 34)"/>
+        <path d="M104 26 L134 54 M104 46 L134 18" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="98" cy="22" r="7" fill="none" stroke="#fb7185" stroke-width="4"/>
+        <circle cx="98" cy="50" r="7" fill="none" stroke="#fb7185" stroke-width="4"/>
+      </svg>
       <h3>Setting Up the Test</h3>
       <ul class="small">
         <li><strong>Parameter?</strong> \(p\) = the true proportion of games this student wins against the classmate, in the long run</li>
@@ -416,6 +478,16 @@
   <p class="subtitle">For each study: <strong>(i)</strong> define the parameter in words and with notation, <strong>(ii)</strong> write \(H_0\) and \(H_a\), and <strong>(iii)</strong> say whether the test is one-sided or two-sided.</p>
   <div class="grid-3">
     <div class="card card-amber">
+      <svg class="doodle" style="width:72px; margin-bottom:2px;" viewBox="0 0 120 90" role="img" aria-label="Doodle of an airplane next to a clock">
+        <circle cx="94" cy="62" r="20" fill="#fbbf24"/><circle cx="94" cy="62" r="15" fill="#0f172a" opacity="0.85"/>
+        <path d="M94 62 V52 M94 62 L101 66" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+        <g transform="rotate(-18 50 40)">
+          <path d="M8 40 Q8 34 16 34 H78 Q90 34 94 40 Q90 46 78 46 H16 Q8 46 8 40 Z" fill="#38bdf8"/>
+          <path d="M44 36 L30 12 H40 L62 36 Z M44 44 L30 68 H40 L62 44 Z" fill="#818cf8"/>
+          <path d="M12 36 L6 22 H14 L22 36 Z" fill="#818cf8"/>
+          <circle cx="82" cy="39" r="2.5" fill="#0f172a"/><circle cx="74" cy="39" r="2.5" fill="#0f172a"/>
+        </g>
+      </svg>
       <h3>(a) Airline On-Time Rate</h3>
       <p class="step-note">An airline advertises that <strong>90%</strong> of its flights arrive on time. A consumer group suspects the true on-time rate is <strong>lower</strong>, so it checks a random sample of 200 flights.</p>
     </div>

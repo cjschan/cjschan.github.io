@@ -11,9 +11,11 @@ Every photo here is public domain or Creative Commons, downloaded from Wikimedia
 | nicolas_cage_2013.jpg | Georges Biard | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Nicolas_Cage_Deauville_2013_2.jpg |
 | cup_black_tea.jpg | AntanO | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Cup_of_black_tea.JPG |
 | nightingale_coxcomb.jpg | Florence Nightingale | Public domain | https://commons.wikimedia.org/wiki/File:Nightingale-mortality.jpg |
+| bottlenose_dolphin_wake.jpg | NASA | Public domain | https://commons.wikimedia.org/wiki/File:Tursiops_truncatus_01.jpg |
 | hollywood_sign.jpg | Thomas Wolf, www.foto-tw.de | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Hollywood_Sign_(Zuschnitt).jpg |
 | spaghetti_junction_atlanta.jpg | Unknown author | Public domain | https://commons.wikimedia.org/wiki/File:SpaghettiJunctionGA.jpg |
 | rock_hall_cleveland.jpg | U.S. National Archives (NARA 7719854) | Public domain | https://commons.wikimedia.org/wiki/File:Lake_Erie_Coastal_Ohio_Trail_-_Rock_and_Roll_Hall_of_Fame_and_Museum_-_NARA_-_7719854.jpg |
+| cat_nap_window.jpg | Yanko Peyankov peyankov | CC0 | https://commons.wikimedia.org/wiki/File:Cat_napping_by_the_window_(Unsplash).jpg |
 | wrigley_field_game.jpg | redlegsfan21 | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Wrigley_Field_(16003794830).jpg |
 | arctic_sea_ice_2023.jpg | NASA's Scientific Visualization Studio - USRA/Trent L. Schindler, Global Science | Public domain | https://commons.wikimedia.org/wiki/File:Arctic_Sea_Ice_Minimum_2023_(SVS5162_-_arctic_sea_ice_2023_min_2160p60_2820_print).jpg |
 | wilt_chamberlain_portrait.jpg | Wilt_Chamberlain2.jpg: Fred Palumbo, World Telegram staff photographer derivativ | Public domain | https://commons.wikimedia.org/wiki/File:Wilt_Chamberlain3.jpg |
