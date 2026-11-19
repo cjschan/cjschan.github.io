@@ -9,6 +9,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=7"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -86,6 +87,13 @@
           \widehat{\text{Score}} = 50 + 5 \times \text{Hours}
         \]
       </div>
+      <svg class="doodle" viewBox="0 0 120 100" role="img" aria-label="Doodle of an open book with a clock above it">
+        <circle cx="88" cy="24" r="19" fill="#fbbf24"/><circle cx="88" cy="24" r="14" fill="#0f172a" opacity="0.85"/>
+        <path d="M88 24 V15 M88 24 L95 28" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+        <path d="M60 58 Q38 50 10 56 L10 92 Q38 86 60 94 Z" fill="#818cf8"/>
+        <path d="M60 58 Q82 50 110 56 L110 92 Q82 86 60 94 Z" fill="#a78bfa"/>
+        <path d="M20 66 Q35 62 50 66 M20 75 Q35 71 50 75 M70 66 Q85 62 100 66 M70 75 Q85 71 100 75" stroke="#f1f5f9" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.75"/>
+      </svg>
       <div class="step-note">Explanatory variable: hours studied. Response variable: exam score (points).</div>
     </div>
   </div>
@@ -264,6 +272,16 @@
       <div id="chart-2-5-cafe"></div>
     </div>
     <div class="card card-green">
+      <svg class="doodle" style="width:80px;" viewBox="0 0 110 120" role="img" aria-label="Doodle of an iced coffee with a straw under a hot sun">
+        <circle cx="88" cy="20" r="11" fill="#fbbf24"/>
+        <path d="M88 2 V6 M88 34 V38 M70 20 H74 M102 20 H106 M75 7 L78 10 M98 30 L101 33 M101 7 L98 10" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+        <path d="M54 6 L48 40" stroke="#fb7185" stroke-width="5" stroke-linecap="round"/>
+        <rect x="18" y="36" width="58" height="9" rx="4" fill="#f1f5f9"/>
+        <path d="M22 45 H72 L65 114 H29 Z" fill="#38bdf8" opacity="0.3"/>
+        <path d="M24 62 H70 L65 114 H29 Z" fill="#fbbf24" opacity="0.8"/>
+        <rect x="31" y="56" width="14" height="14" rx="3" fill="#f1f5f9" opacity="0.85" transform="rotate(-12 38 63)"/>
+        <rect x="49" y="66" width="14" height="14" rx="3" fill="#f1f5f9" opacity="0.85" transform="rotate(10 56 73)"/>
+      </svg>
       <h3>Questions and Solutions</h3>
       <ul class="questions">
         <li>(a) Circle the point with the largest positive residual.<br><span class="green"><strong>Circle</strong></span> the point at <strong>80&deg;F, 78 sold</strong>. Predicted: \(\hat{y} \approx 66.1\), so the residual is \(78 - 66.1 \approx +11.9\) iced coffees.</li>
@@ -283,6 +301,28 @@
           marks: [{ x: 80, y: 78, shape: 'circle', color: '#34d399' }, { x: 85, y: 63, shape: 'square', color: '#fb7185' }] });
     })();
   </script>
+</div>
+
+<!-- Story: why baseball games take so long -->
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the question</span>
+  <h2>Why Do Baseball Games Take So Long?</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/wrigley_field_game.jpg" alt="A night game at Wrigley Field in Chicago, seen from the stands behind home plate, with the pitcher delivering to a batter">
+      <span class="credit">Photo: redlegsfan21, CC BY-SA 2.0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Wrigley_Field_(16003794830).jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>Baseball has no game clock: a game ends after 9 innings, however long that takes. More runs usually means more batters and more pitches.</li>
+        <li>The record: on May 8, 1984, the White Sox and Brewers played <strong>25 innings</strong> lasting <strong>8 hours 6 minutes</strong>. It was so long that it had to be finished the next day. (White Sox won, 7&ndash;6.)</li>
+        <li>By 2022 the average nine-inning game took <strong>3 hours 4 minutes</strong>. In 2023 MLB added a <strong>pitch clock</strong>, and the average fell to <strong>2 hours 40 minutes</strong>, the shortest since 1985.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> our data ask the same question with a line: about how many extra minutes does each extra run add to a game?</div>
+      <div class="source">Sources: MLB.com, &ldquo;The longest games in MLB history&rdquo;; AP / NBC Sports report on 2023 game times; ESPN (2022 average).</div>
+    </div>
+  </div>
 </div>
 
 <div class="slide">
@@ -394,6 +434,16 @@
   <p class="subtitle">Work through every part on your own &mdash; equation, interpretation, prediction, and residual.</p>
   <div class="grid-2">
     <div class="card card-accent">
+      <svg class="doodle" viewBox="0 0 130 84" role="img" aria-label="Doodle of a used car with a price tag">
+        <path d="M8 54 Q8 42 20 40 L36 38 L48 24 Q52 20 60 20 H86 Q94 20 98 26 L108 39 Q120 41 120 52 V60 H8 Z" fill="#38bdf8"/>
+        <path d="M52 26 H70 V38 H42 Z" fill="#0f172a" opacity="0.55"/>
+        <path d="M75 26 H88 Q92 26 94 30 L100 38 H75 Z" fill="#0f172a" opacity="0.55"/>
+        <circle cx="34" cy="62" r="11" fill="#0f172a" stroke="#f1f5f9" stroke-width="4"/>
+        <circle cx="96" cy="62" r="11" fill="#0f172a" stroke="#f1f5f9" stroke-width="4"/>
+        <path d="M100 2 H126 V18 H100 L94 10 Z" fill="#fbbf24"/>
+        <circle cx="100" cy="10" r="2.5" fill="#0f172a"/>
+        <text x="114" y="15" font-size="12" font-weight="800" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif">$</text>
+      </svg>
       <h3>The Scenario</h3>
       <div class="step-note">A dealership studies how a used car's <strong>age</strong> (in years) relates to its <strong>price</strong> (in dollars). The least-squares regression line is:</div>
       <div class="formula-box">
