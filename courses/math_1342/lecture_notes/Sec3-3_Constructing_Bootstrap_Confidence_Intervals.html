@@ -13,6 +13,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
 <script src="statkey.js?v=5"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -300,6 +301,7 @@
   <div class="callout">
     <strong>Core insight:</strong> pretend the sample IS the population. If the sample is representative, resampling from it with replacement mimics drawing fresh samples — no new data collection required.
   </div>
+  <div class="fun-fact"><span class="ff-label">Did you know?</span>The bootstrap was invented by Stanford statistician <strong>Bradley Efron</strong>, who published it in 1979. The name comes from the saying &ldquo;pull yourself up by your own bootstraps&rdquo;: the sample is used to learn about itself. In 2018 Efron won the International Prize in Statistics for it. <span class="source">(Sources: Efron, <em>Annals of Statistics</em>, 1979; Royal Statistical Society, 2018.)</span></div>
   <script>
     (function() {
       const NS = 'http://www.w3.org/2000/svg';
@@ -511,6 +513,28 @@
   </div>
 </div>
 
+<!-- Story: the Pew global warming survey -->
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the survey</span>
+  <h2>Pew&rsquo;s October 2010 Climate Poll</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/arctic_sea_ice_2023.jpg" alt="NASA satellite view of the Arctic on September 19, 2023, with the shrunken white sea ice well inside a yellow line marking the 1981 to 2010 average minimum">
+      <span class="credit">Image: NASA Scientific Visualization Studio (Trent L. Schindler), Public domain, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Arctic_Sea_Ice_Minimum_2023_(SVS5162_-_arctic_sea_ice_2023_min_2160p60_2820_print).jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-accent">
+      <ul>
+        <li>The <strong>Pew Research Center</strong> reached <strong>2,251 U.S. adults</strong> on landlines and cell phones, October 13&ndash;18, 2010.</li>
+        <li><strong>59%</strong> said there is solid evidence the earth has been getting warmer: about the same as in 2009 (57%), but way down from <strong>79%</strong> in July 2006.</li>
+        <li>Pew&rsquo;s headline was the partisan gap: <strong>79%</strong> of Democrats said yes, but only <strong>38%</strong> of Republicans.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> Pew got one sample and one \(\hat{p} \approx 0.59\). It can&rsquo;t afford to rerun the poll thousands of times, but the bootstrap lets us see how much that number could wobble.</div>
+      <div class="source">Source: Pew Research Center, &ldquo;Wide Partisan Divide over Global Warming,&rdquo; October 27, 2010. Image: Arctic sea ice minimum, 2023.</div>
+    </div>
+  </div>
+</div>
+
 <!-- Example: Global Warming (with solution) -->
 <div class="slide">
   <span class="tag tag-amber">Example</span>
@@ -539,7 +563,12 @@
 <div class="slide">
   <span class="tag tag-amber">Your Turn</span>
   <h2>Your Turn: Bootstrap a Proportion</h2>
-  <p class="subtitle">Suppose 32 out of 50 surveyed shoppers prefer brand A. Click <strong>Run 1000</strong> to build a bootstrap distribution for \(\hat{p}\), then answer: (a) What is the sample statistic \(\hat{p}\)? (b) Where is the bootstrap distribution centered? (c) What is the bootstrap SE? (d) Find a 95% CI using Statistic \(\pm\; 2 \times \text{SE}\). (e) Interpret your interval.</p>
+  <p class="subtitle"><svg class="doodle" style="width:80px; margin-top:-8px;" viewBox="0 0 110 100" role="img" aria-label="Doodle of a shopping bag marked with a big letter A">
+        <path d="M40 30 V22 Q40 8 55 8 Q70 8 70 22 V30" stroke="#f1f5f9" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M22 30 H88 L94 94 H16 Z" fill="#34d399"/>
+        <text x="55" y="78" font-size="40" font-weight="800" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif">A</text>
+        <path d="M80 40 l4 -8 l4 8 l8 1 l-6 6 l2 8 l-8 -4 l-8 4 l2 -8 l-6 -6 Z" fill="#fbbf24"/>
+      </svg>Suppose 32 out of 50 surveyed shoppers prefer brand A. Click <strong>Run 1000</strong> to build a bootstrap distribution for \(\hat{p}\), then answer: (a) What is the sample statistic \(\hat{p}\)? (b) Where is the bootstrap distribution centered? (c) What is the bootstrap SE? (d) Find a 95% CI using Statistic \(\pm\; 2 \times \text{SE}\). (e) Interpret your interval.</p>
   <div id="sim-bootp"></div>
   <script>
     StatKey.create('#sim-bootp', {
