@@ -17,6 +17,7 @@ Every photo here is public domain or Creative Commons, downloaded from Wikimedia
 | wunderlich_portrait.jpg | Wilhelm Höffert (1832–1901) | Public domain | https://commons.wikimedia.org/wiki/File:Carl_August_Wunderlich_-_Foto.jpg |
 | original_xbox_console.jpg | Evan-Amos | Public domain | https://commons.wikimedia.org/wiki/File:Xbox-console.jpg |
 | anopheles_stephensi.jpg | Jim Gathany | Public domain | https://commons.wikimedia.org/wiki/File:Anopheles_stephensi.jpeg |
+| reed_warbler_feeding_cuckoo.jpg | Per Harald Olsen | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Reed_warbler_cuckoo.jpg |
 | dried_tear_micrograph.jpg | Nicola Swietkowiak Allismicro Microla | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Allismicro_crystalized_sad_tear_drop_2.jpeg |
 | bottlenose_dolphin_wake.jpg | NASA | Public domain | https://commons.wikimedia.org/wiki/File:Tursiops_truncatus_01.jpg |
 | king_penguin_crozet.jpg | Antoine Lamielle | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:2020-11_Crozet_Islands_-_King_Penguin_11.jpg |
