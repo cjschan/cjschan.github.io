@@ -356,7 +356,7 @@
         <li>The foster parents keep feeding it even when it is <strong>two or three times their size</strong> (pictured: a reed warbler feeding its &#8220;baby&#8221;).</li>
         <li>In <strong>1902</strong>, O.&nbsp;H. Latter published measurements of cuckoo eggs found in different hosts&#8217; nests in the first volume of <em>Biometrika</em>, the new statistics journal founded by Galton, Pearson and Weldon (founders of modern statistics).</li>
       </ul>
-      <div class="why"><b>Why it matters:</b> cuckoo eggs often mimic the host&#8217;s eggs. Does egg <strong>size</strong> depend on the host too? That means comparing <strong>five</strong> means at once.</div>
+      <div class="why"><b>Why it matters:</b> cuckoo eggs often mimic the host&#8217;s eggs. Does egg <strong>size</strong> depend on the host too? That means comparing <strong>six</strong> means at once.</div>
       <div class="source">Sources: Latter, <em>Biometrika</em> 1(2), 1902; RSPB (Royal Society for the Protection of Birds); BBC Countryfile.</div>
     </div>
   </div>
@@ -364,28 +364,29 @@
 
 <div class="slide">
   <h2>Cuckoo Egg Example</h2>
-  <p class="subtitle">This example compares mean cuckoo egg length across five host-bird species.</p>
+  <p class="subtitle">Latter&rsquo;s real 1902 data: the lengths of 120 cuckoo eggs found in the nests of six host-bird species.</p>
   <div class="grid-2">
     <div class="card card-accent table-card">
       <table>
-        <tr><th>Group</th><th>Mean</th><th>SD</th><th>\(n\)</th></tr>
-        <tr><td>Pied Wagtail</td><td>22.90</td><td>1.07</td><td>23</td></tr>
-        <tr><td>Tree Pipit</td><td>23.09</td><td>0.91</td><td>13</td></tr>
-        <tr><td>Hedge Sparrow</td><td>23.52</td><td>0.92</td><td>14</td></tr>
-        <tr><td>Robin</td><td>24.08</td><td>0.90</td><td>16</td></tr>
-        <tr><td>Meadow Pipit</td><td>24.28</td><td>0.97</td><td>54</td></tr>
+        <tr><th>Host species</th><th>Mean (mm)</th><th>SD (mm)</th><th>\(n\)</th></tr>
+        <tr><td>Wren</td><td>21.12</td><td>0.75</td><td>15</td></tr>
+        <tr><td>Meadow Pipit</td><td>22.29</td><td>0.92</td><td>45</td></tr>
+        <tr><td>Robin</td><td>22.56</td><td>0.68</td><td>16</td></tr>
+        <tr><td>Pied Wagtail</td><td>22.89</td><td>1.07</td><td>15</td></tr>
+        <tr><td>Tree Pipit</td><td>23.08</td><td>0.88</td><td>15</td></tr>
+        <tr><td>Hedge Sparrow</td><td>23.11</td><td>1.05</td><td>14</td></tr>
       </table>
     </div>
     <div class="card card-green">
       <div class="tag tag-blue">Question</div>
-      <div class="step-note">Do mean cuckoo egg lengths differ across the five host-bird groups?</div>
+      <div class="step-note">Do mean cuckoo egg lengths differ across the six host-bird groups?</div>
       <div class="tag tag-purple">Hypotheses</div>
       <div class="formula-box">
         \[
-          H_0:\mu_1=\mu_2=\mu_3=\mu_4=\mu_5
+          H_0:\mu_1=\mu_2=\mu_3=\mu_4=\mu_5=\mu_6
         \]
       </div>
-      <div class="step-note">In words: the population mean cuckoo egg length is the same for all five host-bird species.</div>
+      <div class="step-note">In words: the population mean cuckoo egg length is the same for all six host-bird species.</div>
       <div class="formula-box">
         \[
           H_a:\text{at least one population mean differs}
@@ -430,21 +431,21 @@
     <div class="card card-accent table-card">
       <table>
         <tr><th>Source</th><th>df</th><th>SS</th></tr>
-        <tr><td>Groups</td><td>4</td><td>39.88</td></tr>
-        <tr><td>Error</td><td>115</td><td>108.15</td></tr>
-        <tr><td>Total</td><td>119</td><td>148.02</td></tr>
+        <tr><td>Groups</td><td>5</td><td>42.81</td></tr>
+        <tr><td>Error</td><td>114</td><td>93.41</td></tr>
+        <tr><td>Total</td><td>119</td><td>136.22</td></tr>
       </table>
     </div>
     <div class="card card-green">
       <div class="tag tag-blue">Mean Squares</div>
       <div class="formula-box">
         \[
-          MSG=\frac{39.88}{4}=9.97
+          MSG=\frac{42.81}{5}\approx 8.56
         \]
       </div>
       <div class="formula-box">
         \[
-          MSE=\frac{108.15}{115}\approx 0.940
+          MSE=\frac{93.41}{114}\approx 0.819
         \]
       </div>
     </div>
@@ -459,7 +460,7 @@
       <h3>Calculation</h3>
       <div class="formula-box">
         \[
-          F=\frac{9.97}{0.940}\approx 10.60
+          F=\frac{8.56}{0.819}\approx 10.45
         \]
       </div>
       <div class="step-note">A value this large means the group means are much farther apart than we would expect from within-group noise alone.</div>
@@ -468,11 +469,11 @@
       <h3>p-Value</h3>
       <ul class="small">
         <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>F</strong> (the right-skewed curve used for F-statistic p-values).</li>
-        <li><strong>2.</strong> Set numerator df (groups, \(k-1\)) to <strong>4</strong> and denominator df <span style="white-space:nowrap">(error, \(n-k\))</span> to <strong>115</strong>; check <strong>Right Tail</strong>.</li>
-        <li><strong>3.</strong> Change the axis box to <strong>10.60</strong>. The tail area is about <strong>0.0000002</strong>.</li>
+        <li><strong>2.</strong> Set numerator df (groups, \(k-1\)) to <strong>5</strong> and denominator df <span style="white-space:nowrap">(error, \(n-k\))</span> to <strong>114</strong>; check <strong>Right Tail</strong>.</li>
+        <li><strong>3.</strong> Change the axis box to <strong>10.45</strong>. The tail area is about <strong>0.00000003</strong>.</li>
       </ul>
       <div class="callout">
-        With \(df=4\) and \(115\), \(F\approx 10.60\) gives a p-value \(\approx 0.0000002\), far below \(0.05\), so we reject \(H_0\).
+        With \(df=5\) and \(114\), \(F\approx 10.45\) gives a <span style="white-space:nowrap">p-value \(\approx 0.00000003\),</span> far below \(0.05\), so we reject \(H_0\).
       </div>
       <div class="step-note">Conclusion: there is strong evidence that mean cuckoo egg length is not the same for all host-bird groups.</div>
     </div>
@@ -489,7 +490,7 @@
     </div>
     <div class="card card-amber">
       <div class="big-number">Spread</div>
-      <div class="stat-label">Group standard deviations should be similar. A rough rule: the largest SD should not exceed twice the smallest. Cuckoo eggs: \(1.07/0.90\approx 1.19<2\), so this is fine.</div>
+      <div class="stat-label">Group standard deviations should be similar. A rough rule: the largest SD should not exceed twice the smallest. Cuckoo eggs: \(1.07/0.68\approx 1.57<2\), so this is fine.</div>
     </div>
     <div class="card card-green">
       <div class="big-number">Random</div>
