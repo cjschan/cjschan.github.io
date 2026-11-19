@@ -122,7 +122,7 @@
       </ul>
     </div>
     <div class="card card-green">
-      <h3>3. Infer (Ch. 3&ndash;7)</h3>
+      <h3>3. Infer (Ch. 3&ndash;9)</h3>
       <ul class="small">
         <li><span class="accent">Confidence interval:</span> what is the parameter?</li>
         <li><span class="green">Hypothesis test:</span> is this claimed value believable?</li>
@@ -350,7 +350,7 @@
 </svg>
   </div>
   <div class="callout">
-    <strong>This is the whole semester.</strong> From test to test the only things that change are the statistic you compute and the SE formula. The picture never changes &mdash; which is why one framework handles all six tests.
+    <strong>This is the whole semester.</strong> From test to test the only things that change are the statistic you compute and the SE formula. The picture never changes &mdash; which is why one framework handles all eight tests.
   </div>
 </div>
 
@@ -415,7 +415,7 @@
 
 <div class="slide">
   <h2>One Formula Runs Almost Every Test</h2>
-  <p class="subtitle sm">There are six tests on your exam. Five of them are this single idea with a different SE.</p>
+  <p class="subtitle sm">There are eight tests on your exam. Six of them are this single idea with a different SE.</p>
   <div class="formula-box" style="font-size: 24px; text-align: center;">
     \[
       \text{test statistic}=\frac{\text{Statistic}-\text{Null}}{SE}
@@ -433,12 +433,12 @@
     <div class="card card-amber">
       <h3>Only four things change</h3>
       <ul class="small">
-        <li>The <strong>statistic</strong> (\(\hat{p}\), \(\bar{x}\), \(\bar{x}_d\), a difference).</li>
+        <li>The <strong>statistic</strong> (\(\hat{p}\), \(\bar{x}\), \(\bar{x}_d\), a difference, a slope \(b_1\)).</li>
         <li>The <strong>SE formula</strong>.</li>
-        <li>The <strong>distribution</strong>: \(z\) for proportions, \(t\) for means.</li>
+        <li>The <strong>distribution</strong>: \(z\) for proportions, \(t\) for means and slopes.</li>
         <li>The <strong>df</strong>, when it is a \(t\).</li>
       </ul>
-      <div class="step-note" style="margin-top:8px;">The sixth test, \(\chi^2\), is the same instinct in different clothing: add up how far every observed count sits from the count \(H_0\) expects.</div>
+      <div class="step-note" style="margin-top:8px;">The other two tests use the same instinct in different clothing. \(\chi^2\) adds up how far every observed count sits from the count \(H_0\) expects; ANOVA&rsquo;s \(F\) compares variation <em>between</em> group means to variation <em>within</em> groups.</div>
     </div>
   </div>
 </div>
@@ -458,6 +458,8 @@
         <tr><td>Two <strong>separate</strong> groups, quantitative response</td><td>\(\mu_1-\mu_2\)</td><td>Two-sample \(t\)</td><td>\(t=\dfrac{\bar{x}_1-\bar{x}_2}{\sqrt{s_1^2/n_1+s_2^2/n_2}}\), \(df=\min(n_1-1,n_2-1)\)</td></tr>
         <tr><td>Two quantitative measurements <strong>on the same unit</strong> (or matched pairs)</td><td>\(\mu_d\) (population mean difference)</td><td>Paired \(t\)</td><td>\(t=\dfrac{\bar{x}_d-0}{s_d/\sqrt{n_d}}\), \(df=n_d-1\)</td></tr>
         <tr><td>Two categorical variables, an \(r\times c\) table (rows \(\times\) columns)</td><td>association</td><td>\(\chi^2\) test for association</td><td>\(\chi^2=\sum\dfrac{(O-E)^2}{E}\), \(df=(r-1)(c-1)\)</td></tr>
+        <tr><td>Three or more <strong>separate</strong> groups, quantitative response</td><td>\(\mu_1=\mu_2=\cdots=\mu_k\)</td><td>ANOVA \(F\)</td><td>\(F=\dfrac{MSG}{MSE}\), \(df=k-1,\ n-k\)</td></tr>
+        <tr><td>Two quantitative variables on the same cases (scatterplot)</td><td>\(\beta_1\) (slope) or \(\rho\) (correlation)</td><td>\(t\) test for slope / correlation</td><td>\(t=\dfrac{b_1-0}{SE_{b_1}}\), \(df=n-2\)</td></tr>
       </tbody>
     </table>
   </div>
@@ -711,7 +713,7 @@
       <h3>How to work it</h3>
       <ul class="small">
         <li>One of you narrates the reasoning, the other writes and checks the arithmetic &mdash; then swap at step 4.</li>
-        <li>Before computing anything, both of you say out loud which of the six tests it is and <em>why</em>. Most lost points live in that sentence.</li>
+        <li>Before computing anything, both of you say out loud which of the eight tests it is and <em>why</em>. Most lost points live in that sentence.</li>
         <li>If you disagree about the tail, reread the question's last sentence. The question wording, not your sample, sets the tail.</li>
         <li>Round SE to at least 4 decimals so your test statistic lands where mine did.</li>
         <li>Finish early? Build the matching 95% confidence interval and check that it agrees with your two-tail decision.</li>
@@ -1181,7 +1183,7 @@
     </div>
   </div>
   <div class="callout">
-    <strong>Final exam: Thursday, August 6, in class through Blackboard.</strong> It covers everything, and every inference problem is one of the six tests on the "Choosing the Right Test" slide. Work each one with the six steps and you have already practiced the whole exam.
+    <strong>Final exam: see the course calendar for your date and time.</strong> It covers everything, and every inference problem is one of the eight tests on the "Choosing the Right Test" slide. Work each one with the six steps and you have already practiced the whole exam.
   </div>
 </div>
 
