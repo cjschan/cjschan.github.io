@@ -81,14 +81,14 @@
     <div class="card card-accent">
       <h3>Randomized Experiment</h3>
       <ul>
-        <li>Re-randomize cases to treatment groups, keeping response values fixed.</li>
-        <li>Example: cocaine addiction study (Gawin et al., 1989: 72 cocaine users randomly assigned to desipramine, lithium, or a placebo).</li>
+        <li>Re-randomize (randomly reassign) cases to treatment groups, keeping response values fixed.</li>
+        <li>Example: cocaine addiction study (Gawin et al., 1989: 72 cocaine users randomly assigned to desipramine or lithium (drugs being tested to treat addiction), or a placebo).</li>
       </ul>
     </div>
     <div class="card card-green">
       <h3>Observational Study</h3>
       <ul>
-        <li>Shift data to make \(H_0\) true, then bootstrap.</li>
+        <li>Shift data (add or subtract the same amount from every value) to make \(H_0\) true, then bootstrap.</li>
         <li>Example: body temperature (shift all values so the mean equals 98.6).</li>
       </ul>
     </div>
@@ -130,7 +130,7 @@
 <div class="slide">
   <span style="align-self:flex-start;" class="tag tag-green">Method 1</span>
   <h2>Reallocation: Shuffle the Group Labels</h2>
-  <p class="subtitle">A small illustration: 5 treatment and 5 control values. Observed difference \(\bar{x}_T - \bar{x}_C = 17.6 - 13.6 = 4.0\).</p>
+  <p class="subtitle">A small illustration: 5 treatment and 5 control values. Observed difference \(\bar{x}_T - \bar{x}_C = 17.6 - 13.6 = 4.0\). A * (as in \(\bar{x}^*\)) marks a statistic from a simulated sample.</p>
   <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0;">
     <svg viewBox="0 0 1230 380" style="width:100%; height:100%; max-height:400px;" font-family="Inter, sans-serif" role="img" aria-label="Reallocation diagram: the original treatment and control values are pooled, then split into new groups of 5 without replacement, giving one simulated difference in means.">
       <defs>
@@ -403,8 +403,8 @@
     <div class="card card-accent">
       <h3>The Connection</h3>
       <ul>
-        <li>If the null value is <span class="rose">outside</span> a 95% CI, a two-tailed test at \(\alpha = 0.05\) will <span class="rose">reject</span> \(H_0\).</li>
-        <li>If the null value is <span class="green">inside</span> a 95% CI, a two-tailed test at \(\alpha = 0.05\) will <span class="green">not reject</span> \(H_0\).</li>
+        <li>If the null value is <span class="rose">outside</span> a 95% CI, a two-tail test at \(\alpha = 0.05\) will <span class="rose">reject</span> \(H_0\).</li>
+        <li>If the null value is <span class="green">inside</span> a 95% CI, a two-tail test at \(\alpha = 0.05\) will <span class="green">not reject</span> \(H_0\).</li>
       </ul>
     </div>
     <div class="card card-green">
@@ -416,7 +416,7 @@
     </div>
   </div>
   <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0; margin-top:14px;">
-    <svg viewBox="0 0 1000 290" style="width:100%; height:100%; max-height:320px;" font-family="Inter, sans-serif" role="img" aria-label="Two number lines with the same 95% confidence interval. Top: the null value lies outside the interval, so reject H0. Bottom: the null value lies inside the interval, so do not reject H0.">
+    <svg viewBox="0 0 1000 290" style="width:100%; height:100%; max-height:320px;" font-family="Inter, sans-serif" role="img" aria-label="Two number lines with the same 95% confidence interval. Top: the null value lies outside the interval, so reject H₀. Bottom: the null value lies inside the interval, so do not reject H₀.">
       <text x="20" y="72" font-size="21" font-weight="800" fill="#fb7185">Null value OUTSIDE the CI</text>
       <text x="20" y="102" font-size="21" font-weight="700" fill="#f1f5f9">&#8594; Reject H&#8320;</text>
       <line x1="320" y1="80" x2="980" y2="80" stroke="#94a3b8" stroke-width="2"/>
@@ -482,7 +482,7 @@
     </div>
   </div>
   <div class="callout" style="margin-top:12px; padding:12px 18px;">
-    <strong>The rule:</strong> a 95% confidence interval contains exactly the null values that a two-tailed test at \(\alpha = 0.05\) would <em>not</em> reject.
+    <strong>The rule:</strong> a 95% confidence interval contains exactly the null values that a two-tail test at \(\alpha = 0.05\) would <em>not</em> reject.
   </div>
   <div class="callout" style="margin-top:10px; padding:12px 18px; font-size:14px;">
     <strong>Check it in StatKey</strong> (built-in Body Temperature data, \(n = 50\), \(\bar{x} = 98.26\)): <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a> &rarr; <strong>Test for Single Mean</strong> &rarr; set the null to \(\mu = 98.6\) &rarr; <strong>Generate 1000 Samples</strong> &rarr; <strong>Two-Tail</strong>. The p-value is about 0.002 or less (reject). Change the null to 98.4: p-value \(\approx 0.2\) (do not reject). Both match the CI. Simulated p-values vary slightly from run to run.
@@ -527,7 +527,7 @@
 <div class="slide">
   <span class="tag tag-green">Your Turn &mdash; Answers</span>
   <h2>Answers: CI or Test?</h2>
-  <p class="subtitle">A 95% CI holds the null values that a two-tailed test at \(\alpha = 0.05\) would not reject.</p>
+  <p class="subtitle">A 95% CI holds the null values that a two-tail test at \(\alpha = 0.05\) would not reject.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <div class="tag tag-green">(a) Null value 0.35</div>
@@ -560,7 +560,7 @@
       <span class="tag tag-amber">Part (b)</span>
       <h3>Center of the randomization distribution</h3>
       <div class="formula-box" style="border-left-color: var(--amber);">\(p_0 = 0.5\)</div>
-      <p class="step-note">It assumes \(H_0\) is true, so it centers on the null value.</p>
+      <p class="step-note">\(p_0\) = the proportion claimed in \(H_0\). It assumes \(H_0\) is true, so it centers on the null value.</p>
     </div>
     <div class="card card-green">
       <span class="tag tag-green">Part (c)</span>
@@ -586,7 +586,7 @@
     StatKey.create('#comp-boot', { mode: 'one-prop-boot', n: 50, x: 28 });
     StatKey.create('#comp-rand', { mode: 'one-prop-rand', n: 50, x: 28, p0: 0.5, direction: 'two-tailed' });
   </script>
-  <p class="step-note">Compare the <strong>Sim mean</strong> (about 0.56 vs. about 0.50) and the <strong>Sim SD</strong> (about 0.07 for both): different centers, same spread.</p>
+  <p class="step-note">Compare the <strong>Sim mean</strong> (average of the simulated statistics; about 0.56 vs. about 0.50) and the <strong>Sim SD</strong> (their standard deviation; about 0.07 for both): different centers, same spread.</p>
 </div>
 
 <div class="slide">
