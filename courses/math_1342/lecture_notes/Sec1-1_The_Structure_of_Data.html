@@ -12,6 +12,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -93,7 +94,7 @@
 <div class="slide">
   <h2>Cases and Variables</h2>
   <p class="subtitle">A dataset is usually organized so that each row is a case and each column is a variable.</p>
-  <div class="grid-2">
+  <div class="grid-2" style="flex: 0 0 auto;">
     <div class="card card-accent">
       <h3>Cases</h3>
       <ul>
@@ -111,6 +112,7 @@
       </ul>
     </div>
   </div>
+  <div class="fun-fact"><span class="ff-label">Did you know?</span>"One row per case, one column per variable" has a nickname: <strong>tidy data</strong>. Statistician Hadley Wickham laid out the rules in 2014, borrowing from Tolstoy: <em>"Tidy datasets are all alike, but every messy dataset is messy in its own way."</em><div class="source" style="margin-top:4px;">Source: H. Wickham, "Tidy Data," <em>Journal of Statistical Software</em> 59(10), 2014.</div></div>
 </div>
 
 <div class="slide">
@@ -193,6 +195,16 @@
   </div>
   <div class="grid-2" style="margin-top:16px;">
     <div class="card card-amber">
+      <svg class="doodle" viewBox="0 0 130 80" role="img" aria-label="Doodle of a used car with a price tag hanging from its mirror">
+        <path d="M14 50 q0 -12 12 -14 l14 -16 q4 -4 10 -4 h28 q6 0 10 4 l14 16 q16 2 16 14 v8 h-104 z" fill="#38bdf8"/>
+        <path d="M46 22 h16 v14 h-26 z M68 22 h12 l12 14 h-24 z" fill="#f1f5f9" opacity="0.85"/>
+        <circle cx="38" cy="60" r="11" fill="#0f172a" stroke="#f1f5f9" stroke-width="4"/>
+        <circle cx="96" cy="60" r="11" fill="#0f172a" stroke="#f1f5f9" stroke-width="4"/>
+        <rect x="108" y="44" width="8" height="5" rx="2" fill="#fbbf24"/>
+        <path d="M66 22 L58 6" stroke="#cbd5e1" stroke-width="1.5"/>
+        <path d="M44 0 h18 l6 6 l-6 6 h-18 z" fill="#fbbf24"/>
+        <text x="52" y="10" text-anchor="middle" font-size="10" font-weight="800" fill="#0f172a">$</text>
+      </svg>
       <ul class="small">
         <li><strong>(a)</strong> What are the cases in this dataset?</li>
         <li><strong>(b)</strong> How many variables are shown? List them.</li>
