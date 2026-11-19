@@ -338,14 +338,14 @@
     <div class="card card-accent">
       <h3>If the Statistic Is Normal</h3>
       <ul>
-        <li>A confidence interval still has the form statistic \(\pm\) critical value \(\cdot SE\).</li>
+        <li>A confidence interval still has the form Statistic \(\pm z^* \cdot SE\).</li>
         <li>A test statistic still compares the sample to the null in standard error units.</li>
         <li>If we knew \(\sigma\), we could use the standard normal distribution.</li>
       </ul>
     </div>
     <div class="card card-accent2">
       <div class="big-number accent2">\(t\)</div>
-      <div class="stat-label">Because \(\sigma\) is unknown, we replace it with \(s\). That changes the reference distribution from \(z\) to \(t\).</div>
+      <div class="stat-label">Because \(\sigma\) is unknown, we replace it with \(s\). That changes the reference distribution (the curve for cutoffs and p-values) from \(z\) to \(t\), a bell curve like \(z\) but with heavier tails.</div>
     </div>
   </div>
 </div>
@@ -388,7 +388,7 @@
       </div>
       <div class="card card-amber">
         <div class="big-number amber">\(df=n-1\)</div>
-        <div class="stat-label">The t-distribution depends on degrees of freedom. Higher \(df\) makes \(t\) closer to normal.</div>
+        <div class="stat-label">The t-distribution depends on degrees of freedom: \(df=n-1\) picks which t curve to use. Higher \(df\) makes \(t\) closer to normal.</div>
       </div>
       <div class="card card-rose">
         <div class="big-number rose">Small \(n\)</div>
@@ -407,14 +407,14 @@
 
 <div class="slide">
   <h2>The t-Distribution</h2>
-  <p class="subtitle">When the population SD is unknown, we use the <b>t-distribution</b> with \(n-1\) degrees of freedom. It has slightly heavier tails than the standard normal; for large \(n\) the two are almost identical.</p>
+  <p class="subtitle">When the population SD is unknown, we use the <b>t-distribution</b> with \(n-1\) degrees of freedom. It has slightly heavier tails (more area far from 0) than the standard normal; for large \(n\) the two are almost identical.</p>
   <div class="grid-2" style="grid-template-columns: 548px 1fr; flex:0;">
     <div id="t-curve" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:14px;"></div>
     <div class="card card-green" style="padding:14px 16px;">
       <h3>t Values in StatKey</h3>
       <p class="step-note" style="margin-bottom:4px;"><a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a> &rarr; <strong>Theoretical Distributions</strong> &rarr; <strong>t</strong>; set <strong>df</strong> to \(n-1\).</p>
       <ul class="small">
-        <li><strong>\(t^*\) for a CI:</strong> check <strong>Two-Tail</strong>, click the right-tail proportion and type the tail area (0.05 for 90%, 0.025 for 95%); the axis value is \(t^*\). <em>Check:</em> df = 49, 90% &rarr; \(t^* \approx 1.677\).</li>
+        <li><strong>\(t^*\) for a CI</strong> (the t cutoff for the confidence level, like \(z^*\)): check <strong>Two-Tail</strong>, click the right-tail proportion and type the tail area (0.05 for 90%, 0.025 for 95%); the axis value is \(t^*\). <em>Check:</em> df = 49, 90% &rarr; \(t^* \approx 1.677\).</li>
         <li><strong>p-value for a test:</strong> check <strong>Left Tail</strong>, <strong>Right Tail</strong>, or <strong>Two-Tail</strong> to match \(H_a\); click the axis box and type your t statistic. The shaded area is the p-value (for Two-Tail, add both areas). <em>Check:</em> df = 41, Right Tail, \(t = 14.42\) &rarr; \(\approx 0.000\).</li>
       </ul>
     </div>
@@ -465,20 +465,20 @@
     </figure>
     <div class="card card-green">
       <ul>
-        <li>Gribbles (genus <em>Limnoria</em>) are marine <strong>isopods</strong>, cousins of the pill bug. Most are only <strong>1&ndash;4 mm long</strong>.</li>
-        <li>They tunnel into wood and eat it. After shipworms, they are the second-worst destroyers of wooden <strong>piers and jetties</strong>.</li>
-        <li>Unusual trick: a gribble digests wood with <strong>its own enzymes</strong> in a nearly sterile gut. Termites, by contrast, rely on microbes in their guts.</li>
+        <li>Gribbles (genus <em>Limnoria</em>) are marine <strong>isopods</strong> (small, flat-bodied crustaceans), cousins of the pill bug. Most are only <strong>1&ndash;4 mm long</strong>.</li>
+        <li>They tunnel into wood and eat it. After shipworms (wood-boring clams), they are the second-worst destroyers of wooden <strong>piers and jetties</strong>.</li>
+        <li>Unusual trick: a gribble digests wood with <strong>its own enzymes</strong> (proteins that break down food) in a nearly sterile gut. Termites, by contrast, rely on microbes in their guts.</li>
         <li>Scientists at the <strong>University of York</strong> study those enzymes as a way to turn wood and straw into <strong>biofuel</strong>.</li>
       </ul>
       <div class="why"><b>Why it matters:</b> the next slides estimate the mean length of gribbles from a sample of 50.</div>
-      <div class="source">Sources: &ldquo;Gribble,&rdquo; Wikipedia; University of York, Centre for Novel Agricultural Products; Kern et al., <em>PNAS</em>, 2013. Photo: <em>Limnoria quadripunctata</em>, male and female.</div>
+      <div class="source">Sources: &ldquo;Gribble,&rdquo; Wikipedia; University of York, Centre for Novel Agricultural Products; Kern et al., <em>PNAS</em> (Proceedings of the National Academy of Sciences), 2013. Photo: <em>Limnoria quadripunctata</em>, male and female.</div>
     </div>
   </div>
 </div>
 
 <div class="slide">
   <h2>Confidence Interval for a Mean</h2>
-  <p class="subtitle">For a one-sample mean, use the sample mean, a t critical value, and the standard error based on \(s\).</p>
+  <p class="subtitle">For a one-sample mean, use the sample mean, \(t^*\), and the standard error based on \(s\).</p>
   <div class="grid-2">
     <div class="card card-accent">
       <div class="formula-box">
@@ -510,7 +510,7 @@
   <div class="grid-2">
     <div class="card card-accent">
       <div class="tag tag-blue">Step 1</div>
-      <div class="step-note">Find the degrees of freedom and the t critical value for a \(90\%\) confidence interval.</div>
+      <div class="step-note">Find the degrees of freedom and \(t^*\) for a \(90\%\) confidence interval.</div>
       <div class="formula-box">
         \[
           df=50-1=49,\qquad t^* \approx 1.677
@@ -669,7 +669,7 @@
 <div class="slide">
   <span class="tag tag-green">Your Turn &mdash; Answers</span>
   <h2>Answers: Testing a Mean</h2>
-  <p class="subtitle">Left-tailed test with \(df = 25 - 1 = 24\).</p>
+  <p class="subtitle">Left-tail test with \(df = 25 - 1 = 24\).</p>
   <div class="grid-2">
     <div class="card card-accent">
       <div class="tag tag-blue">(a) Hypotheses</div>
