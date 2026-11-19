@@ -9,6 +9,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -164,6 +165,29 @@
   </div>
 </div>
 
+<!-- Story: the Rock and Roll Hall of Fame -->
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the data</span>
+  <h2>The Rock and Roll Hall of Fame</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/rock_hall_cleveland.jpg" alt="The glass pyramid of the Rock and Roll Hall of Fame and Museum in Cleveland behind a stone sign reading Rock and Roll Hall of Fame and Museum">
+      <span class="credit">Photo: U.S. National Archives (NARA 7719854), Public domain, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Lake_Erie_Coastal_Ohio_Trail_-_Rock_and_Roll_Hall_of_Fame_and_Museum_-_NARA_-_7719854.jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>The first induction ceremony was held on <strong>January 23, 1986</strong>, in New York. The performers in that first class were all men: Chuck Berry, Elvis Presley, Little Richard, Ray Charles, James Brown, Buddy Holly and more.</li>
+        <li>Not every inductee is a performer: that first class also honored DJ Alan Freed and Sun Records founder Sam Phillips.</li>
+        <li>The first woman inducted was <strong>Aretha Franklin</strong>, in January 1987.</li>
+        <li>The museum, a glass pyramid designed by architect <strong>I. M. Pei</strong>, opened on the Lake Erie shore in Cleveland in September 1995.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> the next slide sorts 273 inductees by two yes/no questions: performer or not, and female members or not. That two-way table is all we need for the probability rules.</div>
+      <div class="source">Sources: History.com, &ldquo;Rock and Roll Hall of Fame inducts first woman&rdquo;; Encyclopaedia Britannica; Wikipedia, &ldquo;Rock and Roll Hall of Fame.&rdquo;</div>
+    </div>
+  </div>
+</div>
+
 <div class="slide">
   <h2>Example: Rock and Roll Hall of Fame</h2>
   <p class="subtitle">273 inductees classified by performer status and whether the group has female members.</p>
@@ -281,6 +305,16 @@
       </table>
     </div>
     <div class="card card-amber">
+      <svg class="doodle" viewBox="0 0 120 100" role="img" aria-label="Doodle of a backpack next to a work briefcase">
+        <rect x="10" y="22" width="48" height="66" rx="14" fill="#818cf8"/>
+        <path d="M22 22 Q34 6 46 22" stroke="#818cf8" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <rect x="18" y="52" width="32" height="24" rx="6" fill="#a78bfa"/>
+        <path d="M26 60 H42" stroke="#f1f5f9" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+        <rect x="64" y="46" width="50" height="40" rx="6" fill="#fbbf24"/>
+        <path d="M78 46 V38 Q78 34 82 34 H96 Q100 34 100 38 V46" stroke="#fbbf24" stroke-width="5" fill="none"/>
+        <path d="M64 62 H114" stroke="#0f172a" stroke-width="3" opacity="0.4"/>
+        <rect x="85" y="58" width="8" height="9" rx="2" fill="#0f172a" opacity="0.6"/>
+      </svg>
       <h3>Find each probability</h3>
       <ul class="small">
         <li><strong>(a)</strong> \(P(\text{job})\)</li>
