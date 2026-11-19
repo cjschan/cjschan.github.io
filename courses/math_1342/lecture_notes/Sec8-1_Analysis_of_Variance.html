@@ -247,7 +247,7 @@
 <div class="slide title-slide">
   <span class="tag tag-blue">Section 8.1</span>
   <h1>Analysis of Variance (ANOVA)</h1>
-  <p class="subtitle">ANOVA tests for a difference in means across more than two groups by comparing between-group and within-group variability.</p>
+  <p class="subtitle">ANOVA (variance = SD squared, a measure of spread) tests for a difference in means across more than two groups by comparing between-group and within-group variability.</p>
 </div>
 
 <div class="slide">
@@ -309,9 +309,10 @@
         <li>\(n\) = total sample size</li>
         <li>\(\bar{x}_i\) = group mean</li>
         <li>\(\bar{x}\) = overall mean</li>
+          <li>\(x_{ij}\) = value \(j\) in group \(i\)</li>
       </ul>
       <div class="callout">
-        In plain English: <strong>\(SSG\)</strong> measures how much the group averages differ from each other, while <strong>\(SSE\)</strong> measures how spread out the individual values are within each group.
+        In plain English: <strong>\(SSG\)</strong> (Sum of Squares for Groups) measures how much the group averages differ from each other, while <strong>\(SSE\)</strong> (Sum of Squares for Error) measures how spread out the individual values are within each group.
       </div>
     </div>
     <div class="card card-green">
@@ -333,6 +334,7 @@
       <ul class="small">
         <li>\(SSG\): variability due to differences among group means</li>
         <li>\(SSE\): variability inside the groups</li>
+          <li>\(SS_{Total}\) (Total Sum of Squares): all the variability</li>
       </ul>
     </div>
   </div>
@@ -352,10 +354,10 @@
         <li>The common cuckoo is a <strong>brood parasite</strong>: it never raises its own young. The female lays her egg in another species&#8217; nest &mdash; often a dunnock (hedge sparrow), meadow pipit, or reed warbler.</li>
         <li>The cuckoo chick hatches first, balances each of the host&#8217;s eggs on its back, and <strong>heaves them out of the nest</strong>. Nobody teaches it how.</li>
         <li>The foster parents keep feeding it even when it is <strong>two or three times their size</strong> (pictured: a reed warbler feeding its &#8220;baby&#8221;).</li>
-        <li>In <strong>1902</strong>, O.&nbsp;H. Latter published measurements of cuckoo eggs found in different hosts&#8217; nests in the first volume of <em>Biometrika</em>, the new statistics journal founded by Galton, Pearson and Weldon.</li>
+        <li>In <strong>1902</strong>, O.&nbsp;H. Latter published measurements of cuckoo eggs found in different hosts&#8217; nests in the first volume of <em>Biometrika</em>, the new statistics journal founded by Galton, Pearson and Weldon (founders of modern statistics).</li>
       </ul>
       <div class="why"><b>Why it matters:</b> cuckoo eggs often mimic the host&#8217;s eggs. Does egg <strong>size</strong> depend on the host too? That means comparing <strong>five</strong> means at once.</div>
-      <div class="source">Sources: Latter, <em>Biometrika</em> 1(2), 1902; RSPB; BBC Countryfile.</div>
+      <div class="source">Sources: Latter, <em>Biometrika</em> 1(2), 1902; RSPB (Royal Society for the Protection of Birds); BBC Countryfile.</div>
     </div>
   </div>
 </div>
@@ -405,6 +407,7 @@
         <tr><td>Error</td><td>\(n-k\)</td><td>\(SSE\)</td><td>\(MSE=SSE/(n-k)\)</td></tr>
         <tr><td>Total</td><td>\(n-1\)</td><td>\(SS_{Total}\)</td><td>---</td></tr>
       </table>
+      <div class="step-note">MS = mean square = SS divided by its df (\(MSG\) for Groups, \(MSE\) for Error). The Error row is the variation within groups.</div>
     </div>
     <div class="card card-green">
       <h3>Test Statistic</h3>
@@ -464,8 +467,8 @@
     <div class="card card-rose">
       <h3>p-Value</h3>
       <ul class="small">
-        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>F</strong>.</li>
-        <li><strong>2.</strong> Set numerator df to <strong>4</strong> and denominator df to <strong>115</strong>; check <strong>Right Tail</strong>.</li>
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>F</strong> (the right-skewed curve used for F-statistic p-values).</li>
+        <li><strong>2.</strong> Set numerator df (groups, \(k-1\)) to <strong>4</strong> and denominator df <span style="white-space:nowrap">(error, \(n-k\))</span> to <strong>115</strong>; check <strong>Right Tail</strong>.</li>
         <li><strong>3.</strong> Change the axis box to <strong>10.19</strong>. The tail area is about <strong>0.0000004</strong>.</li>
       </ul>
       <div class="callout">
