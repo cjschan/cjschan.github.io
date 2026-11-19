@@ -17,6 +17,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root {
     --bg: #0f172a;
@@ -454,6 +455,28 @@
 </div>
 
 <div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Critter</span>
+  <h2>The Gribble: A Tiny Crustacean That Eats Piers</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/gribble_limnoria.jpg" alt="Microscope photo of two pale yellow gribbles, Limnoria quadripunctata, seen from below with their many legs" style="object-position:center 35%;">
+      <span class="credit">Photo: Auguste Le Roux, CC BY 3.0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Limnoria_4_punctata.jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-green">
+      <ul>
+        <li>Gribbles (genus <em>Limnoria</em>) are marine <strong>isopods</strong>, cousins of the pill bug. Most are only <strong>1&ndash;4 mm long</strong>.</li>
+        <li>They tunnel into wood and eat it. After shipworms, they are the second-worst destroyers of wooden <strong>piers and jetties</strong>.</li>
+        <li>Unusual trick: a gribble digests wood with <strong>its own enzymes</strong> in a nearly sterile gut. Termites, by contrast, rely on microbes in their guts.</li>
+        <li>Scientists at the <strong>University of York</strong> study those enzymes as a way to turn wood and straw into <strong>biofuel</strong>.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> the next slides estimate the mean length of gribbles from a sample of 50.</div>
+      <div class="source">Sources: &ldquo;Gribble,&rdquo; Wikipedia; University of York, Centre for Novel Agricultural Products; Kern et al., <em>PNAS</em>, 2013. Photo: <em>Limnoria quadripunctata</em>, male and female.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Confidence Interval for a Mean</h2>
   <p class="subtitle">For a one-sample mean, use the sample mean, a t critical value, and the standard error based on \(s\).</p>
   <div class="grid-2">
@@ -548,6 +571,28 @@
 </div>
 
 <div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Study</span>
+  <h2>The 1,000 Chips Challenge</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/chocolate_chip_cookies.jpg" alt="Homemade chocolate chip cookies on a cutting board next to a pile of chopped chocolate">
+      <span class="credit">Photo: Mshuang2, CC0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Chocolate_chip_cookies_on_cutting_board.jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>In the 1990s, Nabisco advertised Chips Ahoy! cookies as <strong>&ldquo;1000 chips delicious&rdquo;</strong>: at least 1,000 chocolate chips in every bag.</li>
+        <li>In 1996, a third-grade class in <strong>Wadesboro, North Carolina</strong> counted chips for a math lesson, found as few as 340 per bag, and wrote to complain.</li>
+        <li>Nabisco staged a public recount: after <strong>dissolving the cookies in water</strong> to free the hidden chips, it counted <strong>1,181</strong> chips.</li>
+        <li>In 1999 the company dared the public to check the claim. Statistics students at the <strong>U.S. Air Force Academy</strong> counted the chips in <strong>42 bags</strong>.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> is the mean really above 1,000? That is a one-sided test for a mean, coming up next.</div>
+      <div class="source">Sources: Mental Floss, &ldquo;12 Facts About Chips Ahoy!&rdquo;; Mashed, &ldquo;The Surprising Showdown Between Chips Ahoy! and Third Graders.&rdquo; Photo shows homemade cookies, not Chips Ahoy!</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Hypothesis Test Example</h2>
   <p class="subtitle" style="margin-bottom:16px;">Chips Ahoy! advertised at least \(1000\) chocolate chips per bag. A sample of \(42\) bags was counted.</p>
   <div class="grid-2">
@@ -593,6 +638,14 @@
   <p class="subtitle">A juice company labels its bottles as containing \(500\) mL. A consumer group measures a random sample of \(25\) bottles and finds \(\bar{x} = 488\) mL with \(s = 30\) mL. The data show no strong skew or outliers. Is there evidence that the bottles are <strong>underfilled</strong> on average?</p>
   <div class="grid-2">
     <div class="card card-accent">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a juice bottle labeled 500 milliliters next to an orange slice">
+  <rect x="44" y="4" width="24" height="10" rx="3" fill="#34d399"/>
+  <path d="M46 14 h20 v8 q14 8 14 22 v58 a8 8 0 0 1 -8 8 h-32 a8 8 0 0 1 -8 -8 v-58 q0 -14 14 -22 z" fill="#fbbf24"/>
+  <rect x="34" y="56" width="44" height="28" rx="4" fill="#f1f5f9"/>
+  <text x="56" y="75" text-anchor="middle" font-size="12" font-weight="800" fill="#0f172a" font-family="Inter, sans-serif">500 mL</text>
+  <circle cx="100" cy="98" r="14" fill="#fbbf24" stroke="#f1f5f9" stroke-width="3"/>
+  <path d="M100 86 v24 M88 98 h24 M91.5 89.5 l17 17 M108.5 89.5 l-17 17" stroke="#f1f5f9" stroke-width="1.5"/>
+</svg>
       <h3>Questions</h3>
       <ul>
         <li>(a) State \(H_0\) and \(H_a\).</li>

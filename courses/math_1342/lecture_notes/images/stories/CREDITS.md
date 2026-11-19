@@ -13,11 +13,13 @@ Every photo here is public domain or Creative Commons, downloaded from Wikimedia
 | nightingale_coxcomb.jpg | Florence Nightingale | Public domain | https://commons.wikimedia.org/wiki/File:Nightingale-mortality.jpg |
 | fisher_1913.jpg | Unknown photographer | Public domain | https://commons.wikimedia.org/wiki/File:Youngronaldfisher2.JPG |
 | grey_mouse_lemur.jpg | Charles J. Sharp | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Gray_mouse_lemur_microcebus_murinus.jpg |
+| gribble_limnoria.jpg | Auguste Le Roux | CC BY 3.0 | https://commons.wikimedia.org/wiki/File:Limnoria_4_punctata.jpg |
 | wunderlich_portrait.jpg | Wilhelm Höffert (1832–1901) | Public domain | https://commons.wikimedia.org/wiki/File:Carl_August_Wunderlich_-_Foto.jpg |
 | anopheles_stephensi.jpg | Jim Gathany | Public domain | https://commons.wikimedia.org/wiki/File:Anopheles_stephensi.jpeg |
 | bottlenose_dolphin_wake.jpg | NASA | Public domain | https://commons.wikimedia.org/wiki/File:Tursiops_truncatus_01.jpg |
 | nodoz_caffeine_tablets.jpg | Ragesoss | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:NoDoz_caffeine_tablets_on_black.jpg |
 | lady_justice_old_bailey.jpg | Philip Halling | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Lady_Justice,_the_Old_Bailey_-_geograph.org.uk_-_7017758.jpg |
+| chocolate_chip_cookies.jpg | Mshuang2 | CC0 | https://commons.wikimedia.org/wiki/File:Chocolate_chip_cookies_on_cutting_board.jpg |
 | hollywood_sign.jpg | Thomas Wolf, www.foto-tw.de | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Hollywood_Sign_(Zuschnitt).jpg |
 | spaghetti_junction_atlanta.jpg | Unknown author | Public domain | https://commons.wikimedia.org/wiki/File:SpaghettiJunctionGA.jpg |
 | rock_hall_cleveland.jpg | U.S. National Archives (NARA 7719854) | Public domain | https://commons.wikimedia.org/wiki/File:Lake_Erie_Coastal_Ohio_Trail_-_Rock_and_Roll_Hall_of_Fame_and_Museum_-_NARA_-_7719854.jpg |
