@@ -233,7 +233,7 @@
       <h3>Common Examples</h3>
       <ul>
         <li>Two measurements on the same person or object.</li>
-        <li>Matched-pairs experiments.</li>
+        <li>Matched-pairs experiments (similar subjects paired up, one per treatment).</li>
         <li>Twin studies or carefully matched cases.</li>
       </ul>
     </div>
@@ -294,7 +294,7 @@
     </div>
   </div>
   <div class="callout">
-    <strong>Questions to discuss:</strong> What in the study <em>design</em>, not in the numbers, tells you the data are paired? Which of these could you not pair even if you wanted to, and why? Do equal sample sizes mean the data are paired? For each paired study, what is \(d\), and in which order would you subtract?
+    <strong>Questions to discuss:</strong> What in the study <em>design</em>, not in the numbers, tells you the data are paired? Which of these could you not pair even if you wanted to, and why? Do equal sample sizes mean the data are paired? For each paired study, what is \(d\) (the difference within each pair), and in which order would you subtract?
   </div>
 </div>
 
@@ -347,10 +347,11 @@
       <h3>Then Use One-Mean t Methods</h3>
       <div class="formula-box">
         \[
-          SE(\bar{d})=\frac{s_d}{\sqrt{n_d}}, \qquad df=n_d-1
+          SE(\bar{x}_d)=\frac{s_d}{\sqrt{n_d}}, \qquad df=n_d-1
         \]
       </div>
       <ul>
+        <li>\(\bar{x}_d, s_d\) = mean and SD of the differences; \(n_d\) = number of pairs.</li>
         <li>If the differences are approximately normal, or \(n_d \ge 30\), use a t distribution.</li>
         <li>Everything now depends on the differences, not the original two columns.</li>
       </ul>
@@ -369,10 +370,10 @@
     </figure>
     <div class="card card-amber">
       <ul>
-        <li>Neuroscientist <strong>Noam Sobel</strong>&#8217;s lab at the <strong>Weizmann Institute of Science</strong> in Israel (first author <strong>Shani Gelstein</strong>) published &#8220;Human Tears Contain a Chemosignal&#8221; in <em>Science</em>, January 2011.</li>
+        <li>Neuroscientist <strong>Noam Sobel</strong>&#8217;s lab at the <strong>Weizmann Institute of Science</strong> in Israel (first author <strong>Shani Gelstein</strong>) published &#8220;Human Tears Contain a Chemosignal&#8221; (a chemical signal between people) in <em>Science</em>, January 2011.</li>
         <li>The tears came from women volunteers who watched <strong>sad movies</strong> in a secluded room. The control was plain <strong>saline</strong> (salt water).</li>
         <li>First surprise: men <strong>could not tell</strong> tears from saline by smell. Then, in double-blind sessions, men sniffed a pad of tears or of saline placed under the nose.</li>
-        <li>After sniffing tears, men rated women&#8217;s faces as less sexually attractive and had lower <strong>testosterone</strong> &mdash; yet their ratings of sadness and empathy did not change.</li>
+        <li>After sniffing tears, men rated women&#8217;s faces as less sexually attractive and had lower <strong>testosterone</strong> (a male sex hormone) &mdash; yet their ratings of sadness and empathy did not change.</li>
       </ul>
       <div class="why"><b>Why it matters:</b> each man is measured under <strong>both</strong> conditions, so we compare every man to himself. That is exactly what makes the data <strong>paired</strong>.</div>
       <div class="source">Sources: Gelstein et al., <em>Science</em> 331 (2011); Weizmann Institute press release via ScienceDaily, Jan 2011.</div>
@@ -382,13 +383,13 @@
 
 <div class="slide">
   <h2>Pheromones in Tears Setup</h2>
-  <p class="subtitle">Each of 50 men was tested twice: once with real female tears and once with a salt solution. That makes this paired data.</p>
+  <p class="subtitle">Pheromones are chemical signals between people, like the tears&rsquo; chemosignal. Each of 50 men was tested twice: once with real female tears and once with a salt solution. That makes this paired data.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <h3>Summary of Differences</h3>
       <ul>
         <li>Define \(d=\) testosterone with tears minus testosterone with no tears.</li>
-        <li>Sample mean of differences: \(\bar{d}=-21.7\) pg/ml</li>
+        <li>Sample mean of differences: \(\bar{x}_d=-21.7\) pg/ml (picograms per milliliter, a tiny amount)</li>
         <li>Sample SD of differences: \(s_d=46.5\)</li>
         <li>Number of pairs: \(n_d=50\)</li>
       </ul>
@@ -397,7 +398,8 @@
       <h3>Question</h3>
       <ul>
         <li>Do female tears lower male testosterone levels?</li>
-        <li>Because \(\bar{d}\) is negative, lower testosterone corresponds to \(\mu_d<0\).</li>
+        <li>Let \(\mu_d\) = the mean difference for the whole population.</li>
+        <li>Because \(\bar{x}_d\) is negative, lower testosterone corresponds to \(\mu_d<0\).</li>
       </ul>
     </div>
   </div>
@@ -444,7 +446,7 @@
 
 <div class="slide">
   <h2>Pheromones in Tears Confidence Interval</h2>
-  <p class="subtitle">The same paired differences can also be used to estimate the average effect size.</p>
+  <p class="subtitle">The same paired differences can also be used to estimate the average effect size (how big the change is).</p>
   <div class="grid-2">
     <div class="card card-accent">
       <div class="tag tag-blue">Step 1</div>
@@ -503,7 +505,7 @@
 <!-- Inserted: chart slide -->
 <div class="slide">
   <h2>Distribution of Paired Differences</h2>
-  <p class="subtitle">20 patients' systolic blood pressure dropped (or rose) after a treatment. The dotplot shows individual differences; the gold line marks zero.</p>
+  <p class="subtitle">20 patients' systolic blood pressure (the top number in a reading) dropped (or rose) after a treatment. The dotplot shows individual differences; the gold line marks zero.</p>
   <div id="paired-diff" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:14px; margin:8px auto; max-width:640px;"></div>
 <script>
 (function(){
@@ -536,7 +538,7 @@
       <h3>Confidence Interval</h3>
       <div class="formula-box">
         \[
-          \bar{d}\pm t^* \cdot \frac{s_d}{\sqrt{n_d}}
+          \bar{x}_d \pm t^* \cdot \frac{s_d}{\sqrt{n_d}}
         \]
       </div>
       <ul>
@@ -548,7 +550,7 @@
       <h3>Hypothesis Test</h3>
       <div class="formula-box">
         \[
-          t=\frac{\bar{d}-\mu_{d,0}}{\frac{s_d}{\sqrt{n_d}}}
+          t=\frac{\bar{x}_d-\mu_0}{s_d/\sqrt{n_d}}
         \]
       </div>
       <ul>
