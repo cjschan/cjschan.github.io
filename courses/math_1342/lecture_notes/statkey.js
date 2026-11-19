@@ -18,6 +18,8 @@
 
 const StatKey = (() => {
   const SVG_NS = 'http://www.w3.org/2000/svg';
+  // Shown to students; matches the class handouts' "right-tail / left-tail / two-tail test" wording.
+  const dirLabel = (d) => (d === 'right' ? 'right-tail' : d === 'left' ? 'left-tail' : 'two-tail');
 
   function el(tag, attrs = {}, kids = []) {
     const node = document.createElementNS(SVG_NS, tag);
@@ -267,7 +269,7 @@ const StatKey = (() => {
         return [
           `Observed: <b>${opts.x}/${opts.n} = ${phat.toFixed(3)}</b>`,
           `Null: <b>p = ${opts.p0}</b>`,
-          `Direction: <b>${opts.direction}</b>`,
+          `Test: <b>${dirLabel(opts.direction)}</b>`,
         ];
       },
       observed: (opts) => opts.x / opts.n,
@@ -295,7 +297,7 @@ const StatKey = (() => {
           `Group 1: <b>${opts.x1}/${opts.n1} = ${p1.toFixed(3)}</b>`,
           `Group 2: <b>${opts.x2}/${opts.n2} = ${p2.toFixed(3)}</b>`,
           `Difference: <b>${(p1 - p2).toFixed(3)}</b>`,
-          `Direction: <b>${opts.direction}</b>`,
+          `Test: <b>${dirLabel(opts.direction)}</b>`,
         ];
       },
       observed: (opts) => opts.x1 / opts.n1 - opts.x2 / opts.n2,
