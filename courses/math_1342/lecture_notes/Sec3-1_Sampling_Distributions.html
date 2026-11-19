@@ -12,6 +12,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,7 +57,7 @@
   .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
   .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
   .table-card td:first-child, .table-card th:first-child { text-align: left; }
-  .photo { display: block; width: 100%; max-height: 44vh; object-fit: contain; border-radius: 12px; }
+  .photo { display: block; width: 100%; max-height: 44vh; object-fit: contain; border-radius: 12px; border: 0; }
   .steps { list-style: none; counter-reset: step; }
   .steps li { counter-increment: step; padding-left: 36px; }
   .steps li::before { content: counter(step); width: 24px; height: 24px; border-radius: 50%; top: 7px; background: rgba(251, 191, 36, 0.2); color: var(--amber); font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
@@ -213,6 +214,15 @@
   <p class="subtitle">Using a single sample statistic to estimate a population parameter.</p>
   <div class="grid-2">
     <div class="card card-green">
+      <svg class="doodle" viewBox="0 0 110 100" role="img" aria-label="Doodle of a dart landing near, but not exactly on, the bullseye">
+        <circle cx="50" cy="52" r="42" fill="#fb7185"/>
+        <circle cx="50" cy="52" r="30" fill="#f1f5f9"/>
+        <circle cx="50" cy="52" r="18" fill="#fb7185"/>
+        <circle cx="50" cy="52" r="7" fill="#f1f5f9"/>
+        <path d="M60 42 L96 8" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/>
+        <path d="M96 8 L88 6 M96 8 L98 16 M92 12 L84 10 M92 12 L94 20" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="60" cy="42" r="3" fill="#0f172a"/>
+      </svg>
       <h3>What Is a Point Estimate?</h3>
       <ul>
         <li>A <strong>point estimate</strong> is the value of a sample statistic used to estimate a population parameter</li>
@@ -243,6 +253,16 @@
   <p class="subtitle">For each number, decide whether it is a <strong>parameter</strong> or a <strong>statistic</strong> and give its symbol (\(\mu, p, \rho, \bar{x}, \hat{p}, r\)). If it is a statistic, say which parameter it estimates.</p>
   <div class="grid-2">
     <div class="card card-amber">
+      <svg class="doodle" viewBox="0 0 120 100" role="img" aria-label="Doodle of a magnifying glass looking at a few dots from a larger crowd of dots">
+        <g fill="#818cf8" opacity="0.55">
+          <circle cx="12" cy="14" r="5"/><circle cx="30" cy="10" r="5"/><circle cx="48" cy="16" r="5"/><circle cx="66" cy="10" r="5"/><circle cx="86" cy="14" r="5"/><circle cx="106" cy="10" r="5"/>
+          <circle cx="16" cy="34" r="5"/><circle cx="92" cy="34" r="5"/><circle cx="110" cy="38" r="5"/>
+          <circle cx="10" cy="56" r="5"/><circle cx="96" cy="58" r="5"/><circle cx="14" cy="80" r="5"/><circle cx="34" cy="90" r="5"/>
+        </g>
+        <circle cx="52" cy="50" r="27" fill="#0f172a" stroke="#fbbf24" stroke-width="6"/>
+        <g fill="#34d399"><circle cx="44" cy="42" r="5"/><circle cx="60" cy="44" r="5"/><circle cx="50" cy="58" r="5"/></g>
+        <path d="M72 70 L96 92" stroke="#fbbf24" stroke-width="9" stroke-linecap="round"/>
+      </svg>
       <ul>
         <li><strong>(a)</strong> In a poll of 1,000 randomly selected U.S. adults, 41% say they exercise every day.</li>
         <li><strong>(b)</strong> The registrar reports that the mean GPA of <em>all</em> 18,400 students enrolled at a college this term is 2.94.</li>
@@ -337,6 +357,7 @@
   <div class="callout">
     <strong>Key takeaway:</strong> Random sampling guarantees the sampling distribution is centered at the truth, and large samples make it bell-shaped.
   </div>
+  <div class="fun-fact"><span class="ff-label">Did you know?</span>In 1936 the <em>Literary Digest</em> got about <strong>2.4 million</strong> straw-poll ballots back and predicted Alf Landon would beat Franklin Roosevelt. Roosevelt won <strong>46 of 48 states</strong>. The ballots went mostly to names from phone books and car registrations, and only some came back: a huge sample, but <strong>not a random one</strong>. <span class="source">(Sources: Wikipedia, &ldquo;The Literary Digest&rdquo;; Lohr &amp; Brick, 2017.)</span></div>
 </div>
 
 <!-- Slide 10: Standard Error -->
