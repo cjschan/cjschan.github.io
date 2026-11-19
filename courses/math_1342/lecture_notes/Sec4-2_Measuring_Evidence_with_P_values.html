@@ -13,6 +13,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=3"></script>
 <script src="statkey.js?v=5"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -273,6 +274,28 @@
   </div>
 </div>
 
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Study</span>
+  <h2>Five Cups a Day: The Tea vs. Coffee Experiment</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/cup_black_tea.jpg" alt="A glass mug half full of black tea">
+      <span class="credit">Photo: AntanO, CC BY-SA 4.0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Cup_of_black_tea.JPG" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-green">
+      <ul>
+        <li>Immunologists at <strong>Brigham and Women&rsquo;s Hospital and Harvard Medical School</strong> (Kamath, Bukowski and colleagues) ran it and published it in <em>PNAS</em> in 2003.</li>
+        <li><strong>11 volunteers</strong> drank 5&ndash;6 cups of black tea (about 600 mL) every day; <strong>10 others</strong> drank the same amount of instant coffee, for 2 to 4 weeks.</li>
+        <li>The suspect: <strong>L-theanine</strong>, a tea ingredient the body turns into ethylamine, which may &ldquo;prime&rdquo; germ-fighting immune cells.</li>
+        <li>Weekly blood draws measured <strong>interferon gamma</strong>, a signal the immune system sends out to fight infection.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> with only 21 people, a gap between the groups could easily be luck. A p-value tells us how easily.</div>
+      <div class="source">Source: Kamath et al., &ldquo;Antigens in tea-beverage prime human V&gamma;2V&delta;2 T cells,&rdquo; <em>PNAS</em> 100(10), 2003.</div>
+    </div>
+  </div>
+</div>
+
 <!-- Slide 7: Tea vs Coffee Example -->
 <div class="slide">
   <h2>Example: Tea and Immunity</h2>
@@ -322,6 +345,16 @@
       </ul>
     </div>
     <div class="card card-amber">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a steaming mug of tea with a tea bag tag hanging over the side">
+  <path d="M42 24 q-7 -7 0 -14 M57 24 q-7 -7 0 -14 M72 24 q-7 -7 0 -14" fill="none" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+  <path d="M96 46 h4 a13 13 0 0 1 0 26 h-6" fill="none" stroke="#34d399" stroke-width="7" stroke-linecap="round"/>
+  <path d="M22 34 h74 v38 a26 26 0 0 1 -26 26 h-22 a26 26 0 0 1 -26 -26 z" fill="#34d399"/>
+  <rect x="22" y="34" width="74" height="7" rx="3" fill="#fbbf24"/>
+  <path d="M64 36 q2 16 -6 26" fill="none" stroke="#f1f5f9" stroke-width="2"/>
+  <rect x="50" y="60" width="14" height="16" rx="2" fill="#f1f5f9"/>
+  <rect x="53" y="65" width="8" height="3" rx="1" fill="#fb7185"/>
+  <rect x="10" y="100" width="98" height="9" rx="4.5" fill="#818cf8"/>
+</svg>
       <h3>Questions</h3>
       <ul>
         <li>Where is your randomization distribution centered? Why?</li>
@@ -393,7 +426,7 @@
     For a two-sided test: &nbsp; p-value \(= 2 \times\) (proportion in the smallest tail)
   </div>
   <div class="callout">
-    <strong>Example (Green Tea & Prostate Cancer):</strong> Researchers found a significant reduction in cancer risk among green tea drinkers. With a one-sided test, the p-value was <strong>0.0005</strong> -- extremely strong evidence.
+    <strong>Example (Green Tea & Prostate Cancer):</strong> Researchers found a significant reduction in cancer risk among green tea drinkers. With a one-sided test, the p-value was <strong>0.0005</strong> -- extremely strong evidence. <span style="color:var(--muted);">(Bettuzzi et al., <em>Cancer Research</em>, 2006: of 60 men with precancerous prostate changes, only 1 of 30 taking green tea extract capsules developed cancer within a year, vs. 9 of 30 on placebo.)</span>
   </div>
 </div>
 
@@ -403,6 +436,18 @@
   <p class="subtitle">Are there fewer orange candies than the company claims?</p>
   <div class="grid-2" style="grid-template-columns: 0.85fr 1.15fr; flex:none;">
     <div class="card card-amber">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a candy bag spilling colorful candies, a few of them orange">
+  <path d="M28 22 h52 l6 68 a6 6 0 0 1 -6 6 h-52 a6 6 0 0 1 -6 -6 z" fill="#818cf8"/>
+  <rect x="25" y="14" width="58" height="11" rx="3" fill="#a78bfa"/>
+  <path d="M28 19.5 h52" stroke="#f1f5f9" stroke-width="2" stroke-dasharray="4 3"/>
+  <circle cx="54" cy="56" r="17" fill="#f1f5f9"/>
+  <text x="54" y="61" text-anchor="middle" font-size="13" font-weight="800" fill="#0f172a" font-family="Inter, sans-serif">100</text>
+  <circle cx="74" cy="106" r="7" fill="#fbbf24"/>
+  <circle cx="89" cy="100" r="7" fill="#fb7185"/>
+  <circle cx="103" cy="107" r="7" fill="#34d399"/>
+  <circle cx="98" cy="88" r="7" fill="#38bdf8"/>
+  <circle cx="111" cy="94" r="6" fill="#fbbf24"/>
+</svg>
       <h3>The Study</h3>
       <ul class="small">
         <li>A candy company claims that <strong>20%</strong> of its candies are orange</li>
@@ -440,6 +485,28 @@
   </script>
   <div class="callout">
     Count the simulated proportions <strong>at or below 0.12</strong>: \(1 + 1 + 5 + 6 + 11 = 24\), so &nbsp; p-value \(= \frac{24}{1000} = 0.024\). If 20% of the candies really were orange, a bag this short on orange would happen only about 2.4% of the time &mdash; fairly strong evidence that the true proportion is less than 0.20.
+  </div>
+</div>
+
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Study</span>
+  <h2>Nap or Caffeine? A Memory Showdown</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/nodoz_caffeine_tablets.jpg" alt="White 200 milligram caffeine tablets spilling out of an open pill bottle">
+      <span class="credit">Photo: Ragesoss, CC BY-SA 4.0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:NoDoz_caffeine_tablets_on_black.jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>Sleep researcher <strong>Sara Mednick</strong> and colleagues at <strong>UC San Diego</strong> published it in <em>Behavioural Brain Research</em> in 2008.</li>
+        <li>In the morning, volunteers learned a list of words. After lunch, one group <strong>napped 60&ndash;90 minutes</strong>; the others listened to an audiobook and swallowed a pill: <strong>200 mg of caffeine</strong> (a bit less than a tall coffee) or a placebo.</li>
+        <li>Afternoon re-test: the nappers beat the caffeine group at recalling words.</li>
+        <li>The twist: the <strong>placebo group</strong> also out-scored the caffeine group on all three memory tasks.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> before the data came in, either side could have won, so the test on the next slide is <strong>two-sided</strong>.</div>
+      <div class="source">Sources: Mednick, Cai, Kanady &amp; Drummond, <em>Behavioural Brain Research</em> 193(1), 2008; NIMH Science Update, Dec. 2008. Photo shows 200 mg caffeine tablets like those used.</div>
+    </div>
   </div>
 </div>
 

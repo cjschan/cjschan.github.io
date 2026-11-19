@@ -12,6 +12,7 @@ Every photo here is public domain or Creative Commons, downloaded from Wikimedia
 | cup_black_tea.jpg | AntanO | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Cup_of_black_tea.JPG |
 | nightingale_coxcomb.jpg | Florence Nightingale | Public domain | https://commons.wikimedia.org/wiki/File:Nightingale-mortality.jpg |
 | bottlenose_dolphin_wake.jpg | NASA | Public domain | https://commons.wikimedia.org/wiki/File:Tursiops_truncatus_01.jpg |
+| nodoz_caffeine_tablets.jpg | Ragesoss | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:NoDoz_caffeine_tablets_on_black.jpg |
 | hollywood_sign.jpg | Thomas Wolf, www.foto-tw.de | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Hollywood_Sign_(Zuschnitt).jpg |
 | spaghetti_junction_atlanta.jpg | Unknown author | Public domain | https://commons.wikimedia.org/wiki/File:SpaghettiJunctionGA.jpg |
 | rock_hall_cleveland.jpg | U.S. National Archives (NARA 7719854) | Public domain | https://commons.wikimedia.org/wiki/File:Lake_Erie_Coastal_Ohio_Trail_-_Rock_and_Roll_Hall_of_Fame_and_Museum_-_NARA_-_7719854.jpg |
