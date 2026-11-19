@@ -92,7 +92,7 @@
 
 <div class="slide">
   <h2>Shape of a Distribution</h2>
-  <p class="subtitle">The shape tells us about the pattern of data values &mdash; watch which direction the long tail points.</p>
+  <p class="subtitle">A distribution shows what values occur and how often. Its shape shows the pattern &mdash; watch which way the long tail (the thin, stretched-out end) points.</p>
   <div class="grid-3">
     <div class="card card-accent">
       <h3>Symmetric</h3>
@@ -140,7 +140,7 @@
     StatGraphs.dotplot('#chart-2-2-dot', exam, { xLabel: 'score', width: 380, height: 220 });
   </script>
   <div class="callout">
-    <strong>Make these graphs yourself in StatKey:</strong> <strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Descriptive Statistics and Graphs</strong>, choose <strong>One Quantitative Variable</strong>. <strong>2.</strong> Click <strong>Edit Data</strong>, paste the 60 scores (one per line), and click <strong>OK</strong>. <strong>3.</strong> Toggle between the dotplot and histogram views, and read the summary statistics: mean \(\approx 84.8\), median \(= 85\), standard deviation \(\approx 8.4\).
+    <strong>Make these graphs yourself in StatKey:</strong> <strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Descriptive Statistics and Graphs</strong>, choose <strong>One Quantitative Variable</strong>. <strong>2.</strong> Click <strong>Edit Data</strong>, paste the 60 scores (one per line), and click <strong>OK</strong>. <strong>3.</strong> Toggle between the dotplot and histogram views, and read the summary statistics: mean \(\approx 84.8\), median \(= 85\), standard deviation (typical distance from the mean) \(\approx 8.4\).
   </div>
 </div>
 
@@ -155,12 +155,12 @@
           \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{\sum x_i}{n}
         \]
       </div>
-      <div class="step-note">\(n\) is the sample size and \(x_1, x_2, \ldots, x_n\) are the data values.</div>
+      <div class="step-note">\(n\) is the sample size and \(x_1, x_2, \ldots, x_n\) are the data values (\(x_i\) is any one of them). \(\sum\) (Greek "sigma") means "add them all up."</div>
       <h3 style="margin-top:12px;">Interpretation</h3>
       <ul class="small">
         <li>The mean is the balance point of the distribution.</li>
         <li>It uses every data value in the calculation.</li>
-        <li>Notation: sample mean \(\bar{x}\), population mean \(\mu\).</li>
+        <li>Notation: sample mean \(\bar{x}\) ("x-bar"), population mean \(\mu\) (Greek "mu").</li>
       </ul>
     </div>
     <div class="card card-amber">
@@ -193,7 +193,7 @@
       <h3>Example: Odd \(n\) (five values)</h3>
       <div class="step-note">Unordered: 7, 2, 9, 4, 5</div>
       <div class="formula-box" style="font-size:20px;">2, &nbsp; 4, &nbsp; <span style="color:var(--green); font-weight:700;">5</span>, &nbsp; 7, &nbsp; 9</div>
-      <div class="step-note">With \(n = 5\), the single middle value (the 3rd) is the median: \(m = 5\).</div>
+      <div class="step-note">With \(n = 5\), the single middle value (the 3rd) is the median (written \(m\)): \(m = 5\).</div>
     </div>
     <div class="card card-accent2">
       <h3>Example: Even \(n\) (six values)</h3>
@@ -317,7 +317,7 @@
           s = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n - 1}}
         \]
       </div>
-      <div class="step-note">Sample standard deviation: \(s\). Population standard deviation: \(\sigma\).</div>
+      <div class="step-note">Sample standard deviation: \(s\). Population standard deviation: \(\sigma\) (lowercase Greek "sigma").</div>
       <div class="step-note">We will compute this by hand in Section 2.3. For now, focus on what the number means.</div>
     </div>
     <div class="card card-green">
@@ -335,7 +335,7 @@
 
 <div class="slide">
   <h2>The 95% Rule</h2>
-  <p class="subtitle">For a roughly symmetric, bell-shaped distribution, about 95% of the data falls within two standard deviations of the mean.</p>
+  <p class="subtitle">For a roughly symmetric, bell-shaped (mound in the middle, tapering on both sides) distribution, about 95% of the data falls within two standard deviations of the mean.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <h3>The Rule</h3>
