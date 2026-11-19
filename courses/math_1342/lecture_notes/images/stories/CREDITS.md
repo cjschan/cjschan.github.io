@@ -9,3 +9,4 @@ Every photo here is public domain or Creative Commons, downloaded from Wikimedia
 | covid_vaccine_card.jpg | Jernej Furman from Maribor, Slovenia | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:COVID-19_Vaccination_record_card_and_a_blue_pen_on_black_background_(51021144963).jpg |
 | knee_arthroscopy_incisions.jpg | Tim1965 | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Typical_arthroscopic_surgery_incisions_-_knee.JPG |
 | nicolas_cage_2013.jpg | Georges Biard | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Nicolas_Cage_Deauville_2013_2.jpg |
+| nightingale_coxcomb.jpg | Florence Nightingale | Public domain | https://commons.wikimedia.org/wiki/File:Nightingale-mortality.jpg |

@@ -9,6 +9,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=4"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -196,7 +197,7 @@
 <div class="slide">
   <h2>Visualizations: One Categorical Variable</h2>
   <p class="subtitle">Bar charts and pie charts display the distribution of a categorical variable.</p>
-  <div class="grid-2">
+  <div class="grid-2" style="flex: 0 0 auto;">
     <div class="card card-accent">
       <h3>Bar Chart</h3>
       <ul>
@@ -214,6 +215,7 @@
       </ul>
     </div>
   </div>
+  <div class="fun-fact"><img class="ff-photo" src="images/stories/nightingale_coxcomb.jpg" alt="Florence Nightingale's 1858 rose diagram of the causes of death in the British army, with large blue wedges for disease" style="width: min(320px, 45%); height: auto; object-fit: contain;"><span class="ff-label">Did you know?</span>Florence Nightingale, the famous nurse, was also a pioneering statistician. In 1858 she published this "rose" chart, a cousin of the pie chart with one wedge per month, sorting British soldiers' deaths in the Crimean War by cause. The huge blue wedges showed that far more died of <strong>preventable disease</strong> than of battle wounds. She became the first woman elected to the Royal Statistical Society.<div class="source" style="margin-top:4px;">Chart: Florence Nightingale, 1858, public domain, via Wikimedia Commons (<a style="color: inherit;" href="https://commons.wikimedia.org/wiki/File:Nightingale-mortality.jpg" target="_blank" rel="noopener">source</a>). Sources: Lehigh University Libraries, "Nightingale's Rose Diagram"; <em>Eye</em> magazine, "Lady with the Diagram," 2011.</div></div>
 </div>
 
 <div class="slide">
@@ -304,6 +306,19 @@
     </div>
     <div class="card card-amber">
       <h3>Find each proportion</h3>
+      <svg class="doodle" viewBox="0 0 120 100" role="img" aria-label="Doodle of a cat sitting next to a small house">
+        <path d="M60 50 l22 -20 l22 20 v40 h-44 z" fill="#818cf8"/>
+        <path d="M54 52 l28 -26 l28 26" fill="none" stroke="#a78bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="76" y="66" width="12" height="24" rx="2" fill="#0f172a"/>
+        <ellipse cx="30" cy="78" rx="18" ry="14" fill="#fbbf24"/>
+        <circle cx="30" cy="52" r="14" fill="#fbbf24"/>
+        <path d="M18 46 l2 -16 l10 10 z M42 46 l-2 -16 l-10 10 z" fill="#fbbf24"/>
+        <circle cx="25" cy="51" r="2.2" fill="#0f172a"/>
+        <circle cx="35" cy="51" r="2.2" fill="#0f172a"/>
+        <path d="M28 57 q2 2 4 0" stroke="#0f172a" stroke-width="1.5" fill="none"/>
+        <path d="M46 84 q12 -2 10 -16" fill="none" stroke="#fbbf24" stroke-width="5" stroke-linecap="round"/>
+        <path d="M6 92 h108" stroke="#475569" stroke-width="2"/>
+      </svg>
       <ul class="small">
         <li><strong>(a)</strong> What proportion of <em>all students</em> own a pet?</li>
         <li><strong>(b)</strong> What proportion of students <em>who live in a house</em> own a pet?</li>
