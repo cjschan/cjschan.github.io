@@ -541,7 +541,7 @@
       <ul class="small">
         <li><strong>Type I:</strong> reject a true \(H_0\). Probability \(=\alpha\).</li>
         <li><strong>Type II:</strong> fail to reject a false \(H_0\).</li>
-        <li>Lower \(\alpha\) trades Type I risk for Type II risk. Bigger \(n\) lowers both.</li>
+        <li>Lower \(\alpha\) trades Type I risk for Type II risk. Bigger \(n\) lowers Type II risk (Type I risk stays at \(\alpha\)).</li>
         <li><strong>Significant \(\neq\) large.</strong> A huge \(n\) makes trivial effects significant &mdash; look at the CI for the size.</li>
       </ul>
     </div>
@@ -678,7 +678,7 @@
         <li>So a two-tail test at \(\alpha=0.05\) must reject \$300 &mdash; and it did.</li>
         <li>The test answers <em>"is it \$300?"</em> The interval answers <em>"then what is it?"</em></li>
       </ul>
-      <div class="step-note" style="margin-top:8px;">If your CI and your test ever disagree, you have made an arithmetic error. Use this as a free check.</div>
+      <div class="step-note" style="margin-top:8px;">Your CI and two-tail test should agree (for proportions they can rarely differ at the edge, because the two SEs differ). If they clearly disagree, recheck your arithmetic.</div>
     </div>
   </div>
   <div class="callout amber">
