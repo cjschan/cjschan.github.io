@@ -418,7 +418,7 @@
       <ul>
         <li>There are <span class="green">two groups</span> being compared on a categorical outcome.</li>
         <li>Example: compare financial-aid rates for in-state and out-of-state students.</li>
-        <li>Now the parameter is the difference \(p_1-p_2\).</li>
+        <li>Now the parameter is the difference \(p_1-p_2\) (1 = first group, 2 = second group).</li>
       </ul>
     </div>
   </div>
@@ -436,12 +436,12 @@
           \sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}
         \]
       </div>
-      <div class="step-note">This is the population version. In practice, the values used inside the SE depend on whether we are building a confidence interval or doing a hypothesis test.</div>
+      <div class="step-note">This is the population version; \(n_1\) and \(n_2\) are the two sample sizes. In practice, the values used inside the SE depend on whether we are building a confidence interval or doing a hypothesis test.</div>
     </div>
     <div class="card card-amber">
       <h3>Large-Sample Condition</h3>
       <ul>
-        <li>Check counts in each cell of the two-way table.</li>
+        <li>Check counts in each cell (one group&ndash;outcome combination) of the two-way table.</li>
         <li>If each cell count is at least \(10\), then \(\hat{p}_1-\hat{p}_2\) is approximately normal.</li>
         <li>That lets us use z-based confidence intervals and z tests.</li>
       </ul>
@@ -457,7 +457,7 @@
       <h3>CI Formula</h3>
       <div class="formula-box">
         \[
-          \text{statistic} \pm z^*\cdot SE
+          \text{Statistic} \pm z^*\cdot SE
         \]
       </div>
       <div class="step-note">\(z^*\) depends on the confidence level: \(z^*=1.645\) for \(90\%\), \(1.96\) for \(95\%\), \(2.576\) for \(99\%\).</div>
@@ -493,9 +493,9 @@
     </figure>
     <div class="card card-amber">
       <ul>
-        <li>A French&ndash;Norwegian team led by <strong>Claire Saraux</strong> and <strong>Yvon Le Maho</strong> (CNRS) studied king penguins on <strong>Possession Island</strong> in the sub-Antarctic Crozet Islands. Published in <em>Nature</em>, January 2011.</li>
+        <li>A French&ndash;Norwegian team led by <strong>Claire Saraux</strong> and <strong>Yvon Le Maho</strong> (CNRS, France&rsquo;s national research agency) studied king penguins on <strong>Possession Island</strong> in the sub-Antarctic Crozet Islands. Published in <em>Nature</em>, January 2011.</li>
         <li>A penguin&#8217;s feet can&#8217;t hold a band, so for decades scientists have banded the <strong>flipper</strong> instead &mdash; it can be read from a distance without recapturing the bird.</li>
-        <li>The team followed penguins for <strong>10 years</strong>. Each had a tiny electronic tag under the skin, read by antennas buried along the paths to the sea; half <em>also</em> wore a metal flipper band.</li>
+        <li>The team followed penguins for <strong>10 years</strong>. Each had a tiny electronic chip under the skin, read by antennas buried along the paths to the sea; half <em>also</em> wore a metal flipper band.</li>
         <li>Banded birds arrived later to breed, raised <strong>fewer chicks</strong>, and survived less often. The likely culprit: the band adds <strong>drag</strong> to the flipper they swim with.</li>
       </ul>
       <div class="why"><b>Why it matters:</b> penguins are tracked as indicators of climate change. If the tag itself hurts the bird, the data are biased. Next: how big is the survival gap?</div>
@@ -506,13 +506,13 @@
 
 <div class="slide">
   <h2>Penguins Confidence Interval Example</h2>
-  <p class="subtitle">A study compared 10-year survival rates for penguins with metal tags and electronic tags.</p>
+  <p class="subtitle">A study compared 10-year survival rates for penguins with a flipper band (plus chip) and with a chip only.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <div class="tag tag-blue">Setup</div>
       <ul class="small">
-        <li>Group 1: metal tag, \(33\) of \(n_1=167\) survived, \(\hat{p}_1=\frac{33}{167}\approx 0.20\)</li>
-        <li>Group 2: electronic tag, \(68\) of \(n_2=189\) survived, \(\hat{p}_2=\frac{68}{189}\approx 0.36\)</li>
+        <li>Group 1: flipper band + chip, \(33\) of \(n_1=167\) survived, \(\hat{p}_1=\frac{33}{167}\approx 0.20\)</li>
+        <li>Group 2: chip only, \(68\) of \(n_2=189\) survived, \(\hat{p}_2=\frac{68}{189}\approx 0.36\)</li>
         <li>We want a \(90\%\) confidence interval for \(p_1-p_2\).</li>
       </ul>
       <div class="tag tag-purple">Step 1</div>
@@ -544,7 +544,7 @@
         \]
       </div>
       <div class="callout">
-        <strong>Interpretation:</strong> We are \(90\%\) confident that the survival rate is between \(8.3\%\) and \(23.7\%\) lower for metal-tagged penguins than for electronically tagged penguins.
+        <strong>Interpretation:</strong> We are \(90\%\) confident that the survival rate is between \(8.3\%\) and \(23.7\%\) lower for banded penguins than for penguins with only a chip.
       </div>
     </div>
   </div>
@@ -563,7 +563,8 @@
       </div>
       <div class="step-note">This is the overall sample proportion across both groups combined.</div>
       <ul>
-        <li>\(\hat{p}\) will lie between the two observed sample proportions.</li>
+        <li>\(x_1, x_2\) = number of successes in each group.</li>
+          <li>\(\hat{p}\) will lie between the two observed sample proportions.</li>
         <li>Use it only for the hypothesis test, not for the confidence interval.</li>
       </ul>
     </div>
@@ -584,7 +585,7 @@
 
 <div class="slide">
   <h2>Penguins Hypothesis Test</h2>
-  <p class="subtitle">The same penguin study can be framed as a test of whether metal tags reduce survival.</p>
+  <p class="subtitle">The same penguin study can be framed as a test of whether flipper bands reduce survival.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <div class="tag tag-blue">Step 1</div>
@@ -593,7 +594,7 @@
           H_0:p_1-p_2=0 \qquad H_a:p_1-p_2<0
         \]
       </div>
-      <div class="step-note">Here, Group 1 is metal tagged and Group 2 is electronically tagged.</div>
+      <div class="step-note">Here, Group 1 is flipper band + chip and Group 2 is chip only.</div>
       <div class="tag tag-purple">Step 2</div>
       <div class="formula-box">
         \[
@@ -601,7 +602,7 @@
         \]
       </div>
       <div class="callout">
-        The left-tail p-value is very small, so there is very strong evidence that metal tags are detrimental to penguins.
+        The left-tail p-value is very small, so there is very strong evidence that flipper bands are detrimental to penguins.
       </div>
     </div>
     <div class="card card-green">
@@ -619,7 +620,8 @@
         \]
       </div>
       <ul class="small">
-        <li><strong>StatKey:</strong> In <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>, under <strong>Theoretical Distributions</strong>, choose <strong>Normal</strong> (mean 0, SD 1). Check <strong>Left Tail</strong> and change the axis box to <strong>&minus;3.39</strong>. The tail area is about 0.00035.</li>
+        <li>\(Z\) = a value from the standard normal curve.</li>
+          <li><strong>StatKey:</strong> In <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>, under <strong>Theoretical Distributions</strong>, choose <strong>Normal</strong> (mean 0, SD 1). Check <strong>Left Tail</strong> and change the axis box to <strong>&minus;3.39</strong>. The tail area is about 0.00035.</li>
       </ul>
     </div>
   </div>
@@ -743,7 +745,7 @@
       <div class="card card-green curve-card">
         <div>
           <div class="tag tag-green">Randomization Test</div>
-          <div class="stat-label">The randomization dot plot shows the null distribution used for the hypothesis test and p-value.</div>
+          <div class="stat-label">The randomization dot plot shows the null distribution (the distribution of the statistic if \(H_0\) is true) used for the hypothesis test and p-value.</div>
         </div>
         <div class="curve-frame" style="padding:8px;">
           <img style="max-height:190px;width:auto;margin:0 auto;" src="images/ht_diff_prop.png" alt="Randomization dot plot for a hypothesis test for the difference in proportions">
