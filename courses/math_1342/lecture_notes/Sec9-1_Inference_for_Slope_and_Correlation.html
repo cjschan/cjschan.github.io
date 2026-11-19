@@ -162,7 +162,7 @@
 
 <div class="slide">
   <h2>The Data: Sleep Study</h2>
-  <p class="subtitle">Is depression a possible factor in students missing classes? The <b>SleepStudy</b> dataset records many variables for a sample of 253 college students, including a standard depression score (higher means more depressed) and the number of classes missed during the semester.</p>
+  <p class="subtitle">Is depression a possible factor in students missing classes? The <b>SleepStudy</b> dataset records many variables for a sample of 253 college students, including a standard depression score (from a questionnaire; higher means more depressed) and the number of classes missed during the semester.</p>
   <div class="grid-2">
     <div class="chart-box">
       <div id="chart-9-1-depression"></div>
@@ -278,12 +278,13 @@
     <div class="card card-green">
       <h3>Where to look</h3>
       <ul class="small">
+        <li><span class="amber">Pearson correlation</span> is the usual correlation \(r\).</li>
         <li><span class="amber">Coef</span> in the DepressionScore row is the slope \(b_1 = 0.0831\). The Constant row gives the intercept \(b_0 = 1.78\).</li>
         <li><span class="amber">SE Coef</span> is the standard error of the slope, \(SE_{b_1} = 0.03368\).</li>
-        <li><span class="amber">T</span> is \(b_1 / SE_{b_1} = 2.47\) and <span class="amber">P</span> is its two-sided p-value, 0.014, for testing \(\beta_1 = 0\).</li>
+        <li><span class="amber">T</span> is \(b_1 / SE_{b_1} = 2.47\) and <span class="amber">P</span> is its two-tail p-value, 0.014, for testing \(\beta_1 = 0\).</li>
         <li>The Constant row tests \(\beta_0 = 0\), which is rarely of interest.</li>
         <li>S is the standard deviation of the residuals: typical prediction error, about 3.2 classes.</li>
-        <li>R-Sq is \(R^2 = r^2\), the proportion of variability in \(y\) explained by the line (always between 0 and 1).</li>
+        <li>R-Sq is \(R^2 = r^2\), the proportion of variability in \(y\) explained by the line (always between 0 and 1). R-Sq(adj) is a slightly adjusted \(R^2\); we use <span style="white-space:nowrap">R-Sq</span>.</li>
       </ul>
     </div>
   </div>
