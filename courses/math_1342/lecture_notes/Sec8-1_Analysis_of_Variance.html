@@ -430,21 +430,21 @@
     <div class="card card-accent table-card">
       <table>
         <tr><th>Source</th><th>df</th><th>SS</th></tr>
-        <tr><td>Groups</td><td>4</td><td>35.90</td></tr>
-        <tr><td>Error</td><td>115</td><td>101.29</td></tr>
-        <tr><td>Total</td><td>119</td><td>137.19</td></tr>
+        <tr><td>Groups</td><td>4</td><td>39.88</td></tr>
+        <tr><td>Error</td><td>115</td><td>108.15</td></tr>
+        <tr><td>Total</td><td>119</td><td>148.02</td></tr>
       </table>
     </div>
     <div class="card card-green">
       <div class="tag tag-blue">Mean Squares</div>
       <div class="formula-box">
         \[
-          MSG=\frac{35.90}{4}=8.975
+          MSG=\frac{39.88}{4}=9.97
         \]
       </div>
       <div class="formula-box">
         \[
-          MSE=\frac{101.29}{115}\approx 0.881
+          MSE=\frac{108.15}{115}\approx 0.940
         \]
       </div>
     </div>
@@ -459,7 +459,7 @@
       <h3>Calculation</h3>
       <div class="formula-box">
         \[
-          F=\frac{8.975}{0.881}\approx 10.19
+          F=\frac{9.97}{0.940}\approx 10.60
         \]
       </div>
       <div class="step-note">A value this large means the group means are much farther apart than we would expect from within-group noise alone.</div>
@@ -469,10 +469,10 @@
       <ul class="small">
         <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>F</strong> (the right-skewed curve used for F-statistic p-values).</li>
         <li><strong>2.</strong> Set numerator df (groups, \(k-1\)) to <strong>4</strong> and denominator df <span style="white-space:nowrap">(error, \(n-k\))</span> to <strong>115</strong>; check <strong>Right Tail</strong>.</li>
-        <li><strong>3.</strong> Change the axis box to <strong>10.19</strong>. The tail area is about <strong>0.0000004</strong>.</li>
+        <li><strong>3.</strong> Change the axis box to <strong>10.60</strong>. The tail area is about <strong>0.0000002</strong>.</li>
       </ul>
       <div class="callout">
-        With \(df=4\) and \(115\), \(F\approx 10.19\) gives a p-value \(\approx 0.0000004\), far below \(0.05\), so we reject \(H_0\).
+        With \(df=4\) and \(115\), \(F\approx 10.60\) gives a p-value \(\approx 0.0000002\), far below \(0.05\), so we reject \(H_0\).
       </div>
       <div class="step-note">Conclusion: there is strong evidence that mean cuckoo egg length is not the same for all host-bird groups.</div>
     </div>
