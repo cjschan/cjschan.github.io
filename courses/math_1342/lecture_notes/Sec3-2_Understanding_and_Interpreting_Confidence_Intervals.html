@@ -148,15 +148,15 @@
   <div class="grid-3">
     <div class="card card-green">
       <div class="big-number" style="color: var(--green);">90%</div>
-      <p class="stat-label">90 out of 100 intervals computed this way will capture the true parameter</p>
+      <p class="stat-label">In the long run, about 90 of every 100 intervals computed this way capture the true parameter</p>
     </div>
     <div class="card card-accent">
       <div class="big-number" style="color: var(--accent);">95%</div>
-      <p class="stat-label">95 out of 100 intervals computed this way will capture the true parameter</p>
+      <p class="stat-label">In the long run, about 95 of every 100 intervals computed this way capture the true parameter</p>
     </div>
     <div class="card card-accent2">
       <div class="big-number" style="color: var(--accent2);">99%</div>
-      <p class="stat-label">99 out of 100 intervals computed this way will capture the true parameter</p>
+      <p class="stat-label">In the long run, about 99 of every 100 intervals computed this way capture the true parameter</p>
     </div>
   </div>
 </div>
@@ -259,7 +259,7 @@
 <!-- Inserted: chart slide -->
 <div class="slide">
   <h2>Visualizing Many CIs</h2>
-  <p class="subtitle">20 simulated 95% confidence intervals for the same population mean (true value shown as gold dashed line). 19 of the 20 (95%) capture the truth; 1 misses.</p>
+  <p class="subtitle">20 simulated 95% confidence intervals for the same population mean (true value shown as gold dashed line). In this picture 19 of the 20 (95%) capture the truth and 1 misses; in real repeated samples it is <em>about</em> 19 of 20, not exactly.</p>
   <div id="ci-stack" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:8px auto; max-width:640px;"></div>
 <script>
 (function(){
@@ -349,9 +349,9 @@
     <div class="card card-amber">
       <ul>
         <li>Our population: the <strong>136 movies</strong> that came out of Hollywood in 2011, collected from David McCandless&rsquo;s &ldquo;Most Profitable Hollywood Movies&rdquo; chart at <em>Information is Beautiful</em>.</li>
-        <li>Budgets ran from <strong>$0.2 million</strong> (the indie sci-fi drama <em>Another Earth</em>) to <strong>$250 million</strong> (<em>Pirates of the Caribbean: On Stranger Tides</em>).</li>
-        <li>Best bargain: the horror film <em>Insidious</em> cost $1.5 million and earned about <strong>$97 million</strong> worldwide, roughly 65 times its budget.</li>
-        <li>The year&rsquo;s box-office champ: <em>Harry Potter and the Deathly Hallows &ndash; Part 2</em>, about $1.3 billion worldwide.</li>
+        <li>Budgets ran from <strong>\$0.2 million</strong> (the indie sci-fi drama <em>Another Earth</em>) to <strong>\$250 million</strong> (<em>Pirates of the Caribbean: On Stranger Tides</em>).</li>
+        <li>Best bargain: the horror film <em>Insidious</em> cost \$1.5 million and earned about <strong>\$97 million</strong> worldwide, roughly 65 times its budget.</li>
+        <li>The year&rsquo;s box-office champ: <em>Harry Potter and the Deathly Hallows &ndash; Part 2</em>, about \$1.3 billion worldwide.</li>
       </ul>
       <div class="why"><b>Why it matters:</b> because the data list the budget of (nearly) every 2011 Hollywood movie, we know the true mean budget, \(\mu = 53.48\) million dollars. That almost never happens in real life, so we can actually check which intervals capture it.</div>
       <div class="source">Sources: Lock5 dataset <em>HollywoodMovies2011</em> (from <em>Information is Beautiful</em>, 2012); Wikipedia, &ldquo;2011 in film.&rdquo;</div>
