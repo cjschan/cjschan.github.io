@@ -9,6 +9,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -112,6 +113,27 @@
 </div>
 
 <div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Collector</span>
+  <h2>Tyler Vigen and the Nicolas Cage Drowning Chart</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/nicolas_cage_2013.jpg" alt="Actor Nicolas Cage on the red carpet at the 2013 Deauville American Film Festival" style="width: auto; max-width: 100%; align-self: center;">
+      <span class="credit">Photo: Georges Biard, CC BY-SA 3.0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Nicolas_Cage_Deauville_2013_2.jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>In 2014, <strong>Tyler Vigen</strong>, a Harvard Law student, built a website that automatically pairs up thousands of data series. He put it together in about a week, right before finals.</li>
+        <li>His most famous chart: the number of <strong>films Nicolas Cage appeared in</strong> each year vs. the number of <strong>swimming-pool drownings</strong> in the U.S., 1999&ndash;2009. Correlation: <strong>r &asymp; 0.67</strong>.</li>
+        <li>The site went viral and became a book, <em>Spurious Correlations</em> (2015).</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> that chart has only 11 points, picked from thousands of pairs. Search hard enough and something will line up. Nicolas Cage is not drowning anyone.</div>
+      <div class="source">Sources: NPR <em>Weekend Edition</em>, May 17, 2014; Hachette Book Group author page; tylervigen.com.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Spurious Correlations</h2>
   <p class="subtitle">Sometimes two variables are strongly correlated for no meaningful reason at all.</p>
   <div class="grid-2 center">
@@ -207,6 +229,28 @@
         <li>Any difference in the response can be attributed to the treatment.</li>
         <li>Randomized experiments are very powerful: they allow you to infer causality.</li>
       </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Study</span>
+  <h2>The Fake Knee Surgery That Worked as Well as the Real One</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/knee_arthroscopy_incisions.jpg" alt="A knee with three small stitched incisions from a typical arthroscopic surgery">
+      <span class="credit">Typical arthroscopy incisions (not from the study). Photo: Tim1965, CC BY-SA 3.0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Typical_arthroscopic_surgery_incisions_-_knee.JPG" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>At the <strong>Houston VA Medical Center</strong>, 180 patients with knee arthritis were randomly assigned to one of two real arthroscopic surgeries or a <strong>sham</strong>.</li>
+        <li>Sham patients were sedated and got <strong>three 1-cm cuts</strong> in the knee. The surgeon then acted out the whole operation without putting any instruments inside.</li>
+        <li>Surgeon J. Bruce Moseley did not learn which version a patient would get until the patient was already in the operating room.</li>
+        <li>Two years later, pain and function were about the same in all three groups.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> without a placebo group, the real surgery would have looked like a success. Lead investigator Nelda Wray: "the entire driving force behind this billion dollar industry is the placebo effect."</div>
+      <div class="source">Source: Moseley et al., "A Controlled Trial of Arthroscopic Surgery for Osteoarthritis of the Knee," <em>NEJM</em> 347:81&ndash;88 (2002); VA press release, July 2002.</div>
     </div>
   </div>
 </div>
@@ -319,6 +363,17 @@
     </div>
     <div class="card card-green">
       <h3>Study 2: Vitamin D and Colds</h3>
+      <svg class="doodle" viewBox="0 0 120 100" role="img" aria-label="Doodle of a vitamin capsule next to an identical-looking placebo capsule with a question mark">
+        <g transform="rotate(-30 36 52)">
+          <rect x="10" y="40" width="52" height="24" rx="12" fill="#f1f5f9"/>
+          <path d="M36 40 h14 a12 12 0 0 1 0 24 h-14 z" fill="#fbbf24"/>
+        </g>
+        <g transform="rotate(-30 86 52)">
+          <rect x="60" y="40" width="52" height="24" rx="12" fill="#f1f5f9"/>
+          <path d="M86 40 h14 a12 12 0 0 1 0 24 h-14 z" fill="#fbbf24"/>
+        </g>
+        <text x="60" y="96" text-anchor="middle" font-size="26" font-weight="800" fill="#34d399">?</text>
+      </svg>
       <div class="step-note">400 volunteers answer a newspaper ad. Each is randomly assigned to take a vitamin D pill or an identical-looking placebo for six months. Neither the volunteers nor the nurses recording illnesses know who got which. The vitamin D group had fewer colds.</div>
       <ul class="small">
         <li><strong>(d)</strong> Observational study or experiment? Is it blind, single-blind, or double-blind?</li>
