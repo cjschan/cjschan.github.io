@@ -82,16 +82,16 @@
       <ul>
         <li><strong>Visualize:</strong> side-by-side boxplots, one per group.</li>
         <li><strong>Summarize:</strong> statistics by group (mean, median, SD, IQR).</li>
-        <li><strong>Compare:</strong> the difference in means, \(\bar{x}_1 - \bar{x}_2\).</li>
+        <li><strong>Compare:</strong> the difference in means, \(\bar{x}_1 - \bar{x}_2\) (group 1 mean minus group 2 mean).</li>
       </ul>
     </div>
     <div class="card card-green">
       <h3>Quantitative + Quantitative</h3>
       <div class="step-note">Do the two variables tend to move together?</div>
       <ul>
-        <li><strong>Visualize:</strong> a scatterplot.</li>
-        <li><strong>Describe:</strong> direction, form, and strength.</li>
-        <li><strong>Summarize:</strong> the correlation, \(r\).</li>
+        <li><strong>Visualize:</strong> a scatterplot (one dot per case, plotted x vs. y).</li>
+        <li><strong>Describe:</strong> direction, form (straight or curved), and strength.</li>
+        <li><strong>Summarize:</strong> the correlation, \(r\) (a number from &minus;1 to 1).</li>
       </ul>
     </div>
   </div>
@@ -122,7 +122,7 @@
         \]
       </div>
       <div class="step-note">Say which group is first so the sign of the difference has meaning.</div>
-      <div class="step-note"><strong>Example:</strong> students who live off campus work a mean of 17.6 hours per week; on-campus students work 9.1. Then \(\bar{x}_{\text{off}} - \bar{x}_{\text{on}} = 17.6 - 9.1 = 8.5\) hours: off-campus students work about 8.5 more hours per week, on average.</div>
+      <div class="step-note"><strong>Example:</strong> students who live off campus work a mean of 17.6 hours per week; on-campus students work 9.1. Using subscripts to name the groups, \(\bar{x}_{\text{off}} - \bar{x}_{\text{on}} = 17.6 - 9.1 = 8.5\) hours: off-campus students work about 8.5 more hours per week, on average.</div>
     </div>
   </div>
 </div>
@@ -167,10 +167,10 @@
     </figure>
     <div class="card card-amber">
       <ul>
-        <li>2003, Brigham and Women's Hospital in Boston: immunologist <strong>Jack Bukowski</strong> and his team tested whether something in tea primes the body's germ-fighting cells.</li>
+        <li>2003, Brigham and Women's Hospital in Boston: immunologist (immune-system scientist) <strong>Jack Bukowski</strong> and his team tested whether something in tea primes the body's germ-fighting cells.</li>
         <li>Volunteers who did not normally drink tea drank about <strong>600 mL of black tea a day</strong> (roughly five cups). A comparison group drank instant coffee instead.</li>
-        <li>Afterward, the tea drinkers' immune cells released about <strong>five times more interferon-gamma</strong> than before. The coffee drinkers showed no change.</li>
-        <li>The likely reason: <strong>L-theanine</strong> in tea breaks down into a small molecule that "trains" one type of T cell.</li>
+        <li>Afterward, the tea drinkers' immune cells released about <strong>five times more interferon-gamma</strong> (a germ-fighting signal protein) than before. The coffee drinkers showed no change.</li>
+        <li>The likely reason: <strong>L-theanine</strong> (an amino acid) in tea breaks down into a small molecule that "trains" one type of T cell (a white blood cell).</li>
       </ul>
       <div class="why"><b>Why it matters:</b> these are the data on the next slides, with only 11 tea and 10 coffee drinkers. Bukowski himself said a much larger study was needed.</div>
       <div class="source">Source: Kamath et al., <em>PNAS</em> 100(10):6009&ndash;6014 (2003); <em>Harvard Crimson</em>, April 23, 2003.</div>
@@ -180,7 +180,7 @@
 
 <div class="slide">
   <h2>Example 2: Tea vs. Coffee and the Immune System</h2>
-  <p class="subtitle">Participants were randomized to drink either tea or coffee every day for two weeks. Then blood samples were exposed to an antigen and an immune system response was measured (higher = stronger immune system).</p>
+  <p class="subtitle">Participants were randomized to drink either tea or coffee every day for two weeks. Then blood samples were exposed to an antigen (a germ-like substance that triggers immunity) and an immune system response was measured (higher = stronger immune system).</p>
   <div class="grid-2">
     <div class="chart-box">
       <div id="chart-2-4-tea"></div>
@@ -208,7 +208,7 @@
 <div class="slide">
   <span class="tag tag-amber">Your Turn</span>
   <h2>Your Turn: Tea vs. Coffee: Descriptive Statistics</h2>
-  <p class="subtitle">Descriptive statistics for the immune response (interferon gamma) in the two groups from Example 2 are shown.</p>
+  <p class="subtitle">Descriptive statistics for the immune response (interferon gamma) in the two groups from Example 2 are shown (StDev = standard deviation).</p>
   <div class="card card-accent table-card" style="margin-bottom: 18px;">
     <table>
       <thead>
@@ -255,7 +255,7 @@
 <div class="slide">
   <span class="tag tag-green">Your Turn &mdash; Answers</span>
   <h2>Answers: Tea vs. Coffee: Descriptive Statistics</h2>
-  <p class="subtitle">Tea: \(n = 11\), \(\bar{x}_T = 34.82\). Coffee: \(n = 10\), \(\bar{x}_C = 17.70\).</p>
+  <p class="subtitle">Tea: \(n = 11\), \(\bar{x}_T = 34.82\). Coffee: \(n = 10\), \(\bar{x}_C = 17.70\). (Subscripts: \(T\) = tea, \(C\) = coffee.)</p>
   <div class="grid-2">
     <div class="card card-green">
       <h3>(a) Difference in Means</h3>
@@ -274,7 +274,7 @@
       <h3>(b) Causation</h3>
       <ul class="questions">
         <li><strong>Possibly, yes.</strong> Participants were <strong>randomly assigned</strong> to tea or coffee, so this is a randomized experiment, and other variables should be balanced between the groups.</li>
-        <li>The samples are small, though. A difference of 17.12 could partly be random chance. In Chapter 4 we will test whether a difference this large is statistically significant.</li>
+        <li>The samples are small, though. A difference of 17.12 could partly be random chance. In Chapter 4 we will test whether a difference this large is statistically significant (too big to be just chance).</li>
       </ul>
     </div>
   </div>
@@ -315,7 +315,7 @@
 
 <div class="slide">
   <h2>Correlation Coefficient</h2>
-  <p class="subtitle">A single number that measures the strength and direction of a linear relationship.</p>
+  <p class="subtitle">A single number that measures the strength and direction of a linear (straight-line) relationship.</p>
   <div class="grid-2" style="flex: 0 0 auto;">
     <div class="card card-accent">
       <h3>Notation</h3>
@@ -335,7 +335,7 @@
         <li>\(r > 0\): positive association</li>
         <li>\(r < 0\): negative association</li>
         <li>\(r \approx 0\): no linear association</li>
-        <li>Closer to \(\pm 1\) means a stronger linear relationship</li>
+        <li>Closer to \(\pm 1\) (either +1 or &minus;1) means a stronger linear relationship</li>
         <li>Unitless, and the same regardless of which variable is X or Y</li>
       </ul>
     </div>
@@ -344,7 +344,7 @@
   <div class="grid-3" style="flex: 0 0 auto;">
     <div class="card card-green">
       <div class="big-number green" style="font-size: 30px;">Strong</div>
-      <div class="stat-label">\(|r|\) close to 1. Points cluster tightly around a line.</div>
+      <div class="stat-label">\(|r|\) (\(r\) without its sign) close to 1. Points cluster tightly around a line.</div>
     </div>
     <div class="card card-amber">
       <div class="big-number amber" style="font-size: 30px;">Moderate</div>
