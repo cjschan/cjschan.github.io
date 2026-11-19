@@ -254,7 +254,7 @@
       </div>
       <ul class="small">
         <li>\(b_1\) and \(SE_{b_1}\) are printed in the regression output, along with \(t\) and the p-value.</li>
-        <li>Rejecting \(H_0\) means \(x\) is a useful linear predictor of \(y\).</li>
+        <li>Rejecting \(H_0\) means there is evidence of a linear relationship between \(x\) and \(y\) (check \(R^2\) to see how much it explains).</li>
       </ul>
     </div>
   </div>
@@ -311,7 +311,7 @@
       <div class="formula-box" style="font-size:19px; margin-top:4px;">\[ H_0:\ \beta_1 = 0 \quad t = \frac{0.08312}{0.03368} = 2.47,\ df = 251 \]</div>
       <ul class="small">
         <li>(d) If a student's depression score were one point higher, the predicted number of classes missed would be <span class="green">0.0831 higher</span>.</li>
-        <li>(e) p-value \(= 0.014\): reject \(H_0\). Depression score is an effective predictor of classes missed.</li>
+        <li>(e) p-value \(= 0.014\): reject \(H_0\). There is evidence that depression score is associated with classes missed (though \(R^2\) shows it explains little).</li>
         <li>(f) Both tests give 0.014, as expected: both test "no linear relationship."</li>
       </ul>
     </div>
@@ -407,7 +407,7 @@
         \]
       </div>
       <ul class="small">
-        <li>We are 95% sure that the slope of the linear model to predict classes missed from depression score, for all students at this college, is between 0.0167 and 0.1495.</li>
+        <li>We are 95% confident that the slope of the linear model to predict classes missed from depression score, for all students at this college, is between 0.0167 and 0.1495.</li>
         <li>The interval does not contain 0, which agrees with rejecting \(H_0: \beta_1 = 0\) at the 5% level.</li>
       </ul>
     </div>
@@ -516,7 +516,7 @@
         \]
       </div>
       <ul class="small">
-        <li>We are 95% sure that the slope of the linear model to predict classes missed from drinks per week, for all students at this college, is between \(-0.036\) and \(0.160\). The interval contains 0, consistent with not rejecting \(H_0\).</li>
+        <li>We are 95% confident that the slope of the linear model to predict classes missed from drinks per week, for all students at this college, is between \(-0.036\) and \(0.160\). The interval contains 0, consistent with not rejecting \(H_0\).</li>
         <li>(g) The two p-values are the same, \(0.215\), as expected.</li>
         <li>(h) \(R^2 = 0.6\%\). The number of alcoholic drinks per week explains only 0.6% of the variability in number of classes missed.</li>
       </ul>
