@@ -15,6 +15,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root {
     --bg: #0f172a;
@@ -274,6 +275,32 @@
 </div>
 
 <div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Data</span>
+  <h2>Oscar, Nobel, or Olympic Gold?</h2>
+  <div class="story">
+    <figure>
+      <div class="photo-row">
+        <img class="photo" style="height:44vh;max-height:44vh;" src="images/stories/disney_oscars_display.jpg" alt="A glass display case full of gold Oscar statuettes won by Walt Disney, at the Walt Disney Family Museum">
+        <img class="photo" style="height:44vh;max-height:44vh;" src="images/stories/nobel_medal_fleming_1945.jpg" alt="Alexander Fleming's 1945 Nobel Prize medal, gold with a profile of Alfred Nobel">
+        <img class="photo" style="height:44vh;max-height:44vh;" src="images/stories/olympic_gold_medal_2012.jpg" alt="A London 2012 Olympic gold medal held in a hand">
+      </div>
+      <span class="credit">Photos via Wikimedia Commons: Walt Disney&#8217;s Oscars, Jim Heaphy, CC BY-SA 3.0 (<a href="https://commons.wikimedia.org/wiki/File:Disney_Display_Case.JPG" target="_blank" rel="noopener">source</a>); Fleming&#8217;s Nobel medal, Osama Shukir Muhammed Amin, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Nobel_prize_medal_for_medicine,_Sweden,_1945,_to_Sir_Alexander_Fleming_(1881-1955)_who_discovered_Penicillin._On_display_at_the_National_Museum_of_Scotland.jpg" target="_blank" rel="noopener">source</a>); 2012 Olympic gold, carlinmack, CC0 (<a href="https://commons.wikimedia.org/wiki/File:2012_Olympic_Gold_Medal.jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>The Lock5 <strong>StudentSurvey</strong> is an in-class survey of 362 introductory statistics students, collected over several years. One question: which award would you most like to win &mdash; an <strong>Academy Award</strong>, a <strong>Nobel Prize</strong>, or an <strong>Olympic gold medal</strong>?</li>
+        <li><strong>Oscar:</strong> 13.5 inches tall, 8.5 pounds, cast in bronze with a 24-karat gold finish. Walt Disney still holds the record for most individual Oscars; 26 of them are on display at his family museum.</li>
+        <li><strong>Nobel:</strong> until 1980 the medals were 23-carat gold; since then, 18-carat recycled gold.</li>
+        <li><strong>Olympic &#8220;gold&#8221;:</strong> mostly silver, plated with at least 6 grams of gold.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> each student lands in exactly one award category, so award preference is a <strong>categorical</strong> variable. Is it associated with whether a student&#8217;s Math or Verbal SAT score is higher?</div>
+      <div class="source">Sources: Lock5Data StudentSurvey documentation; oscars.org; nobelprize.org; Walt Disney Family Museum; Olympedia.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Observed Counts Example</h2>
   <p class="subtitle">The StudentSurvey data compare award preference and which SAT score is higher.</p>
   <div class="grid-2">
@@ -424,6 +451,7 @@
       </table>
     </div>
     <div class="card card-green">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a graduation cap resting on a stack of books"><path d="M32 50v16c0 9 56 9 56 0V50L60 62z" fill="#a78bfa"/><polygon points="60,20 110,40 60,60 10,40" fill="#818cf8"/><path d="M60 40l38 8v22" stroke="#fbbf24" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="98" cy="74" r="5" fill="#fbbf24"/><rect x="20" y="86" width="80" height="11" rx="2" fill="#38bdf8"/><rect x="26" y="99" width="70" height="11" rx="2" fill="#fb7185"/><rect x="22" y="89" width="76" height="2" fill="#f1f5f9" opacity=".7"/></svg>
       <h3>Questions</h3>
       <ul>
         <li>(a) State \(H_0\) and \(H_a\).</li>

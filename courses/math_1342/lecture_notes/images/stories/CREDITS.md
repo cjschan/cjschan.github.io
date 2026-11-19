@@ -29,4 +29,7 @@ Every photo here is public domain or Creative Commons, downloaded from Wikimedia
 | cat_nap_window.jpg | Yanko Peyankov peyankov | CC0 | https://commons.wikimedia.org/wiki/File:Cat_napping_by_the_window_(Unsplash).jpg |
 | wrigley_field_game.jpg | redlegsfan21 | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Wrigley_Field_(16003794830).jpg |
 | arctic_sea_ice_2023.jpg | NASA's Scientific Visualization Studio - USRA/Trent L. Schindler, Global Science | Public domain | https://commons.wikimedia.org/wiki/File:Arctic_Sea_Ice_Minimum_2023_(SVS5162_-_arctic_sea_ice_2023_min_2160p60_2820_print).jpg |
+| olympic_gold_medal_2012.jpg | carlinmack | CC0 | https://commons.wikimedia.org/wiki/File:2012_Olympic_Gold_Medal.jpg |
+| nobel_medal_fleming_1945.jpg | Osama Shukir Muhammed Amin FRCP(Glasg) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Nobel_prize_medal_for_medicine,_Sweden,_1945,_to_Sir_Alexander_Fleming_(1881-1955)_who_discovered_Penicillin._On_display_at_the_National_Museum_of_Scotland.jpg |
+| disney_oscars_display.jpg | Cullen328 by Jim Heaphy | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Disney_Display_Case.JPG |
 | wilt_chamberlain_portrait.jpg | Wilt_Chamberlain2.jpg: Fred Palumbo, World Telegram staff photographer derivativ | Public domain | https://commons.wikimedia.org/wiki/File:Wilt_Chamberlain3.jpg |
