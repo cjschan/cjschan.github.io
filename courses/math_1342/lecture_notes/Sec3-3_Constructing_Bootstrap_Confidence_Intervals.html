@@ -71,7 +71,7 @@
 <div class="slide title-slide">
   <span class="tag tag-green">Section 3.3</span>
   <h1>Constructing Bootstrap<br>Confidence Intervals</h1>
-  <p class="subtitle">Using resampling to estimate the standard error when we only have one sample</p>
+  <p class="subtitle">Using resampling (re-drawing values from our one sample) to estimate the standard error when we only have one sample</p>
 </div>
 
 <!-- Slide 2: Review of the big picture from 3.2, and the one-sample problem -->
@@ -246,7 +246,7 @@
 <div class="slide">
   <span class="tag tag-green">Key Idea</span>
   <h2>The Bootstrap Idea</h2>
-  <p class="subtitle">Resample from your one sample — with replacement — to mimic drawing new samples.</p>
+  <p class="subtitle">Resample from your one sample — with replacement (each value is put back, so it can repeat) — to mimic drawing new samples.</p>
   <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0;">
     <svg viewBox="0 0 1200 450" style="width:100%; height:100%; max-height:430px;" font-family="Inter, sans-serif">
       <defs>
@@ -588,7 +588,7 @@
       <h3>Compute the CI</h3>
       <p class="step-note">(a) Statistic: \(\hat{p} = \dfrac{32}{50} = 0.64\)</p>
       <p class="step-note">(b) The bootstrap distribution is centered near <strong>0.64</strong>, the sample statistic.</p>
-      <p class="step-note">(c) Bootstrap SE: the Sim SD \(\approx 0.068\)</p>
+      <p class="step-note">(c) Bootstrap SE: the Sim SD (SD of the simulated statistics) \(\approx 0.068\)</p>
       <div class="formula-box" style="font-size: 20px;">
         (d) \(95\%\;\text{CI} = 0.64 \pm 2(0.068)\)<br><br>
         \(= 0.64 \pm 0.136 \approx (0.50,\; 0.78)\)
