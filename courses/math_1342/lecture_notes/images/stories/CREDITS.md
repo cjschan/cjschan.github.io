@@ -17,6 +17,7 @@ Every photo here is public domain or Creative Commons, downloaded from Wikimedia
 | wunderlich_portrait.jpg | Wilhelm Höffert (1832–1901) | Public domain | https://commons.wikimedia.org/wiki/File:Carl_August_Wunderlich_-_Foto.jpg |
 | anopheles_stephensi.jpg | Jim Gathany | Public domain | https://commons.wikimedia.org/wiki/File:Anopheles_stephensi.jpeg |
 | bottlenose_dolphin_wake.jpg | NASA | Public domain | https://commons.wikimedia.org/wiki/File:Tursiops_truncatus_01.jpg |
+| king_penguin_crozet.jpg | Antoine Lamielle | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:2020-11_Crozet_Islands_-_King_Penguin_11.jpg |
 | nodoz_caffeine_tablets.jpg | Ragesoss | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:NoDoz_caffeine_tablets_on_black.jpg |
 | lady_justice_old_bailey.jpg | Philip Halling | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Lady_Justice,_the_Old_Bailey_-_geograph.org.uk_-_7017758.jpg |
 | chocolate_chip_cookies.jpg | Mshuang2 | CC0 | https://commons.wikimedia.org/wiki/File:Chocolate_chip_cookies_on_cutting_board.jpg |
