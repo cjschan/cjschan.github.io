@@ -13,6 +13,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=6"></script>
 <script src="statkey.js?v=5"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -119,6 +120,28 @@
   </div>
 </div>
 
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Statistician</span>
+  <h2>R. A. Fisher and the Lady Tasting Tea</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/fisher_1913.jpg" alt="Black-and-white portrait of a young Ronald Fisher in 1913, wearing round glasses and a suit" style="width:auto; max-width:100%; margin:0 auto;">
+      <span class="credit">Photo: unknown photographer, Public domain, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Youngronaldfisher2.JPG" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-accent2">
+      <ul>
+        <li><strong>Ronald A. Fisher</strong> (1890&ndash;1962) worked at <strong>Rothamsted</strong>, a farm research station in England, where he developed many of the ideas behind hypothesis testing.</li>
+        <li>The story: at an afternoon tea in the 1920s, algae scientist <strong>Muriel Bristol</strong> claimed she could taste whether the milk or the tea went into the cup first.</li>
+        <li>Fisher&rsquo;s test: <strong>8 cups, 4 of each kind, in random order</strong>. A pure guesser gets all 8 right only <strong>1 time in 70</strong> (about 0.014). His colleague H. Fairfield Smith later reported that she got all 8.</li>
+        <li>In his 1925 book, Fisher called <strong>1 in 20 (0.05)</strong> a convenient cutoff &mdash; and said 1 in 50 or 1 in 100 were fine too if you wanted to be stricter.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> &alpha; = 0.05 is a habit one scientist found convenient, not a law of nature.</div>
+      <div class="source">Sources: Fisher, <em>Statistical Methods for Research Workers</em> (1925) and <em>The Design of Experiments</em> (1935); D. Salsburg, <em>The Lady Tasting Tea</em> (2001).</div>
+    </div>
+  </div>
+</div>
+
 <!-- Slide 3: Significance Level -->
 <div class="slide">
   <h2>The Significance Level \(\alpha\)</h2>
@@ -174,6 +197,28 @@
   </div>
   <div class="callout">
     <strong>Remember:</strong> We always set \(\alpha\) before collecting data, not after. Choosing \(\alpha\) after seeing the p-value would be cheating!
+  </div>
+</div>
+
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Study</span>
+  <h2>Red-Wine Pills for Pocket-Sized Primates</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/grey_mouse_lemur.jpg" alt="A grey mouse lemur with huge round eyes clinging to a tree trunk at night in Madagascar">
+      <span class="credit">Photo: Charles J. Sharp, CC BY-SA 3.0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Gray_mouse_lemur_microcebus_murinus.jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-accent3">
+      <ul>
+        <li><strong>Grey mouse lemurs</strong> are among the smallest primates on Earth, native to Madagascar. The study animals weighed about 130 g (under 5 oz) and lived in a lab colony in Brunoy, France.</li>
+        <li>Fun fact: when days get short, these lemurs fatten up for winter &mdash; their weight can nearly <strong>double in a few weeks</strong>.</li>
+        <li>In 2010, Fabien Dal-Pan, St&eacute;phane Blanc and Fabienne Aujard fed <strong>six male lemurs</strong> resveratrol (the red-wine compound) for <strong>4 weeks</strong> during that fattening season.</li>
+        <li>Each lemur was measured before and after, so every animal served as its own comparison.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> with only six animals, chance could easily fool us. The next slide uses each test&rsquo;s p-value to decide which results count as significant.</div>
+      <div class="source">Source: Dal-Pan, Blanc &amp; Aujard, &ldquo;Resveratrol suppresses body mass gain in a seasonal non-human primate model of obesity,&rdquo; <em>BMC Physiology</em> 10:11, 2010.</div>
+    </div>
   </div>
 </div>
 
@@ -277,6 +322,15 @@
   <div class="grid-2" style="grid-template-columns: 2fr 1fr;">
     <div id="alpha-dots" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; width:100%;"></div>
     <div class="card card-accent">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a bottle of iced tea labeled 25 grams next to two sugar cubes">
+  <rect x="46" y="6" width="24" height="10" rx="3" fill="#fb7185"/>
+  <path d="M49 16 h18 v10 l12 14 v62 a6 6 0 0 1 -6 6 h-30 a6 6 0 0 1 -6 -6 v-62 l12 -14 z" fill="#fbbf24"/>
+  <path d="M43 44 h30" stroke="#f1f5f9" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <rect x="38" y="56" width="40" height="24" rx="4" fill="#f1f5f9"/>
+  <text x="58" y="73" text-anchor="middle" font-size="13" font-weight="800" fill="#0f172a" font-family="Inter, sans-serif">25 g</text>
+  <rect x="88" y="92" width="16" height="16" rx="2" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="97" y="74" width="16" height="16" rx="2" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" transform="rotate(12 105 82)"/>
+</svg>
       <h3>The Test</h3>
       <p class="step-note">\(H_0: \mu = 25\) &nbsp;&nbsp; \(H_a: \mu > 25\)</p>
       <p class="step-note">Sample statistic: \(\bar{x} = 33.8\)</p>
@@ -318,6 +372,17 @@
   <div class="grid-2" style="grid-template-columns: 2fr 1fr;">
     <div id="alpha-dots-2tail" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; width:100%;"></div>
     <div class="card card-accent">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a cereal box labeled 16 ounces next to a bowl of cereal">
+  <rect x="18" y="10" width="58" height="88" rx="4" fill="#fb7185"/>
+  <rect x="18" y="10" width="58" height="10" rx="3" fill="#a78bfa"/>
+  <circle cx="47" cy="45" r="15" fill="#fbbf24"/>
+  <circle cx="42" cy="41" r="3" fill="#0f172a"/><circle cx="52" cy="41" r="3" fill="#0f172a"/>
+  <path d="M41 50 q6 6 12 0" fill="none" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="26" y="70" width="42" height="18" rx="3" fill="#f1f5f9"/>
+  <text x="47" y="83.5" text-anchor="middle" font-size="12" font-weight="800" fill="#0f172a" font-family="Inter, sans-serif">16 oz</text>
+  <circle cx="80" cy="90" r="5" fill="#fbbf24"/><circle cx="91" cy="87" r="5" fill="#fbbf24"/><circle cx="102" cy="90" r="5" fill="#fbbf24"/>
+  <path d="M70 92 h44 a22 20 0 0 1 -44 0 z" fill="#38bdf8"/>
+</svg>
       <h3>The Test</h3>
       <p class="step-note">\(H_0: \mu = 16\) &nbsp;&nbsp; \(H_a: \mu \neq 16\)</p>
       <p class="step-note">Sample statistic: \(\bar{x} = 16.12\), which is 0.12 above 16</p>
@@ -358,6 +423,18 @@
   <p class="subtitle" style="font-size: 17px; max-width: none; margin-bottom: 12px;">For each test, state the decision (reject or do not reject \(H_0\)) and write a conclusion in context.</p>
   <div class="grid-2" style="grid-template-columns: 1fr 1fr;">
     <div class="card card-amber">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a browser window comparing an old and a new homepage, with a green check on the new one">
+  <rect x="6" y="16" width="108" height="84" rx="8" fill="#818cf8"/>
+  <circle cx="16" cy="25" r="3" fill="#fb7185"/><circle cx="25" cy="25" r="3" fill="#fbbf24"/><circle cx="34" cy="25" r="3" fill="#34d399"/>
+  <rect x="12" y="34" width="45" height="60" rx="4" fill="#f1f5f9"/>
+  <rect x="17" y="40" width="35" height="6" rx="2" fill="#94a3b8"/>
+  <rect x="17" y="51" width="35" height="4" rx="2" fill="#cbd5e1"/><rect x="17" y="59" width="28" height="4" rx="2" fill="#cbd5e1"/><rect x="17" y="67" width="32" height="4" rx="2" fill="#cbd5e1"/>
+  <rect x="63" y="34" width="45" height="60" rx="4" fill="#f1f5f9"/>
+  <rect x="68" y="40" width="35" height="20" rx="3" fill="#38bdf8"/>
+  <rect x="68" y="65" width="35" height="4" rx="2" fill="#a78bfa"/><rect x="68" y="73" width="24" height="4" rx="2" fill="#cbd5e1"/>
+  <circle cx="102" cy="96" r="13" fill="#34d399"/>
+  <path d="M95 96 l5 5 l9 -10" fill="none" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
       <ul class="small">
         <li><strong>(a)</strong> Does a new teaching method <strong>raise</strong> mean test scores? p-value = 0.012, \(\alpha = 0.05\)</li>
         <li><strong>(b)</strong> Is a coin <strong>unfair</strong>? p-value = 0.21, \(\alpha = 0.05\)</li>

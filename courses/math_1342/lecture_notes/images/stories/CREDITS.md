@@ -11,6 +11,8 @@ Every photo here is public domain or Creative Commons, downloaded from Wikimedia
 | nicolas_cage_2013.jpg | Georges Biard | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Nicolas_Cage_Deauville_2013_2.jpg |
 | cup_black_tea.jpg | AntanO | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Cup_of_black_tea.JPG |
 | nightingale_coxcomb.jpg | Florence Nightingale | Public domain | https://commons.wikimedia.org/wiki/File:Nightingale-mortality.jpg |
+| fisher_1913.jpg | Unknown photographer | Public domain | https://commons.wikimedia.org/wiki/File:Youngronaldfisher2.JPG |
+| grey_mouse_lemur.jpg | Charles J. Sharp | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Gray_mouse_lemur_microcebus_murinus.jpg |
 | bottlenose_dolphin_wake.jpg | NASA | Public domain | https://commons.wikimedia.org/wiki/File:Tursiops_truncatus_01.jpg |
 | nodoz_caffeine_tablets.jpg | Ragesoss | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:NoDoz_caffeine_tablets_on_black.jpg |
 | hollywood_sign.jpg | Thomas Wolf, www.foto-tw.de | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Hollywood_Sign_(Zuschnitt).jpg |
