@@ -124,8 +124,8 @@
     <div class="card card-amber">
       <ul>
         <li>In 2014, <strong>Tyler Vigen</strong>, a Harvard Law student, built a website that automatically pairs up thousands of data series. He put it together in about a week, right before finals.</li>
-        <li>His most famous chart: the number of <strong>films Nicolas Cage appeared in</strong> each year vs. the number of <strong>swimming-pool drownings</strong> in the U.S., 1999&ndash;2009. Correlation: <strong>r &asymp; 0.67</strong>.</li>
-        <li>The site went viral and became a book, <em>Spurious Correlations</em> (2015).</li>
+        <li>His most famous chart: the number of <strong>films Nicolas Cage appeared in</strong> each year vs. the number of <strong>swimming-pool drownings</strong> in the U.S., 1999&ndash;2009. Correlation: <strong>r &asymp; 0.67</strong> (r, from &minus;1 to 1, measures how tightly two variables line up; Section 2.4).</li>
+        <li>The site went viral and became a book, <em>Spurious Correlations</em> (2015) &mdash; spurious means coincidental, not meaningful.</li>
       </ul>
       <div class="why"><b>Why it matters:</b> that chart has only 11 points, picked from thousands of pairs. Search hard enough and something will line up. Nicolas Cage is not drowning anyone.</div>
       <div class="source">Sources: NPR <em>Weekend Edition</em>, May 17, 2014; Hachette Book Group author page; tylervigen.com.</div>
@@ -157,7 +157,7 @@
 
 <div class="slide">
   <h2>Why Spurious Correlations Happen</h2>
-  <p class="subtitle">A correlation near 1 means two series move almost in lockstep (we will define r in Section 2.5). Here is how a meaningless one gets that high.</p>
+  <p class="subtitle">A correlation near 1 means two series move almost in lockstep (we will define r in Section 2.4). Here is how a meaningless one gets that high.</p>
   <div class="grid-2 center">
     <figure class="chart-figure">
       <img src="images/spurious_camden_ufo.png" alt="Line chart showing the number of babies named Camden rising and falling alongside UFO sightings reported in Florida from 1975 to 2021, with correlation 0.966">
@@ -202,7 +202,7 @@
       <h3>Experiment</h3>
       <ul>
         <li>The researcher actively <span class="green">controls</span> the explanatory variable.</li>
-        <li>Assigns treatments to subjects.</li>
+        <li>Assigns treatments (the conditions being compared) to subjects (the people or units studied).</li>
         <li>If randomized, confounding variables are eliminated.</li>
         <li><span class="green">Can establish causation.</span></li>
       </ul>
@@ -244,12 +244,12 @@
     </figure>
     <div class="card card-amber">
       <ul>
-        <li>At the <strong>Houston VA Medical Center</strong>, 180 patients with knee arthritis were randomly assigned to one of two real arthroscopic surgeries or a <strong>sham</strong>.</li>
-        <li>Sham patients were sedated and got <strong>three 1-cm cuts</strong> in the knee. The surgeon then acted out the whole operation without putting any instruments inside.</li>
+        <li>At the <strong>Houston VA (Veterans Affairs) Medical Center</strong>, 180 patients with knee arthritis (osteoarthritis: worn-down joint cartilage) were randomly assigned (by chance, like a coin flip) to one of two real arthroscopic surgeries (done through tiny cuts with a small camera) or a <strong>sham</strong> (fake) surgery.</li>
+        <li>Sham patients were sedated (given drugs to make them drowsy) and got <strong>three 1-cm cuts</strong> in the knee. The surgeon then acted out the whole operation without putting any instruments inside.</li>
         <li>Surgeon J. Bruce Moseley did not learn which version a patient would get until the patient was already in the operating room.</li>
         <li>Two years later, pain and function were about the same in all three groups.</li>
       </ul>
-      <div class="why"><b>Why it matters:</b> without a placebo group, the real surgery would have looked like a success. Lead investigator Nelda Wray: "the entire driving force behind this billion dollar industry is the placebo effect."</div>
+      <div class="why"><b>Why it matters:</b> without a placebo group (patients given a fake treatment), the real surgery would have looked like a success. Lead investigator Nelda Wray: "the entire driving force behind this billion dollar industry is the placebo effect."</div>
       <div class="source">Source: Moseley et al., "A Controlled Trial of Arthroscopic Surgery for Osteoarthritis of the Knee," <em>NEJM</em> 347:81&ndash;88 (2002); VA press release, July 2002.</div>
     </div>
   </div>
@@ -273,7 +273,7 @@
         <ul>
           <li>People experience the effect they <em>expect</em>, even without real treatment.</li>
           <li>In one study, fake knee surgery relieved pain just as much as real surgery.</li>
-          <li>A <span class="amber">placebo</span> (fake treatment) and <span class="amber">blinding</span> help control for this.</li>
+          <li>A <span class="amber">placebo</span> (fake treatment) and <span class="amber">blinding</span> (keeping people unaware of who got what) help control for this.</li>
         </ul>
       </div>
     </div>
@@ -314,7 +314,7 @@
       <ul class="small">
         <li>Neither the subjects nor the people who interact with them or measure the response know who got which treatment.</li>
         <li>A third party holds the assignment code until all the data are collected.</li>
-        <li>The standard for clinical trials.</li>
+        <li>The standard for clinical trials (medical experiments on people).</li>
       </ul>
     </div>
   </div>
@@ -350,7 +350,7 @@
 <div class="slide">
   <span class="tag tag-amber">Your Turn</span>
   <h2>Your Turn: Study Design and Scope of Inference</h2>
-  <p class="subtitle">For each study, decide what kind of study it is and what conclusions are justified.</p>
+  <p class="subtitle">For each study, decide what kind of study it is and its scope of inference: what conclusions are justified, and for whom.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <h3>Study 1: Coffee and Depression</h3>
