@@ -34,3 +34,4 @@ Every photo here is public domain or Creative Commons, downloaded from Wikimedia
 | nobel_medal_fleming_1945.jpg | Osama Shukir Muhammed Amin FRCP(Glasg) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Nobel_prize_medal_for_medicine,_Sweden,_1945,_to_Sir_Alexander_Fleming_(1881-1955)_who_discovered_Penicillin._On_display_at_the_National_Museum_of_Scotland.jpg |
 | disney_oscars_display.jpg | Cullen328 by Jim Heaphy | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Disney_Display_Case.JPG |
 | wilt_chamberlain_portrait.jpg | Wilt_Chamberlain2.jpg: Fred Palumbo, World Telegram staff photographer derivativ | Public domain | https://commons.wikimedia.org/wiki/File:Wilt_Chamberlain3.jpg |
+| nightingale_coxcomb_zoom.jpg | Florence Nightingale | Public domain | https://commons.wikimedia.org/wiki/File:Nightingale-mortality.jpg |
