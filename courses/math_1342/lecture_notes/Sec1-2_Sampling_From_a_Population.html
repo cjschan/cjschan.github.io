@@ -12,6 +12,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -155,6 +156,28 @@
 </div>
 
 <div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Study</span>
+  <h2>The Big Data Paradox: 250,000 Answers a Week, Still Wrong</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/covid_vaccine_card.jpg" alt="A blank CDC COVID-19 Vaccination Record Card lying on a black table with a blue pen">
+      <span class="credit">Photo: Jernej Furman, CC BY 2.0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:COVID-19_Vaccination_record_card_and_a_blue_pen_on_black_background_(51021144963).jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>In early 2021, the Delphi&ndash;Facebook survey asked about <strong>250,000 U.S. adults every week</strong> whether they had a COVID-19 vaccine.</li>
+        <li>Statisticians Valerie Bradley, Xiao-Li Meng, Seth Flaxman and colleagues checked it against CDC records. By May 2021 it was off by <strong>17 percentage points</strong>.</li>
+        <li>The plot twist: the Axios&ndash;Ipsos poll, with only about <strong>1,000 people a week</strong> recruited by random address sampling, missed by about <strong>4 points</strong>.</li>
+        <li>The authors called it the <strong>"Big Data Paradox"</strong>: a bigger biased sample just makes you more confident in the wrong answer.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> a huge sample cannot fix a biased one. <em>How</em> the sample is chosen matters more than how big it is.</div>
+      <div class="source">Source: Bradley et al., "Unrepresentative big surveys significantly overestimated US vaccine uptake," <em>Nature</em> 600, 695&ndash;700 (2021).</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Sampling Bias</h2>
   <p class="subtitle">When the sampling method causes the sample to differ from the population in a relevant way.</p>
   <div class="grid-2">
@@ -195,6 +218,28 @@
         <li>Non-random samples may suffer from bias.</li>
         <li>Only random samples can truly be trusted for generalizations.</li>
       </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Poll</span>
+  <h2>Elon Musk Asks Twitter Whether He Should Quit</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/musk_ted_2022.jpg" alt="Elon Musk speaking on stage at TED 2022" style="width: auto; max-width: 100%; align-self: center;">
+      <span class="credit">Photo: Steve Jurvetson, CC BY 2.0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Meet_the_new_boss..._Same_as_the_News_boss..._The_Elon_Musk_Twitter_Interview_at_TED_2022_(52004185747)_(cropped).jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>December 18, 2022, less than two months after buying Twitter, Musk posted: <em>"Should I step down as head of Twitter? I will abide by the results of this poll."</em></li>
+        <li>Twelve hours later: about <strong>17.5 million votes</strong>, and <strong>57.5% said yes</strong>.</li>
+        <li>Within hours he was replying to claims that bot accounts had swung the vote.</li>
+        <li>In May 2023 he named Linda Yaccarino as Twitter's new CEO.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> 17.5 million sounds huge, but every vote came from someone who saw the poll <em>and chose</em> to click. That is a volunteer sample, not a picture of all users.</div>
+      <div class="source">Sources: NBC News and Fox Business, Dec. 19, 2022; coverage of the Yaccarino announcement, May 2023.</div>
     </div>
   </div>
 </div>
@@ -270,6 +315,21 @@
   <p class="subtitle">For each study, name the main source of bias (convenience, volunteer, related sampling, question wording, context, or inaccurate responses) and say which way it likely pushes the result.</p>
   <div class="grid-2">
     <div class="card card-amber">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a survey clipboard with checked and crossed boxes under a magnifying glass">
+        <rect x="18" y="16" width="68" height="92" rx="8" fill="#a78bfa"/>
+        <rect x="26" y="26" width="52" height="74" rx="4" fill="#f1f5f9"/>
+        <rect x="38" y="10" width="28" height="12" rx="4" fill="#818cf8"/>
+        <rect x="32" y="36" width="10" height="10" rx="2" fill="none" stroke="#0f172a" stroke-width="2"/>
+        <path d="M33 41 l4 4 l7 -9" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="48" y="39" width="24" height="4" rx="2" fill="#475569"/>
+        <rect x="32" y="56" width="10" height="10" rx="2" fill="none" stroke="#0f172a" stroke-width="2"/>
+        <path d="M34 58 l6 6 M40 58 l-6 6" stroke="#fb7185" stroke-width="3" stroke-linecap="round"/>
+        <rect x="48" y="59" width="20" height="4" rx="2" fill="#475569"/>
+        <rect x="32" y="76" width="10" height="10" rx="2" fill="none" stroke="#0f172a" stroke-width="2"/>
+        <rect x="48" y="79" width="24" height="4" rx="2" fill="#475569"/>
+        <circle cx="86" cy="76" r="16" fill="rgba(56,189,248,0.25)" stroke="#38bdf8" stroke-width="5"/>
+        <path d="M97 88 L112 104" stroke="#fbbf24" stroke-width="8" stroke-linecap="round"/>
+      </svg>
       <ul class="small">
         <li><strong>(a)</strong> To estimate how often students use the campus gym, a researcher surveys people as they walk out of the gym.</li>
         <li><strong>(b)</strong> A city posts an online form asking residents to rate a new bus route. Of 900 responses, 72% rate it "poor."</li>
