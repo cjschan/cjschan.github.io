@@ -134,9 +134,9 @@
         <li><strong>Ronald A. Fisher</strong> (1890&ndash;1962) worked at <strong>Rothamsted</strong>, a farm research station in England, where he developed many of the ideas behind hypothesis testing.</li>
         <li>The story: at an afternoon tea in the 1920s, algae scientist <strong>Muriel Bristol</strong> claimed she could taste whether the milk or the tea went into the cup first.</li>
         <li>Fisher&rsquo;s test: <strong>8 cups, 4 of each kind, in random order</strong>. A pure guesser gets all 8 right only <strong>1 time in 70</strong> (about 0.014). His colleague H. Fairfield Smith later reported that she got all 8.</li>
-        <li>In his 1925 book, Fisher called <strong>1 in 20 (0.05)</strong> a convenient cutoff &mdash; and said 1 in 50 or 1 in 100 were fine too if you wanted to be stricter.</li>
+        <li>In his 1925 book, Fisher called <strong>1 in 20 (0.05)</strong> a convenient cutoff for the p-value &mdash; and said 1 in 50 or 1 in 100 were fine too if you wanted to be stricter.</li>
       </ul>
-      <div class="why"><b>Why it matters:</b> &alpha; = 0.05 is a habit one scientist found convenient, not a law of nature.</div>
+      <div class="why"><b>Why it matters:</b> &alpha; (the significance level: how small a p-value must be) = 0.05 is a habit one scientist found convenient, not a law of nature.</div>
       <div class="source">Sources: Fisher, <em>Statistical Methods for Research Workers</em> (1925) and <em>The Design of Experiments</em> (1935); D. Salsburg, <em>The Lady Tasting Tea</em> (2001).</div>
     </div>
   </div>
@@ -160,7 +160,7 @@
       <h3>Why 0.05?</h3>
       <ul>
         <li>Convention established by R.A. Fisher in the early 1900s</li>
-        <li>Means we accept a <strong>5% risk</strong> of rejecting \(H_0\) when it is actually true</li>
+        <li>Means we accept a <strong>5% risk</strong> of rejecting \(H_0\) (ruling it out) when it is actually true</li>
         <li>Balances being too lenient vs. too strict</li>
         <li>The choice of \(\alpha\) should be made <strong>before</strong> looking at data</li>
       </ul>
@@ -217,7 +217,7 @@
         <li>Each lemur was measured before and after, so every animal served as its own comparison.</li>
       </ul>
       <div class="why"><b>Why it matters:</b> with only six animals, chance could easily fool us. The next slide uses each test&rsquo;s p-value to decide which results count as significant.</div>
-      <div class="source">Source: Dal-Pan, Blanc &amp; Aujard, &ldquo;Resveratrol suppresses body mass gain in a seasonal non-human primate model of obesity,&rdquo; <em>BMC Physiology</em> 10:11, 2010.</div>
+      <div class="source">Source: Dal-Pan, Blanc &amp; Aujard, &ldquo;Resveratrol suppresses body mass gain in a seasonal non-human primate model of obesity,&rdquo; <em>BMC Physiology</em> 10:11, 2010. (A &ldquo;primate model&rdquo; means lemurs stand in for humans.)</div>
     </div>
   </div>
 </div>
@@ -242,9 +242,9 @@
   <div class="card table-card tight" style="flex: none; padding: 12px 18px;">
     <table style="margin-top: 0;">
       <tr><th>Test</th><th style="white-space: nowrap;">p-value</th><th>Decision</th><th>Conclusion in context</th></tr>
-      <tr><td>(a) Mean resting metabolic rate is <strong>higher</strong> after treatment</td><td>0.013</td><td style="color: var(--green); font-weight: 700;">Reject \(H_0\)</td><td>Evidence that mean resting metabolic rate is higher after treatment</td></tr>
+      <tr><td>(a) Mean resting metabolic rate (calories burned at rest) is <strong>higher</strong> after treatment</td><td>0.013</td><td style="color: var(--green); font-weight: 700;">Reject \(H_0\)</td><td>Evidence that mean resting metabolic rate is higher after treatment</td></tr>
       <tr><td>(b) Mean body mass is <strong>lower</strong> after treatment</td><td>0.007</td><td style="color: var(--green); font-weight: 700;">Reject \(H_0\)</td><td>Evidence that mean body mass is lower after treatment</td></tr>
-      <tr><td>(c) Locomotor activity <strong>changes</strong> after treatment</td><td>0.980</td><td style="color: var(--amber); font-weight: 700; white-space: nowrap;">Do not reject \(H_0\)</td><td>Not enough evidence that locomotor activity changes after treatment</td></tr>
+      <tr><td>(c) Locomotor activity (how much they move around) <strong>changes</strong> after treatment</td><td>0.980</td><td style="color: var(--amber); font-weight: 700; white-space: nowrap;">Do not reject \(H_0\)</td><td>Not enough evidence that locomotor activity changes after treatment</td></tr>
       <tr><td>(d) Mean food intake <strong>changes</strong> after treatment</td><td>0.035</td><td style="color: var(--green); font-weight: 700;">Reject \(H_0\)</td><td>Evidence that mean food intake changes after treatment</td></tr>
     </table>
   </div>
@@ -277,7 +277,7 @@
       <ul>
         <li>Lack of evidence against \(H_0\) is <strong>not the same</strong> as evidence for \(H_0\)</li>
         <li>"We do not have sufficient evidence to conclude \(H_a\)"</li>
-        <li>The study may lack power (e.g., sample too small) to detect a real effect</li>
+        <li>The study may lack power (power = chance a test detects a real effect), e.g., a sample too small</li>
       </ul>
     </div>
   </div>
@@ -365,9 +365,9 @@
   </div>
 </div>
 
-<!-- Slide 7b: Two-tailed decision on a randomization distribution -->
+<!-- Slide 7b: Two-tail decision on a randomization distribution -->
 <div class="slide">
-  <h2>A Two-Tailed Decision</h2>
+  <h2>A Two-Tail Decision</h2>
   <p class="subtitle">Example 3: Filling Cereal Boxes. A machine is supposed to fill boxes with 16 oz on average; overfilling and underfilling are both problems. A sample of \(n = 36\) boxes has \(\bar{x} = 16.12\) oz. Is the machine off target?</p>
   <div class="grid-2" style="grid-template-columns: 2fr 1fr;">
     <div id="alpha-dots-2tail" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; width:100%;"></div>
