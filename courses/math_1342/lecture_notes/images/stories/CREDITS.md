@@ -15,6 +15,7 @@ Every photo here is public domain or Creative Commons, downloaded from Wikimedia
 | grey_mouse_lemur.jpg | Charles J. Sharp | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Gray_mouse_lemur_microcebus_murinus.jpg |
 | bottlenose_dolphin_wake.jpg | NASA | Public domain | https://commons.wikimedia.org/wiki/File:Tursiops_truncatus_01.jpg |
 | nodoz_caffeine_tablets.jpg | Ragesoss | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:NoDoz_caffeine_tablets_on_black.jpg |
+| lady_justice_old_bailey.jpg | Philip Halling | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Lady_Justice,_the_Old_Bailey_-_geograph.org.uk_-_7017758.jpg |
 | hollywood_sign.jpg | Thomas Wolf, www.foto-tw.de | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Hollywood_Sign_(Zuschnitt).jpg |
 | spaghetti_junction_atlanta.jpg | Unknown author | Public domain | https://commons.wikimedia.org/wiki/File:SpaghettiJunctionGA.jpg |
 | rock_hall_cleveland.jpg | U.S. National Archives (NARA 7719854) | Public domain | https://commons.wikimedia.org/wiki/File:Lake_Erie_Coastal_Ohio_Trail_-_Rock_and_Roll_Hall_of_Fame_and_Museum_-_NARA_-_7719854.jpg |
