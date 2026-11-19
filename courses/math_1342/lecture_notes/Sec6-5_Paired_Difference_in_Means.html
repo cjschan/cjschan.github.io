@@ -15,6 +15,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=2"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root {
     --bg: #0f172a;
@@ -275,6 +276,7 @@
   <p class="subtitle">Discuss in class: for each study, decide whether the data are paired or unpaired (independent samples). The test: is each value in one group linked to exactly one value in the other?</p>
   <div class="grid-2">
     <div class="card card-accent">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a matching pair of mittens joined by a string"><path d="M38 104c0 18 44 18 44 0" stroke="#fbbf24" stroke-width="3" fill="none"/><g><path d="M20 92V50c0-14 8-22 18-22s18 8 18 22v42z" fill="#34d399"/><path d="M21 64c-10-3-15 6-11 12 3 5 11 5 11 5z" fill="#34d399"/><rect x="17" y="88" width="42" height="14" rx="4" fill="#f1f5f9"/></g><g transform="translate(120 0) scale(-1 1)"><path d="M20 92V50c0-14 8-22 18-22s18 8 18 22v42z" fill="#34d399"/><path d="M21 64c-10-3-15 6-11 12 3 5 11 5 11 5z" fill="#34d399"/><rect x="17" y="88" width="42" height="14" rx="4" fill="#f1f5f9"/></g></svg>
       <ul class="small">
         <li>(a) Blood pressure of 40 patients, measured before and after 8 weeks on a new drug.</li>
         <li>(b) Reading scores of 30 students taught with Method A and <strong>35 different</strong> students taught with Method B.</li>
@@ -352,6 +354,28 @@
         <li>If the differences are approximately normal, or \(n_d \ge 30\), use a t distribution.</li>
         <li>Everything now depends on the differences, not the original two columns.</li>
       </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Study</span>
+  <h2>Is There a Chemical Message in Tears?</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/dried_tear_micrograph.jpg" alt="A dried tear seen under a microscope: feathery blue crystal patterns">
+      <span class="credit">Photo (a dried tear under a microscope): Nicola Swietkowiak, CC BY-SA 4.0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Allismicro_crystalized_sad_tear_drop_2.jpeg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>Neuroscientist <strong>Noam Sobel</strong>&#8217;s lab at the <strong>Weizmann Institute of Science</strong> in Israel (first author <strong>Shani Gelstein</strong>) published &#8220;Human Tears Contain a Chemosignal&#8221; in <em>Science</em>, January 2011.</li>
+        <li>The tears came from women volunteers who watched <strong>sad movies</strong> in a secluded room. The control was plain <strong>saline</strong> (salt water).</li>
+        <li>First surprise: men <strong>could not tell</strong> tears from saline by smell. Then, in double-blind sessions, men sniffed a pad of tears or of saline placed under the nose.</li>
+        <li>After sniffing tears, men rated women&#8217;s faces as less sexually attractive and had lower <strong>testosterone</strong> &mdash; yet their ratings of sadness and empathy did not change.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> each man is measured under <strong>both</strong> conditions, so we compare every man to himself. That is exactly what makes the data <strong>paired</strong>.</div>
+      <div class="source">Sources: Gelstein et al., <em>Science</em> 331 (2011); Weizmann Institute press release via ScienceDaily, Jan 2011.</div>
     </div>
   </div>
 </div>
