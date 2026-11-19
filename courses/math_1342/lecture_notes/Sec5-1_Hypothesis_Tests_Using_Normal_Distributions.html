@@ -9,6 +9,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=3"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,6 +57,28 @@
   <span class="tag tag-blue">Section 5.1</span>
   <h1>Hypothesis Tests Using Normal Distributions</h1>
   <p class="subtitle">When the sampling distribution is approximately normal, we can replace the randomization distribution with a smooth curve and use z-scores.</p>
+</div>
+
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Study</span>
+  <h2>Do Malaria Parasites Steer Their Mosquitoes?</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/anopheles_stephensi.jpg" alt="Close-up of an Anopheles stephensi mosquito feeding on human skin, its abdomen swollen with blood">
+      <span class="credit">Photo: Jim Gathany (CDC), Public domain, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Anopheles_stephensi.jpeg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-green">
+      <ul>
+        <li><strong>Lauren Cator</strong> and colleagues at <strong>Penn State</strong> and Imperial College London published it in <em>Proceedings of the Royal Society B</em> in 2013.</li>
+        <li>Mosquito: <em>Anopheles stephensi</em>, a malaria carrier (pictured). Parasite: <em>Plasmodium yoelii</em>, a rodent malaria that cannot infect people, used as a lab model.</li>
+        <li>Finding: <strong>early</strong> in the infection, before the parasite could spread, mosquitoes were <strong>less</strong> attracted to a human. Once infectious, they were <strong>more</strong> attracted &mdash; perfect timing for the parasite.</li>
+        <li>The twist: mosquitoes given <strong>harmless, heat-killed bacteria</strong> (no parasite at all) showed the same shifts. Maybe it is the mosquito&rsquo;s own immune response, not parasite &ldquo;mind control.&rdquo;</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> the next slides ask whether the early drop in attraction is real or just chance.</div>
+      <div class="source">Source: Cator et al., &ldquo;&lsquo;Manipulation&rsquo; without the parasite: altered feeding behaviour of mosquitoes is not dependent on infection with malaria parasites,&rdquo; <em>Proc. R. Soc. B</em>, 2013.</div>
+    </div>
+  </div>
 </div>
 
 <div class="slide">
@@ -344,6 +367,20 @@
   <p class="subtitle">For each test: (i) compute the z-statistic, (ii) find the p-value (use StatKey's Normal distribution), and (iii) state a conclusion at \(\alpha = 0.05\).</p>
   <div class="grid-3">
     <div class="card card-accent">
+      <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a checked ballot dropping into a ballot box">
+  <g transform="rotate(-8 60 30)">
+    <rect x="44" y="6" width="32" height="42" rx="3" fill="#f1f5f9"/>
+    <rect x="50" y="14" width="8" height="8" rx="1.5" fill="none" stroke="#0f172a" stroke-width="2"/>
+    <path d="M51 18 l3 3 l6 -8" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="61" y="16" width="10" height="3" rx="1.5" fill="#94a3b8"/>
+    <rect x="50" y="28" width="8" height="8" rx="1.5" fill="none" stroke="#0f172a" stroke-width="2"/>
+    <rect x="61" y="30" width="10" height="3" rx="1.5" fill="#94a3b8"/>
+  </g>
+  <rect x="18" y="56" width="84" height="54" rx="6" fill="#818cf8"/>
+  <rect x="12" y="46" width="96" height="14" rx="4" fill="#a78bfa"/>
+  <rect x="38" y="50" width="44" height="5" rx="2.5" fill="#0f172a"/>
+  <text x="60" y="92" text-anchor="middle" font-size="16" font-weight="800" fill="#f1f5f9" font-family="Inter, sans-serif">VOTE</text>
+</svg>
       <span class="tag tag-blue">(a) Right-tailed</span>
       <p class="step-note">A candidate claims majority support. In a poll, \(\hat{p} = 0.57\) with \(SE = 0.025\).</p>
       <div class="formula-box" style="font-size:18px;">\(H_0: p = 0.5\)<br>\(H_a: p &gt; 0.5\)</div>
