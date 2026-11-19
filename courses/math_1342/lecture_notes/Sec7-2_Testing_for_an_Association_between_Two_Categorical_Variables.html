@@ -243,7 +243,7 @@
 <div class="slide title-slide">
   <span class="tag tag-blue">Section 7.2</span>
   <h1>Testing for an Association Between Two Categorical Variables</h1>
-  <p class="subtitle">Use a chi-square test of association to decide whether two categorical variables are related in the population.</p>
+  <p class="subtitle">Use a chi-square test (\(\chi^2\), said &ldquo;kai-square&rdquo;) of association to decide whether two categorical variables are related in the population.</p>
 </div>
 
 <div class="slide">
@@ -289,9 +289,9 @@
     </figure>
     <div class="card card-amber">
       <ul>
-        <li>The Lock5 <strong>StudentSurvey</strong> is an in-class survey of 362 introductory statistics students, collected over several years. One question: which award would you most like to win &mdash; an <strong>Academy Award</strong>, a <strong>Nobel Prize</strong>, or an <strong>Olympic gold medal</strong>?</li>
-        <li><strong>Oscar:</strong> 13.5 inches tall, 8.5 pounds, cast in bronze with a 24-karat gold finish. Walt Disney still holds the record for most individual Oscars; 26 of them are on display at his family museum.</li>
-        <li><strong>Nobel:</strong> until 1980 the medals were 23-carat gold; since then, 18-carat recycled gold.</li>
+        <li>The Lock5 <strong>StudentSurvey</strong> (from our textbook&rsquo;s datasets) is an in-class survey of 362 introductory statistics students, collected over several years. One question: which award would you most like to win &mdash; an <strong>Academy Award</strong>, a <strong>Nobel Prize</strong>, or an <strong>Olympic gold medal</strong>?</li>
+        <li><strong>Oscar:</strong> 13.5 inches tall, 8.5 pounds, cast in bronze with a 24-karat gold finish (karat = gold purity; 24 = pure). Walt Disney still holds the record for most individual Oscars; 26 of them are on display at his family museum.</li>
+        <li><strong>Nobel:</strong> until 1980 the medals were 23-karat gold; since then, 18-karat recycled gold.</li>
         <li><strong>Olympic &#8220;gold&#8221;:</strong> mostly silver, plated with at least 6 grams of gold.</li>
       </ul>
       <div class="why"><b>Why it matters:</b> each student lands in exactly one award category, so award preference is a <strong>categorical</strong> variable. Is it associated with whether a student&#8217;s Math or Verbal SAT score is higher?</div>
@@ -376,7 +376,7 @@
 
 <div class="slide">
   <h2>Chi-Square Statistic</h2>
-  <p class="subtitle">Each cell contributes a nonnegative amount. Large total contributions suggest association.</p>
+  <p class="subtitle">Each cell contributes a nonnegative amount (\(O\) = observed count, \(E\) = expected count). Large total contributions suggest association.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <h3>Cell Contribution</h3>
@@ -415,7 +415,7 @@
           df=(r-1)(c-1)
         \]
       </div>
-      <div class="step-note">For a \(2\times 3\) table:</div>
+      <div class="step-note">\(r\) = number of rows, \(c\) = number of columns. For a \(2\times 3\) table:</div>
       <div class="formula-box">
         \[
           df=(2-1)(3-1)=2
@@ -426,7 +426,7 @@
       <h3>p-Value</h3>
       <div class="step-note">The p-value is always a right-tail area because larger chi-square values mean a bigger departure from \(H_0\).</div>
       <ul class="small">
-        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>Chi-square</strong>.</li>
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Theoretical Distributions</strong>, choose <strong>Chi-square</strong> (a right-skewed curve used for \(\chi^2\) p-values).</li>
         <li><strong>2.</strong> Set df to <strong>2</strong> and check <strong>Right Tail</strong>.</li>
         <li><strong>3.</strong> Change the axis box to <strong>2.21</strong>. The tail area is about <strong>0.33</strong>.</li>
       </ul>
@@ -498,7 +498,7 @@
       </div>
       <div class="tag tag-rose">(e) Conclusion</div>
       <div class="callout">
-        Since \(0.0003<0.05\), reject \(H_0\). There is very strong evidence that rank and gender are associated. The Full Professor cells contribute most: far fewer women (9 vs. 19.8 expected) and more men (33 vs. 22.2) than independence predicts.
+        Since \(0.0003<0.05\), reject \(H_0\). There is very strong evidence that rank and gender are associated. The Full Professor cells contribute most: far fewer women (9 vs. 19.8 expected) and more men (33 vs. 22.2) than independence (no association between the variables) predicts.
       </div>
     </div>
   </div>
@@ -600,7 +600,7 @@
 
 <div class="slide">
   <h2>What to Remember</h2>
-  <p class="subtitle">A chi-square test of association compares observed counts to expected counts from independence.</p>
+  <p class="subtitle">A chi-square test of association compares observed counts to expected counts from independence (no association between the two variables).</p>
   <div class="grid-2">
     <div class="card card-accent">
       <h3>Core Steps</h3>
