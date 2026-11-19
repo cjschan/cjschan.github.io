@@ -232,7 +232,7 @@
 <!-- Inserted: chart slide -->
 <div class="slide">
   <h2>What If Buzz Were Just Guessing?</h2>
-  <p class="subtitle">Suppose \(H_0: p = 0.50\) is true. Below: 1000 simulated sample proportions \(\hat{p}\) from samples of \(n = 16\) attempts, assuming Buzz is just guessing. Buzz's actual result, \(\hat{p} = 15/16 \approx 0.94\), lies far out in the tail &mdash; it essentially never happens by random chance alone.</p>
+  <p class="subtitle">Suppose \(H_0: p = 0.50\) (the null hypothesis, "just guessing"; defined next) is true. Below: 1000 simulated sample proportions \(\hat{p}\) from samples of \(n = 16\) attempts, assuming Buzz is just guessing. Buzz's actual result, \(\hat{p} = 15/16 \approx 0.94\), lies far out in the tail &mdash; it essentially never happens by random chance alone.</p>
   <div id="rand4-1" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:12px; margin:8px auto; max-width:640px;"></div>
 <script>
 (function(){
@@ -278,13 +278,13 @@
       <ul>
         <li>The claim we are seeking <strong>evidence for</strong></li>
         <li>Represents a new effect or a difference from the status quo</li>
-        <li>Usually contains an inequality: \(>\), \(<\), or \(\neq\)</li>
+        <li>Usually contains an inequality: \(>\), \(<\), or \(\neq\) ("is not equal to")</li>
         <li>We need convincing evidence to support \(H_a\)</li>
       </ul>
     </div>
   </div>
   <div class="callout">
-    <strong>Key point:</strong> The null hypothesis is the "default" that we assume true. The alternative hypothesis is what we hope to find evidence for. A hypothesis test asks: "Is the data surprising enough to reject \(H_0\)?"
+    <strong>Key point:</strong> The null hypothesis is the "default" that we assume true. The alternative hypothesis is what we hope to find evidence for. A hypothesis test asks: "Is the data surprising enough to reject \(H_0\) (conclude \(H_0\) is not believable)?"
   </div>
 </div>
 
@@ -354,7 +354,7 @@
   <p class="subtitle">The direction of the alternative hypothesis matters</p>
   <div class="grid-3">
     <div class="card card-accent">
-      <h3>Right-Tailed (Upper)</h3>
+      <h3>Right-Tail (Upper)</h3>
       <div class="formula-box" style="font-size:18px;">
         \(H_0: \text{parameter} = \text{value}\)<br>
         \(H_a: \text{parameter} > \text{value}\)
@@ -363,7 +363,7 @@
       <p class="step-note"><em>Example: Dolphin communication</em></p>
     </div>
     <div class="card card-accent2">
-      <h3>Left-Tailed (Lower)</h3>
+      <h3>Left-Tail (Lower)</h3>
       <div class="formula-box" style="font-size:18px;">
         \(H_0: \text{parameter} = \text{value}\)<br>
         \(H_a: \text{parameter} < \text{value}\)
@@ -372,7 +372,7 @@
       <p class="step-note"><em>Example: Drug lowers blood pressure</em></p>
     </div>
     <div class="card card-rose">
-      <h3>Two-Tailed</h3>
+      <h3>Two-Tail</h3>
       <div class="formula-box" style="font-size:18px;">
         \(H_0: \text{parameter} = \text{value}\)<br>
         \(H_a: \text{parameter} \neq \text{value}\)
@@ -382,7 +382,7 @@
     </div>
   </div>
   <div class="callout">
-    One-sided tests look for evidence in a specific direction. Two-sided tests look for evidence of any difference from the null value.
+    A <strong>one-sided</strong> test is a one-tail test (right-tail or left-tail); a <strong>two-sided</strong> test is a two-tail test. One-sided tests look for evidence in a specific direction. Two-sided tests look for evidence of any difference from the null value (the number in \(H_0\)).
   </div>
 </div>
 
@@ -412,14 +412,14 @@
         \(H_0: \mu = 12\)<br>
         \(H_a: \mu < 12\)
       </div>
-      <p class="step-note"><strong>One-sided (left-tailed):</strong> the customer is only looking for evidence that cups hold <em>less</em> than 12 ounces.</p>
+      <p class="step-note"><strong>One-sided (left-tail):</strong> the customer is only looking for evidence that cups hold <em>less</em> than 12 ounces.</p>
     </div>
     <div class="card card-accent">
       <h3>Thinking About the Data</h3>
       <ul class="small">
         <li><strong>Sample statistic:</strong> \(\bar{x} = 11.8\) ounces &mdash; a <em>statistic</em>, since it comes from the 25 cups we measured</li>
-        <li><strong>If \(H_0\) is true,</strong> a randomization distribution of \(\bar{x}\) would be centered at the null value, <strong>12</strong></li>
-        <li><strong>How far out is 11.8?</strong> Sample means for \(n = 25\) typically vary by about \(s/\sqrt{n} = 0.4/5 = 0.08\) ounces, so 11.8 is about \(0.2/0.08 = 2.5\) of those steps below 12 &mdash; out in the <strong>left tail</strong></li>
+        <li><strong>If \(H_0\) is true,</strong> a randomization distribution of \(\bar{x}\) (values of the statistic simulated as if \(H_0\) were true) would be centered at the null value, <strong>12</strong></li>
+        <li><strong>How far out is 11.8?</strong> Sample means for \(n = 25\) typically vary by about \(s/\sqrt{n}\) (the standard error of a sample mean) \(= 0.4/5 = 0.08\) ounces, so 11.8 is about \(0.2/0.08 = 2.5\) of those steps below 12 &mdash; out in the <strong>left tail</strong></li>
         <li><strong>Conclusion (informal):</strong> a sample mean this low would be unusual if cups really averaged 12 ounces, so the data give fairly strong evidence that the cups are underfilled</li>
       </ul>
     </div>
@@ -453,7 +453,7 @@
         \(H_0: p = 0.5\) &nbsp;&nbsp;&nbsp; \(H_a: p > 0.5\)
       </div>
       <ul class="small">
-        <li><strong>One- or two-sided?</strong> One-sided (right-tailed): the claim is that the student is <em>better</em> than chance</li>
+        <li><strong>One- or two-sided?</strong> One-sided (right-tail): the claim is that the student is <em>better</em> than chance</li>
       </ul>
     </div>
     <div class="card card-accent">
@@ -467,7 +467,7 @@
     </div>
   </div>
   <div class="callout">
-    <strong>Compare with Buzz and Doris.</strong> <strong>Alike:</strong> one proportion, null value 0.5, right-tailed. <strong>Different:</strong> fewer trials, and a less extreme result.
+    <strong>Compare with Buzz and Doris.</strong> <strong>Alike:</strong> one proportion, null value 0.5, right-tail test. <strong>Different:</strong> fewer trials, and a less extreme result.
   </div>
 </div>
 
@@ -514,7 +514,7 @@
         \(H_0: p = 0.90\)<br>
         \(H_a: p < 0.90\)
       </div>
-      <p class="step-note"><strong>One-sided (left-tailed):</strong> the group suspects the rate is <em>lower</em>.</p>
+      <p class="step-note"><strong>One-sided (left-tail):</strong> the group suspects the rate is <em>lower</em>.</p>
     </div>
     <div class="card card-green">
       <h3>(b) SAT Prep Course</h3>
@@ -523,7 +523,7 @@
         \(H_0: \mu = 520\)<br>
         \(H_a: \mu > 520\)
       </div>
-      <p class="step-note"><strong>One-sided (right-tailed):</strong> the company wants evidence of <em>higher</em> scores.</p>
+      <p class="step-note"><strong>One-sided (right-tail):</strong> the company wants evidence of <em>higher</em> scores.</p>
     </div>
     <div class="card card-green">
       <h3>(c) Fertilizer and Tomatoes</h3>
