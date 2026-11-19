@@ -188,7 +188,7 @@
     </div>
     <div class="card card-accent">
       <h3>How a statistician thinks</h3>
-      <div class="step-note">Each guess is essentially a coin flip &mdash; two boxes, fifty-fifty. Eight in a row:</div>
+      <div class="step-note">Each guess is essentially a coin flip &mdash; two boxes, fifty-fifty. Eight in a row (\(\approx\) means "approximately"):</div>
       <div class="formula-box">\( \left(\tfrac{1}{2}\right)^{8} = \dfrac{1}{256} \approx 0.39\% \)</div>
       <div class="stat-label">Unlikely &mdash; but absolutely not impossible.</div>
     </div>
@@ -198,14 +198,14 @@
 
 <div class="slide">
   <h2>Simulate It: Could Paul Just Be Lucky?</h2>
-  <p class="subtitle">Pretend Paul is a fair coin: each "prediction" is right with probability 0.5. Simulate many 8-game World Cups and see how often pure luck gets <span class="accent">8 out of 8</span>.</p>
+  <p class="subtitle">Pretend Paul is a fair coin: each "prediction" is right with probability 0.5 (a 50% chance). Simulate many 8-game World Cups and see how often pure luck gets <span class="accent">8 out of 8</span>.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <h3>How to read the simulator</h3>
       <ul class="small">
         <li>Each dot is one imaginary octopus guessing 8 games at random; we record its proportion correct.</li>
         <li>Click <strong>Generate One</strong> a few times, then <strong>Run 1000</strong>.</li>
-        <li>The gold line marks Paul's result: \( \hat{p} = 8/8 = 1.00 \).</li>
+        <li>The gold line marks Paul's result: \( \hat{p} = 8/8 = 1.00 \) (\(\hat{p}\), read "p-hat," is the sample proportion; more in Ch. 2).</li>
         <li>The readout counts how often chance alone did <strong>at least as well</strong> as Paul.</li>
       </ul>
       <div class="step-note">Expect only about 4 out of 1000 (since \(1/256 \approx 0.0039\)) &mdash; your count will vary a little from run to run. Rare for one octopus, but with hundreds of animals guessing, someone gets lucky.</div>
@@ -261,7 +261,7 @@
     <div class="card card-rose">
       <h3>Chosen badly</h3>
       <ul class="small">
-        <li>It lies to you confidently. Estimate the nation's age from only a college class and your answer skews young &mdash; <span class="rose">biased</span>.</li>
+        <li>It lies to you confidently. Estimate the nation's age from only a college class and your answer skews young &mdash; <span class="rose">biased</span> (systematically off in one direction).</li>
         <li>No amount of clever math fixes a sample that was rotten from the start.</li>
       </ul>
     </div>
@@ -277,7 +277,7 @@
       <ul>
         <li>Everyone call out your age; we write them all on the board.</li>
         <li>Each classmate is a <span class="accent">case</span>; the age we record is one <span class="accent">variable</span> &mdash; a numerical, or <span class="accent">quantitative</span>, one.</li>
-        <li>Our class is the <span class="accent">sample</span> we'll use to estimate the national average &mdash; not a census of the country.</li>
+        <li>Our class is the <span class="accent">sample</span> we'll use to estimate the national average &mdash; not a census (a count of everyone) of the country.</li>
         <li>That choice is exactly the issue we just discussed.</li>
       </ul>
     </div>
@@ -298,7 +298,7 @@
   <div class="grid-3">
     <div class="card card-accent">
       <h3>Mean (average)</h3>
-      <div class="step-note">Add them all, divide by how many.</div>
+      <div class="step-note">Add them all, divide by how many. \(\bar{x}\) ("x-bar") is the mean, \(\sum\) means "add up," \(n\) = how many.</div>
       <div class="formula-box">\( \bar{x} = \dfrac{\sum x}{n} \)</div>
       <ul class="small"><li>Summer 2026: <span class="accent">27.8</span> years.</li></ul>
     </div>
@@ -314,7 +314,7 @@
       <h3>Spread</h3>
       <ul class="small">
         <li>Ages run from 17 to 78 &mdash; a few older students stretch things out.</li>
-        <li>That one outlier at 78 yanks the <span class="accent">mean</span> up to 27.8, but the <span class="accent2">median</span> barely moves from 22.5.</li>
+        <li>That one outlier (an unusually extreme value) at 78 yanks the <span class="accent">mean</span> up to 27.8, but the <span class="accent2">median</span> barely moves from 22.5.</li>
       </ul>
     </div>
   </div>
@@ -322,7 +322,7 @@
   <div class="card card-green" style="margin-top:14px;">
     <h3>Check it with technology: StatKey</h3>
     <ul class="small">
-      <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Descriptive Statistics and Graphs</strong>, choose <strong>One Quantitative Variable</strong>. <strong>2.</strong> Click <strong>Edit Data</strong>, paste the 22 ages (one per line), and click <strong>OK</strong>. <strong>3.</strong> Read off the summary: mean \(\approx 27.8\), median \(= 22.5\), standard deviation \(\approx 14.2\).</li>
+      <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Descriptive Statistics and Graphs</strong>, choose <strong>One Quantitative Variable</strong>. <strong>2.</strong> Click <strong>Edit Data</strong>, paste the 22 ages (one per line), and click <strong>OK</strong>. <strong>3.</strong> Read off the summary: mean \(\approx 27.8\), median \(= 22.5\), standard deviation (typical distance from the mean) \(\approx 14.2\).</li>
     </ul>
   </div>
 </div>
@@ -380,7 +380,7 @@
     <div class="card card-accent2">
       <h3>The middle half</h3>
       <ul class="small">
-        <li>Half the class falls between <span class="accent2">19 and 35</span> &mdash; that range is the box.</li>
+        <li>Half the class falls between <span class="accent2">19 and 35</span> &mdash; that range is the box, marked Q1 and Q3 (the quartiles).</li>
         <li>The typical age (<span class="accent2">median</span>) is about 22&ndash;23: half younger, half older.</li>
       </ul>
     </div>
