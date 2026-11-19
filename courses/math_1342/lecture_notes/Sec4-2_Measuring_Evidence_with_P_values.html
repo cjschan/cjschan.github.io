@@ -282,7 +282,7 @@
     <div class="card card-green">
       <h3>The Study</h3>
       <ul>
-        <li>Subjects randomly assigned to drink tea or coffee for several weeks</li>
+        <li>21 subjects randomly assigned to drink tea (11) or coffee (10) for several weeks</li>
         <li>Immune response measured via production of interferon gamma (an immune-system protein)</li>
         <li>\(H_0: \mu_t = \mu_c\) (no difference in mean immune response)</li>
         <li>\(H_a: \mu_t > \mu_c\) (tea drinkers have higher immune response)</li>
@@ -291,17 +291,17 @@
     <div class="card card-amber">
       <h3>Results</h3>
       <ul>
-        <li>Observed difference in means: \(\bar{x}_t - \bar{x}_c = 3.5\)</li>
+        <li>Observed difference in means: \(\bar{x}_t - \bar{x}_c = 34.82 - 17.70 = 17.12\)</li>
         <li>Randomization distribution built by shuffling all the responses into new tea and coffee groups, 1000 times</li>
-        <li>333 out of 1000 simulations produced a difference &ge; 3.5</li>
+        <li>About 28 out of 1000 simulations produced a difference &ge; 17.12</li>
       </ul>
       <div class="formula-box" style="font-size:18px;">
-        p-value \(= \frac{333}{1000} = 0.333\)
+        p-value \(\approx \frac{28}{1000} = 0.028\)
       </div>
     </div>
   </div>
   <div class="callout">
-    A p-value of 0.333 provides little to no evidence that tea boosts immune response more than coffee. About 33% of random reassignments produced a difference this large, so a result like this is easy to get just by chance.
+    A p-value of about 0.03 is moderate evidence (on the 4.3 scale) that tea boosts immune response more than coffee. Only about 3% of random reassignments produced a difference this large, so chance alone is an unlikely explanation.
   </div>
 </div>
 
@@ -319,7 +319,7 @@
         <li><strong>3.</strong> Click <strong>Upload File</strong> and choose <strong>ImmuneTea.csv</strong></li>
         <li><strong>4.</strong> Click <strong>Generate 1000 Samples</strong></li>
         <li><strong>5.</strong> Check <strong>Right Tail</strong> (since \(H_a: \mu_t > \mu_c\))</li>
-        <li><strong>6.</strong> Click the box on the horizontal axis and change it to <strong>3.5</strong></li>
+        <li><strong>6.</strong> StatKey marks the observed difference, <strong>17.12</strong>, on the horizontal axis; read the proportion in the right tail</li>
       </ul>
     </div>
     <div class="card card-amber">
@@ -336,9 +336,9 @@
       <h3>Questions</h3>
       <ul>
         <li>Where is your randomization distribution centered? Why?</li>
-        <li>What proportion of the simulated differences are \(\ge 3.5\)? This is your <strong>p-value</strong>.</li>
-        <li>How does your p-value compare to 0.333? Why might it be a little different?</li>
-        <li>Is a difference of 3.5 unusual if \(H_0\) is true?</li>
+        <li>What proportion of the simulated differences are \(\ge 17.12\)? This is your <strong>p-value</strong>.</li>
+        <li>How does your p-value compare to 0.028? Why might it be a little different?</li>
+        <li>Is a difference of 17.12 unusual if \(H_0\) is true?</li>
       </ul>
     </div>
   </div>
@@ -354,19 +354,19 @@
       <h3>The Randomization Distribution</h3>
       <ul>
         <li><strong>Centered near 0.</strong> The randomization distribution assumes \(H_0: \mu_t = \mu_c\) is true, so the groups are reshuffled as if tea vs. coffee makes no difference.</li>
-        <li><strong>p-value \(\approx 0.33\)</strong>: about a third of the simulated differences are \(\ge 3.5\).</li>
+        <li><strong>p-value \(\approx 0.03\)</strong>: only about 3% of the simulated differences are \(\ge 17.12\).</li>
       </ul>
     </div>
     <div class="card card-amber">
       <h3>Interpreting It</h3>
       <ul>
-        <li><strong>Close to 0.333, but not exact.</strong> Each run of 1000 random reassignments is different, so simulated p-values vary slightly from run to run.</li>
-        <li><strong>Not unusual.</strong> A difference of 3.5 or more happens about 33% of the time just by chance when \(H_0\) is true.</li>
+        <li><strong>Close to 0.028, but not exact.</strong> Each run of 1000 random reassignments is different, so simulated p-values vary slightly from run to run.</li>
+        <li><strong>Fairly unusual.</strong> A difference of 17.12 or more happens only about 3% of the time just by chance when \(H_0\) is true.</li>
       </ul>
     </div>
   </div>
   <div class="callout">
-    A p-value around 0.33 gives little to no evidence that tea boosts immune response more than coffee.
+    A p-value around 0.03 gives moderate evidence that tea boosts immune response more than coffee. Because subjects were randomly assigned, tea may actually <em>cause</em> the stronger response.
   </div>
 </div>
 
