@@ -378,14 +378,14 @@
 
 <div class="slide">
   <h2>Confidence Intervals First</h2>
-  <p class="subtitle">Start with the same logic from the randomization approach, then switch to the normal model.</p>
+  <p class="subtitle">Start with the same logic from the bootstrap approach, then switch to the normal model.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <ul>
-        <li>Earlier, we used a randomization plot to build a confidence interval.</li>
-        <li>We could read the <span class="accent">standard error</span> from the spread of that plot.</li>
-        <li>For a 95% confidence interval, we were essentially using <span class="accent">\(z^* \approx 2\)</span>.</li>
-        <li>For other confidence levels, we used percentiles from the randomization distribution.</li>
+        <li>Earlier, we used a bootstrap distribution to build a confidence interval.</li>
+        <li>We could read the <span class="accent">standard error</span> from the spread of that distribution.</li>
+        <li>For a 95% confidence interval, we were essentially using <span class="accent">\(z^* \approx 2\)</span> (the z cutoff for the confidence level).</li>
+        <li>For other confidence levels, we used percentiles from the bootstrap distribution.</li>
       </ul>
     </div>
     <div class="card card-accent2 curve-card">
@@ -448,14 +448,14 @@
       <h3>Conditions</h3>
       <ul>
         <li>Need a large enough sample.</li>
-        <li>Check that counts in both categories are at least 10.</li>
+        <li>Check that the number of yes and the number of no in the sample are both at least 10.</li>
         <li>Then the sampling distribution of \(\hat{p}\) is approximately normal.</li>
       </ul>
     </div>
   </div>
   <div class="fun-fact">
     <span class="ff-label">Did you know?</span>
-    In 1936, <em>The Literary Digest</em> polled about 10 million people, mostly from lists of its own readers, car owners and telephone owners. About <strong>2.4 million</strong> answered, and the magazine predicted Alf Landon would beat Franklin Roosevelt. Roosevelt won in a landslide, carrying every state but Maine and Vermont. George Gallup&rsquo;s poll of about <strong>50,000</strong> people called it right. A giant sample cannot rescue a biased one: this SE formula assumes a <strong>random sample</strong>.
+    Before the 1936 presidential election, <em>The Literary Digest</em> polled about 10 million people, mostly from lists of its own readers, car owners and telephone owners. About <strong>2.4 million</strong> answered, and the magazine predicted Alf Landon would beat Franklin Roosevelt. Roosevelt won in a landslide, carrying every state but Maine and Vermont. George Gallup (founder of the Gallup poll) surveyed about <strong>50,000</strong> people and called it right. A giant sample cannot rescue a biased one: this SE formula assumes a <strong>random sample</strong>.
     <span class="credit" style="display:block; margin-top:4px;">Sources: &ldquo;The Literary Digest,&rdquo; Wikipedia; P. Squire, &ldquo;Why the 1936 Literary Digest Poll Failed,&rdquo; <em>Public Opinion Quarterly</em>, 1988.</span>
   </div>
 </div>
@@ -510,7 +510,7 @@
       <h3>General z Statistic</h3>
       <div class="formula-box">
         \[
-          z=\frac{\text{sample statistic}-\text{null value}}{SE}
+          z=\frac{\text{Statistic}-\text{Null}}{SE}
         \]
       </div>
       <div class="callout">
@@ -539,7 +539,7 @@
   <div class="grid-2">
     <div class="card card-accent">
       <div class="tag tag-blue">Step 1</div>
-      <div class="step-note">Set up the hypotheses. We want evidence that more than half plan to vote, so this is right-tailed.</div>
+      <div class="step-note">Set up the hypotheses. We want evidence that more than half plan to vote, so this is a right-tail test.</div>
       <div class="formula-box">
         \[
           H_0:p=0.50 \qquad H_a:p>0.50
@@ -615,7 +615,7 @@
 <div class="slide">
   <span class="tag tag-green">Your Turn &mdash; Answers</span>
   <h2>Answers: Testing a Proportion</h2>
-  <p class="subtitle">Conditions: \(np_0 = 250(0.30) = 75\) and \(n(1-p_0) = 175\), both at least 10.</p>
+  <p class="subtitle">Conditions: \(np_0 = 250(0.30) = 75\) and \(n(1-p_0) = 175\) (expected yes/no counts if \(H_0\) is true), both at least 10.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <div class="tag tag-blue">(a) Hypotheses</div>
@@ -665,7 +665,7 @@
     </div>
     <div class="card stat-card">
       <div class="big-number accent">\(z\)</div>
-      <div class="stat-label">Right-tailed, left-tailed, or two-tailed depends on the alternative hypothesis.</div>
+      <div class="stat-label">Right-tail, left-tail, or two-tail test depends on the alternative hypothesis.</div>
     </div>
   </div>
 </div>
