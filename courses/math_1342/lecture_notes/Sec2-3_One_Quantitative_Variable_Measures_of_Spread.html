@@ -77,7 +77,7 @@
       <h3>Interpretation</h3>
       <ul>
         <li>Gives a rough estimate of the typical distance from the mean.</li>
-        <li>Larger SD = more spread out data.</li>
+        <li>Larger SD (standard deviation) = more spread out data.</li>
         <li>Smaller SD = data clustered near the mean.</li>
       </ul>
     </div>
@@ -111,7 +111,7 @@
         \]
       </div>
       <ul class="small">
-        <li>The deviations \((x - \bar{x})\) always sum to 0 &mdash; a good check.</li>
+        <li>The deviations \((x - \bar{x})\) (each value minus the mean) always sum to 0 &mdash; a good check.</li>
         <li>Square the deviations, add them, divide by \(n - 1\), then take the square root.</li>
         <li>The standard deviation is \(s = 2\).</li>
       </ul>
@@ -157,7 +157,7 @@
           \text{95% of data falls between } \mu - 2\sigma \text{ and } \mu + 2\sigma
         \]
       </div>
-      <div class="step-note">This only applies when the distribution is roughly symmetric and bell-shaped.</div>
+      <div class="step-note">\(\mu\) and \(\sigma\) are the population mean and SD; for a sample, use \(\bar{x}\) and \(s\). This only applies when the distribution is roughly symmetric and bell-shaped.</div>
     </div>
     <div class="card card-green">
       <h3>Using the Rule</h3>
@@ -249,7 +249,7 @@
 <div class="slide">
   <span class="tag tag-green" style="align-self: flex-start;">Your Turn &mdash; Answers</span>
   <h2>Answers: Comparing Across Groups</h2>
-  <p class="subtitle">Standardize each height against its own group, then compare the z-scores.</p>
+  <p class="subtitle">Standardize (convert to a z-score) each height against its own group, then compare the z-scores.</p>
   <div class="grid-2">
     <div class="card card-accent">
       <h3>Compute the z-Scores</h3>
@@ -287,7 +287,7 @@
       <h3>Five Number Summary</h3>
       <ul>
         <li><strong>Minimum</strong>: smallest value</li>
-        <li><strong>Q1</strong>: 25th percentile (median of lower half)</li>
+        <li><strong>Q1</strong>: 25th percentile (25% of data below; median of lower half)</li>
         <li><strong>Median</strong>: 50th percentile</li>
         <li><strong>Q3</strong>: 75th percentile (median of upper half)</li>
         <li><strong>Maximum</strong>: largest value</li>
@@ -299,7 +299,7 @@
         <li>The \(P\)th percentile is the value greater than \(P\%\) of the data.</li>
         <li>Q1 = 25th percentile, Median = 50th, Q3 = 75th.</li>
       </ul>
-      <div class="fun-fact"><span class="ff-label">Did you know?</span>The five-number summary's famous picture, the <strong>boxplot</strong>, and the 1.5 &times; IQR outlier rule you will see shortly were popularized by statistician <strong>John Tukey</strong> in his 1977 book <em>Exploratory Data Analysis</em>. Tukey also coined the computer word <strong>"bit"</strong> (short for "binary digit").<div class="source" style="margin-top:4px;">Sources: J. W. Tukey, <em>Exploratory Data Analysis</em> (1977); C. E. Shannon, "A Mathematical Theory of Communication" (1948), which credits Tukey for "bit."</div></div>
+      <div class="fun-fact"><span class="ff-label">Did you know?</span>The five-number summary's famous picture, the <strong>boxplot</strong> (a box from Q1 to Q3, with lines called whiskers reaching outward), and the 1.5 &times; IQR outlier rule you will see shortly were popularized by statistician <strong>John Tukey</strong> in his 1977 book <em>Exploratory Data Analysis</em> (exploring data with graphs first). Tukey also coined the computer word <strong>"bit"</strong> (short for "binary digit").<div class="source" style="margin-top:4px;">Sources: J. W. Tukey, <em>Exploratory Data Analysis</em> (1977); C. E. Shannon, "A Mathematical Theory of Communication" (1948), which credits Tukey for "bit."</div></div>
     </div>
   </div>
 </div>
