@@ -9,6 +9,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="statgraphs.js?v=7"></script>
+<link rel="stylesheet" href="story.css?v=1">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -156,6 +157,28 @@
 </div>
 
 <div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Study</span>
+  <h2>Can a Cup of Tea Train Your Immune System?</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/cup_black_tea.jpg" alt="A clear glass mug half full of black tea on a white background">
+      <span class="credit">Photo: AntanO, CC BY-SA 4.0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Cup_of_black_tea.JPG" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>2003, Brigham and Women's Hospital in Boston: immunologist <strong>Jack Bukowski</strong> and his team tested whether something in tea primes the body's germ-fighting cells.</li>
+        <li>Volunteers who did not normally drink tea drank about <strong>600 mL of black tea a day</strong> (roughly five cups). A comparison group drank instant coffee instead.</li>
+        <li>Afterward, the tea drinkers' immune cells released about <strong>five times more interferon-gamma</strong> than before. The coffee drinkers showed no change.</li>
+        <li>The likely reason: <strong>L-theanine</strong> in tea breaks down into a small molecule that "trains" one type of T cell.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> these are the data on the next slides, with only 11 tea and 10 coffee drinkers. Bukowski himself said a much larger study was needed.</div>
+      <div class="source">Source: Kamath et al., <em>PNAS</em> 100(10):6009&ndash;6014 (2003); <em>Harvard Crimson</em>, April 23, 2003.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Example 2: Tea vs. Coffee and the Immune System</h2>
   <p class="subtitle">Participants were randomized to drink either tea or coffee every day for two weeks. Then blood samples were exposed to an antigen and an immune system response was measured (higher = stronger immune system).</p>
   <div class="grid-2">
@@ -199,6 +222,17 @@
   </div>
   <div class="grid-2" style="flex: 0 0 auto;">
     <div class="card card-amber">
+      <svg class="doodle" viewBox="0 0 130 100" role="img" aria-label="Doodle of a teacup with a tea bag tag next to a coffee mug">
+        <path d="M30 22 q-5 7 0 14 M44 18 q-5 7 0 14" fill="none" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+        <path d="M54 52 h4 a9 9 0 0 1 0 18 h-4" fill="none" stroke="#34d399" stroke-width="5"/>
+        <path d="M12 44 h46 q0 34 -23 34 q-23 0 -23 -34 z" fill="#34d399"/>
+        <ellipse cx="35" cy="84" rx="30" ry="5" fill="#a78bfa"/>
+        <path d="M40 44 L46 26" stroke="#f1f5f9" stroke-width="1.5"/>
+        <rect x="42" y="16" width="10" height="10" rx="1" fill="#fbbf24"/>
+        <path d="M108 50 h6 a10 10 0 0 1 0 20 h-6" fill="none" stroke="#fb7185" stroke-width="5"/>
+        <rect x="74" y="38" width="36" height="46" rx="6" fill="#fb7185"/>
+        <rect x="74" y="38" width="36" height="7" rx="3" fill="#7c2d12" opacity="0.6"/>
+      </svg>
       <h3>Questions</h3>
       <ul class="questions">
         <li>(a) Give notation for and find the difference in means.</li>
@@ -350,6 +384,27 @@
       StatGraphs.scatter('#chart-2-4-corr-b', x, yB, { width: 520, height: 220, padBottom: 44, xMin: 0, xMax: 20, yMin: 20, yMax: 55, xLabel: 'x', yLabel: 'y', dotR: 4.5, color: '#fb7185' });
     })();
   </script>
+</div>
+
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the Outlier</span>
+  <h2>Wilt Chamberlain: Rebound King, Free-Throw Nightmare</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/wilt_chamberlain_portrait.jpg" alt="Colorized photo of a young Wilt Chamberlain in a Harlem Globetrotters uniform, resting a basketball on his raised knee" style="object-position: center top;">
+      <span class="credit">Wilt Chamberlain with the Harlem Globetrotters, before joining the NBA (colorized). Photo: Fred Palumbo, <em>World-Telegram</em>, Public domain, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Wilt_Chamberlain3.jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>Wilt Chamberlain grabbed <strong>23,924 rebounds</strong>, the most in NBA history.</li>
+        <li>But his career free-throw percentage was only about <strong>51%</strong>, roughly a coin flip. In his last nine seasons it fell to 46%.</li>
+        <li>On March 2, 1962, the night he scored <strong>100 points</strong> against the Knicks, he shot his free throws <strong>underhanded</strong> and made 28 of 32.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> big players who live near the basket pile up rebounds but often struggle at the line. On the next scatterplot, a Wilt season would sit way out in the bottom right.</div>
+      <div class="source">Sources: ESPN Classic biography of Wilt Chamberlain; History.com, "Wilt Chamberlain's Epic Evening."</div>
+    </div>
+  </div>
 </div>
 
 <div class="slide">
