@@ -316,6 +316,8 @@
     <div class="card card-green">
       <div class="tag tag-blue">Question</div>
       <div class="step-note">Does preferred award appear related to whether a student has the higher Math or Verbal SAT score?</div>
+      <div class="tag tag-amber">Hypotheses (\(\alpha = 0.05\))</div>
+      <div class="step-note">\(H_0\): award preference and which SAT score is higher are not associated.<br>\(H_a\): award preference and which SAT score is higher are associated.</div>
       <div class="tag tag-purple">Idea Under \(H_0\)</div>
       <div class="callout">
         If there is no association, then each award-preference column should have about the same Math/Verbal proportions as the overall sample.
@@ -346,7 +348,7 @@
         \]
       </div>
       <div class="callout">
-        The observed count is \(21\), so this cell contributes some evidence against \(H_0\).
+        The observed count is \(21\), a gap of \(3.1\) from the \(17.90\) expected under \(H_0\). The \(\chi^2\) statistic combines these gaps across all six cells.
       </div>
     </div>
   </div>
@@ -431,9 +433,65 @@
         <li><strong>3.</strong> Change the axis box to <strong>2.21</strong>. The tail area is about <strong>0.33</strong>.</li>
       </ul>
       <div class="callout">
-        \(\chi^2\approx 2.21\) with \(df=2\) gives p-value \(\approx 0.33\), much larger than \(0.05\), so this example does not show evidence of an association.
+        \(\chi^2\approx 2.21\) with \(df=2\) gives p-value \(\approx 0.33\). Next: compare it to \(\alpha = 0.05\) and state the conclusion.
       </div>
     </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>p-Value, Decision, and Conclusion</h2>
+  <p class="subtitle">For the SAT example, \(df = 2\). The shaded right tail beyond the observed \(\chi^2 = 2.21\) is the p-value, about \(0.33\).</p>
+  <div id="chart-7-2-chi" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:18px; max-width:640px; margin:8px auto;"></div>
+  <script>
+    (function() {
+      const df = 2;
+      // Chi-square pdf for df = 2 is (1/2) e^(-x/2)
+      const pdf = (x) => x < 0 ? 0 : 0.5 * Math.exp(-x / 2);
+      const W = 600, H = 240, PL = 38, PR = 14, PT = 14, PB = 30;
+      const xMax = 10, yMax = 0.55, obs = 2.21;
+      StatGraphs.lineChart('#chart-7-2-chi', {
+        width: W, height: H, xMin: 0, xMax: xMax, yMin: 0, yMax: yMax,
+        xTicks: [0, 2, 4, 6, 8, 10], yTicks: [0, 0.1, 0.2, 0.3, 0.4, 0.5],
+        xLabel: 'χ² statistic (df = 2)', yLabel: 'density',
+        curves: [{ fn: pdf }],
+      });
+      const NS = 'http://www.w3.org/2000/svg';
+      const svg = document.querySelector('#chart-7-2-chi svg');
+      const plotW = W - PL - PR, plotH = H - PT - PB;
+      const sx = (v) => PL + (v / xMax) * plotW;
+      const sy = (v) => PT + plotH - (v / yMax) * plotH;
+      // Shade the right tail beyond the observed statistic
+      let d = `M ${sx(obs)} ${sy(0)}`;
+      for (let i = 0; i <= 60; i++) { const x = obs + ((xMax - obs) * i) / 60; d += ` L ${sx(x)} ${sy(pdf(x))}`; }
+      d += ` L ${sx(xMax)} ${sy(0)} Z`;
+      const area = document.createElementNS(NS, 'path');
+      area.setAttribute('d', d); area.setAttribute('fill', '#fbbf24'); area.setAttribute('opacity', 0.35);
+      svg.insertBefore(area, svg.firstChild);
+      // Marker at the observed statistic
+      const line = document.createElementNS(NS, 'line');
+      line.setAttribute('x1', sx(obs)); line.setAttribute('x2', sx(obs));
+      line.setAttribute('y1', sy(0)); line.setAttribute('y2', sy(pdf(obs)) - 12);
+      line.setAttribute('stroke', '#fbbf24'); line.setAttribute('stroke-width', 2);
+      line.setAttribute('stroke-dasharray', '4 3');
+      svg.appendChild(line);
+      const txt = document.createElementNS(NS, 'text');
+      txt.setAttribute('x', sx(obs) + 6); txt.setAttribute('y', sy(pdf(obs)) - 16);
+      txt.setAttribute('fill', '#fbbf24'); txt.setAttribute('font-size', 12);
+      txt.setAttribute('font-family', 'Work Sans, sans-serif');
+      txt.textContent = 'observed χ² = 2.21';
+      svg.appendChild(txt);
+      const ptxt = document.createElementNS(NS, 'text');
+      ptxt.setAttribute('x', sx(4.6)); ptxt.setAttribute('y', sy(0.09));
+      ptxt.setAttribute('fill', '#fbbf24'); ptxt.setAttribute('font-size', 12);
+      ptxt.setAttribute('font-family', 'Work Sans, sans-serif');
+      ptxt.textContent = 'shaded area = p-value ≈ 0.33';
+      svg.appendChild(ptxt);
+    })();
+  </script>
+  <div class="callout" style="max-width:900px; margin:12px auto 0;">
+    <strong>Decision:</strong> Since \(0.33 > 0.05\), we fail to reject \(H_0\).<br>
+    <strong>Conclusion:</strong> The data do not provide convincing evidence that award preference is associated with whether a student&rsquo;s Math or Verbal SAT score is higher. (This does not prove the two variables are unrelated.)
   </div>
 </div>
 
@@ -498,7 +556,7 @@
       </div>
       <div class="tag tag-rose">(e) Conclusion</div>
       <div class="callout">
-        Since \(0.0003<0.05\), reject \(H_0\). There is very strong evidence that rank and gender are associated. The Full Professor cells contribute most: far fewer women (9 vs. 19.8 expected) and more men (33 vs. 22.2) than independence (no association between the variables) predicts.
+        Since \(0.0003<0.05\), reject \(H_0\). There is very strong evidence that rank and gender are associated among faculty at this university. The Full Professor cells contribute most: far fewer women (9 vs. 19.8 expected) and more men (33 vs. 22.2) than independence (no association between the variables) predicts.
       </div>
     </div>
   </div>
@@ -547,58 +605,6 @@
 </div>
 
 <div class="slide">
-  <h2>The Chi-Square Distribution</h2>
-  <p class="subtitle">For the SAT example, \(df = 2\). The shaded right tail beyond the observed \(\chi^2 = 2.21\) is the p-value, about \(0.33\).</p>
-  <div id="chart-7-2-chi" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:18px; max-width:640px; margin:8px auto;"></div>
-  <script>
-    (function() {
-      const df = 2;
-      // Chi-square pdf for df = 2 is (1/2) e^(-x/2)
-      const pdf = (x) => x < 0 ? 0 : 0.5 * Math.exp(-x / 2);
-      const W = 600, H = 240, PL = 38, PR = 14, PT = 14, PB = 30;
-      const xMax = 10, yMax = 0.55, obs = 2.21;
-      StatGraphs.lineChart('#chart-7-2-chi', {
-        width: W, height: H, xMin: 0, xMax: xMax, yMin: 0, yMax: yMax,
-        xTicks: [0, 2, 4, 6, 8, 10], yTicks: [0, 0.1, 0.2, 0.3, 0.4, 0.5],
-        xLabel: 'χ² statistic (df = 2)', yLabel: 'density',
-        curves: [{ fn: pdf }],
-      });
-      const NS = 'http://www.w3.org/2000/svg';
-      const svg = document.querySelector('#chart-7-2-chi svg');
-      const plotW = W - PL - PR, plotH = H - PT - PB;
-      const sx = (v) => PL + (v / xMax) * plotW;
-      const sy = (v) => PT + plotH - (v / yMax) * plotH;
-      // Shade the right tail beyond the observed statistic
-      let d = `M ${sx(obs)} ${sy(0)}`;
-      for (let i = 0; i <= 60; i++) { const x = obs + ((xMax - obs) * i) / 60; d += ` L ${sx(x)} ${sy(pdf(x))}`; }
-      d += ` L ${sx(xMax)} ${sy(0)} Z`;
-      const area = document.createElementNS(NS, 'path');
-      area.setAttribute('d', d); area.setAttribute('fill', '#fbbf24'); area.setAttribute('opacity', 0.35);
-      svg.insertBefore(area, svg.firstChild);
-      // Marker at the observed statistic
-      const line = document.createElementNS(NS, 'line');
-      line.setAttribute('x1', sx(obs)); line.setAttribute('x2', sx(obs));
-      line.setAttribute('y1', sy(0)); line.setAttribute('y2', sy(pdf(obs)) - 12);
-      line.setAttribute('stroke', '#fbbf24'); line.setAttribute('stroke-width', 2);
-      line.setAttribute('stroke-dasharray', '4 3');
-      svg.appendChild(line);
-      const txt = document.createElementNS(NS, 'text');
-      txt.setAttribute('x', sx(obs) + 6); txt.setAttribute('y', sy(pdf(obs)) - 16);
-      txt.setAttribute('fill', '#fbbf24'); txt.setAttribute('font-size', 12);
-      txt.setAttribute('font-family', 'Work Sans, sans-serif');
-      txt.textContent = 'observed χ² = 2.21';
-      svg.appendChild(txt);
-      const ptxt = document.createElementNS(NS, 'text');
-      ptxt.setAttribute('x', sx(4.6)); ptxt.setAttribute('y', sy(0.09));
-      ptxt.setAttribute('fill', '#fbbf24'); ptxt.setAttribute('font-size', 12);
-      ptxt.setAttribute('font-family', 'Work Sans, sans-serif');
-      ptxt.textContent = 'shaded area = p-value ≈ 0.33';
-      svg.appendChild(ptxt);
-    })();
-  </script>
-</div>
-
-<div class="slide">
   <h2>What to Remember</h2>
   <p class="subtitle">A chi-square test of association compares observed counts to expected counts from independence (no association between the two variables).</p>
   <div class="grid-2">
@@ -608,7 +614,9 @@
         <li>State \(H_0\) and \(H_a\).</li>
         <li>Find each expected count.</li>
         <li>Compute \(\chi^2=\sum (O-E)^2/E\).</li>
-        <li>Use \(df=(r-1)(c-1)\).</li>
+        <li>Use \(df=(r-1)(c-1)\) and find the right-tail p-value.</li>
+        <li>If p-value \(\le \alpha\), reject \(H_0\); otherwise, fail to reject \(H_0\).</li>
+        <li>State the conclusion in the context of the problem.</li>
       </ul>
     </div>
     <div class="card card-green">
