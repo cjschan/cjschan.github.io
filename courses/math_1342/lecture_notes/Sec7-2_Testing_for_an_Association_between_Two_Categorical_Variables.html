@@ -534,6 +534,8 @@
         <tr><td>Female</td><td>20</td><td>45</td><td>9</td><td>74</td></tr>
         <tr><td>Total</td><td>40</td><td>75</td><td>42</td><td>157</td></tr>
       </table>
+      <h3 style="margin-top:14px;">Proportions Within Each Row</h3>
+      <div id="chart-7-2-faculty"></div>
     </div>
     <div class="card card-green">
       <svg class="doodle" viewBox="0 0 120 120" role="img" aria-label="Doodle of a graduation cap resting on a stack of books"><path d="M32 50v16c0 9 56 9 56 0V50L60 62z" fill="#a78bfa"/><polygon points="60,20 110,40 60,60 10,40" fill="#818cf8"/><path d="M60 40l38 8v22" stroke="#fbbf24" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="98" cy="74" r="5" fill="#fbbf24"/><rect x="20" y="86" width="80" height="11" rx="2" fill="#38bdf8"/><rect x="26" y="99" width="70" height="11" rx="2" fill="#fb7185"/><rect x="22" y="89" width="76" height="2" fill="#f1f5f9" opacity=".7"/></svg>
@@ -548,6 +550,16 @@
     </div>
   </div>
 </div>
+<script>
+  StatGraphs.groupedBarChart('#chart-7-2-faculty',
+    ['Male (n = 83)', 'Female (n = 74)'],
+    [
+      { label: 'Assistant', values: [20, 20] },
+      { label: 'Associate', values: [30, 45] },
+      { label: 'Full', values: [33, 9] },
+    ],
+    { proportion: true, yLabel: 'Proportion', width: 600, height: 230, padLeft: 44 });
+</script>
 
 <div class="slide">
   <span class="tag tag-green">Your Turn &mdash; Answers</span>
