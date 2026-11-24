@@ -14,7 +14,7 @@
   };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<script src="statgraphs.js?v=2"></script>
+<script src="statgraphs.js?v=3"></script>
 <link rel="stylesheet" href="story.css?v=1">
 <style>
   :root {
@@ -327,6 +327,8 @@
         <tr><td>Verbal</td><td>10</td><td>45</td><td>95</td><td>150</td></tr>
         <tr><td>Total</td><td>31</td><td>113</td><td>211</td><td>355</td></tr>
       </table>
+      <h3 style="margin-top:14px;">Proportions Within Each Row</h3>
+      <div id="chart-7-2-grouped"></div>
     </div>
     <div class="card card-green">
       <div class="tag tag-blue">Question</div>
@@ -340,6 +342,16 @@
     </div>
   </div>
 </div>
+<script>
+  StatGraphs.groupedBarChart('#chart-7-2-grouped',
+    ['Math Higher (n = 205)', 'Verbal Higher (n = 150)'],
+    [
+      { label: 'Academy', values: [21, 10] },
+      { label: 'Nobel', values: [68, 45] },
+      { label: 'Olympic', values: [116, 95] },
+    ],
+    { proportion: true, yLabel: 'Proportion', width: 600, height: 230, padLeft: 44 });
+</script>
 
 <div class="slide">
   <h2>Expected Counts</h2>

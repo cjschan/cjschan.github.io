@@ -401,7 +401,11 @@ const StatGraphs = (() => {
   function groupedBarChart(target, groups, series, opts = {}) {
     const fr = frame(Object.assign({ padTop: 28, padRight: 18 }, opts));
     const palette = [COLORS.primary, COLORS.rose, COLORS.green, COLORS.amber, COLORS.purple];
-    const max = opts.max || Math.max(...series.flatMap((s) => s.values));
+    // opts.proportion: plot each value as a proportion of its group's total
+    const proportion = opts.proportion;
+    const totals = groups.map((_, g) => series.reduce((sum, s) => sum + s.values[g], 0));
+    const val = (s, g) => (proportion ? series[s].values[g] / totals[g] : series[s].values[g]);
+    const max = opts.max || (proportion ? 1 : Math.max(...series.flatMap((s) => s.values)));
     const sy = (v) => fr.PT + fr.plotH - (v / max) * fr.plotH;
     const slotW = fr.plotW / groups.length;
     const k = series.length;
@@ -410,7 +414,7 @@ const StatGraphs = (() => {
     for (let g = 0; g < groups.length; g++) {
       const slotStart = fr.PL + slotW * g + (slotW - groupBarsW) / 2;
       for (let s = 0; s < k; s++) {
-        const v = series[s].values[g];
+        const v = val(s, g);
         const x = slotStart + s * barW;
         const y = sy(v);
         const h = fr.PT + fr.plotH - y;
@@ -421,7 +425,7 @@ const StatGraphs = (() => {
         fr.svg.appendChild(el('text', {
           x: x + barW * 0.46, y: y - 4, fill: COLORS.text,
           'font-size': 10, 'text-anchor': 'middle', 'font-family': 'Work Sans, sans-serif',
-        }, [String(v)]));
+        }, [proportion ? v.toFixed(2) : String(v)]));
       }
       fr.svg.appendChild(el('text', {
         x: fr.PL + slotW * (g + 0.5), y: fr.PT + fr.plotH + 16, fill: COLORS.text,
@@ -432,7 +436,7 @@ const StatGraphs = (() => {
       x1: fr.PL, y1: fr.PT + fr.plotH, x2: fr.PL + fr.plotW, y2: fr.PT + fr.plotH,
       stroke: COLORS.axis, 'stroke-width': 1.25,
     }));
-    if (opts.yLabel) axisY(fr.svg, sy, fr, makeTicks(0, max, Math.min(max, 5)), opts.yLabel);
+    if (opts.yLabel) axisY(fr.svg, sy, fr, makeTicks(0, max, proportion ? 5 : Math.min(max, 5)), opts.yLabel);
     legend(fr.svg, fr, series, palette);
     host(target).innerHTML = ''; host(target).appendChild(fr.svg);
   }
