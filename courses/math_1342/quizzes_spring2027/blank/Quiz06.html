@@ -42,26 +42,31 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <body>
 <div class="quiz">
 <span class="badge">Quiz 6</span>
-<h1>Hypothesis Tests, P-Values, and Significance</h1>
+<h1>Inference for Proportions and Means</h1>
 <p class="version-tag">Student Version</p>
-<p class="covers">Covers Sections 4.1, 4.2, 4.3</p>
+<p class="covers">Covers Sections 6.1, 6.3, 6.2, 6.4 &bull; Due Mon Apr 26, 11:59 PM</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 <p><b>StatKey problems.</b> Problems marked <span class="sk">STATKEY</span> are done in <a href="https://www.lock5stat.com/StatKey/" target="_blank">StatKey (lock5stat.com/StatKey)</a>. For each StatKey problem, include a screenshot of your StatKey output with your answers.</p>
+<p><b>Handwritten work.</b> Write your solutions <b>by hand</b>, then scan or photograph your pages into a <b>single PDF</b> and upload it to Blackboard. Typed submissions are not accepted. Put each StatKey screenshot in the same PDF, next to your handwritten answer for that problem.</p>
 </div>
 
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
-<p>State the null and alternative hypotheses for each scenario, and define any parameter you use. <i>(1 pt each)</i></p><ol type='a'><li>A college wants evidence that fewer than 30% of its students use the campus tutoring center.</li><li>A researcher wants to know whether the mean resting heart rate is different for athletes and non-athletes.</li></ol>
+<h3>Problem 1 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>In a random sample of n Austin adults, x said they ride public transit at least once a month.</p><table class='dtab'><tr><th>Count x</th><th>Sample size n</th><th>Confidence level</th><th>Null value \(p_0\)</th></tr><tr><td>136</td><td>325</td><td>95%</td><td>0.35</td></tr></table><ol type='a'><li>Compute \(\hat{p}\) and \(SE = \sqrt{\hat{p}(1-\hat{p})/n}\). <i>(0.5 pt)</i></li><li>Use <b>Theoretical Distributions &rarr; Normal</b> (mean 0, SD 1) with <b>Two-Tail</b> to find \(z^*\) for the confidence level. Screenshot it. <i>(0.5 pt)</i></li><li>Construct the confidence interval and interpret it in context. <i>(0.5 pt)</i></li><li>Test \(H_0: p = p_0\) vs. \(H_a: p \ne p_0\). Compute \(z = (\hat{p} - p_0)/\sqrt{p_0(1-p_0)/n}\) and use StatKey&rsquo;s Normal distribution to find the p-value. Screenshot it. <i>(1 pt)</i></li><li>State your conclusion at \(\alpha = 0.05\). <i>(0.5 pt)</i></li></ol>
 </div>
 <div class="problem">
-<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
-<p>A test of \(H_0: p = 0.5\) vs. \(H_a: p > 0.5\) for the proportion of voters who support a bond gives a p-value of 0.031. <i>(1 pt each)</i></p><ol type='a'><li>Interpret this p-value in context.</li><li>What is the decision at \(\alpha = 0.05\)? At \(\alpha = 0.01\)?</li></ol>
+<h3>Problem 2 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>Students were randomly assigned to get either text-message reminders or no reminders about a FAFSA deadline. The table gives how many in each group finished the FAFSA on time.</p><table class='dtab'><tr><th>Text reminders: finished</th><th>No reminders: finished</th></tr><tr><td>112 of 190</td><td>81 of 180</td></tr></table><ol type='a'><li>Compute \(\hat{p}_T - \hat{p}_N\). <i>(0.5 pt)</i></li><li>Construct a 95% confidence interval for \(p_T - p_N\) using the formula. <i>(0.5 pt)</i></li><li>Test \(H_0: p_T = p_N\) vs. \(H_a: p_T \ne p_N\) with the pooled z-test, using StatKey&rsquo;s Normal distribution for the p-value. <i>(1 pt)</i></li><li>Now open <b>Randomization Hypothesis Tests &rarr; Test for Difference In Proportions</b>, enter the counts, generate at least 5000 samples, and find the two-tailed p-value. Does it agree with (c)? <i>(0.5 pt)</i></li><li>Can we conclude that reminders <i>cause</i> a change in on-time completion? Explain. <i>(0.5 pt)</i></li></ol>
 </div>
 <div class="problem">
-<h3>Problem 3 <span class="pts">[6 pts]</span> <span class="sk">STATKEY</span></h3>
-<p>In an experiment, 20 students were randomly assigned to drink either a caffeinated or a decaf soda, and then tapped a button as fast as they could for one minute. Do the data give evidence that caffeine <b>increases</b> the mean tapping rate? In StatKey, open <b>Randomization Hypothesis Tests &rarr; Test for Difference in Means</b>, click <b>Edit Data</b>, and enter the data with a group label for each student.</p><table class='dtab'><tr><th>Caffeine (taps per minute)</th><th>Decaf (taps per minute)</th></tr><tr><td>247, 251, 248, 250, 247, 245, 249, 250, 246, 249</td><td>244, 246, 245, 246, 246, 245, 242, 245, 244, 249</td></tr></table><ol type='a'><li>State the hypotheses, using \(\mu_c - \mu_d\). <i>(1 pt)</i></li><li>Report the observed statistic \(\bar{x}_c - \bar{x}_d\). <i>(0.5 pt)</i></li><li>Click <b>Generate 1 Sample</b>. In one sentence, explain what StatKey did to create this randomization sample, and report its difference in means. <i>(1 pt)</i></li><li>Generate at least 5000 randomization samples in total. Check <b>Right Tail</b> and set it at your observed statistic. Report how many of your samples were at least as large as the observed statistic, and the p-value. <i>(1.5 pts)</i></li><li>Where is your randomization distribution centered, and why there? <i>(1 pt)</i></li><li>State your conclusion at \(\alpha = 0.05\) in context. <i>(1 pt)</i></li></ol>
+<h3>Problem 3 <span class="pts">[2 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>A random sample of n ACC students reported their nightly sleep. Is the mean different from 7 hours?</p><table class='dtab'><tr><th>n</th><th>\(\bar{x}\) (hours)</th><th>s (hours)</th></tr><tr><td>15</td><td>6.15</td><td>1.4</td></tr></table><ol type='a'><li>Use <b>Theoretical Distributions &rarr; t</b> with df = n &minus; 1 to find \(t^*\) for 95% confidence, and construct a 95% CI for \(\mu\). <i>(1 pt)</i></li><li>Test \(H_0: \mu = 7\) vs. \(H_a: \mu \ne 7\): compute the t-statistic, find the p-value in StatKey, and give the conclusion at \(\alpha = 0.05\). <i>(1 pt)</i></li></ol>
+</div>
+<div class="problem">
+<h3>Problem 4 <span class="pts">[2 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>Exam scores were compared for students in sections that used weekly online quizzes (Q) and sections that did not (N). Summary statistics (n, \(\bar{x}\), s):</p><table class='dtab'><tr><th>Quizzes: n, \(\bar{x}\), s</th><th>No quizzes: n, \(\bar{x}\), s</th></tr><tr><td>20, 78.0, 9.0</td><td>18, 74.5, 10.0</td></tr></table><ol type='a'><li>Test \(H_0: \mu_Q = \mu_N\) vs. \(H_a: \mu_Q > \mu_N\). Compute SE and the t-statistic, use df = the smaller n &minus; 1, and find the p-value with StatKey&rsquo;s t distribution. <i>(1 pt)</i></li><li>Construct a 95% CI for \(\mu_Q - \mu_N\) and state your conclusion in context. <i>(1 pt)</i></li></ol>
 </div>
 
 </div>

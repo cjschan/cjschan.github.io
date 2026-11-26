@@ -42,26 +42,31 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <body>
 <div class="quiz">
 <span class="badge">Quiz 3</span>
-<h1>Relationships Between Variables</h1>
+<h1>Regression, Probability, Sampling Distributions, and Confidence Intervals</h1>
 <p class="version-tag">Student Version</p>
-<p class="covers">Covers Sections 2.4, 2.5</p>
+<p class="covers">Covers Sections 2.5, P.1, 3.1, 3.2 &bull; Due Mon Mar 8, 11:59 PM</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 <p><b>StatKey problems.</b> Problems marked <span class="sk">STATKEY</span> are done in <a href="https://www.lock5stat.com/StatKey/" target="_blank">StatKey (lock5stat.com/StatKey)</a>. For each StatKey problem, include a screenshot of your StatKey output with your answers.</p>
+<p><b>Handwritten work.</b> Write your solutions <b>by hand</b>, then scan or photograph your pages into a <b>single PDF</b> and upload it to Blackboard. Typed submissions are not accepted. Put each StatKey screenshot in the same PDF, next to your handwritten answer for that problem.</p>
 </div>
 
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1 <span class="pts">[4 pts]</span> <span class="sk">STATKEY</span></h3>
-<p>The data are weekly study hours for 9 students who work 10 hours a week or less (<b>Group A</b>) and 9 students who work more than 10 hours a week (<b>Group B</b>). In StatKey, open <b>Descriptive Statistics and Graphs &rarr; One Quantitative and One Categorical Variable</b>, click <b>Edit Data</b>, and enter the data with a group label (A or B) for each student. Show the side-by-side boxplots.</p><table class='dtab'><tr><th>Group A (work &le; 10 hrs)</th><th>Group B (work &gt; 10 hrs)</th></tr><tr><td>11, 12, 11, 15, 12, 20, 10, 10, 9</td><td>23, 5, 12, 6, 11, 14, 6, 0, 10</td></tr></table><ol type='a'><li>Report the mean study time for each group and the difference in means \(\bar{x}_A - \bar{x}_B\). <i>(1 pt)</i></li><li>Report the five-number summary for each group. <i>(1 pt)</i></li><li>Does either boxplot show an outlier? If so, which value? <i>(0.5 pt)</i></li><li>Using your side-by-side boxplots, compare the two groups&rsquo; centers and spreads in context. Does it look like working more is associated with studying less? <i>(1.5 pts)</i></li></ol>
+<h3>Problem 1 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>The data are hours of sleep the night before (\(x\)) and quiz score (\(y\)) for 8 students, listed in the same order. In StatKey, open <b>Descriptive Statistics and Graphs &rarr; Two Quantitative Variables</b>, click <b>Edit Data</b>, enter the pairs, and check <b>Show Regression Line</b>.</p><table class='dtab'><tr><th>Sleep \(x\) (hours)</th><th>Quiz score \(y\)</th></tr><tr><td>4, 9, 5, 6, 4, 8, 8, 6</td><td>49, 88, 74, 66, 63, 91, 84, 78</td></tr></table><ol type='a'><li>Report the correlation \(r\) and the regression equation from StatKey. Describe the direction and strength. <i>(1 pt)</i></li><li>Interpret the slope in context. <i>(0.5 pt)</i></li><li>Predict the quiz score for a student who slept 7 hours. Then compute the residual for the <b>first</b> student in your list. <i>(1 pt)</i></li><li>Add one more student who slept 2 hours and scored 95. Report the new correlation and explain how one unusual point changed it. <i>(0.5 pt)</i></li></ol>
 </div>
 <div class="problem">
-<h3>Problem 2 <span class="pts">[4 pts]</span> <span class="sk">STATKEY</span></h3>
-<p>The data are hours of sleep the night before (\(x\)) and quiz score (\(y\)) for 8 students, listed in the same order. In StatKey, open <b>Descriptive Statistics and Graphs &rarr; Two Quantitative Variables</b>, click <b>Edit Data</b>, enter the pairs, and check <b>Show Regression Line</b>.</p><table class='dtab'><tr><th>Sleep \(x\) (hours)</th><th>Quiz score \(y\)</th></tr><tr><td>4, 9, 5, 6, 4, 8, 8, 6</td><td>49, 88, 74, 66, 63, 91, 84, 78</td></tr></table><ol type='a'><li>Report the correlation \(r\) and the regression equation from StatKey. Describe the direction and strength. <i>(1 pt)</i></li><li>Interpret the slope in context. <i>(1 pt)</i></li><li>Predict the quiz score for a student who slept 7 hours. Then compute the residual for the <b>first</b> student in your list. <i>(1 pt)</i></li><li>Add one more student who slept 2 hours and scored 95. Report the new correlation and explain how one unusual point changed it. <i>(1 pt)</i></li></ol>
+<h3>Problem 2 <span class="pts">[3 pts]</span></h3>
+<p>A survey of 400 ACC students recorded whether each student has math anxiety (A) and whether they took a developmental math course (D).</p><table class='dtab'><tr><th></th><th>Math anxiety</th><th>No math anxiety</th><th>Total</th></tr><tr><td>Took developmental math</td><td>54</td><td>66</td><td>120</td></tr><tr><td>Did not</td><td>84</td><td>196</td><td>280</td></tr><tr><td>Total</td><td>138</td><td>262</td><td>400</td></tr></table><p>Find each probability for a randomly selected student. <i>(0.5 pt each)</i></p><ol type='a'><li>\(P(A)\)</li><li>\(P(A \text{ and } D)\)</li><li>\(P(A \text{ or } D)\)</li><li>\(P(A \mid D)\)</li><li>\(P(D \mid A)\)</li><li>Are math anxiety and taking developmental math independent? Justify with your probabilities.</li></ol>
 </div>
 <div class="problem">
-<h3>Problem 3 <span class="pts">[2 pts]</span></h3>
-<p>True or false? Give a brief explanation for each. <i>(1 pt each)</i></p><ol type='a'><li>Monthly ice cream sales and monthly drownings have \(r = 0.88\), so eating ice cream causes drowning.</li><li>If every quiz score in Problem 2 were increased by 10 points, the correlation would increase.</li></ol>
+<h3>Problem 3 <span class="pts">[2.5 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>About 40% of ACC students are first-generation college students, so \(p = 0.40\). In StatKey, open <b>Sampling Distributions &rarr; Proportion</b>, set the population proportion to 0.40 and the sample size to n below.</p><table class='dtab'><tr><th>Sample size n</th><th>Larger sample size 4n</th></tr><tr><td>60</td><td>240</td></tr></table><ol type='a'><li>Click <b>Generate 1000 Samples</b>. Report the mean and the standard error (SE) from the summary panel. <i>(0.5 pt)</i></li><li>Click the dot that is farthest from 0.40 in your dotplot. Report the \(\hat{p}\) of that sample and how many first-generation students it contained. <i>(0.5 pt)</i></li><li>Compute \(0.40 \pm 2\,SE\) using your SE. Then check <b>Two-Tail</b> and set the tails at those two values. What proportion of your 1000 samples fall outside the interval? Is this close to what the 95% rule predicts? <i>(1 pt)</i></li><li>Change the sample size to 4n and generate 1000 samples. Report the new SE and describe how it compares with your SE from (a). <i>(0.5 pt)</i></li></ol>
+</div>
+<div class="problem">
+<h3>Problem 4 <span class="pts">[1.5 pts]</span></h3>
+<p>A random sample of ACC students gives a 95% confidence interval of \((18.2,\ 23.8)\) for the mean number of hours worked per week. <i>(0.5 pt each)</i></p><ol type='a'><li>Find the point estimate and the margin of error.</li><li>Interpret the interval in context.</li><li>A classmate says, &ldquo;95% of ACC students work between 18.2 and 23.8 hours a week.&rdquo; Explain what is wrong with this statement.</li></ol>
 </div>
 
 </div>

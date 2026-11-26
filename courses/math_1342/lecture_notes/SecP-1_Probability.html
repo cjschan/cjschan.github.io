@@ -473,6 +473,36 @@
 </div>
 
 <div class="slide">
+  <h2>Checking Independence with a Two-Way Table</h2>
+  <p class="subtitle">A and B are independent if knowing A happened does not change the probability of B: \(P(B \mid A) = P(B)\).</p>
+  <div class="grid-2">
+    <div class="card card-accent table-card">
+      <h3>Example: Housing and Dog Ownership</h3>
+      <div class="step-note">500 adults are classified by where they live and whether they own a dog.</div>
+      <table>
+        <tr><th></th><th>Dog</th><th>No Dog</th><th>Total</th></tr>
+        <tr><td>House</td><td>120</td><td>180</td><td>300</td></tr>
+        <tr><td>Apartment</td><td>40</td><td>160</td><td>200</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>160</strong></td><td><strong>340</strong></td><td><strong>500</strong></td></tr>
+      </table>
+    </div>
+    <div class="card card-green">
+      <h3>Are "lives in a house" and "owns a dog" independent?</h3>
+      <div class="step-note"><strong>1.</strong> Overall probability (use the column total):</div>
+      <div class="formula-box" style="padding: 4px 16px;">
+        \[ P(\text{dog}) = \frac{160}{500} = 0.32 \]
+      </div>
+      <div class="step-note"><strong>2.</strong> Conditional probability (use only the House row):</div>
+      <div class="formula-box" style="padding: 4px 16px;">
+        \[ P(\text{dog} \mid \text{house}) = \frac{120}{300} = 0.40 \]
+      </div>
+      <div class="step-note"><strong>3.</strong> Compare: \(0.40 \ne 0.32\), so the events are <strong>not independent</strong>. Knowing someone lives in a house raises the chance they own a dog.</div>
+    </div>
+  </div>
+  <div class="callout">If the House row had been 96 dog owners out of 300, then \(P(\text{dog} \mid \text{house}) = 96/300 = 0.32 = P(\text{dog})\), and the events <strong>would</strong> be independent.</div>
+</div>
+
+<div class="slide">
   <h2>What to Remember</h2>
   <p class="subtitle">The core probability rules.</p>
   <div class="grid-2">

@@ -420,6 +420,34 @@
   </div>
 </div>
 
+<!-- StatKey: inspect one sample and find the middle 95% -->
+<div class="slide">
+  <span class="tag tag-blue">StatKey</span>
+  <h2>StatKey: One Dot, One Sample &mdash; and the Middle 95%</h2>
+  <p class="subtitle">Example: 25% of a large population owns an electric scooter (\(p = 0.25\)). Look at samples of size \(n = 80\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Build the Sampling Distribution</h3>
+      <ul class="small">
+        <li><strong>1.</strong> <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">StatKey</a> &rarr; <strong>Sampling Distributions</strong> &rarr; <strong>Proportion</strong>.</li>
+        <li><strong>2.</strong> Click <strong>Edit Proportion</strong> and enter <strong>0.25</strong>; set the <strong>Sample Size</strong> to <strong>80</strong>.</li>
+        <li><strong>3.</strong> Click <strong>Generate 1000 Samples</strong>. Each dot is the \(\hat{p}\) from one sample of 80. The summary shows the mean (near 0.25) and the standard error (near \(0.048\)).</li>
+        <li><strong>4.</strong> <strong>Click any dot</strong> in the dotplot. StatKey displays that one sample: how many of its 80 people own a scooter and its \(\hat{p}\). E.g., a dot at \(\hat{p} = 0.15\) is a sample with \(0.15 \times 80 = 12\) owners.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Find the Middle 95%</h3>
+      <ul class="small">
+        <li><strong>5.</strong> Check the <strong>Two-Tail</strong> box. StatKey shades two tails and shows the proportion in each box above the plot (0.025, 0.950, 0.025).</li>
+        <li><strong>6.</strong> Read the two values marked on the horizontal axis: these are the bounds of the <strong>middle 95%</strong> of the sample proportions. Here they come out about <strong>0.16 and 0.35</strong>.</li>
+        <li><strong>7.</strong> Compare with the 95% rule: \(p \pm 2\,SE = 0.25 \pm 2(0.048) = 0.154\) to \(0.346\). Close!</li>
+        <li>You can also click a bound and type your own value; StatKey then shows what proportion of the samples fall beyond it.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout" style="font-size:15px; padding:12px 18px;">Your numbers will differ slightly from these, because each run draws new random samples. Also, \(\hat{p}\) can only be a count divided by 80, so the tails will not be exactly 0.025.</div>
+</div>
+
 <!-- Slide 12: Brief Review (Big Picture diagram) -->
 <div class="slide">
   <span class="tag tag-blue">Brief Review</span>

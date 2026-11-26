@@ -281,6 +281,32 @@
 </div>
 
 <div class="slide">
+  <h2>StatKey: Entering Your Own Group Data</h2>
+  <p class="subtitle">No data file? Type the data in yourself to get side-by-side boxplots and the mean of each group.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Steps</h3>
+      <ul class="small">
+        <li><strong>1.</strong> Go to <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">lock5stat.com/StatKey</a>; under <strong>Descriptive Statistics and Graphs</strong>, choose <strong>One Quantitative and One Categorical</strong>.</li>
+        <li><strong>2.</strong> Click <strong>Edit Data</strong> and delete the data that is already there.</li>
+        <li><strong>3.</strong> Type <strong>one case per line</strong> with two columns: the <strong>group label</strong>, a comma, then the <strong>value</strong> (e.g., <code>Drive,12</code>). Click <strong>OK</strong>.</li>
+        <li><strong>4.</strong> StatKey draws side-by-side boxplots and lists the mean, standard deviation, and five-number summary for each group.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Example: Commute Times (minutes)</h3>
+      <div class="step-note"><strong>Drive (D):</strong> 12, 18, 15, 22, 9, 16<br><strong>Bus (B):</strong> 25, 31, 18, 40, 28, 22, 35</div>
+      <div class="step-note">Enter 13 lines: <code>Drive,12</code>, <code>Drive,18</code>, &hellip;, <code>Bus,25</code>, <code>Bus,31</code>, &hellip;</div>
+      <ul class="small">
+        <li>Group means: \(\bar{x}_D = 15.33\), \(\bar{x}_B = 28.43\); medians 15.5 and 28.</li>
+        <li>\(\bar{x}_B - \bar{x}_D = 28.43 - 15.33 = 13.10\) minutes.</li>
+        <li>The bus box sits well to the right of the drive box: bus riders tend to have longer commutes, and their times are more spread out.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>Scatterplots</h2>
   <p class="subtitle">A scatterplot shows the relationship between two quantitative variables.</p>
   <div class="grid-2">
@@ -353,6 +379,31 @@
     <div class="card card-rose">
       <div class="big-number rose" style="font-size: 30px;">Weak</div>
       <div class="stat-label">\(|r|\) close to 0. Little or no linear pattern.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Shifting or Rescaling Does Not Change \(r\)</h2>
+  <p class="subtitle">Correlation measures how tightly the points follow a line, not where the points sit or what units they use.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>The Rule</h3>
+      <ul class="small">
+        <li><strong>Adding (or subtracting) a constant</strong> to every \(x\) value or every \(y\) value slides the whole scatterplot over or up. The pattern keeps the same shape, so \(r\) stays the same.</li>
+        <li><strong>Changing units</strong> (multiplying by a positive number, such as hours &rarr; minutes or inches &rarr; centimeters) stretches an axis but keeps the same pattern, so \(r\) stays the same.</li>
+        <li>(Multiplying by a <em>negative</em> number would flip the sign of \(r\).)</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Example: Practice and Free Throws</h3>
+      <div class="step-note">\(x\) = hours of practice: 2, 4, 5, 7, 8. \(y\) = free throws made (out of 20): 10, 13, 12, 17, 18.</div>
+      <ul class="small">
+        <li>Original data: <span class="green">\(r \approx 0.957\)</span></li>
+        <li>Record practice in <strong>minutes</strong> (120, 240, 300, 420, 480): <span class="green">\(r \approx 0.957\)</span></li>
+        <li>Give every player <strong>2 bonus shots</strong> (12, 15, 14, 19, 20): <span class="green">\(r \approx 0.957\)</span></li>
+      </ul>
+      <div class="step-note">Every version has exactly the same correlation.</div>
     </div>
   </div>
 </div>

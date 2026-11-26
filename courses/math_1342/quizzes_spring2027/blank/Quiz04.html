@@ -42,26 +42,35 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <body>
 <div class="quiz">
 <span class="badge">Quiz 4</span>
-<h1>Probability, Sampling Distributions, and Confidence Intervals</h1>
+<h1>Bootstrap Intervals and Introducing Hypothesis Tests</h1>
 <p class="version-tag">Student Version</p>
-<p class="covers">Covers Sections P.1, 3.1, 3.2</p>
+<p class="covers">Covers Sections 3.3, 3.4, 4.1, 4.2 &bull; Due Mon Mar 29, 11:59 PM</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 <p><b>StatKey problems.</b> Problems marked <span class="sk">STATKEY</span> are done in <a href="https://www.lock5stat.com/StatKey/" target="_blank">StatKey (lock5stat.com/StatKey)</a>. For each StatKey problem, include a screenshot of your StatKey output with your answers.</p>
+<p><b>Handwritten work.</b> Write your solutions <b>by hand</b>, then scan or photograph your pages into a <b>single PDF</b> and upload it to Blackboard. Typed submissions are not accepted. Put each StatKey screenshot in the same PDF, next to your handwritten answer for that problem.</p>
 </div>
 
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1 <span class="pts">[3 pts]</span></h3>
-<p>A survey of 400 ACC students recorded whether each student has math anxiety (A) and whether they took a developmental math course (D).</p><table class='dtab'><tr><th></th><th>Math anxiety</th><th>No math anxiety</th><th>Total</th></tr><tr><td>Took developmental math</td><td>54</td><td>66</td><td>120</td></tr><tr><td>Did not</td><td>84</td><td>196</td><td>280</td></tr><tr><td>Total</td><td>138</td><td>262</td><td>400</td></tr></table><p>Find each probability for a randomly selected student. <i>(0.5 pt each)</i></p><ol type='a'><li>\(P(A)\)</li><li>\(P(A \text{ and } D)\)</li><li>\(P(A \text{ or } D)\)</li><li>\(P(A \mid D)\)</li><li>\(P(D \mid A)\)</li><li>Are math anxiety and taking developmental math independent? Justify with your probabilities.</li></ol>
+<h3>Problem 1 <span class="pts">[1 pt]</span></h3>
+<p>Briefly describe how to construct one bootstrap sample from an original sample of size \(n = 40\). Why must we sample <b>with replacement</b>? <i>(0.5 pt each)</i></p>
 </div>
 <div class="problem">
-<h3>Problem 2 <span class="pts">[4 pts]</span> <span class="sk">STATKEY</span></h3>
-<p>About 40% of ACC students are first-generation college students, so \(p = 0.40\). In StatKey, open <b>Sampling Distributions &rarr; Proportion</b>, set the population proportion to 0.40 and the sample size to n below.</p><table class='dtab'><tr><th>Sample size n</th><th>Larger sample size 4n</th></tr><tr><td>60</td><td>240</td></tr></table><ol type='a'><li>Click <b>Generate 1000 Samples</b>. Report the mean and the standard error (SE) from the summary panel. <i>(1 pt)</i></li><li>Click the dot that is farthest from 0.40 in your dotplot. Report the \(\hat{p}\) of that sample and how many first-generation students it contained. <i>(1 pt)</i></li><li>Compute \(0.40 \pm 2\,SE\) using your SE. Then check <b>Two-Tail</b> and set the tails at those two values. What proportion of your 1000 samples fall outside the interval? Is this close to what the 95% rule predicts? <i>(1 pt)</i></li><li>Change the sample size to 4n and generate 1000 samples. Report the new SE and describe how it compares with your SE from (a). <i>(1 pt)</i></li></ol>
+<h3>Problem 2 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>The data are the one-way commute times (minutes) of 12 randomly selected ACC students. In StatKey, open <b>Bootstrap Confidence Intervals &rarr; CI for Single Mean, Median, St.Dev.</b>, click <b>Edit Data</b>, and enter the 12 values.</p><table class='dtab'><tr><th>Commute times (minutes)</th></tr><tr><td>47, 19, 42, 38, 43, 28, 24, 23, 30, 23, 59, 47</td></tr></table><ol type='a'><li>Report the original sample mean \(\bar{x}\). <i>(0.5 pt)</i></li><li>Click <b>Generate 1 Sample</b>. Report the mean of your bootstrap sample, and name one value that appears more than once in it (or say that none does). <i>(0.5 pt)</i></li><li>Generate at least 5000 bootstrap samples. Report the SE, and compute a 95% confidence interval using \(\bar{x} \pm 2\,SE\). <i>(0.5 pt)</i></li><li>Check <b>Two-Tail</b> with 0.95 in the middle. Report the 95% percentile interval and compare it with your interval from (c). <i>(0.5 pt)</i></li><li>Change the middle to 0.90 and then 0.99. Report both intervals, say which is widest, and interpret your 95% interval from (d) in context. <i>(1 pt)</i></li></ol>
 </div>
 <div class="problem">
-<h3>Problem 3 <span class="pts">[3 pts]</span></h3>
-<p>A random sample of ACC students gives a 95% confidence interval of \((18.2,\ 23.8)\) for the mean number of hours worked per week. <i>(1 pt each)</i></p><ol type='a'><li>Find the point estimate and the margin of error.</li><li>Interpret the interval in context.</li><li>A classmate says, &ldquo;95% of ACC students work between 18.2 and 23.8 hours a week.&rdquo; Explain what is wrong with this statement.</li></ol>
+<h3>Problem 3 <span class="pts">[1.5 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>In a random sample of n ACC students, x said they prefer morning classes. In StatKey, open <b>Bootstrap Confidence Intervals &rarr; CI for Single Proportion</b>, click <b>Edit Data</b>, and enter your count and sample size.</p><table class='dtab'><tr><th>Count x</th><th>Sample size n</th></tr><tr><td>101</td><td>160</td></tr></table><ol type='a'><li>Report \(\hat{p}\). <i>(0.5 pt)</i></li><li>Generate at least 5000 bootstrap samples and report a 99% percentile confidence interval. <i>(0.5 pt)</i></li><li>Based on your interval, is it plausible that exactly half of all ACC students prefer morning classes? Explain. <i>(0.5 pt)</i></li></ol>
+</div>
+<div class="problem">
+<h3>Problem 4 <span class="pts">[1 pt]</span></h3>
+<p>State the null and alternative hypotheses for each scenario, and define any parameter you use. <i>(0.5 pt each)</i></p><ol type='a'><li>A college wants evidence that fewer than 30% of its students use the campus tutoring center.</li><li>A researcher wants to know whether the mean resting heart rate is different for athletes and non-athletes.</li></ol>
+</div>
+<div class="problem">
+<h3>Problem 5 <span class="pts">[3.5 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>In an experiment, 20 students were randomly assigned to drink either a caffeinated or a decaf soda, and then tapped a button as fast as they could for one minute. Do the data give evidence that caffeine <b>increases</b> the mean tapping rate? In StatKey, open <b>Randomization Hypothesis Tests &rarr; Test for Difference in Means</b>, click <b>Edit Data</b>, and enter the data with a group label for each student.</p><table class='dtab'><tr><th>Caffeine (taps per minute)</th><th>Decaf (taps per minute)</th></tr><tr><td>247, 251, 248, 250, 247, 245, 249, 250, 246, 249</td><td>244, 246, 245, 246, 246, 245, 242, 245, 244, 249</td></tr></table><ol type='a'><li>State the hypotheses, using \(\mu_c - \mu_d\). <i>(0.5 pt)</i></li><li>Report the observed statistic \(\bar{x}_c - \bar{x}_d\). <i>(0.5 pt)</i></li><li>Click <b>Generate 1 Sample</b>. In one sentence, explain what StatKey did to create this randomization sample, and report its difference in means. <i>(1 pt)</i></li><li>Generate at least 5000 randomization samples in total. Check <b>Right Tail</b> and set it at your observed statistic. Report how many of your samples were at least as large as the observed statistic, and the p-value. <i>(1 pt)</i></li><li>Where is your randomization distribution centered, and why there? <i>(0.5 pt)</i></li></ol>
 </div>
 
 </div>

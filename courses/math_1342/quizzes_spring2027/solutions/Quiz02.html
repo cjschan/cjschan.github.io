@@ -53,34 +53,40 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 
 <div class="quiz">
 <span class="badge">Quiz 2</span>
-<h1>Describing Data</h1>
+<h1>Describing Quantitative Data and Relationships</h1>
 <p class="version-tag">Worked Solutions</p>
-<p class="covers">Covers Sections 2.1, 2.2, 2.3</p>
+<p class="covers">Covers Sections 2.2, 2.3, 2.4 &bull; Due Mon Feb 22, 11:59 PM</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 <p><b>StatKey problems.</b> Problems marked <span class="sk">STATKEY</span> are done in <a href="https://www.lock5stat.com/StatKey/" target="_blank">StatKey (lock5stat.com/StatKey)</a>. For each StatKey problem, include a screenshot of your StatKey output with your answers.</p>
+<p><b>Handwritten work.</b> Write your solutions <b>by hand</b>, then scan or photograph your pages into a <b>single PDF</b> and upload it to Blackboard. Typed submissions are not accepted. Put each StatKey screenshot in the same PDF, next to your handwritten answer for that problem.</p>
 </div>
 
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
-<p>A survey asked 240 ACC students whether they attend full-time or part-time and whether they have a job.</p><table class='dtab'><tr><th></th><th>Has a job</th><th>No job</th><th>Total</th></tr><tr><td>Full-time</td><td>48</td><td>72</td><td>120</td></tr><tr><td>Part-time</td><td>90</td><td>30</td><td>120</td></tr><tr><td>Total</td><td>138</td><td>102</td><td>240</td></tr></table><ol type='a'><li>What proportion of all surveyed students have a job? <i>(1 pt)</i></li><li>Compare the proportion of full-time students with a job to the proportion of part-time students with a job. <i>(1 pt)</i></li></ol>
-<div class="solution"><p>(a) \(138/240 = 0.575\).</p><p>(b) Full-time: \(48/120 = 0.40\); part-time: \(90/120 = 0.75\). Part-time students are much more likely to have a job (0.75 vs. 0.40).</p></div>
-</div>
-<div class="problem">
-<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
-<p>Find the mean and the median of \(3, 6, 6, 8, 10, 12, 15, 24\). Which one changes more if we replace 24 with 240? <i>(1 mean, 0.5 median, 0.5 explain)</i></p>
+<h3>Problem 1 <span class="pts">[1.5 pts]</span></h3>
+<p>Find the mean and the median of \(3, 6, 6, 8, 10, 12, 15, 24\). Which one changes more if we replace 24 with 240? <i>(0.5 mean, 0.5 median, 0.5 explain)</i></p>
 <div class="solution"><p>Mean \(= 84/8 = 10.5\). Median \(= (8+10)/2 = 9\).</p><p>With 240: mean \(= 300/8 = 37.5\); median stays 9. The <b>mean</b> is affected much more because it uses the value of every data point; the median is resistant to outliers.</p></div>
 </div>
 <div class="problem">
-<h3>Problem 3 <span class="pts">[4 pts]</span> <span class="sk">STATKEY</span></h3>
-<p>The data below are the number of minutes 12 students spent on their phones after getting into bed last night. In StatKey, open <b>Descriptive Statistics and Graphs &rarr; One Quantitative Variable</b>, click <b>Edit Data</b>, and enter the 12 values.</p><table class='dtab'><tr><th>Minutes on phone (12 students)</th></tr><tr><td>16, 24, 19, 16, 13, 35, 26, 22, 120, 11, 33, 25</td></tr></table><ol type='a'><li>Report the mean, median, standard deviation, \(Q_1\), and \(Q_3\) from StatKey. <i>(1.5 pts)</i></li><li>Compute the IQR and the outlier fences \(Q_1 - 1.5\,\text{IQR}\) and \(Q_3 + 1.5\,\text{IQR}\). Which values, if any, are outliers? <i>(1 pt)</i></li><li>Find the z-score of your largest value. <i>(0.5 pt)</i></li><li>Describe the shape of your distribution from StatKey&rsquo;s graph, and say whether the mean or the median is a better summary of a typical student. Refer to your own graph. <i>(1 pt)</i></li></ol>
+<h3>Problem 2 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>The data below are the number of minutes 12 students spent on their phones after getting into bed last night. In StatKey, open <b>Descriptive Statistics and Graphs &rarr; One Quantitative Variable</b>, click <b>Edit Data</b>, and enter the 12 values.</p><table class='dtab'><tr><th>Minutes on phone (12 students)</th></tr><tr><td>16, 24, 19, 16, 13, 35, 26, 22, 120, 11, 33, 25</td></tr></table><ol type='a'><li>Report the mean, median, standard deviation, \(Q_1\), and \(Q_3\) from StatKey. <i>(1 pt)</i></li><li>Compute the IQR and the outlier fences \(Q_1 - 1.5\,\text{IQR}\) and \(Q_3 + 1.5\,\text{IQR}\). Which values, if any, are outliers? <i>(0.5 pt)</i></li><li>Find the z-score of your largest value. <i>(0.5 pt)</i></li><li>Describe the shape of your distribution from StatKey&rsquo;s graph, and say whether the mean or the median is a better summary of a typical student. Refer to your own graph. <i>(1 pt)</i></li></ol>
 <div class="solution"><p>Exact values. Quartiles below use the lecture (halves) rule; StatKey may use a slightly different rule &mdash; accept StatKey&rsquo;s \(Q_1\), \(Q_3\) and fences computed from them.</p><table class='dtab'><tr><th>Mean</th><th>Median</th><th>SD</th><th>\(Q_1, Q_3\)</th><th>IQR; fences</th><th>Outliers</th><th>z of max</th></tr><tr><td>30.00</td><td>23.0</td><td>29.29</td><td>16, 29.5</td><td>13.5; fences -4.25, 49.75</td><td>120</td><td>3.07</td></tr></table><p>(d) The data are <b>skewed right</b> with one very large value (120, an outlier), so the <b>median</b> is the better summary of a typical student (the large value pulls the mean up).</p><p><i>Grading note: accept any value consistent with the student&rsquo;s screenshot and within the range.</i></p></div>
 </div>
 <div class="problem">
-<h3>Problem 4 <span class="pts">[2 pts]</span></h3>
-<p>Scores on a placement test are roughly bell-shaped with mean 72 and standard deviation 6. <i>(1 pt each)</i></p><ol type='a'><li>Use the 95% rule to give the interval that contains about 95% of scores.</li><li>A student&rsquo;s score is at the 90th percentile. Explain what this means in context.</li></ol>
+<h3>Problem 3 <span class="pts">[1.5 pts]</span></h3>
+<p>Scores on a placement test are roughly bell-shaped with mean 72 and standard deviation 6.</p><ol type='a'><li>Use the 95% rule to give the interval that contains about 95% of scores. <i>(0.5 pt)</i></li><li>A student&rsquo;s score is at the 90th percentile. Explain what this means in context. <i>(1 pt)</i></li></ol>
 <div class="solution"><p>(a) \(72 \pm 2(6) = (60, 84)\).</p><p>(b) About 90% of test takers scored at or below this student&rsquo;s score (and about 10% scored higher).</p></div>
+</div>
+<div class="problem">
+<h3>Problem 4 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>The data are weekly study hours for 9 students who work 10 hours a week or less (<b>Group A</b>) and 9 students who work more than 10 hours a week (<b>Group B</b>). In StatKey, open <b>Descriptive Statistics and Graphs &rarr; One Quantitative and One Categorical Variable</b>, click <b>Edit Data</b>, and enter the data with a group label (A or B) for each student. Show the side-by-side boxplots.</p><table class='dtab'><tr><th>Group A (work &le; 10 hrs)</th><th>Group B (work &gt; 10 hrs)</th></tr><tr><td>11, 12, 11, 15, 12, 20, 10, 10, 9</td><td>23, 5, 12, 6, 11, 14, 6, 0, 10</td></tr></table><ol type='a'><li>Report the mean study time for each group and the difference in means \(\bar{x}_A - \bar{x}_B\). <i>(0.5 pt)</i></li><li>Report the five-number summary for each group. <i>(1 pt)</i></li><li>Does either boxplot show an outlier? If so, which value? <i>(0.5 pt)</i></li><li>Using your side-by-side boxplots, compare the two groups&rsquo; centers and spreads in context. Does it look like working more is associated with studying less? <i>(1 pt)</i></li></ol>
+<div class="solution"><p>Exact values (five-number summaries use the halves rule; accept StatKey&rsquo;s quartiles).</p><table class='dtab'><tr><th>\(\bar{x}_A\)</th><th>\(\bar{x}_B\)</th><th>\(\bar{x}_A-\bar{x}_B\)</th><th>Five-number A</th><th>Five-number B</th><th>Outliers (1.5&times;IQR)</th></tr><tr><td>12.22</td><td>9.67</td><td>2.56</td><td>9, 10, 11, 13.5, 20</td><td>0, 5.5, 10, 13, 23</td><td>A: 20; B: none</td></tr></table><p>(d) Group A&rsquo;s box sits higher: students who work 10 hours or less study more on average, so working more is associated with studying less. Spread comments must match the student&rsquo;s own boxplots. This is an observational comparison, so it does not show that working causes less studying.</p><p><i>Grading note: accept any value consistent with the student&rsquo;s screenshot and within the range.</i></p></div>
+</div>
+<div class="problem">
+<h3>Problem 5 <span class="pts">[1 pt]</span></h3>
+<p>True or false? Give a brief explanation for each. <i>(0.5 pt each)</i></p><ol type='a'><li>Monthly ice cream sales and monthly drownings have \(r = 0.88\), so eating ice cream causes drowning.</li><li>A class records each student&rsquo;s hours of sleep (\(x\)) and quiz score (\(y\)). If every quiz score were increased by 10 points, the correlation between sleep and quiz score would increase.</li></ol>
+<div class="solution"><p>(a) False. Correlation is not causation; hot weather (a confounding variable) increases both swimming and ice cream sales.</p><p>(b) False. Adding a constant shifts every point up the same amount; it does not change how tightly the points follow a line, so \(r\) is unchanged.</p></div>
 </div>
 
 </div>

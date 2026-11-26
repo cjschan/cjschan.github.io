@@ -558,6 +558,39 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-blue">StatKey</span>
+  <h2>ANOVA from Raw Data in StatKey</h2>
+  <p class="subtitle">12 volunteers were randomly assigned a bedtime routine; we record minutes to fall asleep. Reading: 12, 15, 10, 14. Phone: 22, 18, 25, 20. Music: 14, 17, 13, 16.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Steps</h3>
+      <ul class="small">
+        <li><strong>1.</strong> <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">StatKey</a> &rarr; <strong>More Advanced Randomization Tests</strong> &rarr; <strong>ANOVA for Difference in Means</strong>.</li>
+        <li><strong>2.</strong> Click <strong>Edit Data</strong>, delete the existing data, and type one case per line: <strong>group, value</strong> (e.g., <code>Reading,12</code>, &hellip;, <code>Phone,22</code>, &hellip;, <code>Music,14</code>, &hellip;). Click <strong>OK</strong>.</li>
+        <li><strong>3.</strong> StatKey shows each group's mean and SD and the <strong>ANOVA table</strong> (SSG, SSE, MS, and \(F\)) for the original sample.</li>
+        <li><strong>4.</strong> Click <strong>Generate 1000 Samples</strong> (a few times). Each sample shuffles the 12 values among the three groups, as if \(H_0\) were true, and computes \(F\).</li>
+        <li><strong>5.</strong> Check <strong>Right Tail</strong>, set the endpoint to your observed \(F\), and read the tail proportion: the randomization p-value.</li>
+      </ul>
+    </div>
+    <div class="card card-green table-card">
+      <h3>What StatKey Shows</h3>
+      <div class="step-note">Means: Reading 12.75, Phone 21.25, Music 15.00</div>
+      <table>
+        <tr><th>Source</th><th>df</th><th>SS</th><th>MS</th><th>F</th></tr>
+        <tr><td>Groups</td><td>2</td><td>155.17</td><td>77.58</td><td>13.56</td></tr>
+        <tr><td>Error</td><td>9</td><td>51.50</td><td>5.72</td><td></td></tr>
+        <tr><td>Total</td><td>11</td><td>206.67</td><td></td><td></td></tr>
+      </table>
+      <ul class="small" style="margin-top:10px;">
+        <li>Randomization p-value: <strong>about 0.002</strong> (yours will vary a little).</li>
+        <li>Theoretical: <strong>Theoretical Distributions &rarr; F</strong>, df 2 and 9, Right Tail beyond 13.56: p-value \(\approx 0.0019\).</li>
+        <li>The two agree. Since \(0.002 &lt; 0.05\), reject \(H_0\): mean time to fall asleep differs for at least one routine (Phone looks slowest).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>What ANOVA Tells You</h2>
   <p class="subtitle">A significant ANOVA says at least one mean differs, but it does not identify all pairwise differences by itself.</p>
   <div class="grid-2">

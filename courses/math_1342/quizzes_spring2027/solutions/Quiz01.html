@@ -53,18 +53,19 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 
 <div class="quiz">
 <span class="badge">Quiz 1</span>
-<h1>Data, Sampling, and Study Design</h1>
+<h1>Data, Sampling, Study Design, and Categorical Variables</h1>
 <p class="version-tag">Worked Solutions</p>
-<p class="covers">Covers Sections Intro, 1.1, 1.2, 1.3</p>
+<p class="covers">Covers Sections Intro, 1.1, 1.2, 1.3, 2.1 &bull; Due Mon Feb 8, 11:59 PM</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 <p><b>StatKey problems.</b> Problems marked <span class="sk">STATKEY</span> are done in <a href="https://www.lock5stat.com/StatKey/" target="_blank">StatKey (lock5stat.com/StatKey)</a>. For each StatKey problem, include a screenshot of your StatKey output with your answers.</p>
+<p><b>Handwritten work.</b> Write your solutions <b>by hand</b>, then scan or photograph your pages into a <b>single PDF</b> and upload it to Blackboard. Typed submissions are not accepted. Put each StatKey screenshot in the same PDF, next to your handwritten answer for that problem.</p>
 </div>
 
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
-<h3>Problem 1 <span class="pts">[2 pts]</span></h3>
-<p>For each variable, decide whether it is <b>categorical</b> or <b>quantitative</b>. <i>(0.5 pt each)</i></p><ol type='a'><li>Zip code where a student lives</li><li>Commute time to campus (minutes)</li><li>Blood type</li><li>Number of credit hours a student is taking</li></ol>
+<h3>Problem 1 <span class="pts">[1 pt]</span></h3>
+<p>For each variable, decide whether it is <b>categorical</b> or <b>quantitative</b>. <i>(0.25 pt each)</i></p><ol type='a'><li>Zip code where a student lives</li><li>Commute time to campus (minutes)</li><li>Blood type</li><li>Number of credit hours a student is taking</li></ol>
 <div class="solution"><p>(a) Categorical &mdash; zip codes are labels; averaging them is meaningless. (b) Quantitative. (c) Categorical. (d) Quantitative.</p></div>
 </div>
 <div class="problem">
@@ -78,9 +79,14 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <div class="solution"><p>(a) Observational study &mdash; the researcher did not assign how much coffee anyone drinks; she only recorded it.</p><p>(b) Example: work schedule / stress. People with long or stressful work hours may both drink more coffee and sleep less, so the association could be due to the work schedule rather than the coffee. (Other reasonable confounders, such as having young children or age, earn credit if the link to both variables is explained.)</p></div>
 </div>
 <div class="problem">
-<h3>Problem 4 <span class="pts">[4 pts]</span> <span class="sk">STATKEY</span></h3>
-<p>A student wants to know how many hours per week ACC students work at a job. On a Tuesday afternoon she asks the first 12 students she sees in the campus library. Your 12 answers (hours per week) are below.</p><table class='dtab'><tr><th>Hours worked per week (12 students)</th></tr><tr><td>3, 5, 6, 7, 8, 11, 12, 17, 18, 21, 22, 54</td></tr></table><ol type='a'><li>Identify the population and the sample. <i>(0.5 pt)</i></li><li>What kind of sample is this? Explain one way it could be <b>biased</b>, and say whether it is likely to overestimate or underestimate the average hours worked. <i>(1 pt)</i></li><li>In StatKey, open <b>Descriptive Statistics and Graphs &rarr; One Quantitative Variable</b>, click <b>Edit Data</b>, and enter the 12 values. Report the mean and the median from your screenshot. <i>(1 pt)</i></li><li>Click <b>Edit Data</b> again, delete the largest value, and report the new mean and median (second screenshot). Which one changed more, and why? <i>(1 pt)</i></li><li>Would asking 120 students in the library instead of 12 fix the bias you described in (b)? Explain. <i>(0.5 pt)</i></li></ol>
+<h3>Problem 4 <span class="pts">[3.5 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>A student wants to know how many hours per week ACC students work at a job. On a Tuesday afternoon she asks the first 12 students she sees in the campus library. Your 12 answers (hours per week) are below.</p><table class='dtab'><tr><th>Hours worked per week (12 students)</th></tr><tr><td>3, 5, 6, 7, 8, 11, 12, 17, 18, 21, 22, 54</td></tr></table><ol type='a'><li>Identify the population and the sample. <i>(0.5 pt)</i></li><li>What kind of sample is this? Explain one way it could be <b>biased</b>, and say whether it is likely to overestimate or underestimate the average hours worked. <i>(1 pt)</i></li><li>In StatKey, open <b>Descriptive Statistics and Graphs &rarr; One Quantitative Variable</b>, click <b>Edit Data</b>, and enter the 12 values. Report the mean and the median from your screenshot. <i>(0.5 pt)</i></li><li>Click <b>Edit Data</b> again, delete the largest value, and report the new mean and median (second screenshot). Which one changed more, and why? <i>(1 pt)</i></li><li>Would asking 120 students in the library instead of 12 fix the bias you described in (b)? Explain. <i>(0.5 pt)</i></li></ol>
 <div class="solution"><p>(a) Population: all ACC students. Sample: the 12 students asked in the library.</p><p>(b) A <b>convenience sample</b>. Students who are in the library on a Tuesday afternoon may be less likely to have daytime jobs, so the sample probably <b>underestimates</b> hours worked (other reasoned answers earn credit, e.g. students who work may study in the library between shifts).</p><p>(c)&ndash;(d) Exact values:</p><table class='dtab'><tr><th>Mean (12 values)</th><th>Median (12 values)</th><th>Mean without largest</th><th>Median without largest</th></tr><tr><td>15.33</td><td>11.5</td><td>11.82</td><td>11</td></tr></table><p>(d) The <b>mean</b> changes much more. The largest value is an outlier that pulls the mean up; the median depends only on the middle values, so it is resistant to the outlier.</p><p>(e) No. A larger sample reduces variability, but if it is still drawn only from the library the same students are left out, so the bias remains. Only a random sample of all ACC students fixes it.</p><p><i>Grading note: the values in (c)&ndash;(d) are exact; they must match the student&rsquo;s screenshots.</i></p></div>
+</div>
+<div class="problem">
+<h3>Problem 5 <span class="pts">[1.5 pts]</span></h3>
+<p>A survey asked 240 ACC students whether they attend full-time or part-time and whether they have a job.</p><table class='dtab'><tr><th></th><th>Has a job</th><th>No job</th><th>Total</th></tr><tr><td>Full-time</td><td>48</td><td>72</td><td>120</td></tr><tr><td>Part-time</td><td>90</td><td>30</td><td>120</td></tr><tr><td>Total</td><td>138</td><td>102</td><td>240</td></tr></table><ol type='a'><li>What proportion of all surveyed students have a job? <i>(0.5 pt)</i></li><li>Compare the proportion of full-time students with a job to the proportion of part-time students with a job. <i>(1 pt)</i></li></ol>
+<div class="solution"><p>(a) \(138/240 = 0.575\).</p><p>(b) Full-time: \(48/120 = 0.40\); part-time: \(90/120 = 0.75\). Part-time students are much more likely to have a job (0.75 vs. 0.40).</p></div>
 </div>
 
 </div>

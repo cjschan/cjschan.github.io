@@ -525,6 +525,36 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-blue">StatKey</span>
+  <h2>A Randomization \(\chi^2\) Test in StatKey</h2>
+  <p class="subtitle">Instead of the theoretical \(\chi^2\) curve, we can build a randomization distribution of \(\chi^2\) statistics, just as in Chapter 4.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Steps (SAT and Award Data)</h3>
+      <ul class="small">
+        <li><strong>1.</strong> <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">StatKey</a> &rarr; <strong>More Advanced Randomization Tests</strong> &rarr; <strong>\(\chi^2\) Test for Association</strong>.</li>
+        <li><strong>2.</strong> Click <strong>Edit Data</strong> and replace the example with the two-way table of counts (keep the same layout: column labels on top, one row per line, e.g., <code>Math</code> 21, 68, 116 and <code>Verbal</code> 10, 45, 95). Click <strong>OK</strong>.</li>
+        <li><strong>3.</strong> StatKey shows the observed and expected counts and the statistic: \(\chi^2 = 2.21\), as we found by hand.</li>
+        <li><strong>4.</strong> Click <strong>Generate 1000 Samples</strong> (a few times). Each sample randomly scrambles the award choices among the 355 students, as if \(H_0\) (no association) were true, and computes \(\chi^2\).</li>
+        <li><strong>5.</strong> Check <strong>Right Tail</strong>, set the endpoint to <strong>2.21</strong>, and read the tail proportion: the randomization p-value.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Result and Comparison</h3>
+      <ul class="small">
+        <li>The randomization distribution is right-skewed, starts at 0, and looks like the \(\chi^2\) curve with df = 2.</li>
+        <li>Randomization p-value: <strong>about 0.35</strong> (yours will vary a little).</li>
+        <li>Theoretical \(\chi^2\) p-value (df = 2, right tail beyond 2.21): <strong>about 0.33</strong>.</li>
+        <li>The two p-values are close and give the same decision: \(0.35 &gt; 0.05\), so we fail to reject \(H_0\).</li>
+      </ul>
+      <div class="callout">
+        The p-value is always the <strong>right tail</strong>: only large \(\chi^2\) values are evidence of association. The randomization test is especially useful when some expected counts are below 5, so the \(\chi^2\) curve may not be accurate.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <span class="tag tag-amber">Your Turn</span>
   <h2>Your Turn: Faculty Rank and Gender</h2>
   <p class="subtitle">A sample of faculty at one university was classified by rank (assistant, associate, or full professor) and gender. Is rank associated with gender? Use \(\alpha=0.05\).</p>

@@ -782,6 +782,30 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-blue">StatKey</span>
+  <h2>Randomization Test for \(p_1 - p_2\) in StatKey</h2>
+  <p class="subtitle">Redo the Treatment vs Placebo test by simulation: 36 of 75 relieved with treatment, 21 of 75 with placebo, \(H_a: p_1 - p_2 &gt; 0\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">Steps</div>
+      <ul class="small">
+        <li><strong>1.</strong> <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">StatKey</a> &rarr; <strong>Randomization Hypothesis Tests</strong> &rarr; <strong>Test for Difference in Proportions</strong></li>
+        <li><strong>2.</strong> Click <strong>Edit Data</strong>. For <strong>Group 1</strong> enter count <strong>36</strong> and sample size <strong>75</strong>; for <strong>Group 2</strong> enter count <strong>21</strong> and sample size <strong>75</strong>. Click <strong>OK</strong>. StatKey shows \(\hat{p}_1 - \hat{p}_2 = 0.48 - 0.28 = 0.20\).</li>
+        <li><strong>3.</strong> Click <strong>Generate 1000 Samples</strong> (a few times for more dots). Each sample randomly reassigns the 57 relieved and 93 not relieved patients to the two groups, as if \(H_0\) were true.</li>
+        <li><strong>4.</strong> Check <strong>Right Tail</strong> (to match \(H_a\)), click the endpoint and type <strong>0.20</strong>, and read the tail proportion: the p-value.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-green">Result</div>
+      <div class="step-note">The randomization distribution is centered near 0, and about 1% of the samples are at or above 0.20:</div>
+      <div class="formula-box" style="font-size:18px;">randomization p-value \(\approx 0.009\) (yours will vary a little)</div>
+      <div class="tag tag-amber">Compare with the z-Test</div>
+      <div class="step-note">The pooled z-test gave \(z \approx 2.52\) and p-value \(\approx 0.006\). The two p-values are close and lead to the same conclusion: strong evidence that the treatment relieves pain more often. They are not identical because the normal curve is a smooth approximation, while the simulated differences can only take certain values.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>What to Remember</h2>
   <p class="subtitle">The procedure changes depending on whether you are estimating a difference or testing for one.</p>
   <div class="grid-2">

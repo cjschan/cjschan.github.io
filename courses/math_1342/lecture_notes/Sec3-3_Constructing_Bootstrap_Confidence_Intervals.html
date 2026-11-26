@@ -602,6 +602,36 @@
   </div>
 </div>
 
+<!-- StatKey how-to: bootstrap CI for a mean from your own data -->
+<div class="slide">
+  <span class="tag tag-blue">StatKey</span>
+  <h2>StatKey: Bootstrap a Mean from Your Own Data</h2>
+  <p class="subtitle">Example: the prices (dollars) of 10 randomly selected used textbooks: 45, 60, 25, 80, 55, 40, 95, 30, 50, 70.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Steps</h3>
+      <ul class="small">
+        <li><strong>1.</strong> <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">StatKey</a> &rarr; <strong>Bootstrap Confidence Intervals</strong> &rarr; <strong>CI for Single Mean, Median, St.Dev.</strong></li>
+        <li><strong>2.</strong> Click <strong>Edit Data</strong>, delete the existing data, enter the 10 prices (one per line), and click <strong>OK</strong>. The <strong>Original Sample</strong> panel shows \(\bar{x}\).</li>
+        <li><strong>3.</strong> Click <strong>Generate 1 Sample</strong>. The <strong>Bootstrap Sample</strong> panel shows the 10 values drawn <em>with replacement</em>: some prices appear twice or more, others not at all. Its mean becomes one dot.</li>
+        <li><strong>4.</strong> Click <strong>Generate 1000 Samples</strong> (a few times for more dots).</li>
+        <li><strong>5.</strong> Read the summary statistics at the top right of the plot: <strong>mean</strong> and <strong>std. error</strong>. That std. error is the bootstrap SE.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Solution</h3>
+      <p class="step-note">Statistic: \(\bar{x} = 550/10 = 55.0\) dollars</p>
+      <p class="step-note">One bootstrap sample might be 45, 45, 95, 30, 70, 70, 70, 25, 55, 80 (mean 58.5): 45 appears twice and 70 three times.</p>
+      <p class="step-note">Bootstrap SE: about <strong>6.6</strong> (yours will vary a little)</p>
+      <div class="formula-box" style="font-size: 19px;">
+        \(95\%\;\text{CI} = 55.0 \pm 2(6.6)\)<br>
+        \(= 55.0 \pm 13.2 = (41.8,\; 68.2)\)
+      </div>
+      <p class="step-note" style="margin-top: 8px;">We are 95% confident that the mean price of <strong>all</strong> used textbooks of this kind is between about 42 and 68 dollars.</p>
+    </div>
+  </div>
+</div>
+
 <!-- Slide 9: Summary -->
 <div class="slide">
   <span class="tag tag-blue">Recap</span>

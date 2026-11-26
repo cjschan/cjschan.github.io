@@ -525,6 +525,33 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-blue">StatKey</span>
+  <h2>A Randomization Test for Correlation or Slope</h2>
+  <p class="subtitle">For 10 adults, \(x\) = minutes of exercise per day and \(y\) = resting heart rate (beats per minute). Is there evidence of a <em>negative</em> association?</p>
+  <div class="grid-2" style="flex:0;">
+    <div class="card card-accent">
+      <h3>Steps</h3>
+      <ul class="small">
+        <li><strong>1.</strong> <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">StatKey</a> &rarr; <strong>Randomization Hypothesis Tests</strong> &rarr; <strong>Test for Slope, Correlation</strong>.</li>
+        <li><strong>2.</strong> Click <strong>Edit Data</strong>, delete the existing data, and type one pair per line: <strong>x, y</strong> (<code>0,74</code> <code>10,79</code> <code>15,70</code> <code>20,76</code> <code>30,77</code> <code>30,68</code> <code>45,71</code> <code>50,73</code> <code>60,66</code> <code>75,69</code>). Click <strong>OK</strong>; StatKey shows \(r\) and the regression line.</li>
+        <li><strong>3.</strong> Click <strong>Generate 1000 Samples</strong> (a few times). Each sample randomly reshuffles the \(y\) values among the \(x\) values, as if \(H_0\) (no relationship) were true, and computes \(r\) (or the slope).</li>
+        <li><strong>4.</strong> Check the tail that matches \(H_a\) (here <strong>Left Tail</strong>), set the endpoint to the observed \(r\), and read the tail proportion: the p-value.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Solution</h3>
+      <ul class="small">
+        <li>\(H_0: \rho = 0\) vs. \(H_a: \rho &lt; 0\) (equivalently \(\beta_1 = 0\) vs. \(\beta_1 &lt; 0\))</li>
+        <li>\(r = -0.590\); line: \(\widehat{\text{HeartRate}} = 75.82 - 0.105\,\text{Exercise}\)</li>
+        <li>Randomization p-value: <strong>about 0.04</strong> (yours will vary a little). Using \(r\) or the slope gives the same p-value.</li>
+        <li>Compare with the t-test: \(t = \dfrac{-0.590\sqrt{8}}{\sqrt{1-(-0.590)^2}} \approx -2.07\), \(df = 8\), left-tail p-value \(\approx 0.036\). The two methods agree.</li>
+        <li>\(p &lt; 0.05\): reject \(H_0\). There is evidence that more daily exercise is associated with a lower resting heart rate. These are observational data, so this does not show causation.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <h2>What to Remember</h2>
   <p class="subtitle">Inference for a line asks one question in several forms: is there a linear relationship in the population?</p>
   <div class="grid-2">

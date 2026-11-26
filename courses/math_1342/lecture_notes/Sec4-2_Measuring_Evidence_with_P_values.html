@@ -370,6 +370,37 @@
   </div>
 </div>
 
+<!-- Slide 7d: StatKey how-to, difference in means from typed-in data -->
+<div class="slide">
+  <span class="tag tag-blue" style="align-self:flex-start;">StatKey</span>
+  <h2>StatKey: Difference in Means with Your Own Data</h2>
+  <p class="subtitle">16 students were randomly assigned to study with or without texting, then took a quiz. Does texting lower the mean score?</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Steps</h3>
+      <ul class="small">
+        <li><strong>1.</strong> <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">StatKey</a> &rarr; <strong>Randomization Hypothesis Tests</strong> &rarr; <strong>Test for Difference in Means</strong>.</li>
+        <li><strong>2.</strong> Click <strong>Edit Data</strong>, delete the existing data, and type one student per line: <strong>group label, score</strong> (e.g., <code>Text,72</code> &hellip; <code>NoText,78</code>). Click <strong>OK</strong>; StatKey shows the observed \(\bar{x}_1 - \bar{x}_2\).</li>
+        <li><strong>3.</strong> Click <strong>Generate 1 Sample</strong> to see one randomization sample and its difference in means.</li>
+        <li><strong>4.</strong> Click <strong>Generate 1000 Samples</strong> (a few times for more dots).</li>
+        <li><strong>5.</strong> Pick the tail that matches \(H_a\) (<strong>Left Tail</strong>, <strong>Right Tail</strong>, or <strong>Two-Tail</strong>), click the endpoint and type the observed statistic, and read the proportion in the tail: that is the p-value.</li>
+      </ul>
+      <div class="step-note" style="margin-top: 8px;"><strong>What StatKey does:</strong> each randomization sample keeps all 16 observed scores but <strong>reallocates them to the two groups at random</strong> (8 and 8), as if \(H_0\) were true and the group label made no difference, then computes the new difference in means.</div>
+    </div>
+    <div class="card card-green">
+      <h3>Example and Solution</h3>
+      <p class="step-note"><strong>Text:</strong> 72, 65, 80, 68, 74, 61, 70, 66<br><strong>NoText:</strong> 78, 82, 71, 85, 76, 80, 69, 79</p>
+      <ul class="small">
+        <li>\(H_0: \mu_T = \mu_N\) vs. \(H_a: \mu_T < \mu_N\)</li>
+        <li>Observed: \(\bar{x}_T - \bar{x}_N = 69.5 - 77.5 = -8.0\)</li>
+        <li>\(H_a\) says "less than," so use the <strong>Left Tail</strong> and set it at \(-8.0\).</li>
+        <li>The randomization distribution is centered near 0, and only about 1% of the samples fall at or below \(-8.0\): <strong>p-value \(\approx 0.01\)</strong>.</li>
+      </ul>
+      <p class="step-note" style="margin-top: 8px;">Check the order: if StatKey lists <code>NoText</code> first, it computes \(\bar{x}_N - \bar{x}_T = +8.0\), and you would use the <strong>Right Tail</strong> instead.</p>
+    </div>
+  </div>
+</div>
+
 <!-- Slide 8: One-Tail vs Two-Tail -->
 <div class="slide">
   <h2>One-Tail vs. Two-Tail p-values</h2>

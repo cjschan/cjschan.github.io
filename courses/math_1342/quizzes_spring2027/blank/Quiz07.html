@@ -42,26 +42,27 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <body>
 <div class="quiz">
 <span class="badge">Quiz 7</span>
-<h1>Errors, Connections, and Tests with the Normal Distribution</h1>
+<h1>Paired Data and Chi-Square Tests</h1>
 <p class="version-tag">Student Version</p>
-<p class="covers">Covers Sections 4.4, 4.5, 5.1</p>
+<p class="covers">Covers Sections 6.5, 7.2 &bull; Due Mon May 3, 11:59 PM</p>
 <div class="instructions">
 <p><b>Instructions.</b> This is a take-home quiz. You may use your lecture notes and online resources, but the work you submit must be your own. Show your work clearly to receive credit.</p>
 <p><b>StatKey problems.</b> Problems marked <span class="sk">STATKEY</span> are done in <a href="https://www.lock5stat.com/StatKey/" target="_blank">StatKey (lock5stat.com/StatKey)</a>. For each StatKey problem, include a screenshot of your StatKey output with your answers.</p>
+<p><b>Handwritten work.</b> Write your solutions <b>by hand</b>, then scan or photograph your pages into a <b>single PDF</b> and upload it to Blackboard. Typed submissions are not accepted. Put each StatKey screenshot in the same PDF, next to your handwritten answer for that problem.</p>
 </div>
 
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
 <h3>Problem 1 <span class="pts">[2 pts]</span></h3>
-<p>A college tests \(H_0: p = 0.70\) vs. \(H_a: p > 0.70\), where \(p\) is the pass rate of students in a new tutoring program (the old pass rate was 70%). <i>(1 pt each)</i></p><ol type='a'><li>Describe a Type I error in this context.</li><li>Describe a Type II error in this context.</li></ol>
+<p>For each design, decide whether you should use a <b>paired</b> or an <b>independent two-sample</b> approach, and explain why. <i>(1 pt each)</i></p><ol type='a'><li>25 students take a statistics pretest in January and the same test again in May.</li><li>Commute times of 40 students at RRC are compared with commute times of 40 different students at Highland.</li></ol>
 </div>
 <div class="problem">
-<h3>Problem 2 <span class="pts">[2 pts]</span></h3>
-<p><i>(1 pt each)</i></p><ol type='a'><li>A researcher tests 40 different foods to see whether each is associated with migraines, using \(\alpha = 0.05\) for each test. Even if no food is truly associated with migraines, about how many tests would you expect to be significant? Why is this a problem?</li><li>A study of 50,000 people finds that a new app increases average daily steps by 12 steps (p-value = 0.002). Is this result statistically significant? Is it practically significant? Explain.</li></ol>
+<h3>Problem 2 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>Six students timed how long (minutes) it took them to finish a practice problem set before and after a study-skills workshop. The lists are in the same student order.</p><table class='dtab'><tr><th>Before</th><th>After</th></tr><tr><td>30.8, 26.8, 33.4, 33.1, 31.4, 26.4</td><td>30.7, 26.7, 32.9, 31.9, 29.5, 26.7</td></tr></table><p>Compute the differences \(d = \text{before} - \text{after}\), and use <b>Descriptive Statistics and Graphs &rarr; One Quantitative Variable</b> to find \(\bar{d}\) and \(s_d\). Then test \(H_0: \mu_d = 0\) vs. \(H_a: \mu_d > 0\) with a t-test (df = 5) using StatKey&rsquo;s t distribution. Give the conclusion at \(\alpha = 0.05\). <i>(1 differences and summary, 1.5 test, 0.5 conclusion)</i></p>
 </div>
 <div class="problem">
-<h3>Problem 3 <span class="pts">[6 pts]</span> <span class="sk">STATKEY</span></h3>
-<p>In a random sample of n ACC students, x said they would rather take an 8-week course than a 16-week course. Is there evidence that the proportion who prefer 8-week courses is <b>different from 0.5</b>?</p><table class='dtab'><tr><th>Count x</th><th>Sample size n</th></tr><tr><td>85</td><td>140</td></tr></table><ol type='a'><li>In StatKey, open <b>Randomization Hypothesis Tests &rarr; Test for Single Proportion</b>, enter the count and sample size, and set the null proportion to 0.5. Generate at least 5000 samples, check <b>Two-Tail</b>, and set a tail at your \(\hat{p}\). Report \(\hat{p}\) and the p-value. <i>(1.5 pts)</i></li><li>Report the SE of your randomization distribution and compute \(z = (\hat{p} - 0.5)/SE\). <i>(1 pt)</i></li><li>Open <b>Theoretical Distributions &rarr; Normal</b> (mean 0, standard deviation 1). Use <b>Two-Tail</b> to find the p-value for your z. How does it compare with your randomization p-value from (a)? <i>(1 pt)</i></li><li>Open <b>Bootstrap Confidence Intervals &rarr; CI for Single Proportion</b> and find a 95% percentile interval. Is 0.5 in your interval? Explain why this agrees (or nearly agrees) with your test at \(\alpha = 0.05\). <i>(1.5 pts)</i></li><li>State your conclusion in context, and name the type of error (I or II) you might have made. <i>(1 pt)</i></li></ol>
+<h3>Problem 3 <span class="pts">[5 pts]</span> <span class="sk">STATKEY</span></h3>
+<p>A random sample of ACC students was asked which class format they prefer. Is preferred format associated with age group?</p><table class='dtab'><tr><th>Age &le; 24: In person</th><th>Age &le; 24: Hybrid</th><th>Age &le; 24: Online</th><th>Age 25+: In person</th><th>Age 25+: Hybrid</th><th>Age 25+: Online</th></tr><tr><td>46</td><td>25</td><td>32</td><td>30</td><td>23</td><td>51</td></tr></table><ol type='a'><li>State the hypotheses, and compute by hand the expected count for <i>Age &le; 24, In person</i>. <i>(1.5 pts)</i></li><li>Open <b>More Advanced Randomization Tests &rarr; &chi;<sup>2</sup> Test for Association</b>, click <b>Edit Data</b>, and enter the two-way table. Report the \(\chi^2\) statistic. <i>(1 pt)</i></li><li>Generate at least 5000 randomization samples and report the p-value (right tail). Then use <b>Theoretical Distributions &rarr; &chi;<sup>2</sup></b> with df = 2 to find the theoretical p-value. Do they agree? <i>(1.5 pts)</i></li><li>State your conclusion at \(\alpha = 0.05\) in context. <i>(1 pt)</i></li></ol>
 </div>
 
 </div>

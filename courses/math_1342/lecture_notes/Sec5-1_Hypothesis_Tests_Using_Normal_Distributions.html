@@ -363,6 +363,40 @@
 </div>
 
 <div class="slide">
+  <span class="tag tag-blue">StatKey</span>
+  <h2>Randomization Test for a Single Proportion in StatKey</h2>
+  <p class="subtitle">In a random sample of 120 adults, 72 said they prefer reading books on paper rather than on a screen. Is the proportion different from 0.5?</p>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>Steps</h3>
+      <ul class="small">
+        <li><strong>1.</strong> <a href="https://www.lock5stat.com/StatKey/" target="_blank" style="color:var(--accent);">StatKey</a> &rarr; <strong>Randomization Hypothesis Tests</strong> &rarr; <strong>Test for Single Proportion</strong></li>
+        <li><strong>2.</strong> Click <strong>Edit Data</strong>; enter the <strong>count</strong> (72) and <strong>sample size</strong> (120); click <strong>OK</strong>. StatKey shows \(\hat{p}\).</li>
+        <li><strong>3.</strong> Click the null hypothesis value at the top and set \(p = \) <strong>0.5</strong>.</li>
+        <li><strong>4.</strong> Click <strong>Generate 1000 Samples</strong> (a few times for more dots). Each dot is a \(\hat{p}\) from a sample of 120 drawn as if \(H_0\) were true.</li>
+        <li><strong>5.</strong> Check the tail that matches \(H_a\) (here <strong>Two-Tail</strong>), click an endpoint and type \(\hat{p}\), and add the two tail proportions: that is the p-value.</li>
+        <li><strong>6.</strong> The <strong>std. error</strong> in the upper-right summary is the SE for a z-statistic.</li>
+      </ul>
+    </div>
+    <div class="card card-accent">
+      <h3>Solution</h3>
+      <ul class="small">
+        <li>\(H_0: p = 0.5\) vs. \(H_a: p \ne 0.5\); \(\hat{p} = 72/120 = 0.60\)</li>
+        <li>Randomization distribution: centered near 0.5, SE \(\approx 0.0456\)</li>
+        <li>Randomization p-value: <strong>about 0.035</strong> (yours will vary a little)</li>
+      </ul>
+      <div class="formula-box" style="font-size:18px;">
+        \[
+          z = \frac{0.60 - 0.5}{0.0456} \approx 2.19
+        \]
+      </div>
+      <p class="step-note">Normal \(N(0,1)\), <strong>Two-Tail</strong> at 2.19: p-value \(\approx 0.028\).</p>
+      <p class="step-note">The two p-values are close, and both are below 0.05: reject \(H_0\). The proportion who prefer paper books appears to differ from 0.5 (it looks higher). The normal p-value is a bit smaller here because \(\hat{p}\) can only take the values \(x/120\) in the randomization distribution.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
   <span class="tag tag-amber">Your Turn</span>
   <h2>Your Turn: z-Tests</h2>
   <p class="subtitle">For each test: (i) compute the z-statistic, (ii) find the p-value (use StatKey's Normal distribution), and (iii) state a conclusion at \(\alpha = 0.05\).</p>

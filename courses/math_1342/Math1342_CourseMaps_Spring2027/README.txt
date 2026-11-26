@@ -7,8 +7,10 @@ calendar, so one data file builds both sets; the pages differ only in the term l
 Layout follows the Apodaca/Forsythe "Map Your Way to a Quality Course" handout.
 
 CHANGES FROM FALL 2026
-  - 10 take-home quizzes instead of 8 (quizzes_spring2027/). Every section is on a quiz, and every quiz has StatKey
-    problems; students include a screenshot of their StatKey output.
+  - 8 take-home quizzes (quizzes_spring2027/), all due Mondays at 11:59 PM. Each quiz covers only sections taught
+    before its due date; Quizzes 2, 4 and 6 are due the Monday before Tests 1, 2 and 3. Every section is on a quiz,
+    and every quiz has StatKey problems. Submissions are handwritten, scanned or photographed into one PDF, with
+    StatKey screenshots placed next to the handwritten answers. (Revised Nov 25, 2026 from 10 quizzes.)
   - 2.5 is taught over two days (Part 1 Wed Feb 17, Part 2 Mon Feb 22), matching the two 2.5 Interactive Lectures.
   - 4.4 and 4.5 are on separate days. Review: Putting It All Together is Mon May 10; the final is Wed May 12 – Fri May 14.
   - Test 3 opens Fri Apr 30, after the withdrawal deadline (Mon Apr 26).
@@ -33,7 +35,7 @@ HOW TO REBUILD AFTER EDITING
 HOW TO READ A PAGE (same template as the Fall 2026 RRC/DIL maps)
   Rows                     one row per section (2.5 has one row per day), with the materials, activities and
                            assessments that align to that row.
-  Take-Home Quizzes        listed in every row the quiz covers. Quizzes 3, 6 and 9 are due Wednesday, before a test.
+  Take-Home Quizzes        listed in every row the quiz covers. All quizzes are due Monday.
   Tests                    Test N, Test N Study Guide and Practice Test N are listed in every row the test covers
                            (Test 1: Intro–2.5, Test 2: P.1–4.3, Test 3: 4.4–6.5). Every test window falls in a week
                            whose rows it covers, so no test sitting is on an "Also this week" line.
