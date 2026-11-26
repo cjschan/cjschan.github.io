@@ -64,7 +64,7 @@ def html(stem, title, sub):
 <p><strong>What to do and submit</strong></p>
 <ul>
 <li>We work through this worksheet in class. Work with a neighbor, but write your own answers.</li>
-<li>Download the worksheet below and type your answers into it. Please don't print it.{shot_do}</li>
+<li>Download the worksheet below and type your answers into it.{shot_do}</li>
 <li>Upload <strong>one file</strong> to this assignment: the completed worksheet, saved as a .docx or PDF.</li>
 <li>Submit by the due date shown on this assignment.{" Late submissions aren't accepted." if stem not in LATE_OK else ""}</li>
 </ul>
