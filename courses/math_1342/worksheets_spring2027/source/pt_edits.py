@@ -151,6 +151,9 @@ PT3_REPLACE = [
     ("(Areas in one tail of the standard normal curve are about 0.027 beyond z = 1.93, 0.017 beyond z = 2.13, and 0.010 beyond z = 2.33.)",
      "(The pooled proportion is 252/2700 = 0.0933, and the area beyond z = 2.13 in one tail is about 0.017.)"),
     ("Use the conservative degrees of freedom.", "Use df = 21."),
+    ("Using the data from Question 1, find a 95% confidence interval for",
+     "An online store tested two versions of its checkout page. Visitors were randomly shown Version A or Version B, "
+     "and the table shows how many made a purchase. Find a 95% confidence interval for"),
     ("(In a t-distribution with df = 21, the area in one tail is about 0.073 beyond t = 1.51, 0.051 beyond t = 1.71, and 0.035 beyond t = 1.91.)",
      "(In a t-distribution with df = 21, the area beyond t = 1.71 in one tail is about 0.051.)"),
     ("(In a t-distribution with df = 9, the area in one tail is about 0.008 beyond t = 2.96, 0.006 beyond t = 3.16, and 0.004 beyond t = 3.36.)",
@@ -186,6 +189,9 @@ def pt3(items):
             for b in q["blocks"]:
                 if b["t"] == "BlockQuote":
                     b["c"] = [S(_fix(inl(x["c"]).strip())) if x["t"] in ("Para", "Plain") else x for x in b["c"]]
+            if letter == "D" and k == 2:   # self-contained: give this question its own copy of the table
+                import copy
+                q["blocks"] = [copy.deepcopy(b) for b in s["qs"][0]["blocks"] if b["t"] == "Table"] + q["blocks"]
             use = PT3_USE.get((letter, k))
             if use:
                 q["blocks"].insert(0, {"t": "BlockQuote", "c": [S(use)]})
