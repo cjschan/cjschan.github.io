@@ -154,7 +154,9 @@ def put_table(d: Doc, b, fill_cols_blank=False):
 
 
 def put_image(d: Doc, src, w):
-    d.image(src, min(w, 5.6))
+    from alt_text import ALT
+    key = "/".join(Path(src).parts[-3::2])          # media/pt2/media/image1.png -> pt2/image1.png
+    d.image(src, min(w, 5.6), alt=ALT[key])
 
 
 def render_blocks(d: Doc, blocks, indent=0.0, numbered_start=None):

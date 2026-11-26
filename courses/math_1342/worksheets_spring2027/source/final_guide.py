@@ -16,6 +16,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 
 from wslib import Doc, keep_next  # noqa: E402
+from alt_text import ALT  # noqa: E402
 
 
 def keep_table(t):
@@ -259,7 +260,7 @@ def problems(d: Doc, D: Data):
     b = D.box
     d.problem("Problem 2. Hours of Sleep",
               "The boxplot shows the hours of sleep on a school night for a sample of college students.")
-    d.image(FIG / "p2_boxplot.png", 5.8)
+    d.image(FIG / "p2_boxplot.png", 5.8, alt=ALT["final/p2_boxplot.png"])
     d.step("(a)", "Find the median.", f"Median = **{b['med']:g} hours** (the line inside the box).", lines=L)
     d.step("(b)", "Find Q1 and Q3.", f"Q1 = **{b['q1']:g}** hours and Q3 = **{b['q3']:g}** hours (the edges of the box).", lines=L)
     d.step("(c)", "Find the range and the IQR.",
@@ -273,7 +274,7 @@ def problems(d: Doc, D: Data):
     d.problem("Problem 3. Mowing Time",
               f"A landscaping company predicts the time it takes to mow a lawn (in minutes) from the lawn's size (in thousands of square feet) "
               f"using the regression line  Predicted Time = {D.reg_b0} + {D.reg_b1}·Size. The scatterplot and line are shown below.")
-    d.image(FIG / "p3_regression.png", 5.0)
+    d.image(FIG / "p3_regression.png", 5.0, alt=ALT["final/p3_regression.png"])
     d.step("(a)", f"Predict the mowing time for a lawn of {D.reg_x0} thousand square feet.",
            f"Predicted Time = {D.reg_b0} + {D.reg_b1}({D.reg_x0}) = **{D.reg_pred:g} minutes**.", lines=L)
     d.step("(b)", f"One {D.reg_x0}-thousand-square-foot lawn actually took {D.reg_actual} minutes. Find the residual.",
@@ -289,7 +290,7 @@ def problems(d: Doc, D: Data):
     d.problem("Problem 4. Coupon Users",
               f"A market researcher draws {D.sd_reps} random samples of {D.sd_n} shoppers each and records the proportion who use coupons in each sample. "
               "The dotplot shows the resulting sampling distribution.")
-    d.image(FIG / "p4_sampling.png", 5.8)
+    d.image(FIG / "p4_sampling.png", 5.8, alt=ALT["final/p4_sampling.png"])
     d.step("(a)", "What does one dot in the dotplot represent?",
            f"One dot is the **sample proportion of coupon users in one random sample of {D.sd_n} shoppers**.", lines=L)
     d.step("(b)", "Use the dotplot to estimate the proportion of ALL shoppers who use coupons.",
@@ -324,7 +325,7 @@ def problems(d: Doc, D: Data):
               f"A tutoring center claims its program raises the mean score on a placement test above the usual average of {D.rz_null}. "
               f"A random sample of tutored students has a mean score of x̄ = {D.rz_obs}. Assuming H₀ is true, {D.rz_k} sample means were simulated "
               "to build the randomization distribution below.")
-    d.image(FIG / "p6_randomization.png", 5.8)
+    d.image(FIG / "p6_randomization.png", 5.8, alt=ALT["final/p6_randomization.png"])
     d.step("(a)", "State the hypotheses and define the parameter.",
            [f"H₀: μ = {D.rz_null}    Hₐ: μ > {D.rz_null}",
             "μ = the mean placement-test score of **all** students who take the tutoring program."], lines=L)
@@ -562,7 +563,7 @@ def review(d: Doc):
                "**Paired data**: the same subjects measured twice. Subtract to get one list of differences, then do a one-sample t on them."])
     d.callout("Paired vs. two independent samples is the most common Chapter 6 mistake. Ask: are the same people (or matched pairs) measured twice?", label="Watch out:")
     d.subheading("Choosing the right method")
-    d.image(FLOWCHART, 4.3)
+    d.image(FLOWCHART, 4.3, alt=ALT["sg3/image2.png"])
     d.bullets(["Two categorical variables (a two-way table, more than 2 categories) → **chi-square test for association**.",
                "Two quantitative variables, predicting one from the other → **inference for slope** (regression).",
                "A quantitative response compared across **3 or more** groups → **ANOVA**."])
@@ -593,13 +594,13 @@ def review(d: Doc):
              ["Chi-square association", "χ² = Σ(O − E)²/E", "E = row × column ÷ total", "χ², df = (r − 1)(c − 1)"],
              ["ANOVA", "F = MSG/MSE", "MS = SS/df", "F, df = k − 1 and n − k"]],
             widths=[1.75, 1.1, 2.6, 1.55], font_size=9.5)
-    d.table([["Rule", ""],
+    d.table([["Rule", "Formula or value"],
              ["Test statistic", "(statistic − null value) ÷ SE"],
              ["Confidence interval", "statistic ± (z* or t*) × SE;  quick 95%: statistic ± 2·SE"],
              ["z* values", "90% → 1.645,  95% → 1.96,  99% → 2.576"],
              ["Decision", "reject H₀ when p-value < α"],
              ["Interval ↔ test", "two-tailed test at 5% matches the 95% interval: reject H₀ when the null value is outside it"]],
-            widths=[1.8, 5.2], header_row=False, center=False, font_size=10)
+            widths=[1.8, 5.2], header_row=True, center=False, font_size=10)
 
 
 # ---------------------------------------------------------------- build
@@ -612,6 +613,7 @@ def build(out_dir):
     review(g)
     g.page_break()
     g.section("Practice Problems")
+    g.problem_level = 3
     g.para("Problems 1–13 match the 13 questions on the Final Exam, in order; Problem 14 practices ANOVA. "
            "Try them without notes first, then check your work against the **Final Exam Study Guide: Solutions** document.", italic=True)
     problems(g, D)

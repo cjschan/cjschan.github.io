@@ -20,7 +20,7 @@ from docx.shared import Pt, Inches, RGBColor, Emu
 SLATE = "0F172A"      # header band, headings
 SLATE_2 = "334155"    # body accents
 MUTED = "64748B"      # footer, labels
-ACCENT = "0284C7"     # sky-600: readable on white (site accent #38bdf8 is the light tint)
+ACCENT = "0369A1"     # sky-700: 5.9:1 on white, 5.2:1 on TINT (WCAG AA); site accent #38bdf8 is the light tint
 ACCENT_LIGHT = "38BDF8"
 TINT = "E0F2FE"       # sky-100 fill for directions
 RULE = "CBD5E1"       # light borders
@@ -37,6 +37,79 @@ CONTENT_W = 7.0  # inches (Letter with 0.75" margins)
 
 def rgb(h):
     return RGBColor.from_string(h)
+
+
+# ---------------------------------------------------------------- accessibility helpers
+_PPR_AFTER = {   # elements that must come after w:pBdr / w:shd inside w:pPr (OOXML schema order)
+    "w:pBdr": ["w:shd", "w:tabs", "w:suppressAutoHyphens", "w:kinsoku", "w:wordWrap", "w:overflowPunct", "w:topLinePunct",
+               "w:autoSpaceDE", "w:autoSpaceDN", "w:bidi", "w:adjustRightInd", "w:snapToGrid", "w:spacing", "w:ind",
+               "w:contextualSpacing", "w:mirrorIndents", "w:suppressOverlap", "w:jc", "w:textDirection",
+               "w:textAlignment", "w:textboxTightWrap", "w:outlineLvl", "w:divId", "w:cnfStyle", "w:rPr", "w:sectPr", "w:pPrChange"],
+}
+_PPR_AFTER["w:shd"] = _PPR_AFTER["w:pBdr"][1:]
+
+
+def _ppr_insert(pPr, el):
+    """Insert a w:pBdr or w:shd element into w:pPr at its schema position."""
+    tag = el.tag.split("}")[1]
+    after = {qn(t) for t in _PPR_AFTER["w:" + tag]}
+    for child in pPr:
+        if child.tag in after:
+            child.addprevious(el)
+            return
+    pPr.append(el)
+
+
+def para_box(p, fill, bar=None, bar_sz=24, pad_tb=4, pad_lr=8, indent=None, box_border=None):
+    """Shade a paragraph and give it a left accent bar (or a full border), with padding.
+    Consecutive paragraphs with identical settings merge into one box, so no layout table is needed."""
+    pPr = p._p.get_or_add_pPr()
+    for tag in ("w:pBdr", "w:shd"):
+        old = pPr.find(qn(tag))
+        if old is not None:
+            pPr.remove(old)
+    bdr = OxmlElement("w:pBdr")
+    def edge(name, color, sz, space):
+        e = OxmlElement(f"w:{name}")
+        e.set(qn("w:val"), "single"); e.set(qn("w:sz"), str(sz)); e.set(qn("w:space"), str(space)); e.set(qn("w:color"), color)
+        bdr.append(e)
+    if box_border:
+        for side in ("top", "left", "bottom", "right"):
+            edge(side, box_border, 6, pad_tb if side in ("top", "bottom") else pad_lr)
+    else:
+        edge("top", fill, 4, pad_tb)
+        edge("left", bar or fill, bar_sz if bar else 4, pad_lr)
+        edge("bottom", fill, 4, pad_tb)
+        edge("right", fill, 4, pad_lr)
+    _ppr_insert(pPr, bdr)
+    if fill:
+        shd = OxmlElement("w:shd"); shd.set(qn("w:val"), "clear"); shd.set(qn("w:color"), "auto"); shd.set(qn("w:fill"), fill)
+        _ppr_insert(pPr, shd)
+    # keep the border inside the text column: indent by the border spacing
+    left = (indent or 0) + (pad_lr + 2) / 72
+    p.paragraph_format.left_indent = Inches(left)
+    p.paragraph_format.right_indent = Inches((pad_lr + 2) / 72)
+    return p
+
+
+def style_heading(doc, level, size, color, before, after):
+    """Make Word's built-in 'Heading N' style match the handout look (real headings for screen readers)."""
+    st = doc.styles[f"Heading {level}"]
+    rpr = st.element.get_or_add_rPr()
+    for tag in ("w:rFonts", "w:color", "w:sz", "w:szCs", "w:i", "w:b"):
+        for e in rpr.findall(qn(tag)):
+            rpr.remove(e)
+    st.font.name = FONT
+    st.element.rPr.rFonts.set(qn("w:eastAsia"), FONT)
+    st.font.size = Pt(size)
+    st.font.bold = True
+    st.font.italic = False
+    st.font.color.rgb = rgb(color)
+    pf = st.paragraph_format
+    pf.space_before = Pt(before)
+    pf.space_after = Pt(after)
+    pf.keep_with_next = True
+    pf.line_spacing = 1.0
 
 
 # ---------------------------------------------------------------- low-level xml helpers
@@ -109,6 +182,28 @@ def set_col_widths(table, widths):
             c.width = Inches(widths[i])
 
 
+def mark_header_row(t, first_col=False):
+    """Mark row 1 as a header row (w:tblHeader) and set the table look accordingly."""
+    trPr = t.rows[0]._tr.get_or_add_trPr()
+    if trPr.find(qn("w:tblHeader")) is None:
+        h = OxmlElement("w:tblHeader"); h.set(qn("w:val"), "true"); trPr.append(h)
+    tblPr = t._tbl.tblPr
+    look = tblPr.find(qn("w:tblLook"))
+    if look is None:
+        look = OxmlElement("w:tblLook"); tblPr.append(look)
+    look.set(qn("w:firstRow"), "1"); look.set(qn("w:firstColumn"), "1" if first_col else "0")
+    look.set(qn("w:lastRow"), "0"); look.set(qn("w:lastColumn"), "0"); look.set(qn("w:noHBand"), "1"); look.set(qn("w:noVBand"), "1")
+
+
+def set_table_description(t, text):
+    tblPr = t._tbl.tblPr
+    for tag, val in (("w:tblCaption", text[:60]), ("w:tblDescription", text)):
+        e = tblPr.find(qn(tag))
+        if e is None:
+            e = OxmlElement(tag); tblPr.append(e)
+        e.set(qn("w:val"), val)
+
+
 def para_border_bottom(p, color=RULE, sz=6, space=1):
     pPr = p._p.get_or_add_pPr()
     bdr = OxmlElement("w:pBdr")
@@ -118,7 +213,7 @@ def para_border_bottom(p, color=RULE, sz=6, space=1):
     el.set(qn("w:space"), str(space))
     el.set(qn("w:color"), color)
     bdr.append(el)
-    pPr.append(bdr)
+    _ppr_insert(pPr, bdr)
 
 
 def keep_next(p, on=True):
@@ -196,31 +291,36 @@ class Doc:
         st.font.color.rgb = rgb(SLATE)
         st.paragraph_format.space_after = Pt(4)
         st.paragraph_format.line_spacing = 1.1
+        style_heading(self.d, 1, 20, SLATE, 12, 2)
+        style_heading(self.d, 2, 14, SLATE, 12, 4)
+        style_heading(self.d, 3, 12, ACCENT, 8, 2)
+        self.problem_level = 2
+        # document title + language (accessibility checkers look for both)
+        cp = self.d.core_properties
+        cp.title = f"{title} (MATH 1342, Spring 2027)"
+        cp.subject = kind
+        cp.author = "MATH 1342"
+        cp.language = "en-US"
+        rpr_default = self.d.styles.element.find(qn("w:docDefaults")).find(qn("w:rPrDefault")).find(qn("w:rPr"))
+        lang = rpr_default.find(qn("w:lang"))
+        if lang is None:
+            lang = OxmlElement("w:lang"); rpr_default.append(lang)
+        lang.set(qn("w:val"), "en-US"); lang.set(qn("w:eastAsia"), "en-US"); lang.set(qn("w:bidi"), "ar-SA")
         self._header(kind, title, subtitle, name_line)
         self._footer(title)
 
     # ---- header band + title
     def _header(self, kind, title, subtitle, name_line):
-        t = self.d.add_table(rows=1, cols=2)
-        table_no_borders(t)
-        table_width(t, CONTENT_W)
-        set_col_widths(t, [4.4, 2.6])
-        l, r = t.rows[0].cells
-        for c in (l, r):
-            shade(c, SLATE)
-            cell_margins(c, 90, 90, 160, 160)
-            c.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
-        p = l.paragraphs[0]
+        p = self.d.add_paragraph()
         p.paragraph_format.space_after = Pt(0)
+        para_box(p, SLATE, pad_tb=5, pad_lr=8)
+        p.paragraph_format.tab_stops.add_tab_stop(Inches(CONTENT_W - 2 * (10 / 72)), alignment=2)  # right tab
         add_runs(p, "MATH 1342", color="FFFFFF", bold=True, size=11)
         add_runs(p, "  ·  Elementary Statistics  ·  Spring 2027", color="CBD5E1", size=10)
-        p = r.paragraphs[0]
-        p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-        p.paragraph_format.space_after = Pt(0)
-        label = kind.upper()
-        add_runs(p, label, color=("6EE7B7" if self.key else ACCENT_LIGHT), bold=True, size=10)
+        p.add_run("\t")
+        add_runs(p, kind.upper(), color=("6EE7B7" if self.key else ACCENT_LIGHT), bold=True, size=10)
 
-        p = self.d.add_paragraph()
+        p = self.d.add_paragraph(style="Heading 1")
         p.paragraph_format.space_before = Pt(12)
         p.paragraph_format.space_after = Pt(0)
         add_runs(p, title, color=SLATE, bold=True, size=20)
@@ -239,9 +339,9 @@ class Doc:
             p = self.d.add_paragraph()
             p.paragraph_format.space_after = Pt(10)
             add_runs(p, "Name  ", color=MUTED, bold=True, size=10)
-            add_runs(p, "_" * 46, color=RULE)
+            add_runs(p, "_" * 46, color=MUTED)
             add_runs(p, "     Date  ", color=MUTED, bold=True, size=10)
-            add_runs(p, "_" * 20, color=RULE)
+            add_runs(p, "_" * 20, color=MUTED)
 
     def _footer(self, title):
         f = self.d.sections[0].footer
@@ -254,41 +354,31 @@ class Doc:
         r = p.add_run(); r.font.size = Pt(8.5); r.font.color.rgb = rgb(MUTED); add_field(r, "NUMPAGES")
 
     # ---- boxes
-    def _box(self, fill, bar, width=CONTENT_W):
-        t = self.d.add_table(rows=1, cols=1)
-        table_no_borders(t)
-        table_width(t, width)
-        set_col_widths(t, [width])
-        c = t.rows[0].cells[0]
-        shade(c, fill)
-        cell_borders(c, left=(24, bar))
-        cell_margins(c, 80, 80, 160, 140)
-        no_split_row(t.rows[0])
-        return c
+    def _boxpara(self, fill, bar, indent=None, after=1):
+        p = self.d.add_paragraph()
+        p.paragraph_format.space_after = Pt(after)
+        para_box(p, fill, bar, indent=indent)
+        return p
 
     def directions(self, items, heading="Directions"):
-        c = self._box(TINT, ACCENT)
-        p = c.paragraphs[0]
-        p.paragraph_format.space_after = Pt(2)
+        p = self._boxpara(TINT, ACCENT, after=2)
+        keep_next(p)
         add_runs(p, heading, color=ACCENT, bold=True, size=10.5)
-        for it in items:
-            p = c.add_paragraph()
-            p.paragraph_format.space_after = Pt(1)
-            p.paragraph_format.left_indent = Inches(0.18)
-            p.paragraph_format.first_line_indent = Inches(-0.18)
+        for k, it in enumerate(items):
+            p = self._boxpara(TINT, ACCENT)
+            if k < len(items) - 1:
+                keep_next(p)
             add_runs(p, "•  ", color=ACCENT, bold=True)
             add_runs(p, it, size=10.5)
         self.spacer(6)
 
     def callout(self, text, fill=AMBER_TINT, bar=AMBER, label=None):
-        c = self._box(fill, bar)
-        p = c.paragraphs[0]
-        p.paragraph_format.space_after = Pt(0)
+        p = self._boxpara(fill, bar, after=0)
         if label:
             add_runs(p, label + "  ", color=bar, bold=True)
         add_runs(p, text, size=10.5)
         self.spacer(6)
-        return c
+        return p
 
     def spacer(self, pts=4):
         p = self.d.add_paragraph()
@@ -298,7 +388,7 @@ class Doc:
 
     # ---- headings
     def section(self, text):
-        p = self.d.add_paragraph()
+        p = self.d.add_paragraph(style="Heading 2")
         p.paragraph_format.space_before = Pt(12)
         p.paragraph_format.space_after = Pt(4)
         keep_next(p)
@@ -307,7 +397,7 @@ class Doc:
         return p
 
     def subheading(self, text):
-        p = self.d.add_paragraph()
+        p = self.d.add_paragraph(style="Heading 3")
         p.paragraph_format.space_before = Pt(8)
         p.paragraph_format.space_after = Pt(2)
         keep_next(p)
@@ -316,7 +406,7 @@ class Doc:
 
     def problem(self, title, body=None):
         """'Problem 1. Title' heading followed by the scenario text."""
-        p = self.d.add_paragraph()
+        p = self.d.add_paragraph(style=f"Heading {self.problem_level}")
         p.paragraph_format.space_before = Pt(12)
         p.paragraph_format.space_after = Pt(3)
         keep_next(p)
@@ -365,24 +455,17 @@ class Doc:
             para_border_bottom(p, color=RULE, sz=6)
 
     def workbox(self, height_in=1.2, indent=0.3, label=None):
-        w = CONTENT_W - indent
-        t = self.d.add_table(rows=1, cols=1)
-        table_no_borders(t)
-        table_width(t, w)
-        tblPr = t._tbl.tblPr
-        ind = OxmlElement("w:tblInd"); ind.set(qn("w:w"), str(int(indent * 1440))); ind.set(qn("w:type"), "dxa")
-        tblPr.append(ind)
-        set_col_widths(t, [w])
-        row = t.rows[0]
-        trPr = row._tr.get_or_add_trPr()
-        h = OxmlElement("w:trHeight"); h.set(qn("w:val"), str(int(height_in * 1440))); h.set(qn("w:hRule"), "atLeast")
-        trPr.append(h)
-        no_split_row(row)
-        c = row.cells[0]
-        cell_borders(c, top=(6, RULE), left=(6, RULE), bottom=(6, RULE), right=(6, RULE))
-        p = c.paragraphs[0]
-        if label:
-            add_runs(p, label, color=MUTED, italic=True, size=9)
+        """An empty bordered space for student work (bordered paragraphs, not a layout table)."""
+        n = max(2, round(height_in / 0.2))
+        for k in range(n):
+            p = self.d.add_paragraph()
+            p.paragraph_format.space_after = Pt(0)
+            p.paragraph_format.line_spacing = Pt(14.4)
+            para_box(p, None, box_border=RULE, indent=indent)
+            if k < n - 1:
+                keep_next(p)
+            if k == 0 and label:
+                add_runs(p, label, color=MUTED, italic=True, size=9)
         self.spacer(4)
 
     def answer(self, ans, indent=0.3):
@@ -390,21 +473,12 @@ class Doc:
         if not self.key or ans is None:
             return
         items = ans if isinstance(ans, (list, tuple)) else [ans]
-        w = CONTENT_W - indent
-        t = self.d.add_table(rows=1, cols=1)
-        table_no_borders(t)
-        table_width(t, w)
-        tblPr = t._tbl.tblPr
-        ind = OxmlElement("w:tblInd"); ind.set(qn("w:w"), str(int(indent * 1440))); ind.set(qn("w:type"), "dxa")
-        tblPr.append(ind)
-        set_col_widths(t, [w])
-        c = t.rows[0].cells[0]
-        shade(c, GREEN_TINT)
-        cell_borders(c, left=(18, GREEN))
-        cell_margins(c, 50, 50, 140, 120)
         for k, a in enumerate(items):
-            p = c.paragraphs[0] if k == 0 else c.add_paragraph()
+            p = self.d.add_paragraph()
             p.paragraph_format.space_after = Pt(1)
+            para_box(p, GREEN_TINT, GREEN, bar_sz=18, pad_tb=3, indent=indent)
+            if k < len(items) - 1:
+                keep_next(p)
             add_runs(p, a, color=GREEN)
         self.spacer(5)
 
@@ -434,9 +508,13 @@ class Doc:
         return p
 
     # ---- tables
-    def table(self, rows, widths=None, header_row=True, header_col=True, center=True, font_size=10.5):
-        """rows: list of lists. A cell may be ('ans', value): blank for students, green value in keys."""
+    def table(self, rows, widths=None, header_row=True, header_col=True, center=True, font_size=10.5, caption=None):
+        """rows: list of lists. A cell may be ('ans', value): blank for students, green value in keys.
+        The first row is always marked as a repeating header row (screen readers announce it)."""
         ncol = len(rows[0])
+        if not header_row:      # every data table needs a header row for accessibility
+            rows = [["Item", "Details"] + [""] * (ncol - 2) if ncol >= 2 else ["Item"]] + list(rows)
+            header_row = True
         widths = widths or [min(CONTENT_W, 1.2 * ncol) / ncol] * ncol
         t = self.d.add_table(rows=len(rows), cols=ncol)
         table_width(t, sum(widths))
@@ -464,15 +542,24 @@ class Doc:
                         p.paragraph_format.space_after = Pt(6)
                     continue
                 add_runs(p, str(val), bold=is_head, size=font_size)
+        mark_header_row(t, first_col=header_col)
+        head = [str(v[1] if isinstance(v, tuple) else v).strip() for v in rows[0]]
+        set_table_description(t, caption or ("Table with columns: " + ", ".join(h for h in head if h)))
         self.spacer(6)
         return t
 
-    def image(self, path, width_in, center=True):
+    def image(self, path, width_in, alt, center=True):
+        """Every image gets alt text (descr) and a short title."""
+        if not alt:
+            raise ValueError(f"missing alt text for {path}")
         p = self.d.add_paragraph()
         if center:
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p.paragraph_format.space_after = Pt(6)
-        p.add_run().add_picture(str(path), width=Inches(width_in))
+        shape = p.add_run().add_picture(str(path), width=Inches(width_in))
+        docPr = shape._inline.docPr
+        docPr.set("descr", alt)
+        docPr.set("title", alt.split(".")[0][:80])
         return p
 
     def page_break(self):
