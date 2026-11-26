@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 2.5: Two Quantitative Variables &mdash; Linear Regression (Part 1)</title>
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="statgraphs.js?v=7"></script>
+<link rel="stylesheet" href="story.css?v=1">
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --accent: #38bdf8; --accent2: #818cf8; --accent3: #a78bfa; --green: #34d399; --amber: #fbbf24; --rose: #fb7185; --text: #f1f5f9; --muted: #cbd5e1; --border: #475569; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 48px 64px; opacity: 0; transition: opacity 0.4s ease; }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-number { position: fixed; bottom: 20px; right: 32px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; z-index: 100; }
+  .nav-hint { position: fixed; bottom: 20px; left: 32px; font-size: 13px; color: var(--border); z-index: 100; }
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; z-index: 200; }
+  h1 { font-size: 56px; font-weight: 800; letter-spacing: -1px; line-height: 1.08; margin-bottom: 14px; }
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 18px; }
+  h3 { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+  .subtitle { font-size: 20px; color: var(--muted); font-weight: 400; margin-bottom: 28px; max-width: 980px; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; align-items: start; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1; align-items: start; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .card-accent { border-left: 3px solid var(--accent); } .card-accent2 { border-left: 3px solid var(--accent2); } .card-accent3 { border-left: 3px solid var(--accent3); } .card-green { border-left: 3px solid var(--green); } .card-amber { border-left: 3px solid var(--amber); } .card-rose { border-left: 3px solid var(--rose); }
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 6px 0 6px 20px; font-size: 18px; line-height: 1.45; position: relative; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .small li { font-size: 15px; padding: 4px 0 4px 18px; } .small li::before { top: 11px; width: 5px; height: 5px; }
+  .questions li { font-size: 16px; padding: 5px 0 5px 20px; } .questions li::before { top: 13px; }
+  .tag { display: inline-block; align-self: flex-start; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .title-slide .tag { align-self: center; }
+  .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); } .tag-purple { background: rgba(129, 140, 248, 0.15); color: var(--accent2); } .tag-green { background: rgba(52, 211, 153, 0.15); color: var(--green); } .tag-amber { background: rgba(251, 191, 36, 0.15); color: var(--amber); } .tag-rose { background: rgba(251, 113, 133, 0.15); color: var(--rose); }
+  .big-number { font-size: 54px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; line-height: 1.45; }
+  .formula-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; font-size: 22px; margin-top: 12px; margin-bottom: 10px; }
+  .callout { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 18px 22px; margin-top: 16px; font-size: 16px; line-height: 1.55; }
+  .step-note { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  .table-card table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15px; }
+  .table-card th, .table-card td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
+  .table-card th { color: var(--muted); font-weight: 700; background: rgba(15, 23, 42, 0.35); }
+  .table-card td:first-child, .table-card th:first-child { text-align: left; }
+  .green { color: var(--green); } .rose { color: var(--rose); } .amber { color: var(--amber); } .accent { color: var(--accent); } .muted { color: var(--muted); }
+  .chart-box { background: #1e293b; border: 1px solid #475569; border-radius: 8px; padding: 14px; }
+  .video-frame { aspect-ratio: 16 / 9; width: 100%; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #000; }
+  .video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+  .chart-box svg { margin: 0 auto; }
+  .chart-caption { font-size: 14px; color: var(--muted); text-align: center; margin-top: 10px; }
+  @media (max-width: 900px) { .slide { padding: 28px 24px 56px; overflow-y: auto; } .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 42px; } h2 { font-size: 24px; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="slide-number" id="slideNum"></div>
+<div class="nav-hint">Use arrow keys to navigate</div>
+<div class="deck" id="deck">
+
+<div class="slide title-slide">
+  <span class="tag tag-blue">Section 2.5 &middot; Part 1</span>
+  <h1>Linear Regression (Part 1)</h1>
+  <p class="subtitle">Two quantitative variables: fitting a line to predict a response from an explanatory variable, interpreting its slope and intercept, making predictions, and computing residuals.</p>
+</div>
+
+<div class="slide">
+  <h2>What Is Regression?</h2>
+  <p class="subtitle">Linear regression finds the straight line that best fits the data in a scatterplot.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Goal</h3>
+      <ul>
+        <li>Find a line to predict the response variable \(y\) from the explanatory variable \(x\).</li>
+        <li>The line of best fit (the line that comes closest to the points overall) is called the <span class="accent">regression line</span>.</li>
+        <li>Notation: \(\hat{y} = b_0 + b_1 x\), where \(b_0\) is the intercept and \(b_1\) the slope. The hat means "predicted."</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Running Example: Studying and Exam Scores</h3>
+      <div class="step-note">Can hours studied predict a student's exam score? (The hat over Score means "predicted score.")</div>
+      <div class="formula-box">
+        \[
+          \widehat{\text{Score}} = 50 + 5 \times \text{Hours}
+        \]
+      </div>
+      <svg class="doodle" viewBox="0 0 120 100" role="img" aria-label="Doodle of an open book with a clock above it">
+        <circle cx="88" cy="24" r="19" fill="#fbbf24"/><circle cx="88" cy="24" r="14" fill="#0f172a" opacity="0.85"/>
+        <path d="M88 24 V15 M88 24 L95 28" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+        <path d="M60 58 Q38 50 10 56 L10 92 Q38 86 60 94 Z" fill="#818cf8"/>
+        <path d="M60 58 Q82 50 110 56 L110 92 Q82 86 60 94 Z" fill="#a78bfa"/>
+        <path d="M20 66 Q35 62 50 66 M20 75 Q35 71 50 75 M70 66 Q85 62 100 66 M70 75 Q85 71 100 75" stroke="#f1f5f9" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.75"/>
+      </svg>
+      <div class="step-note">Explanatory variable: hours studied. Response variable: exam score (points).</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>A Quick Review: Graphing Lines</h2>
+  <p class="subtitle">A regression line is just a line &mdash; the same \(y = mx + b\) you met in algebra.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Slope&ndash;Intercept Form</h3>
+      <div class="formula-box">
+        \[ y = mx + b \]
+      </div>
+      <ul>
+        <li>\(b\) is the <span class="accent">\(y\)-intercept</span>: the height where the line crosses the \(y\)-axis (when \(x = 0\)).</li>
+        <li>\(m\) is the <span class="accent">slope</span>: \(\dfrac{\text{change in } y}{\text{change in } x}\).</li>
+        <li>To graph: start at \((0, b)\), then use the slope to step to the next point.</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Example: \(y = 1 + 2x\)</h3>
+      <div id="chart-2-5-line" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:10px;"></div>
+      <div class="step-note">Intercept \(b = 1\) (crosses the \(y\)-axis at 1). Slope \(m = 2\): up 2 for every 1 step right.</div>
+    </div>
+  </div>
+  <script>
+    StatGraphs.lineChart('#chart-2-5-line', {
+      width: 460, height: 240, xLabel: 'x', yLabel: 'y',
+      xMin: 0, xMax: 5, yMin: 0, yMax: 12, yTicks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], grid: true,
+      curves: [{ fn: (x) => 1 + 2 * x, color: '#34d399' }]
+    });
+  </script>
+</div>
+
+<div class="slide">
+  <h2>Slope and Intercept</h2>
+  <p class="subtitle">The two numbers that define the regression line \(\hat{y} = b_0 + b_1 x\). Don't just report them &mdash; say what they mean, with units. Recall \(\widehat{\text{Score}} = 50 + 5 \times \text{Hours}\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Slope \(b_1\)</h3>
+      <ul class="small">
+        <li>The change in the predicted \(y\) for every one-unit increase in \(x\).</li>
+        <li>Positive slope: \(\hat{y}\) goes up as \(x\) increases. Negative slope: \(\hat{y}\) goes down.</li>
+        <li><strong>In context (\(b_1 = 5\)):</strong> for each additional <strong>hour studied</strong>, the predicted exam score goes up by about <strong>5 points</strong>.</li>
+        <li>Units of slope \(= \dfrac{\text{units of } y}{\text{units of } x} = \dfrac{\text{points}}{\text{hour}}\).</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Intercept \(b_0\)</h3>
+      <ul class="small">
+        <li>The predicted \(y\) value when \(x = 0\).</li>
+        <li><strong>In context (\(b_0 = 50\)):</strong> when hours studied \(= 0\), the predicted exam score is <strong>50 points</strong>.</li>
+        <li>Units of intercept \(=\) units of \(y = \) points.</li>
+        <li>Interpret with care: often not meaningful if \(x = 0\) is far outside the range of the data.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Units rule of thumb:</strong> the <span class="accent">slope</span> is measured in <em>\(y\)-units per \(x\)-unit</em>, and the <span class="accent">intercept</span> is measured in <em>\(y\)-units</em>.
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Making Predictions</h2>
+  <p class="subtitle">Plug an \(x\)-value into the equation to get a predicted \(y\)-value, \(\hat{y}\).</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <div class="tag tag-blue">Example</div>
+      <div class="step-note">A student studies for 6 hours:</div>
+      <div class="formula-box">
+        \[
+          \hat{y} = 50 + 5(6) = 80 \text{ points}
+        \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="tag tag-green">Another</div>
+      <div class="step-note">A student studies for 3 hours:</div>
+      <div class="formula-box">
+        \[
+          \hat{y} = 50 + 5(3) = 65 \text{ points}
+        \]
+      </div>
+    </div>
+  </div>
+  <div class="callout">
+    A prediction is only as good as the data behind it. The 6-hour and 3-hour predictions are reasonable because students in the data studied between 1 and 10 hours.
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Residuals</h2>
+  <p class="subtitle">A residual measures how far the observed value is from the predicted value.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Definition</h3>
+      <div class="formula-box">
+        \[
+          \text{Residual} = y - \hat{y} = \text{observed} - \text{predicted}
+        \]
+      </div>
+      <div class="step-note">Geometrically, it is the vertical distance from the point to the line. Positive: the point is above the line. Negative: below.</div>
+    </div>
+    <div class="card card-green">
+      <h3>Least Squares Line</h3>
+      <ul>
+        <li>The regression line minimizes the <span class="accent">sum of squared residuals</span>.</li>
+        <li>This is why it is called the least squares line.</li>
+        <li>We rely on technology to find it.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Example: Computing a Residual</h2>
+  <p class="subtitle">Using \(\widehat{\text{Score}} = 50 + 5 \times \text{Hours}\). Suppose a student studies 6 hours and actually scores 86 points.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Step 1 &mdash; Predict</h3>
+      <div class="formula-box">
+        \[ \hat{y} = 50 + 5(6) = 80 \text{ points} \]
+      </div>
+      <h3 style="margin-top:14px;">Step 2 &mdash; Subtract</h3>
+      <div class="formula-box">
+        \[ y - \hat{y} = 86 - 80 = 6 \text{ points} \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <h3>What It Means</h3>
+      <ul>
+        <li>The residual is <strong>\(+6\) points</strong>.</li>
+        <li>It is <span class="accent">positive</span>, so the observed point sits <em>above</em> the line.</li>
+        <li>The model <strong>under-predicted</strong>: the student scored 6 points higher than the line said.</li>
+        <li>Units of a residual match \(y\): points.</li>
+      </ul>
+      <div class="callout" style="margin-top:14px;">
+        A <strong>negative</strong> residual would mean the point is <em>below</em> the line and the model over-predicted.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="timing">~2 min</span>
+  <span class="tag tag-amber story-tag">Meet the question</span>
+  <h2>Why Do Baseball Games Take So Long?</h2>
+  <div class="story">
+    <figure>
+      <img class="photo" src="images/stories/wrigley_field_game.jpg" alt="A night game at Wrigley Field in Chicago, seen from the stands behind home plate, with the pitcher delivering to a batter">
+      <span class="credit">Photo: redlegsfan21, CC BY-SA 2.0, via Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Wrigley_Field_(16003794830).jpg" target="_blank" rel="noopener">source</a>)</span>
+    </figure>
+    <div class="card card-amber">
+      <ul>
+        <li>Baseball has no game clock: a game ends after 9 innings, however long that takes. More runs usually means more batters and more pitches.</li>
+        <li>The record: on May 8, 1984, the White Sox and Brewers played <strong>25 innings</strong> lasting <strong>8 hours 6 minutes</strong>. It was so long that it had to be finished the next day. (White Sox won, 7&ndash;6.)</li>
+        <li>By 2022 the average nine-inning game took <strong>3 hours 4 minutes</strong>. In 2023 MLB added a <strong>pitch clock</strong>, and the average fell to <strong>2 hours 40 minutes</strong>, the shortest since 1985.</li>
+      </ul>
+      <div class="why"><b>Why it matters:</b> our data ask the same question with a line: about how many extra minutes does each extra run add to a game?</div>
+      <div class="source">Sources: MLB.com, &ldquo;The longest games in MLB history&rdquo;; AP / NBC Sports report on 2023 game times; ESPN (2022 average).</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Example 1: Length of Baseball Games</h2>
+  <p class="subtitle">How is the length of a baseball game (in minutes) influenced by how many total runs are scored? The scatterplot shows the regression line \(\widehat{\text{Time}} = 139.2 + 2.32 \times \text{Runs}\).</p>
+  <div class="grid-2">
+    <div class="chart-box">
+      <div id="chart-2-5-baseball"></div>
+      <div class="chart-caption">(c) The circled point is (5, 189), a separate game that was not one of the 49 used to fit the line. The square marks the predicted value on the line, (5, 150.8). The residual is the vertical gap between them.</div>
+    </div>
+    <div class="card card-green">
+      <h3>Questions and Solutions</h3>
+      <ul class="small">
+        <li>(a) Predict the length of a game in which 5 runs are scored.<br><span class="green">\(\hat{y} = 139.2 + 2.32(5) = 150.8\) minutes</span></li>
+        <li>(b) In one game, 5 runs were scored and the total time was 189 minutes. Find the residual.<br><span class="green">\(y - \hat{y} = 189 - 150.8 = +38.2\) minutes:</span> the game lasted 38.2 minutes longer than predicted, so the point is above the line.</li>
+        <li>(c) Circle the point from (b) on the scatterplot and show the residual on the graph.<br><span class="green">See the graph.</span></li>
+        <li>(d) Interpret the slope in context.<br><span class="green">For each additional run scored, the predicted length of the game increases by <strong>2.32 minutes</strong>.</span></li>
+        <li>(e) Interpret the intercept in context.<br><span class="green">A game with 0 runs has a predicted length of <strong>139.2 minutes</strong>.</span> This is not meaningful: the data start at 3 runs, and a game cannot end 0&ndash;0.</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const runs = [3, 3, 3, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 11, 11, 11, 12, 13, 13, 13, 14, 16, 16, 16, 18, 20, 22];
+      const time = [171, 155, 147, 141, 134, 152, 129, 180, 180, 170, 147, 132, 115, 172, 152, 146, 179, 171, 160, 160, 155, 144, 144, 127, 157, 157, 146, 181, 168, 161, 157, 139, 173, 161, 153, 180, 173, 146, 153, 188, 165, 159, 147, 175, 166, 159, 188, 191, 216];
+      runs.push(5); time.push(189);
+      StatGraphs.scatter('#chart-2-5-baseball', runs, time,
+        { width: 560, height: 320, padBottom: 48, padLeft: 46, xMin: 0, xMax: 25, yMin: 100, yMax: 225, xLabel: 'runs scored', yLabel: 'time (minutes)', dotR: 4.5,
+          line: { intercept: 139.2, slope: 2.32, xFrom: 2, xTo: 23, color: '#fb7185' },
+          marks: [{ x: 5, y: 189, shape: 'circle', color: '#34d399' }, { x: 5, y: 150.8, shape: 'square', color: '#fbbf24' }] });
+    })();
+  </script>
+</div>
+
+<div class="slide">
+  <span class="tag tag-amber">Your Turn</span>
+  <h2>Your Turn: Slope, Intercept, Prediction, Residual</h2>
+  <p class="subtitle">Work through each part on your own, then compare with a neighbor.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>The Scenario</h3>
+      <div class="step-note">A student tracks how many <strong>hours</strong> they use their phone after a full charge and the <strong>battery remaining</strong> (in percent). The regression line is:</div>
+      <div class="formula-box">
+        \[ \widehat{\text{Battery}} = 98 - 6.5 \times \text{Hours} \]
+      </div>
+      <div class="step-note">The data came from days with between <strong>0.5 and 10 hours</strong> of use.</div>
+    </div>
+    <div class="card card-green">
+      <h3>Your Tasks</h3>
+      <ul class="small">
+        <li>(a) Interpret the <strong>slope</strong> in context, including units.</li>
+        <li>(b) Interpret the <strong>intercept</strong> in context. Is it meaningful here?</li>
+        <li>(c) Predict the battery remaining after <strong>8 hours</strong> of use.</li>
+        <li>(d) On one day, after 8 hours the battery was actually at <strong>40%</strong>. Find the <strong>residual</strong>. Is the point above or below the line?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <span class="tag tag-green">Your Turn &mdash; Answers</span>
+  <h2>Answers: Slope, Intercept, Prediction, Residual</h2>
+  <p class="subtitle">\(\widehat{\text{Battery}} = 98 - 6.5 \times \text{Hours}\), fit to days with 0.5 to 10 hours of use.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Interpreting the Line</h3>
+      <ul class="small">
+        <li>(a) <strong>Slope:</strong> for each additional hour of use, the predicted battery remaining <strong>decreases by 6.5 percentage points</strong>.</li>
+        <li>(b) <strong>Intercept:</strong> with 0 hours of use, the predicted battery is <strong>98%</strong>. This is meaningful: 0 hours is just below the 0.5&ndash;10 hour range, and a nearly full battery makes sense right after charging.</li>
+      </ul>
+      <h3 style="margin-top:14px;">(c) Prediction</h3>
+      <div class="formula-box">
+        \[ \hat{y} = 98 - 6.5(8) = 46\% \]
+      </div>
+    </div>
+    <div class="card card-green">
+      <h3>(d) Residual</h3>
+      <div class="formula-box">
+        \[ y - \hat{y} = 40 - 46 = -6 \text{ percentage points} \]
+      </div>
+      <ul class="small">
+        <li>The residual is <span class="accent">negative</span>, so the point is <em>below</em> the line.</li>
+        <li>That day the battery ran down 6 points <strong>more</strong> than the line predicted (the model over-predicted).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>What to Remember (Part 1)</h2>
+  <p class="subtitle">The regression line turns an \(x\)-value into a prediction; residuals measure how far off it was.</p>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3>Core Ideas</h3>
+      <ul>
+        <li>\(\hat{y} = b_0 + b_1 x\)</li>
+        <li>Slope: change in \(\hat{y}\) per one-unit increase in \(x\), in context with units</li>
+        <li>Intercept: \(\hat{y}\) when \(x = 0\) (only meaningful if \(x = 0\) is near the data)</li>
+        <li>Prediction: plug \(x\) into the equation</li>
+        <li>Residual: \(y - \hat{y}\) (observed &minus; predicted)</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>Coming Up in Part 2</h3>
+      <ul>
+        <li>Spotting positive and negative residuals on a scatterplot</li>
+        <li>Finding the least squares line with StatKey</li>
+        <li>When <strong>not</strong> to trust a prediction (extrapolation, outliers, nonlinear patterns)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slideNum = document.getElementById('slideNum');
+  const progress = document.getElementById('progress');
+  let current = 0;
+  function renderSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    slideNum.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([slides[current]]).catch(() => {});
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { event.preventDefault(); renderSlide(current + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); renderSlide(current - 1); }
+  });
+  renderSlide(0);
+</script>
+</body>
+</html>

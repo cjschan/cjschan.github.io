@@ -131,7 +131,11 @@ def slide_url(item):
     if not m:
         return None
     pre = f"Sec{m.group(1)}-{m.group(2)}_"
-    f = next((x for x in _FILES if x.startswith(pre) and x.endswith(".html")), None)
+    part = re.search(r"\(Part (\d)\)", item)
+    if part:   # a section taught over two days has one deck per day, e.g. Sec2-5_..._Part1.html
+        f = next((x for x in _FILES if x.startswith(pre) and x.endswith(f"_Part{part.group(1)}.html")), None)
+    else:
+        f = next((x for x in _FILES if x.startswith(pre) and x.endswith(".html") and "_Part" not in x), None)
     return NOTES + f if f else None
 
 
