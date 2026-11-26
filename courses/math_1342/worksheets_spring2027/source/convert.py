@@ -190,15 +190,20 @@ def render_blocks(d: Doc, blocks, indent=0.0, numbered_start=None):
             d.subheading(inl(b["c"][2]))
 
 
-def practice_test(d: Doc, docx, media_dir):
+def practice_test(d: Doc, docx, media_dir, edit=None):
     blocks = load_ast(docx, media_dir)
     i = 0
     while not (blocks[i]["t"] == "Para" and inl(blocks[i]["c"]).strip("* ") == "Instructions"):
         i += 1
     instr = blocks[i + 1]
     items = [inl(block_inlines(x)).strip().lstrip("•").strip() for x in instr["c"]]
+    if edit and hasattr(edit, "instructions"):
+        items = edit.instructions(items)
     d.directions(items, heading="Instructions")
-    for b in blocks[i + 2:]:
+    body = blocks[i + 2:]
+    if edit:
+        body = edit(body)
+    for b in body:
         t = b["t"]
         text = inl(b["c"]).strip() if t == "Para" else ""
         if t == "Para" and re.fullmatch(r"\*\*Section [A-Z]\..*\*\*", text):

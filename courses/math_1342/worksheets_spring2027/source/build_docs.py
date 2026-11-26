@@ -19,6 +19,9 @@ from wslib import Doc                      # noqa: E402
 from worksheets import WORKSHEETS          # noqa: E402
 from solutions import SOLUTIONS            # noqa: E402
 import convert                             # noqa: E402
+import pt_edits                            # noqa: E402
+
+PT_EDITS = {2: pt_edits.pt2, 3: pt_edits.pt3}
 
 OUT = HERE.parent
 ORIG = OUT / "originals"
@@ -40,7 +43,7 @@ def build_worksheets():
 def build_tests_and_guides():
     for n in (1, 2, 3):
         d = Doc("Practice Test", f"Practice Test {n}", COVERS[n])
-        convert.practice_test(d, ORIG / f"Practice_Test_{n}.docx", MEDIA / f"pt{n}")
+        convert.practice_test(d, ORIG / f"Practice_Test_{n}.docx", MEDIA / f"pt{n}", edit=PT_EDITS.get(n))
         d.save(OUT / f"Practice_Test_{n}.docx")
 
         d = Doc("Study Guide", f"Test {n} Study Guide", COVERS[n], name_line=False)
