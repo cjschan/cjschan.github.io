@@ -6,7 +6,7 @@ simulations on the Lock5 datasets) and are rounded here.
 """
 from wslib import Doc
 
-UPLOAD = "When you're done, scan or photograph your pages (or save this file) and upload it to the Blackboard activity."
+UPLOAD = "Type your answers into this file. When you're done, save it and upload it to the Blackboard activity as a .docx or PDF."
 STATKEY = "Use StatKey (lock5stat.com/StatKey) where the problem asks for it, and paste a screenshot of your dotplot in the space given."
 
 

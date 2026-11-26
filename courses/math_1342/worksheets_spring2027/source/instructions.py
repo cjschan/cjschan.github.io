@@ -47,7 +47,7 @@ POINTS = {
 
 
 # Assignments where Blackboard's "Prohibit late submissions" is OFF (so don't claim it).
-LATE_OK = {"W12_Proportion_Test_and_CI", "W12_Difference_in_Proportions", "W14_Association_Two_Categorical"}
+LATE_OK = set()
 
 
 def html(stem, title, sub):
@@ -64,8 +64,8 @@ def html(stem, title, sub):
 <p><strong>What to do and submit</strong></p>
 <ul>
 <li>We work through this worksheet in class. Work with a neighbor, but write your own answers.</li>
-<li>Download the worksheet below. Type your answers into it, or print it and write on it.{shot_do}</li>
-<li>Upload <strong>one file</strong> to this assignment: the completed Word file, or a PDF or photos of your pages.</li>
+<li>Download the worksheet below and type your answers into it. Please don't print it.{shot_do}</li>
+<li>Upload <strong>one file</strong> to this assignment: the completed worksheet, saved as a .docx or PDF.</li>
 <li>Submit by the due date shown on this assignment.{" Late submissions aren't accepted." if stem not in LATE_OK else ""}</li>
 </ul>
 <p><strong>Criteria for success ({total} points)</strong></p>
