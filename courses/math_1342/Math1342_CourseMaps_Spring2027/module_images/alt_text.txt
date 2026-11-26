@@ -15,3 +15,6 @@ Week13	A t-distribution curve with heavier tails drawn over a standard normal cu
 Week14	Two groups of dots with their means marked, above a chi-square curve with its upper tail shaded.
 Week15	Three side-by-side boxplots with different centers, labeled F for ANOVA.
 Week16	A collage of a histogram, a scatterplot with a regression line, a bell curve and boxplots.
+CourseSchedule	A 16-week semester timeline drawn as a dotplot, with blue dots in the weeks a take-home quiz is due and orange flags in test weeks.
+TechRequirements	A laptop showing a scatterplot with a regression line, next to a phone set up as a second camera and a scientific calculator.
+Lock4e_Cover	Cover of Statistics: Unlocking the Power of Data, 4th edition, by Lock, Lock, Lock Morgan, Lock, and Lock (Wiley).

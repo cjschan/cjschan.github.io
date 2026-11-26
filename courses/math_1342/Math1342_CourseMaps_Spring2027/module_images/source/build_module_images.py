@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Draw one square statistics image per Week module (Math 1342, Spring 2027) and render it to PNG.
+Also draws two landscape (1200x800) images for Start Here pages: CourseSchedule.png and TechRequirements.png.
 
 Standard library only. Each week is an inline SVG (800x800); headless Chrome screenshots it to ../WeekNN.png.
 Simulated data uses fixed seeds, so rebuilding gives identical images.
@@ -449,21 +450,118 @@ def start_here():
     return svg(body, "Start Here")
 
 
+# ---------- Start Here page images (landscape, 1200x800) ----------
+LW, LH = 1200, 800
+
+
+def svg_wide(body, caption):
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{LW}" height="{LH}" viewBox="0 0 {LW} {LH}">'
+            f'<rect width="{LW}" height="{LH}" fill="{BG}"/>{body}'
+            f'<text x="{LW/2}" y="735" text-anchor="middle" font-family="{FONT}" font-size="58" '
+            f'font-weight="700" fill="{INK}">{caption}</text></svg>')
+
+
+def course_schedule():
+    # The 16-week semester as a dotplot timeline: a dot per class section each week, a blue dot in quiz weeks,
+    # an orange flag in test weeks (Tests 1-3 and the Final), and a gap for Spring Break.
+    sections = {1: 1, 2: 2, 3: 2, 4: 2, 5: 2, 6: 2, 7: 2, 8: 2, 9: 2, 10: 2, 11: 2, 12: 2, 13: 2, 14: 2, 15: 2, 16: 1}
+    quiz_weeks = {4, 6, 8, 10, 12, 14, 15, 16}
+    test_weeks = {6: "T1", 10: "T2", 14: "T3", 16: "Final"}
+    x0, x1, base = 90, 1110, 560
+    # weeks 1-8, a Spring Break gap, then 9-16
+    def wx(w):
+        slot = w - 1 + (1.4 if w >= 9 else 0)
+        return x0 + 30 + slot * (x1 - x0 - 60) / 16.4
+    r = 22
+    body = f'<line x1="{x0}" y1="{base}" x2="{x1}" y2="{base}" stroke="{INK}" stroke-width="4" stroke-linecap="round"/>'
+    for w in range(1, 17):
+        x = wx(w)
+        k = 0
+        for _ in range(sections[w]):
+            body += dot(x, base - r - k * 2 * r, r - 2, PALE)
+            k += 1
+        if w in quiz_weeks:
+            body += dot(x, base - r - k * 2 * r, r - 2, BLUE)
+            k += 1
+        if w in test_weeks:
+            top = base - r - k * 2 * r - 120
+            pole = base - 2 * r * k
+            body += (f'<line x1="{x}" y1="{pole}" x2="{x}" y2="{top}" stroke="{INK}" stroke-width="5" stroke-linecap="round"/>'
+                     f'<path d="M{x},{top} L{x+58},{top+20} L{x},{top+40} Z" fill="{ORANGE}"/>')
+            body += text(x, top - 14, test_weeks[w], 30, INK)
+        if w in (1, 4, 8, 9, 12, 16):
+            body += text(x, base + 48, "Week 1" if w == 1 else str(w), 32, MUTED, weight="400")
+    gx = (wx(8) + wx(9)) / 2
+    body += (f'<line x1="{gx}" y1="{base-150}" x2="{gx}" y2="{base+10}" stroke="{MUTED}" stroke-width="3" stroke-dasharray="8 8"/>')
+    body += text(gx, base - 165, "Spring Break", 26, MUTED, weight="400", italic=True)
+    # legend
+    body += dot(150, 110, 18, BLUE) + text(180, 122, "take-home quiz due", 32, INK, anchor="start", weight="400")
+    body += (f'<line x1="560" y1="132" x2="560" y2="90" stroke="{INK}" stroke-width="5" stroke-linecap="round"/>'
+             f'<path d="M560,90 L606,106 L560,122 Z" fill="{ORANGE}"/>') + text(625, 122, "test window", 32, INK, anchor="start", weight="400")
+    body += dot(880, 110, 18, PALE) + text(910, 122, "class section", 32, INK, anchor="start", weight="400")
+    return svg_wide(body, "Course Schedule")
+
+
+def tech_requirements():
+    # A laptop showing a scatterplot with a regression line, a phone on a stand as the second camera, and a calculator.
+    body = ""
+    # laptop screen and base
+    sx0, sy0, sx1, sy1 = 300, 130, 860, 500
+    body += f'<rect x="{sx0-18}" y="{sy0-18}" width="{sx1-sx0+36}" height="{sy1-sy0+36}" rx="22" fill="{INK}"/>'
+    body += f'<rect x="{sx0}" y="{sy0}" width="{sx1-sx0}" height="{sy1-sy0}" rx="6" fill="#ffffff"/>'
+    body += f'<path d="M{sx0-70},{sy1+70} L{sx1+70},{sy1+70} L{sx1+18},{sy1+18} L{sx0-18},{sy1+18} Z" fill="#4a4a4a"/>'
+    body += f'<rect x="{(sx0+sx1)/2-60}" y="{sy1+52}" width="120" height="10" rx="5" fill="#2e2e2e"/>'
+    # scatterplot on screen (fixed seed)
+    rnd = random.Random(1342)
+    px0, px1, py0, py1 = sx0 + 60, sx1 - 40, sy0 + 40, sy1 - 50
+    body += (f'<line x1="{px0}" y1="{py1}" x2="{px1}" y2="{py1}" stroke="{INK}" stroke-width="3"/>'
+             f'<line x1="{px0}" y1="{py0}" x2="{px0}" y2="{py1}" stroke="{INK}" stroke-width="3"/>')
+    xm, ym = lin(0, 10, px0 + 15, px1 - 15), lin(0, 10, py1 - 10, py0 + 10)
+    for _ in range(26):
+        xv = rnd.uniform(0.5, 9.5)
+        yv = max(0.3, min(9.7, 1.2 + 0.8 * xv + rnd.gauss(0, 0.9)))
+        body += dot(xm(xv), ym(yv), 9, BLUE, ring=False)
+    body += path([(xm(0.3), ym(1.2 + 0.8 * 0.3)), (xm(9.7), ym(1.2 + 0.8 * 9.7))], ORANGE, 7)
+    body += text((sx0 + sx1) / 2, sy0 + 28, "StatKey", 22, MUTED, weight="700")
+    # phone on a stand (second camera), facing the laptop
+    fx, fy = 960, 250
+    body += f'<path d="M{fx+40},{fy+250} L{fx+20},{fy+330} L{fx+120},{fy+330} L{fx+100},{fy+250} Z" fill="#4a4a4a"/>'
+    body += f'<rect x="{fx}" y="{fy}" width="140" height="260" rx="22" fill="{INK}"/>'
+    body += f'<rect x="{fx+12}" y="{fy+30}" width="116" height="200" rx="8" fill="#2f3b4c"/>'
+    body += dot(fx + 70, fy + 16, 7, AQUA, ring=False)
+    body += f'<circle cx="{fx+70}" cy="{fy+130}" r="34" fill="none" stroke="{AQUA}" stroke-width="5"/>'
+    body += dot(fx + 70, fy + 130, 12, AQUA, ring=False)
+    # calculator, front left
+    cx, cy = 80, 330
+    body += f'<rect x="{cx}" y="{cy}" width="170" height="250" rx="18" fill="#2e2e2e"/>'
+    body += f'<rect x="{cx+18}" y="{cy+18}" width="134" height="50" rx="6" fill="#cfe3c8"/>'
+    body += text(cx + 140, cy + 55, "3.14", 26, INK, anchor="end")
+    for i in range(4):
+        for j in range(3):
+            col = ORANGE if (i == 3 and j == 2) else "#8a8a8a"
+            body += f'<rect x="{cx+20+j*46}" y="{cy+88+i*38}" width="38" height="28" rx="6" fill="{col}"/>'
+    return svg_wide(body, "Technology")
+
+
+PAGES = [("CourseSchedule", course_schedule), ("TechRequirements", tech_requirements)]
+
+
 WEEKS = [week01, week02, week03, week04, week05, week06, week07, week08,
          week09, week10, week11, week12, week13, week14, week15, week16]
 
 
 def main():
     os.makedirs(HTML_DIR, exist_ok=True)
-    jobs = [("StartHere", start_here)] + [(f"Week{i:02d}", fn) for i, fn in enumerate(WEEKS, start=1)]
-    for name, fn in jobs:
+    jobs = ([("StartHere", start_here, W, H)] + [(f"Week{i:02d}", fn, W, H) for i, fn in enumerate(WEEKS, start=1)]
+            + [(name, fn, LW, LH) for name, fn in PAGES])
+    for name, fn, w, h in jobs:
         html = os.path.join(HTML_DIR, name + ".html")
         with open(html, "w", encoding="utf-8") as fh:
             fh.write('<!doctype html><meta charset="utf-8"><style>html,body{margin:0;padding:0;overflow:hidden}</style>'
                      + fn())
         png = os.path.join(OUT, name + ".png")
         subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars",
-                        "--force-device-scale-factor=1", f"--window-size={W},{H}",
+                        "--force-device-scale-factor=1", f"--window-size={w},{h}",
                         f"--screenshot={png}", "file://" + html],
                        check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=120)
         print(png)

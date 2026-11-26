@@ -5,3 +5,8 @@ One 800x800 PNG per learning module (StartHere.png, Week01.png … Week16.png), 
 Rebuild:  cd source && /usr/bin/python3 build_module_images.py
   Standard library only; each week is an SVG function in build_module_images.py, rendered with headless Chrome.
   Simulated data uses fixed seeds, so the images are reproducible.
+
+Start Here page images (replace the template's stock photos):
+  CourseSchedule.png, TechRequirements.png  1200x800, drawn by the same script (PAGES list)
+  Lock4e_Cover.png  publisher cover image, downloaded Nov 2026 from the WileyPLUS 4e page
+                    (wileyplus.com/wp-content/uploads/2025/08/Lock-4e-Cover.png); credited "Cover image: Wiley"
