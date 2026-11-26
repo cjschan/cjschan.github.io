@@ -23,7 +23,7 @@ INTRO = {
 1: "Welcome to Elementary Statistics! This first class asks a simple question: what is statistics for? We will collect "
    "real data from our own class, summarize it with a mean, a median and a boxplot, and ask whether a surprising result "
    "could have happened just by chance. That question, “could it be chance?”, comes back all semester and is the heart of "
-   "hypothesis testing in Weeks 9–15. Before Monday, take the Start Here tour and read the syllabus.",
+   "hypothesis testing in Weeks 9–15. Before class on Wednesday, take the Start Here tour and read the syllabus: the Syllabus Quiz, the first of your 9 quizzes, is taken in class that day.",
 2: "This week we learn the language of data. In 1.1 you will identify cases and variables and decide whether each variable "
    "is categorical or quantitative. In 1.2 we ask how a sample can tell us about a whole population, and how a biased "
    "sampling method can ruin that. A common mistake: zip codes, phone numbers and ID numbers are categorical, even though "
@@ -86,6 +86,7 @@ INTRO = {
 
 # Quizzes and tests that happen during each week (Mon–Sun).
 DUE = {
+1: ["Syllabus Quiz (Blackboard, taken in class Wed Jan 20, due at the end of class) – 10 multiple-choice questions on course dates and policies"],
 4: ["Take-Home Quiz 1 (due Mon Feb 8, 11:59 PM) – covers Intro, 1.1–1.3, 2.1"],
 6: ["Take-Home Quiz 2 (due Mon Feb 22, 11:59 PM) – covers 2.2–2.4",
     "Test 1 Study Guide and Practice Test 1 (optional; due Thu Feb 25)",

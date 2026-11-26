@@ -3,7 +3,7 @@
 Content for the Math 1342 weekly course maps – Spring 2027, Sections 029 and 017 (MW, RRC Room 8210, in person).
 Both sections share one calendar (spring2027_mw_029.html and spring2027_mw_017.html); only the term line differs.
 Module objectives, materials and activities come from the Fall 2026 RRC maps (Math1342_CourseMaps_RRC), regrouped
-for the Spring 2027 calendar: 2.5 is taught over two days, 4.4 and 4.5 are on separate days, and there are 8 quizzes, all due Mondays.
+for the Spring 2027 calendar: 2.5 is taught over two days, 4.4 and 4.5 are on separate days, and there are 9 quizzes: a Syllabus Quiz on Day 1 plus 8 take-home quizzes, all due Mondays.
 Resource names follow the Blackboard naming convention:
   e-Text: x.x Title | Interactive Lecture: x.x Title | Slides: x.x Title | Online Homework: x.x Title
 Edit this file and re-run build_course_maps.py to regenerate the PDFs.
@@ -101,8 +101,9 @@ ROWS = {
               ("Compute and compare the mean and median of a small dataset, and explain how an outlier affects each.", [2])],
              ["START HERE: Welcome; Syllabus; Textbook and Wiley Course Resources; Online Tutoring; College Policies & Student Support Services",
               "Introduction Slides: What Is Statistics For? (Day 1)"],
-             [part("Syllabus") + " – course tour and expectations",
-              "Day-1 class data activity: collect everyone's age, then find the mean, median, mode and boxplot together; compare the class median to the U.S. median age"]),
+             ["Syllabus tour – course tour and expectations",
+              "Day-1 class data activity: collect everyone's age, then find the mean, median, mode and boxplot together; compare the class median to the U.S. median age"],
+             ["Syllabus Quiz (Blackboard, taken in class Wed Jan 20, due at the end of class) – 10 multiple-choice questions on course dates and policies; counts as one of the 9 quizzes"]),
 "1.1": row([("Identify the cases and variables in a dataset presented as a table.", [2]),
             ("Classify a variable as categorical or quantitative.", [2]),
             ("Identify the explanatory and response variables in a research question.", [1]),

@@ -7,7 +7,8 @@ calendar, so one data file builds both sets; the pages differ only in the term l
 Layout follows the Apodaca/Forsythe "Map Your Way to a Quality Course" handout.
 
 CHANGES FROM FALL 2026
-  - 8 take-home quizzes (quizzes_spring2027/), all due Mondays at 11:59 PM. Each quiz covers only sections taught
+  - 9 quizzes: a Syllabus Quiz taken in Blackboard during the first class (Wed Jan 20; 10 multiple-choice questions on
+    dates and policies), plus 8 take-home quizzes (quizzes_spring2027/), all due Mondays at 11:59 PM. Each quiz covers only sections taught
     before its due date; Quizzes 2, 4 and 6 are due the Monday before Tests 1, 2 and 3. Every section is on a quiz,
     and every quiz has StatKey problems. Submissions are handwritten, scanned or photographed into one PDF, with
     StatKey screenshots placed next to the handwritten answers. (Revised Nov 25, 2026 from 10 quizzes.)
