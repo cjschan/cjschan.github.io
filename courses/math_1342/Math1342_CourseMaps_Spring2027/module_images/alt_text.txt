@@ -1,0 +1,16 @@
+Week01	Coin flips above a dotplot of chance results, with one surprising result far out in the right tail marked with a question mark.
+Week02	A grid of dots representing a population with a random sample highlighted, and an arrow to a data table of cases and variables.
+Week03	People randomly split into two groups, with a segmented bar chart comparing the outcome in each group.
+Week04	A right-skewed histogram with lines marking the median and the mean, and a boxplot of the same data below it.
+Week05	A scatterplot of points rising left to right with a fitted regression line.
+Week06	A residual plot scattered around a dashed zero line, next to a probability tree diagram.
+Week07	A few samples with their means marked, above a dotplot of many sample means forming a sampling distribution.
+Week08	A bootstrap distribution dotplot with the middle 95 percent highlighted and bracketed.
+Week09	A randomization distribution dotplot with the observed statistic marked and the p-value tail highlighted.
+Week10	A bell curve split into a "don't reject" region and a shaded "reject" tail of area alpha.
+Week11	A standard normal curve with z-values from -3 to 3 and the middle 68 percent shaded.
+Week12	Bar chart of two sample proportions, each with a confidence interval whisker.
+Week13	A t-distribution curve with heavier tails drawn over a standard normal curve.
+Week14	Two groups of dots with their means marked, above a chi-square curve with its upper tail shaded.
+Week15	Three side-by-side boxplots with different centers, labeled F for ANOVA.
+Week16	A collage of a histogram, a scatterplot with a regression line, a bell curve and boxplots.
