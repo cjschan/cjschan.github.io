@@ -7,6 +7,7 @@ Outputs (in ../):
   Practice_Test_N.docx                       Practice Tests 1-3 (no keys)
   Test_N_Study_Guide.docx                    Study Guides 1-3
   Test_N_Study_Guide_Solutions.docx          full worked solutions to the guides' practice problems
+  Final_Exam_Study_Guide[_Solutions].docx    final exam guide + worked solutions (final_guide.py)
 """
 import sys
 from pathlib import Path
@@ -63,4 +64,6 @@ def build_tests_and_guides():
 if __name__ == "__main__":
     build_worksheets()
     build_tests_and_guides()
+    import final_guide                     # needs matplotlib + scipy
+    final_guide.build(OUT)
     print("built", len(list(OUT.glob("*.docx"))), "documents in", OUT)
