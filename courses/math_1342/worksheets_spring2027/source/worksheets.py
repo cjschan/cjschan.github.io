@@ -272,7 +272,7 @@ def w13b(d: Doc):
     d.step("Step 10.", "Does the interval include 0? What does that suggest?",
            ["**Yes.** \"No difference\" is plausible, so we don't have evidence that music with lyrics changes the mean quiz score (at the 5% level)."], lines=2)
 
-    d.problem("Problem 2. Smiles and Leniency",
+    d.problem("Problem 2 (Extra Credit, up to 5 points). Smiles and Leniency",
               "Does smiling after a mistake make people more forgiving? In a study, 68 participants were shown a photo of a college student accused of academic misconduct and asked to rate "
               "how lenient the punishment should be (higher scores mean more lenient). Participants were randomly assigned to see either a photo of the student smiling or a photo with a neutral "
               "expression. The 34 participants who saw the smiling photo gave a mean leniency score of 4.91 (s = 1.68). The 34 who saw the neutral photo gave a mean of 4.12 (s = 1.52). "
