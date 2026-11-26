@@ -162,6 +162,25 @@ def table_no_borders(table):
     tblPr.append(b)
 
 
+_TBLPR_ORDER = ["w:tblStyle", "w:tblpPr", "w:tblOverlap", "w:bidiVisual", "w:tblStyleRowBandSize", "w:tblStyleColBandSize",
+                "w:tblW", "w:jc", "w:tblCellSpacing", "w:tblInd", "w:tblBorders", "w:shd", "w:tblLayout", "w:tblCellMar",
+                "w:tblLook", "w:tblCaption", "w:tblDescription"]
+
+
+def normalize_tblpr(table):
+    """Put w:tblPr children in OOXML schema order and drop duplicates (last one wins),
+    so strict parsers (Word, Ally) read the header/caption settings."""
+    tblPr = table._tbl.tblPr
+    rank = {qn(t): i for i, t in enumerate(_TBLPR_ORDER)}
+    kids = list(tblPr)
+    keep = {}
+    for k in kids:
+        keep[k.tag] = k            # later duplicates win
+        tblPr.remove(k)
+    for tag in sorted(keep, key=lambda t: rank.get(t, 99)):
+        tblPr.append(keep[tag])
+
+
 def table_width(table, inches):
     tblPr = table._tbl.tblPr
     w = OxmlElement("w:tblW")
@@ -182,17 +201,28 @@ def set_col_widths(table, widths):
             c.width = Inches(widths[i])
 
 
+def _trpr_insert(trPr, el):
+    """Insert into w:trPr before any element that must follow w:tblHeader."""
+    after = {qn(t) for t in ("w:tblCellSpacing", "w:jc", "w:hidden", "w:ins", "w:del", "w:trPrChange")}
+    for child in trPr:
+        if child.tag in after:
+            child.addprevious(el)
+            return
+    trPr.append(el)
+
+
 def mark_header_row(t, first_col=False):
     """Mark row 1 as a header row (w:tblHeader) and set the table look accordingly."""
     trPr = t.rows[0]._tr.get_or_add_trPr()
     if trPr.find(qn("w:tblHeader")) is None:
-        h = OxmlElement("w:tblHeader"); h.set(qn("w:val"), "true"); trPr.append(h)
+        h = OxmlElement("w:tblHeader"); _trpr_insert(trPr, h)       # bare <w:tblHeader/>, exactly as Word writes it
     tblPr = t._tbl.tblPr
     look = tblPr.find(qn("w:tblLook"))
     if look is None:
         look = OxmlElement("w:tblLook"); tblPr.append(look)
     look.set(qn("w:firstRow"), "1"); look.set(qn("w:firstColumn"), "1" if first_col else "0")
     look.set(qn("w:lastRow"), "0"); look.set(qn("w:lastColumn"), "0"); look.set(qn("w:noHBand"), "1"); look.set(qn("w:noVBand"), "1")
+    look.set(qn("w:val"), "06A0" if first_col else "0620")   # legacy bitmask: firstRow (0x20), firstColumn (0x80), noHBand, noVBand
 
 
 def set_table_description(t, text):
@@ -545,6 +575,7 @@ class Doc:
         mark_header_row(t, first_col=header_col)
         head = [str(v[1] if isinstance(v, tuple) else v).strip() for v in rows[0]]
         set_table_description(t, caption or ("Table with columns: " + ", ".join(h for h in head if h)))
+        normalize_tblpr(t)
         self.spacer(6)
         return t
 
