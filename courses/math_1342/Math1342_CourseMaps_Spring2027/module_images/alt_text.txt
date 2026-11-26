@@ -1,3 +1,4 @@
+StartHere	A rising staircase of bars for the 16 weeks of the semester, with the first bar highlighted and a flag marked "you are here."
 Week01	Coin flips above a dotplot of chance results, with one surprising result far out in the right tail marked with a question mark.
 Week02	A grid of dots representing a population with a random sample highlighted, and an arrow to a data table of cases and variables.
 Week03	People randomly split into two groups, with a segmented bar chart comparing the outcome in each group.

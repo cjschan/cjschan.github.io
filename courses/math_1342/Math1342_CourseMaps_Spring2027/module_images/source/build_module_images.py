@@ -429,14 +429,34 @@ def week16():
     return svg(body, "Putting It All Together")
 
 
+def start_here():
+    # A rising staircase of bars (the semester's 16 weeks) with a flag on the first one and a "you are here" dot.
+    n = 16
+    bw = (X1 - X0) / n
+    ym = lin(0, n, Y1, Y0 + 60)
+    body = ""
+    for i in range(n):
+        top = ym(i + 1)
+        col = ORANGE if i == 0 else PALE
+        body += f'<rect x="{X0+i*bw+2}" y="{top}" width="{bw-4}" height="{Y1-top}" rx="4" fill="{col}"/>'
+    fx = X0 + bw / 2
+    ftop = ym(1) - 170
+    body += (f'<line x1="{fx}" y1="{ym(1)}" x2="{fx}" y2="{ftop}" stroke="{INK}" stroke-width="6" stroke-linecap="round"/>'
+             f'<path d="M{fx},{ftop} L{fx+90},{ftop+30} L{fx},{ftop+60} Z" fill="{BLUE}"/>')
+    body += text(fx + 20, ftop - 30, "you are here", 36, INK, anchor="start", weight="400", italic=True)
+    body += axis()
+    body += text(X1 - 10, Y0 + 30, "Week 16", 34, MUTED, anchor="end", weight="400")
+    return svg(body, "Start Here")
+
+
 WEEKS = [week01, week02, week03, week04, week05, week06, week07, week08,
          week09, week10, week11, week12, week13, week14, week15, week16]
 
 
 def main():
     os.makedirs(HTML_DIR, exist_ok=True)
-    for i, fn in enumerate(WEEKS, start=1):
-        name = f"Week{i:02d}"
+    jobs = [("StartHere", start_here)] + [(f"Week{i:02d}", fn) for i, fn in enumerate(WEEKS, start=1)]
+    for name, fn in jobs:
         html = os.path.join(HTML_DIR, name + ".html")
         with open(html, "w", encoding="utf-8") as fh:
             fh.write('<!doctype html><meta charset="utf-8"><style>html,body{margin:0;padding:0;overflow:hidden}</style>'
