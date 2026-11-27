@@ -12,6 +12,9 @@ CHANGES FROM FALL 2026
     before its due date; Quizzes 2, 4 and 6 are due the Monday before Tests 1, 2 and 3. Every section is on a quiz,
     and every quiz has StatKey problems. Submissions are handwritten, scanned or photographed into one PDF, with
     StatKey screenshots placed next to the handwritten answers. (Revised Nov 25, 2026 from 10 quizzes.)
+  - Week 1 discussion "Introductions and Statistics in Your Life" (Blackboard, Participation category, 10 points):
+    initial post due Fri Jan 22, two replies due Sun Jan 24 (11:59 PM). Prompt, rubric and rubric PDF are in
+    ../discussions_spring2027/. (Added Nov 26, 2026.)
   - 2.5 is taught over two days (Part 1 Wed Feb 17, Part 2 Mon Feb 22), matching the two 2.5 Interactive Lectures.
   - 4.4 and 4.5 are on separate days. Review: Putting It All Together is Mon May 10; the final is Wed May 12 – Fri May 14.
   - Test 3 opens Fri Apr 30, after the withdrawal deadline (Mon Apr 26).
