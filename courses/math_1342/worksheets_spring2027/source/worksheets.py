@@ -1,4 +1,4 @@
-"""The 8 participation worksheets (and their answer keys) for Spring 2027 Math 1342.
+"""The 10 participation worksheets (and their answer keys) for Spring 2027 Math 1342.
 
 Problems and data are kept from the original Fall worksheets (originals/ folder).
 Answer-key numbers come from compute_keys.py (formulas, and seeded StatKey-style
@@ -406,6 +406,84 @@ def w14b(d: Doc):
     d.end("End of worksheet")
 
 
+def w15a(d: Doc):
+    d.directions(["Use a 5% significance level.", "Show the formula with the numbers plugged in on every calculation.",
+                  "Find the p-value with StatKey (**Theoretical Distributions → F**) or a calculator.", UPLOAD])
+    d.problem("Fiber in Breakfast Cereals",
+              "The dataset **Cereal** gives the number of grams of fiber per serving for 30 breakfast cereals made by three companies. "
+              "The summary statistics are shown below. Is there a difference in the mean grams of fiber per serving between the three companies? "
+              "Conduct an analysis of variance (ANOVA) test, showing all details.")
+    d.table([["Company", "Mean", "Std. Dev.", "Sample Size"],
+             ["General Mills", "1.469", "1.248", "13"],
+             ["Kellogg's", "1.764", "2.349", "11"],
+             ["Quaker", "2.567", "2.174", "6"],
+             ["Total", "1.797", "1.880", "30"]], widths=[1.7, 1.1, 1.1, 1.2],
+            caption="Grams of fiber per serving by company: mean, standard deviation and sample size for General Mills, Kellogg's, Quaker, and all 30 cereals.")
+    d.step("Step 1.", "Identify the parameters. In words, μ₁, μ₂ and μ₃ are…",
+           ["μ₁, μ₂, μ₃ = the mean grams of fiber per serving for **all** General Mills, Kellogg's and Quaker cereals."], lines=2)
+    d.step("Step 2.", "State the null and alternative hypotheses.",
+           ["H₀: μ₁ = μ₂ = μ₃     Hₐ: at least one μᵢ is different from the others."], lines=2)
+    d.step("Step 3.", "Check the conditions. Is the largest standard deviation less than twice the smallest? What else should we be careful about?",
+           ["2.349 ÷ 1.248 ≈ **1.88 < 2**, so the equal-variability condition is OK.",
+            "The samples are small (only 6 Quaker cereals), so we also need the data in each group to be without strong skewness or outliers. We proceed with some caution."], lines=2)
+    d.step("Step 4.", "Find the variability **between** groups:   SSG = Σ nᵢ(x̄ᵢ − x̄)², using the overall mean x̄ = 1.797",
+           ["SSG = 13(1.469 − 1.797)² + 11(1.764 − 1.797)² + 6(2.567 − 1.797)²",
+            "= 1.399 + 0.012 + 3.557 = **4.968**"], lines=3)
+    d.step("Step 5.", "Find the variability **within** groups:   SSE = Σ (nᵢ − 1)sᵢ²",
+           ["SSE = 12(1.248)² + 10(2.349)² + 5(2.174)²",
+            "= 18.690 + 55.178 + 23.631 = **97.499**"], lines=3)
+    d.step("Step 6.", "Complete the ANOVA table. (df: groups k − 1, error n − k, total n − 1.   MS = SS ÷ df.   F = MSG ÷ MSE.)", None, lines=0)
+    d.table([["Source", "df", "SS", "MS", "F"],
+             ["Groups", ("ans", "2"), ("ans", "4.968"), ("ans", "2.484"), ("ans", "0.688")],
+             ["Error", ("ans", "27"), ("ans", "97.499"), ("ans", "3.611"), ""],
+             ["Total", ("ans", "29"), ("ans", "102.467"), "", ""]], widths=[1.2, 0.8, 1.1, 1.0, 1.0])
+    d.step("Step 7.", "Find the p-value: the area to the right of F in an F-distribution with df = 2 and 27.",
+           ["p-value = area above 0.688 in F(2, 27) ≈ **0.51**."])
+    d.step("Step 8.", "Make a decision at α = 0.05.",
+           ["0.51 > 0.05, so **do not reject H₀**."])
+    d.step("Step 9.", "Write a conclusion in context.",
+           ["The data do not provide evidence of a difference in the mean grams of fiber per serving between General Mills, Kellogg's and Quaker cereals. "
+            "The differences between the sample means are small compared with the variability within each company."], lines=2)
+    d.end("End of worksheet")
+
+
+def w15b(d: Doc):
+    d.directions(["Use a 5% significance level.", "Show the formula with the numbers plugged in on every calculation.",
+                  "Find t* with StatKey (**Theoretical Distributions → t**) or a calculator.", UPLOAD])
+    d.problem("Alcohol and Missed Classes",
+              "The dataset **SleepStudy** includes **Drinks**, the number of alcoholic drinks a week that each of 253 college students says they have, and **ClassesMissed**, "
+              "the number of classes each student missed during the semester. Computer output for the correlation between these two variables and the regression line "
+              "to predict classes missed from the number of drinks is shown below.")
+    d.para("Pearson correlation of Drinks and ClassesMissed = 0.078     P-Value = 0.215", keep=True)
+    d.para("The regression equation is   ClassesMissed = 1.86 + 0.0620 Drinks", keep=True)
+    d.table([["Predictor", "Coef", "SE Coef", "T", "P"],
+             ["Constant", "1.8644", "0.3439", "5.42", "0.000"],
+             ["Drinks", "0.06196", "0.04979", "1.24", "0.215"]], widths=[1.3, 1.0, 1.0, 0.8, 0.8],
+            caption="Regression output for predicting ClassesMissed from Drinks: coefficient, standard error, t statistic and p-value for the constant and for Drinks.")
+    d.para("S = 3.23679     R-Sq = 0.6%     R-Sq(adj) = 0.2%")
+    d.step("(a)", "What is the sample correlation? What is the p-value for testing the correlation? Give the conclusion of the test in context.",
+           ["r = **0.078**, p-value = **0.215**.",
+            "0.215 > 0.05, so **do not reject H₀: ρ = 0**. There is no evidence of a linear relationship between drinks per week and classes missed for all college students."], lines=3)
+    d.step("(b)", "What is the regression line? Find the predicted value and the residual for a student who has 6 alcoholic drinks a week and has missed 2 classes.",
+           ["Predicted ClassesMissed = 1.8644 + 0.06196 · Drinks",
+            "Predicted: 1.8644 + 0.06196(6) = **2.236 classes**.     Residual = observed − predicted = 2 − 2.236 = **−0.236**."], lines=3)
+    d.step("(c)", "Interpret the slope of the line in context.",
+           ["Each additional alcoholic drink per week goes with about **0.062 more classes missed**, on average."], lines=2)
+    d.step("(d)", "What is the p-value for a test of the slope? Give the conclusion of the test in context.",
+           ["p-value = **0.215** for H₀: β₁ = 0 vs Hₐ: β₁ ≠ 0. 0.215 > 0.05, so **do not reject H₀**.",
+            "The number of drinks is not an effective predictor of classes missed: there is no evidence that the population slope differs from 0."], lines=3)
+    d.step("(e)", "What is the standard error of the slope? Find and interpret a 95% confidence interval for the slope. (df = n − 2 = 251, so t* ≈ 1.969.)",
+           ["SE = **0.04979**.",
+            "0.06196 ± 1.969(0.04979) = 0.06196 ± 0.098, so **−0.036 to 0.160**.",
+            "We are 95% sure that each extra drink per week changes the mean number of classes missed by somewhere between 0.036 fewer and 0.160 more. "
+            "The interval contains 0, which matches not rejecting H₀ in (d)."], lines=4)
+    d.step("(f)", "Compare the two p-values, from the test for correlation and the test for slope.",
+           ["They are **the same (0.215)**. Testing whether the correlation is 0 and testing whether the slope is 0 are equivalent tests."], lines=2)
+    d.step("(g)", "What is the value of R² for this model? Interpret it in context.",
+           ["R² = **0.6%**. Only 0.6% of the variability in the number of classes missed is explained by the number of alcoholic drinks a week."], lines=2)
+    d.end("End of worksheet")
+
+
 # (file stem, activity title for the header, week · section subtitle, builder)
 WORKSHEETS = [
     ("W08_CI_Using_Percentiles", "Confidence Intervals Using Percentiles", "Week 8  ·  Section 3.4  ·  Participation activity", w08),
@@ -416,4 +494,6 @@ WORKSHEETS = [
     ("W13_Difference_in_Means", "Inference for a Difference in Means", "Week 13  ·  Section 6.4  ·  Participation activity", w13b),
     ("W14_Paired_Difference_in_Means", "Inference on Paired Difference in Means", "Week 14  ·  Section 6.5  ·  Participation activity", w14a),
     ("W14_Association_Two_Categorical", "Testing for an Association Between Two Categorical Variables", "Week 14  ·  Section 7.2  ·  Participation activity", w14b),
+    ("W15_Analysis_of_Variance", "Analysis of Variance", "Week 15  ·  Section 8.1  ·  Participation activity", w15a),
+    ("W15_Inference_for_Slope_and_Correlation", "Inference for Slope and Correlation", "Week 15  ·  Section 9.1  ·  Participation activity", w15b),
 ]

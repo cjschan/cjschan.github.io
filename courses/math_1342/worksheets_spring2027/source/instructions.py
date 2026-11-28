@@ -1,4 +1,4 @@
-"""Blackboard instruction text ("prelude") for the 8 worksheet participation assignments.
+"""Blackboard instruction text ("prelude") for the 10 worksheet participation assignments.
 
     python3 instructions.py      ->  ../instructions/<stem>.html
 
@@ -43,6 +43,10 @@ POINTS = {
         ("Problem 3. Confidence Interval, Steps 1–5", "5 (1 per step)")], None, False),
     "W14_Association_Two_Categorical": (9, [
         ("Study Method and Passing the Exam, parts (a)–(i)", "9 (1 per part)")], None, False),
+    "W15_Analysis_of_Variance": (9, [
+        ("Fiber in Breakfast Cereals, Steps 1–9", "9 (1 per step)")], None, False),
+    "W15_Inference_for_Slope_and_Correlation": (7, [
+        ("Alcohol and Missed Classes, parts (a)–(g)", "7 (1 per part)")], None, False),
 }
 
 

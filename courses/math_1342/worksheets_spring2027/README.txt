@@ -1,6 +1,6 @@
 Spring 2027 Math 1342 handouts, all built in one shared look.
 
-  W##_<name>.docx            8 participation worksheets (Weeks 8-14)
+  W##_<name>.docx            10 participation worksheets (Weeks 8-15)
   W##_<name>_Key.docx        their answer keys (posted in Blackboard, released 12:00 AM the day after each activity is due)
   Practice_Test_1-3.docx     Practice Tests (no keys)
   Test_1-3_Study_Guide.docx  Study Guides

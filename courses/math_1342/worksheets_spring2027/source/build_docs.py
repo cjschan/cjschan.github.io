@@ -3,7 +3,7 @@
     python3 build_docs.py        (needs python-docx; pandoc on PATH)
 
 Outputs (in ../):
-  W##_<name>.docx / W##_<name>_Key.docx     8 participation worksheets + answer keys
+  W##_<name>.docx / W##_<name>_Key.docx     10 participation worksheets + answer keys
   Practice_Test_N.docx                       Practice Tests 1-3 (no keys)
   Test_N_Study_Guide.docx                    Study Guides 1-3
   Test_N_Study_Guide_Solutions.docx          full worked solutions to the guides' practice problems

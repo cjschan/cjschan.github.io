@@ -15,6 +15,10 @@ CHANGES FROM FALL 2026
   - Week 1 discussion "Introductions and Statistics in Your Life" (Blackboard, Participation category, 10 points):
     initial post due Fri Jan 22, two replies due Sun Jan 24 (11:59 PM). Prompt, rubric and rubric PDF are in
     ../discussions_spring2027/. (Added Nov 26, 2026.)
+  - Participation worksheets (worksheets_spring2027/): the maps name each worksheet by its Blackboard assignment title,
+    in 3.4, 4.3, 6.1 – 6.5, 7.2, 8.1 and 9.1; each answer key opens at 12:00 AM the day after the class it is due.
+    Week 15 adds Analysis of Variance (8.1, cereal fiber) and Inference for Slope and Correlation (9.1, alcohol and
+    missed classes). (Added Nov 27, 2026.)
   - 2.5 is taught over two days (Part 1 Wed Feb 17, Part 2 Mon Feb 22), matching the two 2.5 Interactive Lectures.
   - 4.4 and 4.5 are on separate days. Review: Putting It All Together is Mon May 10; the final is Wed May 12 – Fri May 14.
   - Test 3 opens Fri Apr 30, after the withdrawal deadline (Mon Apr 26).
