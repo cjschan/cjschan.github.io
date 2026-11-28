@@ -33,7 +33,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
   .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
   .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
   @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
-  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; }
+  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; display:block; max-width:100%; overflow-x:auto; }
   .quiz table.dtab th, .quiz table.dtab td { border:1px solid var(--border); padding:4px 10px; text-align:left; vertical-align:top; }
   .quiz table.dtab th { color:var(--primary); background:rgba(56,189,248,0.08); }
   .quiz .sk { display:inline-block; background:rgba(251,191,36,0.15); color:var(--amber); padding:1px 8px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:0.6px; margin-left:6px; vertical-align:middle; }
@@ -72,8 +72,8 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 </div>
 <div class="problem">
 <h3>Problem 2 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
-<p>Six students timed how long (minutes) it took them to finish a practice problem set before and after a study-skills workshop. The lists are in the same student order.</p><table class='dtab'><tr><th>Before</th><td>30.8</td><td>26.8</td><td>33.4</td><td>33.1</td><td>31.4</td><td>26.4</td></tr><tr><th>After</th><td>30.7</td><td>26.7</td><td>32.9</td><td>31.9</td><td>29.5</td><td>26.7</td></tr></table><p>Compute the differences \(d = \text{before} - \text{after}\), and use <b>Descriptive Statistics and Graphs &rarr; One Quantitative Variable</b> to find \(\bar{d}\) and \(s_d\). Then test \(H_0: \mu_d = 0\) vs. \(H_a: \mu_d > 0\) with a t-test (df = 5) using StatKey&rsquo;s t distribution. Give the conclusion at \(\alpha = 0.05\). <i>(1 differences and summary, 1.5 test, 0.5 conclusion)</i></p>
-<div class="solution"><table class='dtab'><tr><th>Differences</th><th>\(\bar{d}\)</th><th>\(s_d\)</th><th>t</th><th>p-value</th></tr><tr><td>0.1, 0.1, 0.5, 1.2, 1.9, -0.3</td><td>0.583</td><td>0.821</td><td>1.74</td><td>0.0711</td></tr></table><p>The p-value (0.071) is above 0.05, so do not reject \(H_0\): there is not enough evidence that the workshop reduced the mean completion time.</p></div>
+<p>Six students timed how long (minutes) it took them to finish a practice problem set before and after a study-skills workshop. Each column is one student.</p><table class='dtab'><tr><th>Before</th><td>30.8</td><td>26.8</td><td>33.4</td><td>33.1</td><td>31.4</td><td>26.4</td></tr><tr><th>After</th><td>30.7</td><td>26.7</td><td>32.9</td><td>31.9</td><td>29.5</td><td>26.7</td></tr></table><p>Compute the differences \(d = \text{before} - \text{after}\), and use <b>Descriptive Statistics and Graphs &rarr; One Quantitative Variable</b> to find \(\bar{d}\) and \(s_d\). Then test \(H_0: \mu_d = 0\) vs. \(H_a: \mu_d > 0\) with a t-test (df = 5) using StatKey&rsquo;s t distribution. Give the conclusion at \(\alpha = 0.05\). <i>(1 differences and summary, 1.5 test, 0.5 conclusion)</i></p>
+<div class="solution"><table class='dtab'><tr><th>Difference \(d\)</th><td>0.1</td><td>0.1</td><td>0.5</td><td>1.2</td><td>1.9</td><td>-0.3</td></tr></table><table class='dtab'><tr><th>\(\bar{d}\)</th><th>\(s_d\)</th><th>t</th><th>p-value</th></tr><tr><td>0.583</td><td>0.821</td><td>1.74</td><td>0.0711</td></tr></table><p>The p-value (0.071) is above 0.05, so do not reject \(H_0\): there is not enough evidence that the workshop reduced the mean completion time.</p></div>
 </div>
 <div class="problem">
 <h3>Problem 3 <span class="pts">[5 pts]</span> <span class="sk">STATKEY</span></h3>

@@ -33,7 +33,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
   .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
   .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
   @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
-  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; }
+  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; display:block; max-width:100%; overflow-x:auto; }
   .quiz table.dtab th, .quiz table.dtab td { border:1px solid var(--border); padding:4px 10px; text-align:left; vertical-align:top; }
   .quiz table.dtab th { color:var(--primary); background:rgba(56,189,248,0.08); }
   .quiz .sk { display:inline-block; background:rgba(251,191,36,0.15); color:var(--amber); padding:1px 8px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:0.6px; margin-left:6px; vertical-align:middle; }
@@ -56,7 +56,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <p class="total-pts">Total: 10 points</p>
 <div class="problem">
 <h3>Problem 1 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
-<p>The data are hours of sleep the night before (\(x\)) and quiz score (\(y\)) for 8 students, listed in the same order. In StatKey, open <b>Descriptive Statistics and Graphs &rarr; Two Quantitative Variables</b>, click <b>Edit Data</b>, enter the pairs, and check <b>Show Regression Line</b>.</p><table class='dtab'><tr><th>Sleep \(x\) (hours)</th><th>Quiz score \(y\)</th></tr><tr><td>4, 9, 5, 6, 4, 8, 8, 6</td><td>49, 88, 74, 66, 63, 91, 84, 78</td></tr></table><ol type='a'><li>Report the correlation \(r\) and the regression equation from StatKey. Describe the direction and strength. <i>(1 pt)</i></li><li>Interpret the slope in context. <i>(0.5 pt)</i></li><li>Predict the quiz score for a student who slept 7 hours. Then compute the residual for the <b>first</b> student in your list. <i>(1 pt)</i></li><li>Add one more student who slept 2 hours and scored 95. Report the new correlation and explain how one unusual point changed it. <i>(0.5 pt)</i></li></ol>
+<p>The data are hours of sleep the night before (\(x\)) and quiz score (\(y\)) for 8 students. Each column is one student. In StatKey, open <b>Descriptive Statistics and Graphs &rarr; Two Quantitative Variables</b>, click <b>Edit Data</b>, enter the pairs, and check <b>Show Regression Line</b>.</p><table class='dtab'><tr><th>Sleep \(x\) (hours)</th><td>4</td><td>9</td><td>5</td><td>6</td><td>4</td><td>8</td><td>8</td><td>6</td></tr><tr><th>Quiz score \(y\)</th><td>49</td><td>88</td><td>74</td><td>66</td><td>63</td><td>91</td><td>84</td><td>78</td></tr></table><ol type='a'><li>Report the correlation \(r\) and the regression equation from StatKey. Describe the direction and strength. <i>(1 pt)</i></li><li>Interpret the slope in context. <i>(0.5 pt)</i></li><li>Predict the quiz score for a student who slept 7 hours. Then compute the residual for the <b>first</b> student (the first column). <i>(1 pt)</i></li><li>Add one more student who slept 2 hours and scored 95. Report the new correlation and explain how one unusual point changed it. <i>(0.5 pt)</i></li></ol>
 </div>
 <div class="problem">
 <h3>Problem 2 <span class="pts">[3 pts]</span></h3>

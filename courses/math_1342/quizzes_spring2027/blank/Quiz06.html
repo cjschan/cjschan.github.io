@@ -33,7 +33,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
   .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
   .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
   @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
-  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; }
+  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; display:block; max-width:100%; overflow-x:auto; }
   .quiz table.dtab th, .quiz table.dtab td { border:1px solid var(--border); padding:4px 10px; text-align:left; vertical-align:top; }
   .quiz table.dtab th { color:var(--primary); background:rgba(56,189,248,0.08); }
   .quiz .sk { display:inline-block; background:rgba(251,191,36,0.15); color:var(--amber); padding:1px 8px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:0.6px; margin-left:6px; vertical-align:middle; }
@@ -60,7 +60,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 </div>
 <div class="problem">
 <h3>Problem 2 <span class="pts">[3 pts]</span> <span class="sk">STATKEY</span></h3>
-<p>Students were randomly assigned to get either text-message reminders or no reminders about a FAFSA deadline. The table gives how many in each group finished the FAFSA on time.</p><table class='dtab'><tr><th>Text reminders: finished</th><th>No reminders: finished</th></tr><tr><td>112 of 190</td><td>81 of 180</td></tr></table><ol type='a'><li>Compute \(\hat{p}_T - \hat{p}_N\). <i>(0.5 pt)</i></li><li>Construct a 95% confidence interval for \(p_T - p_N\) using the formula. <i>(0.5 pt)</i></li><li>Test \(H_0: p_T = p_N\) vs. \(H_a: p_T \ne p_N\) with the pooled z-test, using StatKey&rsquo;s Normal distribution for the p-value. <i>(1 pt)</i></li><li>Now open <b>Randomization Hypothesis Tests &rarr; Test for Difference In Proportions</b>, enter the counts, generate at least 5000 samples, and find the two-tailed p-value. Does it agree with (c)? <i>(0.5 pt)</i></li><li>Can we conclude that reminders <i>cause</i> a change in on-time completion? Explain. <i>(0.5 pt)</i></li></ol>
+<p>Students were randomly assigned to get either text-message reminders or no reminders about a FAFSA deadline. The table gives how many in each group finished the FAFSA on time.</p><table class='dtab'><tr><th></th><th>Finished</th><th>Sample size</th></tr><tr><th>Text reminders</th><td>112</td><td>190</td></tr><tr><th>No reminders</th><td>81</td><td>180</td></tr></table><ol type='a'><li>Compute \(\hat{p}_T - \hat{p}_N\). <i>(0.5 pt)</i></li><li>Construct a 95% confidence interval for \(p_T - p_N\) using the formula. <i>(0.5 pt)</i></li><li>Test \(H_0: p_T = p_N\) vs. \(H_a: p_T \ne p_N\) with the pooled z-test, using StatKey&rsquo;s Normal distribution for the p-value. <i>(1 pt)</i></li><li>Now open <b>Randomization Hypothesis Tests &rarr; Test for Difference In Proportions</b>, enter the counts, generate at least 5000 samples, and find the two-tailed p-value. Does it agree with (c)? <i>(0.5 pt)</i></li><li>Can we conclude that reminders <i>cause</i> a change in on-time completion? Explain. <i>(0.5 pt)</i></li></ol>
 </div>
 <div class="problem">
 <h3>Problem 3 <span class="pts">[2 pts]</span> <span class="sk">STATKEY</span></h3>
@@ -68,7 +68,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 </div>
 <div class="problem">
 <h3>Problem 4 <span class="pts">[2 pts]</span> <span class="sk">STATKEY</span></h3>
-<p>Exam scores were compared for students in sections that used weekly online quizzes (Q) and sections that did not (N). Summary statistics (n, \(\bar{x}\), s):</p><table class='dtab'><tr><th>Quizzes: n, \(\bar{x}\), s</th><th>No quizzes: n, \(\bar{x}\), s</th></tr><tr><td>20, 78.0, 9.0</td><td>18, 74.5, 10.0</td></tr></table><ol type='a'><li>Test \(H_0: \mu_Q = \mu_N\) vs. \(H_a: \mu_Q > \mu_N\). Compute SE and the t-statistic, use df = the smaller n &minus; 1, and find the p-value with StatKey&rsquo;s t distribution. <i>(1 pt)</i></li><li>Construct a 95% CI for \(\mu_Q - \mu_N\) and state your conclusion in context. <i>(1 pt)</i></li></ol>
+<p>Exam scores were compared for students in sections that used weekly online quizzes (Q) and sections that did not (N). Summary statistics (n, \(\bar{x}\), s):</p><table class='dtab'><tr><th></th><th>n</th><th>\(\bar{x}\)</th><th>s</th></tr><tr><th>Quizzes</th><td>20</td><td>78.0</td><td>9.0</td></tr><tr><th>No quizzes</th><td>18</td><td>74.5</td><td>10.0</td></tr></table><ol type='a'><li>Test \(H_0: \mu_Q = \mu_N\) vs. \(H_a: \mu_Q > \mu_N\). Compute SE and the t-statistic, use df = the smaller n &minus; 1, and find the p-value with StatKey&rsquo;s t distribution. <i>(1 pt)</i></li><li>Construct a 95% CI for \(\mu_Q - \mu_N\) and state your conclusion in context. <i>(1 pt)</i></li></ol>
 </div>
 
 </div>

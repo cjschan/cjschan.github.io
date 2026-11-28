@@ -33,7 +33,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
   .quiz a { color:var(--primary); text-decoration:none; border-bottom:1px dotted var(--primary-light); }
   .quiz a:hover { color:var(--amber); border-bottom-color:var(--amber); }
   @media (max-width:760px) { .quiz { margin:16px; padding:22px 18px 36px; } .quiz h1 { font-size:24px; } }
-  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; }
+  .quiz table.dtab { border-collapse:collapse; margin:8px 0 10px; font-size:14px; display:block; max-width:100%; overflow-x:auto; }
   .quiz table.dtab th, .quiz table.dtab td { border:1px solid var(--border); padding:4px 10px; text-align:left; vertical-align:top; }
   .quiz table.dtab th { color:var(--primary); background:rgba(56,189,248,0.08); }
   .quiz .sk { display:inline-block; background:rgba(251,191,36,0.15); color:var(--amber); padding:1px 8px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:0.6px; margin-left:6px; vertical-align:middle; }
