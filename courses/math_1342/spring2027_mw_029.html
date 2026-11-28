@@ -106,6 +106,16 @@
     text-transform: uppercase;
   }
   .syllabus tr:nth-child(even) td { background: rgba(15, 23, 42, 0.5); }
+  .syllabus tr.arc-row th {
+    background: rgba(251,191,36,0.14);
+    color: var(--accent-light);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+    padding: 8px 14px;
+    border-top: 2px solid var(--accent);
+  }
+  .syllabus tr.arc-row .arc-weeks { color: var(--muted); font-weight: 600; margin-right: 6px; }
   .syllabus .week-cell {
     color: var(--muted);
     font-weight: 600;
@@ -228,13 +238,14 @@
 <p>Let&rsquo;s keep our class a friendly and engaging place by being respectful of your classmates and of the time we share. Please come to class ready to focus, give it your full attention, and set aside anything that would pull you away from what we are working on together.</p>
 
 <h2>Course Calendar</h2>
-<p>Schedule changes may occur during the semester. Any changes will be announced in class and posted as a Blackboard Announcement. Click any section number to open the lecture notes. <b>Tests</b> are taken online through Blackboard during the windows listed below &mdash; we still hold class as usual on those days. <b>Take-home quizzes</b> are submitted through Blackboard and are due on <b>Mondays at 11:59 PM</b> on the dates listed. Each take-home quiz covers only sections we finished in class before its due date.</p>
+<p>Schedule changes may occur during the semester. Any changes will be announced in class and posted as a Blackboard Announcement. The highlighted bands group the weeks by the question they answer. Click any section number to open the lecture notes. <b>Tests</b> are taken online through Blackboard during the windows listed below &mdash; we still hold class as usual on those days. <b>Take-home quizzes</b> are submitted through Blackboard and are due on <b>Mondays at 11:59 PM</b> on the dates listed. Each take-home quiz covers only sections we finished in class before its due date.</p>
 <div class="table-scroll">
 <table>
   <thead>
     <tr><th>Week</th><th>Section</th><th>Description</th></tr>
   </thead>
   <tbody>
+    <tr class="arc-row"><th colspan="3" scope="rowgroup"><span class="arc-weeks">Weeks 1&ndash;6</span> Getting and describing data</th></tr>
     <tr><td class="week-cell" rowspan="2">Week 1<span class="week-date">Jan 20</span></td><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Spring semester begins Tue Jan 19 &mdash; first class Wed Jan 20</td></tr>
     <tr><td class="section-cell"><a href="lecture_notes/Sec0-1_Introduction_to_Statistics.html">Intro</a></td><td>Introduction: What Is Statistics For? <span class="badge">Syllabus Quiz in class Wed Jan 20</span> <span class="badge">Intro discussion: post by Fri Jan 22, replies by Sun Jan 24</span></td></tr>
 
@@ -252,7 +263,9 @@
 
     <tr><td class="week-cell" rowspan="2">Week 6<span class="week-date">Feb 22 &ndash; 24</span></td><td class="section-cell"><a href="lecture_notes/Sec2-5_Two_Quantitative_Variables_Linear_Regression_Part2.html">2.5</a></td><td>Two Quantitative Variables: Linear Regression (Part 2) <span class="badge"><a href="quizzes_spring2027/blank/Quiz02.html">Quiz 2 due Mon Feb 22, 11:59 PM</a></span></td></tr>
     <tr><td class="section-cell"><a href="lecture_notes/SecP-1_Probability.html">P.1</a></td><td>Probability Rules <span class="badge badge-test">Test 1 opens Fri Feb 26</span></td></tr>
-
+  </tbody>
+  <tbody>
+    <tr class="arc-row"><th colspan="3" scope="rowgroup"><span class="arc-weeks">Weeks 7&ndash;8</span> How much could our estimate vary?</th></tr>
     <tr><td class="week-cell" rowspan="2">Week 7<span class="week-date">Mar 1 &ndash; 3</span></td><td class="section-cell"><a href="lecture_notes/Sec3-1_Sampling_Distributions.html">3.1</a></td><td>Sampling Distributions</td></tr>
     <tr><td class="section-cell"><a href="lecture_notes/Sec3-2_Understanding_and_Interpreting_Confidence_Intervals.html">3.2</a></td><td>Understanding and Interpreting Confidence Intervals</td></tr>
 
@@ -260,7 +273,9 @@
     <tr><td class="section-cell"><a href="lecture_notes/Sec3-4_Bootstrap_Confidence_Intervals_Using_Percentiles.html">3.4</a></td><td>Bootstrap Confidence Intervals Using Percentiles</td></tr>
 
     <tr><td class="week-cell" rowspan="1">&mdash;<span class="week-date">Mar 15 &ndash; 19</span></td><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Spring Break &mdash; No Class (college closed Mar 15 &ndash; 21)</td></tr>
-
+  </tbody>
+  <tbody>
+    <tr class="arc-row"><th colspan="3" scope="rowgroup"><span class="arc-weeks">Weeks 9&ndash;11</span> Is this evidence or chance?</th></tr>
     <tr><td class="week-cell" rowspan="2">Week 9<span class="week-date">Mar 22 &ndash; 24</span></td><td class="section-cell"><a href="lecture_notes/Sec4-1_Introducing_Hypothesis_Tests.html">4.1</a></td><td>Introducing Hypothesis Tests</td></tr>
     <tr><td class="section-cell"><a href="lecture_notes/Sec4-2_Measuring_Evidence_with_P_values.html">4.2</a></td><td>Measuring Evidence with p-values</td></tr>
 
@@ -269,7 +284,9 @@
 
     <tr><td class="week-cell" rowspan="2">Week 11<span class="week-date">Apr 5 &ndash; 7</span></td><td class="section-cell"><a href="lecture_notes/Sec4-5_Making_Connections.html">4.5</a></td><td>Making Connections</td></tr>
     <tr><td class="section-cell"><a href="lecture_notes/Sec5-1_Hypothesis_Tests_Using_Normal_Distributions.html">5.1</a></td><td>Hypothesis Testing Using Normal Distributions</td></tr>
-
+  </tbody>
+  <tbody>
+    <tr class="arc-row"><th colspan="3" scope="rowgroup"><span class="arc-weeks">Weeks 12&ndash;15</span> One method, many situations</th></tr>
     <tr><td class="week-cell" rowspan="2">Week 12<span class="week-date">Apr 12 &ndash; 14</span></td><td class="section-cell"><a href="lecture_notes/Sec6-1_Inference_for_a_Proportion.html">6.1</a></td><td>Inference for a Proportion (Distribution, Confidence Interval, Hypothesis Testing) <span class="badge"><a href="quizzes_spring2027/blank/Quiz05.html">Quiz 5 due Mon Apr 12, 11:59 PM</a></span></td></tr>
     <tr><td class="section-cell"><a href="lecture_notes/Sec6-3_Inference_for_a_Difference_in_Proportions.html">6.3</a></td><td>Inference for a Difference in Proportions (Distribution, Confidence Interval, Hypothesis Testing)</td></tr>
 
@@ -281,7 +298,9 @@
 
     <tr><td class="week-cell" rowspan="2">Week 15<span class="week-date">May 3 &ndash; 5</span></td><td class="section-cell"><a href="lecture_notes/Sec8-1_Analysis_of_Variance.html">8.1</a></td><td>Analysis of Variance <span class="badge"><a href="quizzes_spring2027/blank/Quiz07.html">Quiz 7 due Mon May 3, 11:59 PM</a></span></td></tr>
     <tr><td class="section-cell"><a href="lecture_notes/Sec9-1_Inference_for_Slope_and_Correlation.html">9.1</a></td><td>Inference for Slope and Correlation</td></tr>
-
+  </tbody>
+  <tbody>
+    <tr class="arc-row"><th colspan="3" scope="rowgroup"><span class="arc-weeks">Week 16</span> Putting it all together</th></tr>
     <tr><td class="week-cell" rowspan="2">Week 16<span class="week-date">May 10 &ndash; 12</span></td><td class="section-cell"><a href="lecture_notes/Review_Sampling_to_Hypothesis_Testing_no_answers.html">Review</a>, <a href="lecture_notes/Review_Sampling_to_Hypothesis_Testing.html">Answer Key</a></td><td>Putting It All Together: From Sampling to Hypothesis Testing <span class="badge"><a href="quizzes_spring2027/blank/Quiz08.html">Quiz 8 due Mon May 10, 11:59 PM</a></span></td></tr>
     <tr><td class="section-cell"><span class="nolink">&mdash;</span></td><td>Final Exam &mdash; testing period Wed May 12, 12:00 AM &ndash; Fri May 14, 11:59 PM, online (Blackboard)</td></tr>
   </tbody>
