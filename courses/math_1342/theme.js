@@ -178,7 +178,16 @@
     // Arrow/space keys pressed while the toggle has focus must not also flip slides.
     group.addEventListener('keydown', function (ev) { ev.stopPropagation(); });
     var mount = document.getElementById('theme-toggle');
-    if (mount) mount.appendChild(group); else document.body.appendChild(group);
+    var header = document.querySelector('body > header');
+    if (mount) mount.appendChild(group);
+    else if (placement === 'page' && header) {
+      // Pages with the site nav bar: sit just under it, right-aligned, instead of covering the menu.
+      group.className = 'theme-toggle theme-toggle--inline';
+      var bar = document.createElement('div');
+      bar.className = 'theme-toggle-bar';
+      bar.appendChild(group);
+      header.insertAdjacentElement('afterend', bar);
+    } else document.body.appendChild(group);
     updateToggle();
   }
 
